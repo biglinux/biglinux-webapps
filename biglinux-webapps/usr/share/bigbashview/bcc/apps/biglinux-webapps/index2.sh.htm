@@ -41,7 +41,7 @@ if [ "$DESKTOP" != "" ]; then
                         c=0
                     fi
 
-                    if [ "$(grep 'pt' <<< $LANG)" != "" ]; then
+                    if [ "$(grep -E '(en|es)' <<< $LANGUAGE)" = "" -a "$(grep 'pt' <<< $LANG)" != "" ]; then
 
                         if [ "$(grep -E "(Name\[pt\]=|Name\[pt_BR\]=)" $i)" != "" ]; then
                             DESKNAME="$(grep -E "(Name\[pt\]=|Name\[pt_BR\]=)" $i | sed 's|Name\[pt\]=||;s|Name\[pt_BR\]=||')"
