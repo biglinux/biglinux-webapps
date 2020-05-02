@@ -1,0 +1,26 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+"http://www.freedesktop.org/standards/menu-spec/menu-1.0.dtd">
+<Menu>
+	<Name>Applications</Name>
+	<Menu>
+		<Name>Web apps Google</Name>
+		<Directory>google-apps.directory</Directory>
+			<Include>
+                <Filename>gmail-webapp-biglinux.desktop</Filename>
+                <Filename>googlecalendar-webapp-biglinux.desktop</Filename>
+                <Filename>googlecontacts-webapp-biglinux.desktop</Filename>
+                <Filename>googledocs-webapp-biglinux.desktop</Filename>
+                <Filename>googledrive-webapp-biglinux.desktop</Filename>
+                <Filename>googlekeep-webapp-biglinux.desktop</Filename>
+                <Filename>googlemaps-webapp-biglinux.desktop</Filename>
+                <Filename>googlephotos-webapp-biglinux.desktop</Filename>
+                <Filename>googlepresentation-webapp-biglinux.desktop</Filename>
+                <Filename>googlesheets-webapp-biglinux.desktop</Filename>
+                <Filename>googletranslate-webapp-biglinux.desktop</Filename>
+                <Filename>hangouts-webapp-biglinux.desktop</Filename>
+                <Filename>waze-webapp-biglinux.desktop</Filename>
+                <Filename>youtube-webapp-biglinux.desktop</Filename>
+                <Filename>youtubemusic-webapp-biglinux.desktop</Filename>
+		</Include>
+	</Menu>
+</Menu>

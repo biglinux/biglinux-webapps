@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Messenger
+Exec=/usr/bin/biglinux-webapp --class="www.messenger.com,Chromium-browser" --profile-directory=Default --app=https://www.messenger.com
+Icon=messenger.png
+StartupWMClass=www.messenger.com

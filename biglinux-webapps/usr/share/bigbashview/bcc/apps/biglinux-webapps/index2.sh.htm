@@ -1,0 +1,77 @@
+#!/bin/bash
+
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-webapps
+
+echo '
+    <head>
+        <title>BigLinux WebApps</title>
+        <link rel="stylesheet" type="text/css" href="/usr/share/bigbashview/bcc/materialize/css/materialize.css">
+        <link rel="stylesheet" type="text/css" href="app.css">
+        <script src="/usr/share/bigbashview/bcc/materialize/js/jquery.js"></script>
+        <script src="/usr/share/bigbashview/bcc/materialize/js/materialize.js"></script>
+        <script src="/usr/share/bigbashview/bcc/js/big.js"></script>
+    </head>
+    <body>
+        <div id="page2">
+            <div id="mid" class="bar">
+                <h1>
+                    <p>' $"Ative ou desative os WebApps BigLinux:" '</p>
+                </h1><br/>'
+
+DESKTOP="$(ls /usr/share/biglinux/webapps/*.desktop | sort )"
+
+if [ "$DESKTOP" != "" ]; then
+            c=0
+            echo '<div class="row">'
+            for i in $DESKTOP; do
+
+                    namedesk="$(awk -F'/' '{print $NF}' <<< $i)"
+
+                    if [ -e "$HOME/.local/share/applications/$namedesk" ]; then
+                        check="checked"
+                    else
+                        check=""
+                    fi
+
+                    if [ "$c" = "2" ]
+                    then
+                        echo '<div class="row">'
+                        c=0
+                    fi
+
+                    if [ "$(grep 'pt' <<< $LANG)" != "" ]; then
+
+                        if [ "$(grep -E "(Name\[pt\]=|Name\[pt_BR\]=)" $i)" != "" ]; then
+                            DESKNAME="$(grep -E "(Name\[pt\]=|Name\[pt_BR\]=)" $i | sed 's|Name\[pt\]=||;s|Name\[pt_BR\]=||')"
+                        else
+                            DESKNAME="$(grep 'Name=' $i | sed 's|Name=||')"
+                        fi
+                    else
+                        DESKNAME="$(grep 'Name=' $i | sed 's|Name=||')"
+                    fi
+
+
+                    ICON="/usr/share/icons/hicolor/128x128/apps/$(grep 'Icon=' $i | sed 's|Icon=||')"
+                    [ ! -e "$ICON" ] && ICON="/usr/share/pixmaps/$(grep 'Icon=' $i | sed 's|Icon=||')"
+
+                    echo '<div class="col s6">'
+                    echo "<input type='checkbox' id=\"$DESKNAME\" onclick=\"_run('./enable-disable.sh.htm?name=$namedesk')\" $check>"
+                    echo '<label for="'$DESKNAME'">
+                            <div id="webapps-icon">
+                                <img src="'$ICON'" width="32" height="32">
+                            </div>'$DESKNAME'</label><br><br>
+                        </div>'
+                    if [ "$c" = "1" ]
+                    then
+                        echo '</div>'
+                    fi
+                    c=$((c+1))
+            done
+        echo '</div>
+            <h1><a href="index.sh.htm" class="button">' $"Início" '</a></h1>
+        </div>
+    </div>'
+fi
+

@@ -1,0 +1,49 @@
+#!/bin/bash
+
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-webapps
+
+echo '
+    <head>
+        <title>BigLinux WebApps</title>
+        <link rel="stylesheet" type="text/css" href="/usr/share/bigbashview/bcc/materialize/css/materialize.css">
+        <link rel="stylesheet" type="text/css" href="app.css">
+        <script src="/usr/share/bigbashview/bcc/materialize/js/jquery.js"></script>
+        <script src="/usr/share/bigbashview/bcc/materialize/js/materialize.js"></script>
+        <script src="/usr/share/bigbashview/bcc/js/big.js"></script>
+    </head>
+    <body>
+        <div id="page2">
+            <div id="middle" class="bar">
+                <h1>
+                    <p>' $"Instalar WebApps BigLinux:" '</p><br>
+                    <form action="webapp-install.sh" method="get">
+                        <label style="float:left" for="namedesk">'$"Nome do WebApp:"'</label>
+                            <input type="text" name="namedesk" id="namedesk"/><br>
+                        <label style="float:left" for="urldesk">'$"Url do WebApp:"'</label>
+                            <input type="text" name="urldesk" id="urldesk"/><br>
+                        <label style="float:left" for="icondesk">'$"Ícone do WebApp:"'</label><br>
+                            <a style="float:right;" class="button" id="btn">'$"Carregar"'</a>
+                            <input type="text" style="margin-top:-35px" id="icondesk" name="icondesk" readonly/><br><br>
+                        <a href="index.sh.htm" class="button" style="margin-right:30px;">'$"Início"'</a>
+                        <button type="submit" class="button">'$"Instalar"'</button>
+                    </form>
+                </h1>
+            </div>
+        </div>'
+
+        echo "
+        <script type='text/javascript'>
+        \$(document).ready(function(){
+            \$('#btn').click(function(e){
+                e.preventDefault();
+                \$.get('./icon.sh', function(data) {
+                    \$('#icondesk').val(data);
+                });
+            });
+        });
+        </script>
+    </body>"
+
+

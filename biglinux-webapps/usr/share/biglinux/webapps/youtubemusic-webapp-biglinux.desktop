@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Youtube Music
+Exec=/usr/bin/biglinux-webapp --class="music.youtube.com,Chromium-browser" --profile-directory=Default --app=https://music.youtube.com
+Icon=youtubemusic.png
+StartupWMClass=music.youtube.com

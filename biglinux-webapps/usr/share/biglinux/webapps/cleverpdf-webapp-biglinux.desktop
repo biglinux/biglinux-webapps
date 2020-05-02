@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=CleverPDF
+Exec=/usr/bin/biglinux-webapp --class="www.cleverpdf.com__pt,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com/pt
+Icon=cleverpdf.png
+StartupWMClass=www.clieverpdf.com__pt

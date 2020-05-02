@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Translator
+Name[pt]=Tradutor
+Exec=/usr/bin/biglinux-webapp --app=https://translate.google.com
+Icon=translate.png

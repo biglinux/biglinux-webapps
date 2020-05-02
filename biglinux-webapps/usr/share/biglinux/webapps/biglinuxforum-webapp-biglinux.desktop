@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=BigLinux Forum
+Name[pt]=Fórum BigLinux
+Exec=/usr/bin/biglinux-webapp --class="forum.biglinux.com.br,Chromium-browser" --profile-directory=Default --app=https://forum.biglinux.com.br
+Icon=biglinux-globo.png
+StartupWMClass=forum.biglinux.com.br

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Settings;
+Exec=biglinux-webapps
+Icon=/usr/share/bigbashview/bcc/apps/biglinux-webapps/webapp.svg
+Name[pt_BR]=Gerenciar Web Apps
+Name=Manage Web App
+StartupNotify=true
+Terminal=false
+Type=Application
+X-KDE-ServiceTypes=KCModule
+Type=Service

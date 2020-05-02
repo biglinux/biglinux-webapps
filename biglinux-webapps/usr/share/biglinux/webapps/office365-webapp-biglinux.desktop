@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Office 365
+Exec=/usr/bin/biglinux-webapp --class="www.office.com,Chromium-browser" --profile-directory=Default --app=https://www.office.com
+Icon=office365.png
+StartupWMClass=www.office.com

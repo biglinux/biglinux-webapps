@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Calendar
+Name[pt]=Agenda
+Exec=/usr/bin/biglinux-webapp --class="calendar.google.com,Chromium-browser" --profile-directory=Default --app=https://calendar.google.com
+Icon=calendar.png
+StartupWMClass=calendar.google.com

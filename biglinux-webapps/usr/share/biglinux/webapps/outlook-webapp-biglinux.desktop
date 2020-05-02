@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Outlook
+Exec=/usr/bin/biglinux-webapp --class="outlook.live.com,Chromium-browser" --profile-directory=Default --app=https://outlook.live.com
+Icon=outlook.png
+StartupWMClass=outlook.live.com

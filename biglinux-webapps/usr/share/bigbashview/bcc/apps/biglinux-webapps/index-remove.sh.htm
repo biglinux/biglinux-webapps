@@ -1,0 +1,53 @@
+#!/bin/bash
+
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-webapps
+
+echo '
+    <head>
+        <title>BigLinux WebApps</title>
+        <link rel="stylesheet" type="text/css" href="/usr/share/bigbashview/bcc/materialize/css/materialize.css">
+        <link rel="stylesheet" type="text/css" href="app.css">
+        <script src="/usr/share/bigbashview/bcc/materialize/js/jquery.js"></script>
+        <script src="/usr/share/bigbashview/bcc/materialize/js/materialize.js"></script>
+        <script src="/usr/share/bigbashview/bcc/js/big.js"></script>
+    </head>
+    <body>
+        <div id=page2>
+            <div id="middle" class="bar">
+                <h1>
+                    <p>' $"Remover WebApps BigLinux:" '<p><br><br>'
+
+DESKTOP="$(ls $HOME/.local/share/applications/*.desktop | grep "webapp-biglinux-custom" | sort )"
+
+if [ "$DESKTOP" != "" ]; then
+
+                echo '<form action="webapp-remove.sh" method="get">
+                        <select name="filedesk">'
+
+                            for i in $DESKTOP; do
+
+                                DESKNAME="$(grep "Name=" $i | sed 's|Name=||')"
+                                DESKURL="$(grep "Exec=" $i | awk -F'=' '{print $NF}')"
+
+                                echo '<option value="'$i'">'$DESKNAME - $DESKURL'</option>'
+                            done
+
+                        echo '</select>
+                        <a href="index.sh.htm" class="button" style="margin-right:30px;">'$"Início"'</a>
+                        <button type="submit" class="button">'$"Remover"'</button>
+                    </form>
+                </h1>
+            </div>
+        </div>'
+
+else
+            echo $"Nenhum WebApps BigLinux Instalado!" '<br><br>'
+            echo $"Se você deseja instalar um novo WebApp BigLinux, clique no botão abaixo:" '<br><br>'
+            echo '<a href="index.sh.htm" class="button" style="margin-right:30px;">'$"Início"'</a>
+                  <a href="index-install.sh.htm" class="button" style="margin-right:30px;">'$"Instalar"'</a>
+                </h1>
+            </div>
+        </div>'
+fi

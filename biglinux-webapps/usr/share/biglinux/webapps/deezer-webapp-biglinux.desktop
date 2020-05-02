@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Deezer music
+Name[pt]=Deezer músicas
+Exec=/usr/bin/biglinux-webapp --class="www.deezer.com,Chromium-browser" --profile-directory=Default --app=https://www.deezer.com
+Icon=deezer.png
+StartupWMClass=www.deezer.com

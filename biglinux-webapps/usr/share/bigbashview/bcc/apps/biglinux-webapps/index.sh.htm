@@ -1,0 +1,55 @@
+#!/bin/bash
+
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-webapps
+
+mkdir -p $HOME/.local/share/icons
+mkdir -p $HOME/.local/share/applications
+mkdir -p $HOME/.local/share/desktop-directories
+mkdir -p $HOME/.config/menus/applications-merged
+
+hour="$(date +%H)"
+
+if [ "$hour" -gt "06" -a "$hour" -lt "12" ];then
+    msg=$"Bom dia!"
+elif [ "$hour" -gt "12" -a "$hour" -lt "19" ];then
+    msg=$"Boa tarde!"
+else
+    msg=$"Boa noite!"
+fi
+
+echo "
+    <head>
+        <title>BigLinux WebApps</title>
+        <link rel='stylesheet' type='text/css' href='/usr/share/bigbashview/bcc/materialize/css/materialize.css'>
+        <link rel='stylesheet' type='text/css' href='init.css'>
+        <script src='/usr/share/bigbashview/bcc/materialize/js/jquery.js'></script>
+        <script src='/usr/share/bigbashview/bcc/materialize/js/materialize.js'></script>
+        <script src='/usr/share/bigbashview/bcc/js/big.js'></script>
+    </head>
+    <body>
+        <div id='page2'>
+            <div id='middle' class='bar'>
+                <h1>"
+                    echo "$msg" $"Bem-Vindo(a) ao" '<br><p>'
+                    echo $"Gerenciador de WebApps BigLinux:" '</p>'
+
+                    echo '<div class="panel bw">
+                            <a href="index-install.sh.htm" class="css_btn_class black-text tooltipped"
+                               data-position="top" data-delay="150"
+                               data-tooltip="'$"Crie um novo WebApp BigLinux personalizado que aparecerá no menu Web apps Custom."'"><button class="button">' $"Instalar WebApps"'</button>
+                            </a>
+                            <a href="index-remove.sh.htm" class="css_btn_class black-text tooltipped"
+                               data-position="top" data-delay="150"
+                               data-tooltip="'$"Remova um WebApp BigLinux personalizado que desaparecerá do menu Web apps Custom."'"><button class="button">' $"Remover WebApps"'</button></a>
+                            <a href="index2.sh.htm" class="css_btn_class black-text tooltipped"
+                               data-position="top" data-delay="150"
+                               data-tooltip="'$"Ative e desative os WebApps instalados por padrão no sistema."'">
+                               <button class="button">' $"Ativar / Desativar WebApps" '</button>
+                            </a>
+                        </div>
+                </h1>
+            </div>
+        </div>
+    </body>'

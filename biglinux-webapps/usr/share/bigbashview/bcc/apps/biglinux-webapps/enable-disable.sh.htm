@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ ! -e "$HOME/.local/share/applications/$p_name" ]; then
+    cp /usr/share/biglinux/webapps/$p_name $HOME/.local/share/applications
+    exit
+else
+    rm "$HOME/.local/share/applications/$p_name"
+    exit
+fi

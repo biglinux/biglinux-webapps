@@ -1,0 +1,84 @@
+#!/usr/bin/env sh
+#
+# Amofi - App mode for Firefox
+# Copyright (C) 2017-2019  SEPBIT
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#
+# dash version 0.5
+#
+# @author    Vitor Guia <contato@vitor.guia.nom.br>
+# @Modified by Bruno Goncalves <www.biglinux.com.br>
+# @copyright 2017-2019 SEPBIT
+# @license   http://www.gnu.org/licenses GPL-3.0-or-later
+# @see       https://notabug.org/sepbit/amofi Repository of Amofi
+#
+
+#
+# Directory custom profile
+#
+
+DIR="$HOME/.primevideo"
+
+#
+# Check if Mozilla Firefox is installed
+#
+if [ ! "$(command -v firefox)" ]; then
+    echo "firefox command not found"
+    exit
+fi
+
+
+
+if [ "$(grep "toolkit.legacyUserProfileCustomizations.stylesheets" "$DIR/prefs.js")" = "" ]; then
+    rm -R "$HOME/.primevideo"
+    mkdir -p "$HOME/.primevideo/chrome"
+    echo 'user_pref("media.eme.enabled", true);' >> "$DIR"/prefs.js
+    echo 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);' >> "$DIR"/prefs.js
+fi
+
+
+
+#
+# Custom profile
+#
+echo \
+"#nav-bar {
+    visibility: collapse;
+}
+#TabsToolbar {
+    visibility: collapse;
+}" \
+>> "$DIR"/chrome/userChrome.css
+
+echo \
+"user_pref(\"browser.tabs.warnOnClose\", false);" \
+>> "$DIR"/user.js
+
+sed -i 's|user_pref("browser.urlbar.placeholderName.*||g' "$DIR"/prefs.js
+
+
+MOZ_DISABLE_GMP_SANDBOX=1 MOZ_DISABLE_CONTENT_SANDBOX=1 firefox --class=firefoxwebapp-primevideo -profile "$DIR" -no-remote -new-instance "https://www.primevideo.com/" &
+
+
+count=0
+while [  $count -lt 100 ]; do
+    if [ "$(xwininfo -root -children -all | grep -iE "Navigator.*firefoxwebapp-primevideo")" != "" ]; then
+        /usr/share/biglinux/webapps/bin/xseticon -id "$(xwininfo -root -children -all | grep -iE "Navigator.*firefoxwebapp-primevideo" | awk '{print $1}')" /usr/share/icons/hicolor/128x128/apps/primevideo.png
+        count=100
+    else
+        let count=count+1;
+    fi
+    sleep 0.5
+done

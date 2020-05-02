@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Maps
+Exec=/usr/bin/biglinux-webapp --class='www.google.com__maps_@,Chromium-browser' --profile-directory=Default --app='https://www.google.com/maps/@?api=1&map_action=map&basemap=satellite&layer=traffic'
+Icon=maps.png
+StartupWMClass=www.google.com__maps_@

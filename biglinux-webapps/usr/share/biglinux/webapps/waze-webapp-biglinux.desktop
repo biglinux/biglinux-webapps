@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Waze
+Exec=/usr/bin/biglinux-webapp --class="www.waze.com__livemap,Chromium-browser" --profile-directory=Default --app=https://www.waze.com/livemap
+Icon=waze.png
+StartupWMClass=www.waze.com__livemap

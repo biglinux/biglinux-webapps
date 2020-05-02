@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=primevideo-firefox
+Icon=primevideo.png
+Name=Prime Video
+Type=Application
+X-KDE-StartupNotify=true
