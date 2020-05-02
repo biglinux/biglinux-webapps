@@ -1,0 +1,130 @@
+# Portuguese translations for biglinux-webapps package.
+# Copyright (C) 2020 THE biglinux-webapps'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the biglinux-webapps package.
+# Automatically generated, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: biglinux-webapps\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-02 16:09-0300\n"
+"PO-Revision-Date: 2020-05-02 16:08-0300\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Ícones(*.png *.svg *.ico *.xpm)"
+msgstr "Icons (*.png *.svg *.ico *.xpm)"
+
+msgid "Instalar WebApps BigLinux:"
+msgstr "Install BigLinux WebApps:"
+
+msgid "Nome do WebApp:"
+msgstr "WebApp name:"
+
+msgid "Url do WebApp:"
+msgstr "WebApp Url:"
+
+msgid "Ícone do WebApp:"
+msgstr "WebApp Icon:"
+
+msgid "Carregar"
+msgstr "Load"
+
+msgid "Início"
+msgstr "Home"
+
+msgid "Instalar"
+msgstr "Install"
+
+msgid "Remover WebApps BigLinux:"
+msgstr "Remove BigLinux WebApps:"
+
+msgid "Remover"
+msgstr "Remove"
+
+msgid "Nenhum WebApps BigLinux Instalado!"
+msgstr "No BigLinux WebApp installed!"
+
+msgid ""
+"Se você deseja instalar um novo WebApp BigLinux, clique no botão abaixo:"
+msgstr ""
+"If you wish to install a new BigLinux WebApp, click on the button below:"
+
+msgid "Bom dia!"
+msgstr "Good morning!"
+
+msgid "Boa tarde!"
+msgstr "Good afternoon!"
+
+msgid "Boa noite!"
+msgstr "Good evening!"
+
+msgid "Bem-Vindo(a) ao"
+msgstr "Welcome to"
+
+msgid "Gerenciador de WebApps BigLinux:"
+msgstr "BigLinux WebApp Manager:"
+
+msgid ""
+"Crie um novo WebApp BigLinux personalizado que aparecerá no menu Web apps "
+"Custom."
+msgstr ""
+"Create a new custom BigLinux WebApp that will appear at the Custom WebApps "
+"menu."
+
+msgid "Instalar WebApps"
+msgstr "Install WebApps"
+
+msgid ""
+"Remova um WebApp BigLinux personalizado que desaparecerá do menu Web apps "
+"Custom."
+msgstr ""
+"Remove a custom BigLinux WebApp that will disappear from Custom WebApps menu."
+
+msgid "Remover WebApps"
+msgstr "Remove WebApps"
+
+msgid "Ative e desative os WebApps instalados por padrão no sistema."
+msgstr ""
+"Activate and deactivate the installed WebApps in the system by default."
+
+msgid "Ativar / Desativar WebApps"
+msgstr "Activate / Deactivate WebApps"
+
+msgid "Ative ou desative os WebApps BigLinux:"
+msgstr "Activate or deactivate the BigLinux WebApps:"
+
+msgid "\\nNenhum dado inserido... \\nPor favor, insira e tente novamente! \\n"
+msgstr "\\nNo data inserted... \\nPlease, insert it and try again! \\n"
+
+msgid "Você não inseriu a url! \\n Por favor, verifique e tente novamente!"
+msgstr "You didn't insert the url! \\n Please, verify it and try again!"
+
+msgid ""
+"A url inserida é inválida! \\n Por favor, verifique sua url e tente "
+"novamente!"
+msgstr ""
+"The inserted url is invalid! \\n Please, verify your url and try again!"
+
+msgid "\\nO WebApp personalizado foi criado com sucesso! \\n"
+msgstr "\\n The custom WebApp was successfully created! \\n"
+
+msgid "\\nVocê deseja criar outro WebApp personalizado? \\n"
+msgstr "\\nDo you wish to create another custom WebApp?\\n"
+
+msgid "\\nAlgo de errado aconteceu... \\nPor favor, tente novamente! \\n"
+msgstr "\\nSomething wrong happened...\\nPlease, try again!\\n"
+
+msgid "\\nVocê tem certeza que deseja remover este WebApp? \\n"
+msgstr "\\nAre you sure you want to remove this WebApp?\\n"
+
+msgid "\\nO WebApp personalizado foi removido com sucesso! \\n"
+msgstr "\\nThe custom WebApp was removed successfully!\\n"
+
+msgid "\\nVocê deseja remover outro WebApp personalizado? \\n"
+msgstr "\\nDo you wish to remove another custom WebApp? \\n"
