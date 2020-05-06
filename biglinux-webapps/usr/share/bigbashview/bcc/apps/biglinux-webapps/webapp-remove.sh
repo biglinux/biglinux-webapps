@@ -6,6 +6,9 @@ export TEXTDOMAIN=biglinux-webapps
 
 
 ICON="$(grep "Icon=" $p_filedesk | sed 's|Icon=||')"
+if [ "$(grep ".svg" <<< $ICON)" = "" ]; then
+    ICON="$ICON.svg"
+fi
 
 kdialog --yesno $"\nVocê tem certeza que deseja remover este WebApp? \n"
 

@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd /usr/share/bigbashview/bcc/apps/biglinux-webapps
-bigbashview index.sh.htm -s 800x500 -w fixed -i webapp.svg
+bigbashview index.sh.htm -s 1000x600 -w fixed -i webapp.svg

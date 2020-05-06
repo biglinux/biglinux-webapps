@@ -1,10 +1,10 @@
 d41d8cd98f00b204e9800998ecf8427e  DEBIAN/md5sums
-685aa5e2357ab186e4453e9ef90e5b2c  DEBIAN/control
 4edec0c5a7f36ef8cb6def0193915f0f  DEBIAN/languages
 fdfbfe6ed53c6a88c6a169a9810aadcc  DEBIAN/pt.po
 fdfbfe6ed53c6a88c6a169a9810aadcc  DEBIAN/es.po
 9e1d7ac01ac0366d6e8d6744767c1535  DEBIAN/en.po
 590144961adeddc76fcb4c3e2e114347  DEBIAN/biglinux-webapps.pot
+21e1a876f0897d535b0d03d2e24a876d  DEBIAN/control
 26312aa0d5bb8ccd7b430f141f6fa90c  etc/xdg/menus/applications-merged/google-applications.menu
 30839649ac2b9521efa0018e0df0b914  etc/xdg/menus/applications-merged/web-applications.menu
 3f8a8c97e5bf1827236680f662e94a8d  usr/bin/biglinux-webapps

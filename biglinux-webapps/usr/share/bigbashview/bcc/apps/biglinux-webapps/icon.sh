@@ -4,4 +4,6 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
-kdialog --getopenfilename ~ $"Ícones(*.png *.svg *.ico *.xpm)"
+icon=$(kdialog --getopenfilename ~ $"Ícones(*.png *.ico *.xpm)")
+echo $icon
+exit

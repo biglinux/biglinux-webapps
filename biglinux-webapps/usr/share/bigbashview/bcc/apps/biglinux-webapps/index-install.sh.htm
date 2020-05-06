@@ -4,6 +4,16 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
+if [ "$p_icondesk" = "" ];then
+
+    p_icondesk="/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png"
+
+else
+
+    p_icon="$p_icondesk"
+    
+fi
+
 echo '
     <head>
         <title>BigLinux WebApps</title>
@@ -20,14 +30,32 @@ echo '
                     <p>' $"Instalar WebApps BigLinux:" '</p><br>
                     <form action="webapp-install.sh" method="get">
                         <label style="float:left" for="namedesk">'$"Nome do WebApp:"'</label>
-                            <input type="text" name="namedesk" id="namedesk"/><br>
-                        <label style="float:left" for="urldesk">'$"Url do WebApp:"'</label>
-                            <input type="text" name="urldesk" id="urldesk"/><br>
-                        <label style="float:left" for="icondesk">'$"Ícone do WebApp:"'</label><br>
-                            <a style="float:right;" class="button" id="btn">'$"Carregar"'</a>
-                            <input type="text" style="margin-top:-35px" id="icondesk" name="icondesk" readonly/><br><br>
+                            <div class="row">
+                                <input type="text" name="namedesk" id="namedesk" required value="'$p_namedesk'" /><br>
+                            </div>
+                        <label style="float:left" for="urldesk">'$"Url do WebApp:"'</label><br>
+                            <div class="row">
+                                <div class="col s8">
+                                    <input type="text" name="urldesk" id="urldesk"required value="'$p_urldesk'"/><br>
+                                </div>
+                                <div class="col s4">
+                                    <a style="float:right;width: 175px;" class="button" id="favicon">'$"Pesquisar Ícone"'</a>
+                                </div>
+                            </div>
+                        <label style="float:left" for="icondesk">'$"Ícone do WebApp:"'</label><br><br>
+                            <div class="row">
+                                <div class="col s2">
+                                    <img id="preview" src="'$p_icondesk'" width="48" height="48"/>
+                                </div>
+                                <div class="col s7">
+                                    <input type="text" id="icondesk" name="icondesk" readonly value="'$p_icon'"/>
+                                </div>
+                                <div class="col s3">
+                                    <a style="float:right;width: 120px;" class="button" id="btn">'$"Carregar"'</a>
+                                </div>
+                            </div><br><br>
                         <a href="index.sh.htm" class="button" style="margin-right:30px;">'$"Início"'</a>
-                        <button type="submit" class="button">'$"Instalar"'</button>
+                        <button type="submit" class="button" id="install">'$"Instalar"'</button>
                     </form>
                 </h1>
             </div>
@@ -40,8 +68,25 @@ echo '
                 e.preventDefault();
                 \$.get('./icon.sh', function(data) {
                     \$('#icondesk').val(data);
+                    \$('#preview').attr('src', data);
+                    \$('#btn').html('"$"Alterar""');
                 });
             });
+            \$('#favicon').click(function(e){
+                e.preventDefault();
+                \$('#favicon').html('"$"Pesquisando...""');
+                var url = \$('#urldesk').val();
+                if (url == '') {
+                    \$('#urldesk').val('"$"Url precisa ser inserida corretamente!""');
+                }
+                \$.get('./fav.sh', url, function(data) {
+                    \$('#icondesk').val(data);
+                    \$('#preview').attr('src', data);
+                    \$('#favicon').html('"$"Pesquisar Ícone""');
+                    \$('#btn').html('"$"Alterar""');
+                });
+            });
+
         });
         </script>
     </body>"

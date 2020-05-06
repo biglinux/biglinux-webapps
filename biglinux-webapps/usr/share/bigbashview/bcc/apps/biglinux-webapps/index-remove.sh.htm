@@ -23,20 +23,30 @@ DESKTOP="$(ls $HOME/.local/share/applications/*.desktop | grep "webapp-biglinux-
 
 if [ "$DESKTOP" != "" ]; then
 
-                echo '<form action="webapp-remove.sh" method="get">
-                        <select name="filedesk">'
+                echo '<form action="webapp-remove.sh" method="get">'
 
                             for i in $DESKTOP; do
 
                                 DESKNAME="$(grep "Name=" $i | sed 's|Name=||')"
-                                DESKURL="$(grep "Exec=" $i | awk -F'=' '{print $NF}')"
+                                DESKURL="$(grep "Exec=" $i | awk -F'--app=' '{print $NF}')"
+                                DESKICON="$(grep "Icon=" $i | sed 's|Icon=||')"
+                                if [ "$DESKICON" = "internet-web-browser" ];then
+                                    DESKICON="/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png"
+                                fi
 
-                                echo '<option value="'$i'">'$DESKNAME - $DESKURL'</option>'
+                                echo '<div class="truncate">
+                                        <input class="with-gap left" type="radio" name="filedesk" id="'$DESKURL'" value="'$i'"/>
+                                        <label for="'$DESKURL'" class="left">
+                                            <div id="webapps-icon">
+                                                <img src="'$DESKICON'" width="16" height="16"/>
+                                            </div> '$DESKNAME - $DESKURL'
+                                        </label>
+                                      </div><br>'
                             done
 
-                        echo '</select>
-                        <a href="index.sh.htm" class="button" style="margin-right:30px;">'$"Início"'</a>
-                        <button type="submit" class="button">'$"Remover"'</button>
+               
+                echo '<br><br><a href="index.sh.htm" class="button" style="margin-right:30px;">'$"Início"'</a>
+                      <button type="submit" class="button">'$"Remover"'</button>
                     </form>
                 </h1>
             </div>
@@ -44,9 +54,9 @@ if [ "$DESKTOP" != "" ]; then
 
 else
             echo $"Nenhum WebApps BigLinux Instalado!" '<br><br>'
-            echo $"Se você deseja instalar um novo WebApp BigLinux, clique no botão abaixo:" '<br><br>'
-            echo '<a href="index.sh.htm" class="button" style="margin-right:30px;">'$"Início"'</a>
-                  <a href="index-install.sh.htm" class="button" style="margin-right:30px;">'$"Instalar"'</a>
+            echo $"Se você deseja instalar um novo<br> WebApp BigLinux, clique no botão abaixo:" '<br><br><br>'
+            echo '<a href="index.sh.htm" class="button" style="margin-right:50px;">'$"Início"'</a>
+                  <a href="index-install.sh.htm" class="button">'$"Instalar"'</a>
                 </h1>
             </div>
         </div>'
