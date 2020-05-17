@@ -1,5 +1,5 @@
 Package: biglinux-webapps
-Version: 1.0.0-2big3
+Version: 1.0.0-2big4
 Depends: coreutils, bigbashview (>= 3.3.2-0biglinux1), python3-bs4, kdialog
 Architecture: all
 Maintainer: eltonff <eltonfabricio10@gmail.com>

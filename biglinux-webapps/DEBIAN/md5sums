@@ -4,7 +4,7 @@ d41d8cd98f00b204e9800998ecf8427e  DEBIAN/md5sums
 1f4d182d733520d85fb52d7ccadb4f65  DEBIAN/biglinux-webapps.pot
 b9fd2e45ef44dfa48748447d201cad9c  DEBIAN/es.po
 bb08498dd123a45d9d53d3288c20241d  DEBIAN/en.po
-8351ef75a6c6498b84dacc2a11cd35c5  DEBIAN/control
+88e59b2b60f76d5cf8b9835f34293939  DEBIAN/control
 2422ede3871d3e8f48e8e239e1aab6d8  usr/bin/biglinux-webapps
 155ffd9181549472157fface601633f2  usr/bin/netflix-firefox
 f37306e749060bac36f274b33e495dd2  usr/bin/spotify-firefox
@@ -117,4 +117,4 @@ d4bda28640f244f8b7b835a6e3dae966  usr/share/icons/hicolor/128x128/apps/twitter.p
 14d3214fcfd0a8714b61c71ef127389b  usr/share/icons/hicolor/128x128/apps/youtubemusic.png
 d74f972f027fd62784d61ec0d31a6d2c  usr/share/icons/hicolor/128x128/apps/google-menu.png
 fcb5dbbeda64142081145f09b2151f04  usr/share/icons/hicolor/128x128/apps/webapp.svg
-e5605a86eca3167f867ddeb9a310fb8d  usr/share/applications/biglinux-webapps.desktop
+fd981c3c38cac6b3dfa7152092f5d5bf  usr/share/applications/biglinux-webapps.desktop
