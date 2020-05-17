@@ -7,124 +7,138 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-02 16:09-0300\n"
-"PO-Revision-Date: 2020-05-02 16:08-0300\n"
+"POT-Creation-Date: 2020-05-16 03:52-0300\n"
+"PO-Revision-Date: 2020-05-16 12:46-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
-"Language: pt\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.2.1\n"
 
-msgid "Ícones(*.png *.svg *.ico *.xpm)"
-msgstr "Icons (*.png *.svg *.ico *.xpm)"
+msgid "Não foi possível detectar o ícone deste site!"
+msgstr "It was not possible to detect the icon of this site!"
+
+msgid "Arquivos de Imagem(*.bmp *.png *.ico *.xpm *.jpg)"
+msgstr "Image files\"(*.bmp *.png *.ico *.xpm *.jpg"
 
 msgid "Instalar WebApps BigLinux:"
 msgstr "Install BigLinux WebApps:"
 
-msgid "Nome do WebApp:"
-msgstr "WebApp name:"
+msgid "Nome:"
+msgstr "Name:"
 
-msgid "Url do WebApp:"
-msgstr "WebApp Url:"
+msgid "URL:"
+msgstr "URL:"
 
-msgid "Ícone do WebApp:"
-msgstr "WebApp Icon:"
+msgid ""
+"Detecta automaticamente o ícone do site informado,<br>mas não são todos os sites que "
+"suportam o recurso"
+msgstr ""
+"Automatically detects the informed website icon,<br>but not all sites that support the "
+"feature"
 
-msgid "Carregar"
-msgstr "Load"
+msgid "Detectar Ícone"
+msgstr "Detect icon"
 
-msgid "Início"
-msgstr "Home"
+msgid "Ícone:"
+msgstr "Icon:"
+
+msgid "Carrega um arquivo de imagem para ser usado como ícone"
+msgstr "Load an image file to be used as an icon"
+
+msgid "Abrir"
+msgstr "Open"
+
+msgid "Navegador:"
+msgstr "Browser:"
+
+msgid "Ir para página inicial"
+msgstr "Go to initial page"
+
+msgid "Voltar"
+msgstr "Back"
+
+msgid "Inicia a instalação"
+msgstr "Start the installation"
 
 msgid "Instalar"
 msgstr "Install"
 
+msgid "Alterar"
+msgstr "Change"
+
+msgid "Digite ou cole a URL!"
+msgstr "Type or paste the URL!"
+
+msgid "Detectando..."
+msgstr "Detecting..."
+
+msgid "Digite ou cole o Nome!"
+msgstr "Type or paste the name!"
+
 msgid "Remover WebApps BigLinux:"
 msgstr "Remove BigLinux WebApps:"
+
+msgid "Inicia a remoção"
+msgstr "Starts removal"
 
 msgid "Remover"
 msgstr "Remove"
 
-msgid "Nenhum WebApps BigLinux Instalado!"
-msgstr "No BigLinux WebApp installed!"
+msgid "Nenhum WebApp BigLinux instalado por você!"
+msgstr "No BigLinux WebApp installed by you!"
 
-msgid ""
-"Se você deseja instalar um novo WebApp BigLinux, clique no botão abaixo:"
-msgstr ""
-"If you wish to install a new BigLinux WebApp, click on the button below:"
+msgid "Se você deseja instalar um novo<br> WebApp BigLinux, clique no botão Instalar:"
+msgstr "If you want to install a new<br> BigLinux WebApp, click the Install button:"
 
-msgid "Bom dia!"
-msgstr "Good morning!"
+msgid "Ir para página de instalação do WebApp"
+msgstr "Go to the WebApp installation page"
 
-msgid "Boa tarde!"
-msgstr "Good afternoon!"
+msgid "Bom dia "
+msgstr "Good Morning "
 
-msgid "Boa noite!"
-msgstr "Good evening!"
+msgid "Boa tarde "
+msgstr "Good afternoon "
 
-msgid "Bem-Vindo(a) ao"
-msgstr "Welcome to"
+msgid "Boa noite "
+msgstr "Good evening "
 
-msgid "Gerenciador de WebApps BigLinux:"
-msgstr "BigLinux WebApp Manager:"
+msgid "Bem-Vindo(a) ao Gerenciador de WebApps BigLinux"
+msgstr "Welcome to BigLinux WebApps Manager"
 
-msgid ""
-"Crie um novo WebApp BigLinux personalizado que aparecerá no menu Web apps "
-"Custom."
-msgstr ""
-"Create a new custom BigLinux WebApp that will appear at the Custom WebApps "
-"menu."
+msgid "Instala um novo WebApp BigLinux"
+msgstr "Install a new BigLinux WebApp"
 
 msgid "Instalar WebApps"
 msgstr "Install WebApps"
 
-msgid ""
-"Remova um WebApp BigLinux personalizado que desaparecerá do menu Web apps "
-"Custom."
-msgstr ""
-"Remove a custom BigLinux WebApp that will disappear from Custom WebApps menu."
+msgid "Remove um WebApp BigLinux"
+msgstr "Remove a BigLinux WebApp"
 
 msgid "Remover WebApps"
 msgstr "Remove WebApps"
 
-msgid "Ative e desative os WebApps instalados por padrão no sistema."
-msgstr ""
-"Activate and deactivate the installed WebApps in the system by default."
+msgid "Ative ou desative os WebApps instalados por padrão no sistema"
+msgstr "Enable or disable WebApps installed by default on the system"
 
 msgid "Ativar / Desativar WebApps"
-msgstr "Activate / Deactivate WebApps"
+msgstr "Enable / Disable WebApps"
 
 msgid "Ative ou desative os WebApps BigLinux:"
-msgstr "Activate or deactivate the BigLinux WebApps:"
+msgstr "Enable or disable BigLinux WenApps:"
 
-msgid "\\nNenhum dado inserido... \\nPor favor, insira e tente novamente! \\n"
-msgstr "\\nNo data inserted... \\nPlease, insert it and try again! \\n"
-
-msgid "Você não inseriu a url! \\n Por favor, verifique e tente novamente!"
-msgstr "You didn't insert the url! \\n Please, verify it and try again!"
-
-msgid ""
-"A url inserida é inválida! \\n Por favor, verifique sua url e tente "
-"novamente!"
+msgid "O WebApp foi instalado com sucesso!\\nVocê deseja instalar outro WebApp?"
 msgstr ""
-"The inserted url is invalid! \\n Please, verify your url and try again!"
+"The WebApp has been successfully installed!\\nDo you want to install another WebApp?"
 
-msgid "\\nO WebApp personalizado foi criado com sucesso! \\n"
-msgstr "\\n The custom WebApp was successfully created! \\n"
+msgid "Algo de errado aconteceu...\\nPor favor, tente novamente!"
+msgstr "Something went wrong...\\nPlease, try again!"
 
-msgid "\\nVocê deseja criar outro WebApp personalizado? \\n"
-msgstr "\\nDo you wish to create another custom WebApp?\\n"
+msgid "Você tem certeza que deseja remover este WebApp?"
+msgstr "Are you sure you want to remove this WebApp?"
 
-msgid "\\nAlgo de errado aconteceu... \\nPor favor, tente novamente! \\n"
-msgstr "\\nSomething wrong happened...\\nPlease, try again!\\n"
-
-msgid "\\nVocê tem certeza que deseja remover este WebApp? \\n"
-msgstr "\\nAre you sure you want to remove this WebApp?\\n"
-
-msgid "\\nO WebApp personalizado foi removido com sucesso! \\n"
-msgstr "\\nThe custom WebApp was removed successfully!\\n"
-
-msgid "\\nVocê deseja remover outro WebApp personalizado? \\n"
-msgstr "\\nDo you wish to remove another custom WebApp? \\n"
+msgid "O WebApp foi removido com sucesso!\\nVocê deseja remover outro WebApp?"
+msgstr "The WebApp has been successfully removed!\\nDo you want to remove another WebApp?"

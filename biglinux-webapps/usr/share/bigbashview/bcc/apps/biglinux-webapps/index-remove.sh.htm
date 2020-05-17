@@ -27,36 +27,48 @@ if [ "$DESKTOP" != "" ]; then
 
                             for i in $DESKTOP; do
 
+                                if [ "$(grep -E "(firefox|waterfox-latest)" <<< $i)" != "" ];then
+                                    DESKEXEC="$(grep "Exec=" $i | sed 's|Exec=||')"
+                                    DESKURL="$(grep "\-new-instance" $DESKEXEC | cut -d' ' -f9 | sed 's|^"||;s|"$||')"
+                                elif [ "$(grep "falkon" <<< $i)" != "" ];then
+                                    DESKURL="$(grep "Exec=" $i | cut -d' ' -f4)"
+                                else
+                                    DESKURL="$(grep "Exec=" $i | awk -F'--app=' '{print $NF}')"
+                                fi
+
                                 DESKNAME="$(grep "Name=" $i | sed 's|Name=||')"
-                                DESKURL="$(grep "Exec=" $i | awk -F'--app=' '{print $NF}')"
                                 DESKICON="$(grep "Icon=" $i | sed 's|Icon=||')"
                                 if [ "$DESKICON" = "internet-web-browser" ];then
-                                    DESKICON="/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png"
+                                    DESKICON="default.png"
                                 fi
 
                                 echo '<div class="truncate">
-                                        <input class="with-gap left" type="radio" name="filedesk" id="'$DESKURL'" value="'$i'"/>
-                                        <label for="'$DESKURL'" class="left">
+                                        <input class="with-gap left" type="radio" name="filedesk" id="'$i'" value="'$i'" required/>
+                                        <label for="'$i'" class="left" >
                                             <div id="webapps-icon">
                                                 <img src="'$DESKICON'" width="16" height="16"/>
-                                            </div> '$DESKNAME - $DESKURL'
+                                            </div> '${DESKNAME^^} - $DESKURL'
                                         </label>
                                       </div><br>'
                             done
 
                
-                echo '<br><br><a href="index.sh.htm" class="button" style="margin-right:30px;">'$"Início"'</a>
-                      <button type="submit" class="button">'$"Remover"'</button>
+                echo '<br><br><a href="index.sh.htm" class="button tooltipped" data-position="top" data-delay="150"
+                  	 data-tooltip="'$"Ir para página inicial"'" style="margin-right:30px;">'$"Voltar"'</a>
+                      <button type="submit" class="button tooltipped" data-position="top" data-delay="150"
+                              data-tooltip="'$"Inicia a remoção"'">'$"Remover"'</button>
                     </form>
                 </h1>
             </div>
         </div>'
 
 else
-            echo $"Nenhum WebApps BigLinux Instalado!" '<br><br>'
-            echo $"Se você deseja instalar um novo<br> WebApp BigLinux, clique no botão abaixo:" '<br><br><br>'
-            echo '<a href="index.sh.htm" class="button" style="margin-right:50px;">'$"Início"'</a>
-                  <a href="index-install.sh.htm" class="button">'$"Instalar"'</a>
+            echo $"Nenhum WebApp BigLinux instalado por você!" '<br><br>'
+            echo $"Se você deseja instalar um novo<br> WebApp BigLinux, clique no botão Instalar:" '<br><br><br>'
+            echo '<a href="index.sh.htm" class="button tooltipped" data-position="top" data-delay="150"
+                  	 data-tooltip="'$"Ir para página inicial"'" style="margin-right:50px;">'$"Voltar"'</a>
+                  <a href="index-install.sh.htm" class="button tooltipped" data-position="top" data-delay="150"
+                  	 data-tooltip="'$"Ir para página de instalação do WebApp"'">'$"Instalar"'</a>
                 </h1>
             </div>
         </div>'

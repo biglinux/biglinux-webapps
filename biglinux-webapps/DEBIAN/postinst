@@ -1,0 +1,15 @@
+#!/bin/sh
+
+mkdir -p $HOME/.local/share/desktop-directories
+if [ ! -e $HOME/.local/share/desktop-directories/google-apps.directory -o \
+	 ! -e $HOME/.local/share/desktop-directories/web-apps.directory ];then
+
+	 	cp /usr/share/biglinux/webapps/share/*.directory $HOME/.local/share/desktop-directories
+fi
+
+mkdir -p $HOME/.config/menus/applications-merged
+if [ ! -e $HOME/.config/menus/applications-merged/google-applications.menu -o \
+	 ! -e $HOME/.config/menus/applications-merged/user-web-apps.menu ];then
+
+	 	cp /usr/share/biglinux/webapps/share/*.menu $HOME/.config/menus/applications-merged
+fi 

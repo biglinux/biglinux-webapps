@@ -4,15 +4,7 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
-if [ "$p_icondesk" = "" ];then
-
-    p_icondesk="/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png"
-
-else
-
-    p_icon="$p_icondesk"
-    
-fi
+WEB=(brave-browser chromium falkon firefox google-chrome vivaldi waterfox-latest)
 
 echo '
     <head>
@@ -29,33 +21,66 @@ echo '
                 <h1>
                     <p>' $"Instalar WebApps BigLinux:" '</p><br>
                     <form action="webapp-install.sh" method="get">
-                        <label style="float:left" for="namedesk">'$"Nome do WebApp:"'</label>
+                        <label class="left" for="namedesk">'$"Nome:"'</label>
                             <div class="row">
-                                <input type="text" name="namedesk" id="namedesk" required value="'$p_namedesk'" /><br>
+                                <input type="text" name="namedesk" id="namedesk" required autofocus/><br>
                             </div>
-                        <label style="float:left" for="urldesk">'$"Url do WebApp:"'</label><br>
+                        <label class="left" for="urldesk">'$"URL:"'</label><br>
                             <div class="row">
                                 <div class="col s8">
-                                    <input type="text" name="urldesk" id="urldesk"required value="'$p_urldesk'"/><br>
+                                    <input type="text" name="urldesk" id="urldesk" required/>
                                 </div>
                                 <div class="col s4">
-                                    <a style="float:right;width: 175px;" class="button" id="favicon">'$"Pesquisar Ícone"'</a>
+                                    <a style="width: 175px;" data-position="top" data-delay="150"
+           data-tooltip="'$"Detecta automaticamente o ícone do site informado,<br>mas não são todos os sites que suportam o recurso"'"
+                                       class="button tooltipped right" id="favicon">'$"Detectar Ícone"'</a>
                                 </div>
                             </div>
-                        <label style="float:left" for="icondesk">'$"Ícone do WebApp:"'</label><br><br>
+                        <label class="left" for="icondesk">'$"Ícone:"'</label><br><br>
                             <div class="row">
                                 <div class="col s2">
-                                    <img id="preview" src="'$p_icondesk'" width="48" height="48"/>
+                                    <img id="preview" class="center-align" 
+                                         src="default.png" 
+                                         width="48" height="48"/>
                                 </div>
                                 <div class="col s7">
-                                    <input type="text" id="icondesk" name="icondesk" readonly value="'$p_icon'"/>
+                                    <input type="text" id="icondesk" name="icondesk" readonly/>
                                 </div>
                                 <div class="col s3">
-                                    <a style="float:right;width: 120px;" class="button" id="btn">'$"Carregar"'</a>
+                                    <a style="float:right;width: 120px;" data-position="top" data-delay="150"
+                                       data-tooltip="'$"Carrega um arquivo de imagem para ser usado como ícone"'" 
+                                       class="button tooltipped right" id="btn">'$"Abrir"'</a>
+                                </div>
+                            </div><br>
+                        <label class="left" for="namedesk">'$"Navegador:"'</label><br><br>
+                            <div class="row">
+                                <div class="col s2">
+                                    <img class="center-align" src="icons/chromium.png" id="browsericon">
+                                </div>
+                                    <div class="col s7">
+                                        <select name="browser">'
+
+                                            for i in "${WEB[@]}"; do
+
+                                                if [ "$(which "$i")" != "" ];then
+
+                                                    [ "$i" = "chromium" ] && selected="selected" || selected=
+
+                                                    echo "<option value=$i data-icon=icons/$i.png $selected>${i^^}</option>"
+
+                                                fi
+
+                                            done
+
+
+                                            
+                                echo   '</select>
                                 </div>
                             </div><br><br>
-                        <a href="index.sh.htm" class="button" style="margin-right:30px;">'$"Início"'</a>
-                        <button type="submit" class="button" id="install">'$"Instalar"'</button>
+                        <a href="index.sh.htm" class="button tooltipped" data-position="top" data-delay="150"
+                           data-tooltip="'$"Ir para página inicial"'" style="margin-right:30px;">'$"Voltar"'</a>
+                        <button type="submit" class="button tooltipped" data-position="top" data-delay="150"
+                                data-tooltip="'$"Inicia a instalação"'" id="install">'$"Instalar"'</button>
                     </form>
                 </h1>
             </div>
@@ -64,29 +89,86 @@ echo '
         echo "
         <script type='text/javascript'>
         \$(document).ready(function(){
+
+            \$('select').on('change', function() {
+                \$('#browsericon').attr('src', 'icons/'+this.value+'.png')
+            });
+
             \$('#btn').click(function(e){
                 e.preventDefault();
-                \$.get('./icon.sh', function(data) {
-                    \$('#icondesk').val(data);
-                    \$('#preview').attr('src', data);
+
+                \$.get('./icon.sh', function(dados) {
+
+                    \$('#icondesk').val(dados);
+                    \$('#preview').attr('src', dados);
                     \$('#btn').html('"$"Alterar""');
-                });
-            });
-            \$('#favicon').click(function(e){
-                e.preventDefault();
-                \$('#favicon').html('"$"Pesquisando...""');
-                var url = \$('#urldesk').val();
-                if (url == '') {
-                    \$('#urldesk').val('"$"Url precisa ser inserida corretamente!""');
-                }
-                \$.get('./fav.sh', url, function(data) {
-                    \$('#icondesk').val(data);
-                    \$('#preview').attr('src', data);
-                    \$('#favicon').html('"$"Pesquisar Ícone""');
-                    \$('#btn').html('"$"Alterar""');
+
                 });
             });
 
+            \$('#favicon').click(function(e){
+                e.preventDefault();
+
+                var url = \$('#urldesk').val();
+
+                if (url == 'https://' || url == '') {
+
+                    \$('#urldesk').val('"$"Digite ou cole a URL!""');
+
+                    setTimeout(function () {
+                        \$('#urldesk').val('https://');
+                        \$('#urldesk').focus();
+                    },2500);
+
+                } else {
+
+                    \$('#favicon').html('"$"Detectando...""');
+
+                    \$.get('./fav.sh', url, function(data) {
+
+                        \$('#icondesk').val(data);
+                        \$('#preview').attr('src', data);
+                        \$('#favicon').html('"$"Detectar Ícone""');
+                        \$('#btn').html('"$"Alterar""');
+                    });
+
+                }
+            });
+
+
+            \$('#install').click(function(e){
+
+                var nome = \$('#namedesk').val();
+                var url = \$('#urldesk').val();
+
+                if (nome == '') {
+                    e.preventDefault();
+
+                    \$('#namedesk').val('"$"Digite ou cole o Nome!""');
+
+                    setTimeout(function () {
+                        \$('#namedesk').val('');
+                        \$('#namedesk').focus();
+                    },2500);
+
+                }
+
+                else if (url == 'https://' || url == '') {
+                    e.preventDefault();
+
+                    \$('#urldesk').val('"$"Digite ou cole a URL!""');
+
+                    setTimeout(function () {
+                        \$('#urldesk').val('https://');
+                        \$('#urldesk').focus();
+                    },2500);
+
+                }
+
+                else { 
+                    \$('#install').submit();
+                } 
+            });
         });
         </script>
     </body>"
