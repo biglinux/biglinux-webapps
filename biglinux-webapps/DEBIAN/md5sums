@@ -3,9 +3,9 @@
 d41d8cd98f00b204e9800998ecf8427e  DEBIAN/md5sums
 1f4d182d733520d85fb52d7ccadb4f65  DEBIAN/biglinux-webapps.pot
 b9fd2e45ef44dfa48748447d201cad9c  DEBIAN/es.po
-2b67694e9195a66533a729c6527d1111  DEBIAN/control
 bb08498dd123a45d9d53d3288c20241d  DEBIAN/en.po
-94748357bbef946d6b804f5e360f16e0  usr/bin/biglinux-webapps
+8351ef75a6c6498b84dacc2a11cd35c5  DEBIAN/control
+2422ede3871d3e8f48e8e239e1aab6d8  usr/bin/biglinux-webapps
 155ffd9181549472157fface601633f2  usr/bin/netflix-firefox
 f37306e749060bac36f274b33e495dd2  usr/bin/spotify-firefox
 c02aeda384dc1b35ecccdc0618d011d4  usr/bin/primevideo-firefox
