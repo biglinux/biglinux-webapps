@@ -3,8 +3,8 @@
 d41d8cd98f00b204e9800998ecf8427e  DEBIAN/md5sums
 1f4d182d733520d85fb52d7ccadb4f65  DEBIAN/biglinux-webapps.pot
 b9fd2e45ef44dfa48748447d201cad9c  DEBIAN/es.po
-bb08498dd123a45d9d53d3288c20241d  DEBIAN/en.po
-88e59b2b60f76d5cf8b9835f34293939  DEBIAN/control
+9c686faa74c97ef9d8832a6c90222bb8  DEBIAN/en.po
+8611144eee2283653280ff583e445444  DEBIAN/control
 2422ede3871d3e8f48e8e239e1aab6d8  usr/bin/biglinux-webapps
 155ffd9181549472157fface601633f2  usr/bin/netflix-firefox
 f37306e749060bac36f274b33e495dd2  usr/bin/spotify-firefox
@@ -78,7 +78,7 @@ c20b847bc8b4fdb83aef7fdc0aefbb17  usr/share/biglinux/webapps/waze-webapp-biglinu
 c44173d085ecaebf9bcfc5b15eebb34a  usr/share/biglinux/webapps/yahoomail-webapp-biglinux.desktop
 96b52cd26b9026d9eeebc574fea140b0  usr/share/biglinux/webapps/youtube-webapp-biglinux.desktop
 49949157324eaf7402a4f4d350aac171  usr/share/biglinux/webapps/youtubemusic-webapp-biglinux.desktop
-bd27c06da73e98524180c72f4837b86b  usr/share/locale/en/LC_MESSAGES/biglinux-webapps.mo
+b299ab47e3695f75d1904d9e448575c4  usr/share/locale/en/LC_MESSAGES/biglinux-webapps.mo
 e31f4a738e4cc30097917115cf58134d  usr/share/locale/es/LC_MESSAGES/biglinux-webapps.mo
 5b012f1d5b1d9a41c5cb61a3df1d8dba  usr/share/icons/hicolor/128x128/apps/dictation.png
 19a4d4cf78d83d136fc3302d919be8e4  usr/share/icons/hicolor/128x128/apps/mewe.png
