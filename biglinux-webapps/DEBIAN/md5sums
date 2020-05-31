@@ -4,7 +4,7 @@ d41d8cd98f00b204e9800998ecf8427e  DEBIAN/md5sums
 1f4d182d733520d85fb52d7ccadb4f65  DEBIAN/biglinux-webapps.pot
 b9fd2e45ef44dfa48748447d201cad9c  DEBIAN/es.po
 9c686faa74c97ef9d8832a6c90222bb8  DEBIAN/en.po
-8611144eee2283653280ff583e445444  DEBIAN/control
+0b2ea97324a8838d0a130361f1632f05  DEBIAN/control
 2422ede3871d3e8f48e8e239e1aab6d8  usr/bin/biglinux-webapps
 155ffd9181549472157fface601633f2  usr/bin/netflix-firefox
 f37306e749060bac36f274b33e495dd2  usr/bin/spotify-firefox
@@ -35,9 +35,6 @@ eca3289363cfd4b89a75b8cb51aeeeb5  usr/share/bigbashview/bcc/apps/biglinux-webapp
 50fd9f770295fdb469d77ce14fbebc5a  usr/share/bigbashview/bcc/apps/biglinux-webapps/webapp-remove.sh
 723272aa2859728cca3ea7fdd74edca7  usr/share/bigbashview/bcc/apps/biglinux-webapps/favicon.py
 befaba9c5dfc845a248e0d0dc414e175  usr/share/biglinux/webapps/bin/xseticon
-4a8ca9c8dec6707dcd8b0cf7d67c7b6c  usr/share/biglinux/webapps/config/extensions/{f18f0257-10ad-4ff7-b51e-6895edeccfc8}.xpi
-7bd258082cb4f0489606c446a6b0a679  usr/share/biglinux/webapps/config/extension-preferences.json
-05927209be37aeb719e87d3f540747e1  usr/share/biglinux/webapps/config/extensions.json
 324483c9b72f32b60e1f6022a4cd899e  usr/share/biglinux/webapps/config/prefs.js
 953820982126d6cb4ce7574a91cbeb4d  usr/share/biglinux/webapps/config/user.js
 26312aa0d5bb8ccd7b430f141f6fa90c  usr/share/biglinux/webapps/share/google-applications.menu
