@@ -23,8 +23,8 @@ else
 
     if [ "$(grep "firefox" <<< "$p_filedesk")" != "" ];then
 
-        if [ -d $HOME/."$NAMEDESK-firefox" ]; then
-            rm -r $HOME/."$NAMEDESK-firefox"
+        if [ -d $HOME/.bigwebapps/"$NAMEDESK-firefox" ]; then
+            rm -r $HOME/.bigwebapps/"$NAMEDESK-firefox"
         fi
 
         rm "$(grep "Exec=" "$p_filedesk" | sed 's|Exec=||')"
@@ -33,8 +33,8 @@ else
 
     elif [ "$(grep "waterfox-latest" <<< "$p_filedesk")" != "" ];then
 
-        if [ -d $HOME/."$NAMEDESK-waterfox-latest" ]; then
-            rm -r $HOME/."$NAMEDESK-waterfox-latest"
+        if [ -d $HOME/.bigwebapps/"$NAMEDESK-waterfox-latest" ]; then
+            rm -r $HOME/.bigwebapps/"$NAMEDESK-waterfox-latest"
         fi
 
         rm "$(grep "Exec=" "$p_filedesk" | sed 's|Exec=||')"

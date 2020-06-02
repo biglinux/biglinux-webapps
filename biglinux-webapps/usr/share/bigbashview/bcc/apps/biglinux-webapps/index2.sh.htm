@@ -56,12 +56,12 @@ if [ "$DESKTOP" != "" ]; then
                     ICON="/usr/share/icons/hicolor/128x128/apps/$(grep 'Icon=' $i | sed 's|Icon=||')"
                     [ ! -e "$ICON" ] && ICON="/usr/share/pixmaps/$(grep 'Icon=' $i | sed 's|Icon=||')"
 
-                    echo '<div class="col s6">'
+                    echo '<div class="col s6"><div class="switch" style="font-size: 12pt"><label for="'$DESKNAME'">'
                     echo "<input type='checkbox' id=\"$DESKNAME\" onclick=\"_run('./enable-disable.sh.htm?name=$namedesk')\" $check>"
-                    echo '<label for="'$DESKNAME'">
+                    echo '<span class="lever"></span></label>
                             <div id="webapps-icon">
                                 <img src="'$ICON'" width="32" height="32">
-                            </div>'$DESKNAME'</label><br><br>
+                            </div>'$DESKNAME'</div><br>
                         </div>'
                     if [ "$c" = "1" ]
                     then

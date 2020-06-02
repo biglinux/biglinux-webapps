@@ -22,7 +22,7 @@ msgid "Não foi possível detectar o ícone deste site!"
 msgstr "It was not possible to detect the icon of this site!"
 
 msgid "Arquivos de Imagem(*.bmp *.png *.ico *.xpm *.jpg)"
-msgstr "Image files(*.bmp *.png *.ico *.xpm *.jpg)"
+msgstr "Image files\"(*.bmp *.png *.ico *.xpm *.jpg"
 
 msgid "Instalar WebApps BigLinux:"
 msgstr "Install BigLinux WebApps:"

@@ -28,7 +28,9 @@ if [ "$p_browser" = "firefox" -o "$p_browser" = "waterfox-latest" ];then
     	FILE_PNG=$(sed 's|\..*|.png|' <<< $ICONFILE)
     	convert $HOME/.local/share/icons/"$p_browser-$ICONFILE" -thumbnail 32x32 \
     			-alpha on -background none -flatten $HOME/.local/share/icons/"$p_browser-$FILE_PNG"
-    	rm $HOME/.local/share/icons/"$p_browser-$ICONFILE"
+    	if [ "$(grep "png" <<< $HOME/.local/share/icons/"$p_browser-$ICONFILE")" == "" ];then
+    		rm $HOME/.local/share/icons/"$p_browser-$ICONFILE"
+    	fi
         ICON_FILE="$HOME/.local/share/icons/$p_browser-$FILE_PNG"
     fi
 
@@ -61,11 +63,11 @@ cat > $HOME/.local/bin/"$NAMEDESK-$p_browser" <<EOF
 #
 #
 
-if [ $(echo ' "$(grep "toolkit.legacyUserProfileCustomizations.stylesheets" "$HOME/.'$NAMEDESK-$p_browser'/prefs.js")" = "" ')]; then
-    rm -R "$HOME/.$NAMEDESK-$p_browser"
-    mkdir -p "$HOME/.$NAMEDESK-$p_browser/chrome"
-    echo 'user_pref("media.eme.enabled", true);' >> "$HOME/.$NAMEDESK-$p_browser"/prefs.js
-    echo 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);' >> "$HOME/.$NAMEDESK-$p_browser"/prefs.js
+if [ $(echo ' "$(grep "toolkit.legacyUserProfileCustomizations.stylesheets" "$HOME/.bigwebapps/'$NAMEDESK-$p_browser'/prefs.js")" = "" ')]; then
+    rm -R "$HOME/.bigwebapps/$NAMEDESK-$p_browser"
+    mkdir -p "$HOME/.bigwebapps/$NAMEDESK-$p_browser/chrome"
+    echo 'user_pref("media.eme.enabled", true);' >> "$HOME/.bigwebapps/$NAMEDESK-$p_browser"/prefs.js
+    echo 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);' >> "$HOME/.bigwebapps/$NAMEDESK-$p_browser"/prefs.js
 fi
 
 #
@@ -78,16 +80,16 @@ echo \
 #TabsToolbar {
     visibility: collapse;
 }" \
->> "$HOME/.$NAMEDESK-$p_browser"/chrome/userChrome.css
+>> "$HOME/.bigwebapps/$NAMEDESK-$p_browser"/chrome/userChrome.css
 
 echo \
 "user_pref(\"browser.tabs.warnOnClose\", false);" \
->> "$HOME/.$NAMEDESK-$p_browser"/user.js
+>> "$HOME/.bigwebapps/$NAMEDESK-$p_browser"/user.js
 
-sed -i 's|user_pref("browser.urlbar.placeholderName.*||g' "$HOME/.$NAMEDESK-$p_browser"/prefs.js
+sed -i 's|user_pref("browser.urlbar.placeholderName.*||g' "$HOME/.bigwebapps/$NAMEDESK-$p_browser"/prefs.js
 
 
-MOZ_DISABLE_GMP_SANDBOX=1 MOZ_DISABLE_CONTENT_SANDBOX=1 $p_browser --class=$(echo "$p_browser"'webapp-'"$NAMEDESK") -profile "$HOME/.$NAMEDESK-$p_browser" -no-remote -new-instance "$urldesk" &
+MOZ_DISABLE_GMP_SANDBOX=1 MOZ_DISABLE_CONTENT_SANDBOX=1 $p_browser --class=$(echo "$p_browser"'webapp-'"$NAMEDESK") -profile "$HOME/.bigwebapps/$NAMEDESK-$p_browser" -no-remote -new-instance "$urldesk" &
 
 count=0
 while [ $(echo ' $count -lt 100 ') ]; do

@@ -46,7 +46,6 @@ if [ "$(grep "toolkit.legacyUserProfileCustomizations.stylesheets" "$DIR/prefs.j
     cp -R /usr/share/biglinux/webapps/config "$DIR"
     echo 'user_pref("media.eme.enabled", true);' >> "$DIR"/prefs.js
     echo 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);' >> "$DIR"/prefs.js
-    echo 'user_pref("extensions.update.interval", 1);' >> "$DIR"/prefs.js
 fi
 
 
