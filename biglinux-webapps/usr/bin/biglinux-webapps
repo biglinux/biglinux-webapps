@@ -1,4 +1,16 @@
 #!/bin/bash
 
+if [ "${LANG:0:2}" = "pt" ]
+then
+    BIGBASHVIEW_LANG="pt"
+
+elif [ "${LANG:0:2}" = "es" ]
+then
+    BIGBASHVIEW_LANG="es"
+
+else
+    BIGBASHVIEW_LANG="en"
+fi
+
 cd /usr/share/bigbashview/bcc/apps/biglinux-webapps
-bigbashview index.sh.htm -s 1024x768 -w fixed -i default.png
+LANGUAGE=$BIGBASHVIEW_LANG bigbashview index.sh.htm -s 1024x768 -w fixed -i default.png
