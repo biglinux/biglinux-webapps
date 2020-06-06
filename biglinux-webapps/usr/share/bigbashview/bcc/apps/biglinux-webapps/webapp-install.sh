@@ -4,7 +4,6 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
-
 NAMEDESK="$(echo "$p_namedesk" |\
            sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚüÜçÇ/aAaAaAaAeEeEiIoOoOoOuUuUcC/' |\
            tr '[:upper:]' '[:lower:]' |\
@@ -20,7 +19,7 @@ if [ "$p_browser" = "firefox" -o "$p_browser" = "waterfox-latest" ];then
     urldesk="$p_urldesk"
 
 
-    ICONFILE=$(echo "$p_icondesk" | awk -F'/' '{print $NF}')
+    ICONFILE=$(basename "$p_icondesk")
     if [ -z "$ICONFILE" -o "$p_icondesk" = "/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png" ]; then
         ICON_FILE="/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png"
     else
@@ -63,11 +62,11 @@ cat > $HOME/.local/bin/"$NAMEDESK-$p_browser" <<EOF
 #
 #
 
-if [ $(echo ' "$(grep "toolkit.legacyUserProfileCustomizations.stylesheets" "$HOME/.bigwebapps/'$NAMEDESK-$p_browser'/prefs.js")" = "" ')]; then
-    rm -R "$HOME/.bigwebapps/$NAMEDESK-$p_browser"
-    mkdir -p "$HOME/.bigwebapps/$NAMEDESK-$p_browser/chrome"
-    echo 'user_pref("media.eme.enabled", true);' >> "$HOME/.bigwebapps/$NAMEDESK-$p_browser"/prefs.js
-    echo 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);' >> "$HOME/.bigwebapps/$NAMEDESK-$p_browser"/prefs.js
+if [ $(echo '"$(grep "toolkit.legacyUserProfileCustomizations.stylesheets" "$HOME/.bigwebapps/'$NAMEDESK-$p_browser'/prefs.js")" = ""') ]; then
+    rm -R "\$HOME/.bigwebapps/$NAMEDESK-$p_browser"
+    mkdir -p "\$HOME/.bigwebapps/$NAMEDESK-$p_browser/chrome"
+    echo 'user_pref("media.eme.enabled", true);' >> "\$HOME/.bigwebapps/$NAMEDESK-$p_browser"/prefs.js
+    echo 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);' >> "\$HOME/.bigwebapps/$NAMEDESK-$p_browser"/prefs.js
 fi
 
 #
@@ -80,21 +79,21 @@ echo \
 #TabsToolbar {
     visibility: collapse;
 }" \
->> "$HOME/.bigwebapps/$NAMEDESK-$p_browser"/chrome/userChrome.css
+>> "\$HOME/.bigwebapps/$NAMEDESK-$p_browser"/chrome/userChrome.css
 
 echo \
 "user_pref(\"browser.tabs.warnOnClose\", false);" \
->> "$HOME/.bigwebapps/$NAMEDESK-$p_browser"/user.js
+>> "\$HOME/.bigwebapps/$NAMEDESK-$p_browser"/user.js
 
-sed -i 's|user_pref("browser.urlbar.placeholderName.*||g' "$HOME/.bigwebapps/$NAMEDESK-$p_browser"/prefs.js
+sed -i 's|user_pref("browser.urlbar.placeholderName.*||g' "\$HOME/.bigwebapps/$NAMEDESK-$p_browser"/prefs.js
 
 
-MOZ_DISABLE_GMP_SANDBOX=1 MOZ_DISABLE_CONTENT_SANDBOX=1 $p_browser --class=$(echo "$p_browser"'webapp-'"$NAMEDESK") -profile "$HOME/.bigwebapps/$NAMEDESK-$p_browser" -no-remote -new-instance "$urldesk" &
+MOZ_DISABLE_GMP_SANDBOX=1 MOZ_DISABLE_CONTENT_SANDBOX=1 $p_browser --class=$(echo "$p_browser"'webapp-'"$NAMEDESK") -profile "\$HOME/.bigwebapps/$NAMEDESK-$p_browser" -no-remote -new-instance "$urldesk" &
 
 count=0
-while [ $(echo ' $count -lt 100 ') ]; do
-    if [ $(echo ' "$(xwininfo -root -children -all | grep -iE "Navigator.*'$p_browser'webapp-'$NAMEDESK'")" != "" ')]; then
-        /usr/share/biglinux/webapps/bin/xseticon -id $(echo ' "$(xwininfo -root -children -all | grep -iE "Navigator.*'$p_browser'webapp-'$NAMEDESK'" | awk '$(echo "'{print "'$1'"}'")')" ') $ICON_FILE
+while [ \$count -lt 100 ]; do
+    if [ $(echo '"$(xwininfo -root -children -all | grep -iE "Navigator.*'$p_browser'webapp-'$NAMEDESK'")" != ""') ]; then
+        /usr/share/biglinux/webapps/bin/xseticon -id $(echo '"$(xwininfo -root -children -all | grep -iE "Navigator.*'$p_browser'webapp-'$NAMEDESK'" | awk '$(echo "'{print "'$1'"}'")')"') $ICON_FILE
         count=100
     else
         let count=count+1;
@@ -119,6 +118,12 @@ xdg-desktop-menu install --novendor $HOME/.local/share/desktop-directories/web-a
 /tmp/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop
 rm /tmp/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop
 
+    if [ "$p_shortcut" = "on" ];then
+        ln $HOME/.local/share/applications/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop \
+        "$(xdg-user-dir DESKTOP)/$p_namedesk"
+        chmod 755 "$(xdg-user-dir DESKTOP)/$p_namedesk"
+    fi
+
 
 elif [ "$p_browser" = "falkon" ]; then
 
@@ -129,7 +134,7 @@ elif [ "$p_browser" = "falkon" ]; then
     mkdir -p $HOME/.config/falkon/profiles/"$NAMEDESK"
     cp /usr/share/biglinux/webapps/falkon/settings.ini $HOME/.config/falkon/profiles/"$NAMEDESK"
 
-    ICONFILE=$(echo "$p_icondesk" | awk -F'/' '{print $NF}')
+    ICONFILE=$(basename "$p_icondesk")
     if [ -z "$ICONFILE" -o "$p_icondesk" = "/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png" ]; then
         ICON_FILE="internet-web-browser"
     else
@@ -151,6 +156,12 @@ xdg-desktop-menu install --novendor $HOME/.local/share/desktop-directories/web-a
 /tmp/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop
 rm /tmp/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop
 
+    if [ "$p_shortcut" = "on" ];then
+        ln $HOME/.local/share/applications/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop \
+        "$(xdg-user-dir DESKTOP)/$p_namedesk"
+        chmod 755 "$(xdg-user-dir DESKTOP)/$p_namedesk"
+    fi
+
 
 else
 
@@ -169,7 +180,7 @@ else
         p_urldesk="https://$p_urldesk"
     fi
 
-    ICONFILE=$(echo "$p_icondesk" | awk -F'/' '{print $NF}')
+    ICONFILE=$(basename "$p_icondesk")
     if [ -z "$ICONFILE" -o "$p_icondesk" = "/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png" ]; then
     	ICON_FILE="internet-web-browser"
     else
@@ -190,6 +201,12 @@ StartupWMClass=$CUT_HTTP" > /tmp/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.d
 xdg-desktop-menu install --novendor $HOME/.local/share/desktop-directories/web-apps.directory \
 /tmp/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop
 rm /tmp/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop
+
+    if [ "$p_shortcut" = "on" ];then
+        ln $HOME/.local/share/applications/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop \
+        "$(xdg-user-dir DESKTOP)/$p_namedesk"
+        chmod 755 "$(xdg-user-dir DESKTOP)/$p_namedesk"
+    fi
 fi
 
 if [ "$?" = "0" ]; then

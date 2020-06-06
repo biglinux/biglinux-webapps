@@ -20,6 +20,10 @@ if [ ! -e $HOME/.config/menus/applications-merged/google-applications.menu -o \
 	 ! -e $HOME/.config/menus/applications-merged/user-web-apps.menu ];then
 
 	 	cp /usr/share/biglinux/webapps/share/*.menu $HOME/.config/menus/applications-merged
+	 	
+elif [ "$(grep "onlinedoctranslator" $HOME/.config/menus/applications-merged/user-web-apps.menu)" = "" ];then
+	sed -i '30 a \\t\t<Filename>onlinedoctranslator-webapp-biglinux.desktop</Filename>' $HOME/.config/menus/applications-merged/user-web-apps.menu
+	sed -i '31 a \\t\t<Filename>pdfwordconvert-webapp-biglinux.desktop</Filename>' $HOME/.config/menus/applications-merged/user-web-apps.menu
 fi
 
 hour="$(date +%H)"

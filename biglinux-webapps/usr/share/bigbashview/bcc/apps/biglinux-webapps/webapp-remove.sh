@@ -12,6 +12,7 @@ NAMEDESK="$(grep "Name=" $p_filedesk | sed 's|Name=||' |\
            sed 's|\ |-|g;s|\/|-|g')"
 
 ICONDESK="$(grep "Icon=" $p_filedesk | sed 's|Icon=||')"
+DESKNAME="$(grep "Name=" $p_filedesk | sed 's|Name=||')"
 
 kdialog --title "BigLinux WebApps" --icon "internet-web-browser" \
 		--yesno $"Você tem certeza que deseja remover este WebApp?"
@@ -26,7 +27,7 @@ else
         if [ -d $HOME/.bigwebapps/"$NAMEDESK-firefox" ]; then
             rm -r $HOME/.bigwebapps/"$NAMEDESK-firefox"
         fi
-
+        unlink "$(xdg-user-dir DESKTOP)/$DESKNAME"
         rm "$(grep "Exec=" "$p_filedesk" | sed 's|Exec=||')"
         xdg-desktop-menu uninstall "$p_filedesk"
         rm "$ICONDESK"
@@ -36,7 +37,7 @@ else
         if [ -d $HOME/.bigwebapps/"$NAMEDESK-waterfox-latest" ]; then
             rm -r $HOME/.bigwebapps/"$NAMEDESK-waterfox-latest"
         fi
-
+        unlink "$(xdg-user-dir DESKTOP)/$DESKNAME"
         rm "$(grep "Exec=" "$p_filedesk" | sed 's|Exec=||')"
         xdg-desktop-menu uninstall "$p_filedesk"
         rm "$ICONDESK"
@@ -48,10 +49,12 @@ else
             rm -r $HOME/.config/falkon/profiles/"$NAMEDESK"
         fi
 
+        unlink "$(xdg-user-dir DESKTOP)/$DESKNAME"
         xdg-desktop-menu uninstall "$p_filedesk"
         rm "$ICONDESK"
 
     else
+        unlink "$(xdg-user-dir DESKTOP)/$DESKNAME"
         xdg-desktop-menu uninstall "$p_filedesk"
         rm "$ICONDESK"
     fi

@@ -1,4 +1,4 @@
-# Portuguese translations for biglinux-webapps package.
+# Spanish translations for biglinux-webapps package.
 # Copyright (C) 2020 THE biglinux-webapps'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the biglinux-webapps package.
 # Automatically generated, 2020.
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-16 03:52-0300\n"
-"PO-Revision-Date: 2020-05-16 03:52-0300\n"
+"PO-Revision-Date: 2020-06-05 14:27-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: es\n"
@@ -16,6 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.3\n"
 
 msgid "Não foi possível detectar o ícone deste site!"
 msgstr "¡No fue posible detectar el ícono de este sitio!"
@@ -27,22 +28,23 @@ msgid "Instalar WebApps BigLinux:"
 msgstr "Instale BigLinux WebApps:"
 
 msgid "Nome:"
-msgstr "Nombre"
+msgstr "Nombre:"
 
 msgid "URL:"
-msgstr "URL"
+msgstr "URL:"
 
 msgid ""
-"Detecta automaticamente o ícone do site informado,<br>mas não são todos os "
-"sites que suportam o recurso"
-msgstr "Detecta automáticamente el icono del sitio web informado, pero no todos "
-"sitios que admiten la función"
+"Detecta automaticamente o ícone do site informado,<br>mas não são todos os sites que suportam "
+"o recurso"
+msgstr ""
+"Detecta automáticamente el icono del sitio web informado,<br>pero no todos sitios que admiten "
+"la función"
 
 msgid "Detectar Ícone"
 msgstr "Detectar icono"
 
 msgid "Ícone:"
-msgstr "Icono"
+msgstr "Icono:"
 
 msgid "Carrega um arquivo de imagem para ser usado como ícone"
 msgstr "Cargue un archivo de imagen para usarlo como icono"
@@ -51,7 +53,10 @@ msgid "Abrir"
 msgstr "Abrir"
 
 msgid "Navegador:"
-msgstr "Navegador"
+msgstr "Navegador:"
+
+msgid "Adicionar atalho na área de trabalho"
+msgstr "Agregar acceso directo de escritorio"
 
 msgid "Ir para página inicial"
 msgstr "Ir a la página de inicio"
@@ -72,7 +77,7 @@ msgid "Digite ou cole a URL!"
 msgstr "Escriba o pegue la URL!"
 
 msgid "Detectando..."
-msgstr "Detectando"
+msgstr "Detectando:"
 
 msgid "Digite ou cole o Nome!"
 msgstr "Escriba o pegue el nombre!"
@@ -89,23 +94,21 @@ msgstr "Eliminar"
 msgid "Nenhum WebApp BigLinux instalado por você!"
 msgstr "¡No hay una aplicación web BigLinux instalada por usted!"
 
-msgid ""
-"Se você deseja instalar um novo<br> WebApp BigLinux, clique no botão "
-"Instalar:"
-msgstr "Si desea instalar una nueva aplicación web BigLinux, haga clic en el botón"
-"Instalar"
+msgid "Se você deseja instalar um novo<br> WebApp BigLinux, clique no botão Instalar:"
+msgstr ""
+"Si desea instalar una nueva<br> aplicación web BigLinux, haga clic en el botón Instalar:"
 
 msgid "Ir para página de instalação do WebApp"
 msgstr "Vaya a la página de instalación de la aplicación web"
 
 msgid "Bom dia "
-msgstr "Buen día"
+msgstr "Buen día "
 
 msgid "Boa tarde "
-msgstr "Buenas tardes"
+msgstr "Buenas tardes "
 
 msgid "Boa noite "
-msgstr "Buenas noches"
+msgstr "Buenas noches "
 
 msgid "Bem-Vindo(a) ao Gerenciador de WebApps BigLinux"
 msgstr "Bienvenido al BigLinux WebApps Administrador"
@@ -131,12 +134,11 @@ msgstr "Habilitar / deshabilitar aplicaciones web"
 msgid "Ative ou desative os WebApps BigLinux:"
 msgstr "Habilitar o deshabilitar BigLinux WebApps:"
 
-msgid ""
-"O WebApp foi instalado com sucesso!\\nVocê deseja instalar outro WebApp?"
+msgid "O WebApp foi instalado com sucesso!\\nVocê deseja instalar outro WebApp?"
 msgstr "La aplicación web se ha instalado correctamente.\\n¿Desea instalar otra aplicación web?"
 
 msgid "Algo de errado aconteceu...\\nPor favor, tente novamente!"
-msgstr "Algo salió mal...\\nInténtalo de nuevo."
+msgstr "Algo salió mal...\\nInténtalo de nuevo!"
 
 msgid "Você tem certeza que deseja remover este WebApp?"
 msgstr "¿Seguro que quieres eliminar esta aplicación web?"

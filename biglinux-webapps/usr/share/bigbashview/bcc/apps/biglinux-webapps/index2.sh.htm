@@ -27,7 +27,7 @@ if [ "$DESKTOP" != "" ]; then
             echo '<div class="row">'
             for i in $DESKTOP; do
 
-                    namedesk="$(awk -F'/' '{print $NF}' <<< $i)"
+                    namedesk="$(basename $i)"
 
                     if [ -e "$HOME/.local/share/applications/$namedesk" ]; then
                         check="checked"

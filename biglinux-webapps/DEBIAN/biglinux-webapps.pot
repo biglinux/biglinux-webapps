@@ -7,7 +7,7 @@
 msgid   ""
 msgstr  "Project-Id-Version: biglinux-webapps\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2020-05-16 03:52-0300\n"
+        "POT-Creation-Date: 2020-06-05 14:09-0300\n"
         "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
         "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,6 +48,9 @@ msgid   "Abrir"
 msgstr  ""
 
 msgid   "Navegador:"
+msgstr  ""
+
+msgid   "Adicionar atalho na área de trabalho"
 msgstr  ""
 
 msgid   "Ir para página inicial"
