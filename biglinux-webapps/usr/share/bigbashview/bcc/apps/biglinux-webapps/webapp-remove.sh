@@ -6,10 +6,8 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
-NAMEDESK="$(grep "Name=" $p_filedesk | sed 's|Name=||' |\
-           sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚüÜçÇ/aAaAaAaAeEeEiIoOoOoOuUuUcC/' |\
-           tr '[:upper:]' '[:lower:]' |\
-           sed 's|\ |-|g;s|\/|-|g')"
+NAMEDESK="$(grep "Name=" $p_filedesk | 
+            sed 's|Name=||;y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚüÜçÇ/aAaAaAaAeEeEiIoOoOoOuUuUcC/;s| |-|g;s|/|-|g;s|.*|\L&|')"
 
 ICONDESK="$(grep "Icon=" $p_filedesk | sed 's|Icon=||')"
 DESKNAME="$(grep "Name=" $p_filedesk | sed 's|Name=||')"
@@ -45,10 +43,8 @@ else
     elif [ "$(grep "falkon" <<< "$p_filedesk")" != "" ];then
 
         if [ -d $HOME/.config/falkon/profiles/"$NAMEDESK" ]; then
-
             rm -r $HOME/.config/falkon/profiles/"$NAMEDESK"
         fi
-
         unlink "$(xdg-user-dir DESKTOP)/$DESKNAME"
         xdg-desktop-menu uninstall "$p_filedesk"
         rm "$ICONDESK"

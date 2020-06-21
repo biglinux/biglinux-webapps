@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-16 03:52-0300\n"
+"POT-Creation-Date: 2020-06-21 19:13-0300\n"
 "PO-Revision-Date: 2020-05-16 12:46-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -24,66 +24,14 @@ msgstr "It was not possible to detect the icon of this site!"
 msgid "Arquivos de Imagem(*.bmp *.png *.ico *.xpm *.jpg)"
 msgstr "Image files(*.bmp *.png *.ico *.xpm *.jpg)"
 
-msgid "Instalar WebApps BigLinux:"
-msgstr "Install BigLinux WebApps:"
-
-msgid "Nome:"
-msgstr "Name:"
-
-msgid "URL:"
-msgstr "URL:"
-
-msgid ""
-"Detecta automaticamente o ícone do site informado,<br>mas não são todos os sites que "
-"suportam o recurso"
-msgstr ""
-"Automatically detects the informed website icon,<br>but not all sites that support the "
-"feature"
-
-msgid "Detectar Ícone"
-msgstr "Detect icon"
-
-msgid "Ícone:"
-msgstr "Icon:"
-
-msgid "Carrega um arquivo de imagem para ser usado como ícone"
-msgstr "Load an image file to be used as an icon"
-
-msgid "Abrir"
-msgstr "Open"
-
-msgid "Navegador:"
-msgstr "Browser:"
-
-msgid "Adicionar atalho na área de trabalho"
-msgstr "Add desktop shortcut"
+msgid "Remover WebApps BigLinux:"
+msgstr "Remove BigLinux WebApps:"
 
 msgid "Ir para página inicial"
 msgstr "Go to initial page"
 
 msgid "Voltar"
 msgstr "Back"
-
-msgid "Inicia a instalação"
-msgstr "Start the installation"
-
-msgid "Instalar"
-msgstr "Install"
-
-msgid "Alterar"
-msgstr "Change"
-
-msgid "Digite ou cole a URL!"
-msgstr "Type or paste the URL!"
-
-msgid "Detectando..."
-msgstr "Detecting..."
-
-msgid "Digite ou cole o Nome!"
-msgstr "Type or paste the name!"
-
-msgid "Remover WebApps BigLinux:"
-msgstr "Remove BigLinux WebApps:"
 
 msgid "Inicia a remoção"
 msgstr "Starts removal"
@@ -94,11 +42,17 @@ msgstr "Remove"
 msgid "Nenhum WebApp BigLinux instalado por você!"
 msgstr "No BigLinux WebApp installed by you!"
 
-msgid "Se você deseja instalar um novo<br> WebApp BigLinux, clique no botão Instalar:"
-msgstr "If you want to install a new<br> BigLinux WebApp, click the Install button:"
+msgid ""
+"Se você deseja instalar um novo<br> WebApp BigLinux, clique no botão "
+"Instalar:"
+msgstr ""
+"If you want to install a new<br> BigLinux WebApp, click the Install button:"
 
 msgid "Ir para página de instalação do WebApp"
 msgstr "Go to the WebApp installation page"
+
+msgid "Instalar"
+msgstr "Install"
 
 msgid "Bom dia "
 msgstr "Good Morning "
@@ -133,9 +87,11 @@ msgstr "Enable / Disable WebApps"
 msgid "Ative ou desative os WebApps BigLinux:"
 msgstr "Enable or disable BigLinux WenApps:"
 
-msgid "O WebApp foi instalado com sucesso!\\nVocê deseja instalar outro WebApp?"
+msgid ""
+"O WebApp foi instalado com sucesso!\\nVocê deseja instalar outro WebApp?"
 msgstr ""
-"The WebApp has been successfully installed!\\nDo you want to install another WebApp?"
+"The WebApp has been successfully installed!\\nDo you want to install another "
+"WebApp?"
 
 msgid "Algo de errado aconteceu...\\nPor favor, tente novamente!"
 msgstr "Something went wrong...\\nPlease, try again!"
@@ -144,4 +100,58 @@ msgid "Você tem certeza que deseja remover este WebApp?"
 msgstr "Are you sure you want to remove this WebApp?"
 
 msgid "O WebApp foi removido com sucesso!\\nVocê deseja remover outro WebApp?"
-msgstr "The WebApp has been successfully removed!\\nDo you want to remove another WebApp?"
+msgstr ""
+"The WebApp has been successfully removed!\\nDo you want to remove another "
+"WebApp?"
+
+msgid "Instalar WebApps BigLinux:"
+msgstr "Install BigLinux WebApps:"
+
+msgid "Nome:"
+msgstr "Name:"
+
+msgid "URL:"
+msgstr "URL:"
+
+msgid ""
+"Detecta automaticamente o ícone do site informado,<br>mas não são todos os "
+"sites que suportam o recurso"
+msgstr ""
+"Automatically detects the informed website icon,<br>but not all sites that "
+"support the feature"
+
+msgid "Detectar Ícone"
+msgstr "Detect icon"
+
+msgid "Ícone:"
+msgstr "Icon:"
+
+msgid "Carrega um arquivo de imagem para ser usado como ícone"
+msgstr "Load an image file to be used as an icon"
+
+msgid "Abrir"
+msgstr "Open"
+
+msgid "Navegador:"
+msgstr "Browser:"
+
+msgid "Adicionar atalho na área de trabalho"
+msgstr "Add desktop shortcut"
+
+msgid "YouTube em modo TV"
+msgstr "YouTube in TV mode"
+
+msgid "Inicia a instalação"
+msgstr "Start the installation"
+
+msgid "Alterar"
+msgstr "Change"
+
+msgid "Digite ou cole a URL!"
+msgstr "Type or paste the URL!"
+
+msgid "Detectando..."
+msgstr "Detecting..."
+
+msgid "Digite ou cole o Nome!"
+msgstr "Type or paste the name!"

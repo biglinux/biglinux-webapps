@@ -4,7 +4,7 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
-WEB=(brave-browser chromium falkon firefox google-chrome vivaldi waterfox-latest)
+WEB=(brave-browser chromium falkon firefox google-chrome vivaldi waterfox-latest min)
 
 echo '
     <head>
@@ -85,11 +85,25 @@ echo '
 						      			'$"Adicionar atalho na área de trabalho"'
 						    		</label>
 						  		</div>
-						  	</div><br><br><br>
-                        <a href="index.sh.htm" class="button tooltipped" data-position="top" data-delay="150"
-                           data-tooltip="'$"Ir para página inicial"'" style="margin-right:30px;">'$"Voltar"'</a>
-                        <button type="submit" class="button tooltipped" data-position="top" data-delay="150"
-                                data-tooltip="'$"Inicia a instalação"'" id="install">'$"Instalar"'</button>
+                            </div>
+                            <div class="row left">
+						  		<div class="switch col s12">
+						    		<label style="font-size: 12pt">
+						      			<input type="checkbox" name="tvmode">
+						      			<span class="lever"></span>
+						      			'$"YouTube em modo TV"'
+						    		</label>
+						  		</div>
+						  	</div>
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="row"><div class="s12"></div></div>
+                                    <a href="index.sh.htm" class="button tooltipped" data-position="top" data-delay="150"
+                                    data-tooltip="'$"Ir para página inicial"'" style="margin-right:30px;">'$"Voltar"'</a>
+                                    <button type="submit" class="button tooltipped" data-position="top" data-delay="150"
+                                    data-tooltip="'$"Inicia a instalação"'" id="install">'$"Instalar"'</button>
+                                </div>
+                            </div>
                     </form>
                 </h1>
             </div>

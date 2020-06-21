@@ -27,11 +27,13 @@ if [ "$DESKTOP" != "" ]; then
 
                             for i in $DESKTOP; do
 
-                                if [ "$(grep -E "(firefox|waterfox-latest)" <<< $i)" != "" ];then
+                                if [ "$(grep -E "(Exec=firefox|Exec=waterfox-latest)" $i)" != "" ];then
                                     DESKEXEC="$(grep "Exec=" $i | sed 's|Exec=||')"
                                     DESKURL="$(grep "\-new-instance" $DESKEXEC | cut -d' ' -f9 | sed 's|^"||;s|"$||')"
-                                elif [ "$(grep "falkon" <<< $i)" != "" ];then
+                                elif [ "$(grep "Exec=falkon" $i)" != "" ];then
                                     DESKURL="$(grep "Exec=" $i | cut -d' ' -f4)"
+                                elif [ "$(grep "Exec=min" $i)" != "" ];then
+                                    DESKURL="$(grep "Exec=" $i | cut -d' ' -f2)"
                                 else
                                     DESKURL="$(grep "Exec=" $i | awk -F'--app=' '{print $NF}')"
                                 fi

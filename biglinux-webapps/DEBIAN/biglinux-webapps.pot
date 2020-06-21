@@ -7,7 +7,7 @@
 msgid   ""
 msgstr  "Project-Id-Version: biglinux-webapps\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2020-06-05 14:09-0300\n"
+        "POT-Creation-Date: 2020-06-21 19:13-0300\n"
         "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
         "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,62 +22,13 @@ msgstr  ""
 msgid   "Arquivos de Imagem(*.bmp *.png *.ico *.xpm *.jpg)"
 msgstr  ""
 
-msgid   "Instalar WebApps BigLinux:"
-msgstr  ""
-
-msgid   "Nome:"
-msgstr  ""
-
-msgid   "URL:"
-msgstr  ""
-
-msgid   "Detecta automaticamente o ícone do site informado,<br>mas não são "
-        "todos os sites que suportam o recurso"
-msgstr  ""
-
-msgid   "Detectar Ícone"
-msgstr  ""
-
-msgid   "Ícone:"
-msgstr  ""
-
-msgid   "Carrega um arquivo de imagem para ser usado como ícone"
-msgstr  ""
-
-msgid   "Abrir"
-msgstr  ""
-
-msgid   "Navegador:"
-msgstr  ""
-
-msgid   "Adicionar atalho na área de trabalho"
+msgid   "Remover WebApps BigLinux:"
 msgstr  ""
 
 msgid   "Ir para página inicial"
 msgstr  ""
 
 msgid   "Voltar"
-msgstr  ""
-
-msgid   "Inicia a instalação"
-msgstr  ""
-
-msgid   "Instalar"
-msgstr  ""
-
-msgid   "Alterar"
-msgstr  ""
-
-msgid   "Digite ou cole a URL!"
-msgstr  ""
-
-msgid   "Detectando..."
-msgstr  ""
-
-msgid   "Digite ou cole o Nome!"
-msgstr  ""
-
-msgid   "Remover WebApps BigLinux:"
 msgstr  ""
 
 msgid   "Inicia a remoção"
@@ -94,6 +45,9 @@ msgid   "Se você deseja instalar um novo<br> WebApp BigLinux, clique no botão 
 msgstr  ""
 
 msgid   "Ir para página de instalação do WebApp"
+msgstr  ""
+
+msgid   "Instalar"
 msgstr  ""
 
 msgid   "Bom dia "
@@ -141,4 +95,53 @@ msgstr  ""
 
 msgid   "O WebApp foi removido com sucesso!\\nVocê deseja remover outro "
         "WebApp?"
+msgstr  ""
+
+msgid   "Instalar WebApps BigLinux:"
+msgstr  ""
+
+msgid   "Nome:"
+msgstr  ""
+
+msgid   "URL:"
+msgstr  ""
+
+msgid   "Detecta automaticamente o ícone do site informado,<br>mas não são "
+        "todos os sites que suportam o recurso"
+msgstr  ""
+
+msgid   "Detectar Ícone"
+msgstr  ""
+
+msgid   "Ícone:"
+msgstr  ""
+
+msgid   "Carrega um arquivo de imagem para ser usado como ícone"
+msgstr  ""
+
+msgid   "Abrir"
+msgstr  ""
+
+msgid   "Navegador:"
+msgstr  ""
+
+msgid   "Adicionar atalho na área de trabalho"
+msgstr  ""
+
+msgid   "YouTube em modo TV"
+msgstr  ""
+
+msgid   "Inicia a instalação"
+msgstr  ""
+
+msgid   "Alterar"
+msgstr  ""
+
+msgid   "Digite ou cole a URL!"
+msgstr  ""
+
+msgid   "Detectando..."
+msgstr  ""
+
+msgid   "Digite ou cole o Nome!"
 msgstr  ""

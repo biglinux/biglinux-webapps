@@ -2,8 +2,10 @@
 
 if [ ! -e "$HOME/.local/share/applications/$p_name" ]; then
     cp /usr/share/biglinux/webapps/$p_name $HOME/.local/share/applications
+    nohup kbuildsycoca5 2> /dev/null &
     exit
 else
     rm "$HOME/.local/share/applications/$p_name"
+    nohup kbuildsycoca5 2> /dev/null &
     exit
 fi

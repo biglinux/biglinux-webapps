@@ -4,23 +4,28 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
-NAMEDESK="$(echo "$p_namedesk" |\
-           sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚüÜçÇ/aAaAaAaAeEeEiIoOoOoOuUuUcC/' |\
-           tr '[:upper:]' '[:lower:]' |\
-           sed 's|\ |-|g;s|\/|-|g')"
-
-
-
+NAMEDESK="$(sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚüÜçÇ/aAaAaAaAeEeEiIoOoOoOuUuUcC/;s| |-|g;s|/|-|g;s|.*|\L&|' <<< "$p_namedesk")"
 
 if [ "$p_browser" = "firefox" -o "$p_browser" = "waterfox-latest" ];then
 
-    [ "$(echo "$p_urldesk" | egrep "(http|https)://")" = "" ] && \
-    urldesk="https://$p_urldesk" || \
-    urldesk="$p_urldesk"
+    if [ "$(egrep "(http|https)://" <<< "$p_urldesk")" = "" ];then
+        
+        if [ "$p_tvmode" = "on" -a "$(egrep "(youtu.be|youtube)" <<< "$p_urldesk")" != "" ];then
+            urldesk="https://www.youtube.com/embed/$(basename "$p_urldesk" | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
+        else
+            urldesk="https://$p_urldesk"
+        fi
+    else
+        if [ "$p_tvmode" = "on" -a "$(egrep "(youtu.be|youtube)" <<< "$p_urldesk")" != "" ];then
+            urldesk="https://www.youtube.com/embed/$(basename "$p_urldesk" | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
+        else
+            urldesk="$p_urldesk"
+        fi
+    fi
 
 
     ICONFILE=$(basename "$p_icondesk")
-    if [ -z "$ICONFILE" -o "$p_icondesk" = "/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png" ]; then
+    if [ -z "$ICONFILE" -o "$p_icondesk" = "/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png" ];then
         ICON_FILE="/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png"
     else
     	mv "$p_icondesk" $HOME/.local/share/icons/"$p_browser-$ICONFILE"
@@ -127,9 +132,20 @@ rm /tmp/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop
 
 elif [ "$p_browser" = "falkon" ]; then
 
-	[ "$(echo "$p_urldesk" | egrep "(http|https)://")" = "" ] && \
-    urldesk="https://$p_urldesk" || \
-    urldesk="$p_urldesk"
+	if [ "$(egrep "(http|https)://" <<< "$p_urldesk")" = "" ];then
+        
+        if [ "$p_tvmode" = "on" -a "$(egrep "(youtu.be|youtube)" <<< "$p_urldesk")" != "" ];then
+            urldesk="https://www.youtube.com/embed/$(basename "$p_urldesk" | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
+        else
+            urldesk="https://$p_urldesk"
+        fi
+    else
+        if [ "$p_tvmode" = "on" -a "$(egrep "(youtu.be|youtube)" <<< "$p_urldesk")" != "" ];then
+            urldesk="https://www.youtube.com/embed/$(basename "$p_urldesk" | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
+        else
+            urldesk="$p_urldesk"
+        fi
+    fi
 
     mkdir -p $HOME/.config/falkon/profiles/"$NAMEDESK"
     cp /usr/share/biglinux/webapps/falkon/settings.ini $HOME/.config/falkon/profiles/"$NAMEDESK"
@@ -162,22 +178,70 @@ rm /tmp/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop
         chmod 755 "$(xdg-user-dir DESKTOP)/$p_namedesk"
     fi
 
+elif [ "$p_browser" = "min" ]; then
+
+	if [ "$(egrep "(http|https)://" <<< "$p_urldesk")" = "" ];then
+        
+        if [ "$p_tvmode" = "on" -a "$(egrep "(youtu.be|youtube)" <<< "$p_urldesk")" != "" ];then
+            urldesk="https://www.youtube.com/embed/$(basename "$p_urldesk" | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
+        else
+            urldesk="https://$p_urldesk"
+        fi
+    else
+        if [ "$p_tvmode" = "on" -a "$(egrep "(youtu.be|youtube)" <<< "$p_urldesk")" != "" ];then
+            urldesk="https://www.youtube.com/embed/$(basename "$p_urldesk" | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
+        else
+            urldesk="$p_urldesk"
+        fi
+    fi
+
+    ICONFILE=$(basename "$p_icondesk")
+    if [ -z "$ICONFILE" -o "$p_icondesk" = "/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png" ]; then
+        ICON_FILE="internet-web-browser"
+    else
+        mv "$p_icondesk" $HOME/.local/share/icons/"$p_browser-$ICONFILE"
+        ICON_FILE="$HOME/.local/share/icons/$p_browser-$ICONFILE"
+    fi
+
+echo "#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=$p_namedesk
+Exec=min $urldesk
+Icon=$ICON_FILE
+X-KDE-StartupNotify=true" > /tmp/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop
+
+xdg-desktop-menu install --novendor $HOME/.local/share/desktop-directories/web-apps.directory \
+/tmp/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop
+rm /tmp/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop
+
+    if [ "$p_shortcut" = "on" ];then
+        ln $HOME/.local/share/applications/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop \
+        "$(xdg-user-dir DESKTOP)/$p_namedesk"
+        chmod 755 "$(xdg-user-dir DESKTOP)/$p_namedesk"
+    fi
 
 else
 
-    if [ "$(echo "$p_urldesk" | egrep "(http|https)://")" != "" ];then
+    if [ "$(egrep "(http|https)://" <<< "$p_urldesk")" != "" ];then
 
-    	CUT_HTTP=$(echo "$p_urldesk" |\
-                         sed 's/https:\/\///;s/http:\/\///' |\
-                         tr '/' '_' |\
-                         sed 's/_/__/1;s/_$//;s/_$//')
+        if [ "$p_tvmode" = "on" -a "$(egrep "(youtu.be|youtube)" <<< "$p_urldesk")" != "" ];then
+            p_urldesk="https://www.youtube.com/embed/$(basename "$p_urldesk" | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
+            CUT_HTTP=$(sed 's|https://||;s|http://||;s|/|_|g;s|_|__|1;s|_$||;s|_$||;s|&|_|' <<< "$p_urldesk")
+        else
+            CUT_HTTP=$(sed 's|https://||;s|http://||;s|/|_|g;s|_|__|1;s|_$||;s|_$||;s|&|_|' <<< "$p_urldesk")
+        fi
     else
 
-    	CUT_HTTP=$(echo "$p_urldesk" |\
-                         tr '/' '_' |\
-                         sed 's/_/__/1;s/_$//;s/_$//')
-
-        p_urldesk="https://$p_urldesk"
+        if [ "$p_tvmode" = "on" -a "$(egrep "(youtu.be|youtube)" <<< "$p_urldesk")" != "" ];then
+            p_urldesk="https://www.youtube.com/embed/$(basename "$p_urldesk" | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
+            CUT_HTTP=$(sed 's|https://||;s|http://||;s|/|_|g;s|_|__|1;s|_$||;s|_$||;s|&|_|' <<< "$p_urldesk")
+        else
+            CUT_HTTP=$(sed 's|/|_|g;s|_|__|1;s|_$||;s|_$||;s|&|_|' <<< "$p_urldesk")
+            p_urldesk="https://$p_urldesk"
+        fi
     fi
 
     ICONFILE=$(basename "$p_icondesk")

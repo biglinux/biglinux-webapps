@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-16 03:52-0300\n"
-"PO-Revision-Date: 2020-06-05 14:27-0300\n"
+"POT-Creation-Date: 2020-06-21 19:13-0300\n"
+"PO-Revision-Date: 2020-06-21 19:18-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: es\n"
@@ -24,66 +24,14 @@ msgstr "¡No fue posible detectar el ícono de este sitio!"
 msgid "Arquivos de Imagem(*.bmp *.png *.ico *.xpm *.jpg)"
 msgstr "Archivos de imagen(*.bmp *.png *.ico *.xpm *.jpg)"
 
-msgid "Instalar WebApps BigLinux:"
-msgstr "Instale BigLinux WebApps:"
-
-msgid "Nome:"
-msgstr "Nombre:"
-
-msgid "URL:"
-msgstr "URL:"
-
-msgid ""
-"Detecta automaticamente o ícone do site informado,<br>mas não são todos os sites que suportam "
-"o recurso"
-msgstr ""
-"Detecta automáticamente el icono del sitio web informado,<br>pero no todos sitios que admiten "
-"la función"
-
-msgid "Detectar Ícone"
-msgstr "Detectar icono"
-
-msgid "Ícone:"
-msgstr "Icono:"
-
-msgid "Carrega um arquivo de imagem para ser usado como ícone"
-msgstr "Cargue un archivo de imagen para usarlo como icono"
-
-msgid "Abrir"
-msgstr "Abrir"
-
-msgid "Navegador:"
-msgstr "Navegador:"
-
-msgid "Adicionar atalho na área de trabalho"
-msgstr "Agregar acceso directo de escritorio"
+msgid "Remover WebApps BigLinux:"
+msgstr "Eliminar BigLinux WebApps:"
 
 msgid "Ir para página inicial"
 msgstr "Ir a la página de inicio"
 
 msgid "Voltar"
 msgstr "Volver"
-
-msgid "Inicia a instalação"
-msgstr "Comience la instalación"
-
-msgid "Instalar"
-msgstr "Instalar"
-
-msgid "Alterar"
-msgstr "Cambiar"
-
-msgid "Digite ou cole a URL!"
-msgstr "Escriba o pegue la URL!"
-
-msgid "Detectando..."
-msgstr "Detectando:"
-
-msgid "Digite ou cole o Nome!"
-msgstr "Escriba o pegue el nombre!"
-
-msgid "Remover WebApps BigLinux:"
-msgstr "Eliminar BigLinux WebApps:"
 
 msgid "Inicia a remoção"
 msgstr "Comienza la eliminación"
@@ -94,12 +42,18 @@ msgstr "Eliminar"
 msgid "Nenhum WebApp BigLinux instalado por você!"
 msgstr "¡No hay una aplicación web BigLinux instalada por usted!"
 
-msgid "Se você deseja instalar um novo<br> WebApp BigLinux, clique no botão Instalar:"
+msgid ""
+"Se você deseja instalar um novo<br> WebApp BigLinux, clique no botão "
+"Instalar:"
 msgstr ""
-"Si desea instalar una nueva<br> aplicación web BigLinux, haga clic en el botón Instalar:"
+"Si desea instalar una nueva<br> aplicación web BigLinux, haga clic en el "
+"botón Instalar:"
 
 msgid "Ir para página de instalação do WebApp"
 msgstr "Vaya a la página de instalación de la aplicación web"
+
+msgid "Instalar"
+msgstr "Instalar"
 
 msgid "Bom dia "
 msgstr "Buen día "
@@ -126,7 +80,9 @@ msgid "Remover WebApps"
 msgstr "Eliminar aplicaciones web"
 
 msgid "Ative ou desative os WebApps instalados por padrão no sistema"
-msgstr "Habilita o deshabilita las aplicaciones web instaladas por defecto en el sistema"
+msgstr ""
+"Habilita o deshabilita las aplicaciones web instaladas por defecto en el "
+"sistema"
 
 msgid "Ativar / Desativar WebApps"
 msgstr "Habilitar / deshabilitar aplicaciones web"
@@ -134,8 +90,11 @@ msgstr "Habilitar / deshabilitar aplicaciones web"
 msgid "Ative ou desative os WebApps BigLinux:"
 msgstr "Habilitar o deshabilitar BigLinux WebApps:"
 
-msgid "O WebApp foi instalado com sucesso!\\nVocê deseja instalar outro WebApp?"
-msgstr "La aplicación web se ha instalado correctamente.\\n¿Desea instalar otra aplicación web?"
+msgid ""
+"O WebApp foi instalado com sucesso!\\nVocê deseja instalar outro WebApp?"
+msgstr ""
+"La aplicación web se ha instalado correctamente.\\n¿Desea instalar otra "
+"aplicación web?"
 
 msgid "Algo de errado aconteceu...\\nPor favor, tente novamente!"
 msgstr "Algo salió mal...\\nInténtalo de nuevo!"
@@ -144,4 +103,58 @@ msgid "Você tem certeza que deseja remover este WebApp?"
 msgstr "¿Seguro que quieres eliminar esta aplicación web?"
 
 msgid "O WebApp foi removido com sucesso!\\nVocê deseja remover outro WebApp?"
-msgstr "La aplicación web se ha eliminado correctamente.\\n¿Desea eliminar otra aplicación web?"
+msgstr ""
+"La aplicación web se ha eliminado correctamente.\\n¿Desea eliminar otra "
+"aplicación web?"
+
+msgid "Instalar WebApps BigLinux:"
+msgstr "Instale BigLinux WebApps:"
+
+msgid "Nome:"
+msgstr "Nombre:"
+
+msgid "URL:"
+msgstr "URL:"
+
+msgid ""
+"Detecta automaticamente o ícone do site informado,<br>mas não são todos os "
+"sites que suportam o recurso"
+msgstr ""
+"Detecta automáticamente el icono del sitio web informado,<br>pero no todos "
+"sitios que admiten la función"
+
+msgid "Detectar Ícone"
+msgstr "Detectar icono"
+
+msgid "Ícone:"
+msgstr "Icono:"
+
+msgid "Carrega um arquivo de imagem para ser usado como ícone"
+msgstr "Cargue un archivo de imagen para usarlo como icono"
+
+msgid "Abrir"
+msgstr "Abrir"
+
+msgid "Navegador:"
+msgstr "Navegador:"
+
+msgid "Adicionar atalho na área de trabalho"
+msgstr "Agregar acceso directo de escritorio"
+
+msgid "YouTube em modo TV"
+msgstr "YouTube en modo TV"
+
+msgid "Inicia a instalação"
+msgstr "Comience la instalación"
+
+msgid "Alterar"
+msgstr "Cambiar"
+
+msgid "Digite ou cole a URL!"
+msgstr "Escriba o pegue la URL!"
+
+msgid "Detectando..."
+msgstr "Detectando..."
+
+msgid "Digite ou cole o Nome!"
+msgstr "Escriba o pegue el nombre!"
