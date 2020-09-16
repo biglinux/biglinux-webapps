@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-21 19:13-0300\n"
-"PO-Revision-Date: 2020-05-16 12:46-0300\n"
+"POT-Creation-Date: 2020-09-16 04:50-0300\n"
+"PO-Revision-Date: 2020-09-16 04:52-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.4.1\n"
 
 msgid "Não foi possível detectar o ícone deste site!"
 msgstr "It was not possible to detect the icon of this site!"
@@ -24,8 +24,59 @@ msgstr "It was not possible to detect the icon of this site!"
 msgid "Arquivos de Imagem(*.bmp *.png *.ico *.xpm *.jpg)"
 msgstr "Image files(*.bmp *.png *.ico *.xpm *.jpg)"
 
-msgid "Remover WebApps BigLinux:"
-msgstr "Remove BigLinux WebApps:"
+msgid "Instalar WebApps BigLinux:"
+msgstr "Install BigLinux WebApps:"
+
+msgid "Nome:"
+msgstr "Name:"
+
+msgid "URL:"
+msgstr "URL:"
+
+msgid ""
+"Detecta automaticamente o ícone do site informado,<br/>mas não são todos os "
+"sites que suportam o recurso.<br/>Por exemplo, sites que necessitam de login."
+msgstr ""
+"Automatically detects the informed website icon,<br>but not all sites that "
+"support the feature.<br>For example, sites that need to login."
+
+msgid "Detectar Ícone"
+msgstr "Detect icon"
+
+msgid "Ícone:"
+msgstr "Icon:"
+
+msgid "Carrega um arquivo de imagem para ser usado como ícone."
+msgstr "Load an image file to be used as an icon."
+
+msgid "Abrir"
+msgstr "Open"
+
+msgid "Navegador:"
+msgstr "Browser:"
+
+msgid ""
+"Essa opção permite que você crie webapps<br>que não compartilham informações."
+"<br>Por exemplo, para logar em contas de e-mails diferentes,<br>assim cada "
+"webapp manterá o login separadamente."
+msgstr ""
+"This option allows you to create<br> webapps that do not share information."
+"<br>For example, to login into different email accounts,<br>so each webapp "
+"will keep the login separately."
+
+msgid "Novo Perfil"
+msgstr "New Profile"
+
+msgid "Adicionar atalho na Área de Trabalho"
+msgstr "Add Desktop shortcut"
+
+msgid ""
+"Essa opção permite que você visualize os<br>vídeos do YouTube sem outras "
+"informações.<br>Por exemplo, sem propagandas e sem outros vídeos."
+msgstr ""
+
+msgid "YouTube em Modo TV"
+msgstr "YouTube in TV Mode"
 
 msgid "Ir para página inicial"
 msgstr "Go to initial page"
@@ -33,8 +84,26 @@ msgstr "Go to initial page"
 msgid "Voltar"
 msgstr "Back"
 
-msgid "Inicia a remoção"
-msgstr "Starts removal"
+msgid "Inicia a instalação"
+msgstr "Start the installation"
+
+msgid "Instalar"
+msgstr "Install"
+
+msgid "Alterar"
+msgstr "Change"
+
+msgid "Digite ou cole a URL!"
+msgstr "Type or paste the URL!"
+
+msgid "Detectando..."
+msgstr "Detecting..."
+
+msgid "Digite ou cole o Nome!"
+msgstr "Type or paste the name!"
+
+msgid "Remover WebApps BigLinux:"
+msgstr "Remove BigLinux WebApps:"
 
 msgid "Remover"
 msgstr "Remove"
@@ -50,9 +119,6 @@ msgstr ""
 
 msgid "Ir para página de instalação do WebApp"
 msgstr "Go to the WebApp installation page"
-
-msgid "Instalar"
-msgstr "Install"
 
 msgid "Bom dia "
 msgstr "Good Morning "
@@ -87,14 +153,14 @@ msgstr "Enable / Disable WebApps"
 msgid "Ative ou desative os WebApps BigLinux:"
 msgstr "Enable or disable BigLinux WenApps:"
 
+msgid "Algo de errado aconteceu...\\nPor favor, tente novamente!"
+msgstr "Something went wrong...\\nPlease, try again!"
+
 msgid ""
 "O WebApp foi instalado com sucesso!\\nVocê deseja instalar outro WebApp?"
 msgstr ""
 "The WebApp has been successfully installed!\\nDo you want to install another "
 "WebApp?"
-
-msgid "Algo de errado aconteceu...\\nPor favor, tente novamente!"
-msgstr "Something went wrong...\\nPlease, try again!"
 
 msgid "Você tem certeza que deseja remover este WebApp?"
 msgstr "Are you sure you want to remove this WebApp?"
@@ -104,54 +170,5 @@ msgstr ""
 "The WebApp has been successfully removed!\\nDo you want to remove another "
 "WebApp?"
 
-msgid "Instalar WebApps BigLinux:"
-msgstr "Install BigLinux WebApps:"
-
-msgid "Nome:"
-msgstr "Name:"
-
-msgid "URL:"
-msgstr "URL:"
-
-msgid ""
-"Detecta automaticamente o ícone do site informado,<br>mas não são todos os "
-"sites que suportam o recurso"
-msgstr ""
-"Automatically detects the informed website icon,<br>but not all sites that "
-"support the feature"
-
-msgid "Detectar Ícone"
-msgstr "Detect icon"
-
-msgid "Ícone:"
-msgstr "Icon:"
-
-msgid "Carrega um arquivo de imagem para ser usado como ícone"
-msgstr "Load an image file to be used as an icon"
-
-msgid "Abrir"
-msgstr "Open"
-
-msgid "Navegador:"
-msgstr "Browser:"
-
-msgid "Adicionar atalho na área de trabalho"
-msgstr "Add desktop shortcut"
-
-msgid "YouTube em modo TV"
-msgstr "YouTube in TV mode"
-
-msgid "Inicia a instalação"
-msgstr "Start the installation"
-
-msgid "Alterar"
-msgstr "Change"
-
-msgid "Digite ou cole a URL!"
-msgstr "Type or paste the URL!"
-
-msgid "Detectando..."
-msgstr "Detecting..."
-
-msgid "Digite ou cole o Nome!"
-msgstr "Type or paste the name!"
+#~ msgid "Inicia a remoção"
+#~ msgstr "Starts removal"

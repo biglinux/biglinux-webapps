@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Drawings
+Exec=/usr/bin/biglinux-webapp --class="drawings.google.com,Chromium-browser" --profile-directory=Default --app=https://drawings.google.com
+Icon=drawings.png
+StartupWMClass=drawings.google.com

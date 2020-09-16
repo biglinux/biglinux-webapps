@@ -4,106 +4,112 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
-WEB=(brave-browser chromium falkon firefox google-chrome vivaldi waterfox-latest min)
+WEB=(brave-browser chromium falkon firefox google-chrome vivaldi waterfox-latest)
 
 echo '
     <head>
         <title>BigLinux WebApps</title>
-        <link rel="stylesheet" type="text/css" href="/usr/share/bigbashview/bcc/materialize/css/materialize.css">
+        <link rel = "stylesheet" href = "materialize.min.css">
         <link rel="stylesheet" type="text/css" href="app.css">
         <script src="/usr/share/bigbashview/bcc/materialize/js/jquery.js"></script>
-        <script src="/usr/share/bigbashview/bcc/materialize/js/materialize.js"></script>
+        <script src = "materialize.min.js"></script>
         <script src="/usr/share/bigbashview/bcc/js/big.js"></script>
     </head>
     <body>
         <div id="page2">
             <div id="middle" class="bar">
                 <h1>
-                    <p>' $"Instalar WebApps BigLinux:" '</p><br>
+                    <p>' $"Instalar WebApps BigLinux:" '</p>
                     <form action="webapp-install.sh" method="get">
-                        <label class="left" for="namedesk">'$"Nome:"'</label>
-                            <div class="row">
-                                <input type="text" name="namedesk" id="namedesk" required autofocus/><br>
+
+                        <div class="row input-field">
+                            <input class="validate col s12" type="text" name="namedesk" id="namedesk" required/>
+                            <label for="namedesk" style="color:#fff;font-size: 1em">'$"Nome:"'</label>
+                        </div>
+
+                        <div class="row input-field" >
+                            <input class="validate col s8" type="text" name="urldesk" id="urldesk" required/>
+                            <label for="urldesk" style="color:#fff;font-size: 1em">'$"URL:"'</label>
+                            <div class="col s4">
+                                <a style="width: 175px;" data-position="top" data-delay="100"
+       							   data-tooltip="'$"Detecta automaticamente o ícone do site informado,<br/>mas não são todos os sites que suportam o recurso.<br/>Por exemplo, sites que necessitam de login."'"
+                                   class="button tooltipped" id="favicon">'$"Detectar Ícone"'</a>
                             </div>
-                        <label class="left" for="urldesk">'$"URL:"'</label><br>
-                            <div class="row">
-                                <div class="col s8">
-                                    <input type="text" name="urldesk" id="urldesk" required/>
-                                </div>
-                                <div class="col s4">
-                                    <a style="width: 175px;" data-position="top" data-delay="150"
-           data-tooltip="'$"Detecta automaticamente o ícone do site informado,<br>mas não são todos os sites que suportam o recurso"'"
-                                       class="button tooltipped right" id="favicon">'$"Detectar Ícone"'</a>
-                                </div>
+                        </div>
+
+                        <div class="row" style="margin-top:-10px">
+                        	<label class="left" for="icondesk" style="color:#fff;font-size: 1em">'$"Ícone:"'</label><br><br>
+                            <div class="col sm-2">
+                                <img id="preview" class="left" src="default.png" width="48" height="48"/>
                             </div>
-                        <label class="left" for="icondesk">'$"Ícone:"'</label><br><br>
-                            <div class="row">
-                                <div class="col s2">
-                                    <img id="preview" class="center-align" 
-                                         src="default.png" 
-                                         width="48" height="48"/>
-                                </div>
-                                <div class="col s7">
-                                    <input type="text" id="icondesk" name="icondesk" readonly/>
-                                </div>
-                                <div class="col s3">
-                                    <a style="float:right;width: 120px;" data-position="top" data-delay="150"
-                                       data-tooltip="'$"Carrega um arquivo de imagem para ser usado como ícone"'" 
-                                       class="button tooltipped right" id="btn">'$"Abrir"'</a>
-                                </div>
+                            <div class="col s7">
+                                <input type="text" id="icondesk" name="icondesk" readonly/>
                             </div>
-                        <label class="left" for="namedesk">'$"Navegador:"'</label><br><br>
-                            <div class="row">
-                                <div class="col s2">
-                                    <img class="center-align" src="icons/chromium.png" id="browsericon">
-                                </div>
-                                    <div class="col s7">
-                                        <select name="browser">'
-
-                                            for i in "${WEB[@]}"; do
-
-                                                if [ "$(which "$i")" != "" ];then
-
-                                                    [ "$i" = "chromium" ] && selected="selected" || selected=
-
-                                                    echo "<option value=$i data-icon=icons/$i.png $selected>${i^^}</option>"
-
-                                                fi
-
-                                            done
-
-
-                                            
-                                echo   '</select>
-                                </div>
+                            <div class="col s3">
+                                <a style="width: 120px;" data-position="top" data-delay="100"
+                                   data-tooltip="'$"Carrega um arquivo de imagem para ser usado como ícone."'"
+                                   class="button tooltipped right" id="btn">'$"Abrir"'</a>
                             </div>
-                            <div class="row left">
-                            	<div class="switch col s12">
-						    		<label style="font-size: 12pt">
-						      			<input type="checkbox" name="shortcut">
-						      			<span class="lever"></span>
-						      			'$"Adicionar atalho na área de trabalho"'
-						    		</label>
-						  		</div>
+                        </div>
+
+
+                        <div class="row" style="margin-top:-10px">
+                        	<label class="left" for="namedesk" style="color:#fff;font-size: 1em">'$"Navegador:"'</label><br><br>
+                            <div class="col sm-2">
+                                <img class="left" src="" id="browsericon">
                             </div>
-                            <div class="row left">
-						  		<div class="switch col s12">
-						    		<label style="font-size: 12pt">
-						      			<input type="checkbox" name="tvmode">
-						      			<span class="lever"></span>
-						      			'$"YouTube em modo TV"'
-						    		</label>
-						  		</div>
-						  	</div>
-                            <div class="row">
-                                <div class="col s12">
-                                    <div class="row"><div class="s12"></div></div>
-                                    <a href="index.sh.htm" class="button tooltipped" data-position="top" data-delay="150"
-                                    data-tooltip="'$"Ir para página inicial"'" style="margin-right:30px;">'$"Voltar"'</a>
-                                    <button type="submit" class="button tooltipped" data-position="top" data-delay="150"
-                                    data-tooltip="'$"Inicia a instalação"'" id="install">'$"Instalar"'</button>
-                                </div>
+                            <div class="col s6">
+                                    <select name="browser">'
+
+                                        for i in "${WEB[@]}"; do
+                                            if type -P "$i" &>/dev/null;then
+                                                [ "$i" = "chromium" ] && selected="selected" || selected=
+                                                echo "<option value=$i data-icon=icons/$i.png $selected>${i^^}</option>"
+                                            fi
+                                        done
+
+                            echo   '</select>
                             </div>
+                            <div id="perfil" class="switch">
+                                <label style="color:#fff;font-size: 12pt" data-position="top"
+                                data-delay="100" data-tooltip="'$"Essa opção permite que você crie webapps<br>que não compartilham informações.<br>Por exemplo, para logar em contas de e-mails diferentes,<br>assim cada webapp manterá o login separadamente."'" class="tooltipped">
+                                    <input type="checkbox" name="newperfil">
+                                    <span class="lever"></span>
+                                    '$"Novo Perfil"'
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="row left">
+                        	<div class="switch col s12">
+					    		<label style="color:#fff;font-size: 12pt">
+					      			<input type="checkbox" name="shortcut">
+					      			<span class="lever"></span>
+					      			'$"Adicionar atalho na Área de Trabalho"'
+					    		</label>
+					  		</div>
+                        </div>
+
+                        <div class="row left" id="modetv">
+					  		<div class="switch col s12">
+					    		<label style="color:#fff;font-size: 12pt" data-position="top"
+                                data-delay="100" data-tooltip="'$"Essa opção permite que você visualize os<br>vídeos do YouTube sem outras informações.<br>Por exemplo, sem propagandas e sem outros vídeos."'" class="tooltipped">
+					      			<input type="checkbox" name="tvmode">
+					      			<span class="lever"></span>
+					      			'$"YouTube em Modo TV"'
+					    		</label>
+					  		</div>
+					  	</div>
+
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="row"><div class="s12"></div></div>
+                                <a href="index.sh.htm" class="button tooltipped" data-position="top" data-delay="100"
+                                data-tooltip="'$"Ir para página inicial"'" style="margin-right:30px;">'$"Voltar"'</a>
+                                <button type="submit" class="button tooltipped" data-position="top" data-delay="100"
+                                data-tooltip="'$"Inicia a instalação"'" id="install">'$"Instalar"'</button>
+                            </div>
+                        </div>
                     </form>
                 </h1>
             </div>
@@ -113,87 +119,77 @@ echo '
         <script type='text/javascript'>
         \$(document).ready(function(){
 
+        	var iconSelected = \$('select').val();
+        	\$('#browsericon').attr('src', 'icons/'+iconSelected+'.png');
+        	if(iconSelected == 'firefox' || iconSelected == 'falkon' || iconSelected == 'waterfox-latest'){
+        		\$('#perfil').hide();} else {\$('#perfil').show();
+        	}
+
             \$('select').on('change', function() {
-                \$('#browsericon').attr('src', 'icons/'+this.value+'.png')
+                \$('#browsericon').attr('src', 'icons/'+this.value+'.png');
+                if(this.value == 'firefox' || this.value == 'falkon' || this.value == 'waterfox-latest'){
+                	\$('#perfil').hide();} else {\$('#perfil').show();
+                }
+            });
+
+            \$('#modetv').hide();
+            \$('#urldesk').focusout(function(){
+                if(\$(this).val().match(/youtu/gi)){\$('#modetv').show();} else {\$('#modetv').hide();}
             });
 
             \$('#btn').click(function(e){
                 e.preventDefault();
-
                 \$.get('./icon.sh', function(dados) {
-
                     \$('#icondesk').val(dados);
                     \$('#preview').attr('src', dados);
                     \$('#btn').html('"$"Alterar""');
-
                 });
             });
 
             \$('#favicon').click(function(e){
                 e.preventDefault();
-
                 var url = \$('#urldesk').val();
-
                 if (url == 'https://' || url == '') {
-
+                	\$('#urldesk').focus();
                     \$('#urldesk').val('"$"Digite ou cole a URL!""');
-
                     setTimeout(function () {
-                        \$('#urldesk').val('https://');
-                        \$('#urldesk').focus();
+                        \$('#urldesk').val('');
+                        \$('#icondesk').focus();
                     },2500);
-
                 } else {
-
                     \$('#favicon').html('"$"Detectando...""');
-
                     \$.get('./fav.sh', url, function(data) {
-
                         \$('#icondesk').val(data);
                         \$('#preview').attr('src', data);
                         \$('#favicon').html('"$"Detectar Ícone""');
                         \$('#btn').html('"$"Alterar""');
                     });
-
                 }
             });
 
-
             \$('#install').click(function(e){
-
                 var nome = \$('#namedesk').val();
                 var url = \$('#urldesk').val();
-
                 if (nome == '') {
                     e.preventDefault();
-
+                    \$('#namedesk').focus();
                     \$('#namedesk').val('"$"Digite ou cole o Nome!""');
-
                     setTimeout(function () {
                         \$('#namedesk').val('');
-                        \$('#namedesk').focus();
+                        \$('#icondesk').focus();
                     },2500);
-
                 }
-
                 else if (url == 'https://' || url == '') {
                     e.preventDefault();
-
+                    \$('#urldesk').focus();
                     \$('#urldesk').val('"$"Digite ou cole a URL!""');
-
                     setTimeout(function () {
-                        \$('#urldesk').val('https://');
-                        \$('#urldesk').focus();
+                        \$('#urldesk').val('');
+                        \$('#icondesk').focus();
                     },2500);
-
                 }
-
-                else { 
-                    \$('#install').submit();
-                } 
+                else {\$('#install').submit();}
             });
         });
         </script>
     </body>"
-
-

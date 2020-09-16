@@ -4,17 +4,20 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
-NAMEDESK="$(sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚüÜçÇ/aAaAaAaAeEeEiIoOoOoOuUuUcC/;s| |-|g;s|/|-|g;s|.*|\L&|' <<< "$p_namedesk")"
+NAMEDESK="$(sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚüÜçÇ/aAaAaAaAeEeEiIoOoOoOuUuUcC/;
+				 s|^ *||;s| *$||g;s| |-|g;s|/|-|g;
+				 s|.*|\L&|' <<< "$p_namedesk")"
 
 if [ "$p_browser" = "firefox" -o "$p_browser" = "waterfox-latest" ];then
 
     if [ "$(egrep "(http|https)://" <<< "$p_urldesk")" = "" ];then
-        
+
         if [ "$p_tvmode" = "on" -a "$(egrep "(youtu.be|youtube)" <<< "$p_urldesk")" != "" ];then
             urldesk="https://www.youtube.com/embed/$(basename "$p_urldesk" | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
         else
             urldesk="https://$p_urldesk"
         fi
+
     else
         if [ "$p_tvmode" = "on" -a "$(egrep "(youtu.be|youtube)" <<< "$p_urldesk")" != "" ];then
             urldesk="https://www.youtube.com/embed/$(basename "$p_urldesk" | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
@@ -23,19 +26,30 @@ if [ "$p_browser" = "firefox" -o "$p_browser" = "waterfox-latest" ];then
         fi
     fi
 
+    CHECKURL=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "$p_urldesk")
 
-    ICONFILE=$(basename "$p_icondesk")
-    if [ -z "$ICONFILE" -o "$p_icondesk" = "/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png" ];then
+    if [ $CHECKURL -ge 400 -o $CHECKURL -eq 000 ];then
+        kdialog --title "BigLinux WebApps" --icon "internet-web-browser" --error $"Algo de errado aconteceu...\nPor favor, tente novamente!"
+        echo '<script>window.location.replace("index-install.sh.htm");</script>'
+        exit
+    fi
+
+
+    if [ -z "$p_icondesk" -o "$p_icondesk" = "/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png" ];then
         ICON_FILE="/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png"
     else
-    	mv "$p_icondesk" $HOME/.local/share/icons/"$p_browser-$ICONFILE"
-    	FILE_PNG=$(sed 's|\..*|.png|' <<< $ICONFILE)
-    	convert $HOME/.local/share/icons/"$p_browser-$ICONFILE" -thumbnail 32x32 \
-    			-alpha on -background none -flatten $HOME/.local/share/icons/"$p_browser-$FILE_PNG"
-    	if [ "$(grep "png" <<< $HOME/.local/share/icons/"$p_browser-$ICONFILE")" == "" ];then
-    		rm $HOME/.local/share/icons/"$p_browser-$ICONFILE"
-    	fi
-        ICON_FILE="$HOME/.local/share/icons/$p_browser-$FILE_PNG"
+    	if [ "$(dirname "$p_icondesk")" = "/tmp" ];then
+			mv "$p_icondesk" $HOME/.local/share/icons
+		else
+			cp "$p_icondesk" $HOME/.local/share/icons
+		fi
+		NAME_FILE=$(basename "$p_icondesk")
+    	FILE_PNG=$(sed 's|\..*|.png|' <<< $NAME_FILE)
+    	convert $HOME/.local/share/icons/"$NAME_FILE" -thumbnail 32x32 \
+    			-alpha on -background none -flatten $HOME/.local/share/icons/"$p_browser-$NAMEDESK-$FILE_PNG"
+    	rm $HOME/.local/share/icons/"$NAME_FILE"
+
+        ICON_FILE="$HOME/.local/share/icons/$p_browser-$NAMEDESK-$FILE_PNG"
     fi
 
 cat > $HOME/.local/bin/"$NAMEDESK-$p_browser" <<EOF
@@ -133,7 +147,7 @@ rm /tmp/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop
 elif [ "$p_browser" = "falkon" ]; then
 
 	if [ "$(egrep "(http|https)://" <<< "$p_urldesk")" = "" ];then
-        
+
         if [ "$p_tvmode" = "on" -a "$(egrep "(youtu.be|youtube)" <<< "$p_urldesk")" != "" ];then
             urldesk="https://www.youtube.com/embed/$(basename "$p_urldesk" | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
         else
@@ -147,15 +161,32 @@ elif [ "$p_browser" = "falkon" ]; then
         fi
     fi
 
-    mkdir -p $HOME/.config/falkon/profiles/"$NAMEDESK"
-    cp /usr/share/biglinux/webapps/falkon/settings.ini $HOME/.config/falkon/profiles/"$NAMEDESK"
+    CHECKURL=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "$p_urldesk")
 
-    ICONFILE=$(basename "$p_icondesk")
-    if [ -z "$ICONFILE" -o "$p_icondesk" = "/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png" ]; then
-        ICON_FILE="internet-web-browser"
+    if [ $CHECKURL -ge 400 -o $CHECKURL -eq 000 ];then
+        kdialog --title "BigLinux WebApps" --icon "internet-web-browser" --error $"Algo de errado aconteceu...\nPor favor, tente novamente!"
+        echo '<script>window.location.replace("index-install.sh.htm");</script>'
+        exit
+    fi
+
+    mkdir -p $HOME/.config/falkon/profiles/"$NAMEDESK-$p_browser"
+    cp /usr/share/biglinux/webapps/falkon/settings.ini $HOME/.config/falkon/profiles/"$NAMEDESK-$p_browser"
+
+    if [ -z "$p_icondesk" -o "$p_icondesk" = "/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png" ];then
+        ICON_FILE="/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png"
     else
-        mv "$p_icondesk" $HOME/.local/share/icons/"$p_browser-$ICONFILE"
-        ICON_FILE="$HOME/.local/share/icons/$p_browser-$ICONFILE"
+    	if [ "$(dirname "$p_icondesk")" = "/tmp" ];then
+			mv "$p_icondesk" $HOME/.local/share/icons
+		else
+			cp "$p_icondesk" $HOME/.local/share/icons
+		fi
+		NAME_FILE=$(basename "$p_icondesk")
+    	FILE_PNG=$(sed 's|\..*|.png|' <<< $NAME_FILE)
+    	convert $HOME/.local/share/icons/"$NAME_FILE" -thumbnail 32x32 \
+    			-alpha on -background none -flatten $HOME/.local/share/icons/"$p_browser-$NAMEDESK-$FILE_PNG"
+    	rm $HOME/.local/share/icons/"$NAME_FILE"
+
+        ICON_FILE="$HOME/.local/share/icons/$p_browser-$NAMEDESK-$FILE_PNG"
     fi
 
 echo "#!/usr/bin/env xdg-open
@@ -164,52 +195,7 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=$p_namedesk
-Exec=falkon -p $NAMEDESK $urldesk
-Icon=$ICON_FILE
-X-KDE-StartupNotify=true" > /tmp/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop
-
-xdg-desktop-menu install --novendor $HOME/.local/share/desktop-directories/web-apps.directory \
-/tmp/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop
-rm /tmp/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop
-
-    if [ "$p_shortcut" = "on" ];then
-        ln $HOME/.local/share/applications/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop \
-        "$(xdg-user-dir DESKTOP)/$p_namedesk"
-        chmod 755 "$(xdg-user-dir DESKTOP)/$p_namedesk"
-    fi
-
-elif [ "$p_browser" = "min" ]; then
-
-	if [ "$(egrep "(http|https)://" <<< "$p_urldesk")" = "" ];then
-        
-        if [ "$p_tvmode" = "on" -a "$(egrep "(youtu.be|youtube)" <<< "$p_urldesk")" != "" ];then
-            urldesk="https://www.youtube.com/embed/$(basename "$p_urldesk" | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
-        else
-            urldesk="https://$p_urldesk"
-        fi
-    else
-        if [ "$p_tvmode" = "on" -a "$(egrep "(youtu.be|youtube)" <<< "$p_urldesk")" != "" ];then
-            urldesk="https://www.youtube.com/embed/$(basename "$p_urldesk" | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
-        else
-            urldesk="$p_urldesk"
-        fi
-    fi
-
-    ICONFILE=$(basename "$p_icondesk")
-    if [ -z "$ICONFILE" -o "$p_icondesk" = "/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png" ]; then
-        ICON_FILE="internet-web-browser"
-    else
-        mv "$p_icondesk" $HOME/.local/share/icons/"$p_browser-$ICONFILE"
-        ICON_FILE="$HOME/.local/share/icons/$p_browser-$ICONFILE"
-    fi
-
-echo "#!/usr/bin/env xdg-open
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=$p_namedesk
-Exec=min $urldesk
+Exec=falkon -p $NAMEDESK-$p_browser $urldesk
 Icon=$ICON_FILE
 X-KDE-StartupNotify=true" > /tmp/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop
 
@@ -233,6 +219,8 @@ else
         else
             CUT_HTTP=$(sed 's|https://||;s|http://||;s|/|_|g;s|_|__|1;s|_$||;s|_$||;s|&|_|' <<< "$p_urldesk")
         fi
+
+        [ "$p_newperfil" = "on" ] && user="--user-data-dir=$HOME/.bigwebapps/$NAMEDESK-$p_browser" || user=
     else
 
         if [ "$p_tvmode" = "on" -a "$(egrep "(youtu.be|youtube)" <<< "$p_urldesk")" != "" ];then
@@ -242,14 +230,33 @@ else
             CUT_HTTP=$(sed 's|/|_|g;s|_|__|1;s|_$||;s|_$||;s|&|_|' <<< "$p_urldesk")
             p_urldesk="https://$p_urldesk"
         fi
+
+        [ "$p_newperfil" = "on" ] && user="--user-data-dir=$HOME/.bigwebapps/$NAMEDESK-$p_browser" || user=
     fi
 
-    ICONFILE=$(basename "$p_icondesk")
-    if [ -z "$ICONFILE" -o "$p_icondesk" = "/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png" ]; then
-    	ICON_FILE="internet-web-browser"
+    CHECKURL=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "$p_urldesk")
+
+    if [ $CHECKURL -ge 400 -o $CHECKURL -eq 000 ];then
+        kdialog --title "BigLinux WebApps" --icon "internet-web-browser" --error $"Algo de errado aconteceu...\nPor favor, tente novamente!"
+        echo '<script>window.location.replace("index-install.sh.htm");</script>'
+        exit
+    fi
+
+    if [ -z "$p_icondesk" -o "$p_icondesk" = "/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png" ];then
+        ICON_FILE="/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png"
     else
-        mv "$p_icondesk" $HOME/.local/share/icons/"$p_browser-$ICONFILE"
-        ICON_FILE="$HOME/.local/share/icons/$p_browser-$ICONFILE"
+    	if [ "$(dirname "$p_icondesk")" = "/tmp" ];then
+			mv "$p_icondesk" $HOME/.local/share/icons
+		else
+			cp "$p_icondesk" $HOME/.local/share/icons
+		fi
+		NAME_FILE=$(basename "$p_icondesk")
+    	FILE_PNG=$(sed 's|\..*|.png|' <<< $NAME_FILE)
+    	convert $HOME/.local/share/icons/"$NAME_FILE" -thumbnail 32x32 \
+    			-alpha on -background none -flatten $HOME/.local/share/icons/"$p_browser-$NAMEDESK-$FILE_PNG"
+    	rm $HOME/.local/share/icons/"$NAME_FILE"
+
+        ICON_FILE="$HOME/.local/share/icons/$p_browser-$NAMEDESK-$FILE_PNG"
     fi
 
 echo "#!/usr/bin/env xdg-open
@@ -258,7 +265,7 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=$p_namedesk
-Exec=$p_browser --class=\"$CUT_HTTP,Chromium-browser\" --profile-directory=Default --app=$p_urldesk
+Exec=$p_browser $user --class=\"$CUT_HTTP,Chromium-browser\" --profile-directory=Default --app=$p_urldesk
 Icon=$ICON_FILE
 StartupWMClass=$CUT_HTTP" > /tmp/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop
 
@@ -274,6 +281,9 @@ rm /tmp/"$NAMEDESK-$p_browser"-webapp-biglinux-custom.desktop
 fi
 
 if [ "$?" = "0" ]; then
+
+    nohup update-desktop-database -q $HOME/.local/share/applications &
+    nohup kbuildsycoca5 &> /dev/null &
 
     kdialog --title "BigLinux WebApps" --icon "internet-web-browser" \
             --yesno $"O WebApp foi instalado com sucesso!\nVocê deseja instalar outro WebApp?"

@@ -12,25 +12,26 @@ mkdir -p $HOME/.local/share/desktop-directories
 if [ ! -e $HOME/.local/share/desktop-directories/google-apps.directory -o \
 	 ! -e $HOME/.local/share/desktop-directories/web-apps.directory ];then
 
-	 	cp /usr/share/biglinux/webapps/share/*.directory $HOME/.local/share/desktop-directories
+	cp /usr/share/biglinux/webapps/share/*.directory $HOME/.local/share/desktop-directories
 fi
 
 mkdir -p $HOME/.config/menus/applications-merged
 if [ ! -e $HOME/.config/menus/applications-merged/google-applications.menu -o \
 	 ! -e $HOME/.config/menus/applications-merged/user-web-apps.menu ];then
 
-	 	cp /usr/share/biglinux/webapps/share/*.menu $HOME/.config/menus/applications-merged
-	 	
-elif [ "$(grep "onlinedoctranslator" $HOME/.config/menus/applications-merged/user-web-apps.menu)" = "" ];then
-	sed -i '30 a \\t\t<Filename>onlinedoctranslator-webapp-biglinux.desktop</Filename>' $HOME/.config/menus/applications-merged/user-web-apps.menu
-	sed -i '31 a \\t\t<Filename>pdfwordconvert-webapp-biglinux.desktop</Filename>' $HOME/.config/menus/applications-merged/user-web-apps.menu
+	cp /usr/share/biglinux/webapps/share/*.menu $HOME/.config/menus/applications-merged
+
+elif [ "$(grep 'googlemeet' $HOME/.config/menus/applications-merged/google-applications.menu)" = "" -o \
+	   "$(grep 'pdfwordconvert' $HOME/.config/menus/applications-merged/user-web-apps.menu)" = "" ];then
+
+	cp -f /usr/share/biglinux/webapps/share/*.menu $HOME/.config/menus/applications-merged
 fi
 
 hour="$(date +%H)"
 
-if [ "$hour" -gt "06" -a "$hour" -lt "12" ];then
+if [ "$hour" -ge "06" -a "$hour" -le "12" ];then
     msg=$"Bom dia ""$USER!"
-elif [ "$hour" -gt "12" -a "$hour" -lt "19" ];then
+elif [ "$hour" -ge "12" -a "$hour" -le "19" ];then
     msg=$"Boa tarde ""$USER!"
 else
     msg=$"Boa noite ""$USER!"
@@ -39,10 +40,10 @@ fi
 echo "
     <head>
         <title>BigLinux WebApps</title>
-        <link rel='stylesheet' type='text/css' href='/usr/share/bigbashview/bcc/materialize/css/materialize.css'>
+        <link rel='stylesheet' type='text/css' href='/usr/share/bigbashview/bcc/materialize/css/materialize.min.css'>
         <link rel='stylesheet' type='text/css' href='init.css'>
         <script src='/usr/share/bigbashview/bcc/materialize/js/jquery.js'></script>
-        <script src='/usr/share/bigbashview/bcc/materialize/js/materialize.js'></script>
+        <script src='/usr/share/bigbashview/bcc/materialize/js/materialize.min.js'></script>
         <script src='/usr/share/bigbashview/bcc/js/big.js'></script>
     </head>
     <body>
@@ -53,16 +54,16 @@ echo "
 
                     echo '<div class="panel bw">
                             <a href="index-install.sh.htm" class="css_btn_class black-text tooltipped"
-                               data-position="top" data-delay="150"
+                               data-position="top" data-delay="100"
                                data-tooltip="'$"Instala um novo WebApp BigLinux"'"><button class="button">
                                 <img src="add.png"/><br>' $"Instalar WebApps"'</button>
                             </a><br>
                             <a href="index-remove.sh.htm" class="css_btn_class black-text tooltipped"
-                               data-position="top" data-delay="150"
+                               data-position="top" data-delay="100"
                                data-tooltip="'$"Remove um WebApp BigLinux"'"><button class="button">
                                 <img src="delete.png"/><br>' $"Remover WebApps"'</button></a><br>
                             <a href="index2.sh.htm" class="css_btn_class black-text tooltipped"
-                               data-position="top" data-delay="150"
+                               data-position="top" data-delay="100"
                                data-tooltip="'$"Ative ou desative os WebApps instalados por padrão no sistema"'">
                                <button class="button"><img src="edit.png"/><br>' $"Ativar / Desativar WebApps" '</button>
                             </a>

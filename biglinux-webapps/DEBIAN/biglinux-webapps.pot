@@ -7,7 +7,7 @@
 msgid   ""
 msgstr  "Project-Id-Version: biglinux-webapps\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2020-06-21 19:13-0300\n"
+        "POT-Creation-Date: 2020-09-16 04:50-0300\n"
         "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
         "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,52 @@ msgstr  ""
 msgid   "Arquivos de Imagem(*.bmp *.png *.ico *.xpm *.jpg)"
 msgstr  ""
 
-msgid   "Remover WebApps BigLinux:"
+msgid   "Instalar WebApps BigLinux:"
+msgstr  ""
+
+msgid   "Nome:"
+msgstr  ""
+
+msgid   "URL:"
+msgstr  ""
+
+msgid   "Detecta automaticamente o ícone do site informado,<br/>mas não são "
+        "todos os sites que suportam o recurso.<br/>Por exemplo, sites que "
+        "necessitam de login."
+msgstr  ""
+
+msgid   "Detectar Ícone"
+msgstr  ""
+
+msgid   "Ícone:"
+msgstr  ""
+
+msgid   "Carrega um arquivo de imagem para ser usado como ícone."
+msgstr  ""
+
+msgid   "Abrir"
+msgstr  ""
+
+msgid   "Navegador:"
+msgstr  ""
+
+msgid   "Essa opção permite que você crie webapps<br>que não compartilham "
+        "informações.<br>Por exemplo, para logar em contas de e-mails "
+        "diferentes,<br>assim cada webapp manterá o login separadamente."
+msgstr  ""
+
+msgid   "Novo Perfil"
+msgstr  ""
+
+msgid   "Adicionar atalho na Área de Trabalho"
+msgstr  ""
+
+msgid   "Essa opção permite que você visualize os<br>vídeos do YouTube sem "
+        "outras informações.<br>Por exemplo, sem propagandas e sem outros "
+        "vídeos."
+msgstr  ""
+
+msgid   "YouTube em Modo TV"
 msgstr  ""
 
 msgid   "Ir para página inicial"
@@ -31,7 +76,25 @@ msgstr  ""
 msgid   "Voltar"
 msgstr  ""
 
-msgid   "Inicia a remoção"
+msgid   "Inicia a instalação"
+msgstr  ""
+
+msgid   "Instalar"
+msgstr  ""
+
+msgid   "Alterar"
+msgstr  ""
+
+msgid   "Digite ou cole a URL!"
+msgstr  ""
+
+msgid   "Detectando..."
+msgstr  ""
+
+msgid   "Digite ou cole o Nome!"
+msgstr  ""
+
+msgid   "Remover WebApps BigLinux:"
 msgstr  ""
 
 msgid   "Remover"
@@ -45,9 +108,6 @@ msgid   "Se você deseja instalar um novo<br> WebApp BigLinux, clique no botão 
 msgstr  ""
 
 msgid   "Ir para página de instalação do WebApp"
-msgstr  ""
-
-msgid   "Instalar"
 msgstr  ""
 
 msgid   "Bom dia "
@@ -83,11 +143,11 @@ msgstr  ""
 msgid   "Ative ou desative os WebApps BigLinux:"
 msgstr  ""
 
-msgid   "O WebApp foi instalado com sucesso!\\nVocê deseja instalar outro "
-        "WebApp?"
+msgid   "Algo de errado aconteceu...\\nPor favor, tente novamente!"
 msgstr  ""
 
-msgid   "Algo de errado aconteceu...\\nPor favor, tente novamente!"
+msgid   "O WebApp foi instalado com sucesso!\\nVocê deseja instalar outro "
+        "WebApp?"
 msgstr  ""
 
 msgid   "Você tem certeza que deseja remover este WebApp?"
@@ -95,53 +155,4 @@ msgstr  ""
 
 msgid   "O WebApp foi removido com sucesso!\\nVocê deseja remover outro "
         "WebApp?"
-msgstr  ""
-
-msgid   "Instalar WebApps BigLinux:"
-msgstr  ""
-
-msgid   "Nome:"
-msgstr  ""
-
-msgid   "URL:"
-msgstr  ""
-
-msgid   "Detecta automaticamente o ícone do site informado,<br>mas não são "
-        "todos os sites que suportam o recurso"
-msgstr  ""
-
-msgid   "Detectar Ícone"
-msgstr  ""
-
-msgid   "Ícone:"
-msgstr  ""
-
-msgid   "Carrega um arquivo de imagem para ser usado como ícone"
-msgstr  ""
-
-msgid   "Abrir"
-msgstr  ""
-
-msgid   "Navegador:"
-msgstr  ""
-
-msgid   "Adicionar atalho na área de trabalho"
-msgstr  ""
-
-msgid   "YouTube em modo TV"
-msgstr  ""
-
-msgid   "Inicia a instalação"
-msgstr  ""
-
-msgid   "Alterar"
-msgstr  ""
-
-msgid   "Digite ou cole a URL!"
-msgstr  ""
-
-msgid   "Detectando..."
-msgstr  ""
-
-msgid   "Digite ou cole o Nome!"
 msgstr  ""
