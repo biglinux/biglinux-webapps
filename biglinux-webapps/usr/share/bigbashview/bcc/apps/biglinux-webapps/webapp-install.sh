@@ -107,7 +107,7 @@ echo \
 sed -i 's|user_pref("browser.urlbar.placeholderName.*||g' "\$HOME/.bigwebapps/$NAMEDESK-$p_browser"/prefs.js
 
 
-MOZ_DISABLE_GMP_SANDBOX=1 MOZ_DISABLE_CONTENT_SANDBOX=1 $p_browser --class=$(echo "$p_browser"'webapp-'"$NAMEDESK") -profile "\$HOME/.bigwebapps/$NAMEDESK-$p_browser" -no-remote -new-instance "$urldesk" &
+MOZ_DISABLE_GMP_SANDBOX=1 MOZ_DISABLE_CONTENT_SANDBOX=1 $p_browser --no-default-browser-check --class=$(echo "$p_browser"'webapp-'"$NAMEDESK") -profile "\$HOME/.bigwebapps/$NAMEDESK-$p_browser" -no-remote -new-instance "$urldesk" &
 
 count=0
 while [ \$count -lt 100 ]; do
