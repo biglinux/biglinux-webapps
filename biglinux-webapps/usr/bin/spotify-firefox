@@ -69,7 +69,7 @@ echo \
 sed -i 's|user_pref("browser.urlbar.placeholderName.*||g' "$DIR"/prefs.js
 
 
-MOZ_DISABLE_GMP_SANDBOX=1 MOZ_DISABLE_CONTENT_SANDBOX=1 firefox --no-default-browser-check --class=firefoxwebapp-spotify -profile "$DIR" -no-remote -new-instance "https://open.spotify.com/browse/featured" &
+MOZ_DISABLE_GMP_SANDBOX=1 MOZ_DISABLE_CONTENT_SANDBOX=1 firefox --class=firefoxwebapp-spotify -profile "$DIR" -no-remote -new-instance "https://open.spotify.com/browse/featured" &
 
 
 count=0

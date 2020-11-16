@@ -13,4 +13,4 @@ else
 fi
 
 cd /usr/share/bigbashview/bcc/apps/biglinux-webapps
-LANGUAGE=$BIGBASHVIEW_LANG bigbashview index.sh.htm -s 1030x600 -w fixed -i default.png
+LANGUAGE=$BIGBASHVIEW_LANG bigbashview index.sh.htm -s 1030x710 -w fixed -i default.png

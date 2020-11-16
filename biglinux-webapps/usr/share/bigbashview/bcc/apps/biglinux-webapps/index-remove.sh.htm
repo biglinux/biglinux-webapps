@@ -17,9 +17,9 @@ echo '
         <div id=page2>
             <div id="middle" class="bar">
                 <h1>
-                    <p>' $"Remover WebApps BigLinux:" '<p><br>'
+                    <p>' $"Remover WebApps BigLinux:" '<p>'
 
-DESKTOP="$(ls $HOME/.local/share/applications/*.desktop | grep "webapp-biglinux-custom" | sort )"
+DESKTOP="$(ls $HOME/.local/share/applications/*webapp-biglinux-custom.desktop)"
 
 if [ "$DESKTOP" != "" ]; then
 c=0

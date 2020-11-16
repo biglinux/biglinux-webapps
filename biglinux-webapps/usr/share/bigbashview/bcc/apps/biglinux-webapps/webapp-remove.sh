@@ -14,32 +14,20 @@ else
     ICONDESK="$(grep "Icon=" $p_filedesk | sed 's|Icon=||')"
     DESKNAME="$(grep "Name=" $p_filedesk | sed 's|Name=||')"
 
-
-
-    if [ "$(grep "Exec=" "$p_filedesk" | egrep '(firefox|waterfox-latest)')" != "" ];then
+    if [ "$(grep "firefox$" $p_filedesk)" != "" ];then
 
         if [ -d $HOME/.bigwebapps/"$NAMEDESK" ]; then
             rm -r $HOME/.bigwebapps/"$NAMEDESK"
         fi
-        unlink "$(xdg-user-dir DESKTOP)/$DESKNAME"
+        unlink "$(xdg-user-dir DESKTOP)/$DESKNAME" &> /dev/null
         rm "$(grep "Exec=" "$p_filedesk" | sed 's|Exec=||')"
         xdg-desktop-menu uninstall "$p_filedesk"
         rm "$ICONDESK"
-
-    elif [ "$(grep "Exec=" "$p_filedesk" | grep 'falkon')" != "" ];then
-
-        if [ -d $HOME/.config/falkon/profiles/"$NAMEDESK" ]; then
-            rm -r $HOME/.config/falkon/profiles/"$NAMEDESK"
-        fi
-        unlink "$(xdg-user-dir DESKTOP)/$DESKNAME"
-        xdg-desktop-menu uninstall "$p_filedesk"
-        rm "$ICONDESK"
-
     else
         if [ -d $HOME/.bigwebapps/"$NAMEDESK" ]; then
             rm -r $HOME/.bigwebapps/"$NAMEDESK"
         fi
-        unlink "$(xdg-user-dir DESKTOP)/$DESKNAME"
+        unlink "$(xdg-user-dir DESKTOP)/$DESKNAME" &> /dev/null
         xdg-desktop-menu uninstall "$p_filedesk"
         rm "$ICONDESK"
     fi

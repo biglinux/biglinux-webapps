@@ -72,9 +72,9 @@ sed -i 's|user_pref("browser.urlbar.placeholderName.*||g' "$DIR"/prefs.js
 
 
 if [ "$(echo $LANG | grep pt)" = "" ]; then
-    MOZ_DISABLE_GMP_SANDBOX=1 MOZ_DISABLE_CONTENT_SANDBOX=1 firefox --no-default-browser-check --class=firefoxwebapp-netflix -profile "$DIR" -no-remote -new-instance "https://www.netflix.com/" &
+    MOZ_DISABLE_GMP_SANDBOX=1 MOZ_DISABLE_CONTENT_SANDBOX=1 firefox --class=firefoxwebapp-netflix -profile "$DIR" -no-remote -new-instance "https://www.netflix.com/" &
 else
-    MOZ_DISABLE_GMP_SANDBOX=1 MOZ_DISABLE_CONTENT_SANDBOX=1 firefox --no-default-browser-check --class=firefoxwebapp-netflix -profile "$DIR" -no-remote -new-instance "https://www.netflix.com/br" &
+    MOZ_DISABLE_GMP_SANDBOX=1 MOZ_DISABLE_CONTENT_SANDBOX=1 firefox --class=firefoxwebapp-netflix -profile "$DIR" -no-remote -new-instance "https://www.netflix.com/br" &
 fi
 
 count=0

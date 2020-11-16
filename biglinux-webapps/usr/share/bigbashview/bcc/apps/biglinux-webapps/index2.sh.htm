@@ -4,6 +4,16 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
+mkdir -p ~/.bigwebapps
+[ ! -e ~/.bigwebapps/BROWSER ] && echo 'chromium' > ~/.bigwebapps/BROWSER
+BROWSER="$(<~/.bigwebapps/BROWSER)"
+case $BROWSER in
+	brave-browser) selectbrave="selected" ;;
+	chromium) selectchromium="selected" ;;
+	google-chrome) selectchrome="selected" ;;
+	vivaldi) selectvivaldi="selected" ;;
+esac
+
 echo '
     <head>
         <title>BigLinux WebApps</title>
@@ -12,13 +22,40 @@ echo '
         <script src="/usr/share/bigbashview/bcc/materialize/js/jquery.js"></script>
         <script src="materialize.min.js"></script>
         <script src="/usr/share/bigbashview/bcc/js/big.js"></script>
+        <script>
+        	$(document).ready(function(){
+
+        		$("select").on("change", function() {
+        			$.get("./change_browser.sh", this.value);
+        		});
+
+        	});
+        </script>
     </head>
     <body>
         <div id="page2">
             <div id="mid" class="bar">
-                <h1>
-                    <p>' $"Ative ou desative os WebApps BigLinux:" '</p>
-                </h1><br/>'
+                <h1>' $"Ative ou desative os WebApps BigLinux:" '</h1>
+                <div class="row" style="margin-top:-20px">
+                	<h1 class="col s3">'$"Navegador:"'</h1>
+                    <h1 class="col s6">
+                    	<select>'
+							if type -P brave-browser;then
+	                    		echo " <option value='brave-browser' data-icon='icons/brave-browser.png' $selectbrave>BRAVE</option>"
+	                    	fi
+							if type -P chromium;then
+	                        	echo " <option value='chromium' data-icon='icons/chromium.png' $selectchromium>CHROMIUM</option>"
+	                        fi
+							if type -P google-chrome;then
+	                        	echo " <option value='google-chrome' data-icon='icons/google-chrome.png' $selectchrome>GOOGLE CHROME</option>"
+	                        fi
+							if type -P vivaldi;then
+	                        	echo " <option value='vivaldi' data-icon='icons/vivaldi.png' $selectvivaldi>VIVALDI</option>"
+	                        fi
+                   echo '
+	                    </select>
+	                </h1>
+	            </div>'
 
 DESKTOP="$(ls /usr/share/biglinux/webapps/*.desktop | sort )"
 

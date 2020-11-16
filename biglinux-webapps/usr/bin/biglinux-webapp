@@ -1,32 +1,21 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+BROWSER="$(<~/.bigwebapps/BROWSER)"
+[ -z $BROWSER ] && BROWSER="chromium"
 
 if [ "$(grep "https://youtube.com" <<< "$*")" != "" ];then
-    exec /usr/bin/chromium-browser $*
+    exec /usr/bin/chromium $*
 
 elif [ "$1" = "cleverpdf" ];then
-	if [ -e "/usr/bin/google-chrome" ]; then
-		if [ "$(grep "pt" <<< "$LANG")" != "" ]; then
-			exec /usr/bin/google-chrome --class="www.cleverpdf.com__pt,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com/pt
-		elif [ "$(grep "es" <<< "$LANG")" != "" ]; then
-			exec /usr/bin/google-chrome --class="www.cleverpdf.com__es,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com/es
-		else
-			exec /usr/bin/google-chrome --class="www.cleverpdf.com,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com
-		fi
+	if [ "$(grep "pt" <<< "$LANG")" != "" ]; then
+		exec $BROWSER --class="www.cleverpdf.com__pt,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com/pt
+	elif [ "$(grep "es" <<< "$LANG")" != "" ]; then
+		exec $BROWSER --class="www.cleverpdf.com__es,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com/es
 	else
-		if [ "$(grep "pt" <<< "$LANG")" != "" ]; then
-			exec /usr/bin/chromium-browser --class="www.cleverpdf.com__pt,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com/pt
-		elif [ "$(grep "es" <<< "$LANG")" != "" ]; then
-			exec /usr/bin/chromium-browser --class="www.cleverpdf.com__es,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com/es
-		else
-			exec /usr/bin/chromium-browser --class="www.cleverpdf.com,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com
-		fi
+		exec $BROWSER --class="www.cleverpdf.com,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com
 	fi
 
-
-elif [ -e "/usr/bin/google-chrome" ]; then
-    exec /usr/bin/google-chrome $*
-
 else
-	exec /usr/bin/chromium-browser $*
+	exec $BROWSER $*
 fi
 

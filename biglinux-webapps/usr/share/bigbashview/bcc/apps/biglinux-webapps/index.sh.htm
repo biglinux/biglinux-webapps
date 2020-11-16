@@ -20,11 +20,36 @@ if [ ! -e $HOME/.config/menus/applications-merged/google-applications.menu -o \
 	 ! -e $HOME/.config/menus/applications-merged/user-web-apps.menu ];then
 
 	cp /usr/share/biglinux/webapps/share/*.menu $HOME/.config/menus/applications-merged
+fi
 
-elif [ "$(grep 'googlemeet' $HOME/.config/menus/applications-merged/google-applications.menu)" = "" -o \
-	   "$(grep 'pdfwordconvert' $HOME/.config/menus/applications-merged/user-web-apps.menu)" = "" ];then
+if [ "$(grep 'amazonmusic' $HOME/.config/menus/applications-merged/user-web-apps.menu)" = "" ];then
 
-	cp -f /usr/share/biglinux/webapps/share/*.menu $HOME/.config/menus/applications-merged
+	sed -i '11i \        <Filename>amazonmusic-webapp-biglinux.desktop</Filename>' \
+    $HOME/.config/menus/applications-merged/user-web-apps.menu
+
+fi
+
+if [ "$(grep 'pdfwordconvert' $HOME/.config/menus/applications-merged/user-web-apps.menu)" = "" ]; then
+
+    sed -i '22i \        <Filename>onlinedoctranslator-webapp-biglinux.desktop</Filename>' \
+    $HOME/.config/menus/applications-merged/user-web-apps.menu
+
+    sed -i '24i \        <Filename>pdfwordconvert-webapp-biglinux.desktop</Filename>' \
+    $HOME/.config/menus/applications-merged/user-web-apps.menu
+
+fi
+
+if [ "$(grep 'googlemeet' $HOME/.config/menus/applications-merged/google-applications.menu)" = "" ]; then
+
+    sed -i '18i \        <Filename>googlemeet-webapp-biglinux.desktop</Filename>' \
+    $HOME/.config/menus/applications-merged/google-applications.menu
+
+    sed -i '14i \        <Filename>googledrawings-webapp-biglinux.desktop</Filename>' \
+    $HOME/.config/menus/applications-merged/google-applications.menu
+
+    sed -i '11i \        <Filename>googleclassroom-webapp-biglinux.desktop</Filename>' \
+    $HOME/.config/menus/applications-merged/google-applications.menu
+
 fi
 
 hour="$(date +%H)"
