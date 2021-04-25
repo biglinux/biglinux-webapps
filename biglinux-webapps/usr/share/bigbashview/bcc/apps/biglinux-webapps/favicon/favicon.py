@@ -151,8 +151,9 @@ def tags(url, html):
         width, height = dimensions(tag)
         _, ext = os.path.splitext(url_parsed.path)
 
-        icon = Icon(url_parsed.geturl(), width, height, ext[1:].lower())
-        icons.add(icon)
+        if width == height:
+            icon = Icon(url_parsed.geturl(), width, height, ext[1:].lower())
+            icons.add(icon)
 
     return icons
 
