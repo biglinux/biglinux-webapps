@@ -115,8 +115,9 @@ rm "/tmp/$NAMEDESK-$browser-webapp-biglinux-custom.desktop"
 
     if [ "$shortcut" = "on" ];then
         ln "$HOME/.local/share/applications/$NAMEDESK-$browser-webapp-biglinux-custom.desktop" \
-        "$(xdg-user-dir DESKTOP)/$namedesk"
-        chmod 755 "$(xdg-user-dir DESKTOP)/$namedesk"
+        "$(xdg-user-dir DESKTOP)/$namedesk.desktop"
+        chmod 777 "$(xdg-user-dir DESKTOP)/$namedesk.desktop"
+        gio set "$(xdg-user-dir DESKTOP)/$namedesk.desktop" -t string metadata::trust "true"
     fi
 
 else
@@ -177,8 +178,9 @@ rm "/tmp/$NAMEDESK-$browser-webapp-biglinux-custom.desktop"
 
     if [ "$shortcut" = "on" ];then
         ln "$HOME/.local/share/applications/$NAMEDESK-$browser-webapp-biglinux-custom.desktop" \
-        "$(xdg-user-dir DESKTOP)/$namedesk"
-        chmod 755 "$(xdg-user-dir DESKTOP)/$namedesk"
+        "$(xdg-user-dir DESKTOP)/$namedesk.desktop"
+        chmod 777 "$(xdg-user-dir DESKTOP)/$namedesk.desktop"
+        gio set "$(xdg-user-dir DESKTOP)/$namedesk.desktop" -t string metadata::trust "true"
     fi
 fi
 

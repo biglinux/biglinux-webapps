@@ -3,7 +3,7 @@
 2d5f71b6d8eaff2f6e41426248af9d46  DEBIAN/es.po
 5993f69e3918563b57abb07bb01c3d7c  DEBIAN/languages
 d41d8cd98f00b204e9800998ecf8427e  DEBIAN/md5sums
-a5687672dbf374603f7ef9ac56b470fa  DEBIAN/control
+20df34e1eefdbab1988e7e2e04f0b67e  DEBIAN/control
 8bee14980dcb976f0441916d98736427  usr/bin/biglinux-webapp
 cc24cacbfc3660ab145264fbf16b96dd  usr/bin/biglinux-webapps
 0e66bdb268fea9e07cb1e05dddb460d2  usr/bin/netflix-firefox
@@ -21,6 +21,8 @@ e7a86b5d5a7a452f996277aabcb39e01  usr/share/bigbashview/bcc/apps/edit.png
 0ef065f60c07f4d9bcc3a8d37a65e115  usr/share/bigbashview/bcc/apps/favicon/README.rst
 9dfd4337e2ce33762355a6b34635388a  usr/share/bigbashview/bcc/apps/favicon/__init__.py
 d35498912020fc595e4a9422719ac629  usr/share/bigbashview/bcc/apps/favicon/favicon.py
+a4230d10f9cd36700e05173cbced242b  usr/share/bigbashview/bcc/apps/favicon/__pycache__/__init__.cpython-38.pyc
+581ca79bba1cea7f9d3d61eadd87bb76  usr/share/bigbashview/bcc/apps/favicon/__pycache__/favicon.cpython-38.pyc
 4d0d3ab0ed4768c955de1db2d539ea88  usr/share/bigbashview/bcc/apps/get_clipboard.py
 4c3f1b470a89fb924acda21c5f9f3f01  usr/share/bigbashview/bcc/apps/get_clipboard.sh
 d7304f88581bffeb9b8c328e96d6131d  usr/share/bigbashview/bcc/apps/get_favicon.py
@@ -41,8 +43,8 @@ b15be19f1b33625e3b470114d47ede0c  usr/share/bigbashview/bcc/apps/index-remove.sh
 62dee80d32d2a40343635f7e1dce1877  usr/share/bigbashview/bcc/apps/materialize.min.css
 1900480d2dfcefdbcd4ec06b488b316e  usr/share/bigbashview/bcc/apps/materialize.min.js
 ea945a4c3df7bb771a31014ed70ee09e  usr/share/bigbashview/bcc/apps/paste.png
-db825e7494237b6f323d0a9b2157075e  usr/share/bigbashview/bcc/apps/webapp-install.sh
-ee21891c8190f7c0d98a6646ccf99f03  usr/share/bigbashview/bcc/apps/webapp-remove.sh
+4844d7e2452f51176a001df77d19ce49  usr/share/bigbashview/bcc/apps/webapp-install.sh
+46a075873fd05beb5377c500f8b3c9e8  usr/share/bigbashview/bcc/apps/webapp-remove.sh
 b75cb6ab0d462547ea483a01184554b8  usr/share/biglinux/webapps/amazonmusic-webapp-biglinux.desktop
 d93e7ad2e91458757c338f5fdfed6fbe  usr/share/biglinux/webapps/biglinuxforum-webapp-biglinux.desktop
 befaba9c5dfc845a248e0d0dc414e175  usr/share/biglinux/webapps/bin/xseticon

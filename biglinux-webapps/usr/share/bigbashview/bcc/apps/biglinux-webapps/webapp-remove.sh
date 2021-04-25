@@ -10,25 +10,25 @@ kdialog --title "BigLinux WebApps" --icon "internet-web-browser" \
 if [ "$?" != "0" ]; then
     exit
 else
-    NAMEDESK="$(basename -s .desktop "$p_filedesk" | sed 's|-webapp-biglinux-custom||')"
-    ICONDESK="$(grep "Icon=" $p_filedesk | sed 's|Icon=||')"
-    DESKNAME="$(grep "Name=" $p_filedesk | sed 's|Name=||')"
+    NAMEDESK="$(basename -s .desktop "$filedesk" | sed 's|-webapp-biglinux-custom||')"
+    ICONDESK="$(grep "Icon=" $filedesk | sed 's|Icon=||')"
+    DESKNAME="$(grep "Name=" $filedesk | sed 's|Name=||')"
 
-    if [ "$(grep "firefox$" $p_filedesk)" != "" ];then
+    if [ "$(grep "firefox$" $filedesk)" != "" ];then
 
         if [ -d $HOME/.bigwebapps/"$NAMEDESK" ]; then
             rm -r $HOME/.bigwebapps/"$NAMEDESK"
         fi
-        unlink "$(xdg-user-dir DESKTOP)/$DESKNAME" &> /dev/null
-        rm "$(grep "Exec=" "$p_filedesk" | sed 's|Exec=||')"
-        xdg-desktop-menu uninstall "$p_filedesk"
+        unlink "$(xdg-user-dir DESKTOP)/$DESKNAME.desktop" &> /dev/null
+        rm "$(grep "Exec=" "$filedesk" | sed 's|Exec=||')"
+        xdg-desktop-menu uninstall "$filedesk"
         rm "$ICONDESK"
     else
         if [ -d $HOME/.bigwebapps/"$NAMEDESK" ]; then
             rm -r $HOME/.bigwebapps/"$NAMEDESK"
         fi
-        unlink "$(xdg-user-dir DESKTOP)/$DESKNAME" &> /dev/null
-        xdg-desktop-menu uninstall "$p_filedesk"
+        unlink "$(xdg-user-dir DESKTOP)/$DESKNAME.desktop" &> /dev/null
+        xdg-desktop-menu uninstall "$filedesk"
         rm "$ICONDESK"
     fi
 
