@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 
 BROWSER="$(<~/.bigwebapps/BROWSER)"
-[ -z $BROWSER ] && BROWSER="chromium"
+[ -z $BROWSER ] && BROWSER="brave-browser"
 
-if [ "$(grep "https://youtube.com" <<< "$*")" != "" ];then
-    exec /usr/bin/chromium $*
-
-elif [ "$1" = "cleverpdf" ];then
+if [ "$1" = "cleverpdf" ];then
 	if [ "$(grep "pt" <<< "$LANG")" != "" ]; then
 		exec $BROWSER --class="www.cleverpdf.com__pt,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com/pt
 	elif [ "$(grep "es" <<< "$LANG")" != "" ]; then
