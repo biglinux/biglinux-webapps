@@ -5,7 +5,7 @@ export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
 mkdir -p ~/.bigwebapps
-[ ! -e ~/.bigwebapps/BROWSER ] && echo 'chromium' > ~/.bigwebapps/BROWSER
+[ ! -e ~/.bigwebapps/BROWSER ] && echo 'brave-browser' > ~/.bigwebapps/BROWSER
 BROWSER="$(<~/.bigwebapps/BROWSER)"
 case $BROWSER in
 	brave-browser) selectbrave="selected" ;;
