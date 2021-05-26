@@ -1,7 +1,7 @@
 Package: biglinux-webapps
 Version: 1.2.2-0big2
-Depends: coreutils, bigbashview (>= 3.3.2-0biglinux1), python3-bs4, python3-requests, kdialog, graphicsmagick-imagemagick-compat | imagemagick, sed, grep, curl
-Recommends: firefox, google-chrome-stable | google-chrome-beta | google-chrome-unstable, chromium, brave-browser, vivaldi-stable
+Depends: coreutils, bigbashview (>= 3.3.2-0biglinux1), python3-bs4, python3-requests, kdialog, graphicsmagick-imagemagick-compat | imagemagick, sed, grep
+Recommends: brave-browser, firefox, google-chrome-stable | google-chrome-beta | google-chrome-unstable, chromium, vivaldi-stable
 Architecture: all
 Maintainer: eltonff <eltonfabricio10@gmail.com>
 Section: web
