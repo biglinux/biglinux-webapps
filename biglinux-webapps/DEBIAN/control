@@ -1,12 +1,12 @@
 Package: biglinux-webapps
-Version: 1.2.2-0big2
+Version: 2.0.0-0big0
 Depends: coreutils, bigbashview (>= 3.3.2-0biglinux1), python3-bs4, python3-requests, kdialog, graphicsmagick-imagemagick-compat | imagemagick, sed, grep
-Recommends: brave-browser, firefox, google-chrome-stable | google-chrome-beta | google-chrome-unstable, chromium, vivaldi-stable
+Recommends: firefox, brave-browser | google-chrome-stable | google-chrome-beta | google-chrome-unstable | chromium | vivaldi-stable
 Architecture: all
 Maintainer: eltonff <eltonfabricio10@gmail.com>
 Section: web
 Priority: optional
-Installed-Size:2076
+Installed-Size:2136
 Description: Installs and removes BigLinux WebApps.
 Conflicts: biglinux-webapps, biglinuxforum-webapp, cleverpdf-webapp, create-webapp, deezer-webapp, dictation-webapp, facebook-webapp, gmail-webapp, googlecalendar-webapp, googlecontacts-webapp, googledocs-webapp, googledrive-webapp, googlekeep-webapp, googlemaps-webapp, googlephotos-webapp, googlepresentation-webapp, googlesheets-webapp, googletranslate-webapp, hangouts-webapp, instagram-webapp, messenger-webapp, mewe-webapp, office365-webapp, outlook-webapp, skype-webapp, spotify-webapp, telegram-webapp, tunein-webapp, twitch-webapp, twitter-webapp, waze-webapp, whatsapp-webapp, yahoomail-webapp, youtube-webapp, youtubemusic-webapp, primevideo-firefox, spotify-firefox, netflix-firefox-1080, biglinux-webapps-base
 Replaces: biglinux-webapps, biglinuxforum-webapp, cleverpdf-webapp, create-webapp, deezer-webapp, dictation-webapp, facebook-webapp, gmail-webapp,  googlecalendar-webapp, googlecontacts-webapp, googledocs-webapp, googledrive-webapp, googlekeep-webapp, googlemaps-webapp, googlephotos-webapp, googlepresentation-webapp, googlesheets-webapp, googletranslate-webapp, hangouts-webapp, instagram-webapp, messenger-webapp, mewe-webapp, office365-webapp, outlook-webapp, skype-webapp, spotify-webapp, telegram-webapp, tunein-webapp, twitch-webapp, twitter-webapp, waze-webapp, whatsapp-webapp, yahoomail-webapp, youtube-webapp, youtubemusic-webapp, primevideo-firefox, spotify-firefox, netflix-firefox-1080, biglinux-webapps-base

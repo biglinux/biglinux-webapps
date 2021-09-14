@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #Translation
 export TEXTDOMAINDIR="/usr/share/locale"

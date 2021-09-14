@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #Translation
 export TEXTDOMAINDIR="/usr/share/locale"
@@ -64,14 +64,13 @@ fi
 
 echo "
     <head>
-        <title>BigLinux WebApps</title>
         <link rel='stylesheet' type='text/css' href='/usr/share/bigbashview/bcc/materialize/css/materialize.min.css'>
         <link rel='stylesheet' type='text/css' href='init.css'>
         <script src='/usr/share/bigbashview/bcc/materialize/js/jquery.js'></script>
         <script src='/usr/share/bigbashview/bcc/materialize/js/materialize.min.js'></script>
         <script src='/usr/share/bigbashview/bcc/js/big.js'></script>
     </head>
-    <body>
+    <body oncontextmenu='return false;'>
         <div id='page2'>
             <div id='middle' class='bar'>
                 <h1>"
@@ -81,16 +80,19 @@ echo "
                             <a href="index-install.sh.htm" class="css_btn_class black-text tooltipped"
                                data-position="top" data-delay="100"
                                data-tooltip="'$"Instala um novo WebApp BigLinux"'"><button class="button">
-                                <img src="add.png"/><br>' $"Instalar WebApps"'</button>
-                            </a><br>
+                                <img src="add.png"/><br>' $"Instalar WebApps"'</button></a>
+                            <a href="index-edit.sh.htm" class="css_btn_class black-text tooltipped"
+                               data-position="top" data-delay="100"
+                               data-tooltip="'$"Remove um WebApp BigLinux"'"><button class="button">
+                                <img src="edit.png"/><br>' $"Editar WebApps"'</button></a><br>
                             <a href="index-remove.sh.htm" class="css_btn_class black-text tooltipped"
                                data-position="top" data-delay="100"
                                data-tooltip="'$"Remove um WebApp BigLinux"'"><button class="button">
-                                <img src="delete.png"/><br>' $"Remover WebApps"'</button></a><br>
+                                <img src="delete.png"/><br>' $"Remover WebApps"'</button></a>
                             <a href="index2.sh.htm" class="css_btn_class black-text tooltipped"
                                data-position="top" data-delay="100"
                                data-tooltip="'$"Ative ou desative os WebApps instalados por padrão no sistema"'">
-                               <button class="button"><img src="edit.png"/><br>' $"Ativar / Desativar WebApps" '</button>
+                               <button class="button"><img src="toggle.png"/><br>' $"Ativar / Desativar WebApps" '</button>
                             </a>
                         </div>
                 </h1>

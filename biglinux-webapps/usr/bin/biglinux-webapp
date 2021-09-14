@@ -1,7 +1,22 @@
 #!/usr/bin/env bash
 
 BROWSER="$(<~/.bigwebapps/BROWSER)"
-[ -z $BROWSER ] && BROWSER="brave-browser"
+
+if [ -z $BROWSER ]; then
+    if [ -e "/usr/bin/brave" ]; then
+        BROWSER="brave"
+    elif [ -e "/usr/bin/brave-browser" ]; then
+        BROWSER="brave-browser"
+    elif [ -e "/usr/bin/google-chrome-stable" ]; then
+        BROWSER="google-chrome-stable"
+    elif [ -e "/usr/bin/opera" ]; then
+        BROWSER="opera"
+    elif [ -e "/usr/bin/vivaldi" ]; then
+        BROWSER="vivaldi"
+    else
+        BROWSER="chromium-browser"        
+    fi
+fi
 
 if [ "$1" = "cleverpdf" ];then
 	if [ "$(grep "pt" <<< "$LANG")" != "" ]; then

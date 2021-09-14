@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [ "${LANG:0:2}" = "pt" ]
 then
@@ -13,4 +13,4 @@ else
 fi
 
 cd /usr/share/bigbashview/bcc/apps/biglinux-webapps
-LANGUAGE=$BIGBASHVIEW_LANG bigbashview index.sh.htm -s 1030x710 -w fixed -i default.png
+LANGUAGE=$BIGBASHVIEW_LANG bigbashview index.sh.htm -s 1030x710 -w fixed -i default.png -n 'BigLinux WebApps'
