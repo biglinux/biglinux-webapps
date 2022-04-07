@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
-rm /tmp/*.png 2>/dev/null
+
+[ -e ~/.bigwebapps/LIGHT ] && className='class="light-mode"'
+
 echo '<head>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.min.css">
 </head>
-<body>
+<body '${className}'>
 <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
 <!-- partial:index.partial.html -->
 <div class="dark-light">
@@ -438,7 +440,7 @@ done
 </div>
 <!-- partial -->
   <script src="js/jquery-3.6.0.min.js"></script>
-  <script  src="js/script.js"></script>
+  <script  src="js/code.min.js"></script>
 
 </body>
 </html>'
