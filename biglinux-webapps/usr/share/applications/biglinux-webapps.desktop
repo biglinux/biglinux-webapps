@@ -1,8 +1,9 @@
 [Desktop Entry]
-Exec=biglinux-webapps
-Icon=webapp
-Name[pt_BR]=Adicionar e Remover Web Apps
-Name=Add and Remove Web Apps
-StartupNotify=true
-Terminal=false
 Type=Application
+Name=Add and Remove Web Apps
+Name[pt]=Adicionar e Remover Web Apps
+Icon=webapp
+Exec=biglinux-webapps
+Categories=Webapps;
+Terminal=false
+StartupNotify=true

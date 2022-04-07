@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=PDF Converter
+Name[pt_BR]=Converter PDF
+Exec=/usr/bin/biglinux-webapp --class="www.pdfwordconvert.com__convertform,Chromium-browser" --profile-directory=Default --app=https://www.pdfwordconvert.com/convertform
+Icon=pdfconvert.png
+StartupWMClass=www.pdfwordconvert.com__convertform
+Categories=Webapps;

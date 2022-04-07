@@ -1,47 +1,31 @@
 #!/usr/bin/env bash
 
-#Translation
-export TEXTDOMAINDIR="/usr/share/locale"
-export TEXTDOMAIN=biglinux-webapps
+_NAMEDESK="$(sed 's|https\:\/\/||;s|www\.||;s|\/.*||;s|\.|-|g' <<< $urldesk)"
+USER_DESKTOP="$(xdg-user-dir DESKTOP)"
+LINK_APP="$HOME/.local/share/applications/$_NAMEDESK-$RANDOM-webapp-biglinux-custom.desktop"
+DIR="$(basename $LINK_APP | sed 's|-webapp-biglinux-custom.desktop||')"
+category="Webapps"
 
-NAMEDESK="$(sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚüÜçÇ/aAaAaAaAeEeEiIoOoOoOuUuUcC/;s|^ *||;s| *$||g;s| |-|g;s|/|-|g;s|.*|\L&|' <<< "$namedesk")"
+if [ "$(grep 'firefox' <<< $browser)" ];then
 
-if [ "$browser" = "firefox" ];then
+    [ ! "$(grep 'https://' <<< $urldesk)" ] && urldesk="https://$urldesk"
 
-    if [ "$(egrep "(http|https)://" <<< "$urldesk")" = "" ];then
+    [ "$tvmode" = "on" ] && {
+        YTCODE="$(basename $urldesk | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
+        urldesk="https://www.youtube.com/embed/$YTCODE"
+    }
 
-        if [ "$tvmode" = "on" -a "$(egrep "(youtu.be|youtube)" <<< "$urldesk")" != "" ];then
-            urldesk="https://www.youtube.com/embed/$(basename "$urldesk" | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
-        else
-            urldesk="https://$urldesk"
-        fi
-
+    if [ -z "$icondesk" ];then
+        ICON_FILE="webapp"
     else
-        if [ "$tvmode" = "on" -a "$(egrep "(youtu.be|youtube)" <<< "$urldesk")" != "" ];then
-            urldesk="https://www.youtube.com/embed/$(basename "$urldesk" | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
-        else
-            urldesk="$urldesk"
-        fi
+        NAME_FILE="$(basename $icondesk|sed 's| |-|g')"
+        ICON_FILE="$HOME/.local/share/icons/$NAME_FILE"
+        [ "$(dirname $icondesk)" = "/tmp" ] && mv "$icondesk" $ICON_FILE || cp "$icondesk" $ICON_FILE
     fi
 
-    if [ -z "$icondesk" -o "$icondesk" = "/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png" ];then
-        ICON_FILE="/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png"
-    else
-    	if [ "$(dirname "$icondesk")" = "/tmp" ];then
-			mv "$icondesk" $HOME/.local/share/icons
-		else
-			cp "$icondesk" $HOME/.local/share/icons
-		fi
-		NAME_FILE=$(basename "$icondesk")
-    	FILE_PNG=$(sed 's|\..*|.png|' <<< $NAME_FILE)
-    	convert "$HOME/.local/share/icons/$NAME_FILE" -thumbnail 32x32 \
-    			-alpha on -background none -flatten "$HOME/.local/share/icons/$browser-$NAMEDESK-$FILE_PNG"
-    	rm "$HOME/.local/share/icons/$NAME_FILE"
+DESKBIN="$HOME/.local/bin/$DIR"
 
-        ICON_FILE="$HOME/.local/share/icons/$browser-$NAMEDESK-$FILE_PNG"
-    fi
-
-cat > "$HOME/.local/bin/$NAMEDESK-$browser" <<EOF
+cat > "$DESKBIN" <<EOF
 #!/usr/bin/env sh
 #
 # Amofi - App mode for Firefox
@@ -67,28 +51,31 @@ cat > "$HOME/.local/bin/$NAMEDESK-$browser" <<EOF
 # @copyright 2017-2019 SEPBIT
 # @license   http://www.gnu.org/licenses GPL-3.0-or-later
 # @see       https://notabug.org/sepbit/amofi Repository of Amofi
-#
 
-if [ "\$(grep "toolkit.legacyUserProfileCustomizations.stylesheets" "\$HOME/.bigwebapps/$NAMEDESK-$browser/prefs.js")" = "" ]; then
-    rm -R "\$HOME/.bigwebapps/$NAMEDESK-$browser"
-    mkdir -p "\$HOME/.bigwebapps/$NAMEDESK-$browser/chrome"
-    echo 'user_pref("media.eme.enabled", true);' >> "\$HOME/.bigwebapps/$NAMEDESK-$browser/prefs.js"
-    echo 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);' >> "\$HOME/.bigwebapps/$NAMEDESK-$browser/prefs.js"
+FOLDER="$HOME/.bigwebapps/$DIR"
+
+if [ ! "\$(grep 'toolkit.legacyUserProfileCustomizations.stylesheets' \$FOLDER/prefs.js)" ]; then
+    [ -d "\$FOLDER" ] && rm -r "\$FOLDER"
+    mkdir -p "\$FOLDER/chrome"
+    echo 'user_pref("media.eme.enabled", true);' >> "\$FOLDER/prefs.js"
+    echo 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);' >> "\$FOLDER/prefs.js"
 fi
 
 # Custom profile
-echo "#nav-bar{visibility: collapse;} #TabsToolbar{visibility: collapse;}" >> "\$HOME/.bigwebapps/$NAMEDESK-$browser/chrome/userChrome.css"
-echo "user_pref(\"browser.tabs.warnOnClose\", false);" >> "\$HOME/.bigwebapps/$NAMEDESK-$browser/user.js"
-sed -i 's|user_pref("browser.urlbar.placeholderName.*||g' "\$HOME/.bigwebapps/$NAMEDESK-$browser/prefs.js"
+echo '#nav-bar{visibility: collapse;} #TabsToolbar{visibility: collapse;}' >> "\$FOLDER/chrome/userChrome.css"
+echo 'user_pref("browser.tabs.warnOnClose", false);' >> "\$FOLDER/user.js"
+sed -i 's|user_pref("browser.urlbar.placeholderName.*||g' "\$FOLDER/prefs.js"
+
+CLASS="$browser-webapp-$_NAMEDESK"
 
 MOZ_DISABLE_GMP_SANDBOX=1 MOZ_DISABLE_CONTENT_SANDBOX=1 \
-$browser --class=$browser-webapp-$NAMEDESK -profile "\$HOME/.bigwebapps/$NAMEDESK-$browser" \
--no-remote -new-instance "$urldesk" &
+$browser --class="\$CLASS" --profile "\$FOLDER" --no-remote --new-instance "$urldesk" &
 
 count=0
 while [ \$count -lt 100 ]; do
-    if [ "\$(xwininfo -root -children -all | grep -iE "Navigator.*$browser-webapp-$NAMEDESK")" != "" ]; then
-/usr/share/biglinux/webapps/bin/xseticon -id "\$(xwininfo -root -children -all | grep -iE "Navigator.*$browser-webapp-$NAMEDESK" | awk '{print \$1}')" $ICON_FILE
+    wininfo="\$(xwininfo -root -children -all | grep \\"Navigator\\"\\ \\"\$CLASS\\")"
+    if [ "\$wininfo" ]; then
+        xseticon -id "\$(awk '{print \$1}' <<< \$wininfo)" $ICON_FILE
         count=100
     else
         let count=count+1;
@@ -97,103 +84,111 @@ while [ \$count -lt 100 ]; do
 done
 EOF
 
-chmod +x "$HOME/.local/bin/$NAMEDESK-$browser"
+chmod +x "$DESKBIN"
 
-echo "#!/usr/bin/env xdg-open
-[Desktop Entry]
+echo "[Desktop Entry]
 Version=1.0
 Terminal=false
 Type=Application
 Name=$namedesk
-Exec=$HOME/.local/bin/$NAMEDESK-$browser
+Exec=$DESKBIN
 Icon=$ICON_FILE
-X-KDE-StartupNotify=true" > "/tmp/$NAMEDESK-$browser-webapp-biglinux-custom.desktop"
+Categories=$category;
+X-KDE-StartupNotify=true" > "$LINK_APP"
 
-xdg-desktop-menu install --novendor $HOME/.local/share/desktop-directories/web-apps.directory \
-"/tmp/$NAMEDESK-$browser-webapp-biglinux-custom.desktop"
-rm "/tmp/$NAMEDESK-$browser-webapp-biglinux-custom.desktop"
+    chmod +x "$LINK_APP"
 
-    if [ "$shortcut" = "on" ];then
-        ln "$HOME/.local/share/applications/$NAMEDESK-$browser-webapp-biglinux-custom.desktop" \
-        "$(xdg-user-dir DESKTOP)/$namedesk.desktop"
-        chmod 777 "$(xdg-user-dir DESKTOP)/$namedesk.desktop"
-        gio set "$(xdg-user-dir DESKTOP)/$namedesk.desktop" -t string metadata::trust "true"
+    [ "$shortcut" = "on" ] && {
+        ln -s "$LINK_APP" "$USER_DESKTOP/$DIR-webapp-biglinux-custom.desktop"
+        chmod 755 "$USER_DESKTOP/$DIR-webapp-biglinux-custom.desktop"
+    }
+
+elif [ "$(grep 'epiphany' <<< $browser)" ];then
+
+    [ ! "$(grep 'https://' <<< $urldesk)" ] && urldesk="https://$urldesk"
+
+    [ "$tvmode" = "on" ] && {
+        YTCODE="$(basename $urldesk | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
+        urldesk="https://www.youtube.com/embed/$YTCODE"
+    }
+
+    FOLDER="$HOME/.bigwebapps/org.gnome.Epiphany.WebApp-$DIR-webapp-biglinux-custom"
+    EPI_FILE="org.gnome.Epiphany.WebApp-$DIR-webapp-biglinux-custom.desktop"
+    EPI_LINK="$HOME/.local/share/applications/$EPI_FILE"
+    mkdir -p $FOLDER
+    > "$FOLDER/.app"
+    echo 35 > "$FOLDER/.migrated"
+
+    ICON_FILE="$FOLDER/app-icon.png"
+
+    if [ -z "$icondesk" ];then
+        cp "/usr/share/bigbashview/bcc/apps/biglinux-webapps/img/default.png" $ICON_FILE
+    else
+        [ "$(dirname $icondesk)" = "/tmp" ] && mv "$icondesk" $ICON_FILE || cp "$icondesk" $ICON_FILE
     fi
+
+echo "[Desktop Entry]
+Name=$namedesk
+Exec=epiphany --application-mode --profile=$FOLDER $urldesk
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=$category;
+Icon=$ICON_FILE
+StartupWMClass=org.gnome.Epiphany.WebApp-$DIR-webapp-biglinux-custom
+X-Purism-FormFactor=Workstation;Mobile;" > "$FOLDER/$EPI_FILE"
+
+    chmod +x "$FOLDER/$EPI_FILE"
+    ln -s "$FOLDER/$EPI_FILE" "$EPI_LINK"
+
+    [ "$shortcut" = "on" ] && {
+        ln -s "$FOLDER/$EPI_FILE" "$USER_DESKTOP/$EPI_FILE"
+        chmod 755 "$USER_DESKTOP/$EPI_FILE"
+    }
 
 else
+    FOLDER="$HOME/.bigwebapps/$DIR"
 
-    if [ "$(egrep "(http|https)://" <<< "$urldesk")" != "" ];then
+    [ ! "$(grep 'https://' <<< $urldesk)" ] && urldesk="https://$urldesk"
 
-        if [ "$tvmode" = "on" -a "$(egrep "(youtu.be|youtube)" <<< "$urldesk")" != "" ];then
-            urldesk="https://www.youtube.com/embed/$(basename "$urldesk" | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
-            CUT_HTTP=$(sed 's|https://||;s|http://||;s|/|_|g;s|_|__|1;s|_$||;s|_$||;s|&|_|' <<< "$urldesk")
-        else
-            CUT_HTTP=$(sed 's|https://||;s|http://||;s|/|_|g;s|_|__|1;s|_$||;s|_$||;s|&|_|' <<< "$urldesk")
-        fi
+    [ "$tvmode" = "on" ] && {
+        YTCODE="$(basename $urldesk | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
+        urldesk="https://www.youtube.com/embed/$YTCODE"
+    }
 
-        [ "$newperfil" = "on" ] && user="--user-data-dir=$HOME/.bigwebapps/$NAMEDESK-$browser" || user=
+    [ "$newperfil" = "on" ] && browser="$browser --user-data-dir=$FOLDER"
+
+    CUT_HTTP="$(sed 's|https://||;s|/|_|g;s|_|__|1;s|_$||;s|_$||;s|&|_|g;s|?||g;s|=|_|g' <<< "$urldesk")"
+
+    if [ -z "$icondesk" ];then
+        ICON_FILE="webapp"
     else
-
-        if [ "$tvmode" = "on" -a "$(egrep "(youtu.be|youtube)" <<< "$urldesk")" != "" ];then
-            urldesk="https://www.youtube.com/embed/$(basename "$urldesk" | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
-            CUT_HTTP=$(sed 's|https://||;s|http://||;s|/|_|g;s|_|__|1;s|_$||;s|_$||;s|&|_|' <<< "$urldesk")
-        else
-            CUT_HTTP=$(sed 's|/|_|g;s|_|__|1;s|_$||;s|_$||;s|&|_|' <<< "$urldesk")
-            urldesk="https://$urldesk"
-        fi
-
-        [ "$newperfil" = "on" ] && user="--user-data-dir=$HOME/.bigwebapps/$NAMEDESK-$browser" || user=
+        NAME_FILE="$(basename $icondesk|sed 's| |-|g')"
+        ICON_FILE="$HOME/.local/share/icons/$NAME_FILE"
+        [ "$(dirname $icondesk)" = "/tmp" ] && mv "$icondesk" $ICON_FILE || cp "$icondesk" $ICON_FILE
     fi
 
-    if [ -z "$icondesk" -o "$icondesk" = "/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png" ];then
-        ICON_FILE="/usr/share/bigbashview/bcc/apps/biglinux-webapps/default.png"
-    else
-    	if [ "$(dirname "$icondesk")" = "/tmp" ];then
-			mv "$icondesk" $HOME/.local/share/icons
-		else
-			cp "$icondesk" $HOME/.local/share/icons
-		fi
-		NAME_FILE=$(basename "$icondesk")
-    	FILE_PNG=$(sed 's|\..*|.png|' <<< $NAME_FILE)
-    	convert "$HOME/.local/share/icons/$NAME_FILE" -thumbnail 32x32 \
-    			-alpha on -background none -flatten "$HOME/.local/share/icons/$browser-$NAMEDESK-$FILE_PNG"
-    	rm "$HOME/.local/share/icons/$NAME_FILE"
-
-        ICON_FILE="$HOME/.local/share/icons/$browser-$NAMEDESK-$FILE_PNG"
-    fi
-
-echo "#!/usr/bin/env xdg-open
-[Desktop Entry]
+echo "[Desktop Entry]
 Version=1.0
 Terminal=false
 Type=Application
 Name=$namedesk
-Exec=$browser $user --class=\"$CUT_HTTP,Chromium-browser\" --profile-directory=Default --app=$urldesk
+Exec=$browser --class=$CUT_HTTP,Chromium-browser --profile-directory=Default --app=$urldesk
 Icon=$ICON_FILE
-StartupWMClass=$CUT_HTTP" > "/tmp/$NAMEDESK-$browser-webapp-biglinux-custom.desktop"
+Categories=$category;
+StartupWMClass=$CUT_HTTP" > "$LINK_APP"
 
-xdg-desktop-menu install --novendor $HOME/.local/share/desktop-directories/web-apps.directory \
-"/tmp/$NAMEDESK-$browser-webapp-biglinux-custom.desktop"
-rm "/tmp/$NAMEDESK-$browser-webapp-biglinux-custom.desktop"
+    chmod +x "$LINK_APP"
 
-    if [ "$shortcut" = "on" ];then
-        ln "$HOME/.local/share/applications/$NAMEDESK-$browser-webapp-biglinux-custom.desktop" \
-        "$(xdg-user-dir DESKTOP)/$namedesk.desktop"
-        chmod 777 "$(xdg-user-dir DESKTOP)/$namedesk.desktop"
-        gio set "$(xdg-user-dir DESKTOP)/$namedesk.desktop" -t string metadata::trust "true"
-    fi
+    [ "$shortcut" = "on" ] && {
+        ln -s "$LINK_APP" "$USER_DESKTOP/$DIR-webapp-biglinux-custom.desktop"
+        chmod 755 "$USER_DESKTOP/$DIR-webapp-biglinux-custom.desktop"
+    }
 fi
 
 nohup update-desktop-database -q $HOME/.local/share/applications &
 nohup kbuildsycoca5 &> /dev/null &
 
-kdialog --title "BigLinux WebApps" --icon "internet-web-browser" \
-        --yesno $"O WebApp foi instalado com sucesso!\nVocê deseja instalar outro WebApp?"
-
-if [ "$?" != "0" ]; then
-    echo '<script>window.location.replace("index.sh.htm");</script>'
-    exit
-else
-    echo '<script>window.location.replace("index-install.sh.htm");</script>'
-    exit
-fi
+resp="$?"
+echo -n $resp
+exit

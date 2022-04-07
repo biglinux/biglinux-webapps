@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Spotify
+Exec=biglinux-webapp --class="open.spotify.com__browse_featured,Chromium-browser" --profile-directory=Default --app=https://open.spotify.com/browse/featured
+Icon=spotifywebapp.png
+X-KDE-StartupNotify=true
+Categories=Webapps;
+StartupWMClass=open.spotify.com__browse_featured

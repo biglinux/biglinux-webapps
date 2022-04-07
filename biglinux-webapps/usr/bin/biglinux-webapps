@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+# Criando diretórios necessários
+mkdir -p $HOME/.bigwebapps
+mkdir -p $HOME/.local/share/icons
+mkdir -p $HOME/.local/share/applications
+mkdir -p $HOME/.local/bin
+
+[ ! -e $HOME/.bigwebapps/BROWSER ] && echo 'brave' > $HOME/.bigwebapps/BROWSER
+
 if [ "${LANG:0:2}" = "pt" ]
 then
     BIGBASHVIEW_LANG="pt"
@@ -13,4 +21,5 @@ else
 fi
 
 cd /usr/share/bigbashview/bcc/apps/biglinux-webapps
-LANGUAGE=$BIGBASHVIEW_LANG bigbashview index.sh.htm -s 950x660 -i default.png -n 'BigLinux WebApps'
+LANGUAGE=$BIGBASHVIEW_LANG bigbashview -s 960x600 -n "Gerenciador de WebApps BigLinux" -i icons/webapp.svg index.sh.htm
+rm /tmp/*.png 2>/dev/null

@@ -1,101 +1,444 @@
 #!/usr/bin/env bash
+rm /tmp/*.png 2>/dev/null
+echo '<head>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+<!-- partial:index.partial.html -->
+<div class="dark-light">
+  <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+  </svg>
+</div>
+<div class="login">
+  <div class="wrap">
+    <div class="user">
 
-#Translation
-export TEXTDOMAINDIR="/usr/share/locale"
-export TEXTDOMAIN=biglinux-webapps
+      <div class="logo">
+        <img src="icons/logo-big-trans-branco.png" alt="logo" class="logo-biglinux"/>
+      </div>
 
-mkdir -p $HOME/.local/share/icons
-mkdir -p $HOME/.local/share/applications
-mkdir -p $HOME/.local/bin/
+      <div class="user">
+        <div class="form-wrap">
+          <!-- TABS -->
+          <div class="tabs">
 
-mkdir -p $HOME/.local/share/desktop-directories
-if [ ! -e $HOME/.local/share/desktop-directories/google-apps.directory -o \
-	 ! -e $HOME/.local/share/desktop-directories/web-apps.directory ];then
+            <input type="radio" id="tab1" name="tab-control">
+            <input type="radio" id="tab2" name="tab-control" checked>
+            <input type="radio" id="tab3" name="tab-control">
+            <ul>
+              <li title="Adicionar">
+                <label for="tab1" role="button" id="#add-tab-content">
+                  <svg viewBox="0 0 512 512"><path d="M464,128H272L208,64H48A48,48,0,0,0,0,112V400a48,48,0,0,0,48,48H464a48,48,0,0,0,48-48V176A48,48,0,0,0,464,128ZM359.5,296a16,16,0,0,1-16,16h-64v64a16,16,0,0,1-16,16h-16a16,16,0,0,1-16-16V312h-64a16,16,0,0,1-16-16V280a16,16,0,0,1,16-16h64V200a16,16,0,0,1,16-16h16a16,16,0,0,1,16,16v64h64a16,16,0,0,1,16,16Z"/></svg>
 
-	cp /usr/share/biglinux/webapps/share/*.directory $HOME/.local/share/desktop-directories
-fi
+                  <span>'$"Adicionar WebApps"'</span></label></li>
 
-mkdir -p $HOME/.config/menus/applications-merged
-if [ ! -e $HOME/.config/menus/applications-merged/google-applications.menu -o \
-	 ! -e $HOME/.config/menus/applications-merged/user-web-apps.menu ];then
+              <li title="Lista de WebApps">
 
-	cp /usr/share/biglinux/webapps/share/*.menu $HOME/.config/menus/applications-merged
-fi
+                <label for="tab2" role="button" id="#list-tab-content"><svg viewBox="0 0 576 512"><path d="M572.694 292.093L500.27 416.248A63.997 63.997 0 0 1 444.989 448H45.025c-18.523 0-30.064-20.093-20.731-36.093l72.424-124.155A64 64 0 0 1 152 256h399.964c18.523 0 30.064 20.093 20.73 36.093zM152 224h328v-48c0-26.51-21.49-48-48-48H272l-64-64H48C21.49 64 0 85.49 0 112v278.046l69.077-118.418C86.214 242.25 117.989 224 152 224z"/></svg>
 
-if [ "$(grep 'amazonmusic' $HOME/.config/menus/applications-merged/user-web-apps.menu)" = "" ];then
+                  <span>'$"Lista de WebApps"'</span></label></li>
 
-	sed -i '11i \        <Filename>amazonmusic-webapp-biglinux.desktop</Filename>' \
-    $HOME/.config/menus/applications-merged/user-web-apps.menu
+              <li title="WebApps BigLinux">
+                <label for="tab3" role="button" id="#webappsbig-tab-content">
+                  <svg viewBox="0 0 576 512"><path d="M384 64H192C86 64 0 150 0 256s86 192 192 192h192c106 0 192-86 192-192S490 64 384 64zm0 320c-70.8 0-128-57.3-128-128 0-70.8 57.3-128 128-128 70.8 0 128 57.3 128 128 0 70.8-57.3 128-128 128z"/></svg>
+                  <span>'$"WebApps BigLinux"'</span></label></li>
+            </ul>
 
-fi
-
-if [ "$(grep 'pdfwordconvert' $HOME/.config/menus/applications-merged/user-web-apps.menu)" = "" ]; then
-
-    sed -i '22i \        <Filename>onlinedoctranslator-webapp-biglinux.desktop</Filename>' \
-    $HOME/.config/menus/applications-merged/user-web-apps.menu
-
-    sed -i '24i \        <Filename>pdfwordconvert-webapp-biglinux.desktop</Filename>' \
-    $HOME/.config/menus/applications-merged/user-web-apps.menu
-
-fi
-
-if [ "$(grep 'googlemeet' $HOME/.config/menus/applications-merged/google-applications.menu)" = "" ]; then
-
-    sed -i '18i \        <Filename>googlemeet-webapp-biglinux.desktop</Filename>' \
-    $HOME/.config/menus/applications-merged/google-applications.menu
-
-    sed -i '14i \        <Filename>googledrawings-webapp-biglinux.desktop</Filename>' \
-    $HOME/.config/menus/applications-merged/google-applications.menu
-
-    sed -i '11i \        <Filename>googleclassroom-webapp-biglinux.desktop</Filename>' \
-    $HOME/.config/menus/applications-merged/google-applications.menu
-
-fi
-
-hour="$(date +%H)"
-
-if [ "$hour" -ge "06" -a "$hour" -le "12" ];then
-    msg=$"Bom dia ""$USER!"
-elif [ "$hour" -ge "12" -a "$hour" -le "19" ];then
-    msg=$"Boa tarde ""$USER!"
-else
-    msg=$"Boa noite ""$USER!"
-fi
-
-echo "
-    <head>
-        <link rel='stylesheet' type='text/css' href='/usr/share/bigbashview/bcc/materialize/css/materialize.min.css'>
-        <link rel='stylesheet' type='text/css' href='init.css'>
-        <script src='/usr/share/bigbashview/bcc/materialize/js/jquery.js'></script>
-        <script src='/usr/share/bigbashview/bcc/materialize/js/materialize.min.js'></script>
-        <script src='/usr/share/bigbashview/bcc/js/big.js'></script>
-    </head>
-    <body oncontextmenu='return false;'>
-        <div id='page2'>
-            <div id='middle' class='bar'>
-                <h1>"
-                    echo '<p>'"$msg"'<br><br>'$"Bem-Vindo(a) ao Gerenciador de WebApps BigLinux" '</p>'
-
-                    echo '<div class="panel bw">
-                            <a href="index-install.sh.htm" class="css_btn_class black-text tooltipped"
-                               data-position="top" data-delay="100"
-                               data-tooltip="'$"Instala um novo WebApp BigLinux"'"><button class="button">
-                                <img src="add.png"/><br>' $"Instalar WebApps"'</button></a>
-                            <a href="index-edit.sh.htm" class="css_btn_class black-text tooltipped"
-                               data-position="top" data-delay="100"
-                               data-tooltip="'$"Remove um WebApp BigLinux"'"><button class="button">
-                                <img src="edit.png"/><br>' $"Editar WebApps"'</button></a><br>
-                            <a href="index-remove.sh.htm" class="css_btn_class black-text tooltipped"
-                               data-position="top" data-delay="100"
-                               data-tooltip="'$"Remove um WebApp BigLinux"'"><button class="button">
-                                <img src="delete.png"/><br>' $"Remover WebApps"'</button></a>
-                            <a href="index2.sh.htm" class="css_btn_class black-text tooltipped"
-                               data-position="top" data-delay="100"
-                               data-tooltip="'$"Ative ou desative os WebApps instalados por padrão no sistema"'">
-                               <button class="button"><img src="toggle.png"/><br>' $"Ativar / Desativar WebApps" '</button>
-                            </a>
-                        </div>
-                </h1>
+            <div class="slider">
+              <div class="indicator"></div>
             </div>
+          </div>
+
+          <!-- TABS CONTENT -->
+          <div class="tabs-content">
+            <!-- INICIO TABS CONTENT ADD -->
+            <div id="add-tab-content" class="fc-card">
+
+              <div id="desc">
+                <form class="login-form" id="formAdd" action="webapp-install.sh">
+                  <label for="urlDesk">'$"Url:"'</label>
+                  <input type="search" class="input" id="urlDesk" name="urldesk" style="width:600px" required>
+                  <div style="text-align: center; display:inline-block;">
+                    <button class="button" style="height:30px" id="detectAll">
+                      '$"Detectar Nome e Ícone"'
+                    </button>
+
+                  </div>
+
+                  <br>
+                  <label for="nameDesk">'$"Nome:"'</label>
+                  <input type="search" class="input" id="nameDesk" name="namedesk" style="width:580px" required>
+
+                  <!-- <div class="colorunderline">Ícone:  <input type="file" name="image_file" id="image_file" /></div> -->
+
+                  <ul style="display: flex; justify-content:center;">
+
+                    <li class="right">
+                      <div class="biglinux-left-panel left" style="width: 150px;height:160px;padding-top: 10px;">
+                        <div class="centretext">
+                          <div id="desc">
+                            <h5>'$"Ícone:"'</h5>
+                          </div>
+                        </div>
+                        <div style="width: 58px;margin-bottom:15px" class="svg-center">
+                          <img id="iconDesk" src="icons/default-webapp.png" width="58" height="58" />
+                          <input type="hidden" name="icondesk" value="'${PWD}/icons/default-webapp.png'" id="inputIconDesk" />
+                        </div><br>
+                        <div class="svg-center">
+                          <button class="button svg-center" id="loadIcon">'$"Alterar"'</button>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="biglinux-left-panel left" style="width: 150px;height:160px;padding-top: 10px;">
+
+                      <div class="centretext">
+                        <div id="desc">
+                          <h5>'$"Navegador:"'</h5>
+                        </div>
+                      </div>
+
+                        <div class="svg-center" id="thumb">
+                          <img height="58" width="58" id="browser"/>
+                        </div>
+                        <div class="svg-center">
+                          <select class="svg-center" id="browserSelect" name="browser">'
+                             if [ -e /usr/lib/brave-browser/brave ];then
+                                echo '<option value="brave">BRAVE</option>'
+                             fi
+
+                              if [ -e /usr/lib/chromium/chromium ];then
+                                echo '<option value="chromium">CHROMIUM</option>'
+                              fi
+
+                              if [ -e /usr/bin/epiphany ];then
+                                echo '<option value="epiphany">EPIPHANY</option>'
+                              fi
+
+                              if [ -e /usr/lib/firefox/firefox ];then
+                                echo '<option value="firefox">FIREFOX</option>'
+                              fi
+
+                              if [ -e /opt/google/chrome/google-chrome ];then
+                                echo '<option value="google-chrome-stable">CHROME</option>'
+                              fi
+                              if [ -e /opt/vivaldi/vivaldi ];then
+                                echo '<option value="vivaldi-stable">VIVALDI</option>'
+                              fi
+echo '
+                          </select>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+
+                  <br><hr><br>
+
+                  <div style="display:flex;justify-content: center;">
+                    <div style="margin-right:50px">
+                      <input id="shortcut" type="checkbox" class="switch" name="shortcut">
+                      <label for="shortcut">'$"Criar atalho na Área de Trabalho"'</label>
+                    </div>
+                    <div style="margin-right:50px" id="perfilAdd">
+                      <input id="addPerfil" type="checkbox" class="switch" name="newperfil">
+                      <label for="addPerfil">'$"Perfil adicional"'</label>
+                    </div>
+                    <div id="modeTv">
+                      <input id="tvMode" type="checkbox" class="switch" name="tvmode">
+                      <label for="tvMode">'$"YouTube Modo TV"'</label>
+                    </div>
+                  </div><br>
+
+                  <div style="text-align: center; display:inline-block;">
+                    <button class="button" id="install" style="height:30px">'$"Adicionar"'</button>
+                  </div>
+                </form>
+
+                <!--URL OR NAME MODAL ERROR-->
+                  <div class="pop-up" id="urlNameError">
+                    <div class="pop-up__subtitle">'$"Para adicionar um WebApp, você precisa informar a Url e o Nome."'</div>
+                    <div class="content-button-wrapper">
+                      <button class="content-button status-button2 open close">Fechar</button>
+                    </div>
+                  </div>
+
+                  <!--EMPTY URL MODAL-->
+                  <div class="pop-up" id="urlEmpty">
+                    <div class="pop-up__subtitle">'$"Para detectar o Nome e o Ícone você precisa informar a Url."'</div>
+                    <div class="content-button-wrapper">
+                      <button class="content-button status-button2 open close">Fechar</button>
+                    </div>
+                  </div>
+
+                  <!--DETECT ICON MODAL ERROR-->
+                  <div class="pop-up" id="detectIconError">
+                    <div class="pop-up__subtitle">'$"A Url é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."'</div>
+                    <div class="content-button-wrapper">
+                      <button class="content-button status-button2 open close">Fechar</button>
+                    </div>
+                  </div>
+
+                  <!--INSTALL MODAL SUCCESS-->
+                  <div class="pop-up" id="installSuccess">
+                    <div class="pop-up__subtitle">'$"O WebApp foi adicionado com sucesso!"'</div>
+                    <div class="content-button-wrapper">
+                      <button class="content-button status-button2 open close" id="installClose">Fechar</button>
+                    </div>
+                  </div>
+
+                  <!--DETECT ICON MODAL-->
+                  <div class="pop-up" id="detectIcon">
+                    <div class="pop-up__title">'$"Ícones encontrados"'
+                      <svg class="close" width="24" height="24" fill="none"
+                           stroke="currentColor" stroke-width="2"
+                           stroke-linecap="round" stroke-linejoin="round"
+                           class="feather feather-x-circle">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M15 9l-6 6M9 9l6 6" />
+                      </svg>
+                    </div>
+                    <div class="pop-up__subtitle">'$"Selecione o ícone preferido:"'</div>
+                    <div id="desc">
+                      <div id="menu" style="display: flex;
+                                            justify-content: start;
+                                            flex-direction: column;
+                                            overflow-y: scroll;
+                                            max-height: 400px;">
+                      </div>
+                    </div>
+                  </div>
+
+              </div>
+            </div>
+            <!-- FIM TABS CONTENT ADD -->
+
+            <!-- INICIO TABS CONTENT LIST -->
+            <div id="list-tab-content" class="fc-card active">'
+
+
+if [ "$(ls  ~/.local/share/applications/*-webapp-biglinux-custom.desktop 2>/dev/null)" ];then
+
+  echo '<div class="content-section-title" style="text-align: left;">'$"WebApps Instalados"'</div>
+          <div class="content-section" style="margin-top: 0px;">
+          <ul style="margin-top: 0px;">'
+
+  c=0
+for desktop in ~/.local/share/applications/*-webapp-biglinux-custom.desktop;do
+
+  APP_ICON=$(grep Icon= ${desktop} |sed 's|Icon=||')
+  APP_NAME=$(grep Name= ${desktop} |sed 's|Name=||')
+  DESKEXEC="$(grep '^Exec=' ${desktop} | sed 's|Exec=||')"
+
+  if [ "$(grep '.local/bin' ${desktop})" ];then
+      APP_URL="$(grep 'new-instance' $DESKEXEC | cut -d' ' -f9 | sed 's|^"||;s|"$||')"
+      APP_BROWSER="icons/firefox.png"
+  elif [ "$(grep 'epiphany' ${desktop})" ];then
+      APP_URL="$(grep '^Exec=' ${desktop} | cut -d' ' -f4)"
+      APP_BROWSER="icons/epiphany.png"
+  else
+      APP_BROWSER="icons/$(grep Exec= ${desktop} |cut -d' ' -f1 |sed 's|Exec=||').png"
+      APP_URL="$(grep '^Exec=' ${desktop} | sed 's|.*app=||')"
+  fi
+
+echo '            <li>
+                    <div class="products">
+                      <img src="'${APP_ICON}'" width="28" height="28" class="svg-center"/>
+                      <div class="truncate" style="text-align:left">'${APP_NAME}'</div>
+                    </div>
+                    <span class="status">
+                      <span class="status-circle green"></span>
+                      <div class="truncate">
+
+                        <a href="#!" onclick="_run('\'${DESKEXEC}\'')" class="urlNative">
+                          <svg viewBox="0 0 512 512" style="width: 16px; border-radius: 0px; margin: 0px;display:none">
+                            <path fill="currentcolor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"/>
+                          </svg> '${APP_URL}'
+                        </a>
+
+                      </div>
+                    </span>
+                    <img src="'${APP_BROWSER}'" width="20" height="20" />
+
+
+                    <div class="button-wrapper">
+                      <a href="#!" class="btnRemove">
+                        <input type="hidden" value="'${desktop}'">
+                        <svg viewBox="0 0 448 512" style="width: 16px; border-radius: 0px; margin: 0px;"><path fill="currentcolor" d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"/>
+                        </svg>
+                      </a>
+                    </div>
+                  </li>
+
+                  <!--REMOVE MODAL ASK-->
+                  <div class="pop-up" id="remove'$c'">
+                    <div class="pop-up__subtitle">'$"Tem certeza que deseja remover este WebApp?"'</div>
+                    <div class="content-button-wrapper">
+                      <button class="content-button status-button2 open close">Não</button>
+                      <button class="content-button status-button2" id="removeYes'$c'">Sim</button>
+                    </div>
+                  </div>'
+c=$((c+1))
+done
+  echo '</ul>
+      </div>'
+else
+echo '<!-- INICIO - TELA QUANDO NÃO ENCONTRAR NENHUM WEBAPP -->
+              <div class="content-section" style="margin-top: 20%;">
+                <div style="text-align: center; margin: auto; padding: auto;">
+                  <div class="content-section-title" style="text-align: center;">'$"Nenhum WebApp encontrado!"'</div>
+
+                  <ul style="all: initial">
+                    <li title="Adicionar" style="all: initial">
+                      <label for="tab1" role="button" id="#add-tab-content" style="text-align: center; display: flex; justify-content: center;">
+                        <button class="button" style="height: 26px">'$"Adicionar"'</button>
+                      </label>
+                    </li>
+                  </ul>
+                </div>
+                <!-- FIM - TELA QUANDO NÃO ENCONTRAR NENHUM WEBAPP -->
+              </div>'
+fi
+echo '
+          </div>
+          <!-- FIM TABS CONTENT LIST -->
+
+          <!-- INICIO TABS CONTENT LIST -->
+          <div class="tabs-content">
+            <!-- INICIO TABS CONTENT WEBAPPBIG -->
+            <div id="webappsbig-tab-content" class="fc-card">
+              <div style="display:flex;justify-content:center">
+                <div class="content-section-title" style="margin-bottom:0">'$"Navegador padrão<br>dos webapps:"
+                  BROWSER=$(<~/.bigwebapps/BROWSER)
+echo '
+                </div>
+                <button class="btn-img-main status-button" id="open-change-browsers">
+                  <img src="icons/'${BROWSER}'.png" width="38" height="38" class="iconBrowser" id="browserIcon">
+                </button>
+              </div>
+              <!--CHANGE BROWSERS MODAL-->
+              <div class="pop-up" id="change-browser">
+                <div class="pop-up__title">'$"Alterar navegador"'
+                  <svg class="close" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M15 9l-6 6M9 9l6 6" />
+                  </svg>
+
+                </div>
+
+                <div class="pop-up__subtitle">'$"Selecione o navegador preferido:"'</div>
+                <div id="desc">
+                  <div id="menu" style="display:flex;justify-content:center">'
+                    if [ -e /usr/lib/brave-browser/brave ];then
+                      echo '<button class="btn-img">
+                            <img src="icons/brave.png" data-icon="brave">
+                            </button>'
+                    fi
+                    if [ -e /usr/lib/chromium/chromium ];then
+                      echo '<button class="btn-img">
+                            <img src="icons/chromium.png" data-icon="chromium">
+                            </button>'
+                    fi
+                    if [ -e /opt/google/chrome/google-chrome ];then
+                      echo '<button class="btn-img">
+                            <img src="icons/google-chrome-stable.png" data-icon="google-chrome-stable">
+                            </button>'
+                    fi
+                    if [ -e /opt/vivaldi/vivaldi ];then
+                      echo '<button class="btn-img">
+                            <img src="icons/vivaldi-stable.png" data-icon="vivaldi-stable">
+                            </button>'
+                    fi
+echo '
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="content-section-title" style="text-align:left">'$"WebApps Nativos"'</div>
+              <div class="content-section" style="margin-top:0">
+              <ul>'
+n=0
+for webapp in ${PWD}/webapps/*;do
+
+[ "$(grep Name.pt.= $webapp)" ] && {
+  NAME="$(grep Name.pt.= $webapp|sed 's|Name\[pt\]=||')"
+} || {
+  NAME="$(grep Name= $webapp|sed 's|Name=||')"
+}
+
+ICON="/usr/share/icons/hicolor/128x128/apps/$(grep Icon= $webapp|sed 's|Icon=||')"
+
+URLDESK="$(grep Exec= $webapp|sed 's|Exec=||;s|"||g')"
+if [ "$(grep cleverpdf <<< $URLDESK)" ];then
+  if [ "${LANG:0:2}" = "pt" ]; then
+    URL="https://www.cleverpdf.com/pt"
+    URLDESK="biglinux-webapp --class="www.cleverpdf.com__pt,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com/pt"
+  elif [ "${LANG:0:2}" = "es" ]; then
+    URL="https://www.cleverpdf.com/es"
+    URLDESK="biglinux-webapp --class="www.cleverpdf.com__pt,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com/es"
+  else
+    URL="https://www.cleverpdf.com"
+    URLDESK="biglinux-webapp --class="www.cleverpdf.com__pt,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com"
+  fi
+elif [ "$(grep netflix <<< $URLDESK)" ];then
+  if [ "${LANG:0:2}" = "pt" ];then
+      URL="https://www.netflix.com/br"
+      URLDESK="biglinux-webapp --class="www.netflix.com__br,Chromium-browser" --profile-directory=Default --app=https://www.netflix.com/br"
+  else
+      URL="https://www.netflix.com/"
+      URLDESK="biglinux-webapp --class="www.netflix.com,Chromium-browser" --profile-directory=Default --app=https://www.netflix.com/"
+  fi
+else
+  URL="$(grep Exec= $webapp|sed 's|.*--app=||')"
+fi
+
+
+[ -e ~/.local/share/applications/${webapp##*/} ] && {
+  color="green"
+  checked="checked"
+} || {
+  color="gray"
+  checked=""
+}
+echo '
+                  <li class="product">
+
+                    <input value="'${webapp##*/}'" id="webapp_'$n'" type="checkbox" class="switch" style="margin-right:10px;" '$checked'/>
+
+                    <div class="products">
+                      <img src="'$ICON'" height="25" width="25" class="svg-center"/>
+                      '$NAME'</div>
+
+                    <span class="status">
+                      <span id="circle_'$n'" class="status-circle '$color'"></span>
+                      <div class="truncate">
+                        <a href="#!" onclick="_run('\'${URLDESK}\'')" class="urlNative">
+                          <svg viewBox="0 0 512 512" style="width: 16px; border-radius: 0px; margin: 0px;display:none">
+                            <path fill="currentcolor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"/>
+                          </svg>
+                          '$URL'
+                        </a>
+                      </div>
+                    </span>
+                    <img src="icons/'${BROWSER}'.png" height="20" width="20" class="iconBrowser" />
+                  </li>'
+n=$((n+1))
+done
+                echo '</ul>
+              </div>
+
+            </div>
+          </div>
+          <!-- FIM TABS CONTENT WEBAPPBIG -->
         </div>
-    </body>'
+      </div>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <script  src="js/script.js"></script>
+
+</body>
+</html>'

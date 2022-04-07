@@ -33,7 +33,7 @@ LINK_RELS = [
     'apple-touch-icon-precomposed',
 ]
 
-META_NAMES = ['msapplication-TileImage', 'og:image']
+META_NAMES = ['msapplication-TileImage', 'og:image', 'image']
 
 SIZE_RE = re.compile(r'(?P<width>\d{2,4})x(?P<height>\d{2,4})', flags=re.IGNORECASE)
 
@@ -60,6 +60,7 @@ def get(url, *args, **request_kwargs):
         request_kwargs.setdefault('headers', args[0])
 
     request_kwargs.setdefault('headers', HEADERS)
+    request_kwargs.setdefault('timeout', 10)
     request_kwargs.setdefault('allow_redirects', True)
 
     response = requests.get(url, **request_kwargs)

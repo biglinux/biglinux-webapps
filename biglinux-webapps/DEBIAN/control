@@ -1,5 +1,5 @@
 Package: biglinux-webapps
-Version: 2.0.0-0big0
+Version: 3.0.0-0big0
 Depends: coreutils, bigbashview (>= 3.3.2-0biglinux1), python3-bs4, python3-requests, kdialog, graphicsmagick-imagemagick-compat | imagemagick, sed, grep
 Recommends: firefox, brave-browser | google-chrome-stable | google-chrome-beta | google-chrome-unstable | chromium | vivaldi-stable
 Architecture: all

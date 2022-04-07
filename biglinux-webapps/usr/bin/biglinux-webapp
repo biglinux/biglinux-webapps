@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-BROWSER="$(<~/.bigwebapps/BROWSER)"
+BROWSER="$(<$HOME/.bigwebapps/BROWSER)"
 
 if [ -z $BROWSER ]; then
     if [ -e "/usr/bin/brave" ]; then
@@ -9,25 +9,27 @@ if [ -z $BROWSER ]; then
         BROWSER="brave-browser"
     elif [ -e "/usr/bin/google-chrome-stable" ]; then
         BROWSER="google-chrome-stable"
-    elif [ -e "/usr/bin/opera" ]; then
-        BROWSER="opera"
-    elif [ -e "/usr/bin/vivaldi" ]; then
-        BROWSER="vivaldi"
+    elif [ -e "/usr/bin/vivaldi-stable" ]; then
+        BROWSER="vivaldi-stable"
     else
-        BROWSER="chromium-browser"        
+        BROWSER="chromium"
     fi
 fi
 
 if [ "$1" = "cleverpdf" ];then
-	if [ "$(grep "pt" <<< "$LANG")" != "" ]; then
-		exec $BROWSER --class="www.cleverpdf.com__pt,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com/pt
-	elif [ "$(grep "es" <<< "$LANG")" != "" ]; then
-		exec $BROWSER --class="www.cleverpdf.com__es,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com/es
-	else
-		exec $BROWSER --class="www.cleverpdf.com,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com
-	fi
-
+    if [ "${LANG:0:2}" = "pt" ]; then
+        exec $BROWSER --class="www.cleverpdf.com__pt,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com/pt
+    elif [ "${LANG:0:2}" = "es" ]; then
+        exec $BROWSER --class="www.cleverpdf.com__es,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com/es
+    else
+        exec $BROWSER --class="www.cleverpdf.com,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com
+    fi
+elif [ "$1" = "netflix" ];then
+    if [ ! "${LANG:0:2}" = "pt" ];then
+        exec $BROWSER --class="www.netflix.com,Chromium-browser" --profile-directory=Default --app=https://www.netflix.com/
+    else
+        exec $BROWSER --class="www.netflix.com__br,Chromium-browser" --profile-directory=Default --app=https://www.netflix.com/br
+    fi
 else
-	exec $BROWSER $*
+    exec $BROWSER $*
 fi
-

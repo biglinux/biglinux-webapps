@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Prime Video
+Exec=biglinux-webapp --class="www.primevideo.com,Chromium-browser" --profile-directory=Default --app=https://www.primevideo.com/
+Icon=primevideo.png
+X-KDE-StartupNotify=true
+Categories=Webapps;
+StartupWMClass=www.primevideo.com

@@ -1,0 +1,28 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+    "http://www.freedesktop.org/standards/menu-spec/menu-1.0.dtd">
+
+<Menu>
+    <Name>Applications</Name>
+
+    <!-- Webapps Menu -->
+    <Menu>
+        <Name>Webapps</Name>
+        <Directory>web-apps.directory</Directory>
+        <Include>
+            <And>
+                <Category>Webapps</Category>
+            </And>
+        </Include>
+    </Menu>
+
+    <!-- Google Menu -->
+    <Menu>
+        <Name>Google</Name>
+        <Directory>google-apps.directory</Directory>
+        <Include>
+            <And>
+                <Category>Google</Category>
+            </And>
+        </Include>
+    </Menu>
+</Menu>
