@@ -1,46 +1,57 @@
 #!/usr/bin/env bash
 
 # Criando diretórios necessários
-mkdir -p $HOME/.bigwebapps
-mkdir -p $HOME/.local/share/icons
-mkdir -p $HOME/.local/share/applications
-mkdir -p $HOME/.local/bin
+mkdir -p ~/.bigwebapps
+mkdir -p ~/.local/share/icons
+mkdir -p ~/.local/share/applications
+mkdir -p ~/.local/bin
 
-[ ! -e $HOME/.bigwebapps/BROWSER ] && echo 'brave' > $HOME/.bigwebapps/BROWSER
+[ ! -e ~/.bigwebapps/BROWSER ] && echo 'brave' > ~/.bigwebapps/BROWSER
 
-for webapp in /usr/share/bigbashview/bcc/apps/biglinux-webapps/webapps/*.desktop; do
-    WEB_APP="$HOME/.local/share/applications/${webapp##*/}"
-    [[ -e ${WEB_APP} && ! "$(grep Categories <<< ${app})" ]] && {
-        cp -f ${webapp} ${WEB_APP}
-    }
-done
-
-for app in ~/.local/share/applications/*-webapp-biglinux-custom.desktop;do
-    [[ -e ${app} && ! "$(grep Categories <<< ${app})" ]] && {
-        echo 'Categories=Webapps;' >> ${app}
-    }
-done
-
-if [ -d $HOME/.local/share/desktop-directories ];then
-    rm -r $HOME/.local/share/desktop-directories
+if [ ! -e ~/.bigwebapps/NATIVE ];then
+    for webapp in /usr/share/bigbashview/bcc/apps/biglinux-webapps/webapps/*.desktop; do
+        WEB_APP="$HOME/.local/share/applications/${webapp##*/}"
+        [[ -e ${WEB_APP} && ! "$(grep Categories ${WEB_APP})" ]] && {
+            cp -f ${webapp} ${WEB_APP}
+            update-desktop-database -q ~/.local/share/applications
+            kbuildsycoca5 &> /dev/null
+        }
+    done
+    > ~/.bigwebapps/NATIVE
 fi
 
-if [ -d $HOME/.config/menus ];then
-    rm -r $HOME/.config/menus
+if [ ! -e ~/.bigwebapps/CUSTOM ];then
+    for app in ~/.local/share/applications/*-webapp-biglinux-custom.desktop;do
+        [[ -e ${app} && ! "$(grep Categories ${app})" ]] && {
+            echo 'Categories=Webapps;' >> ${app}
+            update-desktop-database -q ~/.local/share/applications
+            kbuildsycoca5 &> /dev/null
+        }
+    done
+    > ~/.bigwebapps/CUSTOM
 fi
 
-if [ "${LANG:0:2}" = "pt" ]
-then
-    BIGBASHVIEW_LANG="pt"
+if [ -e ~/.local/share/desktop-directories/google-apps.directory ];then
+    rm ~/.local/share/desktop-directories/google-apps.directory 2>/dev/null
+    rm ~/.local/share/desktop-directories/web-apps.directory 2>/dev/null
+fi
 
-elif [ "${LANG:0:2}" = "es" ]
-then
-    BIGBASHVIEW_LANG="es"
+if [ -e ~/.config/menus/applications-merged/google-applications.menu ];then
+    rm ~/.config/menus/applications-merged/google-applications.menu 2>/dev/null
+    rm ~/.config/menus/applications-merged/user-web-apps.menu 2>/dev/null
+fi
 
+if [ "${LANG:0:2}" = "pt" ];then
+    BBV_LANG="pt"
+elif [ "${LANG:0:2}" = "es" ];then
+    BBV_LANG="es"
 else
-    BIGBASHVIEW_LANG="en"
+    BBV_LANG="en"
 fi
 
 cd /usr/share/bigbashview/bcc/apps/biglinux-webapps
-LANGUAGE=$BIGBASHVIEW_LANG bigbashview -s 960x600 -n "Gerenciador de WebApps BigLinux" -i icons/webapp.svg index.sh.htm
+LANGUAGE=$BBV_LANG bigbashview                           \
+                    -s 960x600                           \
+                    -n "Gerenciador de WebApps BigLinux" \
+                    -i icons/webapp.svg index.sh.htm
 rm /tmp/*.png 2>/dev/null

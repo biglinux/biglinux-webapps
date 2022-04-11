@@ -4,7 +4,6 @@ _NAMEDESK="$(sed 's|https\:\/\/||;s|www\.||;s|\/.*||;s|\.|-|g' <<< $urldesk)"
 USER_DESKTOP="$(xdg-user-dir DESKTOP)"
 LINK_APP="$HOME/.local/share/applications/$_NAMEDESK-$RANDOM-webapp-biglinux-custom.desktop"
 DIR="$(basename $LINK_APP | sed 's|-webapp-biglinux-custom.desktop||')"
-category="Webapps"
 
 if [ "$(grep 'firefox' <<< $browser)" ];then
 

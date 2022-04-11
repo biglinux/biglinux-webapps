@@ -77,7 +77,7 @@ echo '<head>
 
                   <ul style="display: flex; justify-content:center;">
 
-                    <li class="right">
+                    <li>
                       <div class="biglinux-left-panel left" style="width: 150px;height:160px;padding-top: 10px;">
                         <div class="centretext">
                           <div id="desc">
@@ -130,6 +130,32 @@ echo '<head>
                                 echo '<option value="vivaldi-stable">VIVALDI</option>'
                               fi
 echo '
+                          </select>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="biglinux-left-panel left" style="width: 180px;height:160px;padding-top: 10px;">
+
+                        <div class="centretext">
+                          <div id="desc">
+                            <h5>'$"Categoria:"'</h5>
+                          </div>
+                        </div>
+
+                        <div class="svg-center" id="thumb">
+                          <img src="icons/Webapps.png" height="58" width="58" id="imgCategory"/>
+                        </div>
+                        <div class="svg-center">
+                          <select class="svg-center" id="categorySelect" name="category">
+                              <option value="Development">'$"DESENVOLVIMENTO"'</option>
+                              <option value="Office">'$"ESCRITÓRIO"'</option>
+                              <option value="Game">'$"JOGOS"'</option>
+                              <option value="Graphics">'$"GRÁFICOS"'</option>
+                              <option value="Network">INTERNET</option>
+                              <option value="AudioVideo">'$"MULTIMÍDIA"'</option>
+                              <option value="Webapps" selected>WEBAPPS</option>
+                              <option value="Google">WEBAPPS GOOGLE</option>
                           </select>
                         </div>
                       </div>
@@ -440,7 +466,7 @@ done
 </div>
 <!-- partial -->
   <script src="js/jquery-3.6.0.min.js"></script>
-  <script  src="js/code.min.js"></script>
+  <script  src="js/script.js"></script>
 
 </body>
 </html>'

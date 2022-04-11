@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Photopea
+Exec=/usr/bin/biglinux-webapp --class=photopea.com,Chromium-browser --profile-directory=Default --app=https://photopea.com
+Icon=photopea.png
+StartupWMClass=photopea.com
+Categories=Webapps;

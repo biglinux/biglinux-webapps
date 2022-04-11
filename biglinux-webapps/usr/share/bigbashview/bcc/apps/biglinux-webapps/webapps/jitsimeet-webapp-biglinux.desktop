@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Jitsi Meet
+Exec=/usr/bin/biglinux-webapp --class=meet.jit.si,Chromium-browser --profile-directory=Default --app=https://meet.jit.si/
+Icon=jitsi.png
+Categories=Webapps;
+StartupWMClass=meet.jit.si
