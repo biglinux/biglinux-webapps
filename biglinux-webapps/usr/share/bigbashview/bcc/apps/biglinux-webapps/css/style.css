@@ -277,7 +277,6 @@ a:hover {
 body {
   text: #fff;
   font-size: 16px;
-  /* background-image: url("https://forum.biglinux.com.br/uploads/default/original/2X/f/f5679ca17fad618b3dc755347e2cb2677dd5ecfb.jpeg"); */
   background: #252d37;
   position: relative;
   color: var(--text-a-color);
@@ -940,10 +939,6 @@ input {
   /* border-bottom: 1px solid #5c9fed; */
 }
 
-.form-wrap a:hover {
-  color: #fff;
-}
-
 .form-wrap .tabs {
   overflow: hidden;
 }
@@ -1602,7 +1597,6 @@ li img {
   margin: 0;
   border-radius: 14px;
   border: 1px solid var(--theme-bg-color);
-  /*cursor: pointer;*/
 }
 .content-section ul li {
   list-style: none;
@@ -1613,16 +1607,15 @@ li img {
   width: 100%;
   height: 100%;
   white-space: nowrap;
-  transition: 0.3s;
 }
 .content-section ul li:hover {
   background-color: var(--theme-bg-color);
 }
 .content-section ul li:hover:first-child {
-  border-radius: 13px;
+  border-radius: 13px 13px 0 0;
 }
 .content-section ul li:hover:last-child {
-  border-radius: 0 14px 13px 0;
+  border-radius: 0 0 13px 13px;
 }
 .content-section ul li + li {
   border-left: 1px solid var(--border-color);
@@ -2036,4 +2029,12 @@ input[type = 'search']::-webkit-search-cancel-button{
   fill: var(--theme-color);
   width: 58px;
   height: 58px;
+}
+
+hr {
+  fill: var(--logo-big);
+  border: 1px solid;
+  border-width: 0;
+  height: 1px;
+  border-top-width: 1px;
 }
