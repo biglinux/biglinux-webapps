@@ -1,20 +1,23 @@
 #!/usr/bin/env bash
 
+WEBAPP_DIR="/usr/share/bigbashview/bcc/apps/biglinux-webapps/webapps"
+HOME_SHARE_DIR_APP="$HOME/.local/share/applications"
+
 # Criando diretórios necessários
 mkdir -p ~/.bigwebapps
 mkdir -p ~/.local/share/icons
-mkdir -p ~/.local/share/applications
+mkdir -p $HOME_SHARE_DIR_APP
 mkdir -p ~/.local/bin
 
 [ ! -e ~/.bigwebapps/BROWSER ] && echo 'brave' > ~/.bigwebapps/BROWSER
 [ "$(<~/.bigwebapps/BROWSER)" = "brave-browser" ] && echo 'brave' > ~/.bigwebapps/BROWSER
 
 if [ ! -e ~/.bigwebapps/NATIVE ];then
-    for webapp in /usr/share/bigbashview/bcc/apps/biglinux-webapps/webapps/*.desktop; do
+    for webapp in $WEBAPP_DIR/*.desktop; do
         WEB_APP="$HOME/.local/share/applications/${webapp##*/}"
         [[ -e ${WEB_APP} && ! "$(grep Categories ${WEB_APP})" ]] && {
             cp -f ${webapp} ${WEB_APP}
-            update-desktop-database -q ~/.local/share/applications
+            update-desktop-database -q $HOME_SHARE_DIR_APP
             kbuildsycoca5 &> /dev/null
         }
     done
@@ -22,24 +25,42 @@ if [ ! -e ~/.bigwebapps/NATIVE ];then
 fi
 
 if [ ! -e ~/.bigwebapps/CUSTOM ];then
-    for app in ~/.local/share/applications/*-webapp-biglinux-custom.desktop;do
+    for app in $HOME_SHARE_DIR_APP/*-webapp-biglinux-custom.desktop;do
         [[ -e ${app} && ! "$(grep Categories ${app})" ]] && {
             echo 'Categories=Webapps;' >> ${app}
-            update-desktop-database -q ~/.local/share/applications
+            update-desktop-database -q $HOME_SHARE_DIR_APP
             kbuildsycoca5 &> /dev/null
         }
     done
     > ~/.bigwebapps/CUSTOM
 fi
 
-if [ -e ~/.local/share/desktop-directories/google-apps.directory ];then
-    rm ~/.local/share/desktop-directories/google-apps.directory 2>/dev/null
-    rm ~/.local/share/desktop-directories/web-apps.directory 2>/dev/null
+HOME_SHARE_DIR_DESK="$HOME/.local/share/desktop-directories"
+HOME_SHARE_DIR_MENU="$HOME/.config/menus/applications-merged"
+
+if [ -e $HOME_SHARE_DIR_DESK/google-apps.directory ];then
+    rm $HOME_SHARE_DIR_DESK/google-apps.directory 2>/dev/null
+    rm $HOME_SHARE_DIR_DESK/web-apps.directory 2>/dev/null
 fi
 
-if [ -e ~/.config/menus/applications-merged/google-applications.menu ];then
-    rm ~/.config/menus/applications-merged/google-applications.menu 2>/dev/null
-    rm ~/.config/menus/applications-merged/user-web-apps.menu 2>/dev/null
+if [ -e $HOME_SHARE_DIR_MENU/google-applications.menu ];then
+    rm $HOME_SHARE_DIR_MENU/google-applications.menu 2>/dev/null
+    rm $HOME_SHARE_DIR_MENU/user-web-apps.menu 2>/dev/null
+fi
+
+if [ -e $HOME_SHARE_DIR_APP/netflix-firefox.desktop ];then
+	rm $HOME_SHARE_DIR_APP/netflix-firefox.desktop
+	cp $WEBAPP_DIR/netflix-webapp-biglinux.desktop $HOME_SHARE_DIR_APP
+fi
+
+if [ -e $HOME_SHARE_DIR_APP/primevideo-firefox.desktop ];then
+	rm $HOME_SHARE_DIR_APP/primevideo-firefox.desktop
+	cp $WEBAPP_DIR/primevideo-webapp-biglinux.desktop $HOME_SHARE_DIR_APP
+fi
+
+if [ -e $HOME_SHARE_DIR_APP/spotify-firefox.desktop ];then
+	rm $HOME_SHARE_DIR_APP/spotify-firefox.desktop
+	cp $WEBAPP_DIR/spotify-webapp-biglinux.desktop $HOME_SHARE_DIR_APP
 fi
 
 if [ "${LANG:0:2}" = "pt" ];then
