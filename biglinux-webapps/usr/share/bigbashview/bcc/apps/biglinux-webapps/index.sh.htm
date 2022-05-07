@@ -1,4 +1,14 @@
 #!/usr/bin/env bash
+##################################
+#  Author Create: eltonff (www.biglinux.com.br) 
+#  Author Modify: Rafael Ruscher (rruscher@gmail.com)
+#  Create Date:    2020/09/01 
+#  Modify Date:    2022/05/07 
+#  
+#  Description: WebApps usage of BigLinux 
+#  
+#  Licensed by GPL V2 or greater
+##################################
 
 [ -e ~/.bigwebapps/LIGHT ] && className='<body class="light-mode">' || className='<body>'
 
@@ -148,14 +158,19 @@ echo '<head>
                         </div>
 
                         <div class="svg-center" id="imgCategory">'"$(<./icons/Webapps.svg)"'</div>
-                        <div class="svg-center">
+                        <div class="svg-center" style="padding-top: 10px;">
                           <select class="svg-center" id="categorySelect" name="category">
+                              <option value="Code">'$"CÓDIGO"'</option>
                               <option value="Development">'$"DESENVOLVIMENTO"'</option>
                               <option value="Office">'$"ESCRITÓRIO"'</option>
-                              <option value="Game">'$"JOGOS"'</option>
+                              <option value="Picture">'$"FOTOS"'</option>
                               <option value="Graphics">'$"GRÁFICOS"'</option>
-                              <option value="Network">INTERNET</option>
+                              <option value="Internet">INTERNET</option>
+                              <option value="Game">'$"JOGOS"'</option>
                               <option value="AudioVideo">'$"MULTIMÍDIA"'</option>
+                              <option value="Music">'$"MÚSICA"'</option>
+                              <option value="Network">'$"REDE"'</option>
+                              <option value="Movie">'$"VÍDEO"'</option>
                               <option value="Webapps" selected>WEBAPPS</option>
                               <option value="Google">'$"WEBAPPS GOOGLE"'</option>
                           </select>
@@ -250,70 +265,186 @@ echo '<head>
 
 if [ "$(ls  ~/.local/share/applications/*-webapp-biglinux-custom.desktop 2>/dev/null)" ];then
 
-  echo '<div class="content-section-title" style="text-align: left;">'$"WebApps Instalados"'</div>
-          <div class="content-section" style="margin-top: 0px;">
-          <ul style="margin-top: 0px;">'
 
-  c=0
+# declare -A seen=("Code" "Code" "Code" "Code" "Development" "Development" "Development" "Development" "Office" "Picture" "Picture" "Picture" "Graphics" "Internet" "Game" "AudioVideo" "Music" "Music" "Music" "Music")
+# for item in "${joined_arrays[@]}"; do
+#   (( seen[$item] += 1 ))
+# done
+# 
+# declare -a non_repeated=("Code" "Development" "Office" "Picture" "Graphics" "Internet" "Game" "AudioVideo" "Music" "Network" "Movie" "Webapps" "Google")
+# for item in "${!seen[@]}"; do
+#   if (( ${seen[$item]} == 1 )); then
+#     non_repeated+=( "$item" )
+#   fi
+# done
+#  
+# declare -p non_repeated
+a=0
 for desktop in ~/.local/share/applications/*-webapp-biglinux-custom.desktop;do
-
-  APP_ICON=$(grep Icon= ${desktop} |sed 's|Icon=||')
-  APP_NAME=$(grep Name= ${desktop} |sed 's|Name=||')
-  DESKEXEC="$(grep '^Exec=' ${desktop} | sed 's|Exec=||')"
-
-  if [ "$(grep '.local/bin' ${desktop})" ];then
-      APP_URL="$(grep 'new-instance' $DESKEXEC | cut -d' ' -f9 | sed 's|^"||;s|"$||')"
-      APP_BROWSER="icons/firefox.svg"
-  elif [ "$(grep 'epiphany' ${desktop})" ];then
-      APP_URL="$(grep '^Exec=' ${desktop} | cut -d' ' -f4)"
-      APP_BROWSER="icons/epiphany.svg"
-  else
-      APP_BROWSER="icons/$(grep Exec= ${desktop} |cut -d' ' -f1 |sed 's|Exec=||').svg"
-      APP_URL="$(grep '^Exec=' ${desktop} | sed 's|.*app=||')"
+  APP_CATEGORY=$(grep Categories= ${desktop} |sed 's|Categories=||' |sed 's|;||')
+  if [ "$APP_CATEGORY" != "" ];then
+    arr[${a}]=$APP_CATEGORY;
+    #echo "$a $APP_CATEGORY";
+    a=$((a+1))
   fi
-
-echo '            <li>
-                    <div class="products">
-                      <img src="'${APP_ICON}'" width="28" height="28" class="svg-center"/>
-                      <div class="truncate" style="text-align:left">'${APP_NAME}'</div>
-                    </div>
-                    <span class="status">
-                      <span class="status-circle green"></span>
-                      <div class="truncate">
-
-                        <a href="#!" onclick="_run('\'${DESKEXEC}\'')" class="urlNative">
-                          <svg viewBox="0 0 512 512" style="width: 16px; border-radius: 0px; margin: 0px;display:none">
-                            <path fill="currentcolor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"/>
-                          </svg> '${APP_URL}'
-                        </a>
-
-                      </div>
-                    </span>
-                    <img src="'${APP_BROWSER}'" width="20" height="20" />
-
-
-                    <div class="button-wrapper">
-                      <a href="#!" class="btnRemove">
-                        <input type="hidden" value="'${desktop}'">
-                        <svg viewBox="0 0 448 512" style="width: 16px; border-radius: 0px; margin: 0px;"><path fill="currentcolor" d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"/>
-                        </svg>
-                      </a>
-                    </div>
-                  </li>
-
-                  <!--REMOVE MODAL ASK-->
-                  <div class="pop-up" id="remove'$c'">
-                    <div class="pop-up__subtitle">'$"Tem certeza que deseja remover este WebApp?"'</div>
-                    <div class="content-button-wrapper">
-                      <button class="content-button status-button2 open close">Não</button>
-                      <button class="content-button status-button2" id="removeYes'$c'">Sim</button>
-                    </div>
-                  </div>'
-c=$((c+1))
 done
-  echo '</ul>
-      </div>'
+
+#arr=("Webapps" "Webapps" "Code" "Code")
+readarray -t non_repeated < <(printf '%s\n' "${arr[@]}" | sort | uniq -c)
+#echo ${non_repeated[*]}
+declare -a arr=("Code" "Development" "Office" "Picture" "Graphics" "Internet" "Game" "AudioVideo" "Music" "Network" "Movie" "Webapps" "Google")
+
+for i in "${non_repeated[@]}";do
+
+  ## CATEGORY
+    echo '<div class="content-section-title" style="text-align: left;">'${i##* }'</div>'
+    echo '<div class="content-section" style="margin-top: 0px;">
+            <ul style="margin-top: 0px;">'
+  d=0
+  c=0
+  for desktop in ~/.local/share/applications/*-webapp-biglinux-custom.desktop;do
+    APP_ICON=$(grep Icon= ${desktop} |sed 's|Icon=||')
+    APP_NAME=$(grep Name= ${desktop} |sed 's|Name=||')
+    APP_CATEGORY=$(grep Categories= ${desktop} |sed 's|Categories=||' |sed 's|;||')
+    DESKEXEC="$(grep '^Exec=' ${desktop} | sed 's|Exec=||')"
+
+    #Office  
+    if [ "$APP_CATEGORY" == "${i##* }" ];then
+          if [ "$(grep '.local/bin' ${desktop})" ];then
+              APP_URL="$(grep 'new-instance' $DESKEXEC | cut -d' ' -f9 | sed 's|^"||;s|"$||')"
+              APP_BROWSER="icons/firefox.svg"
+          elif [ "$(grep 'epiphany' ${desktop})" ];then
+              APP_URL="$(grep '^Exec=' ${desktop} | cut -d' ' -f4)"
+              APP_BROWSER="icons/epiphany.svg"
+          else
+              APP_BROWSER="icons/$(grep Exec= ${desktop} |cut -d' ' -f1 |sed 's|Exec=||').svg"
+              APP_URL="$(grep '^Exec=' ${desktop} | sed 's|.*app=||')"
+          fi
+
+          echo '            <li>
+          <div class="products">
+            <img src="'${APP_ICON}'" width="28" height="28" class="svg-center"/>
+            <div class="truncate" style="text-align:left">'${APP_NAME}'</div>
+          </div>
+          <span class="status">
+            <span class="status-circle green"></span>
+            <div class="truncate">
+
+              <a href="#!" onclick="_run('\'${DESKEXEC}\'')" class="urlNative">
+                <svg viewBox="0 0 512 512" style="width: 16px; border-radius: 0px; margin: 0px;display:none">
+                  <path fill="currentcolor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"/>
+                </svg> '${APP_URL}'
+              </a>
+
+            </div>
+          </span>
+          <img src="'${APP_BROWSER}'" width="20" height="20" />
+
+
+          <div class="button-wrapper">
+            <a href="#!" class="btnRemove">
+              <input type="hidden" value="'${desktop}'">
+              <svg viewBox="0 0 448 512" style="width: 16px; border-radius: 0px; margin: 0px;"><path fill="currentcolor" d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"/>
+              </svg>
+            </a>
+          </div>
+        </li>
+
+        <!--REMOVE MODAL ASK-->
+        <div class="pop-up" id="remove'$c'">
+          <div class="pop-up__subtitle">'$"Tem certeza que deseja remover este WebApp?"'</div>
+          <div class="content-button-wrapper">
+            <button class="content-button status-button2 open close">Não</button>
+            <button class="content-button status-button2" id="removeYes'$c'">Sim</button>
+          </div>
+        </div>'
+        c=$((c+1))
+    fi
+    
+  d=$((d+1))
+  done
+    echo '</ul>
+        </div><br>'
+  ## FIM CATEGORY   
+done
+
+#   echo '<div class="content-section-title" style="text-align: left;">'$"ESCRITÓRIO"'</div>'
+#   
+#   echo '<div class="content-section" style="margin-top: 0px;">
+#           <ul style="margin-top: 0px;">'
+# 
+#   c=0
+# for desktop in ~/.local/share/applications/*-webapp-biglinux-custom.desktop;do
+# 
+#   APP_ICON=$(grep Icon= ${desktop} |sed 's|Icon=||')
+#   APP_NAME=$(grep Name= ${desktop} |sed 's|Name=||')
+#   APP_CATEGORY=$(grep Categories= ${desktop} |sed 's|Categories=||' |sed 's|;||')
+#   DESKEXEC="$(grep '^Exec=' ${desktop} | sed 's|Exec=||')"
+# 
+#   if [ "$(grep '.local/bin' ${desktop})" ];then
+#       APP_URL="$(grep 'new-instance' $DESKEXEC | cut -d' ' -f9 | sed 's|^"||;s|"$||')"
+#       APP_BROWSER="icons/firefox.svg"
+#   elif [ "$(grep 'epiphany' ${desktop})" ];then
+#       APP_URL="$(grep '^Exec=' ${desktop} | cut -d' ' -f4)"
+#       APP_BROWSER="icons/epiphany.svg"
+#   else
+#       APP_BROWSER="icons/$(grep Exec= ${desktop} |cut -d' ' -f1 |sed 's|Exec=||').svg"
+#       APP_URL="$(grep '^Exec=' ${desktop} | sed 's|.*app=||')"
+#   fi
+# 
+# echo '            <li>
+#                     <div class="products">
+#                       <img src="'${APP_ICON}'" width="28" height="28" class="svg-center"/>
+#                       <div class="truncate" style="text-align:left">'${APP_NAME}'</div>
+#                     </div>
+#                     <span class="status">
+#                       <span class="status-circle green"></span>
+#                       <div class="truncate">
+# 
+#                         <a href="#!" onclick="_run('\'${DESKEXEC}\'')" class="urlNative">
+#                           <svg viewBox="0 0 512 512" style="width: 16px; border-radius: 0px; margin: 0px;display:none">
+#                             <path fill="currentcolor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"/>
+#                           </svg> '${APP_URL}'
+#                         </a>
+# 
+#                       </div>
+#                     </span>
+#                     <img src="'${APP_BROWSER}'" width="20" height="20" />
+# 
+# 
+#                     <div class="button-wrapper">
+#                       <a href="#!" class="btnRemove">
+#                         <input type="hidden" value="'${desktop}'">
+#                         <svg viewBox="0 0 448 512" style="width: 16px; border-radius: 0px; margin: 0px;"><path fill="currentcolor" d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"/>
+#                         </svg>
+#                       </a>
+#                     </div>
+#                   </li>
+# 
+#                   <!--REMOVE MODAL ASK-->
+#                   <div class="pop-up" id="remove'$c'">
+#                     <div class="pop-up__subtitle">'$"Tem certeza que deseja remover este WebApp?"'</div>
+#                     <div class="content-button-wrapper">
+#                       <button class="content-button status-button2 open close">Não</button>
+#                       <button class="content-button status-button2" id="removeYes'$c'">Sim</button>
+#                     </div>
+#                   </div>'
+# c=$((c+1))
+# done
+#   echo '</ul>
+#       </div>'
+          
+      
+      
 else
+
+
+
+
+
+
+
+
 echo '<!-- INICIO - TELA QUANDO NÃO ENCONTRAR NENHUM WEBAPP -->
               <div class="content-section" style="margin-top: 20%;">
                 <div style="text-align: center; margin: auto; padding: auto;">
