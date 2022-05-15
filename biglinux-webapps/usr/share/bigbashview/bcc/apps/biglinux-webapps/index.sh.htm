@@ -1,4 +1,14 @@
 #!/usr/bin/env bash
+##################################
+#  Author Create: eltonff (www.biglinux.com.br)
+#  Author Modify: Rafael Ruscher (rruscher@gmail.com)
+#  Create Date:    2020/09/01
+#  Modify Date:    2022/05/07
+#
+#  Description: WebApps usage of BigLinux
+#
+#  Licensed by GPL V2 or greater
+##################################
 
 [ -e ~/.bigwebapps/LIGHT ] && className='<body class="light-mode">' || className='<body>'
 
@@ -40,7 +50,7 @@ echo '<head>
 
                 <label for="tab2" role="button" id="#list-tab-content"><svg viewBox="0 0 576 512"><path d="M572.694 292.093L500.27 416.248A63.997 63.997 0 0 1 444.989 448H45.025c-18.523 0-30.064-20.093-20.731-36.093l72.424-124.155A64 64 0 0 1 152 256h399.964c18.523 0 30.064 20.093 20.73 36.093zM152 224h328v-48c0-26.51-21.49-48-48-48H272l-64-64H48C21.49 64 0 85.49 0 112v278.046l69.077-118.418C86.214 242.25 117.989 224 152 224z"/></svg>
 
-                  <span>'$"Lista de WebApps"'</span></label></li>
+                  <span>'$"WebApps Adicionados"'</span></label></li>
 
               <li title="WebApps BigLinux">
                 <label for="tab3" role="button" id="#webappsbig-tab-content">
@@ -148,13 +158,13 @@ echo '<head>
                         </div>
 
                         <div class="svg-center" id="imgCategory">'"$(<./icons/Webapps.svg)"'</div>
-                        <div class="svg-center">
+                        <div class="svg-center" style="padding-top: 10px;">
                           <select class="svg-center" id="categorySelect" name="category">
                               <option value="Development">'$"DESENVOLVIMENTO"'</option>
                               <option value="Office">'$"ESCRITÓRIO"'</option>
-                              <option value="Game">'$"JOGOS"'</option>
                               <option value="Graphics">'$"GRÁFICOS"'</option>
                               <option value="Network">INTERNET</option>
+                              <option value="Game">'$"JOGOS"'</option>
                               <option value="AudioVideo">'$"MULTIMÍDIA"'</option>
                               <option value="Webapps" selected>WEBAPPS</option>
                               <option value="Google">'$"WEBAPPS GOOGLE"'</option>
@@ -243,81 +253,124 @@ echo '<head>
               </div>
             </div>
             <!-- FIM TABS CONTENT ADD -->
-
             <!-- INICIO TABS CONTENT LIST -->
             <div id="list-tab-content" class="fc-card active">'
 
+if compgen -G ~/.local/share/applications/*-webapp-biglinux-custom.desktop >/dev/null;then
 
-if [ "$(ls  ~/.local/share/applications/*-webapp-biglinux-custom.desktop 2>/dev/null)" ];then
+echo '<div class="containerfix">
+        <!-- code here -->
+        <nav class="menufix">'
 
-  echo '<div class="content-section-title" style="text-align: left;">'$"WebApps Instalados"'</div>
-          <div class="content-section" style="margin-top: 0px;">
-          <ul style="margin-top: 0px;">'
-
-  c=0
 for desktop in ~/.local/share/applications/*-webapp-biglinux-custom.desktop;do
-
-  APP_ICON=$(grep Icon= ${desktop} |sed 's|Icon=||')
-  APP_NAME=$(grep Name= ${desktop} |sed 's|Name=||')
-  DESKEXEC="$(grep '^Exec=' ${desktop} | sed 's|Exec=||')"
-
-  if [ "$(grep '.local/bin' ${desktop})" ];then
-      APP_URL="$(grep 'new-instance' $DESKEXEC | cut -d' ' -f9 | sed 's|^"||;s|"$||')"
-      APP_BROWSER="icons/firefox.svg"
-  elif [ "$(grep 'epiphany' ${desktop})" ];then
-      APP_URL="$(grep '^Exec=' ${desktop} | cut -d' ' -f4)"
-      APP_BROWSER="icons/epiphany.svg"
-  else
-      APP_BROWSER="icons/$(grep Exec= ${desktop} |cut -d' ' -f1 |sed 's|Exec=||').svg"
-      APP_URL="$(grep '^Exec=' ${desktop} | sed 's|.*app=||')"
-  fi
-
-echo '            <li>
-                    <div class="products">
-                      <img src="'${APP_ICON}'" width="28" height="28" class="svg-center"/>
-                      <div class="truncate" style="text-align:left">'${APP_NAME}'</div>
-                    </div>
-                    <span class="status">
-                      <span class="status-circle green"></span>
-                      <div class="truncate">
-
-                        <a href="#!" onclick="_run('\'${DESKEXEC}\'')" class="urlNative">
-                          <svg viewBox="0 0 512 512" style="width: 16px; border-radius: 0px; margin: 0px;display:none">
-                            <path fill="currentcolor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"/>
-                          </svg> '${APP_URL}'
-                        </a>
-
-                      </div>
-                    </span>
-                    <img src="'${APP_BROWSER}'" width="20" height="20" />
-
-
-                    <div class="button-wrapper">
-                      <a href="#!" class="btnRemove">
-                        <input type="hidden" value="'${desktop}'">
-                        <svg viewBox="0 0 448 512" style="width: 16px; border-radius: 0px; margin: 0px;"><path fill="currentcolor" d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"/>
-                        </svg>
-                      </a>
-                    </div>
-                  </li>
-
-                  <!--REMOVE MODAL ASK-->
-                  <div class="pop-up" id="remove'$c'">
-                    <div class="pop-up__subtitle">'$"Tem certeza que deseja remover este WebApp?"'</div>
-                    <div class="content-button-wrapper">
-                      <button class="content-button status-button2 open close">Não</button>
-                      <button class="content-button status-button2" id="removeYes'$c'">Sim</button>
-                    </div>
-                  </div>'
-c=$((c+1))
+  APP_CATEGORY=$(grep Categories= $desktop |sed 's|Categories=||;s|;||')
+  [ "$APP_CATEGORY" != "$UNIQ_CATEGORY" ] && {
+    ARRAY_CATEGORY+=($APP_CATEGORY)
+    echo '<a href="#'$APP_CATEGORY'" class="menu-item">
+            <span class="material-icons"><div class="svg-center">'"$(<./icons/$APP_CATEGORY.svg)"'</div></span>
+            <span class="menu-item-label">'$APP_CATEGORY'</span>
+          </a>'
+    }
+  UNIQ_CATEGORY="$APP_CATEGORY"
 done
-  echo '</ul>
-      </div>'
+
+echo '</nav>
+    <!-- end of code -->
+</div>
+'
+
+KEEP_COUNT=0
+for i in "${ARRAY_CATEGORY[@]}";do
+
+    case $i in
+      Development)NAME_CATEGORY=$"Desenvolvimento";;
+      Office)NAME_CATEGORY=$"Escritório";;
+      Graphics)NAME_CATEGORY=$"Gráficos";;
+      Network)NAME_CATEGORY=$"Internet";;
+      Game)NAME_CATEGORY=$"Jogos";;
+      AudioVideo)NAME_CATEGORY=$"Multimídia";;
+      Webapps)NAME_CATEGORY="Webapps";;
+      Google)NAME_CATEGORY="Webapps Google";;
+    esac
+
+  ## CATEGORY
+    echo '<div id="'$i'" class="content-section-title" style="text-align:left;">'$NAME_CATEGORY'</div>
+          <div class="content-section" style="margin-top: 0px;">
+            <ul style="margin-top: 0px;">'
+
+  COUNT=$KEEP_COUNT
+  for desktop in ~/.local/share/applications/*-webapp-biglinux-custom.desktop;do
+
+    APP_CATEGORY=$(grep Categories= $desktop |sed 's|Categories=||;s|;||')
+
+    if [ "$APP_CATEGORY" == "$i" ];then
+        APP_ICON=$(grep Icon= $desktop |sed 's|Icon=||')
+        APP_NAME=$(grep Name= $desktop |sed 's|Name=||')
+        DESKEXEC="$(grep '^Exec=' $desktop | sed 's|Exec=||')"
+          if [ "$(grep '.local/bin' $desktop)" ];then
+              APP_URL=$(grep 'new-instance' $DESKEXEC | cut -d' ' -f9 | sed 's|^"||;s|"$||')
+              APP_BROWSER="icons/firefox.svg"
+          elif [ "$(grep 'epiphany' $desktop)" ];then
+              APP_URL=$(grep '^Exec=' $desktop | cut -d' ' -f4)
+              APP_BROWSER="icons/epiphany.svg"
+          else
+              APP_BROWSER="icons/$(grep Exec= $desktop |cut -d' ' -f1 |sed 's|Exec=||').svg"
+              APP_URL=$(grep '^Exec=' $desktop | sed 's|.*app=||')
+          fi
+
+          echo '<li>
+          <div class="products">
+            <img src="'${APP_ICON}'" width="28" height="28" class="svg-center"/>
+            <div class="truncate" style="text-align:left">'${APP_NAME}'</div>
+          </div>
+          <span class="status">
+            <span class="status-circle green"></span>
+            <div class="truncate">
+
+              <a href="#!" onclick="_run(`'${DESKEXEC}'`)" class="urlNative">
+                <svg viewBox="0 0 512 512" style="width: 16px; border-radius: 0px; margin: 0px;display:none">
+                  <path fill="currentcolor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"/>
+                </svg> '${APP_URL}'
+              </a>
+
+            </div>
+          </span>
+          <img src="'${APP_BROWSER}'" width="20" height="20" />
+
+
+          <div class="button-wrapper">
+            <a href="#!" class="btnRemove">
+              <input type="hidden" value="'$desktop'">
+              <svg viewBox="0 0 448 512" style="width: 16px; border-radius: 0px; margin: 0px;">
+                <path fill="currentcolor" d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"/>
+              </svg>
+            </a>
+          </div>
+        </li>
+
+        <!--REMOVE MODAL ASK-->
+        <div class="pop-up" id="remove'$COUNT'">
+          <div class="pop-up__subtitle">'$"Tem certeza que deseja remover este WebApp?"'</div>
+          <div class="content-button-wrapper">
+            <button class="content-button status-button2 open close">Não</button>
+            <button class="content-button status-button2" id="removeYes'$COUNT'">Sim</button>
+          </div>
+        </div>'
+        ((COUNT++))
+    fi
+
+  done
+  KEEP_COUNT=$COUNT
+  echo '</ul></div><br>'
+  ## FIM CATEGORY
+done
+
 else
+
 echo '<!-- INICIO - TELA QUANDO NÃO ENCONTRAR NENHUM WEBAPP -->
               <div class="content-section" style="margin-top: 20%;">
                 <div style="text-align: center; margin: auto; padding: auto;">
-                  <div class="content-section-title" style="text-align: center;">'$"Nenhum WebApp encontrado!"'</div>
+                  <div class="content-section-title" style="text-align: center;">'$"Nenhum WebApp adicionado!"'</div>
 
                   <ul style="all: initial">
                     <li title="Adicionar" style="all: initial">
@@ -361,27 +414,27 @@ echo '
                 <div id="desc">
                   <div id="menu" style="display:flex;justify-content:center">'
                     if [ -e /usr/lib/brave-browser/brave ];then
-                      echo '<button class="btn-img">
+                      echo '<button class="btn-img status-button">
                             <img src="icons/brave.svg" data-icon="brave" width="38" height="38">
                             </button>'
                     fi
                     if [ -e /usr/lib/chromium/chromium ];then
-                      echo '<button class="btn-img">
+                      echo '<button class="btn-img status-button">
                             <img src="icons/chromium.svg" data-icon="chromium" width="38" height="38">
                             </button>'
                     fi
                     if [ -e /opt/microsoft/msedge/microsoft-edge ];then
-                      echo '<button class="btn-img">
+                      echo '<button class="btn-img status-button">
                             <img src="icons/microsoft-edge-stable.svg" data-icon="microsoft-edge-stable" width="38" height="38">
                             </button>'
                     fi
                     if [ -e /opt/google/chrome/google-chrome ];then
-                      echo '<button class="btn-img">
+                      echo '<button class="btn-img status-button">
                             <img src="icons/google-chrome-stable.svg" data-icon="google-chrome-stable" width="38" height="38">
                             </button>'
                     fi
                     if [ -e /opt/vivaldi/vivaldi ];then
-                      echo '<button class="btn-img">
+                      echo '<button class="btn-img status-button">
                             <img src="icons/vivaldi-stable.svg" data-icon="vivaldi-stable" width="38" height="38">
                             </button>'
                     fi
@@ -448,7 +501,7 @@ echo '
                     <span class="status">
                       <span id="circle_'$n'" class="status-circle '$color'"></span>
                       <div class="truncate">
-                        <a href="#!" onclick="_run('\'${URLDESK}\'')" class="urlNative">
+                        <a href="#!" onclick="_run(`'${URLDESK}'`)" class="urlNative">
                           <svg viewBox="0 0 512 512" style="width: 16px; border-radius: 0px; margin: 0px;display:none">
                             <path fill="currentcolor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"/>
                           </svg>
@@ -458,7 +511,7 @@ echo '
                     </span>
                     <img src="icons/'${BROWSER}'.svg" height="20" width="20" class="iconBrowser" />
                   </li>'
-n=$((n+1))
+((n++))
 done
                 echo '</ul>
               </div>

@@ -30,10 +30,20 @@ LINK_RELS = [
     'icon',
     'shortcut icon',
     'apple-touch-icon',
-    'apple-touch-icon-precomposed',
+    'apple-touch-startup-image',
+    'apple-touch-icon-precomposed'
 ]
 
-META_NAMES = ['msapplication-TileImage', 'og:image', 'image']
+META_NAMES = [
+    'image',
+    'og:image',
+    'twitter:image',
+    'msapplication-TileImage',
+    'msapplication-square70x70logo',
+    'msapplication-wide310x150logo',
+    'msapplication-square150x150logo',
+    'msapplication-square310x310logo'
+]
 
 SIZE_RE = re.compile(r'(?P<width>\d{2,4})x(?P<height>\d{2,4})', flags=re.IGNORECASE)
 

@@ -290,6 +290,8 @@ $(".btnRemove").each(function(index, element) {
     $("#removeYes"+index).click(function (e) {
       e.preventDefault();
 
+      $(".pop-up#remove"+index).removeClass("visible");
+
       let inputRemove = $(element).children()[0];
       let filedesk = $(inputRemove).val();
 
@@ -303,8 +305,6 @@ $(".btnRemove").each(function(index, element) {
         }, 2000);
         document.location.reload(true);
       });
-
-      $(".pop-up#remove"+index).removeClass("visible");
     });
   });
 });

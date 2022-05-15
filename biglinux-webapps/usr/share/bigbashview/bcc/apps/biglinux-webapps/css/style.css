@@ -943,13 +943,6 @@ input {
   overflow: hidden;
 }
 
-.form-wrap .tabs * {
-  -webkit-transition: 0.25s ease-in-out;
-  -moz-transition: 0.25s ease-in-out;
-  -o-transition: 0.25s ease-in-out;
-  transition: 0.25s ease-in-out;
-}
-
 .form-wrap .tabs h3 {
   float: left;
   width: 33.3%;
@@ -1390,13 +1383,6 @@ li img {
 .tabs input[name=tab-control] {
   display: none;
 }
-.tabs .content section h2,
-.tabs ul li label {
-  font-family: "Lato";
-  font-weight: bold;
-  font-size: 18px;
-  color: var(--text-a-color);
-}
 .tabs ul {
   list-style-type: none;
   padding-left: 0;
@@ -1415,38 +1401,44 @@ li img {
   text-align: center;
 }
 .tabs ul li label {
-  transition: all 0.3s ease-in-out;
-  color: #6c7f93;
+  font-family: "Lato";
+  font-weight: bold;
+  font-size: 17px;
+  color: var(--text-a-color);
   padding: 5px auto;
   overflow: hidden;
   text-overflow: ellipsis;
   display: block;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
   white-space: nowrap;
   -webkit-touch-callout: none;
+}
+.tabs ul li label span{
+    top:5px;
+    position: relative;
+    font-size: 20px;
 }
 .tabs ul li label br {
   display: none;
 }
 .tabs ul li label svg {
-  fill: #6c7f93;
+  fill: var(--text-a-color);
   height: 1.2em;
   vertical-align: bottom;
   margin-right: 0.2em;
-  transition: all 0.2s ease-in-out;
+
 }
 .tabs ul li label:hover, .tabs ul li label:focus, .tabs ul li label:active {
   outline: 0;
-  color: #98a5b3;
+  color: #777;
 }
 .tabs ul li label:hover svg, .tabs ul li label:focus svg, .tabs ul li label:active svg {
-  fill: #98a5b3;
+  fill: #777;
 }
 .tabs .slider {
   position: relative;
   width: 33.3333333333%;
-  transition: all 0.33s cubic-bezier(0.38, 0.8, 0.32, 1.07);
+  transition: all 0.13s cubic-bezier(0.38, 0.8, 0.32, 1.07);
 }
 .tabs .slider .indicator {
   position: relative;
@@ -2027,8 +2019,8 @@ input[type = 'search']::-webkit-search-cancel-button{
 
 #imgCategory{
   fill: var(--theme-color);
-  width: 58px;
-  height: 58px;
+  width: 50px;
+  height: 50px;
 }
 
 hr {
@@ -2037,4 +2029,78 @@ hr {
   border-width: 0;
   height: 1px;
   border-top-width: 1px;
+}
+
+
+.containerfix {
+    z-index: 999;
+    position: fixed;
+    bottom: 17px;
+    left: -20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menufix {
+    display: flex;
+    flex-grow: 1;
+    height: 50px;
+    max-width: 600px;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: var(--content-bg);;
+    transition: 0.25s ease;
+}
+.menufix:hover {
+    background-color: var(--theme-bg-color);
+}
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    text-decoration: none;
+    &:focus,
+    &:hover {
+        outline: none;
+        .material-icons {
+            color: #007bff;
+        }
+
+        .menu-item-label {
+            color: #007bff;
+        }
+    }
+}
+
+
+.material-icons {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 26px;
+    color: var(--theme-color);
+    /* transition: 0.25s ease; */
+    fill: var(--theme-color);
+}
+.material-icons:hover {
+        fill: #007bff;
+}
+
+.material-icons svg {
+    width: 20px;
+    flex-shrink: 0;
+    &:focus,
+    &:hover {
+        fill: #007bff;
+    }
+}
+
+.menu-item-label {
+    display: none;
+    font-size: 9px;
+    color: #f9faff;
+    /* transition: 0.25s ease; */
 }
