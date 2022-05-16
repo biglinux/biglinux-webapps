@@ -2050,11 +2050,12 @@ hr {
     max-width: 600px;
     border-radius: 15px;
     overflow: hidden;
-    background-color: var(--content-bg);;
+    background-color: var(--dropdown-bg);;
     transition: 0.25s ease;
 }
 .menufix:hover {
-    background-color: var(--theme-bg-color);
+    background-color: var(--dropdown-hover);
+    box-shadow: 0 0 3px var(--theme-color);
 }
 .menu-item {
     display: flex;

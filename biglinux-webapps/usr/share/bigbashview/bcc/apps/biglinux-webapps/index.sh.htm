@@ -258,22 +258,23 @@ echo '<head>
 
 if compgen -G ~/.local/share/applications/*-webapp-biglinux-custom.desktop >/dev/null;then
 
+for desktop in ~/.local/share/applications/*-webapp-biglinux-custom.desktop;do
+  APP_CATEGORY=$(grep Categories= $desktop |sed 's|Categories=||;s|;||')
+  if [[ ! "${ARRAY_CATEGORY[*]}" =~ "$APP_CATEGORY" ]];then
+    ARRAY_CATEGORY+=($APP_CATEGORY)
+    ARRAY_CATEGORY=($(printf '%s\n' "${ARRAY_CATEGORY[@]}"|sort))
+  fi
+done
+
 echo '<div class="containerfix">
         <!-- code here -->
         <nav class="menufix">'
-
-for desktop in ~/.local/share/applications/*-webapp-biglinux-custom.desktop;do
-  APP_CATEGORY=$(grep Categories= $desktop |sed 's|Categories=||;s|;||')
-  [ "$APP_CATEGORY" != "$UNIQ_CATEGORY" ] && {
-    ARRAY_CATEGORY+=($APP_CATEGORY)
-    echo '<a href="#'$APP_CATEGORY'" class="menu-item">
-            <span class="material-icons"><div class="svg-center">'"$(<./icons/$APP_CATEGORY.svg)"'</div></span>
-            <span class="menu-item-label">'$APP_CATEGORY'</span>
+for i in "${ARRAY_CATEGORY[@]}";do
+echo '<a href="#'$i'" class="menu-item">
+            <span class="material-icons"><div class="svg-center">'"$(<./icons/$i.svg)"'</div></span>
+            <span class="menu-item-label">'$i'</span>
           </a>'
-    }
-  UNIQ_CATEGORY="$APP_CATEGORY"
 done
-
 echo '</nav>
     <!-- end of code -->
 </div>
@@ -286,11 +287,12 @@ for i in "${ARRAY_CATEGORY[@]}";do
       Development)NAME_CATEGORY=$"Desenvolvimento";;
       Office)NAME_CATEGORY=$"Escritório";;
       Graphics)NAME_CATEGORY=$"Gráficos";;
-      Network)NAME_CATEGORY=$"Internet";;
+      Network)NAME_CATEGORY="Internet";;
       Game)NAME_CATEGORY=$"Jogos";;
       AudioVideo)NAME_CATEGORY=$"Multimídia";;
       Webapps)NAME_CATEGORY="Webapps";;
-      Google)NAME_CATEGORY="Webapps Google";;
+      Google)NAME_CATEGORY="Google";;
+      *)continue;;
     esac
 
   ## CATEGORY
