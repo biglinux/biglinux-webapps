@@ -2050,8 +2050,9 @@ hr {
     max-width: 600px;
     border-radius: 15px;
     overflow: hidden;
-    background-color: var(--dropdown-bg);;
     transition: 0.25s ease;
+    background-color: var(--content-bg);
+    border: 1px solid var(--theme-bg-color);
 }
 .menufix:hover {
     background-color: var(--dropdown-hover);
@@ -2064,18 +2065,19 @@ hr {
     align-items: center;
     flex-grow: 1;
     text-decoration: none;
-    &:focus,
-    &:hover {
-        outline: none;
-        .material-icons {
-            color: #007bff;
-        }
-
-        .menu-item-label {
-            color: #007bff;
-        }
-    }
 }
+.menu-item:hover:focus {
+  outline: none;
+
+    .material-icons {
+      color: #007bff;
+    }
+
+    .menu-item-label {
+      color: #007bff;
+    }
+  }
+
 
 
 .material-icons {
@@ -2104,4 +2106,24 @@ hr {
     font-size: 9px;
     color: #f9faff;
     /* transition: 0.25s ease; */
+}
+
+.iconDetect-remove {
+    display: none;
+    left: 100%;
+    top: 0;
+    position: absolute;
+    padding: 0px;
+    margin: -10px;
+    width: 20px;
+    fill: var(--theme-color);
+    cursor: pointer;
+}
+
+.iconDetect-display {
+  display: block;
+  position: absolute;
+  padding: 0;
+  width: 60px;
+  height: 60px;
 }

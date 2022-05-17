@@ -75,5 +75,5 @@ cd /usr/share/bigbashview/bcc/apps/biglinux-webapps
 LANGUAGE=$BBV_LANG bigbashview                           \
                     -s 960x600                           \
                     -n "Gerenciador de WebApps BigLinux" \
-                    -i icons/webapp.svg main.htm
+                    -i icons/webapp.svg main.sh.htm
 rm /tmp/*.png 2>/dev/null

@@ -313,6 +313,23 @@ $("select#categorySelect").change(function(){
   $("#imgCategory").load("icons/"+this.value+".svg");
 });
 
+$(".iconDetect-display").mouseover(function(){
+  let srcIcon = $("#iconDesk").attr("src");
+  if(srcIcon !== "icons/default-webapp.svg"){
+    $(".iconDetect-remove").show();
+  }
+}).mouseleave(function(){
+  $(".iconDetect-remove").hide();
+});
+
+$(".iconDetect-remove").click(function(e){
+  e.preventDefault();
+ $(".iconDetect-remove").hide();
+ $("#iconDesk").attr("src", "icons/default-webapp.svg");
+ $("#inputIconDesk").val("/usr/share/bigbashview/bcc/apps/biglinux-webapps/icons/default-webapp.svg");
+});
+
+
 function isValidURL(string) {
   var res = string.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi);
   return (res !== null)

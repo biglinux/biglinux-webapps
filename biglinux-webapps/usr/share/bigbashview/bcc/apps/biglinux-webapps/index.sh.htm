@@ -95,8 +95,13 @@ echo '<head>
                           </div>
                         </div>
                         <div style="width: 58px;margin-bottom:15px" class="svg-center">
-                          <img id="iconDesk" src="icons/default-webapp.svg" width="58" height="58" />
-                          <input type="hidden" name="icondesk" value="'${PWD}/icons/default-webapp.svg'" id="inputIconDesk" />
+                            <div class="iconDetect-display">
+                                <div class="iconDetect-remove">
+                                  '"$(<./icons/close.svg)"'
+                                </div>
+                            </div>
+                            <img id="iconDesk" src="icons/default-webapp.svg" width="58" height="58" />
+                            <input type="hidden" name="icondesk" value="'${PWD}/icons/default-webapp.svg'" id="inputIconDesk" />
                         </div><br>
                         <div class="svg-center">
                           <button class="button svg-center" id="loadIcon">'$"Alterar"'</button>
