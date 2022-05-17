@@ -26,6 +26,6 @@ def get_favicon_site(url):
         return
 
 url = sys.argv[1].strip()
-if 'https' not in url:
+if 'http' not in url:
     url = 'https://'+url
 get_favicon_site(url)

@@ -271,20 +271,6 @@ for desktop in ~/.local/share/applications/*-webapp-biglinux-custom.desktop;do
   fi
 done
 
-echo '<div class="containerfix">
-        <!-- code here -->
-        <nav class="menufix">'
-for i in "${ARRAY_CATEGORY[@]}";do
-echo '<a href="#'$i'" class="menu-item">
-            <span class="material-icons"><div class="svg-center">'"$(<./icons/$i.svg)"'</div></span>
-            <span class="menu-item-label">'$i'</span>
-          </a>'
-done
-echo '</nav>
-    <!-- end of code -->
-</div>
-'
-
 KEEP_COUNT=0
 for i in "${ARRAY_CATEGORY[@]}";do
 

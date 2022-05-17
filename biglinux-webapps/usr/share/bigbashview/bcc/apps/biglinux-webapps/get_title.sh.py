@@ -6,13 +6,16 @@ import re
 from bs4 import BeautifulSoup
 
 def get_title(url):
-    headers = {
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5)'
-    'AppleWebKit/537.36 (KHTML, like Gecko)'
-    'Chrome/50.0.2661.102 Safari/537.36'
-    }
-    resp = requests.get(url, headers=headers, timeout=10)
-    if resp.status_code >= 400: return
+    try:
+        headers = {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5)'
+        'AppleWebKit/537.36 (KHTML, like Gecko)'
+        'Chrome/50.0.2661.102 Safari/537.36'
+        }
+        resp = requests.get(url, headers=headers, timeout=10)
+        if resp.status_code >= 400: return
+    except:
+        return
 
     try:
         soup = BeautifulSoup(resp.text, features='html.parser')
@@ -24,6 +27,6 @@ def get_title(url):
         return
 
 url = sys.argv[1].strip()
-if 'https' not in url:
+if 'http' not in url:
     url = 'https://'+url
 get_title(url)
