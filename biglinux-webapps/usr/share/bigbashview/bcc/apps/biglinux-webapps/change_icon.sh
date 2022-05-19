@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-webapps
+
 cd "$(xdg-user-dir PICTURES)"
 FILENAME="$(yad --file --image-filter                \
                 --add-preview --large-preview        \

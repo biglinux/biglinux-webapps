@@ -1,197 +1,150 @@
-# Spanish translations for biglinux-webapps package.
-# Copyright (C) 2020 THE biglinux-webapps'S COPYRIGHT HOLDER
+# Portuguese translations for biglinux-webapps package.
+# Copyright (C) 2022 THE biglinux-webapps'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the biglinux-webapps package.
-# Automatically generated, 2020.
+# Automatically generated, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-03 01:17-0300\n"
-"PO-Revision-Date: 2020-10-03 01:31-0300\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"POT-Creation-Date: 2022-05-18 07:01-0300\n"
+"PO-Revision-Date: 2022-05-19 01:25+0000\n"
+"Last-Translator: Luiz Carlos Lucasv <csversut@gmail.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/biglinux/"
+"biglinux-webapps/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13-dev\n"
 
-msgid "Arquivos de Imagem(*.bmp *.png *.ico *.xpm *.jpg)"
-msgstr "Archivos de imagen(*.bmp *.png *.ico *.xpm *.jpg)"
+msgid "Selecionar imagem"
+msgstr "Seleccionar imagen"
 
-msgid "Instalar WebApps BigLinux:"
-msgstr "Instale BigLinux WebApps:"
+msgid "Bom dia"
+msgstr "Buen día"
+
+msgid "Boa tarde"
+msgstr "Buenas tardes"
+
+msgid "Boa noite"
+msgstr "Buenas noches"
+
+msgid "Aguarde, estamos preparando para começar..."
+msgstr "Espera, nos estamos preparando para empezar..."
+
+msgid "Adicionar WebApps"
+msgstr "Agregar WebApps"
+
+msgid "WebApps Adicionados"
+msgstr "WebApps añadidas"
+
+msgid "WebApps BigLinux"
+msgstr "WebApps Biglinux"
+
+msgid "Url:"
+msgstr "Url:"
+
+msgid "Detectar Nome e Ícone"
+msgstr "Detectar nombre e icono"
 
 msgid "Nome:"
 msgstr "Nombre:"
 
-msgid "URL:"
-msgstr "URL:"
-
-msgid "Colar URL"
-msgstr "Pegar URL"
-
-msgid ""
-"Detecta automaticamente o título do site<br/>informado e sugere como nome do "
-"webapp."
-msgstr ""
-"Detecta automáticamente el título del sitio<br/>informado y lo sugiere como "
-"nombre de la aplicación web."
-
-msgid "Detectar Título"
-msgstr "Detectar Título"
-
-msgid ""
-"Detecta automaticamente o ícone do site informado,<br/>mas não são todos os "
-"sites que suportam o recurso.<br/>Por exemplo, sites que necessitam de login."
-msgstr ""
-"Detecta automáticamente el icono del sitio web informado,<br>pero no todos "
-"sitios que admiten la función.<br>Por ejemplo, sitios que necesitan iniciar "
-"sesión."
-
-msgid "Detectar Ícone"
-msgstr "Detectar icono"
-
 msgid "Ícone:"
 msgstr "Icono:"
-
-msgid "Carrega um arquivo de imagem para ser usado como ícone."
-msgstr "Cargue un archivo de imagen para usarlo como icono."
-
-msgid "Abrir"
-msgstr "Abrir"
-
-msgid "Navegador:"
-msgstr "Navegador:"
-
-msgid ""
-"Essa opção permite que você crie webapps<br>que não compartilham informações."
-"<br>Por exemplo, para logar em contas de e-mails diferentes,<br>assim cada "
-"webapp manterá o login separadamente."
-msgstr ""
-"Esta opción le permite crear aplicaciones<br>web que no comparten "
-"información.<br>Por ejemplo, para iniciar sesión en diferentes cuentas de "
-"correo electrónico,<br>cada aplicación web mantendrá el inicio de sesión por "
-"separado."
-
-msgid "Novo Perfil"
-msgstr "Nuevo Perfil"
-
-msgid "Adicionar atalho na Área de Trabalho"
-msgstr "Agregar acceso directo de Escritorio"
-
-msgid ""
-"Essa opção permite que você visualize os<br>vídeos do YouTube sem outras "
-"informações.<br>Por exemplo, sem propagandas e sem outros vídeos."
-msgstr ""
-"Esta opción le permite ver videos<br>de YouTube sin más información.<br>Por "
-"ejemplo, sin publicidad y sin otros videos."
-
-msgid "YouTube em Modo TV"
-msgstr "YouTube en Modo TV"
-
-msgid "Ir para página inicial"
-msgstr "Ir a la página de inicio"
-
-msgid "Voltar"
-msgstr "Volver"
-
-msgid "Inicia a instalação"
-msgstr "Comience la instalación"
-
-msgid "Instalar"
-msgstr "Instalar"
-
-msgid "URL inválida!"
-msgstr "¡URL invalida!"
 
 msgid "Alterar"
 msgstr "Cambiar"
 
-msgid "Digite ou cole a URL!"
-msgstr "Escriba o pegue la URL!"
+msgid "Navegador:"
+msgstr "Navegador:"
 
-msgid "Detectando..."
-msgstr "Detectando..."
+msgid "Categoria:"
+msgstr "Categoría:"
 
-msgid "Digite ou cole o Nome!"
-msgstr "Escriba o pegue el nombre!"
+msgid "DESENVOLVIMENTO"
+msgstr "DESARROLLO"
 
-msgid "Remover WebApps BigLinux:"
-msgstr "Eliminar BigLinux WebApps:"
+msgid "ESCRITÓRIO"
+msgstr "OFICINA"
 
-msgid "Remover"
-msgstr "Eliminar"
+msgid "GRÁFICOS"
+msgstr "GRÁFICOS"
 
-msgid "Nenhum WebApp BigLinux instalado por você!"
-msgstr "¡No hay una aplicación web BigLinux instalada por usted!"
+msgid "JOGOS"
+msgstr "JUEGOS"
 
-msgid ""
-"Se você deseja instalar um novo<br> WebApp BigLinux, clique no botão "
-"Instalar:"
-msgstr ""
-"Si desea instalar una nueva<br> aplicación web BigLinux, haga clic en el "
-"botón Instalar:"
+msgid "MULTIMÍDIA"
+msgstr "MULTIMEDIA"
 
-msgid "Ir para página de instalação do WebApp"
-msgstr "Vaya a la página de instalación de la aplicación web"
+msgid "Criar atalho na Área de Trabalho"
+msgstr "Crear accesso directo en Área de trabajo"
 
-msgid "Bom dia "
-msgstr "Buen día "
+msgid "Perfil adicional"
+msgstr "Perfil adicional"
 
-msgid "Boa tarde "
-msgstr "Buenas tardes "
+msgid "YouTube Modo TV"
+msgstr "YouTube Modo TV"
 
-msgid "Boa noite "
-msgstr "Buenas noches "
+msgid "Adicionar"
+msgstr "Agregar"
 
-msgid "Bem-Vindo(a) ao Gerenciador de WebApps BigLinux"
-msgstr "Bienvenido al BigLinux WebApps Administrador"
+msgid "Para adicionar um WebApp, você precisa informar a Url e o Nome."
+msgstr "Para agregar una aplicación web, debe informar la URL y el nombre."
 
-msgid "Instala um novo WebApp BigLinux"
-msgstr "Instala una nueva aplicación web BigLinux"
+msgid "Fechar"
+msgstr "Cerrar"
 
-msgid "Instalar WebApps"
-msgstr "Instalar aplicaciones web"
-
-msgid "Remove um WebApp BigLinux"
-msgstr "Elimina una aplicación web BigLinux"
-
-msgid "Remover WebApps"
-msgstr "Eliminar aplicaciones web"
-
-msgid "Ative ou desative os WebApps instalados por padrão no sistema"
-msgstr ""
-"Habilita o deshabilita las aplicaciones web instaladas por defecto en el "
-"sistema"
-
-msgid "Ativar / Desativar WebApps"
-msgstr "Habilitar / deshabilitar aplicaciones web"
-
-msgid "Ative ou desative os WebApps BigLinux:"
-msgstr "Habilitar o deshabilitar BigLinux WebApps:"
-
-msgid "Algo de errado aconteceu...\\nPor favor, tente novamente!"
-msgstr "Algo salió mal...\\nInténtalo de nuevo!"
+msgid "Para detectar o Nome e o Ícone você precisa informar a Url."
+msgstr "Para detectar el Nombre y el Icono, debe informar la Url."
 
 msgid ""
-"O WebApp foi instalado com sucesso!\\nVocê deseja instalar outro WebApp?"
+"A Url é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão "
+"Alterar."
 msgstr ""
-"La aplicación web se ha instalado correctamente.\\n¿Desea instalar otra "
-"aplicación web?"
+"La URL no es válida o la conexión falló.<br>Intente ingresar el icono a "
+"través del botón Cambiar."
 
-msgid "Você tem certeza que deseja remover este WebApp?"
-msgstr "¿Seguro que quieres eliminar esta aplicación web?"
+msgid "O WebApp foi adicionado com sucesso!"
+msgstr "¡La aplicación web se ha agregado con éxito!"
 
-msgid "O WebApp foi removido com sucesso!\\nVocê deseja remover outro WebApp?"
-msgstr ""
-"La aplicación web se ha eliminado correctamente.\\n¿Desea eliminar otra "
-"aplicación web?"
+msgid "Ícones encontrados"
+msgstr "Iconos encontrados"
 
-msgid "Não foi possível detectar o ícone deste site!"
-msgstr "¡No fue posible detectar el ícono de este sitio!"
+msgid "Selecione o ícone preferido:"
+msgstr "Seleccione su icono preferido:"
 
-#~ msgid "Inicia a remoção"
-#~ msgstr "Comienza la eliminación"
+msgid "Desenvolvimento"
+msgstr "Desarrollo"
+
+msgid "Escritório"
+msgstr "Oficina"
+
+msgid "Gráficos"
+msgstr "Gráficos"
+
+msgid "Jogos"
+msgstr "Juegos"
+
+msgid "Multimídia"
+msgstr "Multimedia"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "¿Está seguro de que desea eliminar esta aplicación web?"
+
+msgid "Nenhum WebApp adicionado!"
+msgstr "¡No se agregó ninguna aplicación web!"
+
+msgid "Navegador padrão<br>dos webapps:"
+msgstr "Navegador predeterminado<br>de aplicaciones web:"
+
+msgid "Alterar navegador"
+msgstr "Cambiar de navegador"
+
+msgid "Selecione o navegador preferido:"
+msgstr "Seleccione su navegador preferido:"
+
+msgid "WebApps Nativos"
+msgstr "WebApps Nativos"

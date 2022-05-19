@@ -10,6 +10,10 @@
 #  Licensed by GPL V2 or greater
 ##################################
 
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-webapps
+
 [ -e ~/.bigwebapps/LIGHT ] && className='<body class="light-mode">' || className='<body>'
 
 echo '<head>
@@ -172,7 +176,7 @@ echo '<head>
                               <option value="Game">'$"JOGOS"'</option>
                               <option value="AudioVideo">'$"MULTIMÍDIA"'</option>
                               <option value="Webapps" selected>WEBAPPS</option>
-                              <option value="Google">'$"WEBAPPS GOOGLE"'</option>
+                              <option value="Google">WEBAPPS GOOGLE</option>
                           </select>
                         </div>
                       </div>

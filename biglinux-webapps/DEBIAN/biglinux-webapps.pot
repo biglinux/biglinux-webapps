@@ -7,7 +7,7 @@
 msgid   ""
 msgstr  "Project-Id-Version: biglinux-webapps\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2020-10-03 01:17-0300\n"
+        "POT-Creation-Date: 2022-05-18 07:01-0300\n"
         "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
         "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,156 +16,129 @@ msgstr  "Project-Id-Version: biglinux-webapps\n"
         "Content-Type: text/plain; charset=UTF-8\n"
         "Content-Transfer-Encoding: 8bit\n"
 
-msgid   "Arquivos de Imagem(*.bmp *.png *.ico *.xpm *.jpg)"
+msgid   "Selecionar imagem"
 msgstr  ""
 
-msgid   "Instalar WebApps BigLinux:"
+msgid   "Bom dia"
+msgstr  ""
+
+msgid   "Boa tarde"
+msgstr  ""
+
+msgid   "Boa noite"
+msgstr  ""
+
+msgid   "Aguarde, estamos preparando para começar..."
+msgstr  ""
+
+msgid   "Adicionar WebApps"
+msgstr  ""
+
+msgid   "WebApps Adicionados"
+msgstr  ""
+
+msgid   "WebApps BigLinux"
+msgstr  ""
+
+msgid   "Url:"
+msgstr  ""
+
+msgid   "Detectar Nome e Ícone"
 msgstr  ""
 
 msgid   "Nome:"
 msgstr  ""
 
-msgid   "URL:"
-msgstr  ""
-
-msgid   "Colar URL"
-msgstr  ""
-
-msgid   "Detecta automaticamente o título do site<br/>informado e sugere como "
-        "nome do webapp."
-msgstr  ""
-
-msgid   "Detectar Título"
-msgstr  ""
-
-msgid   "Detecta automaticamente o ícone do site informado,<br/>mas não são "
-        "todos os sites que suportam o recurso.<br/>Por exemplo, sites que "
-        "necessitam de login."
-msgstr  ""
-
-msgid   "Detectar Ícone"
-msgstr  ""
-
 msgid   "Ícone:"
-msgstr  ""
-
-msgid   "Carrega um arquivo de imagem para ser usado como ícone."
-msgstr  ""
-
-msgid   "Abrir"
-msgstr  ""
-
-msgid   "Navegador:"
-msgstr  ""
-
-msgid   "Essa opção permite que você crie webapps<br>que não compartilham "
-        "informações.<br>Por exemplo, para logar em contas de e-mails "
-        "diferentes,<br>assim cada webapp manterá o login separadamente."
-msgstr  ""
-
-msgid   "Novo Perfil"
-msgstr  ""
-
-msgid   "Adicionar atalho na Área de Trabalho"
-msgstr  ""
-
-msgid   "Essa opção permite que você visualize os<br>vídeos do YouTube sem "
-        "outras informações.<br>Por exemplo, sem propagandas e sem outros "
-        "vídeos."
-msgstr  ""
-
-msgid   "YouTube em Modo TV"
-msgstr  ""
-
-msgid   "Ir para página inicial"
-msgstr  ""
-
-msgid   "Voltar"
-msgstr  ""
-
-msgid   "Inicia a instalação"
-msgstr  ""
-
-msgid   "Instalar"
-msgstr  ""
-
-msgid   "URL inválida!"
 msgstr  ""
 
 msgid   "Alterar"
 msgstr  ""
 
-msgid   "Digite ou cole a URL!"
+msgid   "Navegador:"
 msgstr  ""
 
-msgid   "Detectando..."
+msgid   "Categoria:"
 msgstr  ""
 
-msgid   "Digite ou cole o Nome!"
+msgid   "DESENVOLVIMENTO"
 msgstr  ""
 
-msgid   "Remover WebApps BigLinux:"
+msgid   "ESCRITÓRIO"
 msgstr  ""
 
-msgid   "Remover"
+msgid   "GRÁFICOS"
 msgstr  ""
 
-msgid   "Nenhum WebApp BigLinux instalado por você!"
+msgid   "JOGOS"
 msgstr  ""
 
-msgid   "Se você deseja instalar um novo<br> WebApp BigLinux, clique no botão "
-        "Instalar:"
+msgid   "MULTIMÍDIA"
 msgstr  ""
 
-msgid   "Ir para página de instalação do WebApp"
+msgid   "Criar atalho na Área de Trabalho"
 msgstr  ""
 
-msgid   "Bom dia "
+msgid   "Perfil adicional"
 msgstr  ""
 
-msgid   "Boa tarde "
+msgid   "YouTube Modo TV"
 msgstr  ""
 
-msgid   "Boa noite "
+msgid   "Adicionar"
 msgstr  ""
 
-msgid   "Bem-Vindo(a) ao Gerenciador de WebApps BigLinux"
+msgid   "Para adicionar um WebApp, você precisa informar a Url e o Nome."
 msgstr  ""
 
-msgid   "Instala um novo WebApp BigLinux"
+msgid   "Fechar"
 msgstr  ""
 
-msgid   "Instalar WebApps"
+msgid   "Para detectar o Nome e o Ícone você precisa informar a Url."
 msgstr  ""
 
-msgid   "Remove um WebApp BigLinux"
+msgid   "A Url é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo "
+        "botão Alterar."
 msgstr  ""
 
-msgid   "Remover WebApps"
+msgid   "O WebApp foi adicionado com sucesso!"
 msgstr  ""
 
-msgid   "Ative ou desative os WebApps instalados por padrão no sistema"
+msgid   "Ícones encontrados"
 msgstr  ""
 
-msgid   "Ativar / Desativar WebApps"
+msgid   "Selecione o ícone preferido:"
 msgstr  ""
 
-msgid   "Ative ou desative os WebApps BigLinux:"
+msgid   "Desenvolvimento"
 msgstr  ""
 
-msgid   "Algo de errado aconteceu...\\nPor favor, tente novamente!"
+msgid   "Escritório"
 msgstr  ""
 
-msgid   "O WebApp foi instalado com sucesso!\\nVocê deseja instalar outro "
-        "WebApp?"
+msgid   "Gráficos"
 msgstr  ""
 
-msgid   "Você tem certeza que deseja remover este WebApp?"
+msgid   "Jogos"
 msgstr  ""
 
-msgid   "O WebApp foi removido com sucesso!\\nVocê deseja remover outro "
-        "WebApp?"
+msgid   "Multimídia"
 msgstr  ""
 
-msgid   "Não foi possível detectar o ícone deste site!"
+msgid   "Tem certeza que deseja remover este WebApp?"
+msgstr  ""
+
+msgid   "Nenhum WebApp adicionado!"
+msgstr  ""
+
+msgid   "Navegador padrão<br>dos webapps:"
+msgstr  ""
+
+msgid   "Alterar navegador"
+msgstr  ""
+
+msgid   "Selecione o navegador preferido:"
+msgstr  ""
+
+msgid   "WebApps Nativos"
 msgstr  ""

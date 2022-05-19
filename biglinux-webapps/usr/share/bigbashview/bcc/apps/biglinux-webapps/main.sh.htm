@@ -9,6 +9,11 @@
 #
 #  Licensed by GPL V2 or greater
 ##################################
+
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-webapps
+
 cat << EOF
 <!DOCTYPE html>
 <html>
@@ -37,13 +42,13 @@ EOF
 hour="$(date +%H)"
 if [ "$hour" -ge "06" -a "$hour" -le "12" ];then
     msg=$"Bom dia"
-elif [ "$hour" -ge "12" -a "$hour" -le "19" ];then
+elif [ "$hour" -ge "12" -a "$hour" -le "18" ];then
     msg=$"Boa tarde"
 else
     msg=$"Boa noite"
 fi
 
-TXT=$"$msg $USER!<br> Aguarde, estamos preparando para começar..."
+TXT=$"Aguarde, estamos preparando para começar..."
 
 [ -e ~/.bigwebapps/LIGHT ] && className='<body class="light-mode">' || className='<body>'
 
@@ -55,7 +60,7 @@ cat << EOF
 
     <div class="center">
       <div class="lds-ring"><div></div><div></div><div></div><div></div>
-        <span class="content-section-title">$TXT</span>
+        <span class="content-section-title">$msg $USER!<br>$TXT</span>
       </div>
 
     </div>
