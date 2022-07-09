@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-webapps
+
 WEBAPP_DIR="/usr/share/bigbashview/bcc/apps/biglinux-webapps/webapps"
 HOME_SHARE_DIR_APP="$HOME/.local/share/applications"
 
@@ -63,17 +67,10 @@ if [ -e $HOME_SHARE_DIR_APP/spotify-firefox.desktop ];then
 	cp $WEBAPP_DIR/spotify-webapp-biglinux.desktop $HOME_SHARE_DIR_APP
 fi
 
-if [ "${LANG:0:2}" = "pt" ];then
-    BBV_LANG="pt"
-elif [ "${LANG:0:2}" = "es" ];then
-    BBV_LANG="es"
-else
-    BBV_LANG="en"
-fi
 
 cd /usr/share/bigbashview/bcc/apps/biglinux-webapps
 LANGUAGE=$BBV_LANG bigbashview                           \
                     -s 960x600                           \
-                    -n "Gerenciador de WebApps BigLinux" \
+                    -n $"Gerenciador de WebApps BigLinux" \
                     -i icons/webapp.svg main.sh.htm
 rm /tmp/*.png 2>/dev/null
