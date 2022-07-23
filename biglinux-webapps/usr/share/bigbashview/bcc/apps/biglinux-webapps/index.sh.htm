@@ -443,73 +443,122 @@ echo '
               <div class="content-section-title" style="text-align:left">'$"WebApps Nativos"'</div>
               <div class="content-section" style="margin-top:0">
               <ul>'
-n=0
-for webapp in ${PWD}/webapps/*;do
 
-[ "$(grep Name.pt.= $webapp)" ] && {
-  NAME="$(grep Name.pt.= $webapp|sed 's|Name\[pt\]=||')"
-} || {
-  NAME="$(grep Name= $webapp|sed 's|Name=||')"
+gawk -v browser=${BROWSER} '
+BEGIN {
+# This OFS helps write readable code on printing
+    OFS = "\n"
+# Grabs localization language, e.g., en_US.UTF-8 --> en
+    lang = gensub(/[._].*/,"",1,ENVIRON["LANG"])
 }
 
-ICON="/usr/share/icons/hicolor/128x128/apps/$(grep Icon= $webapp|sed 's|Icon=||')"
-
-URLDESK="$(grep Exec= $webapp|sed 's|Exec=||;s|"||g')"
-if [ "$(grep cleverpdf <<< $URLDESK)" ];then
-  if [ "${LANG:0:2}" = "pt" ]; then
-    URL="https://www.cleverpdf.com/pt"
-    URLDESK="biglinux-webapp --class=www.cleverpdf.com__pt,Chromium-browser --profile-directory=Default --app=https://www.cleverpdf.com/pt"
-  elif [ "${LANG:0:2}" = "es" ]; then
-    URL="https://www.cleverpdf.com/es"
-    URLDESK="biglinux-webapp --class=www.cleverpdf.com__pt,Chromium-browser --profile-directory=Default --app=https://www.cleverpdf.com/es"
-  else
-    URL="https://www.cleverpdf.com"
-    URLDESK="biglinux-webapp --class=www.cleverpdf.com__pt,Chromium-browser --profile-directory=Default --app=https://www.cleverpdf.com"
-  fi
-elif [ "$(grep netflix <<< $URLDESK)" ];then
-  if [ "${LANG:0:2}" = "pt" ];then
-      URL="https://www.netflix.com/br"
-      URLDESK="biglinux-webapp --class=www.netflix.com__br,Chromium-browser --profile-directory=Default --app=https://www.netflix.com/br"
-  else
-      URL="https://www.netflix.com/"
-      URLDESK="biglinux-webapp --class=www.netflix.com,Chromium-browser --profile-directory=Default --app=https://www.netflix.com/"
-  fi
-else
-  URL="$(grep Exec= $webapp|sed 's|.*--app=||')"
-fi
-
-
-[ -e ~/.local/share/applications/${webapp##*/} ] && {
-  color="green"
-  checked="checked"
-} || {
-  color="gray"
-  checked=""
+# BEGINFILE block runs before each file is read
+BEGINFILE {
+# Resets current webapp variables
+    name = namelang = icon = urldesk = url = ""
+    webapp = gensub(/.+\//,"","g",FILENAME)
+# n counts the webapps
+    ++n
 }
-echo '
-                  <li class="product">
 
-                    <input value="'${webapp##*/}'" id="webapp_'$n'" type="checkbox" class="switch" style="margin-right:10px;" '$checked'/>
+# Ternary condition checks if name has already been localized
+# This may happen depending on position of Name= and Name[XX]= on file
+/^Name=/ {
+    name = ( name ) ? ( name ) : gensub(/^Name=/,"",1)
+}
 
-                    <div class="products">
-                      <img src="'$ICON'" height="25" width="25" class="svg-center"/>
-                      '$NAME'</div>
+# Localizing name
+$0 ~ "^Name\\["lang {
+    name = gensub(/^Name\[.+\]=/,"",1)
+    namelang = "localized"
+}
 
-                    <span class="status">
-                      <span id="circle_'$n'" class="status-circle '$color'"></span>
-                      <div class="truncate">
-                        <a href="#!" onclick="_run(`'${URLDESK}'`)" class="urlNative">
-                          <svg viewBox="0 0 512 512" style="width: 16px; border-radius: 0px; margin: 0px;display:none">
-                            <path fill="currentcolor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"/>
-                          </svg>
-                          '$URL'
-                        </a>
-                      </div>
-                    </span>
-                    <img src="icons/'${BROWSER}'.svg" height="20" width="20" class="iconBrowser" />
-                  </li>'
-((n++))
-done
+# Grabs icon
+/^Icon=/ {
+    icon = "/usr/share/icons/hicolor/128x128/apps/" gensub(/^Icon=/,"",1)
+}
+
+# Grabs url for the browser and for bbv
+/^Exec=/ {
+    urldesk = gensub(/^Exec=|\"/,"","g")
+    url = gensub(/.*--app=/,"","g")
+}
+
+# Skips to next file if all the variables are already set
+name && namelang && icon && urldesk && url {
+    nextfile
+}
+
+
+# ENDFILE block runs after each file is read
+ENDFILE {
+
+# Special cases
+    if ( urldesk ~ /cleverpdf/ ) {
+        switch (lang) {
+        case "pt":
+            url = "https://www.cleverpdf.com/pt"
+            urldesk = "biglinux-webapp --class=www.cleverpdf.com__pt,Chromium-browser --profile-directory=Default --app=https://www.cleverpdf.com/pt"
+        case "es":
+            url = "https://www.cleverpdf.com/es"
+            urldesk = "biglinux-webapp --class=www.cleverpdf.com__pt,Chromium-browser --profile-directory=Default --app=https://www.cleverpdf.com/es"
+        default:
+            url = "https://www.cleverpdf.com"
+            urldesk = "biglinux-webapp --class=www.cleverpdf.com__pt,Chromium-browser --profile-directory=Default --app=https://www.cleverpdf.com"
+        }
+    } else if ( urldesk ~ /netflix/ ) {
+        switch (lang) {
+        case "pt":
+            url = "https://www.netflix.com/br"
+            urldesk = "biglinux-webapp --class=www.netflix.com__br,Chromium-browser --profile-directory=Default --app=https://www.netflix.com/br"
+        default:
+            url = "https://www.netflix.com/"
+            urldesk = "biglinux-webapp --class=www.netflix.com,Chromium-browser --profile-directory=Default --app=https://www.netflix.com/"
+        }
+    } else {
+    }
+
+# Checks if webapp is installed
+    if ( system("[ ! -e ~/.local/share/applications/"webapp" ]") ) {
+      color = "green"
+      checked = "checked"
+    } else {
+      color = "gray"
+      checked = ""
+    }
+
+### Printing the HTML ###
+# The comma between strings returns the OFS variable, which was set in the BEGIN block as \n to create a line break at the html code
+#
+# Caution:
+# some double quotes (") are being escaped, and others are real double quotes which opens and closes strings to concatenate gawk variables
+print(\
+"                  <li class=\"product\">",
+"",
+"                    <input value=\""webapp"\" id=\"webapp_"n"\" type=\"checkbox\" class=\"switch\" style=\"margin-right:10px;\" "checked"/>",
+# The following prints an empty line
+"",
+"                    <div class=\"products\">",
+"                      <img src=\""icon"\" height=\"25\" width=\"25\" class=\"svg-center\"/>",
+"                      "name"</div>",
+"",
+"                    <span class=\"status\">",
+"                      <span id=\"circle_"n"\" class=\"st”atus-circle "color"\"></span>",
+"                      <div class=\"truncate\">",
+"                        <a href=\"#!\" onclick=\"_run(`"urldesk"`)\" class=\"urlNative\">",
+"                          <svg viewBox=\"0 0 512 512\" style=\"width: 16px; border-radius: 0px; margin: 0px;display:none\">",
+"                            <path fill=\"currentcolor\" d=\"M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z\"/>",
+"                          </svg>",
+"                          "url,
+"                        </a>",
+"                      </div>",
+"                    </span>",
+"                    <img src=\"icons/"browser".svg\" height=\"20\" width=\"20\" class=\"iconBrowser\" />",
+"                  </li>")
+
+}' ${PWD}/webapps/*
+# End of gawk script
+
                 echo '</ul>
               </div>
 
