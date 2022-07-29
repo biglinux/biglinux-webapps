@@ -265,6 +265,11 @@ echo '<!DOCTYPE html>
             <!-- INICIO TABS CONTENT LIST -->
             <div id="list-tab-content" class="fc-card active">'
 
+CUSTOMFILES=""
+if compgen -G ~/.local/share/applications/*-webapp-biglinux-custom.desktop >/dev/null
+then
+    CUSTOMFILES=~/.local/share/applications/*-webapp-biglinux-custom.desktop
+fi
 
 # Start of gawk script
 gawk -v development=$"Desenvolvimento" -v office=$"Escritório" -v graphics=$"Gráficos" -v game=$"Jogos" -v audiovideo=$"Multimídia" -v certeza=$"Tem certeza que deseja remover este WebApp?" -v nenhum=$"Nenhum WebApp adicionado!" -v adicionar=$"Adicionar" -- '
@@ -458,7 +463,7 @@ END {
   }
 }
 
-' ~/.local/share/applications/*-webapp-biglinux-custom.desktop
+' $CUSTOMFILES 
 # End of gawk script
 
 
