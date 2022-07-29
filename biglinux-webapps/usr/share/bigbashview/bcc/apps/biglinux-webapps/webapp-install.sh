@@ -7,7 +7,7 @@ DIR="$(basename $LINK_APP | sed 's|-webapp-biglinux-custom.desktop||')"
 
 if [ "$(grep 'firefox' <<< $browser)" ];then
 
-    [ ! "$(grep 'https://' <<< $urldesk)" ] && urldesk="https://$urldesk"
+    [ ! "$(grep -E '^http:|^https:|^localhost|^127' <<< $urldesk)" ] && urldesk="https://$urldesk"
 
     [ "$tvmode" = "on" ] && {
         YTCODE="$(basename $urldesk | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
@@ -104,7 +104,7 @@ X-KDE-StartupNotify=true" > "$LINK_APP"
 
 elif [ "$(grep 'epiphany' <<< $browser)" ];then
 
-    [ ! "$(grep 'https://' <<< $urldesk)" ] && urldesk="https://$urldesk"
+    [ ! "$(grep -E '^http:|^https:|^localhost|^127' <<< $urldesk)" ] && urldesk="https://$urldesk"
 
     [ "$tvmode" = "on" ] && {
         YTCODE="$(basename $urldesk | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"
@@ -148,7 +148,7 @@ X-Purism-FormFactor=Workstation;Mobile;" > "$FOLDER/$EPI_FILE"
 else
     FOLDER="$HOME/.bigwebapps/$DIR"
 
-    [ ! "$(grep 'https://' <<< $urldesk)" ] && urldesk="https://$urldesk"
+    [ ! "$(grep -E '^http:|^https:|^localhost|^127' <<< $urldesk)" ] && urldesk="https://$urldesk"
 
     [ "$tvmode" = "on" ] && {
         YTCODE="$(basename $urldesk | sed 's|watch?v=||;s|&list=.*||;s|&feature=.*||')"

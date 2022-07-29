@@ -69,7 +69,6 @@ $(function () {
 $(".dark-light").click(function (e) {
   e.preventDefault();
   $("body").toggleClass("light-mode");
-  fetch(`/execute$./toggle-class.sh`);
 });
 
 $(".product input").click(function(e) {

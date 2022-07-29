@@ -14,12 +14,12 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
-[ -e ~/.bigwebapps/LIGHT ] && className='<body class="light-mode">' || className='<body>'
-
-echo '<head>
+echo '<!DOCTYPE html>
+<html>
+<head>
   <link rel="stylesheet" href="css/style.css">
 </head>
-'${className}'
+'$(/usr/share/bigbashview/bcc/shell/getbgcolor.sh)'
 <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
 <!-- partial:index.partial.html -->
 <div class="dark-light">
@@ -265,121 +265,208 @@ echo '<head>
             <!-- INICIO TABS CONTENT LIST -->
             <div id="list-tab-content" class="fc-card active">'
 
-if compgen -G ~/.local/share/applications/*-webapp-biglinux-custom.desktop >/dev/null;then
-
-for desktop in ~/.local/share/applications/*-webapp-biglinux-custom.desktop;do
-  APP_CATEGORY=$(grep Categories= $desktop |sed 's|Categories=||;s|;||')
-  if [[ ! "${ARRAY_CATEGORY[*]}" =~ "$APP_CATEGORY" ]];then
-    ARRAY_CATEGORY+=($APP_CATEGORY)
-    ARRAY_CATEGORY=($(printf '%s\n' "${ARRAY_CATEGORY[@]}"|sort))
-  fi
-done
-
-KEEP_COUNT=0
-for i in "${ARRAY_CATEGORY[@]}";do
-
-    case $i in
-      Development)NAME_CATEGORY=$"Desenvolvimento";;
-      Office)NAME_CATEGORY=$"Escritório";;
-      Graphics)NAME_CATEGORY=$"Gráficos";;
-      Network)NAME_CATEGORY="Internet";;
-      Game)NAME_CATEGORY=$"Jogos";;
-      AudioVideo)NAME_CATEGORY=$"Multimídia";;
-      Webapps)NAME_CATEGORY="Webapps";;
-      Google)NAME_CATEGORY="Google";;
-      *)continue;;
-    esac
-
-  ## CATEGORY
-    echo '<div id="'$i'" class="content-section-title" style="text-align:left;">'$NAME_CATEGORY'</div>
-          <div class="content-section" style="margin-top: 0px;">
-            <ul style="margin-top: 0px;">'
-
-  COUNT=$KEEP_COUNT
-  for desktop in ~/.local/share/applications/*-webapp-biglinux-custom.desktop;do
-
-    APP_CATEGORY=$(grep Categories= $desktop |sed 's|Categories=||;s|;||')
-
-    if [ "$APP_CATEGORY" == "$i" ];then
-        APP_ICON=$(grep Icon= $desktop |sed 's|Icon=||')
-        APP_NAME=$(grep Name= $desktop |sed 's|Name=||')
-        DESKEXEC="$(grep '^Exec=' $desktop | sed 's|Exec=||')"
-          if [ "$(grep '.local/bin' $desktop)" ];then
-              APP_URL=$(grep 'new-instance' $DESKEXEC | cut -d' ' -f9 | sed 's|^"||;s|"$||')
-              APP_BROWSER="icons/firefox.svg"
-          elif [ "$(grep 'epiphany' $desktop)" ];then
-              APP_URL=$(grep '^Exec=' $desktop | cut -d' ' -f4)
-              APP_BROWSER="icons/epiphany.svg"
-          else
-              APP_BROWSER="icons/$(grep Exec= $desktop |cut -d' ' -f1 |sed 's|Exec=||').svg"
-              APP_URL=$(grep '^Exec=' $desktop | sed 's|.*app=||')
-          fi
-
-          echo '<li>
-          <div class="products">
-            <img src="'${APP_ICON}'" width="28" height="28" class="svg-center"/>
-            <div class="truncate" style="text-align:left">'${APP_NAME}'</div>
-          </div>
-          <span class="status">
-            <span class="status-circle green"></span>
-            <div class="truncate">
-
-              <a href="#!" onclick="_run(`'${DESKEXEC}'`)" class="urlNative">
-                <svg viewBox="0 0 512 512" style="width: 16px; border-radius: 0px; margin: 0px;display:none">
-                  <path fill="currentcolor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"/>
-                </svg> '${APP_URL}'
-              </a>
-
-            </div>
-          </span>
-          <img src="'${APP_BROWSER}'" width="20" height="20" />
-
-
-          <div class="button-wrapper">
-            <a href="#!" class="btnRemove">
-              <input type="hidden" value="'$desktop'">
-              <svg viewBox="0 0 448 512" style="width: 16px; border-radius: 0px; margin: 0px;">
-                <path fill="currentcolor" d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"/>
-              </svg>
-            </a>
-          </div>
-        </li>
-
-        <!--REMOVE MODAL ASK-->
-        <div class="pop-up" id="remove'$COUNT'">
-          <div class="pop-up__subtitle">'$"Tem certeza que deseja remover este WebApp?"'</div>
-          <div class="content-button-wrapper">
-            <button class="content-button status-button2 open close">Não</button>
-            <button class="content-button status-button2" id="removeYes'$COUNT'">Sim</button>
-          </div>
-        </div>'
-        ((COUNT++))
-    fi
-
-  done
-  KEEP_COUNT=$COUNT
-  echo '</ul></div><br>'
-  ## FIM CATEGORY
-done
-
-else
-
-echo '<!-- INICIO - TELA QUANDO NÃO ENCONTRAR NENHUM WEBAPP -->
-              <div class="content-section" style="margin-top: 20%;">
-                <div style="text-align: center; margin: auto; padding: auto;">
-                  <div class="content-section-title" style="text-align: center;">'$"Nenhum WebApp adicionado!"'</div>
-
-                  <ul style="all: initial">
-                    <li title="Adicionar" style="all: initial">
-                      <label for="tab1" role="button" id="#add-tab-content" style="text-align: center; display: flex; justify-content: center;">
-                        <button class="button" style="height: 26px">'$"Adicionar"'</button>
-                      </label>
-                    </li>
-                  </ul>
-                </div>
-                <!-- FIM - TELA QUANDO NÃO ENCONTRAR NENHUM WEBAPP -->
-              </div>'
+CUSTOMFILES=""
+if compgen -G ~/.local/share/applications/*-webapp-biglinux-custom.desktop >/dev/null
+then
+    CUSTOMFILES=~/.local/share/applications/*-webapp-biglinux-custom.desktop
 fi
+
+# Start of gawk script
+gawk -v development=$"Desenvolvimento" -v office=$"Escritório" -v graphics=$"Gráficos" -v game=$"Jogos" -v audiovideo=$"Multimídia" -v certeza=$"Tem certeza que deseja remover este WebApp?" -v nenhum=$"Nenhum WebApp adicionado!" -v adicionar=$"Adicionar" -- '
+
+BEGIN {
+# This OFS helps writing readable code on printing
+  OFS = "\n"
+
+# Sorts array indexes as strings in ascending order
+  PROCINFO["sorted_in"] = "@ind_str_asc"
+
+# Keep count of how many proper desktop files have been read
+  filesread = 0
+}
+
+BEGINFILE {
+# If there is no suitable .desktop file, skips to the END block
+  if ( FILENAME == "-" ) {
+    ++noinput
+    exit
+  }
+
+  allset = app_category = name_category = icon = name = deskexec = url = browser = ""
+}
+
+/^Categories=/ {
+  app_category = gensub(/^Categories=|;/,"","g")
+
+# Deploys translations over the name_category variable
+# The untranslated texts are assigned using the -v argument in the first line of this script
+  switch ( app_category ) {
+    case /Development/:
+      name_category = development
+      break
+    case /Office/:
+      name_category = office
+      break
+    case /Graphics/:
+      name_category = graphics
+      break
+    case /Network/:
+      name_category = "Internet"
+      break
+    case /Game/:
+      name_category = game
+      break
+    case /AudioVideo/:
+      name_category = audiovideo
+      break
+    case /Webapps/:
+      name_category = "WebApps"
+      break
+    case /Google/:
+      name_category = "Google"
+      break
+    default:
+# Undefined category found. Skips to next file.
+      nextfile
+    }
+}
+
+/^Icon=/ {
+  icon = gensub(/^Icon=/,"",1)
+}
+
+/^Name=/ {
+  name = gensub(/^Name=/,"",1)
+}
+
+/^Exec=/ {
+  deskexec = gensub(/^Exec=/,"",1)
+
+  if ( /local\/bin/ ) {
+# Reads the whole amofiexec file as a string, and removes the unimportant parts to keep the url
+# More info about this maneuver: https://www.gnu.org/software/gawk/manual/html_node/Readfile-Function.html
+    RS_BAK = RS
+    RS = "^$"
+    getline amofiexec < deskexec
+    close(deskexec)
+    RS = RS_BAK
+    url = gensub(/.*new-instance "|" .*$/,"","g",amofiexec)
+    browser = "icons/firefox.svg"
+  } else if (/epiphany/) {
+    url = $4
+    browser = "icons/epiphany.svg"
+  } else {
+    url = gensub(/.*app=/,"",1)
+    browser = "icons/" gensub(/^Exec=/,"",1,$1) ".svg"
+  }
+}
+
+# If all variables are set, skip to ENDFILE block
+app_category && name_category && icon && name && deskexec && url && browser {
+  ++allset
+  nextfile
+}
+
+# Runs after each file is read, or when nextfile statement is called
+ENDFILE {
+# Only includes webapps if all variables are set (app_category, name_category, icon, name, etc.)
+  if ( allset ) {
+    app_array[app_category]["name_category"] = name_category
+    app_array[app_category][FILENAME]["name_category"] = name_category
+    app_array[app_category][FILENAME]["icon"] = icon
+    app_array[app_category][FILENAME]["name"] = name
+    app_array[app_category][FILENAME]["deskexec"] = deskexec
+    app_array[app_category][FILENAME]["url"] = url
+    app_array[app_category][FILENAME]["browser"] = browser
+    ++filesread
+  }
+}
+
+# Runs after all desktop files are read, or if there is no desktop file at all
+END {
+
+  if ( ( noinput > 0) || ( filesread == 0 ) ) {
+    print(\
+"<!-- INICIO - TELA QUANDO NÃO ENCONTRAR NENHUM WEBAPP -->",
+"              <div class=\"content-section\" style=\"margin-top: 20%;\">",
+"                <div style=\"text-align: center; margin: auto; padding: auto;\">",
+"                  <div class=\"content-section-title\" style=\"text-align: center;\">" nenhum "</div>",
+"",
+"                  <ul style=\"all: initial\">",
+"                    <li title=\"Adicionar\" style=\"all: initial\">",
+"                      <label for=\"tab1\" role=\"button\" id=\"#add-tab-content\" style=\"text-align: center; display: flex; justify-content: center;\">",
+"                        <button class=\"button\" style=\"height: 26px\">" adicionar "</button>",
+"                      </label>",
+"                    </li>",
+"                  </ul>",
+"                </div>",
+"                <!-- FIM - TELA QUANDO NÃO ENCONTRAR NENHUM WEBAPP -->",
+"              </div>")
+# Because there is no desktop file, we shall exit the script now
+    exit
+  }
+
+  for ( app_category in app_array ) {
+# Prints header of the category
+    print(\
+"<div id=\"" app_category "\" class=\"content-section-title\" style=\"text-align:left;\">" app_array[app_category]["name_category"] "</div>",
+"          <div class=\"content-section\" style=\"margin-top: 0px;\">",
+"            <ul style=\"margin-top: 0px;\">")
+
+    for ( filename in app_array[app_category] ) {
+# Skips "name_category" index from the app_array[app_category] array
+      if ( filename == "name_category" ) {
+        continue
+      }
+# Prints info about each webapp installed by the user
+      print(\
+"<li>",
+"          <div class=\"products\">",
+"            <img src=\"" app_array[app_category][filename]["icon"] "\" width=\"28\" height=\"28\" class=\"svg-center\"/>",
+"            <div class=\"truncate\" style=\"text-align:left\">" app_array[app_category][filename]["name"] "</div>",
+"          </div>",
+"          <span class=\"status\">",
+"            <span class=\"status-circle green\"></span>",
+"            <div class=\"truncate\">",
+"",
+"              <a href=\"#!\" onclick=\"_run(`" app_array[app_category][filename]["deskexec"] "`)\" class=\"urlNative\">",
+"                <svg viewBox=\"0 0 512 512\" style=\"width: 16px; border-radius: 0px; margin: 0px;display:none\">",
+"                  <path fill=\"currentcolor\" d=\"M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z\"/>",
+"                </svg> " app_array[app_category][filename]["url"] "",
+"              </a>",
+"",
+"            </div>",
+"          </span>",
+"          <img src=\"" app_array[app_category][filename]["browser"] "\" width=\"20\" height=\"20\" />",
+"",
+"",
+"          <div class=\"button-wrapper\">",
+"            <a href=\"#!\" class=\"btnRemove\">",
+"              <input type=\"hidden\" value=\"" filename "\">",
+"              <svg viewBox=\"0 0 448 512\" style=\"width: 16px; border-radius: 0px; margin: 0px;\">",
+"                <path fill=\"currentcolor\" d=\"M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z\"/>",
+"              </svg>",
+"            </a>",
+"          </div>",
+"        </li>",
+"",
+"        <!--REMOVE MODAL ASK-->",
+"        <div class=\"pop-up\" id=\"remove" n++ "\">",
+"          <div class=\"pop-up__subtitle\">" certeza "</div>",
+"          <div class=\"content-button-wrapper\">",
+"            <button class=\"content-button status-button2 open close\">Não</button>",
+"            <button class=\"content-button status-button2\" id=\"removeYes" (n-1) "\">Sim</button>",
+"          </div>",
+"        </div>")
+    }
+    print("</ul></div><br>")
+  }
+}
+
+' $CUSTOMFILES
+# End of gawk script
+
+
 echo '
           </div>
           <!-- FIM TABS CONTENT LIST -->
@@ -443,73 +530,127 @@ echo '
               <div class="content-section-title" style="text-align:left">'$"WebApps Nativos"'</div>
               <div class="content-section" style="margin-top:0">
               <ul>'
-n=0
-for webapp in ${PWD}/webapps/*;do
 
-[ "$(grep Name.pt.= $webapp)" ] && {
-  NAME="$(grep Name.pt.= $webapp|sed 's|Name\[pt\]=||')"
-} || {
-  NAME="$(grep Name= $webapp|sed 's|Name=||')"
+gawk -v browser=${BROWSER} '
+BEGIN {
+# This OFS helps write readable code on printing
+    OFS = "\n"
+# Grabs localization language, e.g., en_US.UTF-8 --> en
+    lang = gensub(/[._].*/,"",1,ENVIRON["LANG"])
 }
 
-ICON="/usr/share/icons/hicolor/128x128/apps/$(grep Icon= $webapp|sed 's|Icon=||')"
-
-URLDESK="$(grep Exec= $webapp|sed 's|Exec=||;s|"||g')"
-if [ "$(grep cleverpdf <<< $URLDESK)" ];then
-  if [ "${LANG:0:2}" = "pt" ]; then
-    URL="https://www.cleverpdf.com/pt"
-    URLDESK="biglinux-webapp --class=www.cleverpdf.com__pt,Chromium-browser --profile-directory=Default --app=https://www.cleverpdf.com/pt"
-  elif [ "${LANG:0:2}" = "es" ]; then
-    URL="https://www.cleverpdf.com/es"
-    URLDESK="biglinux-webapp --class=www.cleverpdf.com__pt,Chromium-browser --profile-directory=Default --app=https://www.cleverpdf.com/es"
-  else
-    URL="https://www.cleverpdf.com"
-    URLDESK="biglinux-webapp --class=www.cleverpdf.com__pt,Chromium-browser --profile-directory=Default --app=https://www.cleverpdf.com"
-  fi
-elif [ "$(grep netflix <<< $URLDESK)" ];then
-  if [ "${LANG:0:2}" = "pt" ];then
-      URL="https://www.netflix.com/br"
-      URLDESK="biglinux-webapp --class=www.netflix.com__br,Chromium-browser --profile-directory=Default --app=https://www.netflix.com/br"
-  else
-      URL="https://www.netflix.com/"
-      URLDESK="biglinux-webapp --class=www.netflix.com,Chromium-browser --profile-directory=Default --app=https://www.netflix.com/"
-  fi
-else
-  URL="$(grep Exec= $webapp|sed 's|.*--app=||')"
-fi
-
-
-[ -e ~/.local/share/applications/${webapp##*/} ] && {
-  color="green"
-  checked="checked"
-} || {
-  color="gray"
-  checked=""
+# BEGINFILE block runs before each file is read
+BEGINFILE {
+# Resets current webapp variables
+    name = namelang = icon = urldesk = url = ""
+    webapp = gensub(/.+\//,"","g",FILENAME)
+# n counts the webapps
+    ++n
 }
-echo '
-                  <li class="product">
 
-                    <input value="'${webapp##*/}'" id="webapp_'$n'" type="checkbox" class="switch" style="margin-right:10px;" '$checked'/>
+# Ternary condition checks if name has already been localized
+# This may happen depending on position of Name= and Name[XX]= on file
+/^Name=/ {
+    name = ( name ) ? ( name ) : gensub(/^Name=/,"",1)
+}
 
-                    <div class="products">
-                      <img src="'$ICON'" height="25" width="25" class="svg-center"/>
-                      '$NAME'</div>
+# Localizing name
+$0 ~ "^Name\\["lang {
+    name = gensub(/^Name\[.+\]=/,"",1)
+    namelang = "localized"
+}
 
-                    <span class="status">
-                      <span id="circle_'$n'" class="status-circle '$color'"></span>
-                      <div class="truncate">
-                        <a href="#!" onclick="_run(`'${URLDESK}'`)" class="urlNative">
-                          <svg viewBox="0 0 512 512" style="width: 16px; border-radius: 0px; margin: 0px;display:none">
-                            <path fill="currentcolor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"/>
-                          </svg>
-                          '$URL'
-                        </a>
-                      </div>
-                    </span>
-                    <img src="icons/'${BROWSER}'.svg" height="20" width="20" class="iconBrowser" />
-                  </li>'
-((n++))
-done
+# Grabs icon
+/^Icon=/ {
+    icon = "/usr/share/icons/hicolor/128x128/apps/" gensub(/^Icon=/,"",1)
+}
+
+# Grabs url for the browser and for bbv
+/^Exec=/ {
+    urldesk = gensub(/^Exec=|"/,"","g")
+    url = gensub(/.*--app=/,"","g")
+}
+
+# Skips to next file if all the variables are already set
+name && namelang && icon && urldesk && url {
+    nextfile
+}
+
+
+# ENDFILE block runs after each file is read
+ENDFILE {
+
+# Special cases
+    if ( urldesk ~ /cleverpdf/ ) {
+        switch (lang) {
+        case "pt":
+            url = "https://www.cleverpdf.com/pt"
+            urldesk = "biglinux-webapp --class=www.cleverpdf.com__pt,Chromium-browser --profile-directory=Default --app=https://www.cleverpdf.com/pt"
+            break
+        case "es":
+            url = "https://www.cleverpdf.com/es"
+            urldesk = "biglinux-webapp --class=www.cleverpdf.com__pt,Chromium-browser --profile-directory=Default --app=https://www.cleverpdf.com/es"
+            break
+        default:
+            url = "https://www.cleverpdf.com"
+            urldesk = "biglinux-webapp --class=www.cleverpdf.com__pt,Chromium-browser --profile-directory=Default --app=https://www.cleverpdf.com"
+            break
+        }
+    } else if ( urldesk ~ /netflix/ ) {
+        switch (lang) {
+        case "pt":
+            url = "https://www.netflix.com/br"
+            urldesk = "biglinux-webapp --class=www.netflix.com__br,Chromium-browser --profile-directory=Default --app=https://www.netflix.com/br"
+            break
+        default:
+            url = "https://www.netflix.com/"
+            urldesk = "biglinux-webapp --class=www.netflix.com,Chromium-browser --profile-directory=Default --app=https://www.netflix.com/"
+            break
+        }
+    } else {
+    }
+
+# Checks if webapp is installed
+    if ( system("[ ! -e ~/.local/share/applications/"webapp" ]") ) {
+      color = "green"
+      checked = "checked"
+    } else {
+      color = "gray"
+      checked = ""
+    }
+
+### Printing the HTML ###
+# The comma between strings returns the OFS variable, which was set in the BEGIN block as \n to create a line break at the html code
+#
+# Caution:
+# some double quotes (") are being escaped, and others are real double quotes which opens and closes strings to concatenate gawk variables
+print(\
+"                  <li class=\"product\">",
+"",
+"                    <input value=\""webapp"\" id=\"webapp_"n"\" type=\"checkbox\" class=\"switch\" style=\"margin-right:10px;\" "checked"/>",
+# The following prints an empty line
+"",
+"                    <div class=\"products\">",
+"                      <img src=\""icon"\" height=\"25\" width=\"25\" class=\"svg-center\"/>",
+"                      "name"</div>",
+"",
+"                    <span class=\"status\">",
+"                      <span id=\"circle_"n"\" class=\"status-circle "color"\"></span>",
+"                      <div class=\"truncate\">",
+"                        <a href=\"#!\" onclick=\"_run(`"urldesk"`)\" class=\"urlNative\">",
+"                          <svg viewBox=\"0 0 512 512\" style=\"width: 16px; border-radius: 0px; margin: 0px;display:none\">",
+"                            <path fill=\"currentcolor\" d=\"M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z\"/>",
+"                          </svg>",
+"                          "url,
+"                        </a>",
+"                      </div>",
+"                    </span>",
+"                    <img src=\"icons/"browser".svg\" height=\"20\" width=\"20\" class=\"iconBrowser\" />",
+"                  </li>")
+
+}' ${PWD}/webapps/*
+# End of gawk script
+
                 echo '</ul>
               </div>
 
