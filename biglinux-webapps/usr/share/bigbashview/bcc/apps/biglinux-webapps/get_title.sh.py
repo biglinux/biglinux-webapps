@@ -12,7 +12,12 @@ def get_title(url):
     'AppleWebKit/537.36 (KHTML, like Gecko)'
     'Chrome/50.0.2661.102 Safari/537.36'
     }
-    resp = requests.get(url, headers=headers, timeout=10)
+
+    try:
+        resp = requests.get(url, headers=headers, timeout=10)
+    except:
+        return
+
     if resp.status_code >= 400: return
 
     try:

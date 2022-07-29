@@ -19,9 +19,13 @@ def save(url):
     'AppleWebKit/537.36 (KHTML, like Gecko)'
     'Chrome/50.0.2661.102 Safari/537.36'
     }
-    resp = requests.get(url, stream=True, headers=headers)
-    if resp.status_code >= 400: return
 
+    try:
+        resp = requests.get(url, stream=True, headers=headers)
+    except:
+        return
+
+    if resp.status_code >= 400: return
 
     try:
         with Image.open(BytesIO(resp.content)) as img:
