@@ -14,12 +14,12 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
-[ -e ~/.bigwebapps/LIGHT ] && className='<body class="light-mode">' || className='<body>'
-
-echo '<head>
+echo '<!DOCTYPE html>
+<html>
+<head>
   <link rel="stylesheet" href="css/style.css">
 </head>
-'${className}'
+'$(/usr/share/bigbashview/bcc/shell/getbgcolor.sh)'
 <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
 <!-- partial:index.partial.html -->
 <div class="dark-light">
@@ -275,7 +275,7 @@ BEGIN {
 
 # Sorts array indexes as strings in ascending order
   PROCINFO["sorted_in"] = "@ind_str_asc"
-  
+
 # Keep count of how many proper desktop files have been read
   filesread = 0
 }
@@ -286,7 +286,7 @@ BEGINFILE {
     ++noinput
     exit
   }
-  
+
   allset = app_category = name_category = icon = name = deskexec = url = browser = ""
 }
 
@@ -336,7 +336,7 @@ BEGINFILE {
 
 /^Exec=/ {
   deskexec = gensub(/^Exec=/,"",1)
-  
+
   if ( /local\/bin/ ) {
 # Reads the whole amofiexec file as a string, and removes the unimportant parts to keep the url
 # More info about this maneuver: https://www.gnu.org/software/gawk/manual/html_node/Readfile-Function.html
@@ -630,7 +630,7 @@ print(\
 "                      "name"</div>",
 "",
 "                    <span class=\"status\">",
-"                      <span id=\"circle_"n"\" class=\"st”atus-circle "color"\"></span>",
+"                      <span id=\"circle_"n"\" class=\"status-circle "color"\"></span>",
 "                      <div class=\"truncate\">",
 "                        <a href=\"#!\" onclick=\"_run(`"urldesk"`)\" class=\"urlNative\">",
 "                          <svg viewBox=\"0 0 512 512\" style=\"width: 16px; border-radius: 0px; margin: 0px;display:none\">",

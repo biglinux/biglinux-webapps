@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Snapdrop
+Exec=brave --class=snapdrop.net,Chromium-browser --profile-directory=Default --app=https://snapdrop.net
+Icon=snapdrop.png
+Categories=Webapps;
+StartupWMClass=snapdrop.net

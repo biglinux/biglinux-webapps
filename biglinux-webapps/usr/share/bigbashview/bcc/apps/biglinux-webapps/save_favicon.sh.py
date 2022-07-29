@@ -13,16 +13,15 @@ def save(url):
     name = ''.join(c for c in string if c.isalnum())
     name_file = '%s-%s' % (name, randint(0, 10000000))
 
-    try:
-        headers = {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5)'
-        'AppleWebKit/537.36 (KHTML, like Gecko)'
-        'Chrome/50.0.2661.102 Safari/537.36'
-        }
-        resp = requests.get(url, stream=True, headers=headers)
-        if resp.status_code >= 400: return
-    except:
-        return
+
+    headers = {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5)'
+    'AppleWebKit/537.36 (KHTML, like Gecko)'
+    'Chrome/50.0.2661.102 Safari/537.36'
+    }
+    resp = requests.get(url, stream=True, headers=headers)
+    if resp.status_code >= 400: return
+
 
     try:
         with Image.open(BytesIO(resp.content)) as img:

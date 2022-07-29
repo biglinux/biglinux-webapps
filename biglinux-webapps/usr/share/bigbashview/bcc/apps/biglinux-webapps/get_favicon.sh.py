@@ -19,6 +19,7 @@ def get_favicon_site(url):
                 num+=1
         else:
             url_icon = icons[0].url
+            if not os.path.splitext(url_icon)[1]: return
             html = subprocess.getoutput('./save_favicon.sh.py %s' % url_icon)
 
         print(html, end='')
