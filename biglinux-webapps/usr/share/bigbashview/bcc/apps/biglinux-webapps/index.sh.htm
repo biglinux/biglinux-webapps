@@ -27,7 +27,7 @@ echo '<!DOCTYPE html>
     <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
   </svg>
 </div>
-<div class="login">
+<div class="principal">
   <div class="wrap">
     <div class="user">
 
@@ -72,142 +72,215 @@ echo '<!DOCTYPE html>
             <!-- INICIO TABS CONTENT ADD -->
             <div id="add-tab-content" class="fc-card">
 
-              <div id="desc">
-                <form class="login-form" id="formAdd" action="webapp-install.sh">
-                  <label for="urlDesk">'$"Url:"'</label>
-                  <input type="search" class="input" id="urlDesk" name="urldesk" style="width:600px" required>
-                  <div style="text-align: center; display:inline-block;">
-                    <button class="button" style="height:30px" id="detectAll">
-                      '$"Detectar Nome e Ícone"'
-                    </button>
+            
 
+<form class="login-form" id="formAdd" action="webapp-install.sh">            
+        <div class="content-section" style="margin-top: 0px;">    
+          <div class="content-section-title">'$"Preencha os campos"'</div>
+            <ul style="margin-top: 0px;">
+
+              <li>
+                <div class="products">
+                  <svg viewBox="0 0 512 512"><path fill="currentColor" d="M512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM57.71 192.1L67.07 209.4C75.36 223.9 88.99 234.6 105.1 239.2L162.1 255.7C180.2 260.6 192 276.3 192 294.2V334.1C192 345.1 198.2 355.1 208 359.1C217.8 364.9 224 374.9 224 385.9V424.9C224 440.5 238.9 451.7 253.9 447.4C270.1 442.8 282.5 429.1 286.6 413.7L289.4 402.5C293.6 385.6 304.6 371.1 319.7 362.4L327.8 357.8C342.8 349.3 352 333.4 352 316.1V307.9C352 295.1 346.9 282.9 337.9 273.9L334.1 270.1C325.1 261.1 312.8 255.1 300.1 255.1H256.1C245.9 255.1 234.9 253.1 225.2 247.6L190.7 227.8C186.4 225.4 183.1 221.4 181.6 216.7C178.4 207.1 182.7 196.7 191.7 192.1L197.7 189.2C204.3 185.9 211.9 185.3 218.1 187.7L242.2 195.4C250.3 198.1 259.3 195 264.1 187.9C268.8 180.8 268.3 171.5 262.9 165L249.3 148.8C239.3 136.8 239.4 119.3 249.6 107.5L265.3 89.12C274.1 78.85 275.5 64.16 268.8 52.42L266.4 48.26C262.1 48.09 259.5 48 256 48C163.1 48 84.4 108.9 57.71 192.1L57.71 192.1zM437.6 154.5L412 164.8C396.3 171.1 388.2 188.5 393.5 204.6L410.4 255.3C413.9 265.7 422.4 273.6 433 276.3L462.2 283.5C463.4 274.5 464 265.3 464 256C464 219.2 454.4 184.6 437.6 154.5H437.6z"></path></svg>
+                  '$"URL:"'
+                </div>
+                
+                <input type="search" class="input" id="urlDesk" name="urldesk" style="width:100%" required>
+                <div class="button-wrapper">
+                
+                  <div class=app-card>
+                        <div class="button-wrapper" style="">
+                          <button class="button" style="height:30px" id="detectAll">
+                          '$"Detectar Nome e Ícone"'
+                          </button>
+                        </div>
+                  </div> 
+                </div>
+              </li>
+              
+              
+              
+
+              <li>
+                <div class="products">
+                  <svg viewBox="0 0 512 512"><path fill="currentColor" d="M96 0C113.7 0 128 14.33 128 32V64H480C497.7 64 512 78.33 512 96C512 113.7 497.7 128 480 128H128V480C128 497.7 113.7 512 96 512C78.33 512 64 497.7 64 480V128H32C14.33 128 0 113.7 0 96C0 78.33 14.33 64 32 64H64V32C64 14.33 78.33 0 96 0zM448 160C465.7 160 480 174.3 480 192V352C480 369.7 465.7 384 448 384H192C174.3 384 160 369.7 160 352V192C160 174.3 174.3 160 192 160H448z"></path></svg>
+                  '$"Nome:"'
+                </div>
+                
+                
+                <input type="search" class="input" id="nameDesk" name="namedesk" style="width:100%" required>
+                <div class="button-wrapper"> 
+                </div>
+              </li>
+              
+              
+
+              
+
+              <li>
+                <div class="products">
+                  <div style="margin-bottom:15px" class="svg-center">
+                    <div class="iconDetect-display">
+                      <div class="iconDetect-remove">
+                        <svg viewBox="0 0 448 512" style="width: 20px; height: 20px;"><path d="M384 32C419.3 32 448 60.65 448 96V416C448 451.3 419.3 480 384 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H384zM143 208.1L190.1 255.1L143 303C133.7 312.4 133.7 327.6 143 336.1C152.4 346.3 167.6 346.3 176.1 336.1L223.1 289.9L271 336.1C280.4 346.3 295.6 346.3 304.1 336.1C314.3 327.6 314.3 312.4 304.1 303L257.9 255.1L304.1 208.1C314.3 199.6 314.3 184.4 304.1 175C295.6 165.7 280.4 165.7 271 175L223.1 222.1L176.1 175C167.6 165.7 152.4 165.7 143 175C133.7 184.4 133.7 199.6 143 208.1V208.1z"/></svg>
+                      </div>
+                    </div>
+                    <img id="iconDesk" src="icons/default-webapp.svg" width="58" height="58" />
+                    <input type="hidden" name="icondesk" value="'${PWD}/icons/default-webapp.svg'" id="inputIconDesk" />
                   </div>
+                  '$"Ícone do WebApp"'
+                </div>
+                <div class="button-wrapper">
+                
+                  <button class="button" style="height:30px" id="loadIcon">
+                  '$"Alterar"'
+                  </button>                
+                  <!--<button class="button svg-center" id="loadIcon">'$"Alterar"'</button>-->
+                </div>
+              </li> 
+              
 
-                  <br>
-                  <label for="nameDesk">'$"Nome:"'</label>
-                  <input type="search" class="input" id="nameDesk" name="namedesk" style="width:580px" required>
+              
+              
 
-                  <!-- <div class="colorunderline">Ícone:  <input type="file" name="image_file" id="image_file" /></div> -->
 
-                  <ul style="display: flex; justify-content:center;">
+              <li>
+                <div class="products">
+                  <div class="svg-center" id="thumb">
+                    <img height="58" width="58" id="browser"/>
+                  </div>
+                  '$"Navegador"'
+                </div>
+                <div class="button-wrapper">
+                
+                    <select class="svg-center" id="browserSelect" name="browser">'
+                        if [ -e /usr/lib/brave-browser/brave ];then
+                          echo '<option value="brave">BRAVE</option>'
+                        fi
 
-                    <li>
-                      <div class="biglinux-left-panel left" style="width: 150px;height:160px;padding-top: 10px;">
-                        <div class="centretext">
-                          <div id="desc">
-                            <h5>'$"Ícone:"'</h5>
-                          </div>
-                        </div>
-                        <div style="width: 58px;margin-bottom:15px" class="svg-center">
-                            <div class="iconDetect-display">
-                                <div class="iconDetect-remove">
-                                  '"$(<./icons/close.svg)"'
-                                </div>
-                            </div>
-                            <img id="iconDesk" src="icons/default-webapp.svg" width="58" height="58" />
-                            <input type="hidden" name="icondesk" value="'${PWD}/icons/default-webapp.svg'" id="inputIconDesk" />
-                        </div><br>
-                        <div class="svg-center">
-                          <button class="button svg-center" id="loadIcon">'$"Alterar"'</button>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="biglinux-left-panel left" style="width: 150px;height:160px;padding-top: 10px;">
+                        if [ -e /usr/lib/chromium/chromium ];then
+                          echo '<option value="chromium">CHROMIUM</option>'
+                        fi
 
-                      <div class="centretext">
-                        <div id="desc">
-                          <h5>'$"Navegador:"'</h5>
-                        </div>
-                      </div>
+                        if [ -e /opt/microsoft/msedge/microsoft-edge ];then
+                          echo '<option value="microsoft-edge-stable">EDGE</option>'
+                        fi
 
-                        <div class="svg-center" id="thumb">
-                          <img height="58" width="58" id="browser"/>
-                        </div>
-                        <div class="svg-center">
-                          <select class="svg-center" id="browserSelect" name="browser">'
-                             if [ -e /usr/lib/brave-browser/brave ];then
-                                echo '<option value="brave">BRAVE</option>'
-                             fi
+                        if [ -e /usr/bin/epiphany ];then
+                          echo '<option value="epiphany">EPIPHANY</option>'
+                        fi
 
-                              if [ -e /usr/lib/chromium/chromium ];then
-                                echo '<option value="chromium">CHROMIUM</option>'
-                              fi
+                        if [ -e /usr/lib/firefox/firefox ];then
+                          echo '<option value="firefox">FIREFOX</option>'
+                        fi
 
-                              if [ -e /opt/microsoft/msedge/microsoft-edge ];then
-                                echo '<option value="microsoft-edge-stable">EDGE</option>'
-                              fi
+                        if [ -e /opt/google/chrome/google-chrome ];then
+                          echo '<option value="google-chrome-stable">CHROME</option>'
+                        fi
+                        if [ -e /opt/vivaldi/vivaldi ];then
+                          echo '<option value="vivaldi-stable">VIVALDI</option>'
+                        fi
 
-                              if [ -e /usr/bin/epiphany ];then
-                                echo '<option value="epiphany">EPIPHANY</option>'
-                              fi
+                  echo '</select>
+                  
+                </div>
+              </li>
+              
+              
 
-                              if [ -e /usr/lib/firefox/firefox ];then
-                                echo '<option value="firefox">FIREFOX</option>'
-                              fi
+              
+              
+              
 
-                              if [ -e /opt/google/chrome/google-chrome ];then
-                                echo '<option value="google-chrome-stable">CHROME</option>'
-                              fi
-                              if [ -e /opt/vivaldi/vivaldi ];then
-                                echo '<option value="vivaldi-stable">VIVALDI</option>'
-                              fi
+              <li>
+                <div class="products">
+                  <div class="svg-center" id="imgCategory">'"$(<./icons/Webapps.svg)"'</div>
+                  '$"Categoria"'
+                </div>
+                <div class="button-wrapper">
+                  
+                  <!--<div class="svg-center" style="padding-top: 10px;">-->
+                  <div class="svg-center">
+                    <select class="svg-center" id="categorySelect" name="category">
+                      <option value="Development">'$"DESENVOLVIMENTO"'</option>
+                      <option value="Office">'$"ESCRITÓRIO"'</option>
+                      <option value="Graphics">'$"GRÁFICOS"'</option>
+                      <option value="Network">INTERNET</option>
+                      <option value="Game">'$"JOGOS"'</option>
+                      <option value="AudioVideo">'$"MULTIMÍDIA"'</option>
+                      <option value="Webapps" selected>WEBAPPS</option>
+                      <option value="Google">WEBAPPS GOOGLE</option>
+                    </select>
+                  </div>
+                </div>
+              </li> 
 
-                    echo '</select>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="biglinux-left-panel left" style="width: 180px;height:160px;padding-top: 10px;">
+              
+              
+              
+              
+              
+              <li>
+                <div class="products">
+                  <svg viewBox="0 0 512 512"><path fill="currentColor" d="M464 96h-192l-64-64h-160C21.5 32 0 53.5 0 80v352C0 458.5 21.5 480 48 480h416c26.5 0 48-21.5 48-48v-288C512 117.5 490.5 96 464 96zM336 311.1h-56v56C279.1 381.3 269.3 392 256 392c-13.27 0-23.1-10.74-23.1-23.1V311.1H175.1C162.7 311.1 152 301.3 152 288c0-13.26 10.74-23.1 23.1-23.1h56V207.1C232 194.7 242.7 184 256 184s23.1 10.74 23.1 23.1V264h56C349.3 264 360 274.7 360 288S349.3 311.1 336 311.1z"></path></svg>
+                  '$"Criar atalho na Área de Trabalho"'
+                </div>
+                
+                
+                <div class="button-wrapper"> 
+                  <input id="shortcut" type="checkbox" class="switch" name="shortcut">                
+                </div>
+              </li>   
 
-                        <div class="centretext">
-                          <div id="desc">
-                            <h5>'$"Categoria:"'</h5>
-                          </div>
-                        </div>
+              
+                         
+              
+              <li>
+                <div class="products">
+                  <svg viewBox="0 0 640 512"><path fill="currentColor" d="M224 256c70.7 0 128-57.31 128-128S294.7 0 224 0C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3C0 496.5 15.52 512 34.66 512h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304zM616 200h-48v-48C568 138.8 557.3 128 544 128s-24 10.75-24 24v48h-48C458.8 200 448 210.8 448 224s10.75 24 24 24h48v48C520 309.3 530.8 320 544 320s24-10.75 24-24v-48h48C629.3 248 640 237.3 640 224S629.3 200 616 200z"></path></svg>
+                  '$"Perfil adicional"'
+                </div>
+                
+                
+                <div class="button-wrapper"> 
+                  <input id="addPerfil" type="checkbox" class="switch" name="newperfil">                
+                </div>
+              </li>     
 
-                        <div class="svg-center" id="imgCategory">'"$(<./icons/Webapps.svg)"'</div>
-                        <div class="svg-center" style="padding-top: 10px;">
-                          <select class="svg-center" id="categorySelect" name="category">
-                              <option value="Development">'$"DESENVOLVIMENTO"'</option>
-                              <option value="Office">'$"ESCRITÓRIO"'</option>
-                              <option value="Graphics">'$"GRÁFICOS"'</option>
-                              <option value="Network">INTERNET</option>
-                              <option value="Game">'$"JOGOS"'</option>
-                              <option value="AudioVideo">'$"MULTIMÍDIA"'</option>
-                              <option value="Webapps" selected>WEBAPPS</option>
-                              <option value="Google">WEBAPPS GOOGLE</option>
-                          </select>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-
-                  <br><hr><br>
-
-                  <div style="display:flex;justify-content: center;">
-                    <div style="margin-right:50px">
-                      <input id="shortcut" type="checkbox" class="switch" name="shortcut">
-                      <label for="shortcut">'$"Criar atalho na Área de Trabalho"'</label>
-                    </div>
-                    <div style="margin-right:50px" id="perfilAdd">
-                      <input id="addPerfil" type="checkbox" class="switch" name="newperfil">
-                      <label for="addPerfil">'$"Perfil adicional"'</label>
-                    </div>
+              
                     <div id="modeTv">
                       <input id="tvMode" type="checkbox" class="switch" name="tvmode">
                       <label for="tvMode">'$"YouTube Modo TV"'</label>
-                    </div>
-                  </div><br>
+                    </div>                         
+              
+              <li id="modeTv">
+                <div class="products">
+                  <svg viewBox="0 0 640 512"><path fill="currentColor" d="M224 256c70.7 0 128-57.31 128-128S294.7 0 224 0C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3C0 496.5 15.52 512 34.66 512h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304zM616 200h-48v-48C568 138.8 557.3 128 544 128s-24 10.75-24 24v48h-48C458.8 200 448 210.8 448 224s10.75 24 24 24h48v48C520 309.3 530.8 320 544 320s24-10.75 24-24v-48h48C629.3 248 640 237.3 640 224S629.3 200 616 200z"></path></svg>
+                  '$"Modo YouTube TV"'
+                </div>
+                
+                
+                <div class="button-wrapper"> 
+                  <input id="tvMode" type="checkbox" class="switch" name="tvmode">                
+                </div>
+              </li>            
+              
+              
+              
+              
+            </ul>
+          </div>
+          
+          <br>
+          <div style="text-align: center; display:inline-block;">
+            <button class="button" id="install" style="height:30px">'$"Adicionar"'</button>
+          </div>
+</form>
 
-                  <div style="text-align: center; display:inline-block;">
-                    <button class="button" id="install" style="height:30px">'$"Adicionar"'</button>
-                  </div>
-                </form>
 
                 <!--URL OR NAME MODAL ERROR-->
                   <div class="pop-up" id="urlNameError">
-                    <div class="pop-up__subtitle">'$"Para adicionar um WebApp, você precisa informar a Url e o Nome."'</div>
+                    <div class="pop-up__subtitle">'$"Para adicionar um WebApp, você precisa informar a URL e o Nome."'</div>
                     <div class="content-button-wrapper">
                       <button class="content-button status-button2 open close">'$"Fechar"'</button>
                     </div>
@@ -215,7 +288,7 @@ echo '<!DOCTYPE html>
 
                   <!--EMPTY URL MODAL-->
                   <div class="pop-up" id="urlEmpty">
-                    <div class="pop-up__subtitle">'$"Para detectar o Nome e o Ícone você precisa informar a Url."'</div>
+                    <div class="pop-up__subtitle">'$"Para detectar o Nome e o Ícone você precisa informar a URL."'</div>
                     <div class="content-button-wrapper">
                       <button class="content-button status-button2 open close">'$"Fechar"'</button>
                     </div>
@@ -223,7 +296,7 @@ echo '<!DOCTYPE html>
 
                   <!--DETECT ICON MODAL ERROR-->
                   <div class="pop-up" id="detectIconError">
-                    <div class="pop-up__subtitle">'$"A Url é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."'</div>
+                    <div class="pop-up__subtitle">'$"A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."'</div>
                     <div class="content-button-wrapper">
                       <button class="content-button status-button2 open close">'$"Fechar"'</button>
                     </div>
@@ -257,9 +330,14 @@ echo '<!DOCTYPE html>
                                             max-height: 400px;">
                       </div>
                     </div>
-                  </div>
-
-              </div>
+                  </div>            
+            
+            
+            
+              
+              
+              
+              
             </div>
             <!-- FIM TABS CONTENT ADD -->
             <!-- INICIO TABS CONTENT LIST -->
@@ -430,20 +508,20 @@ END {
 "            <div class=\"truncate\">",
 "",
 "              <a href=\"#!\" onclick=\"_run(`" app_array[app_category][filename]["deskexec"] "`)\" class=\"urlNative\">",
-"                <svg viewBox=\"0 0 512 512\" style=\"width: 16px; border-radius: 0px; margin: 0px;display:none\">",
-"                  <path fill=\"currentcolor\" d=\"M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z\"/>",
+"                <svg viewBox=\"0 0 448 512\" style=\"width: 16px; border-radius: 0px; margin: 0px 0px -3px 0px; display:none;\">",
+"                  <path fill=\"currentcolor\" d=\"M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z\"/>",
 "                </svg> " app_array[app_category][filename]["url"] "",
 "              </a>",
 "",
 "            </div>",
 "          </span>",
-"          <img src=\"" app_array[app_category][filename]["browser"] "\" width=\"20\" height=\"20\" />",
+"          <img src=\"" app_array[app_category][filename]["browser"] "\" width=\"20\" height=\"20\" style=\"width: 20px;\" />",
 "",
 "",
-"          <div class=\"button-wrapper\">",
+"          <div class=\"button-wrapper\" style=\"margin-left: unset;\">",
 "            <a href=\"#!\" class=\"btnRemove\">",
 "              <input type=\"hidden\" value=\"" filename "\">",
-"              <svg viewBox=\"0 0 448 512\" style=\"width: 16px; border-radius: 0px; margin: 0px;\">",
+"              <svg viewBox=\"0 0 448 512\" style=\"width: 16px; border-radius: 0px; margin: 0px 0px -3px 0px;\">",
 "                <path fill=\"currentcolor\" d=\"M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z\"/>",
 "              </svg>",
 "            </a>",
@@ -463,6 +541,7 @@ END {
   }
 }
 
+
 ' $CUSTOMFILES
 # End of gawk script
 
@@ -472,11 +551,11 @@ echo '
           <!-- FIM TABS CONTENT LIST -->
 
           <!-- INICIO TABS CONTENT LIST -->
-          <div class="tabs-content">
+<!--          <div class="tabs-content">-->
             <!-- INICIO TABS CONTENT WEBAPPBIG -->
             <div id="webappsbig-tab-content" class="fc-card">
               <div style="display:flex;justify-content:center">
-                <div class="content-section-title" style="margin-bottom:0">'$"Navegador padrão<br>dos webapps:"
+                <div class="content-section-title" style="margin-bottom:0">'$"Navegador padrão<br>dos WebApps:"
                   BROWSER=$(<~/.bigwebapps/BROWSER)
 echo '
                 </div>
@@ -498,27 +577,27 @@ echo '
                 <div id="desc">
                   <div id="menu" style="display:flex;justify-content:center">'
                     if [ -e /usr/lib/brave-browser/brave ];then
-                      echo '<button class="btn-img status-button">
+                      echo '<button class="btn-img status-button btn-img-main">
                             <img src="icons/brave.svg" data-icon="brave" width="38" height="38">
                             </button>'
                     fi
                     if [ -e /usr/lib/chromium/chromium ];then
-                      echo '<button class="btn-img status-button">
+                      echo '<button class="btn-img status-button btn-img-main">
                             <img src="icons/chromium.svg" data-icon="chromium" width="38" height="38">
                             </button>'
                     fi
                     if [ -e /opt/microsoft/msedge/microsoft-edge ];then
-                      echo '<button class="btn-img status-button">
+                      echo '<button class="btn-img status-button btn-img-main">
                             <img src="icons/microsoft-edge-stable.svg" data-icon="microsoft-edge-stable" width="38" height="38">
                             </button>'
                     fi
                     if [ -e /opt/google/chrome/google-chrome ];then
-                      echo '<button class="btn-img status-button">
+                      echo '<button class="btn-img status-button btn-img-main">
                             <img src="icons/google-chrome-stable.svg" data-icon="google-chrome-stable" width="38" height="38">
                             </button>'
                     fi
                     if [ -e /opt/vivaldi/vivaldi ];then
-                      echo '<button class="btn-img status-button">
+                      echo '<button class="btn-img status-button btn-img-main">
                             <img src="icons/vivaldi-stable.svg" data-icon="vivaldi-stable" width="38" height="38">
                             </button>'
                     fi
@@ -638,14 +717,14 @@ print(\
 "                      <span id=\"circle_"n"\" class=\"status-circle "color"\"></span>",
 "                      <div class=\"truncate\">",
 "                        <a href=\"#!\" onclick=\"_run(`"urldesk"`)\" class=\"urlNative\">",
-"                          <svg viewBox=\"0 0 512 512\" style=\"width: 16px; border-radius: 0px; margin: 0px;display:none\">",
-"                            <path fill=\"currentcolor\" d=\"M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z\"/>",
+"                          <svg viewBox=\"0 0 448 512\" style=\"width: 16px; border-radius: 0px; margin: 0px 0px -3px 0px; display:none\">",
+"                            <path fill=\"currentcolor\" d=\"M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z\"/>",
 "                          </svg>",
 "                          "url,
 "                        </a>",
 "                      </div>",
 "                    </span>",
-"                    <img src=\"icons/"browser".svg\" height=\"20\" width=\"20\" class=\"iconBrowser\" />",
+"                    <img src=\"icons/"browser".svg\" height=\"20\" width=\"20\" class=\"iconBrowser\" style=\"width: 20px;\" />",
 "                  </li>")
 
 }' ${PWD}/webapps/*
@@ -655,7 +734,7 @@ print(\
               </div>
 
             </div>
-          </div>
+<!--          </div>-->
           <!-- FIM TABS CONTENT WEBAPPBIG -->
         </div>
       </div>
