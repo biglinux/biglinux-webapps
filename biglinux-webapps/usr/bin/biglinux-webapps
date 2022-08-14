@@ -69,5 +69,5 @@ fi
 
 
 cd /usr/share/bigbashview/bcc/apps/biglinux-webapps
-bigbashview -s 960x600 -n $"Gerenciador de WebApps BigLinux" -i icons/webapp.svg index.sh.htm
+bigbashview -s 960x620 -n $"Gerenciador de WebApps BigLinux" -i icons/webapp.svg index.sh.htm
 rm /tmp/*.png 2>/dev/null
