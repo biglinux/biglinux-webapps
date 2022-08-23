@@ -1,0 +1,151 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the biglinux-webapps package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: biglinux-webapps\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-01 06:13-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid ""
+"A Url é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão "
+"Alterar."
+msgstr ""
+"URL이 잘못되었거나 연결에 실패했습니다.<br>변경 버튼을 통해 아이콘을 삽입해 "
+"보세요."
+
+msgid "Adicionar"
+msgstr "추가"
+
+msgid "Adicionar WebApps"
+msgstr "웹앱 추가"
+
+msgid "Alterar"
+msgstr "고치다"
+
+msgid "Alterar navegador"
+msgstr "브라우저 변경"
+
+msgid "Categoria:"
+msgstr "카테고리:"
+
+msgid "Criar atalho na Área de Trabalho"
+msgstr "바탕 화면에 바로 가기 만들기"
+
+msgid "DESENVOLVIMENTO"
+msgstr "개발"
+
+msgid "Desenvolvimento"
+msgstr "개발"
+
+msgid "Detectar Nome e Ícone"
+msgstr "이름 및 아이콘 감지"
+
+msgid "ESCRITÓRIO"
+msgstr "사무실"
+
+msgid "Escritório"
+msgstr "사무실"
+
+msgid "Fechar"
+msgstr "닫기"
+
+msgid "GRÁFICOS"
+msgstr "그래픽"
+
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "빅리눅스 웹앱 관리자"
+
+msgid "Gráficos"
+msgstr "그래픽스"
+
+msgid "JOGOS"
+msgstr "게임"
+
+msgid "Jogos"
+msgstr "게임"
+
+msgid "MULTIMÍDIA"
+msgstr "멀티미디어"
+
+msgid "Multimídia"
+msgstr "멀티미디어"
+
+msgid "Navegador padrão<br>dos webapps:"
+msgstr "<br>웹앱 기본 브라우저:"
+
+msgid "Navegador:"
+msgstr "브라우저:"
+
+msgid "Nenhum WebApp adicionado!"
+msgstr "웹앱이 추가되지 않았습니다!"
+
+msgid "Nome:"
+msgstr "이름:"
+
+msgid "O WebApp foi adicionado com sucesso!"
+msgstr "웹앱이 성공적으로 추가되었습니다!"
+
+msgid "Para adicionar um WebApp, você precisa informar a Url e o Nome."
+msgstr "웹앱을 추가하려면 URL과 이름을 입력해야 합니다."
+
+msgid "Para detectar o Nome e o Ícone você precisa informar a Url."
+msgstr "이름과 아이콘을 검색하려면 URL을 입력해야 합니다."
+
+msgid "Perfil adicional"
+msgstr "추가 프로필"
+
+msgid "Selecionar imagem"
+msgstr "이미지 선택"
+
+msgid "Selecione o navegador preferido:"
+msgstr "원하는 브라우저를 선택합니다."
+
+msgid "Selecione o ícone preferido:"
+msgstr "기본 아이콘을 선택합니다."
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "이 웹앱을 제거하시겠습니까?"
+
+msgid "Url:"
+msgstr "URL:"
+
+msgid "WebApps Adicionados"
+msgstr "웹앱 추가됨"
+
+msgid "WebApps BigLinux"
+msgstr "빅 리눅스 웹 앱"
+
+msgid "WebApps Nativos"
+msgstr "네이티브 웹앱"
+
+msgid "YouTube Modo TV"
+msgstr "유튜브 TV 모드"
+
+msgid "Ícone:"
+msgstr "아이콘:"
+
+msgid "Ícones encontrados"
+msgstr "찾음 아이콘"
+
+#~ msgid "Aguarde, estamos preparando para começar..."
+#~ msgstr "잠깐, 시작할 준비가 됐어..."
+
+#~ msgid "Boa noite"
+#~ msgstr "안녕히 주무세요"
+
+#~ msgid "Boa tarde"
+#~ msgstr "안녕하세요"
+
+#~ msgid "Bom dia"
+#~ msgstr "살람"

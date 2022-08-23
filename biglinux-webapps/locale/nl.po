@@ -1,0 +1,152 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the biglinux-webapps package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: biglinux-webapps\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-01 06:13-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid ""
+"A Url é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão "
+"Alterar."
+msgstr ""
+"De Url is ongeldig of de verbinding is mislukt.<br>Probeer het pictogram in "
+"te voegen met de knop Wijzigen."
+
+msgid "Adicionar"
+msgstr "Toevoegen"
+
+msgid "Adicionar WebApps"
+msgstr "WebApps toevoegen"
+
+msgid "Alterar"
+msgstr "Veranderen"
+
+msgid "Alterar navegador"
+msgstr "Verander browser"
+
+msgid "Categoria:"
+msgstr "Categorie:"
+
+msgid "Criar atalho na Área de Trabalho"
+msgstr "Snelkoppeling op het bureaublad maken"
+
+msgid "DESENVOLVIMENTO"
+msgstr "ONTWIKKELING"
+
+msgid "Desenvolvimento"
+msgstr "Ontwikkeling"
+
+msgid "Detectar Nome e Ícone"
+msgstr "Detecteer naam en pictogram"
+
+msgid "ESCRITÓRIO"
+msgstr "KANTOOR"
+
+msgid "Escritório"
+msgstr "Kantoor"
+
+msgid "Fechar"
+msgstr "Sluiten"
+
+msgid "GRÁFICOS"
+msgstr "GRAFIEK"
+
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "BigLinux WebApps Manager"
+
+msgid "Gráficos"
+msgstr "Graphics"
+
+msgid "JOGOS"
+msgstr "SPELLEN"
+
+msgid "Jogos"
+msgstr "Spelletjes"
+
+msgid "MULTIMÍDIA"
+msgstr "MULTIMEDIA"
+
+msgid "Multimídia"
+msgstr "Multimedia"
+
+msgid "Navegador padrão<br>dos webapps:"
+msgstr "Standaard<br>webapps browser:"
+
+msgid "Navegador:"
+msgstr "Navigator:"
+
+msgid "Nenhum WebApp adicionado!"
+msgstr "Geen WebApp toegevoegd!"
+
+msgid "Nome:"
+msgstr "Naam:"
+
+msgid "O WebApp foi adicionado com sucesso!"
+msgstr "De WebApp is met succes toegevoegd!"
+
+msgid "Para adicionar um WebApp, você precisa informar a Url e o Nome."
+msgstr "Om een WebApp toe te voegen, moet u de Url en de Name doorgeven."
+
+msgid "Para detectar o Nome e o Ícone você precisa informar a Url."
+msgstr ""
+"Om de Naam en de Icoon op te sporen moet u de Url op de hoogte brengen."
+
+msgid "Perfil adicional"
+msgstr "Extra profiel"
+
+msgid "Selecionar imagem"
+msgstr "Beeld kiezen"
+
+msgid "Selecione o navegador preferido:"
+msgstr "Kies de browser van uw voorkeur:"
+
+msgid "Selecione o ícone preferido:"
+msgstr "Kies het gewenste pictogram:"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "Weet u zeker dat u deze WebApp wilt verwijderen?"
+
+msgid "Url:"
+msgstr "Url:"
+
+msgid "WebApps Adicionados"
+msgstr "WebApps toegevoegd"
+
+msgid "WebApps BigLinux"
+msgstr "WebApps BigLinux"
+
+msgid "WebApps Nativos"
+msgstr "Native WebApps"
+
+msgid "YouTube Modo TV"
+msgstr "YouTube TV-modus"
+
+msgid "Ícone:"
+msgstr "Icoon:"
+
+msgid "Ícones encontrados"
+msgstr "Gevonden pictogrammen"
+
+#~ msgid "Aguarde, estamos preparando para começar..."
+#~ msgstr "Stand by, we maken ons klaar om te beginnen..."
+
+#~ msgid "Boa noite"
+#~ msgstr "Goedenavond"
+
+#~ msgid "Boa tarde"
+#~ msgstr "Goedemiddag"
+
+#~ msgid "Bom dia"
+#~ msgstr "Goede morgen"

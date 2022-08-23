@@ -1,0 +1,151 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the biglinux-webapps package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: biglinux-webapps\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-01 06:13-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid ""
+"A Url é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão "
+"Alterar."
+msgstr ""
+"כתובת האתר אינה חוקית או שהחיבור נכשל. <br>נסהלהכניס את הסמל באמצעות הלחצן "
+"שנה."
+
+msgid "Adicionar"
+msgstr "הוסף"
+
+msgid "Adicionar WebApps"
+msgstr "הוסף אפליקציות אינטרנט"
+
+msgid "Alterar"
+msgstr "לתקן"
+
+msgid "Alterar navegador"
+msgstr "שינוי דפדפן"
+
+msgid "Categoria:"
+msgstr "קטגוריה:"
+
+msgid "Criar atalho na Área de Trabalho"
+msgstr "צור קיצור דרך בשולחן העבודה"
+
+msgid "DESENVOLVIMENTO"
+msgstr "פיתוח"
+
+msgid "Desenvolvimento"
+msgstr "פיתוח"
+
+msgid "Detectar Nome e Ícone"
+msgstr "זיהוי שם וסמל"
+
+msgid "ESCRITÓRIO"
+msgstr "משרד"
+
+msgid "Escritório"
+msgstr "משרד"
+
+msgid "Fechar"
+msgstr "סגור"
+
+msgid "GRÁFICOS"
+msgstr "גרפיקה"
+
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "מנהל אפליקציות האינטרנט של BigLinux"
+
+msgid "Gráficos"
+msgstr "גרפיקה"
+
+msgid "JOGOS"
+msgstr "משחקים"
+
+msgid "Jogos"
+msgstr "משחקים"
+
+msgid "MULTIMÍDIA"
+msgstr "מולטימדיה"
+
+msgid "Multimídia"
+msgstr "מולטימדיה"
+
+msgid "Navegador padrão<br>dos webapps:"
+msgstr "<br>דפדפןברירת המחדל Webapps:"
+
+msgid "Navegador:"
+msgstr "דפדפן:"
+
+msgid "Nenhum WebApp adicionado!"
+msgstr "לא הוסיף WebApp!"
+
+msgid "Nome:"
+msgstr "שם:"
+
+msgid "O WebApp foi adicionado com sucesso!"
+msgstr "ה- WebApp נוסף בהצלחה!"
+
+msgid "Para adicionar um WebApp, você precisa informar a Url e o Nome."
+msgstr "כדי להוסיף WebApp, עליך להזין את כתובת האתר ואת השם."
+
+msgid "Para detectar o Nome e o Ícone você precisa informar a Url."
+msgstr "כדי לזהות את השם והסמל עליך להזין את כתובת האתר."
+
+msgid "Perfil adicional"
+msgstr "פרופיל נוסף"
+
+msgid "Selecionar imagem"
+msgstr "בחר תמונה"
+
+msgid "Selecione o navegador preferido:"
+msgstr "בחר את הדפדפן המועדף עליך:"
+
+msgid "Selecione o ícone preferido:"
+msgstr "בחר בסמל המועדף:"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "האם אתה בטוח שברצונך להסיר WebApp זה?"
+
+msgid "Url:"
+msgstr "כתובת אתר:"
+
+msgid "WebApps Adicionados"
+msgstr "WebApps נוסף"
+
+msgid "WebApps BigLinux"
+msgstr "אפליקציות אינטרנט של BigLinux"
+
+msgid "WebApps Nativos"
+msgstr "אפליקציות אינטרנט מקוריות"
+
+msgid "YouTube Modo TV"
+msgstr "מצב טלוויזיה ביוטיוב"
+
+msgid "Ícone:"
+msgstr "סמל:"
+
+msgid "Ícones encontrados"
+msgstr "סמלים שנמצאו"
+
+#~ msgid "Aguarde, estamos preparando para começar..."
+#~ msgstr "חכה, אנחנו מתכוננים להתחיל..."
+
+#~ msgid "Boa noite"
+#~ msgstr "לילה טוב"
+
+#~ msgid "Boa tarde"
+#~ msgstr "אחר צהריים טובים"
+
+#~ msgid "Bom dia"
+#~ msgstr "סלאם"

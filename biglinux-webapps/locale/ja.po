@@ -1,0 +1,151 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the biglinux-webapps package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: biglinux-webapps\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-01 06:13-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid ""
+"A Url é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão "
+"Alterar."
+msgstr ""
+"URLが無効であるか、接続に失敗しました。<br>[変更]ボタンからアイコンを入力して"
+"みてください。"
+
+msgid "Adicionar"
+msgstr "追加"
+
+msgid "Adicionar WebApps"
+msgstr "WebAppsを追加する"
+
+msgid "Alterar"
+msgstr "変化する"
+
+msgid "Alterar navegador"
+msgstr "ブラウザを変更する"
+
+msgid "Categoria:"
+msgstr "カテゴリー："
+
+msgid "Criar atalho na Área de Trabalho"
+msgstr "デスクトップショートカットを作成します"
+
+msgid "DESENVOLVIMENTO"
+msgstr "発達"
+
+msgid "Desenvolvimento"
+msgstr "開発"
+
+msgid "Detectar Nome e Ícone"
+msgstr "名前とアイコンを検出する"
+
+msgid "ESCRITÓRIO"
+msgstr "オフィス"
+
+msgid "Escritório"
+msgstr "オフィス"
+
+msgid "Fechar"
+msgstr "閉じる"
+
+msgid "GRÁFICOS"
+msgstr "グラフィックス"
+
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "BigLinux WebApps Manager"
+
+msgid "Gráficos"
+msgstr "グラフィック"
+
+msgid "JOGOS"
+msgstr "ゲーム"
+
+msgid "Jogos"
+msgstr "ゲーム"
+
+msgid "MULTIMÍDIA"
+msgstr "マルチメディア"
+
+msgid "Multimídia"
+msgstr "マルチメディア"
+
+msgid "Navegador padrão<br>dos webapps:"
+msgstr "Webアプリのデフォルトのブラウザ：<br>"
+
+msgid "Navegador:"
+msgstr "ブラウザ："
+
+msgid "Nenhum WebApp adicionado!"
+msgstr "WebAppは追加されていません！"
+
+msgid "Nome:"
+msgstr "名前："
+
+msgid "O WebApp foi adicionado com sucesso!"
+msgstr "WebAppが正常に追加されました！"
+
+msgid "Para adicionar um WebApp, você precisa informar a Url e o Nome."
+msgstr "WebAppを追加するには、URLと名前を指定する必要があります。"
+
+msgid "Para detectar o Nome e o Ícone você precisa informar a Url."
+msgstr "名前とアイコンを検出するには、URLに通知する必要があります。"
+
+msgid "Perfil adicional"
+msgstr "追加のプロファイル"
+
+msgid "Selecionar imagem"
+msgstr "画像を選択"
+
+msgid "Selecione o navegador preferido:"
+msgstr "ご希望のブラウザを選択してください。"
+
+msgid "Selecione o ícone preferido:"
+msgstr "お好みのアイコンを選択してください："
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "このWebAppを削除してもよろしいですか？"
+
+msgid "Url:"
+msgstr "Url:"
+
+msgid "WebApps Adicionados"
+msgstr "WebAppsを追加しました"
+
+msgid "WebApps BigLinux"
+msgstr "BigLinux WebApps"
+
+msgid "WebApps Nativos"
+msgstr "ネイティブWebApp"
+
+msgid "YouTube Modo TV"
+msgstr "YouTubeTVモード"
+
+msgid "Ícone:"
+msgstr "アイコン："
+
+msgid "Ícones encontrados"
+msgstr "見つかったアイコン"
+
+#~ msgid "Aguarde, estamos preparando para começar..."
+#~ msgstr "待って、私たちは始める準備をしています..."
+
+#~ msgid "Boa noite"
+#~ msgstr "おやすみ"
+
+#~ msgid "Boa tarde"
+#~ msgstr "こんにちは"
+
+#~ msgid "Bom dia"
+#~ msgstr "おはよう"
