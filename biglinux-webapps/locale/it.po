@@ -2,123 +2,28 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the biglinux-webapps package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-01 06:13-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-msgid ""
-"A Url é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão "
-"Alterar."
-msgstr ""
-"L'URL non è valido o la connessione non è riuscita.<br>Provi a inserire "
-"l'icona con il pulsante Cambia."
-
-msgid "Adicionar"
-msgstr "Aggiungi"
-
-msgid "Adicionar WebApps"
-msgstr "Aggiungere le WebApp"
-
-msgid "Alterar"
-msgstr "Cambiamento"
-
-msgid "Alterar navegador"
-msgstr "Cambiare il browser"
-
-msgid "Categoria:"
-msgstr "Categoria:"
-
-msgid "Criar atalho na Área de Trabalho"
-msgstr "Creare una scorciatoia sul Desktop"
-
-msgid "DESENVOLVIMENTO"
-msgstr "SVILUPPO"
-
-msgid "Desenvolvimento"
-msgstr "Sviluppo"
-
-msgid "Detectar Nome e Ícone"
-msgstr "Rileva il nome e l'icona"
-
-msgid "ESCRITÓRIO"
-msgstr "UFFICIO"
-
-msgid "Escritório"
-msgstr "Ufficio"
-
-msgid "Fechar"
-msgstr "Chiudere"
-
-msgid "GRÁFICOS"
-msgstr "GRAFICA"
+"X-Generator: attranslate\n"
 
 msgid "Gerenciador de WebApps BigLinux"
 msgstr "Gestore di WebApps BigLinux"
 
-msgid "Gráficos"
-msgstr "Grafica"
-
-msgid "JOGOS"
-msgstr "GIOCHI"
-
-msgid "Jogos"
-msgstr "Giochi"
-
-msgid "MULTIMÍDIA"
-msgstr "MULTIMEDIA"
-
-msgid "Multimídia"
-msgstr "Multimedia"
-
-msgid "Navegador padrão<br>dos webapps:"
-msgstr "Browser predefinito per<br>le webapps:"
-
-msgid "Navegador:"
-msgstr "Navigatore:"
-
-msgid "Nenhum WebApp adicionado!"
-msgstr "Nessuna WebApp aggiunta!"
-
-msgid "Nome:"
-msgstr "Nome:"
-
-msgid "O WebApp foi adicionado com sucesso!"
-msgstr "La WebApp è stata aggiunta con successo!"
-
-msgid "Para adicionar um WebApp, você precisa informar a Url e o Nome."
-msgstr "Per aggiungere una WebApp, deve comunicare l'Url e il Nome."
-
-msgid "Para detectar o Nome e o Ícone você precisa informar a Url."
-msgstr "Per rilevare il Nome e l'Icona è necessario informare l'Url."
-
-msgid "Perfil adicional"
-msgstr "Profilo aggiuntivo"
-
 msgid "Selecionar imagem"
 msgstr "Seleziona l'immagine"
 
-msgid "Selecione o navegador preferido:"
-msgstr "Selezioni il suo browser preferito:"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Selezioni l'icona preferita:"
-
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "È sicuro di voler rimuovere questa WebApp?"
-
-msgid "Url:"
-msgstr "Url:"
+msgid "Adicionar WebApps"
+msgstr "Aggiungere le WebApp"
 
 msgid "WebApps Adicionados"
 msgstr "Aggiunte le WebApp"
@@ -126,26 +31,112 @@ msgstr "Aggiunte le WebApp"
 msgid "WebApps BigLinux"
 msgstr "WebApps BigLinux"
 
-msgid "WebApps Nativos"
-msgstr "Applicazioni Web native"
+msgid "Preencha os campos"
+msgstr "Compila i campi"
+
+msgid "URL:"
+msgstr "URL:"
+
+msgid "Detectar Nome e Ícone"
+msgstr "Rileva il nome e l'icona"
+
+msgid "Nome:"
+msgstr "Nome:"
+
+msgid "Ícone do WebApp"
+msgstr "Icona WebApp"
+
+msgid "Alterar"
+msgstr "Cambiamento"
+
+msgid "Navegador"
+msgstr "Browser"
+
+msgid "Categoria"
+msgstr "Categoria"
+
+msgid "DESENVOLVIMENTO"
+msgstr "SVILUPPO"
+
+msgid "ESCRITÓRIO"
+msgstr "UFFICIO"
+
+msgid "GRÁFICOS"
+msgstr "GRAFICA"
+
+msgid "JOGOS"
+msgstr "GIOCHI"
+
+msgid "MULTIMÍDIA"
+msgstr "MULTIMEDIA"
+
+msgid "Criar atalho na Área de Trabalho"
+msgstr "Creare una scorciatoia sul Desktop"
+
+msgid "Perfil adicional"
+msgstr "Profilo aggiuntivo"
 
 msgid "YouTube Modo TV"
 msgstr "Modalità YouTube TV"
 
-msgid "Ícone:"
-msgstr "Icona:"
+msgid "Modo YouTube TV"
+msgstr "Modalità YouTube TV"
+
+msgid "Adicionar"
+msgstr "Aggiungi"
+
+msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
+msgstr "Per aggiungere una WebApp, è necessario immettere l'URL e il Nome."
+
+msgid "Fechar"
+msgstr "Chiudere"
+
+msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
+msgstr "Per rilevare il nome e l'icona è necessario inserire l'URL."
+
+msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
+msgstr ""
+"L'URL non è valido o la connessione non è riuscita.<br>Prova a inserire l'icona accanto al pulsante "
+"Cambia."
+
+msgid "O WebApp foi adicionado com sucesso!"
+msgstr "La WebApp è stata aggiunta con successo!"
 
 msgid "Ícones encontrados"
 msgstr "Icone trovate"
 
-#~ msgid "Aguarde, estamos preparando para começar..."
-#~ msgstr "Tenetevi pronti, stiamo per iniziare..."
+msgid "Selecione o ícone preferido:"
+msgstr "Selezioni l'icona preferita:"
 
-#~ msgid "Boa noite"
-#~ msgstr "Buona sera"
+msgid "Desenvolvimento"
+msgstr "Sviluppo"
 
-#~ msgid "Boa tarde"
-#~ msgstr "Buon pomeriggio"
+msgid "Escritório"
+msgstr "Ufficio"
 
-#~ msgid "Bom dia"
-#~ msgstr "Buongiorno"
+msgid "Gráficos"
+msgstr "Grafica"
+
+msgid "Jogos"
+msgstr "Giochi"
+
+msgid "Multimídia"
+msgstr "Multimedia"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "È sicuro di voler rimuovere questa WebApp?"
+
+msgid "Nenhum WebApp adicionado!"
+msgstr "Nessuna WebApp aggiunta!"
+
+msgid "Navegador padrão<br>dos WebApps:"
+msgstr "Browser predefinito<br>webapp:"
+
+msgid "Alterar navegador"
+msgstr "Cambiare il browser"
+
+msgid "Selecione o navegador preferido:"
+msgstr "Selezioni il suo browser preferito:"
+
+msgid "WebApps Nativos"
+msgstr "Applicazioni Web native"

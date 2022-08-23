@@ -2,123 +2,28 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the biglinux-webapps package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-01 06:13-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-msgid ""
-"A Url é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão "
-"Alterar."
-msgstr ""
-"Url är ogiltig eller anslutningen misslyckades.<br>Försök att sätta in "
-"ikonen med knappen Ändra."
-
-msgid "Adicionar"
-msgstr "Lägg till"
-
-msgid "Adicionar WebApps"
-msgstr "Lägg till webbapplikationer"
-
-msgid "Alterar"
-msgstr "Ändra"
-
-msgid "Alterar navegador"
-msgstr "Byt webbläsare"
-
-msgid "Categoria:"
-msgstr "Kategori:"
-
-msgid "Criar atalho na Área de Trabalho"
-msgstr "Skapa en genväg på skrivbordet"
-
-msgid "DESENVOLVIMENTO"
-msgstr "UTVECKLING"
-
-msgid "Desenvolvimento"
-msgstr "Utveckling"
-
-msgid "Detectar Nome e Ícone"
-msgstr "Upptäcka namn och ikon"
-
-msgid "ESCRITÓRIO"
-msgstr "KONTOR"
-
-msgid "Escritório"
-msgstr "Kontor"
-
-msgid "Fechar"
-msgstr "Stäng"
-
-msgid "GRÁFICOS"
-msgstr "GRAFIK"
+"X-Generator: attranslate\n"
 
 msgid "Gerenciador de WebApps BigLinux"
 msgstr "BigLinux WebApps Manager"
 
-msgid "Gráficos"
-msgstr "Grafik"
-
-msgid "JOGOS"
-msgstr "SPEL"
-
-msgid "Jogos"
-msgstr "Spel"
-
-msgid "MULTIMÍDIA"
-msgstr "MULTIMEDIA"
-
-msgid "Multimídia"
-msgstr "Multimedia"
-
-msgid "Navegador padrão<br>dos webapps:"
-msgstr "Standardwebbläsare<br>för webbappar:"
-
-msgid "Navegador:"
-msgstr "Navigator:"
-
-msgid "Nenhum WebApp adicionado!"
-msgstr "Ingen WebApp har lagts till!"
-
-msgid "Nome:"
-msgstr "Namn:"
-
-msgid "O WebApp foi adicionado com sucesso!"
-msgstr "Webappen har lagts till framgångsrikt!"
-
-msgid "Para adicionar um WebApp, você precisa informar a Url e o Nome."
-msgstr "För att lägga till en WebApp måste du ange Url och Name."
-
-msgid "Para detectar o Nome e o Ícone você precisa informar a Url."
-msgstr "För att upptäcka namnet och ikonen måste du informera om url:en."
-
-msgid "Perfil adicional"
-msgstr "Ytterligare en profil"
-
 msgid "Selecionar imagem"
 msgstr "Välj bild"
 
-msgid "Selecione o navegador preferido:"
-msgstr "Välj den webbläsare som du föredrar:"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Välj den önskade ikonen:"
-
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Är du säker på att du vill ta bort den här webbappen?"
-
-msgid "Url:"
-msgstr "Url:"
+msgid "Adicionar WebApps"
+msgstr "Lägg till webbapplikationer"
 
 msgid "WebApps Adicionados"
 msgstr "WebApps har lagts till"
@@ -126,26 +31,110 @@ msgstr "WebApps har lagts till"
 msgid "WebApps BigLinux"
 msgstr "Webbapplikationer BigLinux"
 
-msgid "WebApps Nativos"
-msgstr "Inhemska webbapplikationer"
+msgid "Preencha os campos"
+msgstr "Fyll i fälten"
+
+msgid "URL:"
+msgstr "URL:"
+
+msgid "Detectar Nome e Ícone"
+msgstr "Upptäcka namn och ikon"
+
+msgid "Nome:"
+msgstr "Namn:"
+
+msgid "Ícone do WebApp"
+msgstr "Ikon för WebApp"
+
+msgid "Alterar"
+msgstr "Ändra"
+
+msgid "Navegador"
+msgstr "Webbläsare"
+
+msgid "Categoria"
+msgstr "Kategori"
+
+msgid "DESENVOLVIMENTO"
+msgstr "UTVECKLING"
+
+msgid "ESCRITÓRIO"
+msgstr "KONTOR"
+
+msgid "GRÁFICOS"
+msgstr "GRAFIK"
+
+msgid "JOGOS"
+msgstr "SPEL"
+
+msgid "MULTIMÍDIA"
+msgstr "MULTIMEDIA"
+
+msgid "Criar atalho na Área de Trabalho"
+msgstr "Skapa en genväg på skrivbordet"
+
+msgid "Perfil adicional"
+msgstr "Ytterligare en profil"
 
 msgid "YouTube Modo TV"
 msgstr "YouTube TV-läge"
 
-msgid "Ícone:"
-msgstr "Ikon:"
+msgid "Modo YouTube TV"
+msgstr "YouTube TV-läge"
+
+msgid "Adicionar"
+msgstr "Lägg till"
+
+msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
+msgstr "För att lägga till en WebApp måste du ange URL och namn."
+
+msgid "Fechar"
+msgstr "Stäng"
+
+msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
+msgstr "För att upptäcka namn och ikon måste du ange webbadressen."
+
+msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
+msgstr "URL:en är ogiltig eller anslutningen misslyckades.<br>Försök infoga ikonen med knappen Ändra."
+
+msgid "O WebApp foi adicionado com sucesso!"
+msgstr "Webappen har lagts till framgångsrikt!"
 
 msgid "Ícones encontrados"
 msgstr "Hittade ikoner"
 
-#~ msgid "Aguarde, estamos preparando para começar..."
-#~ msgstr "Vänta, vi är redo att börja..."
+msgid "Selecione o ícone preferido:"
+msgstr "Välj den önskade ikonen:"
 
-#~ msgid "Boa noite"
-#~ msgstr "God kväll"
+msgid "Desenvolvimento"
+msgstr "Utveckling"
 
-#~ msgid "Boa tarde"
-#~ msgstr "God eftermiddag"
+msgid "Escritório"
+msgstr "Kontor"
 
-#~ msgid "Bom dia"
-#~ msgstr "God morgon"
+msgid "Gráficos"
+msgstr "Grafik"
+
+msgid "Jogos"
+msgstr "Spel"
+
+msgid "Multimídia"
+msgstr "Multimedia"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "Är du säker på att du vill ta bort den här webbappen?"
+
+msgid "Nenhum WebApp adicionado!"
+msgstr "Ingen WebApp har lagts till!"
+
+msgid "Navegador padrão<br>dos WebApps:"
+msgstr "Standardwebbläsare<br>webbappar:"
+
+msgid "Alterar navegador"
+msgstr "Byt webbläsare"
+
+msgid "Selecione o navegador preferido:"
+msgstr "Välj den webbläsare som du föredrar:"
+
+msgid "WebApps Nativos"
+msgstr "Inhemska webbapplikationer"

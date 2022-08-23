@@ -2,123 +2,28 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the biglinux-webapps package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-01 06:13-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-msgid ""
-"A Url é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão "
-"Alterar."
-msgstr ""
-"Az Url érvénytelen, vagy a kapcsolat meghiúsult.<br>Próbálja meg "
-"beilleszteni az ikont a Módosítás gomb segítségével."
-
-msgid "Adicionar"
-msgstr "Add"
-
-msgid "Adicionar WebApps"
-msgstr "Webalkalmazások hozzáadása"
-
-msgid "Alterar"
-msgstr "Változás"
-
-msgid "Alterar navegador"
-msgstr "Böngésző módosítása"
-
-msgid "Categoria:"
-msgstr "Kategóriák:"
-
-msgid "Criar atalho na Área de Trabalho"
-msgstr "Párhuzamos parancsikon létrehozása az asztalon"
-
-msgid "DESENVOLVIMENTO"
-msgstr "FEJLESZTÉS"
-
-msgid "Desenvolvimento"
-msgstr "Fejlesztés"
-
-msgid "Detectar Nome e Ícone"
-msgstr "Név és ikon észlelése"
-
-msgid "ESCRITÓRIO"
-msgstr "IRODA"
-
-msgid "Escritório"
-msgstr "Iroda"
-
-msgid "Fechar"
-msgstr "Zárja be a"
-
-msgid "GRÁFICOS"
-msgstr "GRAFIKÁK"
+"X-Generator: attranslate\n"
 
 msgid "Gerenciador de WebApps BigLinux"
 msgstr "BigLinux WebApps Manager"
 
-msgid "Gráficos"
-msgstr "Grafika"
-
-msgid "JOGOS"
-msgstr "JÁTÉKOK"
-
-msgid "Jogos"
-msgstr "Játékok"
-
-msgid "MULTIMÍDIA"
-msgstr "MULTIMEDIA"
-
-msgid "Multimídia"
-msgstr "Multimédia"
-
-msgid "Navegador padrão<br>dos webapps:"
-msgstr "Szabványos<br>webalkalmazások böngészője:"
-
-msgid "Navegador:"
-msgstr "Navigátor:"
-
-msgid "Nenhum WebApp adicionado!"
-msgstr "Nincs WebApp hozzáadva!"
-
-msgid "Nome:"
-msgstr "Név:"
-
-msgid "O WebApp foi adicionado com sucesso!"
-msgstr "A webalkalmazás sikeresen hozzáadva!"
-
-msgid "Para adicionar um WebApp, você precisa informar a Url e o Nome."
-msgstr "Egy Webalkalmazás hozzáadásához meg kell adnia az Url és a Név címet."
-
-msgid "Para detectar o Nome e o Ícone você precisa informar a Url."
-msgstr "A név és az ikon észleléséhez tájékoztatnia kell az Url-t."
-
-msgid "Perfil adicional"
-msgstr "További profil"
-
 msgid "Selecionar imagem"
 msgstr "Kép kiválasztása"
 
-msgid "Selecione o navegador preferido:"
-msgstr "Válassza ki a kívánt böngészőt:"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Válassza ki a kívánt ikont:"
-
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Biztos, hogy el akarja távolítani ezt a webalkalmazást?"
-
-msgid "Url:"
-msgstr "Url:"
+msgid "Adicionar WebApps"
+msgstr "Webalkalmazások hozzáadása"
 
 msgid "WebApps Adicionados"
 msgstr "Hozzáadott webalkalmazások"
@@ -126,26 +31,112 @@ msgstr "Hozzáadott webalkalmazások"
 msgid "WebApps BigLinux"
 msgstr "Webalkalmazások BigLinux"
 
-msgid "WebApps Nativos"
-msgstr "Natív webes alkalmazások"
+msgid "Preencha os campos"
+msgstr "Töltse ki a mezőket"
+
+msgid "URL:"
+msgstr "URL-cím:"
+
+msgid "Detectar Nome e Ícone"
+msgstr "Név és ikon észlelése"
+
+msgid "Nome:"
+msgstr "Név:"
+
+msgid "Ícone do WebApp"
+msgstr "A WebApp ikonja"
+
+msgid "Alterar"
+msgstr "Változás"
+
+msgid "Navegador"
+msgstr "Böngésző"
+
+msgid "Categoria"
+msgstr "Kategória"
+
+msgid "DESENVOLVIMENTO"
+msgstr "FEJLESZTÉS"
+
+msgid "ESCRITÓRIO"
+msgstr "IRODA"
+
+msgid "GRÁFICOS"
+msgstr "GRAFIKÁK"
+
+msgid "JOGOS"
+msgstr "JÁTÉKOK"
+
+msgid "MULTIMÍDIA"
+msgstr "MULTIMEDIA"
+
+msgid "Criar atalho na Área de Trabalho"
+msgstr "Párhuzamos parancsikon létrehozása az asztalon"
+
+msgid "Perfil adicional"
+msgstr "További profil"
 
 msgid "YouTube Modo TV"
 msgstr "YouTube TV mód"
 
-msgid "Ícone:"
-msgstr "Ikon:"
+msgid "Modo YouTube TV"
+msgstr "YouTube TV mód"
+
+msgid "Adicionar"
+msgstr "Add"
+
+msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
+msgstr "WebApp hozzáadásához meg kell adnia az URL-címet és a nevet."
+
+msgid "Fechar"
+msgstr "Zárja be a"
+
+msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
+msgstr "A név és az ikon észleléséhez meg kell adnia az URL-címet."
+
+msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
+msgstr ""
+"Az URL érvénytelen vagy a kapcsolat sikertelen.<br>Próbálja meg beilleszteni az ikont a Módosítás "
+"gombbal."
+
+msgid "O WebApp foi adicionado com sucesso!"
+msgstr "A webalkalmazás sikeresen hozzáadva!"
 
 msgid "Ícones encontrados"
 msgstr "Megtalált ikonok"
 
-#~ msgid "Aguarde, estamos preparando para começar..."
-#~ msgstr "Készüljetek, mindjárt kezdünk..."
+msgid "Selecione o ícone preferido:"
+msgstr "Válassza ki a kívánt ikont:"
 
-#~ msgid "Boa noite"
-#~ msgstr "Jó estét!"
+msgid "Desenvolvimento"
+msgstr "Fejlesztés"
 
-#~ msgid "Boa tarde"
-#~ msgstr "Jó napot!"
+msgid "Escritório"
+msgstr "Iroda"
 
-#~ msgid "Bom dia"
-#~ msgstr "Jó reggelt!"
+msgid "Gráficos"
+msgstr "Grafika"
+
+msgid "Jogos"
+msgstr "Játékok"
+
+msgid "Multimídia"
+msgstr "Multimédia"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "Biztos, hogy el akarja távolítani ezt a webalkalmazást?"
+
+msgid "Nenhum WebApp adicionado!"
+msgstr "Nincs WebApp hozzáadva!"
+
+msgid "Navegador padrão<br>dos WebApps:"
+msgstr "Alapértelmezett böngésző<br>webes alkalmazások:"
+
+msgid "Alterar navegador"
+msgstr "Böngésző módosítása"
+
+msgid "Selecione o navegador preferido:"
+msgstr "Válassza ki a kívánt böngészőt:"
+
+msgid "WebApps Nativos"
+msgstr "Natív webes alkalmazások"

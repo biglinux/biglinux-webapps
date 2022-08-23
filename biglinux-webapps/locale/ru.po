@@ -2,123 +2,28 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the biglinux-webapps package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-01 06:13-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-msgid ""
-"A Url é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão "
-"Alterar."
-msgstr ""
-"URL-адрес недействителен или соединение не установлено.<br>Попробуйте ввести "
-"значок с помощью кнопки \"Изменить\"."
-
-msgid "Adicionar"
-msgstr "Добавлять"
-
-msgid "Adicionar WebApps"
-msgstr "Добавить веб-приложения"
-
-msgid "Alterar"
-msgstr "Изменять"
-
-msgid "Alterar navegador"
-msgstr "изменить браузер"
-
-msgid "Categoria:"
-msgstr "Категория:"
-
-msgid "Criar atalho na Área de Trabalho"
-msgstr "Создать ярлык на рабочем столе"
-
-msgid "DESENVOLVIMENTO"
-msgstr "РАЗРАБОТКА"
-
-msgid "Desenvolvimento"
-msgstr "Разработка"
-
-msgid "Detectar Nome e Ícone"
-msgstr "Обнаружение имени и значка"
-
-msgid "ESCRITÓRIO"
-msgstr "ОФИС"
-
-msgid "Escritório"
-msgstr "Офис"
-
-msgid "Fechar"
-msgstr "Закрыть"
-
-msgid "GRÁFICOS"
-msgstr "Графика"
+"X-Generator: attranslate\n"
 
 msgid "Gerenciador de WebApps BigLinux"
 msgstr "BigLinux WebApps Manager"
 
-msgid "Gráficos"
-msgstr "Графика"
-
-msgid "JOGOS"
-msgstr "ИГРЫ"
-
-msgid "Jogos"
-msgstr "Игры"
-
-msgid "MULTIMÍDIA"
-msgstr "МУЛЬТИМЕДИА"
-
-msgid "Multimídia"
-msgstr "Мультимедиа"
-
-msgid "Navegador padrão<br>dos webapps:"
-msgstr "Браузер<br>по умолчанию для веб-приложений:"
-
-msgid "Navegador:"
-msgstr "Браузер:"
-
-msgid "Nenhum WebApp adicionado!"
-msgstr "Веб-приложение не добавлено!"
-
-msgid "Nome:"
-msgstr "Имя:"
-
-msgid "O WebApp foi adicionado com sucesso!"
-msgstr "Веб-приложение успешно добавлено!"
-
-msgid "Para adicionar um WebApp, você precisa informar a Url e o Nome."
-msgstr "Чтобы добавить веб-приложение, вам необходимо указать URL-адрес и имя."
-
-msgid "Para detectar o Nome e o Ícone você precisa informar a Url."
-msgstr "Чтобы определить имя и значок, вам необходимо сообщить URL-адрес."
-
-msgid "Perfil adicional"
-msgstr "дополнительный профиль"
-
 msgid "Selecionar imagem"
 msgstr "выбрать изображение"
 
-msgid "Selecione o navegador preferido:"
-msgstr "Выберите предпочтительный браузер:"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Выберите нужный значок:"
-
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Вы уверены, что хотите удалить это веб-приложение?"
-
-msgid "Url:"
-msgstr "URL-адрес:"
+msgid "Adicionar WebApps"
+msgstr "Добавить веб-приложения"
 
 msgid "WebApps Adicionados"
 msgstr "Добавлены веб-приложения"
@@ -126,26 +31,112 @@ msgstr "Добавлены веб-приложения"
 msgid "WebApps BigLinux"
 msgstr "Веб-приложения BigLinux"
 
-msgid "WebApps Nativos"
-msgstr "Нативные веб-приложения"
+msgid "Preencha os campos"
+msgstr "Заполните поля"
+
+msgid "URL:"
+msgstr "URL:"
+
+msgid "Detectar Nome e Ícone"
+msgstr "Обнаружение имени и значка"
+
+msgid "Nome:"
+msgstr "Имя:"
+
+msgid "Ícone do WebApp"
+msgstr "Значок веб-приложения"
+
+msgid "Alterar"
+msgstr "Изменять"
+
+msgid "Navegador"
+msgstr "Обозреватель"
+
+msgid "Categoria"
+msgstr "Категория"
+
+msgid "DESENVOLVIMENTO"
+msgstr "РАЗРАБОТКА"
+
+msgid "ESCRITÓRIO"
+msgstr "ОФИС"
+
+msgid "GRÁFICOS"
+msgstr "Графика"
+
+msgid "JOGOS"
+msgstr "ИГРЫ"
+
+msgid "MULTIMÍDIA"
+msgstr "МУЛЬТИМЕДИА"
+
+msgid "Criar atalho na Área de Trabalho"
+msgstr "Создать ярлык на рабочем столе"
+
+msgid "Perfil adicional"
+msgstr "дополнительный профиль"
 
 msgid "YouTube Modo TV"
 msgstr "Режим YouTube ТВ"
 
-msgid "Ícone:"
-msgstr "Значок:"
+msgid "Modo YouTube TV"
+msgstr "Режим YouTube TV"
+
+msgid "Adicionar"
+msgstr "Добавлять"
+
+msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
+msgstr "Чтобы добавить веб-приложение, необходимо ввести URL-адрес и имя."
+
+msgid "Fechar"
+msgstr "Закрыть"
+
+msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
+msgstr "Для определения имени и значка необходимо ввести URL."
+
+msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
+msgstr ""
+"Недопустимый URL-адрес или не удалось подключиться.<br>Попробуйте вставить значок с помощью кнопки "
+"Изменить."
+
+msgid "O WebApp foi adicionado com sucesso!"
+msgstr "Веб-приложение успешно добавлено!"
 
 msgid "Ícones encontrados"
 msgstr "Найденные иконки"
 
-#~ msgid "Aguarde, estamos preparando para começar..."
-#~ msgstr "Подождите, мы готовимся к старту..."
+msgid "Selecione o ícone preferido:"
+msgstr "Выберите нужный значок:"
 
-#~ msgid "Boa noite"
-#~ msgstr "Доброй ночи"
+msgid "Desenvolvimento"
+msgstr "Разработка"
 
-#~ msgid "Boa tarde"
-#~ msgstr "Добрый день"
+msgid "Escritório"
+msgstr "Офис"
 
-#~ msgid "Bom dia"
-#~ msgstr "Доброе утро"
+msgid "Gráficos"
+msgstr "Графика"
+
+msgid "Jogos"
+msgstr "Игры"
+
+msgid "Multimídia"
+msgstr "Мультимедиа"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "Вы уверены, что хотите удалить это веб-приложение?"
+
+msgid "Nenhum WebApp adicionado!"
+msgstr "Веб-приложение не добавлено!"
+
+msgid "Navegador padrão<br>dos WebApps:"
+msgstr "Браузер по умолчанию<br>веб-приложения:"
+
+msgid "Alterar navegador"
+msgstr "изменить браузер"
+
+msgid "Selecione o navegador preferido:"
+msgstr "Выберите предпочтительный браузер:"
+
+msgid "WebApps Nativos"
+msgstr "Нативные веб-приложения"

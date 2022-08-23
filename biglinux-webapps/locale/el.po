@@ -2,126 +2,28 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the biglinux-webapps package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-01 06:13-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-msgid ""
-"A Url é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão "
-"Alterar."
-msgstr ""
-"Το Url είναι άκυρο ή η σύνδεση απέτυχε.<br>Προσπαθήστε να εισαγάγετε το "
-"εικονίδιο με το κουμπί Αλλαγή."
-
-msgid "Adicionar"
-msgstr "Προσθέστε"
-
-msgid "Adicionar WebApps"
-msgstr "Προσθήκη WebApps"
-
-msgid "Alterar"
-msgstr "Αλλαγή"
-
-msgid "Alterar navegador"
-msgstr "Αλλαγή προγράμματος περιήγησης"
-
-msgid "Categoria:"
-msgstr "Κατηγορία:"
-
-msgid "Criar atalho na Área de Trabalho"
-msgstr "Δημιουργία συντόμευσης στην επιφάνεια εργασίας"
-
-msgid "DESENVOLVIMENTO"
-msgstr "ΑΝΑΠΤΥΞΗ"
-
-msgid "Desenvolvimento"
-msgstr "Ανάπτυξη"
-
-msgid "Detectar Nome e Ícone"
-msgstr "Όνομα και εικονίδιο ανίχνευσης"
-
-msgid "ESCRITÓRIO"
-msgstr "ΓΡΑΦΕΙΟ"
-
-msgid "Escritório"
-msgstr "Γραφείο"
-
-msgid "Fechar"
-msgstr "Κλείστε το"
-
-msgid "GRÁFICOS"
-msgstr "GRAPHICS"
+"X-Generator: attranslate\n"
 
 msgid "Gerenciador de WebApps BigLinux"
 msgstr "Διαχειριστής εφαρμογών Web του BigLinux"
 
-msgid "Gráficos"
-msgstr "Γραφικά"
-
-msgid "JOGOS"
-msgstr "ΠΑΙΧΝΙΔΙΑ"
-
-msgid "Jogos"
-msgstr "Παιχνίδια"
-
-msgid "MULTIMÍDIA"
-msgstr "MULTIMEDIA"
-
-msgid "Multimídia"
-msgstr "Πολυμέσα"
-
-msgid "Navegador padrão<br>dos webapps:"
-msgstr "Προεπιλεγμένο πρόγραμμα περιήγησης<br>εφαρμογών ιστού:"
-
-msgid "Navegador:"
-msgstr "Πλοηγός:"
-
-msgid "Nenhum WebApp adicionado!"
-msgstr "Δεν προστέθηκε WebApp!"
-
-msgid "Nome:"
-msgstr "Όνομα:"
-
-msgid "O WebApp foi adicionado com sucesso!"
-msgstr "Η εφαρμογή WebApp προστέθηκε με επιτυχία!"
-
-msgid "Para adicionar um WebApp, você precisa informar a Url e o Nome."
-msgstr ""
-"Για να προσθέσετε μια εφαρμογή WebApp, πρέπει να ενημερώσετε το Url και το "
-"όνομα."
-
-msgid "Para detectar o Nome e o Ícone você precisa informar a Url."
-msgstr ""
-"Για να εντοπίσετε το όνομα και το εικονίδιο θα πρέπει να ενημερώσετε το Url."
-
-msgid "Perfil adicional"
-msgstr "Πρόσθετο προφίλ"
-
 msgid "Selecionar imagem"
 msgstr "Επιλέξτε εικόνα"
 
-msgid "Selecione o navegador preferido:"
-msgstr "Επιλέξτε το πρόγραμμα περιήγησης που προτιμάτε:"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Επιλέξτε το προτιμώμενο εικονίδιο:"
-
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Είστε σίγουροι ότι θέλετε να καταργήσετε αυτή την εφαρμογή WebApp"
-
-msgid "Url:"
-msgstr "Url:"
+msgid "Adicionar WebApps"
+msgstr "Προσθήκη WebApps"
 
 msgid "WebApps Adicionados"
 msgstr "Προστέθηκαν WebApps"
@@ -129,26 +31,112 @@ msgstr "Προστέθηκαν WebApps"
 msgid "WebApps BigLinux"
 msgstr "WebApps BigLinux"
 
-msgid "WebApps Nativos"
-msgstr "Native WebApps"
+msgid "Preencha os campos"
+msgstr "Συμπληρώστε τα πεδία"
+
+msgid "URL:"
+msgstr "Διεύθυνση URL:"
+
+msgid "Detectar Nome e Ícone"
+msgstr "Όνομα και εικονίδιο ανίχνευσης"
+
+msgid "Nome:"
+msgstr "Όνομα:"
+
+msgid "Ícone do WebApp"
+msgstr "Εικονίδιο της Εφαρμογής Web"
+
+msgid "Alterar"
+msgstr "Αλλαγή"
+
+msgid "Navegador"
+msgstr "Πρόγραμμα περιήγησης"
+
+msgid "Categoria"
+msgstr "Κατηγορία"
+
+msgid "DESENVOLVIMENTO"
+msgstr "ΑΝΑΠΤΥΞΗ"
+
+msgid "ESCRITÓRIO"
+msgstr "ΓΡΑΦΕΙΟ"
+
+msgid "GRÁFICOS"
+msgstr "GRAPHICS"
+
+msgid "JOGOS"
+msgstr "ΠΑΙΧΝΙΔΙΑ"
+
+msgid "MULTIMÍDIA"
+msgstr "MULTIMEDIA"
+
+msgid "Criar atalho na Área de Trabalho"
+msgstr "Δημιουργία συντόμευσης στην επιφάνεια εργασίας"
+
+msgid "Perfil adicional"
+msgstr "Πρόσθετο προφίλ"
 
 msgid "YouTube Modo TV"
 msgstr "Λειτουργία YouTube TV"
 
-msgid "Ícone:"
-msgstr "Εικόνα:"
+msgid "Modo YouTube TV"
+msgstr "Λειτουργία τηλεόρασης YouTube"
+
+msgid "Adicionar"
+msgstr "Προσθέστε"
+
+msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
+msgstr "Για να προσθέσετε μια WebApp, πρέπει να εισαγάγετε τη διεύθυνση URL και το όνομα."
+
+msgid "Fechar"
+msgstr "Κλείστε το"
+
+msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
+msgstr "Για να εντοπίσετε το όνομα και το εικονίδιο, πρέπει να εισαγάγετε τη διεύθυνση URL."
+
+msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
+msgstr ""
+"Η διεύθυνση URL δεν είναι έγκυρη ή η σύνδεση απέτυχε.<br>Δοκιμάστε να εισαγάγετε το εικονίδιο από "
+"το κουμπί Αλλαγή."
+
+msgid "O WebApp foi adicionado com sucesso!"
+msgstr "Η εφαρμογή WebApp προστέθηκε με επιτυχία!"
 
 msgid "Ícones encontrados"
 msgstr "Βρέθηκαν εικονίδια"
 
-#~ msgid "Aguarde, estamos preparando para começar..."
-#~ msgstr "Αναμείνατε, είμαστε έτοιμοι να ξεκινήσουμε..."
+msgid "Selecione o ícone preferido:"
+msgstr "Επιλέξτε το προτιμώμενο εικονίδιο:"
 
-#~ msgid "Boa noite"
-#~ msgstr "Καλησπέρα"
+msgid "Desenvolvimento"
+msgstr "Ανάπτυξη"
 
-#~ msgid "Boa tarde"
-#~ msgstr "Καλησπέρα"
+msgid "Escritório"
+msgstr "Γραφείο"
 
-#~ msgid "Bom dia"
-#~ msgstr "Καλημέρα"
+msgid "Gráficos"
+msgstr "Γραφικά"
+
+msgid "Jogos"
+msgstr "Παιχνίδια"
+
+msgid "Multimídia"
+msgstr "Πολυμέσα"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "Είστε σίγουροι ότι θέλετε να καταργήσετε αυτή την εφαρμογή WebApp"
+
+msgid "Nenhum WebApp adicionado!"
+msgstr "Δεν προστέθηκε WebApp!"
+
+msgid "Navegador padrão<br>dos WebApps:"
+msgstr "Προεπιλεγμένο πρόγραμμα περιήγησης<br>εφαρμογές ιστού:"
+
+msgid "Alterar navegador"
+msgstr "Αλλαγή προγράμματος περιήγησης"
+
+msgid "Selecione o navegador preferido:"
+msgstr "Επιλέξτε το πρόγραμμα περιήγησης που προτιμάτε:"
+
+msgid "WebApps Nativos"
+msgstr "Native WebApps"

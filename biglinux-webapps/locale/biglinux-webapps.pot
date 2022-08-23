@@ -7,8 +7,6 @@
 msgid   ""
 msgstr  "Project-Id-Version: biglinux-webapps\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2022-08-01 06:13-0300\n"
-        "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
         "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
         "Language: \n"
@@ -31,7 +29,10 @@ msgstr  ""
 msgid   "WebApps BigLinux"
 msgstr  ""
 
-msgid   "Url:"
+msgid   "Preencha os campos"
+msgstr  ""
+
+msgid   "URL:"
 msgstr  ""
 
 msgid   "Detectar Nome e Ícone"
@@ -40,16 +41,16 @@ msgstr  ""
 msgid   "Nome:"
 msgstr  ""
 
-msgid   "Ícone:"
+msgid   "Ícone do WebApp"
 msgstr  ""
 
 msgid   "Alterar"
 msgstr  ""
 
-msgid   "Navegador:"
+msgid   "Navegador"
 msgstr  ""
 
-msgid   "Categoria:"
+msgid   "Categoria"
 msgstr  ""
 
 msgid   "DESENVOLVIMENTO"
@@ -76,19 +77,22 @@ msgstr  ""
 msgid   "YouTube Modo TV"
 msgstr  ""
 
+msgid   "Modo YouTube TV"
+msgstr  ""
+
 msgid   "Adicionar"
 msgstr  ""
 
-msgid   "Para adicionar um WebApp, você precisa informar a Url e o Nome."
+msgid   "Para adicionar um WebApp, você precisa informar a URL e o Nome."
 msgstr  ""
 
 msgid   "Fechar"
 msgstr  ""
 
-msgid   "Para detectar o Nome e o Ícone você precisa informar a Url."
+msgid   "Para detectar o Nome e o Ícone você precisa informar a URL."
 msgstr  ""
 
-msgid   "A Url é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo "
+msgid   "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo "
         "botão Alterar."
 msgstr  ""
 
@@ -122,7 +126,7 @@ msgstr  ""
 msgid   "Nenhum WebApp adicionado!"
 msgstr  ""
 
-msgid   "Navegador padrão<br>dos webapps:"
+msgid   "Navegador padrão<br>dos WebApps:"
 msgstr  ""
 
 msgid   "Alterar navegador"

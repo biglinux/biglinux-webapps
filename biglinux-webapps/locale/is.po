@@ -2,123 +2,28 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the biglinux-webapps package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-01 06:13-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-msgid ""
-"A Url é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão "
-"Alterar."
-msgstr ""
-"Vefslóðin er ógild eða tengingin mistókst. <br>Reynduað setja táknið í "
-"gegnum Breyta hnappinn."
-
-msgid "Adicionar"
-msgstr "Bæta"
-
-msgid "Adicionar WebApps"
-msgstr "Setja WebApps"
-
-msgid "Alterar"
-msgstr "breyta"
-
-msgid "Alterar navegador"
-msgstr "Breyta vafra"
-
-msgid "Categoria:"
-msgstr "Flokkur:"
-
-msgid "Criar atalho na Área de Trabalho"
-msgstr "Búðu til flýtileið á skjáborðinu"
-
-msgid "DESENVOLVIMENTO"
-msgstr "ÞRÓUN"
-
-msgid "Desenvolvimento"
-msgstr "Þróun"
-
-msgid "Detectar Nome e Ícone"
-msgstr "Uppgötvaðu nafn og tákn"
-
-msgid "ESCRITÓRIO"
-msgstr "SKRIFSTOFA"
-
-msgid "Escritório"
-msgstr "Skrifstofa"
-
-msgid "Fechar"
-msgstr "Loka"
-
-msgid "GRÁFICOS"
-msgstr "GRAFÍK"
+"X-Generator: attranslate\n"
 
 msgid "Gerenciador de WebApps BigLinux"
 msgstr "BigLinux WebApp Framkvæmdastjóri"
 
-msgid "Gráficos"
-msgstr "Grafík"
-
-msgid "JOGOS"
-msgstr "LEIKIR"
-
-msgid "Jogos"
-msgstr "Leikir"
-
-msgid "MULTIMÍDIA"
-msgstr "MARGMIÐLUN"
-
-msgid "Multimídia"
-msgstr "Margmiðlun"
-
-msgid "Navegador padrão<br>dos webapps:"
-msgstr "<br>Webappssjálfgefinn vafri:"
-
-msgid "Navegador:"
-msgstr "Vafri:"
-
-msgid "Nenhum WebApp adicionado!"
-msgstr "Engin WebApp bætt við!"
-
-msgid "Nome:"
-msgstr "Nafn:"
-
-msgid "O WebApp foi adicionado com sucesso!"
-msgstr "The WebApp var bætt við!"
-
-msgid "Para adicionar um WebApp, você precisa informar a Url e o Nome."
-msgstr "Til að bæta við WebApp þarftu að slá inn vefslóð og nafn."
-
-msgid "Para detectar o Nome e o Ícone você precisa informar a Url."
-msgstr "Til að greina nafnið og táknið þarftu að slá inn vefslóðina."
-
-msgid "Perfil adicional"
-msgstr "Viðbótarupplýsingar upplýsingar"
-
 msgid "Selecionar imagem"
 msgstr "Veldu mynd"
 
-msgid "Selecione o navegador preferido:"
-msgstr "Veldu valinn vafra:"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Veldu valinn táknið:"
-
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Ertu viss um að þú viljir fjarlægja þetta WebApp?"
-
-msgid "Url:"
-msgstr "Vefslóð:"
+msgid "Adicionar WebApps"
+msgstr "Setja WebApps"
 
 msgid "WebApps Adicionados"
 msgstr "WebApps bætt"
@@ -126,26 +31,110 @@ msgstr "WebApps bætt"
 msgid "WebApps BigLinux"
 msgstr "BigLinux WebApps"
 
-msgid "WebApps Nativos"
-msgstr "Innfædd vefforrit"
+msgid "Preencha os campos"
+msgstr "Fylltu út reitina"
+
+msgid "URL:"
+msgstr "Vefslóð:"
+
+msgid "Detectar Nome e Ícone"
+msgstr "Uppgötvaðu nafn og tákn"
+
+msgid "Nome:"
+msgstr "Nafn:"
+
+msgid "Ícone do WebApp"
+msgstr "WebApp táknið"
+
+msgid "Alterar"
+msgstr "breyta"
+
+msgid "Navegador"
+msgstr "Vafri"
+
+msgid "Categoria"
+msgstr "Flokkur"
+
+msgid "DESENVOLVIMENTO"
+msgstr "ÞRÓUN"
+
+msgid "ESCRITÓRIO"
+msgstr "SKRIFSTOFA"
+
+msgid "GRÁFICOS"
+msgstr "GRAFÍK"
+
+msgid "JOGOS"
+msgstr "LEIKIR"
+
+msgid "MULTIMÍDIA"
+msgstr "MARGMIÐLUN"
+
+msgid "Criar atalho na Área de Trabalho"
+msgstr "Búðu til flýtileið á skjáborðinu"
+
+msgid "Perfil adicional"
+msgstr "Viðbótarupplýsingar upplýsingar"
 
 msgid "YouTube Modo TV"
 msgstr "YouTube sjónvarpsstilling"
 
-msgid "Ícone:"
-msgstr "Tákn:"
+msgid "Modo YouTube TV"
+msgstr "YouTube sjónvarpsstilling"
+
+msgid "Adicionar"
+msgstr "Bæta"
+
+msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
+msgstr "Til að bæta við WebApp þarftu að slá inn slóðina og nafnið."
+
+msgid "Fechar"
+msgstr "Loka"
+
+msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
+msgstr "Til að greina nafnið og táknið þarftu að slá inn slóðina."
+
+msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
+msgstr "Vefslóðin er ógild eða tengingin mistókst.<br>Prófaðu að setja inn táknið með hnappinn Breyta."
+
+msgid "O WebApp foi adicionado com sucesso!"
+msgstr "The WebApp var bætt við!"
 
 msgid "Ícones encontrados"
 msgstr "Fann tákn"
 
-#~ msgid "Aguarde, estamos preparando para começar..."
-#~ msgstr "Bíddu, við erum að verða tilbúin til að byrja..."
+msgid "Selecione o ícone preferido:"
+msgstr "Veldu valinn táknið:"
 
-#~ msgid "Boa noite"
-#~ msgstr "Góða nótt"
+msgid "Desenvolvimento"
+msgstr "Þróun"
 
-#~ msgid "Boa tarde"
-#~ msgstr "Góðan daginn"
+msgid "Escritório"
+msgstr "Skrifstofa"
 
-#~ msgid "Bom dia"
-#~ msgstr "Salaam"
+msgid "Gráficos"
+msgstr "Grafík"
+
+msgid "Jogos"
+msgstr "Leikir"
+
+msgid "Multimídia"
+msgstr "Margmiðlun"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "Ertu viss um að þú viljir fjarlægja þetta WebApp?"
+
+msgid "Nenhum WebApp adicionado!"
+msgstr "Engin WebApp bætt við!"
+
+msgid "Navegador padrão<br>dos WebApps:"
+msgstr "Sjálfgefinn vafri<br>webapps:"
+
+msgid "Alterar navegador"
+msgstr "Breyta vafra"
+
+msgid "Selecione o navegador preferido:"
+msgstr "Veldu valinn vafra:"
+
+msgid "WebApps Nativos"
+msgstr "Innfædd vefforrit"
