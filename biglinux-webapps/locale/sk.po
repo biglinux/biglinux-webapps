@@ -2,123 +2,28 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the biglinux-webapps package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-01 06:13-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-msgid ""
-"A Url é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão "
-"Alterar."
-msgstr ""
-"Url je neplatná alebo pripojenie zlyhalo.<br>Skúste vložiť ikonu pomocou "
-"tlačidla Zmeniť."
-
-msgid "Adicionar"
-msgstr "Pridať"
-
-msgid "Adicionar WebApps"
-msgstr "Pridanie webových aplikácií"
-
-msgid "Alterar"
-msgstr "Zmena"
-
-msgid "Alterar navegador"
-msgstr "Zmena prehliadača"
-
-msgid "Categoria:"
-msgstr "Kategória:"
-
-msgid "Criar atalho na Área de Trabalho"
-msgstr "Vytvorenie zástupcu na pracovnej ploche"
-
-msgid "DESENVOLVIMENTO"
-msgstr "VÝVOJ"
-
-msgid "Desenvolvimento"
-msgstr "Vývoj"
-
-msgid "Detectar Nome e Ícone"
-msgstr "Zistiť názov a ikonu"
-
-msgid "ESCRITÓRIO"
-msgstr "OFFICE"
-
-msgid "Escritório"
-msgstr "Kancelária"
-
-msgid "Fechar"
-msgstr "Zatvoriť"
-
-msgid "GRÁFICOS"
-msgstr "GRAFIKA"
+"X-Generator: attranslate\n"
 
 msgid "Gerenciador de WebApps BigLinux"
 msgstr "BigLinux WebApps Manager"
 
-msgid "Gráficos"
-msgstr "Grafika"
-
-msgid "JOGOS"
-msgstr "HRY"
-
-msgid "Jogos"
-msgstr "Hry"
-
-msgid "MULTIMÍDIA"
-msgstr "MULTIMÉDIÁ"
-
-msgid "Multimídia"
-msgstr "Multimédiá"
-
-msgid "Navegador padrão<br>dos webapps:"
-msgstr "Predvolený prehliadač<br>webových aplikácií:"
-
-msgid "Navegador:"
-msgstr "Navigátor:"
-
-msgid "Nenhum WebApp adicionado!"
-msgstr "Nebola pridaná žiadna webová aplikácia!"
-
-msgid "Nome:"
-msgstr "Názov:"
-
-msgid "O WebApp foi adicionado com sucesso!"
-msgstr "Webová aplikácia bola úspešne pridaná!"
-
-msgid "Para adicionar um WebApp, você precisa informar a Url e o Nome."
-msgstr "Ak chcete pridať webovú aplikáciu, musíte oznámiť adresu Url a názov."
-
-msgid "Para detectar o Nome e o Ícone você precisa informar a Url."
-msgstr "Ak chcete zistiť názov a ikonu, musíte informovať o URL."
-
-msgid "Perfil adicional"
-msgstr "Ďalší profil"
-
 msgid "Selecionar imagem"
 msgstr "Vybrať obrázok"
 
-msgid "Selecione o navegador preferido:"
-msgstr "Vyberte preferovaný prehliadač:"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Vyberte uprednostňovanú ikonu:"
-
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Ste si istí, že chcete odstrániť túto webovú aplikáciu?"
-
-msgid "Url:"
-msgstr "Url:"
+msgid "Adicionar WebApps"
+msgstr "Pridanie webových aplikácií"
 
 msgid "WebApps Adicionados"
 msgstr "Pridanie webových aplikácií"
@@ -126,26 +31,110 @@ msgstr "Pridanie webových aplikácií"
 msgid "WebApps BigLinux"
 msgstr "Webové aplikácie BigLinux"
 
-msgid "WebApps Nativos"
-msgstr "Natívne webové aplikácie"
+msgid "Preencha os campos"
+msgstr "Vyplňte polia"
+
+msgid "URL:"
+msgstr "Adresa URL:"
+
+msgid "Detectar Nome e Ícone"
+msgstr "Zistiť názov a ikonu"
+
+msgid "Nome:"
+msgstr "Názov:"
+
+msgid "Ícone do WebApp"
+msgstr "Ikona aplikácie WebApp"
+
+msgid "Alterar"
+msgstr "Zmena"
+
+msgid "Navegador"
+msgstr "Prehliadač"
+
+msgid "Categoria"
+msgstr "Kategória"
+
+msgid "DESENVOLVIMENTO"
+msgstr "VÝVOJ"
+
+msgid "ESCRITÓRIO"
+msgstr "OFFICE"
+
+msgid "GRÁFICOS"
+msgstr "GRAFIKA"
+
+msgid "JOGOS"
+msgstr "HRY"
+
+msgid "MULTIMÍDIA"
+msgstr "MULTIMÉDIÁ"
+
+msgid "Criar atalho na Área de Trabalho"
+msgstr "Vytvorenie zástupcu na pracovnej ploche"
+
+msgid "Perfil adicional"
+msgstr "Ďalší profil"
 
 msgid "YouTube Modo TV"
 msgstr "Režim YouTube TV"
 
-msgid "Ícone:"
-msgstr "Ikona:"
+msgid "Modo YouTube TV"
+msgstr "Režim YouTube TV"
+
+msgid "Adicionar"
+msgstr "Pridať"
+
+msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
+msgstr "Ak chcete pridať WebApp, musíte zadať adresu URL a názov."
+
+msgid "Fechar"
+msgstr "Zatvoriť"
+
+msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
+msgstr "Ak chcete zistiť názov a ikonu, musíte zadať adresu URL."
+
+msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
+msgstr "Adresa URL je neplatná alebo pripojenie zlyhalo.<br>Skúste ikonu vložiť pomocou tlačidla Zmeniť."
+
+msgid "O WebApp foi adicionado com sucesso!"
+msgstr "Webová aplikácia bola úspešne pridaná!"
 
 msgid "Ícones encontrados"
 msgstr "Nájdené ikony"
 
-#~ msgid "Aguarde, estamos preparando para começar..."
-#~ msgstr "Pripravte sa, začíname..."
+msgid "Selecione o ícone preferido:"
+msgstr "Vyberte uprednostňovanú ikonu:"
 
-#~ msgid "Boa noite"
-#~ msgstr "Dobrý večer"
+msgid "Desenvolvimento"
+msgstr "Vývoj"
 
-#~ msgid "Boa tarde"
-#~ msgstr "Dobré popoludnie"
+msgid "Escritório"
+msgstr "Kancelária"
 
-#~ msgid "Bom dia"
-#~ msgstr "Dobré ráno"
+msgid "Gráficos"
+msgstr "Grafika"
+
+msgid "Jogos"
+msgstr "Hry"
+
+msgid "Multimídia"
+msgstr "Multimédiá"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "Ste si istí, že chcete odstrániť túto webovú aplikáciu?"
+
+msgid "Nenhum WebApp adicionado!"
+msgstr "Nebola pridaná žiadna webová aplikácia!"
+
+msgid "Navegador padrão<br>dos WebApps:"
+msgstr "Predvolený prehliadač<br>webové aplikácie:"
+
+msgid "Alterar navegador"
+msgstr "Zmena prehliadača"
+
+msgid "Selecione o navegador preferido:"
+msgstr "Vyberte preferovaný prehliadač:"
+
+msgid "WebApps Nativos"
+msgstr "Natívne webové aplikácie"
