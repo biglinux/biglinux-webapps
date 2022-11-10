@@ -11,6 +11,16 @@ if [ -z $BROWSER ]; then
         BROWSER="google-chrome-stable"
     elif [ -e "/usr/bin/vivaldi-stable" ]; then
         BROWSER="vivaldi-stable"
+    elif [ -e "/usr/bin/microsoft-edge-beta" ]; then
+        BROWSER="microsoft-edge-beta"
+    elif [ -e "/usr/bin/microsoft-edge-dev" ]; then
+        BROWSER="microsoft-edge-dev"
+    elif [ -e "/usr/bin/microsoft-edge-stable" ]; then
+        BROWSER="microsoft-edge-stable"
+    elif [ -e "/usr/bin/yandex-browser-stable" ]; then
+        BROWSER="yandex-browser-stable"
+    elif [ -e "/usr/bin/opera" ]; then
+        BROWSER="opera"
     else
         BROWSER="chromium"
     fi
