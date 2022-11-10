@@ -163,7 +163,15 @@ echo '<!DOCTYPE html>
                         fi
 
                         if [ -e /opt/microsoft/msedge/microsoft-edge ];then
-                          echo '<option value="microsoft-edge-stable">EDGE</option>'
+                          echo '<option value="microsoft-edge-stable">EDGE STABLE</option>'
+                        fi
+
+                        if [ -e /opt/microsoft/msedge-dev/microsoft-edge ];then
+                          echo '<option value="microsoft-edge-dev">EDGE DEV</option>'
+                        fi
+
+                        if [ -e /opt/microsoft/msedge-beta/microsoft-edge ];then
+                          echo '<option value="microsoft-edge-beta">EDGE BETA</option>'
                         fi
 
                         if [ -e /usr/bin/epiphany ];then
@@ -177,9 +185,19 @@ echo '<!DOCTYPE html>
                         if [ -e /opt/google/chrome/google-chrome ];then
                           echo '<option value="google-chrome-stable">CHROME</option>'
                         fi
+                        
                         if [ -e /opt/vivaldi/vivaldi ];then
                           echo '<option value="vivaldi-stable">VIVALDI</option>'
                         fi
+
+                        if [ -e /opt/yandex/browser/yandex_browser ];then
+                          echo '<option value="yandex">YANDEX</option>'
+                        fi
+
+                        if [ -e /usr/lib/opera/opera ];then
+                          echo '<option value="opera">OPERA</option>'
+                        fi
+
 
                   echo '</select>
                   
@@ -591,6 +609,16 @@ echo '
                             <img src="icons/microsoft-edge-stable.svg" data-icon="microsoft-edge-stable" width="38" height="38">
                             </button>'
                     fi
+                    if =[ -e /opt/microsoft/msedge-dev/microsoft-edge ];then
+                      echo '<button class="btn-img status-button btn-img-main">
+                            <img src="icons/microsoft-edge-stable.svg" data-icon="microsoft-edge-dev" width="38" height="38">
+                            </button>'
+                    fi
+                    if [ -e /opt/microsoft/msedge-beta/microsoft-edge ];then
+                      echo '<button class="btn-img status-button btn-img-main">
+                            <img src="icons/microsoft-edge-stable.svg" data-icon="microsoft-edge-beta" width="38" height="38">
+                            </button>'
+                    fi
                     if [ -e /opt/google/chrome/google-chrome ];then
                       echo '<button class="btn-img status-button btn-img-main">
                             <img src="icons/google-chrome-stable.svg" data-icon="google-chrome-stable" width="38" height="38">
@@ -599,6 +627,16 @@ echo '
                     if [ -e /opt/vivaldi/vivaldi ];then
                       echo '<button class="btn-img status-button btn-img-main">
                             <img src="icons/vivaldi-stable.svg" data-icon="vivaldi-stable" width="38" height="38">
+                            </button>'
+                    fi
+                    if [ -e /opt/yandex/browser/yandex_browser ];then
+                      echo '<button class="btn-img status-button btn-img-main">
+                            <img src="icons/yandex-browser.svg" data-icon="yandex-browser" width="38" height="38">
+                            </button>'
+                    fi
+                    if [ -e /usr/lib/opera/opera ];then
+                      echo '<button class="btn-img status-button btn-img-main">
+                            <img src="icons/opera.svg" data-icon="opera" width="38" height="38">
                             </button>'
                     fi
 echo '
