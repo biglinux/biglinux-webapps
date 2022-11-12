@@ -157,7 +157,7 @@ echo '<!DOCTYPE html>
                 
                     <select class="svg-center" id="browserSelect" name="browser">'
                       for browser in "${browser_bin_list[@]}";do
-                        if which "$browser" &>/dev/null; then
+                        if [ -x /usr/bin/"$browser" ]; then
                           browser_name="${browser^^}"
                           [[ "$browser" = *"-stable" ]] && browser_name="${browser_name::-7}"
                           browser_name="${browser_name//-/' '}"
@@ -570,12 +570,12 @@ echo '
 
                 <div class="pop-up__subtitle">'$"Selecione o navegador preferido:"'</div>
                 <div id="desc">
-                  <div id="menu" style="display:flex;justify-content:center">'
+                  <div id="menu" style="display:flex;justify-content:center;width:100%;overflow:auto">'
                     for browser in "${browser_bin_list[@]}";do
-                      if which "$browser" &>/dev/null; then
-                        echo '<button class="btn-img status-button btn-img-main">
-                              <img src="icons/'$browser'.svg data-icon="'$browser'" width="38" height="38">
-                              </button>'
+                      if [ -x /usr/bin/"$browser" ]; then
+                        echo "<button class=\"btn-img status-button btn-img-main\">
+                              <img src=\"icons/${browser}.svg\" data-icon=\"${browser}\" width=\"38\" height=\"38\">
+                              </button>"
                       fi
                     done
 echo '
