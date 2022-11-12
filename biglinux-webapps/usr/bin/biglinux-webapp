@@ -3,43 +3,193 @@
 BROWSER="$(<$HOME/.bigwebapps/BROWSER)"
 
 if [ -z $BROWSER ]; then
-    if [ -e "/usr/bin/brave" ]; then
-        BROWSER="brave"
-    elif [ -e "/usr/bin/brave-browser" ]; then
-        BROWSER="brave-browser"
-    elif [ -e "/usr/bin/google-chrome-stable" ]; then
-        BROWSER="google-chrome-stable"
-    elif [ -e "/usr/bin/vivaldi-stable" ]; then
-        BROWSER="vivaldi-stable"
-    elif [ -e "/usr/bin/microsoft-edge-beta" ]; then
-        BROWSER="microsoft-edge-beta"
-    elif [ -e "/usr/bin/microsoft-edge-dev" ]; then
-        BROWSER="microsoft-edge-dev"
-    elif [ -e "/usr/bin/microsoft-edge-stable" ]; then
-        BROWSER="microsoft-edge-stable"
-    elif [ -e "/usr/bin/yandex-browser-stable" ]; then
-        BROWSER="yandex-browser-stable"
-    elif [ -e "/usr/bin/opera" ]; then
-        BROWSER="opera"
-    else
-        BROWSER="chromium"
-    fi
+    browser_bin_list=( "brave" "brave-browser" "google-chrome-stable" "vivaldi-stable" "vivaldi-snapshot" "microsoft-edge-beta" "microsoft-edge-dev" "microsoft-edge-stable" "yandex-browser-stable" "yandex-browser-beta" )
+    # waiting for opera devs to add support for webapps
+
+    for browser in "${browser_bin_list[@]}"; do
+        if which "$browser" >/dev/null; then
+            BROWSER="$browser"
+            break
+        fi
+    done
+
+    [ -z $BROWSER ] && BROWSER="chromium"
+
+    echo "$BROWSER" > $HOME/.bigwebapps/BROWSER
 fi
 
-if [ "$1" = "cleverpdf" ];then
-    if [ "${LANG:0:2}" = "pt" ]; then
-        exec $BROWSER --class="www.cleverpdf.com__pt,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com/pt
-    elif [ "${LANG:0:2}" = "es" ]; then
-        exec $BROWSER --class="www.cleverpdf.com__es,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com/es
+cpdflang="" clc="" nfxlang="" nlc=""
+case "${LANG:0:2}" in
+    "pt")
+        cpdflang="/pt"
+        clc="__pt"
+        nfxlang="/br"
+        nlc="__br"
+        ;;
+    "es")
+        cpdflang="/es"
+        clc="__es"
+        ;;
+    *) ;;
+esac
+
+args="$@"
+if [[ "$args" != *"--app="* ]]; then
+    newargs=""
+
+    appname=""
+    profile=""
+    for a in ${args[@]};do
+        if [[ "$a" != "--"* ]];then
+            appname="$a"
+        elif [[ "$a" != "--class"* ]]; then
+            newargs="$newargs $a"
+            [[ "$a" == "--profile"* ]] && profile=y
+        fi
+    done
+
+    [ "$profile" ] || newargs="$newargs --profile-directory=Default"
+
+    url="" path="" langclass="" langpath=""
+    case "$appname" in
+        "cleverpdf")
+            # args="--class=\"www.cleverpdf.com${clc},Chromium-browser\" --profile-directory=Default --app=https://www.cleverpdf.com/${cpdflang}"
+            url="www.cleverpdf.com"
+            langclass="$clc"
+            langpath="$cpdflang"
+            ;;
+        "netflix")
+            # args="--class=\"www.netflix.com${nlc},Chromium-browser\" --profile-directory=Default --app=https://www.netflix.com/${nfxlang}"
+            url="www.netflix.com"
+            langclass="$nlc"
+            langpath="$nfxlang"
+            ;;
+        "youtube")
+            url="www.youtube.com"
+            ;;
+        "youtube-music")
+            url="music.youtube.com"
+            ;;
+        "twitch")
+            url="www.twitch.tv"
+            ;;
+        "facebook")
+            url="www.facebook.com"
+            ;;
+        "twitter")
+            url="www.twitter.com"
+            ;;
+        "instagram")
+            url="www.instagram.com"
+            ;;
+        "reddit")
+            url="www.reddit.com"
+            ;;
+        "pinterest")
+            url="www.pinterest.com"
+            ;;
+        "linkedin")
+            url="www.linkedin.com"
+            ;;
+        "messenger")
+            url="www.messenger.com"
+            ;;
+        "whatsapp")
+            url="web.whatsapp.com"
+            ;;
+        "odysee")
+            url="www.odysee.com"
+            ;;
+        "spotify")
+            url="www.spotify.com"
+            ;;
+        "msoffice")
+            url="www.office.com"
+            ;;
+        "outlook")
+            url="www.outlook.com"
+            ;;
+        "onedrive")
+            url="www.onedrive.com"
+            ;;
+        "discord")
+            url="discord.com"
+            path="/app"
+            ;;
+        "msteams")
+            url="teams.microsoft.com"
+            ;;
+        "skype")
+            url="web.skype.com"
+            ;;
+        "telegram")
+            url="web.telegram.com"
+            ;;
+        "slack")
+            url="www.slack.com"
+            ;;
+        "deezer")
+            url="www.deezer.com"
+            ;;
+        "gmail")
+            url="mail.google.com"
+            ;;
+        "gclassroom")
+            url="classroom.google.com"
+            ;;
+        "gsheets")
+            url="docs.google.com"
+            path="/spreadsheets"
+            ;;
+        "gdocs")
+            url="docs.google.com"
+            ;;
+        "gdrive")
+            url="drive.google.com"
+            ;;
+        "gcalendar")
+            url="calendar.google.com"
+            ;;
+        "gcontacts")
+            url="contacts.google.com"
+            ;;
+        "gphotos")
+            url="photos.google.com"
+            ;;
+        "hangouts")
+            url="hangouts.google.com"
+            ;;
+        "gkeep")
+            url="keep.google.com"
+            ;;
+        "gmaps")
+            url="maps.google.com"
+            ;;
+        "gmeet")
+            url="meet.google.com"
+            ;;
+        "gslides")
+            url="docs.google.com"
+            path="/presentation"
+            ;;
+        "gtrans")
+            url="translate.google.com"
+            ;;
+        "ymail")
+            url="mail.yahoo.com"
+            ;;
+        *) ;;
+    esac
+
+    if [ "$url" ]; then
+        newargs="$newargs --class=\"${url}${langclass},Chromium-browser\""
     else
-        exec $BROWSER --class="www.cleverpdf.com,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com
+        echo "ERROR: No URL/Application specified, launching new instance..."
+        url="chrome://newtab"
     fi
-elif [ "$1" = "netflix" ];then
-    if [ ! "${LANG:0:2}" = "pt" ];then
-        exec $BROWSER --class="www.netflix.com,Chromium-browser" --profile-directory=Default --app=https://www.netflix.com/
-    else
-        exec $BROWSER --class="www.netflix.com__br,Chromium-browser" --profile-directory=Default --app=https://www.netflix.com/br
-    fi
-else
-    exec $BROWSER $*
+
+    newargs="$newargs --app=https://${url}${langpath}${path}"
+    args=$newargs
 fi
+
+exec "$BROWSER" $args
