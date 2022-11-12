@@ -39,9 +39,18 @@ if [[ "$args" != *"--app="* ]]; then
 
     appname=""
     profile=""
+
+    url="" path="" langclass="" langpath=""
     for a in ${args[@]};do
         if [[ "$a" != "--"* ]];then
-            appname="$a"
+            if [[ "$a" == *"://"* ]]; then
+                unp="${a#*://}"
+                url="${unp%%/*}"
+                path="/${unp#*/}"
+                [ "$path" == "/$url" ] && path=""
+            else
+                appname="$a"
+            fi
         elif [[ "$a" != "--class"* ]]; then
             newargs="$newargs $a"
             [[ "$a" == "--profile"* ]] && profile=y
@@ -50,132 +59,130 @@ if [[ "$args" != *"--app="* ]]; then
 
     [ "$profile" ] || newargs="$newargs --profile-directory=Default"
 
-    url="" path="" langclass="" langpath=""
-    case "$appname" in
-        "cleverpdf")
-            # args="--class=\"www.cleverpdf.com${clc},Chromium-browser\" --profile-directory=Default --app=https://www.cleverpdf.com/${cpdflang}"
+    [ "$appname" ] && case "$appname" in
+        # this needs to be sorted by popularity, but i'm so lazy :)
+        *"cleverpdf"*)
             url="www.cleverpdf.com"
             langclass="$clc"
             langpath="$cpdflang"
             ;;
-        "netflix")
-            # args="--class=\"www.netflix.com${nlc},Chromium-browser\" --profile-directory=Default --app=https://www.netflix.com/${nfxlang}"
+        *"netflix"*)
             url="www.netflix.com"
             langclass="$nlc"
             langpath="$nfxlang"
             ;;
-        "youtube")
+        *"youtube"*)
             url="www.youtube.com"
             ;;
-        "youtube-music")
+        *"youtube-music"*)
             url="music.youtube.com"
             ;;
-        "twitch")
+        *"twitch"*)
             url="www.twitch.tv"
             ;;
-        "facebook")
+        *"facebook"*)
             url="www.facebook.com"
             ;;
-        "twitter")
+        *"twitter"*)
             url="www.twitter.com"
             ;;
-        "instagram")
+        *"instagram"*)
             url="www.instagram.com"
             ;;
-        "reddit")
+        *"reddit"*)
             url="www.reddit.com"
             ;;
-        "pinterest")
+        *"pinterest"*)
             url="www.pinterest.com"
             ;;
-        "linkedin")
+        *"linkedin"*)
             url="www.linkedin.com"
             ;;
-        "messenger")
+        *"messenger"*)
             url="www.messenger.com"
             ;;
-        "whatsapp")
+        *"whatsapp"*)
             url="web.whatsapp.com"
             ;;
-        "odysee")
+        *"odysee"*)
             url="www.odysee.com"
             ;;
-        "spotify")
+        *"spotify"*)
             url="www.spotify.com"
             ;;
-        "msoffice")
+        *"msoffice"*)
             url="www.office.com"
             ;;
-        "outlook")
+        *"outlook"*)
             url="www.outlook.com"
             ;;
-        "onedrive")
+        *"onedrive"*)
             url="www.onedrive.com"
             ;;
-        "discord")
+        *"discord"*)
             url="discord.com"
             path="/app"
             ;;
-        "msteams")
+        *"msteams"*)
             url="teams.microsoft.com"
             ;;
-        "skype")
+        *"skype"*)
             url="web.skype.com"
             ;;
-        "telegram")
+        *"telegram"*)
             url="web.telegram.com"
             ;;
-        "slack")
+        *"slack"*)
             url="www.slack.com"
             ;;
-        "deezer")
+        *"deezer"*)
             url="www.deezer.com"
             ;;
-        "gmail")
+        *"gmail"*)
             url="mail.google.com"
             ;;
-        "gclassroom")
+        *"gclassroom"*)
             url="classroom.google.com"
             ;;
-        "gsheets")
+        *"gsheets"*)
             url="docs.google.com"
             path="/spreadsheets"
             ;;
-        "gdocs")
+        *"gdocs"*)
             url="docs.google.com"
             ;;
-        "gdrive")
+        *"gdrive"*)
             url="drive.google.com"
             ;;
-        "gcalendar")
+        *"gcalendar"*)
             url="calendar.google.com"
             ;;
-        "gcontacts")
+        *"gcontacts"*)
             url="contacts.google.com"
             ;;
-        "gphotos")
+        *"gphotos"*)
             url="photos.google.com"
             ;;
-        "hangouts")
+        *"hangouts"*)
             url="hangouts.google.com"
             ;;
-        "gkeep")
+        *"gkeep"*)
             url="keep.google.com"
             ;;
-        "gmaps")
+        *"gmaps"*)
             url="maps.google.com"
             ;;
-        "gmeet")
+        *"gmeet"*)
             url="meet.google.com"
             ;;
-        "gslides")
+        *"gslides"*)
             url="docs.google.com"
             path="/presentation"
             ;;
-        "gtrans")
+        *"gtrans"*)
             url="translate.google.com"
             ;;
-        "ymail")
+        *"ymail"*)
             url="mail.yahoo.com"
             ;;
         *) ;;
