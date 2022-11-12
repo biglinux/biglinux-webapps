@@ -49,7 +49,7 @@ if [[ "$args" != *"--app="* ]]; then
                 path="/${unp#*/}"
                 [ "$path" == "/$url" ] && path=""
             else
-                ping -c 1 -w 1 "$a" && url="$a" || appname="$a"
+                [[ "$a" == *"."* ]] && ping -c 1 -w 1 "$a" && url="$a" || appname="$a"
             fi
         elif [[ "$a" != "--class"* ]]; then
             newargs="$newargs $a"
