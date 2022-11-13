@@ -14,7 +14,11 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
-browser_bin_list=( "brave" "google-chrome-stable" "vivaldi-stable" "vivaldi-snapshot" "microsoft-edge-beta" "microsoft-edge-dev" "microsoft-edge-stable" "epiphany" "firefox" "yandex-browser-stable" "yandex-browser-beta" )
+browser_bin_list=( "brave" "google-chrome-stable" "vivaldi-stable" "vivaldi-snapshot" "microsoft-edge-beta" "microsoft-edge-dev" "microsoft-edge-stable" "epiphany" "firefox" "yandex-browser-stable" "yandex-browser-beta" "flashpeak-slimjet" "electron" )
+
+for i in {20..10}; do
+  browser_bin_list+=("electron$i")
+done
 
 echo '<!DOCTYPE html>
 <html>
@@ -170,6 +174,9 @@ echo '<!DOCTYPE html>
                               ;;
                             "yandex-browser-"*)
                               browser_name="${browser_name//' browser '/' '}"
+                              ;;
+                            "flashpeak-slimjet")
+                              browser_name="SLIMJET"
                               ;;
                           esac
                           echo "<option value=\"${browser}\">${browser_name}</option>"
@@ -570,11 +577,20 @@ echo '
 
                 <div class="pop-up__subtitle">'$"Selecione o navegador preferido:"'</div>
                 <div id="desc">
-                  <div id="menu" style="display:flex;justify-content:center;width:100%;overflow:auto">'
+                  <div id="menu" style="display:flex;justify-content:center;width:100%;overflow-x:auto;height:100px">'
                     for browser in "${browser_bin_list[@]}";do
                       if [ -x /usr/bin/"$browser" ]; then
+                        icon="$browser"
+                        case $browser in
+                          "flashpeak-slimjet")
+                            icon="slimjet"
+                            ;;
+                          "electron"*)
+                            icon="electron"
+                            ;;
+                        esac
                         echo "<button class=\"btn-img status-button btn-img-main\">
-                              <img src=\"icons/${browser}.svg\" data-icon=\"${browser}\" width=\"38\" height=\"38\">
+                              <img src=\"icons/${icon}.svg\" title=\"${browser}\" data-icon=\"${browser}\" width=\"38\" height=\"38\">
                               </button>"
                       fi
                     done

@@ -1981,7 +1981,7 @@ input[type=button] {
   padding: 3px;
   box-shadow: 0 0 5px #888;
   margin-left: 10px;*/
-
+  height: fit-content;
   background: var(--theme-bg-color);
   cursor: pointer;
   padding: 3px;
