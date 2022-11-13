@@ -5,7 +5,7 @@ detect_browser() {
         return
     fi
 
-    browser_bin_list=( "brave" "brave-browser" "google-chrome-stable" "vivaldi-stable" "vivaldi-snapshot" "microsoft-edge-beta" "microsoft-edge-dev" "microsoft-edge-stable" "yandex-browser-stable" "yandex-browser-beta" "flashpeak-slimjet" "electron" )
+    browser_bin_list=( "brave" "google-chrome-stable" "vivaldi-stable" "vivaldi-snapshot" "microsoft-edge-beta" "microsoft-edge-dev" "microsoft-edge-stable" "yandex-browser-stable" "yandex-browser-beta" "flashpeak-slimjet" "electron" )
     # waiting for opera devs to add support for webapps
 
     local def=""
@@ -62,7 +62,7 @@ parse_args() {
                 path="/${unp#*/}"
                 [ "$path" == "/$url" ] && path=""
             else
-                    [[ "$a" == *"."* ]] && ping -c 1 -w 1 "$a" && url="$a" ||appname="$a"
+                [[ "$a" == *"."* ]] && ping -c 1 -w 1 "$a" && url="$a" ||appname="$a"
             fi
         elif [[ "$a" != "--class"* ]]; then
             newargs="$newargs $a"
