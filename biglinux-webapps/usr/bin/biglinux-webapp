@@ -212,8 +212,6 @@ parse_args() {
     args="$newargs --app=https://${url}${langpath}${path}"
 }
 
-launch_bbvclient() {}
-
 BROWSER="$(<$HOME/.bigwebapps/BROWSER)"
 detect_browser "$BROWSER"
 
