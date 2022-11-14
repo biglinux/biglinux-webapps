@@ -5,8 +5,8 @@ detect_browser() {
         return
     fi
 
-    browser_bin_list=( "brave" "google-chrome-stable" "vivaldi-stable" "vivaldi-snapshot" "microsoft-edge-beta" "microsoft-edge-dev" "microsoft-edge-stable" "yandex-browser-stable" "yandex-browser-beta" "flashpeak-slimjet" "electron" )
-    for i in {20..10}; do
+    browser_bin_list=( "brave" "google-chrome-stable" "vivaldi-stable" "vivaldi-snapshot" "microsoft-edge-beta" "microsoft-edge-dev" "microsoft-edge-stable" "yandex-browser-stable" "yandex-browser-beta" "flashpeak-slimjet" "chromium" "electron" )
+    for i in {20..5}; do
         browser_bin_list+=("electron$i")
     done
     # waiting for opera devs to add support for webapps
@@ -19,7 +19,7 @@ detect_browser() {
         fi
     done
 
-    [ "$def" ] || def="chromium"
+    [ "$def" ] || def="bbv-client"
 
     echo "$def" > $HOME/.bigwebapps/BROWSER
 }
@@ -212,12 +212,14 @@ parse_args() {
     args="$newargs --app=https://${url}${langpath}${path}"
 }
 
+launch_bbvclient() {}
+
 BROWSER="$(<$HOME/.bigwebapps/BROWSER)"
 detect_browser "$BROWSER"
 
 detect_lang
 
-args="$@"
+args=$@
 parse_args $@
 
 exec "$BROWSER" $args
