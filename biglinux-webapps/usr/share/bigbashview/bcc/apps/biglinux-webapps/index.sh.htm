@@ -14,14 +14,6 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
-browser_bin_list=( "brave" "google-chrome-stable" "vivaldi-stable" "vivaldi-snapshot" "microsoft-edge-beta" "microsoft-edge-dev" "microsoft-edge-stable" "epiphany" "firefox" "yandex-browser-stable" "yandex-browser-beta" "flashpeak-slimjet" "chromium" "electron" )
-
-for i in {20..5}; do
-  browser_bin_list+=("electron$i")
-done
-
-browser_bin_list+=("bbv-client")
-
 echo '<!DOCTYPE html>
 <html>
 <head>
@@ -162,31 +154,32 @@ echo '<!DOCTYPE html>
                 <div class="button-wrapper">
                 
                     <select class="svg-center" id="browserSelect" name="browser">'
-                      for browser in "${browser_bin_list[@]}";do
-                        if [ -x /usr/bin/"$browser" ]; then
-                          browser_name="${browser^^}"
-                          [[ "$browser" = *"-stable" ]] && browser_name="${browser_name::-7}"
-                          browser_name="${browser_name//-/' '}"
-                          case "$browser" in
-                            "microsoft-edge-"*)
-                              browser_name="${browser_name:10}"
-                              ;;
-                            "google-chrome-stable")
-                              browser_name="CHROME"
-                              ;;
-                            "yandex-browser-"*)
-                              browser_name="${browser_name//' browser '/' '}"
-                              ;;
-                            "flashpeak-slimjet")
-                              browser_name="SLIMJET"
-                              ;;
-                            "bbv-client")
-                              browser_name="WEBVIEW"
-                              ;;
-                          esac
-                          echo "<option value=\"${browser}\">${browser_name}</option>"
+                        if [ -e /usr/lib/brave-browser/brave ];then
+                          echo '<option value="brave">BRAVE</option>'
                         fi
-                      done
+
+                        if [ -e /usr/lib/chromium/chromium ];then
+                          echo '<option value="chromium">CHROMIUM</option>'
+                        fi
+
+                        if [ -e /opt/microsoft/msedge/microsoft-edge ];then
+                          echo '<option value="microsoft-edge-stable">EDGE</option>'
+                        fi
+
+                        if [ -e /usr/bin/epiphany ];then
+                          echo '<option value="epiphany">EPIPHANY</option>'
+                        fi
+
+                        if [ -e /usr/lib/firefox/firefox ];then
+                          echo '<option value="firefox">FIREFOX</option>'
+                        fi
+
+                        if [ -e /opt/google/chrome/google-chrome ];then
+                          echo '<option value="google-chrome-stable">CHROME</option>'
+                        fi
+                        if [ -e /opt/vivaldi/vivaldi ];then
+                          echo '<option value="vivaldi-stable">VIVALDI</option>'
+                        fi
 
                   echo '</select>
                   
@@ -582,23 +575,32 @@ echo '
 
                 <div class="pop-up__subtitle">'$"Selecione o navegador preferido:"'</div>
                 <div id="desc">
-                  <div id="menu" style="display:flex;justify-content:center;width:100%;overflow-x:auto;height:100px;align-items:center">'
-                    for browser in "${browser_bin_list[@]}";do
-                      if [ -x /usr/bin/"$browser" ]; then
-                        icon="$browser"
-                        case $browser in
-                          "flashpeak-slimjet")
-                            icon="slimjet"
-                            ;;
-                          "electron"*)
-                            icon="electron"
-                            ;;
-                        esac
-                        echo "<button class=\"btn-img status-button btn-img-main\">
-                              <img src=\"icons/${icon}.svg\" title=\"${browser}\" data-icon=\"${browser}\" width=\"38\" height=\"38\">
-                              </button>"
-                      fi
-                    done
+                  <div id="menu" style="display:flex;justify-content:center">'
+                    if [ -e /usr/lib/brave-browser/brave ];then
+                      echo '<button class="btn-img status-button btn-img-main">
+                            <img src="icons/brave.svg" data-icon="brave" width="38" height="38">
+                            </button>'
+                    fi
+                    if [ -e /usr/lib/chromium/chromium ];then
+                      echo '<button class="btn-img status-button btn-img-main">
+                            <img src="icons/chromium.svg" data-icon="chromium" width="38" height="38">
+                            </button>'
+                    fi
+                    if [ -e /opt/microsoft/msedge/microsoft-edge ];then
+                      echo '<button class="btn-img status-button btn-img-main">
+                            <img src="icons/microsoft-edge-stable.svg" data-icon="microsoft-edge-stable" width="38" height="38">
+                            </button>'
+                    fi
+                    if [ -e /opt/google/chrome/google-chrome ];then
+                      echo '<button class="btn-img status-button btn-img-main">
+                            <img src="icons/google-chrome-stable.svg" data-icon="google-chrome-stable" width="38" height="38">
+                            </button>'
+                    fi
+                    if [ -e /opt/vivaldi/vivaldi ];then
+                      echo '<button class="btn-img status-button btn-img-main">
+                            <img src="icons/vivaldi-stable.svg" data-icon="vivaldi-stable" width="38" height="38">
+                            </button>'
+                    fi
 echo '
                   </div>
                 </div>

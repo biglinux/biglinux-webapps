@@ -13,8 +13,8 @@ mkdir -p ~/.local/share/icons
 mkdir -p $HOME_SHARE_DIR_APP
 mkdir -p ~/.local/bin
 
-. $(which biglinux-webapp)
-detect_browser "$(<~/.bigwebapps/BROWSER)"
+[ ! -e ~/.bigwebapps/BROWSER ] && echo 'brave' > ~/.bigwebapps/BROWSER
+[ "$(<~/.bigwebapps/BROWSER)" = "brave-browser" ] && echo 'brave' > ~/.bigwebapps/BROWSER
 
 if [ ! -e ~/.bigwebapps/NATIVE ];then
     for webapp in $WEBAPP_DIR/*.desktop; do
