@@ -1,0 +1,140 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the biglinux-webapps package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: biglinux-webapps\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: Shadichy <EMAIL@ADDRESS>\n"
+"Language-Team: YuunixTeam <EMAIL@ADDRESS>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "Trình quản lý Ứng dụng Mạng BigLinux"
+
+msgid "Selecionar imagem"
+msgstr "Chọn hình ảnh"
+
+msgid "Adicionar WebApps"
+msgstr "Thêm Ứng dụng"
+
+msgid "WebApps Adicionados"
+msgstr "Ứng dụng đã thêm"
+
+msgid "WebApps BigLinux"
+msgstr "Ứng dụng Mạng BigLinux"
+
+msgid "Preencha os campos"
+msgstr "Điền vào chỗ trống"
+
+msgid "URL:"
+msgstr "URL:"
+
+msgid "Detectar Nome e Ícone"
+msgstr "Dò Tên và Biểu tượng"
+
+msgid "Nome:"
+msgstr "Tên:"
+
+msgid "Ícone do WebApp"
+msgstr "Biểu tượng Ứng dụng Mạng"
+
+msgid "Alterar"
+msgstr "Thay đổi"
+
+msgid "Navegador"
+msgstr "Trình duyệt"
+
+msgid "Categoria"
+msgstr "Phân loại"
+
+msgid "DESENVOLVIMENTO"
+msgstr "LẬP TRÌNH"
+
+msgid "ESCRITÓRIO"
+msgstr "VĂN PHÒNG"
+
+msgid "GRÁFICOS"
+msgstr "ĐỒ HOẠ"
+
+msgid "JOGOS"
+msgstr "TRÒ CHƠI"
+
+msgid "MULTIMÍDIA"
+msgstr "ĐA PHƯƠNG TIỆN"
+
+msgid "Criar atalho na Área de Trabalho"
+msgstr "Tạo đường dẫn trên màn hình chính"
+
+msgid "Perfil adicional"
+msgstr "Hồ sơ phụ"
+
+msgid "YouTube Modo TV"
+msgstr "YouTube Chế độ TV"
+
+msgid "Modo YouTube TV"
+msgstr "YouTube chế độ TV"
+
+msgid "Adicionar"
+msgstr "Thêm"
+
+msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
+msgstr "Để thêm Ứng dụng, bạn cần phải nhập URL và Tên."
+
+msgid "Fechar"
+msgstr "Đóng"
+
+msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
+msgstr "Để dò tự động Tên và Biểu tượng bạn cần phải nhập URL."
+
+msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
+msgstr "URL không hợp lệ hoặc kết nối thất bại.<br>Hãy thử bấm Thay đổi để gán biểu tượng."
+
+msgid "O WebApp foi adicionado com sucesso!"
+msgstr "Ứng dụng đã được thêm vào thành công!"
+
+msgid "Ícones encontrados"
+msgstr "Tìm thấy biểu tượng"
+
+msgid "Selecione o ícone preferido:"
+msgstr "Chọn biểu tượng ưa thích:"
+
+msgid "Desenvolvimento"
+msgstr "Lập trình"
+
+msgid "Escritório"
+msgstr "Văn phòng"
+
+msgid "Gráficos"
+msgstr "Đồ hoạ"
+
+msgid "Jogos"
+msgstr "Trò chơi"
+
+msgid "Multimídia"
+msgstr "Đa phương tiện"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "Bạn có chắc muốn gỡ Ứng dụng này?"
+
+msgid "Nenhum WebApp adicionado!"
+msgstr "Không có ứng dụng nào được thêm vào!"
+
+msgid "Navegador padrão<br>dos WebApps:"
+msgstr "Trình duyệt mặc định<br>Ứng dụng:"
+
+msgid "Alterar navegador"
+msgstr "Đổi trình duyệt"
+
+msgid "Selecione o navegador preferido:"
+msgstr "Chọn trình duyệt ưa thích:"
+
+msgid "WebApps Nativos"
+msgstr "Ứng dụng Thuần"

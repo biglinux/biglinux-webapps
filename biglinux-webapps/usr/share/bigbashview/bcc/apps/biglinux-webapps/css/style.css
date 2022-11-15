@@ -1334,7 +1334,9 @@ li img {
     transition: all 0.3s;
     z-index: 10;
     background-color: var(--popup-bg);
-    width: 500px;
+    min-width: 500px;
+    width: fit-content;
+    max-width: 750px;
     visibility: hidden;
     opacity: 0;
     border-radius: 6px;
@@ -1979,7 +1981,7 @@ input[type=button] {
   padding: 3px;
   box-shadow: 0 0 5px #888;
   margin-left: 10px;*/
-
+  height: fit-content;
   background: var(--theme-bg-color);
   cursor: pointer;
   padding: 3px;
