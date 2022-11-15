@@ -1,28 +1,6 @@
 #!/usr/bin/env bash
 
-detect_browser() {
-    if [ $1 ]; then
-        return
-    fi
-
-    browser_bin_list=( "brave" "google-chrome-stable" "vivaldi-stable" "vivaldi-snapshot" "microsoft-edge-beta" "microsoft-edge-dev" "microsoft-edge-stable" "yandex-browser-stable" "yandex-browser-beta" "flashpeak-slimjet" "chromium" "electron" )
-    for i in {20..5}; do
-        browser_bin_list+=("electron$i")
-    done
-    # waiting for opera devs to add support for webapps
-
-    local def=""
-    for browser in "${browser_bin_list[@]}"; do
-        if [ -x /usr/bin/"$browser" ]; then
-            def="$browser"
-            break
-        fi
-    done
-
-    [ "$def" ] || def="bbv-client"
-
-    echo "$def" > $HOME/.bigwebapps/BROWSER
-}
+. /usr/share/bigbashview/bcc/apps/biglinux-webapps/scripts/detect_browser.env
 
 detect_lang() {
     local cpdflang="" clc="" nfxlang="" nlc=""
@@ -195,6 +173,9 @@ parse_args() {
         *"gtrans"*)
             url="translate.google.com"
             ;;
+        *"gdraw"*)
+            url="drawings.google.com"
+            ;;
         *"ymail"*)
             url="mail.yahoo.com"
             ;;
@@ -213,7 +194,7 @@ parse_args() {
 }
 
 BROWSER="$(<$HOME/.bigwebapps/BROWSER)"
-detect_browser "$BROWSER"
+[ "$BROWSER" ] || BROWSER="$(detect_browser)"
 
 detect_lang
 
