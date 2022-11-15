@@ -15,84 +15,103 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "Gerenciador de WebApps BigLinux"
-
-msgid "Selecionar imagem"
-msgstr "Selecionar imagem"
-
+#
 msgid "Adicionar WebApps"
 msgstr "Adicionar WebApps"
 
+#
 msgid "WebApps Adicionados"
 msgstr "WebApps Adicionados"
 
+#
 msgid "WebApps BigLinux"
 msgstr "WebApps BigLinux"
 
+#
 msgid "Preencha os campos"
 msgstr "Preencha os campos"
 
+#
 msgid "URL:"
 msgstr "URL:"
 
+#
 msgid "Detectar Nome e Ícone"
 msgstr "Detectar Nome e Ícone"
 
+#
 msgid "Nome:"
 msgstr "Nome:"
 
+#
 msgid "Ícone do WebApp"
 msgstr "Ícone do WebApp"
 
+#
 msgid "Alterar"
 msgstr "Alterar"
 
+#
 msgid "Navegador"
 msgstr "Navegador"
 
+#
 msgid "Categoria"
 msgstr "Categoria"
 
+#
 msgid "DESENVOLVIMENTO"
 msgstr "DESENVOLVIMENTO"
 
+#
 msgid "ESCRITÓRIO"
 msgstr "ESCRITÓRIO"
 
+#
 msgid "GRÁFICOS"
 msgstr "GRÁFICOS"
 
+#
 msgid "JOGOS"
 msgstr "JOGOS"
 
+#
 msgid "MULTIMÍDIA"
 msgstr "MULTIMÍDIA"
 
+#
 msgid "Criar atalho na Área de Trabalho"
 msgstr "Criar atalho na Área de Trabalho"
 
+#
 msgid "Perfil adicional"
 msgstr "Perfil adicional"
 
+#
 msgid "YouTube Modo TV"
 msgstr "YouTube Modo TV"
 
+#
 msgid "Modo YouTube TV"
 msgstr "Modo YouTube TV"
 
+#
 msgid "Adicionar"
 msgstr "Adicionar"
 
+#
 msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
 msgstr "Para adicionar um WebApp, você precisa informar a URL e o Nome."
 
+#
 msgid "Fechar"
 msgstr "Fechar"
 
+#
 msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
 msgstr "Para detectar o Nome e o Ícone você precisa informar a URL."
 
+#
 msgid ""
 "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão "
 "Alterar."
@@ -100,44 +119,66 @@ msgstr ""
 "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão "
 "Alterar."
 
+#
 msgid "O WebApp foi adicionado com sucesso!"
 msgstr "O WebApp foi adicionado com sucesso!"
 
+#
 msgid "Ícones encontrados"
 msgstr "Ícones encontrados"
 
+#
 msgid "Selecione o ícone preferido:"
 msgstr "Selecione o ícone preferido:"
 
+#
 msgid "Desenvolvimento"
 msgstr "Desenvolvimento"
 
+#
 msgid "Escritório"
 msgstr "Escritório"
 
+#
 msgid "Gráficos"
 msgstr "Gráficos"
 
+#
 msgid "Jogos"
 msgstr "Jogos"
 
+#
 msgid "Multimídia"
 msgstr "Multimídia"
 
+#
 msgid "Tem certeza que deseja remover este WebApp?"
 msgstr "Tem certeza que deseja remover este WebApp?"
 
+#
 msgid "Nenhum WebApp adicionado!"
 msgstr "Nenhum WebApp adicionado!"
 
+#
 msgid "Navegador padrão<br>dos WebApps:"
 msgstr "Navegador padrão<br>dos WebApps:"
 
+#
 msgid "Alterar navegador"
 msgstr "Alterar navegador"
 
+#
 msgid "Selecione o navegador preferido:"
 msgstr "Selecione o navegador preferido:"
 
+#
 msgid "WebApps Nativos"
 msgstr "WebApps Nativos"
+
+#
+msgid "Selecionar imagem"
+msgstr "Selecionar imagem"
+
+#
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "Gerenciador de WebApps BigLinux"

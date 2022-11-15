@@ -1,11 +1,18 @@
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the biglinux-webapps package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# #-#-#-#-#  python.pot (PACKAGE VERSION)  #-#-#-#-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
 #, fuzzy
 msgid   ""
-msgstr  "Project-Id-Version: biglinux-webapps\n"
+msgstr  "#-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#\n"
+        "Project-Id-Version: biglinux-webapps\n"
         "Report-Msgid-Bugs-To: \n"
         "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,168 +20,134 @@ msgstr  "Project-Id-Version: biglinux-webapps\n"
         "MIME-Version: 1.0\n"
         "Content-Type: text/plain; charset=UTF-8\n"
         "Content-Transfer-Encoding: 8bit\n"
-
+        "#-#-#-#-#  python.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+        "Project-Id-Version: PACKAGE VERSION\n"
+        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+        "Language-Team: LANGUAGE <LL@li.org>\n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=UTF-8\n"
+        "Content-Transfer-Encoding: 8bit\n"
+        "Generated-By: pygettext.py 1.5\n"
 #
 msgid   "Adicionar WebApps"
 msgstr  ""
-
 #
 msgid   "WebApps Adicionados"
 msgstr  ""
-
 #
 msgid   "WebApps BigLinux"
 msgstr  ""
-
 #
 msgid   "Preencha os campos"
 msgstr  ""
-
 #
 msgid   "URL:"
 msgstr  ""
-
 #
 msgid   "Detectar Nome e Ícone"
 msgstr  ""
-
 #
 msgid   "Nome:"
 msgstr  ""
-
 #
 msgid   "Ícone do WebApp"
 msgstr  ""
-
 #
 msgid   "Alterar"
 msgstr  ""
-
 #
 msgid   "Navegador"
 msgstr  ""
-
 #
 msgid   "Categoria"
 msgstr  ""
-
 #
 msgid   "DESENVOLVIMENTO"
 msgstr  ""
-
 #
 msgid   "ESCRITÓRIO"
 msgstr  ""
-
 #
 msgid   "GRÁFICOS"
 msgstr  ""
-
 #
 msgid   "JOGOS"
 msgstr  ""
-
 #
 msgid   "MULTIMÍDIA"
 msgstr  ""
-
 #
 msgid   "Criar atalho na Área de Trabalho"
 msgstr  ""
-
 #
 msgid   "Perfil adicional"
 msgstr  ""
-
 #
 msgid   "YouTube Modo TV"
 msgstr  ""
-
 #
 msgid   "Modo YouTube TV"
 msgstr  ""
-
 #
 msgid   "Adicionar"
 msgstr  ""
-
 #
 msgid   "Para adicionar um WebApp, você precisa informar a URL e o Nome."
 msgstr  ""
-
 #
 msgid   "Fechar"
 msgstr  ""
-
 #
 msgid   "Para detectar o Nome e o Ícone você precisa informar a URL."
 msgstr  ""
-
 #
-msgid   "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo "
-        "botão Alterar."
+msgid   "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
 msgstr  ""
-
 #
 msgid   "O WebApp foi adicionado com sucesso!"
 msgstr  ""
-
 #
 msgid   "Ícones encontrados"
 msgstr  ""
-
 #
 msgid   "Selecione o ícone preferido:"
 msgstr  ""
-
 #
 msgid   "Desenvolvimento"
 msgstr  ""
-
 #
 msgid   "Escritório"
 msgstr  ""
-
 #
 msgid   "Gráficos"
 msgstr  ""
-
 #
 msgid   "Jogos"
 msgstr  ""
-
 #
 msgid   "Multimídia"
 msgstr  ""
-
 #
 msgid   "Tem certeza que deseja remover este WebApp?"
 msgstr  ""
-
 #
 msgid   "Nenhum WebApp adicionado!"
 msgstr  ""
-
 #
 msgid   "Navegador padrão<br>dos WebApps:"
 msgstr  ""
-
 #
 msgid   "Alterar navegador"
 msgstr  ""
-
 #
 msgid   "Selecione o navegador preferido:"
 msgstr  ""
-
 #
 msgid   "WebApps Nativos"
 msgstr  ""
-
 #
 msgid   "Selecionar imagem"
 msgstr  ""
-
 #
 msgid   "Gerenciador de WebApps BigLinux"
 msgstr  ""
