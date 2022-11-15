@@ -14,13 +14,7 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
-browser_bin_list=( "brave" "google-chrome-stable" "vivaldi-stable" "vivaldi-snapshot" "microsoft-edge-beta" "microsoft-edge-dev" "microsoft-edge-stable" "epiphany" "firefox" "yandex-browser-stable" "yandex-browser-beta" "flashpeak-slimjet" "chromium" "electron" )
-
-for i in {20..5}; do
-  browser_bin_list+=("electron$i")
-done
-
-browser_bin_list+=("bbv-client")
+. /usr/share/bigbashview/bcc/apps/biglinux-webapps/scripts/detect_browser.env
 
 echo '<!DOCTYPE html>
 <html>
@@ -351,10 +345,8 @@ echo '<!DOCTYPE html>
             <div id="list-tab-content" class="fc-card active">'
 
 CUSTOMFILES=""
-if compgen -G ~/.local/share/applications/*-webapp-biglinux-custom.desktop >/dev/null
-then
-    CUSTOMFILES=~/.local/share/applications/*-webapp-biglinux-custom.desktop
-fi
+TARGET="~/.local/share/applications/*-webapp-biglinux-custom.desktop"
+compgen $TARGET &>/dev/null && CUSTOMFILES="$TARGET"
 
 # Start of gawk script
 gawk -v development=$"Desenvolvimento" -v office=$"Escritório" -v graphics=$"Gráficos" -v game=$"Jogos" -v audiovideo=$"Multimídia" -v certeza=$"Tem certeza que deseja remover este WebApp?" -v nenhum=$"Nenhum WebApp adicionado!" -v adicionar=$"Adicionar" -- '
@@ -567,7 +559,7 @@ echo '
 echo '
                 </div>
                 <button class="btn-img-main status-button" id="open-change-browsers">
-                  <img src="icons/'${BROWSER}'.svg" width="38" height="38" class="iconBrowser" id="browserIcon">
+                  <img src="icons/'${BROWSER//electron*/electron}'.svg" width="38" height="38" class="iconBrowser" id="browserIcon">
                 </button>
               </div>
               <!--CHANGE BROWSERS MODAL-->
@@ -584,20 +576,10 @@ echo '
                 <div id="desc">
                   <div id="menu" style="display:flex;justify-content:center;width:100%;overflow-x:auto;height:100px;align-items:center">'
                     for browser in "${browser_bin_list[@]}";do
-                      if [ -x /usr/bin/"$browser" ]; then
-                        icon="$browser"
-                        case $browser in
-                          "flashpeak-slimjet")
-                            icon="slimjet"
-                            ;;
-                          "electron"*)
-                            icon="electron"
-                            ;;
-                        esac
+                      [ -x /usr/bin/"$browser" ] && 
                         echo "<button class=\"btn-img status-button btn-img-main\">
-                              <img src=\"icons/${icon}.svg\" title=\"${browser}\" data-icon=\"${browser}\" width=\"38\" height=\"38\">
+                              <img src=\"icons/${browser//electron*/electron}.svg\" title=\"${browser}\" data-icon=\"${browser}\" width=\"38\" height=\"38\">
                               </button>"
-                      fi
                     done
 echo '
                   </div>
