@@ -1,5 +1,5 @@
 var divs = $("div.content-section-title[id]");
-if(divs.leght){
+if(divs.length){
   var divsSorted = [];
   divs.sort(function(a, b) {
       return $(a).text() > $(b).text() ? 1 : -1;
