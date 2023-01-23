@@ -6,24 +6,22 @@
 import os
 import re
 import warnings
-
+import requests
 from collections import namedtuple
+from bs4 import BeautifulSoup
 
 try:
     from urllib.parse import urljoin, urlparse, urlunparse
 except ImportError:
     from urlparse import urljoin, urlparse, urlunparse
 
-import requests
-
-from bs4 import BeautifulSoup
 
 __all__ = ['get', 'Icon']
 
 HEADERS = {
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) '
-    'AppleWebKit/537.36 (KHTML, like Gecko) '
-    'Chrome/33.0.1750.152 Safari/537.36'
+    'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64)'
+    'AppleWebKit/537.36 (KHTML, like Gecko)'
+    'Chrome/109.0.0.0 Safari/537.36'
 }
 
 LINK_RELS = [
@@ -45,7 +43,10 @@ META_NAMES = [
     'msapplication-square310x310logo'
 ]
 
-SIZE_RE = re.compile(r'(?P<width>\d{2,4})x(?P<height>\d{2,4})', flags=re.IGNORECASE)
+SIZE_RE = re.compile(
+    r'(?P<width>\d{2,4})x(?P<height>\d{2,4})',
+    flags=re.IGNORECASE
+)
 
 Icon = namedtuple('Icon', ['url', 'width', 'height', 'format'])
 
@@ -62,11 +63,9 @@ def get(url, *args, **request_kwargs):
     :return: List of fav icons found sorted by icon dimension.
     :rtype: list[:class:`Icon`]
     """
+    msg = "headers arg is deprecated. Use headers key in request_kwargs dict."
     if args:  # backwards compatible with <= v0.6.0
-        warnings.warn(
-            "headers arg is deprecated. Use headers key in request_kwargs dict.",
-            DeprecationWarning
-        )
+        warnings.warn(msg, DeprecationWarning)
         request_kwargs.setdefault('headers', args[0])
 
     request_kwargs.setdefault('headers', HEADERS)
@@ -102,7 +101,12 @@ def default(url, **request_kwargs):
     :rtype: :class:`Icon` or None
     """
     parsed = urlparse(url)
-    favicon_url = urlunparse((parsed.scheme, parsed.netloc, 'favicon.ico', '', '', ''))
+    favicon_url = urlunparse((
+        parsed.scheme,
+        parsed.netloc,
+        'favicon.ico',
+        '', '', ''
+    ))
     response = requests.head(favicon_url, **request_kwargs)
     if response.status_code == 200:
         return Icon(response.url, 0, 0, 'ico')
@@ -113,8 +117,8 @@ def tags(url, html):
 
     .. code-block:: html
 
-       <link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon.png">
-       <meta name="msapplication-TileImage" content="favicon.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon.png">
+    <meta name="msapplication-TileImage" content="favicon.png">
 
     :param url: Url for site.
     :type url: str
@@ -130,7 +134,11 @@ def tags(url, html):
     link_tags = set()
     for rel in LINK_RELS:
         for link_tag in soup.find_all(
-            'link', attrs={'rel': lambda r: r and r.lower() == rel, 'href': True}
+            'link',
+            attrs={
+                'rel': lambda r: r and r.lower() == rel,
+                'href': True
+            }
         ):
             link_tags.add(link_tag)
 

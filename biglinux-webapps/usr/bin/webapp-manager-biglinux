@@ -1,0 +1,119 @@
+#!/usr/bin/env bash
+
+if pidof webapp-manager-biglinux &>/dev/null;then
+    kdialog --sorry $"O Gerenciador de WebApps BigLinux já está aberto!" --title $"WebApps BigLinux"
+    exit
+fi
+
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-webapps
+
+WEBAPP_DIR="/usr/share/bigbashview/bcc/apps/biglinux-webapps/webapps"
+HOME_SHARE_DIR_APP="$HOME/.local/share/applications"
+ONLY=false
+
+# Criando diretórios necessários
+mkdir -p ~/.bigwebapps
+mkdir -p ~/.local/share/icons
+mkdir -p "$HOME_SHARE_DIR_APP"
+mkdir -p ~/.local/bin
+
+
+if [ ! -e ~/.bigwebapps/BROWSER ];then
+    if [ -e /usr/lib/brave-browser/brave ] || [ -e /usr/lib/brave-bin/brave ];then
+        printf "%s" "brave" > ~/.bigwebapps/BROWSER
+    elif [ -e /opt/google/chrome/google-chrome ];then
+        printf "%s" "google-chrome-stable" > ~/.bigwebapps/BROWSER
+    elif [ -e /usr/lib/chromium/chromium ];then
+        printf "%s" "chromium" > ~/.bigwebapps/BROWSER
+    elif [ -e /opt/microsoft/msedge/microsoft-edge ];then
+        printf "%s" "microsoft-edge-stable" > ~/.bigwebapps/BROWSER
+    elif [ -e /usr/bin/epiphany ];then
+        ONLY=true
+    elif [ -e /usr/lib/firefox/firefox ];then
+        ./change_browser.sh "brave" "firefox"
+    elif [ -e /usr/lib/librewolf/librewolf ];then
+        ./change_browser.sh "brave" "librewolf"
+    elif [ -e /opt/vivaldi/vivaldi ];then
+        printf "%s" "vivaldi-stable" > ~/.bigwebapps/BROWSER
+    elif [ -e /var/lib/flatpak/exports/bin/com.brave.Browser ];then
+        printf "%s" "com.brave.Browser" > ~/.bigwebapps/BROWSER
+    elif [ -e /var/lib/flatpak/exports/bin/com.google.Chrome ];then
+        printf "%s" "com.google.Chrome" > ~/.bigwebapps/BROWSER
+    elif [ -e /var/lib/flatpak/exports/bin/org.chromium.Chromium ];then
+        printf "%s" "org.chromium.Chromium" > ~/.bigwebapps/BROWSER
+    elif [ -e /var/lib/flatpak/exports/bin/com.microsoft.Edge ];then
+        printf "%s" "com.microsoft.Edge" > ~/.bigwebapps/BROWSER
+    elif [ -e /var/lib/flatpak/exports/bin/org.gnome.Epiphany ];then
+        ONLY=true
+    elif [ -e /var/lib/flatpak/exports/bin/org.mozilla.firefox ];then
+        ./change_browser.sh "brave" "org.mozilla.firefox"
+    elif [ -e /var/lib/flatpak/exports/bin/io.gitlab.librewolf-community ];then
+        ./change_browser.sh "brave" "io.gitlab.librewolf-community"
+    else
+        kdialog --sorry $"Não existem navegadores instalados compatíveis com os WebApps!" --title "WebApps BigLinux"
+        exit
+    fi
+
+    if [ "$ONLY" = "true" ];then
+        kdialog --sorry $"Será necessário instalar mais um navegador!" --title "WebApps BigLinux"
+    fi
+fi
+
+[ "$(<~/.bigwebapps/BROWSER)" = "brave-browser" ] && printf "%s" "brave" > ~/.bigwebapps/BROWSER
+
+if [ ! -e ~/.bigwebapps/NATIVE ];then
+    for webapp in "$WEBAPP_DIR"/*.desktop; do
+        WEB_APP=~/.local/share/applications/${webapp##*/}
+        if [ -e "$WEB_APP" ] && ! grep -q 'Categories' "$WEB_APP";then
+            cp -f "$webapp" "$WEB_APP"
+        fi
+    done
+    update-desktop-database -q "$HOME_SHARE_DIR_APP"
+    kbuildsycoca5 &> /dev/null
+    true > ~/.bigwebapps/NATIVE
+fi
+
+if [ ! -e ~/.bigwebapps/CUSTOM ];then
+    for app in "$HOME_SHARE_DIR_APP"/*-webapp-biglinux-custom.desktop;do
+        if [ -e "$app" ] && ! grep -q 'Categories' "$app";then
+            echo 'Categories=Webapps;' >> "$app"
+        fi
+    done
+    update-desktop-database -q "$HOME_SHARE_DIR_APP"
+    kbuildsycoca5 &> /dev/null
+    true > ~/.bigwebapps/CUSTOM
+fi
+
+HOME_SHARE_DIR_DESK="$HOME/.local/share/desktop-directories"
+HOME_SHARE_DIR_MENU="$HOME/.config/menus/applications-merged"
+
+if [ -e "$HOME_SHARE_DIR_DESK"/google-apps.directory ];then
+    rm "$HOME_SHARE_DIR_DESK"/google-apps.directory 2>/dev/null
+    rm "$HOME_SHARE_DIR_DESK"/web-apps.directory 2>/dev/null
+fi
+
+if [ -e "$HOME_SHARE_DIR_MENU"/google-applications.menu ];then
+    rm "$HOME_SHARE_DIR_MENU"/google-applications.menu 2>/dev/null
+    rm "$HOME_SHARE_DIR_MENU"/user-web-apps.menu 2>/dev/null
+fi
+
+if [ -e "$HOME_SHARE_DIR_APP"/netflix-firefox.desktop ];then
+    rm "$HOME_SHARE_DIR_APP"/netflix-firefox.desktop
+    cp "$WEBAPP_DIR"/netflix-webapp-biglinux.desktop "$HOME_SHARE_DIR_APP"
+fi
+
+if [ -e "$HOME_SHARE_DIR_APP"/primevideo-firefox.desktop ];then
+    rm "$HOME_SHARE_DIR_APP"/primevideo-firefox.desktop
+    cp "$WEBAPP_DIR"/primevideo-webapp-biglinux.desktop "$HOME_SHARE_DIR_APP"
+fi
+
+if [ -e "$HOME_SHARE_DIR_APP"/spotify-firefox.desktop ];then
+    rm "$HOME_SHARE_DIR_APP"/spotify-firefox.desktop
+    cp "$WEBAPP_DIR"/spotify-webapp-biglinux.desktop "$HOME_SHARE_DIR_APP"
+fi
+
+bigbashview -s 960x620 -n $"Gerenciador de WebApps BigLinux" \
+            -i icons/webapp.svg -p "webapp-manager-biglinux" \
+            /usr/share/bigbashview/bcc/apps/biglinux-webapps/index.sh.htm

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=OpenStreetMap
+Exec=~/.local/bin/openstreetmap-webapp-biglinux-org.mozilla.firefox
+Icon=openstreetmap.png
+Categories=Webapps;

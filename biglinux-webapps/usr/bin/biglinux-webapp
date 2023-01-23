@@ -1,35 +1,99 @@
 #!/usr/bin/env bash
 
-BROWSER="$(<$HOME/.bigwebapps/BROWSER)"
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-webapps
 
-if [ -z $BROWSER ]; then
-    if [ -e "/usr/bin/brave" ]; then
-        BROWSER="brave"
-    elif [ -e "/usr/bin/brave-browser" ]; then
-        BROWSER="brave-browser"
-    elif [ -e "/usr/bin/google-chrome-stable" ]; then
-        BROWSER="google-chrome-stable"
-    elif [ -e "/usr/bin/vivaldi-stable" ]; then
-        BROWSER="vivaldi-stable"
-    else
-        BROWSER="chromium"
-    fi
-fi
+_GET_BROWSER=$(<~/.bigwebapps/BROWSER)
 
-if [ "$1" = "cleverpdf" ];then
-    if [ "${LANG:0:2}" = "pt" ]; then
-        exec $BROWSER --class="www.cleverpdf.com__pt,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com/pt
-    elif [ "${LANG:0:2}" = "es" ]; then
-        exec $BROWSER --class="www.cleverpdf.com__es,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com/es
-    else
-        exec $BROWSER --class="www.cleverpdf.com,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com
-    fi
-elif [ "$1" = "netflix" ];then
-    if [ ! "${LANG:0:2}" = "pt" ];then
-        exec $BROWSER --class="www.netflix.com,Chromium-browser" --profile-directory=Default --app=https://www.netflix.com/
-    else
-        exec $BROWSER --class="www.netflix.com__br,Chromium-browser" --profile-directory=Default --app=https://www.netflix.com/br
-    fi
-else
-    exec $BROWSER $*
+case $_GET_BROWSER in
+    brave)
+        if [ -e /usr/lib/brave-browser/brave ] || [ -e /usr/lib/brave-bin/brave ];then
+            BROWSER="brave"
+        else
+            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
+            exit
+        fi
+    ;;
+
+    com.brave.Browser)
+        if [ -e /var/lib/flatpak/exports/bin/com.brave.Browser ];then
+            BROWSER="/var/lib/flatpak/exports/bin/com.brave.Browser"
+        else
+            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
+            exit
+        fi
+    ;;
+
+    chromium)
+        if [ -e /usr/lib/chromium/chromium ];then
+            BROWSER="chromium"
+        else
+            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
+            exit
+        fi
+    ;;
+
+    org.chromium.Chromium)
+        if [ -e /var/lib/flatpak/exports/bin/org.chromium.Chromium ];then
+            BROWSER="/var/lib/flatpak/exports/bin/org.chromium.Chromium"
+        else
+            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
+            exit
+        fi
+    ;;
+
+    google-chrome-stable)
+        if [ -e /opt/google/chrome/google-chrome ];then
+            BROWSER="google-chrome-stable"
+        else
+            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
+            exit
+        fi
+    ;;
+
+    com.google.Chrome)
+        if [ -e /var/lib/flatpak/exports/bin/com.google.Chrome ];then
+            BROWSER="/var/lib/flatpak/exports/bin/com.google.Chrome"
+        else
+            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
+            exit
+        fi
+    ;;
+
+    microsoft-edge-stable)
+        if [ -e /opt/microsoft/msedge/microsoft-edge ];then
+            BROWSER="microsoft-edge-stable"
+        else
+            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
+            exit
+        fi
+    ;;
+
+    com.microsoft.Edge)
+        if [ -e /var/lib/flatpak/exports/bin/com.microsoft.Edge ];then
+            BROWSER="/var/lib/flatpak/exports/bin/com.microsoft.Edge"
+        else
+            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
+            exit
+        fi
+    ;;
+
+    vivaldi-stable)
+        if [ -e /opt/vivaldi/vivaldi ];then
+            BROWSER="vivaldi-stable"
+        else
+            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
+            exit
+        fi
+    ;;
+
+    *) exit ;;
+esac
+
+exec $BROWSER "$@"
+
+if [ "$1" = "firelibre" ];then
+    kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
+    exit
 fi

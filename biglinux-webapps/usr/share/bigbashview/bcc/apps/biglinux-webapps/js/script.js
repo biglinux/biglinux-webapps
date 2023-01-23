@@ -1,335 +1,414 @@
-$(function () {
+var divs = $("div.content-section-title[id]");
+if(divs.leght){
+  var divsSorted = [];
+  divs.sort(function(a, b) {
+      return $(a).text() > $(b).text() ? 1 : -1;
+  });
+  for (var i = 0; i < divs.length; i++) {
+      divsSorted.push($("div.content-section#"+divs[i].id));
+      divsSorted.push("<br/>");
+  }
+  divsSorted.push($("div.pop-up#editModal"));
+  $("#list-tab-content").html(divsSorted);
+}
+
+$("div.content-section-title[id]").each(function(i, div){
+  let countLi = $("#"+div.id+" li").length;
+  $("span#"+div.id).text(countLi);
+});
+
+$("ul[id]").each(function(i, d){
+  let getDivs = $(d).find("li");
+  getDivs.sort(function(a, b) {
+    return $(a).text() > $(b).text() ? 1 : -1;
+  });
+  $(this).html(getDivs);
+});
+
+$("select").each(function(i, s){
+  let getOptions = $(s).find("option");
+  getOptions.sort(function(a, b) {
+    return $(a).text() > $(b).text() ? 1 : -1;
+  });
+  $(this).html(getOptions);
+});
+
+$(function(){
   var tab = $("li label");
-  tab.on("click", function (event) {
-    //event.preventDefault();
-    //tab.removeClass("active");
-    //$(this).addClass("active");
+  var checkUrl;
+  var checkName;
+
+  tab.on("click", function(){
     tab_content = $(this).attr("id");
-    //alert(tab_content);
     $('div[id$="tab-content"]').removeClass("active");
     $(tab_content).addClass("active");
-    if(tab_content == "#add-tab-content"){
+    if (tab_content == "#add-tab-content"){
       $("#urlDesk").focus();
       $("#tab1").trigger("click");
     };
   });
-});
 
-$(function () {
- $(".menu-link").click(function () {
-  $(".menu-link").removeClass("is-active");
-  $(this).addClass("is-active");
- });
-});
-
-$(function () {
- $(".main-header-link").click(function () {
-  $(".main-header-link").removeClass("is-active");
-  $(this).addClass("is-active");
- });
-});
-
-const dropdowns = document.querySelectorAll(".dropdown");
-dropdowns.forEach((dropdown) => {
- dropdown.addEventListener("click", (e) => {
-  e.stopPropagation();
-  dropdowns.forEach((c) => c.classList.remove("is-active"));
-  dropdown.classList.add("is-active");
- });
-});
-
-$(".search-bar input")
- .focus(function () {
-  $(".header").addClass("wide");
- })
- .blur(function () {
-  $(".header").removeClass("wide");
- });
-
-$(document).click(function (e) {
- var container = $(".status-button");
- var dd = $(".dropdown");
- if (!container.is(e.target) && container.has(e.target).length === 0) {
-  dd.removeClass("is-active");
- }
-});
-
-$(function () {
- $(".dropdown").on("click", function (e) {
-  $(".content-wrapper").addClass("overlay");
-  e.stopPropagation();
- });
- $(document).on("click", function (e) {
-  if ($(e.target).is(".dropdown") === false) {
-   $(".content-wrapper").removeClass("overlay");
-  }
- });
-});
-
-$(".dark-light").click(function (e) {
-  e.preventDefault();
-  $("body").toggleClass("light-mode");
-});
-
-$(".product input").click(function(e) {
-  let inputId = this.id.replace(/.*\_/, "");
-  let circleId = "#circle_"+inputId;
-  let circleClass = $(circleId).attr("class").split(" ")[1];
-  if (circleClass === "gray") {
-    $(circleId).removeClass("gray").addClass("green");
-  } else {
-    $(circleId).removeClass("green").addClass("gray");
-  }
-  fetch(`/execute$./enable-disable.sh ${this.value}`);
-});
-
-$("#open-change-browsers").click(function () {
- $(".pop-up#change-browser").addClass("visible");
-});
-
-$(".pop-up .close").click(function () {
- $(".pop-up").removeClass("visible");
-});
-
-$(".btn-img").each(function(index, btn) {
-  var img = $(btn).children()[0];
-  var src = $(img).attr("src");
-  var dataIcon = $(img).attr("data-icon");
-  $(btn).click(function(){
-    let curSrc = $("#browserIcon").attr("src");
-    if (curSrc == src) {
-      $(".pop-up#change-browser").removeClass("visible");
-    } else {
-      $(".pop-up#change-browser").removeClass("visible");
-      $(".iconBrowser").attr("src", src);
-      fetch(`/execute$./change_browser.sh ${dataIcon}`);
-    }
+  $(".dark-light").click(function(e){
+    e.preventDefault();
+    $("body").toggleClass("light-mode");
   });
-});
 
-var firstOption = $("#browserSelect option").first();
-var firstOptionValue = firstOption.val();
-$("#browser").attr("src", "icons/"+firstOptionValue+".svg");
-if (firstOptionValue != "firefox" && firstOptionValue != "epiphany") {
-  $("#perfilAdd").show();
-} else {
-  $("#perfilAdd").hide();
-}
+  $(".product input").click(function(){
+    let inputId = this.id.replace(/.*\_/, "");
+    let circleId = "#circle_" + inputId;
+    let linkId = "#link_" + inputId;
+    let circleClass = $(circleId).attr("class").split(" ")[1];
+    if (circleClass === "gray"){
+        $(circleId).removeClass("gray").addClass("green");
+        $(linkId).removeClass("disabled");
+    } else {
+        $(circleId).removeClass("green").addClass("gray");
+        $(linkId).addClass("disabled");
+    }
+    let browserBin = $("#open-change-browsers").attr("data-bin");
+    fetch(`/execute$./enable-disable.sh ${this.value} ${browserBin}`);
+    console.log("Filedesk: "+this.value, "Browser cmd: "+browserBin);
+  });
 
+  $("#open-change-browsers").click(function(){
+    var curBin = $("#open-change-browsers").attr("data-bin").replace(/\./g, "\\.");
+    console.log("Browser-Set-Native: "+curBin);
+    $("button#"+curBin).addClass("highlight");
+    $(".pop-up#change-browser").addClass("visible");
+  });
 
-$("#browserSelect").on("change",function(){
-  $("#browser").attr("src", "icons/"+this.value+".svg");
+  $(".pop-up .close").click(function(){
+    $(".pop-up").removeClass("visible");
+  });
 
-  switch(this.value){
+  $(".btn-img").each(function(){
+    var img = $(this).children()[0];
+    var src = $(img).attr("src");
+    var dataBin = $(img).attr("data-bin");
+    $(this).click(function(){
+      var currBin = $("#open-change-browsers").attr("data-bin");
+      if (currBin === dataBin){
+        $(".pop-up#change-browser").removeClass("visible");
+      } else {
+        $(".pop-up#change-browser").removeClass("visible");
+        $(".iconBrowser").attr("src", src);
+        $("#open-change-browsers").attr("data-bin", dataBin);
+        fetch(`/execute$./change_browser.sh ${currBin} ${dataBin}`);
+      }
+      console.log("Browser-Old: "+currBin, "Browser-New: "+dataBin);
+    }).mouseover(function(){
+      $("button.btn-img").removeClass("highlight");
+    });
+  });
+
+  var firstOption = $("#browserSelect option").first();
+  var firstValue = firstOption.val();
+  $("#browser").attr("src", "icons/" + firstValue + ".svg");
+  console.log("First-Browser-Combobox: "+firstValue);
+  console.log("Default-Icon: "+$("#inputIconDesk").val());
+  switch (firstValue){
     case "epiphany":
-        $("#perfilAdd").hide();
-        break;
-
     case "firefox":
-        $("#perfilAdd").hide();
-        break;
+    case "librewolf":
+    case "org.gnome.Epiphany":
+    case "org.mozilla.firefox":
+    case "io.gitlab.librewolf-community":
+      $("#perfilAdd").addClass('disabled');
+      break;
 
     default:
-        $("#perfilAdd").show();
+      break;
   }
-});
 
-$("#loadIcon").click(function (e) {
-  e.preventDefault();
-  fetch(`/execute$./change_icon.sh`)
-  .then(resp=>resp.text())
-  .then(data=>{
-    if(data){
-      $("#iconDesk").attr("src", data);
-      $("#inputIconDesk").val(data);
+  $("#browserSelect").on("change", function(){
+    switch (this.value){
+      case "brave":
+      case "com.brave.Browser":
+        $("#perfilAdd").removeClass('disabled');
+        $("#browser").attr("src", "icons/brave.svg");
+        break;
+
+      case "google-chrome-stable":
+      case "com.google.Chrome":
+        $("#perfilAdd").removeClass('disabled');
+        $("#browser").attr("src", "icons/chrome.svg");
+        break;
+
+      case "chromium":
+      case "org.chromium.Chromium":
+        $("#perfilAdd").removeClass('disabled');
+        $("#browser").attr("src", "icons/chromium.svg");
+        break;
+
+      case "microsoft-edge-stable":
+      case "com.microsoft.Edge":
+        $("#perfilAdd").removeClass('disabled');
+        $("#browser").attr("src", "icons/edge.svg");
+        break;
+
+      case "epiphany":
+      case "org.gnome.Epiphany":
+        $("#perfilAdd").addClass('disabled');
+        $("#browser").attr("src", "icons/epiphany.svg");
+        break;
+
+      case "firefox":
+      case "org.mozilla.firefox":
+        $("#perfilAdd").addClass('disabled');
+        $("#browser").attr("src", "icons/firefox.svg");
+        break;
+
+      case "librewolf":
+      case "io.gitlab.librewolf-community":
+        $("#perfilAdd").addClass('disabled');
+        $("#browser").attr("src", "icons/librewolf.svg");
+        break;
+
+      case "vivaldi-stable":
+        $("#perfilAdd").removeClass('disabled');
+        $("#browser").attr("src", "icons/vivaldi.svg");
+        break;
+
+      default:
+          break;
     }
+    console.log("Bowser-Combobox: "+this.value);
   });
-});
 
-$("#modeTv, #loadIconChange").hide();
+  $("#loadIcon").click(function(e){
+    e.preventDefault();
+    fetch(`/execute$./change_icon.sh`)
+    .then(resp => resp.text())
+    .then(data => {
+      if (data){
+        $("#iconDesk").attr("src", data);
+        $("#inputIconDesk").val(data);
+        console.log("Change-Icon: "+data);
+      } else {
+        console.log("Change-Icon-Cancelled!");
+      }
+    });
+  });
 
-var invalidUrl, checkUrl, checkUrlValid;
-var invalidName, checkName, checkNameValid;
-
-$("#urlDesk").on("keyup paste search", function(){
+  $("#urlDesk").on("keyup paste search", function(){
     checkUrl = $(this).val();
-    checkUrlValid = isValidURL(checkUrl);
 
-    if(!checkUrl){
+    if (!checkUrl){
       $(this).css("border-bottom-color", "");
-      $("#modeTv").hide();
-      invalidUrl = true;
-    } else if(!checkUrlValid){
+    } else if (/\s/.test(checkUrl)){
       $(this).css("border-bottom-color", "crimson");
-      $("#modeTv").hide();
-      invalidUrl = true;
     } else {
       $(this).css("border-bottom-color", "forestgreen");
-
-      if(checkUrl.match(/youtu(.be|be)/gi)){
-        $("#modeTv").show();
-      }
-
-      invalidUrl = false;
-    }
-});
-
-$("#nameDesk").on("keyup paste search",function(){
-  checkName = $(this).val();
-  checkNameValid = /\w/.test(checkName);
-  if(!checkName){
-    $(this).css("border-bottom-color", "");
-    invalidName = true;
-  }else if(!checkNameValid){
-    $(this).css("border-bottom-color", "crimson");
-    invalidName = true;
-  } else {
-    $(this).css("border-bottom-color", "forestgreen");
-    invalidName = false;
-  }
-})
-
-$("#detectAll").click(function (e) {
-  e.preventDefault();
-
-  let url = $("#urlDesk").val();
-  if(!isValidURL(url) || !url || /\s/.test(url)){
-    $(".pop-up#urlEmpty").addClass("visible");
-    return;
-  }
-
-  $(".lds-ring").css("display", "inline-flex");
-
-  fetch(`/execute$./get_title.sh.py ${url}`)
-  .then(resp=>resp.text())
-  .then(data=>{
-    if(data){
-      $("#nameDesk").val(data);
-      $("#nameDesk").keyup();
     }
   });
 
-  fetch(`/execute$./get_favicon.sh.py ${url}`)
-  .then(resp=>resp.text())
-  .then(data=>{
-    if(data){
-        if(!/\/tmp/.test(data)){
-          $(".pop-up#detectIcon #menu").html(data)
+  $("#nameDesk").on("keyup paste search", function(){
+    checkName = $(this).val();
+
+    if (!checkName){
+      $(this).css("border-bottom-color", "");
+    } else {
+      $(this).css("border-bottom-color", "forestgreen");
+    }
+  })
+
+  $("#detectAll").click(function(e){
+    e.preventDefault();
+
+    let url = $("#urlDesk").val();
+    if (!url || /\s/.test(url)){
+      $(".pop-up#urlEmpty").addClass("visible");
+      return;
+    }
+
+    $(".lds-ring").css("display", "inline-flex");
+
+    fetch(`/execute$./get_title.sh.py ${url}`)
+    .then(resp => resp.text())
+    .then(data => {
+      if (data){
+        $("#nameDesk").val(data);
+        $("#nameDesk").keyup();
+      } else {
+        console.log("Title-Not-Found!");
+      }
+    });
+
+    fetch(`/execute$./get_favicon.sh.py ${url}`)
+    .then(resp => resp.text())
+    .then(data => {
+      if (data){
+        if (/button/.test(data)){
+          console.log("Multiple-Favicon");
+          $(".pop-up#detectIcon #menu-icon").html(data)
           $(".lds-ring").css("display", "none");
           $(".pop-up#detectIcon").addClass("visible");
-          $(".btn-img-favicon").each(function(index, el) {
-            $(el).click(function (e) {
+          $(".btn-img-favicon").each(function(index, el){
+            $(el).click(function(e){
               e.preventDefault();
-
-              $(".lds-ring").css("display", "inline-flex");
-              let srcFav = $("#btn-icon-"+index+" img").attr("src");
-              fetch(`/execute$./save_favicon.sh.py ${srcFav}`)
-              .then(resp=>resp.text())
-              .then(data=>{
+              let srcFav = $("#btn-icon-" + index + " img").attr("src");
+              fetch(`/execute$./resize_favicon.sh.py ${srcFav}`)
+              .then(resp => resp.text())
+              .then(data => {
                 $("#iconDesk").attr("src", data);
                 $("#inputIconDesk").val(data);
-                $(".lds-ring").css("display", "none");
-                $(".pop-up").removeClass("visible");
+                $(".pop-up#detectIcon").removeClass("visible");
               });
             });
           });
         } else {
+          console.log("Single-Favicon");
           $("#iconDesk").attr("src", data);
           $("#inputIconDesk").val(data);
           $(".lds-ring").css("display", "none");
         }
-    } else{
-      $(".lds-ring").css("display", "none");
-      $(".pop-up#detectIconError").addClass("visible");
-    }
+      } else {
+        console.log("Favicon-Not-Found!");
+        $(".lds-ring").css("display", "none");
+        $(".pop-up#detectIconError").addClass("visible");
+      }
+    });
   });
-});
 
-$("#install").click(function (e) {
-  e.preventDefault();
-  if(invalidUrl || invalidName || !checkUrl || !checkName){
-    $(".pop-up#urlNameError").addClass("visible");
-    return;
-  }
+  $("#install").click(function(e){
+    e.preventDefault();
 
-  let formUrl = $("#formAdd").attr("action");
-  let formData = $("#formAdd").serialize();
+    if (!checkUrl || /\s/.test(checkUrl) || !checkName){
+      $(".pop-up#urlNameError").addClass("visible");
+      return;
+    }
 
-  fetch(`/execute$./${formUrl}?${formData}`)
-  .then(resp=>resp.text())
-  .then(data=>{
-    if(data == 0){
+    let formUrl = $("#formAdd").attr("action");
+    let formData = $("#formAdd").serialize();
+    fetch(`/execute$./${formUrl}?${formData}`)
+    .then(resp => resp.text())
+    .then(() => {
       $(".lds-ring").css("display", "inline-flex");
       setTimeout(function(){
         $(".lds-ring").css("display", "none");
         $(".pop-up#installSuccess").addClass("visible");
       }, 2000);
-      $("#installClose").click(function(e) {
-        document.location.reload(true);
-      });
-    }
-  });
-
-});
-
-$(".urlNative").mouseover(function() {
-  let svg = $(this).children()[0];
-  $(svg).css("display", "inline-flex");
-
-}).mouseleave(function() {
-  let svg = $(this).children()[0];
-  $(svg).css("display", "none");
-});
-
-$(".btnRemove").each(function(index, element) {
-  $(this).click(function (e) {
-    e.preventDefault();
-
-    $(".pop-up#remove"+index).addClass("visible");
-    $("#removeYes"+index).click(function (e) {
-      e.preventDefault();
-
-      $(".pop-up#remove"+index).removeClass("visible");
-
-      let inputRemove = $(element).children()[0];
-      let filedesk = $(inputRemove).val();
-
-      $(".lds-ring").css("display", "inline-flex");
-
-      fetch(`/execute$./webapp-remove.sh?filedesk=${filedesk}`)
-      .then(resp=>resp.text())
-      .then(data=>{
-        setTimeout(function(){
-          $(".lds-ring").css("display", "none");
-        }, 2000);
+      $("#installClose").click(function(){
         document.location.reload(true);
       });
     });
   });
+
+  $(".urlNative, .urlCustom").mouseover(function(){
+    let svg = $(this).children()[0];
+    $(svg).css("display", "inline-flex");
+  }).mouseleave(function(){
+    let svg = $(this).children()[0];
+    $(svg).css("display", "none");
+  });
+
+  $("select#categorySelect").change(function(){
+    $("#imgCategory").load("icons/" + this.value + ".svg");
+    console.log("Category: "+this.value)
+  });
+
+  $(".iconDetect-display").mouseover(function(){
+    let srcIcon = $("#iconDesk").attr("src");
+    if (srcIcon !== "icons/default-webapp.svg"){
+      $(".iconDetect-remove").show();
+    }
+  }).mouseleave(function(){
+    $(".iconDetect-remove").hide();
+  });
+
+  $(".iconDetect-remove").click(function(e){
+    e.preventDefault();
+    $(".iconDetect-remove").hide();
+    $("#iconDesk").attr("src", "icons/default-webapp.svg");
+    $.get(`/execute$echo -n "$PWD"`, function(cwd){
+      $("#inputIconDesk").val(cwd+"/icons/default-webapps.png");
+      console.log("Default-Icon: "+$("#inputIconDesk").val());
+    });
+  });
+
+  $("#submitEdit").click(function(e){
+    e.preventDefault();
+    let formUrl = $("#editForm").attr("action");
+    let formData = $("#editForm").serialize();
+
+    if(!$("#nameDeskEdit").val()){
+      $(".pop-up#nameError").addClass("visible");
+      return;
+    }
+
+    $(".lds-ring").css("display", "inline-flex");
+    fetch(`/execute$./${formUrl}?${formData}`)
+    .then(resp => resp.json())
+    .then(js => {
+      if(js.return){
+        console.log(js.return);
+        if (js.return == 0){
+          setTimeout(function(){
+            $(".lds-ring").css("display", "none");
+            $(".pop-up#editSuccess").addClass("visible");
+          }, 2000);
+        } else {
+          $(".pop-up#editError").addClass("visible");
+          return;
+        }
+      } else {
+
+        let browser   = js.browser;
+        let category  = js.category;
+        let filedesk  = js.filedesk;
+        let icondesk  = js.icondesk;
+        let namedesk  = js.namedesk;
+        let newperfil = js.newperfil;
+        let shortcut  = js.shortcut;
+        let urldesk   = js.urldesk;
+        console.clear();
+        console.log(js);
+        fetch(`/execute$./webapp-remove.sh?filedesk=${filedesk}`);
+        setTimeout(function(){
+          fetch(`/execute$./webapp-install.sh?browser=${browser}&category=${category}&icondesk=${icondesk}&namedesk=${namedesk}&newperfil=${newperfil}&shortcut=${shortcut}&urldesk=${urldesk}`)
+          .then(r => r.text())
+          .then(() => {
+            setTimeout(function(){
+              $(".lds-ring").css("display", "none");
+              $(".pop-up#editSuccess").addClass("visible");
+            }, 1000);
+          });
+        }, 1000);
+      }
+    });
+  });
 });
 
-$("select#categorySelect").change(function(){
-  $("#imgCategory").load("icons/"+this.value+".svg");
-});
+function delOpen(id){
+  $(".pop-up#"+id).addClass("visible");
+}
 
-$(".iconDetect-display").mouseover(function(){
-  let srcIcon = $("#iconDesk").attr("src");
-  if(srcIcon !== "icons/default-webapp.svg"){
-    $(".iconDetect-remove").show();
+function editOpen(filedesk){
+  console.log("Edit: "+filedesk);
+  fetch(`/execute$./webapp-info.sh?filedesk=${filedesk}`)
+  .then(resp => resp.text())
+  .then(data => {
+    $("#formEdit").html(data);
+    $("#editModal").addClass("visible");
+  });
+}
+
+function delDesk(filedesk){
+  console.log("Delete: "+filedesk);
+  $(".lds-ring").css("display", "inline-flex");
+
+  fetch(`/execute$./webapp-remove.sh?filedesk=${filedesk}`)
+  .then(resp => resp.text())
+  .then(() => {
+    setTimeout(function(){
+      $(".lds-ring").css("display", "none");
+    }, 2000);
+    document.location.reload(true);
+  });
+}
+
+$(document).keydown(function(event) {
+  if (event.keyCode == 27) {
+    $(".pop-up .close").click();
   }
-}).mouseleave(function(){
-  $(".iconDetect-remove").hide();
 });
-
-$(".iconDetect-remove").click(function(e){
-  e.preventDefault();
- $(".iconDetect-remove").hide();
- $("#iconDesk").attr("src", "icons/default-webapp.svg");
- $("#inputIconDesk").val("/usr/share/bigbashview/bcc/apps/biglinux-webapps/icons/default-webapp.svg");
-});
-
-
-function isValidURL(string) {
-  var res = string.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}(\.)?[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi);
-  return (res !== null)
-};

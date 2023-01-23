@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=PDF Converter
+Name[pt_BR]=Converter PDF
+Exec=~/.local/bin/pdfwordconvert-webapp-biglinux-io.gitlab.librewolf-community
+Icon=pdfconvert.png
+Categories=Webapps;

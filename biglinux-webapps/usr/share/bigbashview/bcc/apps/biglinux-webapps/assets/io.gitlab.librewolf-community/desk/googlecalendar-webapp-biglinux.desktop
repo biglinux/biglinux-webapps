@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Calendar
+Name[pt]=Agenda
+Exec=~/.local/bin/googlecalendar-webapp-biglinux-io.gitlab.librewolf-community
+Icon=google-calendar.png
+Categories=Google;

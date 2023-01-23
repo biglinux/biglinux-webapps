@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Docs
+Name[pt]=Documentos
+Exec=~/.local/bin/googledocs-webapp-biglinux-io.gitlab.librewolf-community
+Icon=google-docs.png
+Categories=Google;

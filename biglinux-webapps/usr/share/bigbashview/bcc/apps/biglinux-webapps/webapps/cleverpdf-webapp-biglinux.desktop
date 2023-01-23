@@ -4,6 +4,7 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=CleverPDF
-Exec=/usr/bin/biglinux-webapp cleverpdf
+Exec=/usr/bin/biglinux-webapp --class="www.cleverpdf.com,Chromium-browser" --profile-directory=Default --app=https://www.cleverpdf.com
 Icon=cleverpdf.png
 Categories=Webapps;
+StartupWMClass=www.cleverpdf.com

@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Netflix
+Exec=~/.local/bin/netflix-webapp-biglinux-io.gitlab.librewolf-community
+Icon=netflix.png
+Categories=Webapps;

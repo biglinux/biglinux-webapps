@@ -6,6 +6,6 @@ Type=Application
 Name=Contacts
 Name[pt]=Contatos
 Exec=/usr/bin/biglinux-webapp --class="contacts.google.com,Chromium-browser" --profile-directory=Default --app=https://contacts.google.com
-Icon=contacts.png
+Icon=google-contacts.png
 StartupWMClass=contacts.google.com
 Categories=Google;
