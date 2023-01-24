@@ -85,6 +85,7 @@ $(function(){
     var img = $(this).children()[0];
     var src = $(img).attr("src");
     var dataBin = $(img).attr("data-bin");
+    var title = $(img).attr("title");
     $(this).click(function(){
       var currBin = $("#open-change-browsers").attr("data-bin");
       if (currBin === dataBin){
@@ -93,6 +94,7 @@ $(function(){
         $(".pop-up#change-browser").removeClass("visible");
         $(".iconBrowser").attr("src", src);
         $("#open-change-browsers").attr("data-bin", dataBin);
+        $("#browserIcon").attr("title", title);
         fetch(`/execute$./change_browser.sh ${currBin} ${dataBin}`);
       }
       console.log("Browser-Old: "+currBin, "Browser-New: "+dataBin);

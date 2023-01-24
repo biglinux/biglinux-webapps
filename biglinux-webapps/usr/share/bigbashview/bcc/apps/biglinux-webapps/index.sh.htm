@@ -655,6 +655,8 @@ echo -n '
                             if [ ! -e /usr/lib/brave-browser/brave ];then
                                 ICON='none'
                                 title='title="'$"O navegador não está instalado!"'"'
+                            else
+                                title='title="'$"BRAVE"'"'
                             fi
                         ;;
                         google-chrome-stable)
@@ -662,6 +664,8 @@ echo -n '
                             if [ ! -e /opt/google/chrome/google-chrome ];then
                                 ICON='none'
                                 title='title="'$"O navegador não está instalado!"'"'
+                            else
+                                title='title="'$"CHROME"'"'
                             fi
                         ;;
                         chromium)
@@ -669,6 +673,8 @@ echo -n '
                             if [ ! -e /usr/lib/chromium/chromium ];then
                                 ICON='none'
                                 title='title="'$"O navegador não está instalado!"'"'
+                            else
+                                title='title="'$"CHROMIUM"'"'
                             fi
                         ;;
                         microsoft-edge-stable)
@@ -676,6 +682,8 @@ echo -n '
                             if [ ! -e /opt/microsoft/msedge/microsoft-edge ];then
                                 ICON='none'
                                 title='title="'$"O navegador não está instalado!"'"'
+                            else
+                                title='title="'$"EDGE"'"'
                             fi
                         ;;
                         firefox)
@@ -683,6 +691,8 @@ echo -n '
                             if [ ! -e /usr/lib/firefox/firefox ];then
                                 ICON='none'
                                 title='title="'$"O navegador não está instalado!"'"'
+                            else
+                                title='title="'$"FIREFOX"'"'
                             fi
                         ;;
                         librewolf)
@@ -690,6 +700,8 @@ echo -n '
                             if [ ! -e /usr/lib/librewolf/librewolf ];then
                                 ICON='none'
                                 title='title="'$"O navegador não está instalado!"'"'
+                            else
+                                title='title="'$"LIBREWOLF"'"'
                             fi
                         ;;
                         vivaldi-stable)
@@ -697,6 +709,8 @@ echo -n '
                             if [ ! -e /opt/vivaldi/vivaldi ];then
                                 ICON='none'
                                 title='title="'$"O navegador não está instalado!"'"'
+                            else
+                                title='title="'$"VIVALDI"'"'
                             fi
                         ;;
                         com.brave.Browser)
@@ -704,6 +718,8 @@ echo -n '
                             if [ ! -e /var/lib/flatpak/exports/bin/com.brave.Browser ];then
                                 ICON='none'
                                 title='title="'$"O navegador não está instalado!"'"'
+                            else
+                                title='title="'$"BRAVE (FLATPAK)"'"'
                             fi
                         ;;
                         com.google.Chrome)
@@ -711,6 +727,8 @@ echo -n '
                             if [ ! -e /var/lib/flatpak/exports/bin/com.google.Chrome ];then
                                 ICON='none'
                                 title='title="'$"O navegador não está instalado!"'"'
+                            else
+                                title='title="'$"CHROME (FLATPAK)"'"'
                             fi
                         ;;
                         org.chromium.Chromium)
@@ -718,6 +736,8 @@ echo -n '
                             if [ ! -e /var/lib/flatpak/exports/bin/org.chromium.Chromium ];then
                                 ICON='none'
                                 title='title="'$"O navegador não está instalado!"'"'
+                            else
+                                title='title="'$"CHROMIUM (FLATPAK)"'"'
                             fi
                         ;;
                         com.microsoft.Edge)
@@ -725,6 +745,8 @@ echo -n '
                             if [ ! -e /var/lib/flatpak/exports/bin/com.microsoft.Edge ];then
                                 ICON='none'
                                 title='title="'$"O navegador não está instalado!"'"'
+                            else
+                                title='title="'$"EDGE (FLATPAK)"'"'
                             fi
                         ;;
                         org.mozilla.firefox)
@@ -732,6 +754,8 @@ echo -n '
                             if [ ! -e /var/lib/flatpak/exports/bin/org.mozilla.firefox ];then
                                 ICON='none'
                                 title='title="'$"O navegador não está instalado!"'"'
+                            else
+                                title='title="'$"FIREFOX (FLATPAK)"'"'
                             fi
                         ;;
                         io.gitlab.librewolf-community)
@@ -739,6 +763,8 @@ echo -n '
                             if [ ! -e /var/lib/flatpak/exports/bin/io.gitlab.librewolf-community ];then
                                 ICON='none'
                                 title='title="'$"O navegador não está instalado!"'"'
+                            else
+                                title='title="'$"LIBREWOLF (FLATPAK)"'"'
                             fi
                         ;;
 
@@ -786,49 +812,56 @@ echo -n '
                       echo -n '<button class="btn-img status-button btn-img-main"
                                     id="brave">
                             <img src="icons/brave.svg" width="38"
-                                 height="38" data-bin="brave">
+                                 height="38" data-bin="brave"
+                                 title="'$"BRAVE"'">
                             </button>'
                     fi
                     if [ -e /opt/google/chrome/google-chrome ];then
                       echo -n '<button class="btn-img status-button btn-img-main"
                                     id="google-chrome-stable">
                             <img src="icons/chrome.svg" width="38"
-                                 height="38" data-bin="google-chrome-stable">
+                                 height="38" data-bin="google-chrome-stable"
+                                 title="'$"CHROME"'">
                             </button>'
                     fi
                     if [ -e /usr/lib/chromium/chromium ];then
                       echo -n '<button class="btn-img status-button btn-img-main"
                                     id="chromium">
                             <img src="icons/chromium.svg" width="38"
-                                 height="38" data-bin="chromium">
+                                 height="38" data-bin="chromium"
+                                 title="'$"CHROMIUM"'">
                             </button>'
                     fi
                     if [ -e /opt/microsoft/msedge/microsoft-edge ];then
                       echo -n '<button class="btn-img status-button btn-img-main"
                                     id="microsoft-edge-stable">
                             <img src="icons/edge.svg" width="38"
-                                 height="38" data-bin="microsoft-edge-stable">
+                                 height="38" data-bin="microsoft-edge-stable"
+                                 title="'$"EDGE"'">
                             </button>'
                     fi
                     if [ -e /usr/lib/firefox/firefox ];then
                       echo -n '<button class="btn-img status-button btn-img-main"
                                     id="firefox">
                             <img src="icons/firefox.svg" width="38"
-                                 height="38" data-bin="firefox">
+                                 height="38" data-bin="firefox"
+                                 title="'$"FIREFOX"'">
                             </button>'
                     fi
                     if [ -e /usr/lib/librewolf/librewolf ];then
                       echo -n '<button class="btn-img status-button btn-img-main"
                                     id="librewolf">
                             <img src="icons/librewolf.svg" width="38"
-                                 height="38" data-bin="librewolf">
+                                 height="38" data-bin="librewolf"
+                                 title="'$"LIBREWOLF"'">
                             </button>'
                     fi
                     if [ -e /opt/vivaldi/vivaldi ];then
                       echo -n '<button class="btn-img status-button btn-img-main"
                                     id="vivaldi-stable">
                             <img src="icons/vivaldi.svg" width="38"
-                                 height="38" data-bin="vivaldi-stable">
+                                 height="38" data-bin="vivaldi-stable"
+                                 title="'$"VIVALDI"'">
                             </button>'
                     fi
                     echo -n '
@@ -841,42 +874,48 @@ echo -n '
                       echo -n '<button class="btn-img status-button btn-img-main"
                                     id="com.brave.Browser">
                               <img src="icons/brave.svg" width="38"
-                                   height="38" data-bin="com.brave.Browser">
+                                   height="38" data-bin="com.brave.Browser"
+                                   title="'$"BRAVE (FLATPAK)"'">
                             </button>'
                     fi
                     if [ -e /var/lib/flatpak/exports/bin/com.google.Chrome ];then
                       echo -n '<button class="btn-img status-button btn-img-main"
                                     id="com.google.Chrome">
                               <img src="icons/chrome.svg" width="38"
-                                   height="38" data-bin="com.google.Chrome">
+                                   height="38" data-bin="com.google.Chrome"
+                                   title="'$"CHROME (FLATPAK)"'">
                             </button>'
                     fi
                     if [ -e /var/lib/flatpak/exports/bin/org.chromium.Chromium ];then
                       echo -n '<button class="btn-img status-button btn-img-main"
                                     id="org.chromium.Chromium">
                               <img src="icons/chromium.svg" width="38"
-                                   height="38" data-bin="org.chromium.Chromium">
+                                   height="38" data-bin="org.chromium.Chromium"
+                                   title="'$"CHROMIUM (FLATPAK)"'">
                             </button>'
                     fi
                     if [ -e /var/lib/flatpak/exports/bin/com.microsoft.Edge ];then
                       echo -n '<button class="btn-img status-button btn-img-main"
                                     id="com.microsoft.Edge">
                               <img src="icons/edge.svg" width="38"
-                                   height="38" data-bin="com.microsoft.Edge">
+                                   height="38" data-bin="com.microsoft.Edge"
+                                   title="'$"EDGE (FLATPAK)"'">
                             </button>'
                     fi
                     if [ -e /var/lib/flatpak/exports/bin/org.mozilla.firefox ];then
                       echo -n '<button class="btn-img status-button btn-img-main"
                                     id="org.mozilla.firefox">
                               <img src="icons/firefox.svg" width="38"
-                                   height="38" data-bin="org.mozilla.firefox">
+                                   height="38" data-bin="org.mozilla.firefox"
+                                   title="'$"FIREFOX (FLATPAK)"'">
                             </button>'
                     fi
                     if [ -e /var/lib/flatpak/exports/bin/io.gitlab.librewolf-community ];then
                       echo -n '<button class="btn-img status-button btn-img-main"
                                     id="io.gitlab.librewolf-community">
                               <img src="icons/librewolf.svg" width="38"
-                                   height="38" data-bin="io.gitlab.librewolf-community">
+                                   height="38" data-bin="io.gitlab.librewolf-community"
+                                   title="'$"LIBREWOLF (FLATPAK)"'">
                             </button>'
                     fi
                     echo -n '
