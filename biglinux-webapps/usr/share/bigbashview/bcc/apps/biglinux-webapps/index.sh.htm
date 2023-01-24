@@ -19,7 +19,7 @@ NATIVE=false
 FLATPAK=false
 COUNT_BROWSER=0
 
-echo '
+echo -n '
 <!DOCTYPE html>
 <html>
   <head>
@@ -154,92 +154,92 @@ echo '
                           <select class="svg-center" id="browserSelect" name="browser">'
 
                             if [ -e /usr/lib/brave-browser/brave ] || [ -e /usr/lib/brave-bin/brave ];then
-                              echo '<option value="brave">'$"BRAVE"'</option>'
+                              echo -n '<option value="brave">'$"BRAVE"'</option>'
                               NATIVE=true
                               COUNT_BROWSER=$((COUNT_BROWSER+1))
                             fi
 
                             if [ -e /opt/google/chrome/google-chrome ];then
-                              echo '<option value="google-chrome-stable">'$"CHROME"'</option>'
+                              echo -n '<option value="google-chrome-stable">'$"CHROME"'</option>'
                               NATIVE=true
                               COUNT_BROWSER=$((COUNT_BROWSER+1))
                             fi
 
                             if [ -e /usr/lib/chromium/chromium ];then
-                              echo '<option value="chromium">'$"CHROMIUM"'</option>'
+                              echo -n '<option value="chromium">'$"CHROMIUM"'</option>'
                               NATIVE=true
                               COUNT_BROWSER=$((COUNT_BROWSER+1))
                             fi
 
                             if [ -e /opt/microsoft/msedge/microsoft-edge ];then
-                              echo '<option value="microsoft-edge-stable">'$"EDGE"'</option>'
+                              echo -n '<option value="microsoft-edge-stable">'$"EDGE"'</option>'
                               NATIVE=true
                               COUNT_BROWSER=$((COUNT_BROWSER+1))
                             fi
 
                             if [ -e /usr/bin/epiphany ];then
-                              echo '<option value="epiphany">'$"EPIPHANY"'</option>'
+                              echo -n '<option value="epiphany">'$"EPIPHANY"'</option>'
                             fi
 
                             if [ -e /usr/lib/firefox/firefox ];then
-                              echo '<option value="firefox">'$"FIREFOX"'</option>'
+                              echo -n '<option value="firefox">'$"FIREFOX"'</option>'
                               NATIVE=true
                               COUNT_BROWSER=$((COUNT_BROWSER+1))
                             fi
 
                             if [ -e /usr/lib/librewolf/librewolf ];then
-                              echo '<option value="librewolf">'$"LIBREWOLF"'</option>'
+                              echo -n '<option value="librewolf">'$"LIBREWOLF"'</option>'
                               NATIVE=true
                               COUNT_BROWSER=$((COUNT_BROWSER+1))
                             fi
 
                             if [ -e /opt/vivaldi/vivaldi ];then
-                              echo '<option value="vivaldi-stable">'$"VIVALDI"'</option>'
+                              echo -n '<option value="vivaldi-stable">'$"VIVALDI"'</option>'
                               NATIVE=true
                               COUNT_BROWSER=$((COUNT_BROWSER+1))
                             fi
 
                             if [ -e /var/lib/flatpak/exports/bin/com.brave.Browser ];then
-                              echo '<option value="com.brave.Browser">'$"BRAVE (FLATPAK)"'</option>'
+                              echo -n '<option value="com.brave.Browser">'$"BRAVE (FLATPAK)"'</option>'
                               FLATPAK=true
                               COUNT_BROWSER=$((COUNT_BROWSER+1))
                             fi
 
                             if [ -e /var/lib/flatpak/exports/bin/com.google.Chrome ];then
-                              echo '<option value="com.google.Chrome">'$"CHROME (FLATPAK)"'</option>'
+                              echo -n '<option value="com.google.Chrome">'$"CHROME (FLATPAK)"'</option>'
                               FLATPAK=true
                               COUNT_BROWSER=$((COUNT_BROWSER+1))
                             fi
 
                             if [ -e /var/lib/flatpak/exports/bin/org.chromium.Chromium ];then
-                              echo '<option value="org.chromium.Chromium">'$"CHROMIUM (FLATPAK)"'</option>'
+                              echo -n '<option value="org.chromium.Chromium">'$"CHROMIUM (FLATPAK)"'</option>'
                               FLATPAK=true
                               COUNT_BROWSER=$((COUNT_BROWSER+1))
                             fi
 
                             if [ -e /var/lib/flatpak/exports/bin/com.microsoft.Edge ];then
-                              echo '<option value="com.microsoft.Edge">'$"EDGE (FLATPAK)"'</option>'
+                              echo -n '<option value="com.microsoft.Edge">'$"EDGE (FLATPAK)"'</option>'
                               FLATPAK=true
                               COUNT_BROWSER=$((COUNT_BROWSER+1))
                             fi
 
                             if [ -e /var/lib/flatpak/exports/bin/org.gnome.Epiphany ];then
-                              echo '<option value="org.gnome.Epiphany">'$"EPIPHANY (FLATPAK)"'</option>'
+                              echo -n '<option value="org.gnome.Epiphany">'$"EPIPHANY (FLATPAK)"'</option>'
                             fi
 
                             if [ -e /var/lib/flatpak/exports/bin/org.mozilla.firefox ];then
-                              echo '<option value="org.mozilla.firefox">'$"FIREFOX (FLATPAK)"'</option>'
+                              echo -n '<option value="org.mozilla.firefox">'$"FIREFOX (FLATPAK)"'</option>'
                               FLATPAK=true
                               COUNT_BROWSER=$((COUNT_BROWSER+1))
                             fi
 
                             if [ -e /var/lib/flatpak/exports/bin/io.gitlab.librewolf-community ];then
-                              echo '<option value="io.gitlab.librewolf-community">'$"LIBREWOLF (FLATPAK)"'</option>'
+                              echo -n '<option value="io.gitlab.librewolf-community">'$"LIBREWOLF (FLATPAK)"'</option>'
                               FLATPAK=true
                               COUNT_BROWSER=$((COUNT_BROWSER+1))
                             fi
 
-                    echo '</select>
+                    echo -n '</select>
 
                         </div>
                       </li>
@@ -622,7 +622,7 @@ echo '
     ' "${CUSTOMFILES[@]}"
     # End of gawk script
 
-    echo '      <!--EDIT MODAL-->
+    echo -n '      <!--EDIT MODAL-->
                 <div class="pop-up" id="editModal" style="width:700px">
                   <div class="pop-up__title">'$"Editar WebApp"'
                   <svg class="close" width="24" height="24" fill="none"
@@ -750,7 +750,7 @@ echo '
                 title='title="'$"Não existem navegadores compatíveis instalados no sistema!"'"'
             fi
 
-            echo '<div class="content-section-title" style="margin-bottom:0">
+            echo -n '<div class="content-section-title" style="margin-bottom:0">
                     '$"Navegador padrão<br>dos WebApps:"'
                   </div>
                   <button class="btn-img-main status-button" id="open-change-browsers" data-bin="'"${BROWSER}"'">
@@ -759,7 +759,7 @@ echo '
                   </button>
                 </div>'
           if [ $COUNT_BROWSER -eq 0 ];then
-          echo '<!--MODAL NO BROWSERS-->
+          echo -n '<!--MODAL NO BROWSERS-->
                 <div class="pop-up" id="change-browser" style="padding-bottom:30px">
                   <div class="pop-up__subtitle">
                   '$"Não existem navegadores compatíveis instalados no sistema!"'
@@ -769,7 +769,7 @@ echo '
                   </div>
                 </div>'
           else
-          echo '<!--CHANGE BROWSERS MODAL-->
+          echo -n '<!--CHANGE BROWSERS MODAL-->
                 <div class="pop-up" id="change-browser" style="padding-bottom:30px">
                   <div class="pop-up__title">'$"Selecione o navegador preferido:"'
                     <svg class="close" width="24" height="24" fill="none"
@@ -780,111 +780,111 @@ echo '
                     </svg>
                   </div>'
             if [ "$NATIVE" = "true" ];then
-            echo '<div class="pop-up__subtitle">'$"Nativo"'</div>
+            echo -n '<div class="pop-up__subtitle">'$"Nativo"'</div>
                   <div id="menu">'
                     if [ -e /usr/lib/brave-browser/brave ];then
-                      echo '<button class="btn-img status-button btn-img-main"
+                      echo -n '<button class="btn-img status-button btn-img-main"
                                     id="brave">
                             <img src="icons/brave.svg" width="38"
                                  height="38" data-bin="brave">
                             </button>'
                     fi
                     if [ -e /opt/google/chrome/google-chrome ];then
-                      echo '<button class="btn-img status-button btn-img-main"
+                      echo -n '<button class="btn-img status-button btn-img-main"
                                     id="google-chrome-stable">
                             <img src="icons/chrome.svg" width="38"
                                  height="38" data-bin="google-chrome-stable">
                             </button>'
                     fi
                     if [ -e /usr/lib/chromium/chromium ];then
-                      echo '<button class="btn-img status-button btn-img-main"
+                      echo -n '<button class="btn-img status-button btn-img-main"
                                     id="chromium">
                             <img src="icons/chromium.svg" width="38"
                                  height="38" data-bin="chromium">
                             </button>'
                     fi
                     if [ -e /opt/microsoft/msedge/microsoft-edge ];then
-                      echo '<button class="btn-img status-button btn-img-main"
+                      echo -n '<button class="btn-img status-button btn-img-main"
                                     id="microsoft-edge-stable">
                             <img src="icons/edge.svg" width="38"
                                  height="38" data-bin="microsoft-edge-stable">
                             </button>'
                     fi
                     if [ -e /usr/lib/firefox/firefox ];then
-                      echo '<button class="btn-img status-button btn-img-main"
+                      echo -n '<button class="btn-img status-button btn-img-main"
                                     id="firefox">
                             <img src="icons/firefox.svg" width="38"
                                  height="38" data-bin="firefox">
                             </button>'
                     fi
                     if [ -e /usr/lib/librewolf/librewolf ];then
-                      echo '<button class="btn-img status-button btn-img-main"
+                      echo -n '<button class="btn-img status-button btn-img-main"
                                     id="librewolf">
                             <img src="icons/librewolf.svg" width="38"
                                  height="38" data-bin="librewolf">
                             </button>'
                     fi
                     if [ -e /opt/vivaldi/vivaldi ];then
-                      echo '<button class="btn-img status-button btn-img-main"
+                      echo -n '<button class="btn-img status-button btn-img-main"
                                     id="vivaldi-stable">
                             <img src="icons/vivaldi.svg" width="38"
                                  height="38" data-bin="vivaldi-stable">
                             </button>'
                     fi
-                    echo '
+                    echo -n '
                   </div>'
             fi
             if [ "$FLATPAK" = "true" ];then
-            echo '<div class="pop-up__subtitle">'$"Flatpak"'</div>
+            echo -n '<div class="pop-up__subtitle">'$"Flatpak"'</div>
                   <div id="menu">'
                     if [ -e /var/lib/flatpak/exports/bin/com.brave.Browser ];then
-                      echo '<button class="btn-img status-button btn-img-main"
+                      echo -n '<button class="btn-img status-button btn-img-main"
                                     id="com.brave.Browser">
                               <img src="icons/brave.svg" width="38"
                                    height="38" data-bin="com.brave.Browser">
                             </button>'
                     fi
                     if [ -e /var/lib/flatpak/exports/bin/com.google.Chrome ];then
-                      echo '<button class="btn-img status-button btn-img-main"
+                      echo -n '<button class="btn-img status-button btn-img-main"
                                     id="com.google.Chrome">
                               <img src="icons/chrome.svg" width="38"
                                    height="38" data-bin="com.google.Chrome">
                             </button>'
                     fi
                     if [ -e /var/lib/flatpak/exports/bin/org.chromium.Chromium ];then
-                      echo '<button class="btn-img status-button btn-img-main"
+                      echo -n '<button class="btn-img status-button btn-img-main"
                                     id="org.chromium.Chromium">
                               <img src="icons/chromium.svg" width="38"
                                    height="38" data-bin="org.chromium.Chromium">
                             </button>'
                     fi
                     if [ -e /var/lib/flatpak/exports/bin/com.microsoft.Edge ];then
-                      echo '<button class="btn-img status-button btn-img-main"
+                      echo -n '<button class="btn-img status-button btn-img-main"
                                     id="com.microsoft.Edge">
                               <img src="icons/edge.svg" width="38"
                                    height="38" data-bin="com.microsoft.Edge">
                             </button>'
                     fi
                     if [ -e /var/lib/flatpak/exports/bin/org.mozilla.firefox ];then
-                      echo '<button class="btn-img status-button btn-img-main"
+                      echo -n '<button class="btn-img status-button btn-img-main"
                                     id="org.mozilla.firefox">
                               <img src="icons/firefox.svg" width="38"
                                    height="38" data-bin="org.mozilla.firefox">
                             </button>'
                     fi
                     if [ -e /var/lib/flatpak/exports/bin/io.gitlab.librewolf-community ];then
-                      echo '<button class="btn-img status-button btn-img-main"
+                      echo -n '<button class="btn-img status-button btn-img-main"
                                     id="io.gitlab.librewolf-community">
                               <img src="icons/librewolf.svg" width="38"
                                    height="38" data-bin="io.gitlab.librewolf-community">
                             </button>'
                     fi
-                    echo '
+                    echo -n '
                   </div>'
             fi
-          echo '</div>'
+          echo -n '</div>'
           fi
-          echo '<div class="content-section" style="margin-top:0">
+          echo -n '<div class="content-section" style="margin-top:0">
                   <div class="content-section-title" style="text-align:left">'$"WebApps Nativos"'</div>
                   <ul id="content-ul">'
 
@@ -978,7 +978,7 @@ echo '
     }' ${files[@]}
     # End of gawk script
 
-    echo '
+    echo -n '
                   </ul>
                 </div><br/>
               </div>

@@ -239,5 +239,4 @@ nohup kbuildsycoca5 &> /dev/null &
 
 rm -f /tmp/*.png
 rm -rf /tmp/.bigwebicons
-printf 0
 exit

@@ -121,7 +121,7 @@ case "${CATEGORY/;/}" in
     *):;;
 esac
 
-echo '
+echo -n '
 <div class="content-section">
   <ul style="margin-top:-20px">
     <li>
@@ -177,69 +177,23 @@ echo '
         '$"Navegador"'
       </div>
       <div class="button-wrapper">
-        <select class="svg-center" id="browserSelectEdit" name="browserNew">'
-
-          if [ -e /usr/lib/brave-browser/brave ] || [ -e /usr/lib/brave-bin/brave ];then
-            echo '<option '$selected_brave' value="brave">'$"BRAVE"'</option>'
-          fi
-
-          if [ -e /opt/google/chrome/google-chrome ];then
-            echo '<option '$selected_chrome' value="google-chrome-stable">'$"CHROME"'</option>'
-          fi
-
-          if [ -e /usr/lib/chromium/chromium ];then
-            echo '<option '$selected_chromium' value="chromium">'$"CHROMIUM"'</option>'
-          fi
-
-          if [ -e /opt/microsoft/msedge/microsoft-edge ];then
-            echo '<option '$selected_edge' value="microsoft-edge-stable">'$"EDGE"'</option>'
-          fi
-
-          if [ -e /usr/bin/epiphany ];then
-            echo '<option '$selected_epiphany' value="epiphany">'$"EPIPHANY"'</option>'
-          fi
-
-          if [ -e /usr/lib/firefox/firefox ];then
-            echo '<option '$selected_firefox' value="firefox">'$"FIREFOX"'</option>'
-          fi
-
-          if [ -e /usr/lib/librewolf/librewolf ];then
-            echo '<option '$selected_librewolf' value="librewolf">'$"LIBREWOLF"'</option>'
-          fi
-
-          if [ -e /opt/vivaldi/vivaldi ];then
-            echo '<option '$selected_vivaldi' value="vivaldi-stable">'$"VIVALDI"'</option>'
-          fi
-
-          if [ -e /var/lib/flatpak/exports/bin/com.brave.Browser ];then
-            echo '<option '$selected_brave_flatpak' value="com.brave.Browser">'$"BRAVE (FLATPAK)"'</option>'
-          fi
-
-          if [ -e /var/lib/flatpak/exports/bin/com.google.Chrome ];then
-            echo '<option '$selected_chrome_flatpak' value="com.google.Chrome">'$"CHROME (FLATPAK)"'</option>'
-          fi
-
-          if [ -e /var/lib/flatpak/exports/bin/org.chromium.Chromium ];then
-            echo '<option '$selected_chromium_flatpak' value="org.chromium.Chromium">'$"CHROMIUM (FLATPAK)"'</option>'
-          fi
-
-          if [ -e /var/lib/flatpak/exports/bin/com.microsoft.Edge ];then
-            echo '<option '$selected_edge_flatpak' value="com.microsoft.Edge">'$"EDGE (FLATPAK)"'</option>'
-          fi
-
-          if [ -e /var/lib/flatpak/exports/bin/org.gnome.Epiphany ];then
-            echo '<option '$selected_epiphany_flatpak' value="org.gnome.Epiphany">'$"EPIPHANY (FLATPAK)"'</option>'
-          fi
-
-          if [ -e /var/lib/flatpak/exports/bin/org.mozilla.firefox ];then
-            echo '<option '$selected_firefox_flatpak' value="org.mozilla.firefox">'$"FIREFOX (FLATPAK)"'</option>'
-          fi
-
-          if [ -e /var/lib/flatpak/exports/bin/io.gitlab.librewolf-community ];then
-            echo '<option '$selected_librewolf_flatpak' value="io.gitlab.librewolf-community">'$"LIBREWOLF (FLATPAK)"'</option>'
-          fi
-
-  echo '</select>
+        <select class="svg-center" id="browserSelectEdit" name="browserNew">
+          <option '$selected_brave' value="brave">'$"BRAVE"'</option>
+          <option '$selected_chrome' value="google-chrome-stable">'$"CHROME"'</option>
+          <option '$selected_chromium' value="chromium">'$"CHROMIUM"'</option>
+          <option '$selected_edge' value="microsoft-edge-stable">'$"EDGE"'</option>
+          <option '$selected_epiphany' value="epiphany">'$"EPIPHANY"'</option>
+          <option '$selected_firefox' value="firefox">'$"FIREFOX"'</option>
+          <option '$selected_librewolf' value="librewolf">'$"LIBREWOLF"'</option>
+          <option '$selected_vivaldi' value="vivaldi-stable">'$"VIVALDI"'</option>
+          <option '$selected_brave_flatpak' value="com.brave.Browser">'$"BRAVE (FLATPAK)"'</option>
+          <option '$selected_chrome_flatpak' value="com.google.Chrome">'$"CHROME (FLATPAK)"'</option>
+          <option '$selected_chromium_flatpak' value="org.chromium.Chromium">'$"CHROMIUM (FLATPAK)"'</option>
+          <option '$selected_edge_flatpak' value="com.microsoft.Edge">'$"EDGE (FLATPAK)"'</option>
+          <option '$selected_epiphany_flatpak' value="org.gnome.Epiphany">'$"EPIPHANY (FLATPAK)"'</option>
+          <option '$selected_firefox_flatpak' value="org.mozilla.firefox">'$"FIREFOX (FLATPAK)"'</option>
+          <option '$selected_librewolf_flatpak' value="io.gitlab.librewolf-community">'$"LIBREWOLF (FLATPAK)"'</option>
+        </select>
         <input type="hidden" name="browserOld" value="'$BROWSER'"/>
         <input type="hidden" name="filedesk" value="'$filedesk'"/>
         <input type="hidden" name="categoryOld" value="'${CATEGORY/;/}'"/>

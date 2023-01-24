@@ -29,6 +29,4 @@ rm "$filedesk"
 
 nohup update-desktop-database -q ~/.local/share/applications &
 nohup kbuildsycoca5 &> /dev/null &
-
-printf 0
 exit
