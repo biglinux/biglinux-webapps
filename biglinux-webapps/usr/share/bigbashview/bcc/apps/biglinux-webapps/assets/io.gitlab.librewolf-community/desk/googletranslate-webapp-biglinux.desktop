@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Translator
+Name[pt]=Tradutor
+Exec=~/.local/bin/googletranslate-webapp-biglinux-io.gitlab.librewolf-community
+Icon=google-translate.png
+Categories=Google;

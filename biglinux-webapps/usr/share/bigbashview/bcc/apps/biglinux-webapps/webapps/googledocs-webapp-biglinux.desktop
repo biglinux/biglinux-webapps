@@ -6,6 +6,6 @@ Type=Application
 Name=Docs
 Name[pt]=Documentos
 Exec=/usr/bin/biglinux-webapp --class="docs.google.com,Chromium-browser" --profile-directory=Default --app=https://docs.google.com
-Icon=docs.png
+Icon=google-docs.png
 StartupWMClass=docs.google.com
 Categories=Google;

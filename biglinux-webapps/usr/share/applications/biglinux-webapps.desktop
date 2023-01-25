@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=Add and Remove Web Apps
+Name=Add and Remove WebApps
 Name[bg]=Добавяне и премахване на уеб приложения
 Name[cs]=Přidání a odebrání webových aplikací
 Name[da]=Tilføj og fjern webapps
@@ -20,7 +20,7 @@ Name[ko]=웹앱 추가 및 제거
 Name[nl]=Web Apps toevoegen en verwijderen
 Name[no]=Legge til og fjerne webapper
 Name[pl]=Dodawanie i usuwanie aplikacji internetowych
-Name[pt]=Adicionar e Remover Web Apps
+Name[pt]=Adicionar e Remover WebApps
 Name[ro]=Adăugarea și eliminarea aplicațiilor web
 Name[ru]=Добавление и удаление веб-приложений
 Name[sk]=Pridanie a odstránenie webových aplikácií
@@ -29,7 +29,7 @@ Name[tr]=Web Uygulamaları Ekleme ve Kaldırma
 Name[uk]=Додавання та видалення веб-програм
 Name[zh]=添加和删除 Web 应用
 Icon=webapp
-Exec=biglinux-webapps
+Exec=webapp-manager-biglinux
 Categories=Webapps;
 Terminal=false
 StartupNotify=true

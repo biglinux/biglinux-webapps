@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Snapdrop
+Exec=~/.local/bin/snapdrop-webapp-biglinux-io.gitlab.librewolf-community
+Icon=snapdrop.png
+Categories=Webapps;

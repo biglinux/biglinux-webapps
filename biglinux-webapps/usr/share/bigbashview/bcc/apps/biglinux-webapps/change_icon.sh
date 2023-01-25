@@ -1,14 +1,11 @@
 #!/usr/bin/env bash
 
-#Translation
-export TEXTDOMAINDIR="/usr/share/locale"
-export TEXTDOMAIN=biglinux-webapps
+FILENAME=$(kdialog --getopenfilename "$(xdg-user-dir PICTURES)" 'image/bmp image/jpeg image/png image/x-icon' 2>/dev/null)
 
-cd "$(xdg-user-dir PICTURES)"
-FILENAME="$(yad --file --image-filter                \
-                --add-preview --large-preview        \
-                --width=700 --height=500             \
-                --center --title=$"Selecionar imagem" \
-                --window-icon=image --skip-taskbar)"
-echo -n "$FILENAME"
+if [ ! "$FILENAME" ];then
+    exit
+fi
+
+NEW_FILE=$(./resize_favicon.sh.py "$FILENAME")
+printf '%s' "$NEW_FILE"
 exit

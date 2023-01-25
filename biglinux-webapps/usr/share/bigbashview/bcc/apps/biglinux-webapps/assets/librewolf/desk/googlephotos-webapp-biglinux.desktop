@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Photos
+Exec=~/.local/bin/googlephotos-webapp-biglinux-librewolf
+Icon=google-photos.png
+Categories=Google;

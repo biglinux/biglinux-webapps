@@ -6,6 +6,6 @@ Type=Application
 Name=Translator
 Name[pt]=Tradutor
 Exec=/usr/bin/biglinux-webapp --class="translate.google.com,Chromium-browser" --profile-directory=Default --app=https://translate.google.com
-Icon=translate.png
+Icon=google-translate.png
 StartupWMClass=translate.google.com
 Categories=Google;

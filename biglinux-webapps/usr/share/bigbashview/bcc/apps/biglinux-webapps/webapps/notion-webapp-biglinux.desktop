@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Notion
+Exec=/usr/bin/biglinux-webapp --class=www.notion.so,Chromium-browser --profile-directory=Default --app=https://www.notion.so
+Icon=notion.png
+Categories=Webapps;
+StartupWMClass=www.notion.so

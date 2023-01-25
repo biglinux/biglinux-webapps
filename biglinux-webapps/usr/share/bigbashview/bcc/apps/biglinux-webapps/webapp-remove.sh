@@ -1,28 +1,32 @@
 #!/usr/bin/env bash
 
-ICONDESK="$(grep '^Icon=' $filedesk | sed 's|Icon=||')"
-DESKNAME="$(basename $filedesk)"
-NAMEDESK="$(sed 's|-webapp-biglinux-custom.desktop||' <<< $DESKNAME)"
+ICONDESK=$(awk -F'=' '/Icon/{print $2}' "$filedesk")
+LINK=$(xdg-user-dir DESKTOP)/"${filedesk##*/}"
 
-USER_DESKTOP="$(xdg-user-dir DESKTOP)"
-FOLDER="$HOME/.bigwebapps/$NAMEDESK"
-DATA_DIR="$(grep '^Exec=' $filedesk | sed 's|.*-dir=||;s| --cl.*||')"
-EPI_DIR="$(grep '^Exec=' $filedesk | cut -d' ' -f3 | sed 's|--profile=||')"
+if grep -q '..no.first.run' "$filedesk";then
+    DATA_DIR=$(awk '/Exec/{sub(/--user-data-dir=/,"");print $2}' "$filedesk")
+    [ -d "$DATA_DIR" ] && rm -r "$DATA_DIR"
+fi
 
-[ -e "$USER_DESKTOP/$DESKNAME" ] && unlink "$USER_DESKTOP/$DESKNAME"
-[ -e "$ICONDESK" ] && rm "$ICONDESK"
-[ -d "$FOLDER" ] && rm -r "$FOLDER"
-[ -d "$EPI_DIR" ] && rm -r "$EPI_DIR" && rmdir $HOME/.config/org.gnome.Epiphany.WebApp*
-[ -d "$DATA_DIR" ] && rm -r "$DATA_DIR"
-[ "$(grep '.local/bin' $filedesk)" ] && {
-    DESKBIN="$(grep '^Exec=' $filedesk  | sed 's|Exec=||')"
+if grep -q '..profile=' "$filedesk";then
+    EPI_DATA=$(awk '/Exec/{sub(/--profile=/,"");print $3}' "$filedesk")
+    DIR_PORTAL_APP=~/.local/share/xdg-desktop-portal/applications
+    DIR_PORTAL_FILEDESK="$DIR_PORTAL_APP/${filedesk##*/}"
+    [ -e "$DIR_PORTAL_FILEDESK" ] && rm "$DIR_PORTAL_FILEDESK"
+    rm -r "$EPI_DATA"
+fi
+
+if grep -q '.local.bin' "$filedesk";then
+    DESKBIN=~/.local/bin/$(sed -n '/^Exec/s/.*\/\([^\/]*\)$/\1/p' "$filedesk")
+    DATA_FOLDER=$(sed -n '/^FOLDER/s/.*=\([^\n]*\).*/\1/p' "$DESKBIN")
     rm "$DESKBIN"
-}
+    rm -r "$DATA_FOLDER"
+fi
+
+[ -L "$LINK" ] && unlink "$LINK"
+[ -e "$ICONDESK" ] && rm "$ICONDESK"
 rm "$filedesk"
 
-nohup update-desktop-database -q $HOME/.local/share/applications &
+nohup update-desktop-database -q ~/.local/share/applications &
 nohup kbuildsycoca5 &> /dev/null &
-
-resp="$?"
-echo -n $resp
 exit

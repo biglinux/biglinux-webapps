@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Photopea
+Exec=~/.local/bin/photopea-webapp-biglinux-org.mozilla.firefox
+Icon=photopea.png
+Categories=Webapps;
