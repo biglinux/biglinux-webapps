@@ -16,24 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "BigLinux WebApps Manager"
-
-msgid "Selecionar imagem"
-msgstr "選擇圖像"
-
-msgid "Adicionar WebApps"
-msgstr "WebApp 添加"
-
-msgid "WebApps Adicionados"
-msgstr "添加了 WebApp"
-
-msgid "WebApps BigLinux"
-msgstr "WebApps BigLinux"
-
-msgid "Preencha os campos"
-msgstr "填写字段"
-
 msgid "URL:"
 msgstr "网址："
 
@@ -51,6 +33,51 @@ msgstr "改變"
 
 msgid "Navegador"
 msgstr "浏览器"
+
+msgid "BRAVE"
+msgstr "勇敢"
+
+msgid "CHROME"
+msgstr "铬"
+
+msgid "CHROMIUM"
+msgstr "铬"
+
+msgid "EDGE"
+msgstr "边缘"
+
+msgid "EPIPHANY"
+msgstr "主显节"
+
+msgid "FIREFOX"
+msgstr "火狐"
+
+msgid "LIBREWOLF"
+msgstr "自由狼"
+
+msgid "VIVALDI"
+msgstr "维瓦尔第"
+
+msgid "BRAVE (FLATPAK)"
+msgstr "勇敢（平坦帕克）"
+
+msgid "CHROME (FLATPAK)"
+msgstr "铬（平帕克）"
+
+msgid "CHROMIUM (FLATPAK)"
+msgstr "铬（平帕克）"
+
+msgid "EDGE (FLATPAK)"
+msgstr "边缘（平帕克）"
+
+msgid "EPIPHANY (FLATPAK)"
+msgstr "顿悟（平帕克）"
+
+msgid "FIREFOX (FLATPAK)"
+msgstr "火狐 （FLATPAK）"
+
+msgid "LIBREWOLF (FLATPAK)"
+msgstr "自由狼（弗拉帕克）"
 
 msgid "Categoria"
 msgstr "类别"
@@ -70,41 +97,62 @@ msgstr "遊戲"
 msgid "MULTIMÍDIA"
 msgstr "多媒體"
 
+msgid "WEBAPPS"
+msgstr "网络应用"
+
+msgid "WEBAPPS GOOGLE"
+msgstr "网络应用 谷歌"
+
 msgid "Criar atalho na Área de Trabalho"
 msgstr "創建桌面快捷方式"
 
 msgid "Perfil adicional"
 msgstr "附加配置文件"
 
-msgid "YouTube Modo TV"
-msgstr "YouTube 電視模式"
+msgid "Selecione o ícone preferido:"
+msgstr "選擇您喜歡的圖標："
 
-msgid "Modo YouTube TV"
-msgstr "优酷电视模式"
-
-msgid "Adicionar"
-msgstr "添加"
-
-msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
-msgstr "要添加 WebApp，您需要输入 URL 和名称。"
+msgid "Não é possível aplicar a edição sem Nome!"
+msgstr "无法应用未命名的编辑！"
 
 msgid "Fechar"
 msgstr "关闭"
 
-msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
-msgstr "要检测名称和图标，您需要输入URL。"
+msgid "Não é possível aplicar a edição sem alterações!"
+msgstr "如果不进行更改，则无法应用编辑！"
+
+msgid "O WebApp foi editado com sucesso!"
+msgstr "网页应用已成功编辑！"
+
+msgid "Adicionar WebApps"
+msgstr "WebApp 添加"
+
+msgid "WebApps Adicionados"
+msgstr "添加了 WebApp"
+
+msgid "WebApps BigLinux"
+msgstr "WebApps BigLinux"
+
+msgid "https://www.exemplo.com"
+msgstr "https://www.exemplo.com"
+
+msgid "Exemplo"
+msgstr "例"
+
+msgid "Adicionar"
+msgstr "添加"
+
+msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
+msgstr "要添加 Web 应用，<br> 您必须输入 URL 和名称。"
+
+msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
+msgstr "要检测名称和图标，<br> 您需要输入网址。"
 
 msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
 msgstr "URL 无效或连接失败。<br>尝试通过“更改”按钮插入图标。"
 
 msgid "O WebApp foi adicionado com sucesso!"
 msgstr "WebApp 已成功添加！"
-
-msgid "Ícones encontrados"
-msgstr "找到圖標"
-
-msgid "Selecione o ícone preferido:"
-msgstr "選擇您喜歡的圖標："
 
 msgid "Desenvolvimento"
 msgstr "发展"
@@ -121,20 +169,66 @@ msgstr "游戏"
 msgid "Multimídia"
 msgstr "多媒体"
 
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "您確定要刪除此 WebApp 嗎？"
+msgid "Internet"
+msgstr "互联网"
+
+msgid "Google"
+msgstr "谷歌"
+
+msgid "WebApps"
+msgstr "网络应用"
 
 msgid "Nenhum WebApp adicionado!"
 msgstr "沒有添加 WebApp！"
 
+msgid "Aplicar"
+msgstr "应用"
+
+msgid "Cancelar"
+msgstr "取消"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "您確定要刪除此 WebApp 嗎？"
+
+msgid "Editar WebApp"
+msgstr "编辑网页应用"
+
+msgid "O navegador não está instalado!"
+msgstr "浏览器未安装！"
+
+msgid "Não existem navegadores compatíveis instalados no sistema!"
+msgstr "系统上没有安装兼容的浏览器！"
+
 msgid "Navegador padrão<br>dos WebApps:"
 msgstr "默认浏览器<br>网络应用："
-
-msgid "Alterar navegador"
-msgstr "更換瀏覽器"
 
 msgid "Selecione o navegador preferido:"
 msgstr "選擇您喜歡的瀏覽器："
 
+msgid "Nativo"
+msgstr "土著"
+
+msgid "Flatpak"
+msgstr "弗拉特帕克"
+
 msgid "WebApps Nativos"
 msgstr "本地网络应用程序"
+
+msgid ""
+"O navegador definido para abrir os WebApps não está instalado! \\n"
+"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+msgstr ""
+"未安装设置为打开 Web 应用程序的浏览器！\\n"
+"尝试在 Web 应用管理器中更改浏览器！\\n"
+
+msgid "O Gerenciador de WebApps BigLinux já está aberto!"
+msgstr "BigLinux WebApps Manager 现已开放！"
+
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "没有安装支持 WebApps 的浏览器！"
+
+msgid "Será necessário instalar mais um navegador!"
+msgstr "您将需要再安装一个浏览器！"
+
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "BigLinux WebApps Manager"

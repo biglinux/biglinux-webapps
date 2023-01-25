@@ -16,24 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "BigLinux WebApp Framkvæmdastjóri"
-
-msgid "Selecionar imagem"
-msgstr "Veldu mynd"
-
-msgid "Adicionar WebApps"
-msgstr "Setja WebApps"
-
-msgid "WebApps Adicionados"
-msgstr "WebApps bætt"
-
-msgid "WebApps BigLinux"
-msgstr "BigLinux WebApps"
-
-msgid "Preencha os campos"
-msgstr "Fylltu út reitina"
-
 msgid "URL:"
 msgstr "Vefslóð:"
 
@@ -51,6 +33,51 @@ msgstr "breyta"
 
 msgid "Navegador"
 msgstr "Vafri"
+
+msgid "BRAVE"
+msgstr "HUGRAKKUR"
+
+msgid "CHROME"
+msgstr "KRÓM"
+
+msgid "CHROMIUM"
+msgstr "KRÓM"
+
+msgid "EDGE"
+msgstr "BRÚN"
+
+msgid "EPIPHANY"
+msgstr "Þrettándi"
+
+msgid "FIREFOX"
+msgstr "FIREFOX"
+
+msgid "LIBREWOLF"
+msgstr "LIBREWOLF"
+
+msgid "VIVALDI"
+msgstr "VIVALDI"
+
+msgid "BRAVE (FLATPAK)"
+msgstr "HUGRAKKUR (FLATPAK)"
+
+msgid "CHROME (FLATPAK)"
+msgstr "KRÓM (FLATPAK)"
+
+msgid "CHROMIUM (FLATPAK)"
+msgstr "KRÓM (FLATPAK)"
+
+msgid "EDGE (FLATPAK)"
+msgstr "EDGE (FLATPAK)"
+
+msgid "EPIPHANY (FLATPAK)"
+msgstr "EPIPHANY (FLATPAK)"
+
+msgid "FIREFOX (FLATPAK)"
+msgstr "FIREFOX (FLATPAK)"
+
+msgid "LIBREWOLF (FLATPAK)"
+msgstr "LIBREWOLF (FLATPAK)"
 
 msgid "Categoria"
 msgstr "Flokkur"
@@ -70,41 +97,62 @@ msgstr "LEIKIR"
 msgid "MULTIMÍDIA"
 msgstr "MARGMIÐLUN"
 
+msgid "WEBAPPS"
+msgstr "VEFFORRIT"
+
+msgid "WEBAPPS GOOGLE"
+msgstr "WEBAPPS GOOGLE"
+
 msgid "Criar atalho na Área de Trabalho"
 msgstr "Búðu til flýtileið á skjáborðinu"
 
 msgid "Perfil adicional"
 msgstr "Viðbótarupplýsingar upplýsingar"
 
-msgid "YouTube Modo TV"
-msgstr "YouTube sjónvarpsstilling"
+msgid "Selecione o ícone preferido:"
+msgstr "Veldu valinn táknið:"
 
-msgid "Modo YouTube TV"
-msgstr "YouTube sjónvarpsstilling"
-
-msgid "Adicionar"
-msgstr "Bæta"
-
-msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
-msgstr "Til að bæta við WebApp þarftu að slá inn slóðina og nafnið."
+msgid "Não é possível aplicar a edição sem Nome!"
+msgstr "Get ekki beitt ónefndri klippingu!"
 
 msgid "Fechar"
 msgstr "Loka"
 
-msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
-msgstr "Til að greina nafnið og táknið þarftu að slá inn slóðina."
+msgid "Não é possível aplicar a edição sem alterações!"
+msgstr "Þú getur ekki beitt klippingu án breytinga!"
+
+msgid "O WebApp foi editado com sucesso!"
+msgstr "WebApp hefur verið breytt með góðum árangri!"
+
+msgid "Adicionar WebApps"
+msgstr "Setja WebApps"
+
+msgid "WebApps Adicionados"
+msgstr "WebApps bætt"
+
+msgid "WebApps BigLinux"
+msgstr "BigLinux WebApps"
+
+msgid "https://www.exemplo.com"
+msgstr "https://www.exemplo.com"
+
+msgid "Exemplo"
+msgstr "Dæmi"
+
+msgid "Adicionar"
+msgstr "Bæta"
+
+msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
+msgstr "Til að bæta við WebApp,<br> þú verður að slá inn vefslóðina og nafnið."
+
+msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
+msgstr "Til að greina nafn og táknmynd,<br> þú þarft að slá inn slóðina."
 
 msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
 msgstr "Vefslóðin er ógild eða tengingin mistókst.<br>Prófaðu að setja inn táknið með hnappinn Breyta."
 
 msgid "O WebApp foi adicionado com sucesso!"
 msgstr "The WebApp var bætt við!"
-
-msgid "Ícones encontrados"
-msgstr "Fann tákn"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Veldu valinn táknið:"
 
 msgid "Desenvolvimento"
 msgstr "Þróun"
@@ -121,20 +169,66 @@ msgstr "Leikir"
 msgid "Multimídia"
 msgstr "Margmiðlun"
 
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Ertu viss um að þú viljir fjarlægja þetta WebApp?"
+msgid "Internet"
+msgstr "Internet"
+
+msgid "Google"
+msgstr "Google"
+
+msgid "WebApps"
+msgstr "WebApps"
 
 msgid "Nenhum WebApp adicionado!"
 msgstr "Engin WebApp bætt við!"
 
+msgid "Aplicar"
+msgstr "Nota"
+
+msgid "Cancelar"
+msgstr "Afturkalla"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "Ertu viss um að þú viljir fjarlægja þetta WebApp?"
+
+msgid "Editar WebApp"
+msgstr "Breyta WebApp"
+
+msgid "O navegador não está instalado!"
+msgstr "Vafrinn er ekki uppsettur!"
+
+msgid "Não existem navegadores compatíveis instalados no sistema!"
+msgstr "Það eru engir samhæfir vafrar settir upp á kerfinu!"
+
 msgid "Navegador padrão<br>dos WebApps:"
 msgstr "Sjálfgefinn vafri<br>webapps:"
-
-msgid "Alterar navegador"
-msgstr "Breyta vafra"
 
 msgid "Selecione o navegador preferido:"
 msgstr "Veldu valinn vafra:"
 
+msgid "Nativo"
+msgstr "Innlendur"
+
+msgid "Flatpak"
+msgstr "Flatpak"
+
 msgid "WebApps Nativos"
 msgstr "Innfædd vefforrit"
+
+msgid ""
+"O navegador definido para abrir os WebApps não está instalado! \\n"
+"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+msgstr ""
+"Vafrasettið til að opna WebApps er ekki uppsett! \\n"
+"Reyndu að breyta vafranum í WebApps Manager! \\n"
+
+msgid "O Gerenciador de WebApps BigLinux já está aberto!"
+msgstr "BigLinux WebApps Manager er nú opinn!"
+
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "Það eru engir uppsettir vafrar sem styðja WebApps!"
+
+msgid "Será necessário instalar mais um navegador!"
+msgstr "Þú verður að setja upp einn vafra í viðbót!"
+
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "BigLinux WebApp Framkvæmdastjóri"

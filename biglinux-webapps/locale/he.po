@@ -16,24 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "מנהל אפליקציות האינטרנט של BigLinux"
-
-msgid "Selecionar imagem"
-msgstr "בחר תמונה"
-
-msgid "Adicionar WebApps"
-msgstr "הוסף אפליקציות אינטרנט"
-
-msgid "WebApps Adicionados"
-msgstr "WebApps נוסף"
-
-msgid "WebApps BigLinux"
-msgstr "אפליקציות אינטרנט של BigLinux"
-
-msgid "Preencha os campos"
-msgstr "מלא את השדות"
-
 msgid "URL:"
 msgstr "כתובת אתר:"
 
@@ -51,6 +33,51 @@ msgstr "לתקן"
 
 msgid "Navegador"
 msgstr "דפדפן"
+
+msgid "BRAVE"
+msgstr "אמיץ"
+
+msgid "CHROME"
+msgstr "כרום"
+
+msgid "CHROMIUM"
+msgstr "כרום"
+
+msgid "EDGE"
+msgstr "גבול"
+
+msgid "EPIPHANY"
+msgstr "חג ההתגלות"
+
+msgid "FIREFOX"
+msgstr "פיירפוקס"
+
+msgid "LIBREWOLF"
+msgstr "ליברוולף"
+
+msgid "VIVALDI"
+msgstr "ויואלדי"
+
+msgid "BRAVE (FLATPAK)"
+msgstr "אמיץ (פלאטפאק)"
+
+msgid "CHROME (FLATPAK)"
+msgstr "כרום (פלאטפאק)"
+
+msgid "CHROMIUM (FLATPAK)"
+msgstr "כרום (פלאטפאק)"
+
+msgid "EDGE (FLATPAK)"
+msgstr "אדג' (פלאטפאק)"
+
+msgid "EPIPHANY (FLATPAK)"
+msgstr "אפיפניה (פלאטפאק)"
+
+msgid "FIREFOX (FLATPAK)"
+msgstr "פיירפוקס (פלאטפאק)"
+
+msgid "LIBREWOLF (FLATPAK)"
+msgstr "LIBREWOLF (FLATPAK)"
 
 msgid "Categoria"
 msgstr "קטגוריה"
@@ -70,41 +97,62 @@ msgstr "משחקים"
 msgid "MULTIMÍDIA"
 msgstr "מולטימדיה"
 
+msgid "WEBAPPS"
+msgstr "אפליקציות אינטרנט"
+
+msgid "WEBAPPS GOOGLE"
+msgstr "וובאפים גוגל"
+
 msgid "Criar atalho na Área de Trabalho"
 msgstr "צור קיצור דרך בשולחן העבודה"
 
 msgid "Perfil adicional"
 msgstr "פרופיל נוסף"
 
-msgid "YouTube Modo TV"
-msgstr "מצב טלוויזיה ביוטיוב"
+msgid "Selecione o ícone preferido:"
+msgstr "בחר בסמל המועדף:"
 
-msgid "Modo YouTube TV"
-msgstr "מצב טלוויזיה ביוטיוב"
-
-msgid "Adicionar"
-msgstr "הוסף"
-
-msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
-msgstr "כדי להוסיף WebApp, עליך להזין את כתובת ה- URL ואת השם."
+msgid "Não é possível aplicar a edição sem Nome!"
+msgstr "לא ניתן להחיל עריכה ללא שם!"
 
 msgid "Fechar"
 msgstr "סגור"
 
-msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
-msgstr "כדי לזהות את השם והסמל עליך להזין את כתובת ה- URL."
+msgid "Não é possível aplicar a edição sem alterações!"
+msgstr "לא ניתן להחיל עריכה ללא שינויים!"
+
+msgid "O WebApp foi editado com sucesso!"
+msgstr "WebApp נערך בהצלחה!"
+
+msgid "Adicionar WebApps"
+msgstr "הוסף אפליקציות אינטרנט"
+
+msgid "WebApps Adicionados"
+msgstr "WebApps נוסף"
+
+msgid "WebApps BigLinux"
+msgstr "אפליקציות אינטרנט של BigLinux"
+
+msgid "https://www.exemplo.com"
+msgstr "https://www.exemplo.com"
+
+msgid "Exemplo"
+msgstr "דוגמה"
+
+msgid "Adicionar"
+msgstr "הוסף"
+
+msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
+msgstr "כדי להוסיף WebApp,<br> עליך להזין את כתובת האתר ואת השם."
+
+msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
+msgstr "כדי לזהות את השם והסמל,<br> עליך להזין את כתובת האתר."
 
 msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
 msgstr "כתובת ה- URL אינה חוקית או שהחיבור נכשל.<br>נסה להוסיף את הסמל על-ידי הלחצן 'שנה'."
 
 msgid "O WebApp foi adicionado com sucesso!"
 msgstr "ה- WebApp נוסף בהצלחה!"
-
-msgid "Ícones encontrados"
-msgstr "סמלים שנמצאו"
-
-msgid "Selecione o ícone preferido:"
-msgstr "בחר בסמל המועדף:"
 
 msgid "Desenvolvimento"
 msgstr "פיתוח"
@@ -121,20 +169,66 @@ msgstr "משחקים"
 msgid "Multimídia"
 msgstr "מולטימדיה"
 
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "האם אתה בטוח שברצונך להסיר WebApp זה?"
+msgid "Internet"
+msgstr "אינטרנט"
+
+msgid "Google"
+msgstr "גוגל"
+
+msgid "WebApps"
+msgstr "אפליקציות אינטרנט"
 
 msgid "Nenhum WebApp adicionado!"
 msgstr "לא הוסיף WebApp!"
 
+msgid "Aplicar"
+msgstr "החל"
+
+msgid "Cancelar"
+msgstr "ביטל"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "האם אתה בטוח שברצונך להסיר WebApp זה?"
+
+msgid "Editar WebApp"
+msgstr "ערוך את אפליקציית האינטרנט"
+
+msgid "O navegador não está instalado!"
+msgstr "הדפדפן אינו מותקן!"
+
+msgid "Não existem navegadores compatíveis instalados no sistema!"
+msgstr "אין דפדפנים תואמים המותקנים במערכת!"
+
 msgid "Navegador padrão<br>dos WebApps:"
 msgstr "דפדפן ברירת מחדל<br>webapps:"
-
-msgid "Alterar navegador"
-msgstr "שינוי דפדפן"
 
 msgid "Selecione o navegador preferido:"
 msgstr "בחר את הדפדפן המועדף עליך:"
 
+msgid "Nativo"
+msgstr "הילידים"
+
+msgid "Flatpak"
+msgstr "פלאטפאק"
+
 msgid "WebApps Nativos"
 msgstr "אפליקציות אינטרנט מקוריות"
+
+msgid ""
+"O navegador definido para abrir os WebApps não está instalado! \\n"
+"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+msgstr ""
+"הדפדפן המוגדר לפתיחת WebApps אינו מותקן! \\n"
+"נסה לשנות את הדפדפן ב- WebApps Manager! \\n"
+
+msgid "O Gerenciador de WebApps BigLinux já está aberto!"
+msgstr "מנהל אפליקציות האינטרנט של BigLinux פתוח כעת!"
+
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "אין דפדפנים מותקנים התומכים ב- WebApps!"
+
+msgid "Será necessário instalar mais um navegador!"
+msgstr "יהיה עליך להתקין דפדפן אחד נוסף!"
+
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "מנהל אפליקציות האינטרנט של BigLinux"

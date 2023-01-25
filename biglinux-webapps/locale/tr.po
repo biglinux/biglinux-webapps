@@ -16,24 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "BigLinux WebApps Yöneticisi"
-
-msgid "Selecionar imagem"
-msgstr "Resim seçiniz"
-
-msgid "Adicionar WebApps"
-msgstr "WebApps Ekleme"
-
-msgid "WebApps Adicionados"
-msgstr "WebApps eklendi"
-
-msgid "WebApps BigLinux"
-msgstr "WebApps BigLinux"
-
-msgid "Preencha os campos"
-msgstr "Alanları doldurun"
-
 msgid "URL:"
 msgstr "URL:"
 
@@ -51,6 +33,51 @@ msgstr "Değişim"
 
 msgid "Navegador"
 msgstr "Tarayıcı"
+
+msgid "BRAVE"
+msgstr "CESUR"
+
+msgid "CHROME"
+msgstr "KROM"
+
+msgid "CHROMIUM"
+msgstr "KROM"
+
+msgid "EDGE"
+msgstr "KENAR"
+
+msgid "EPIPHANY"
+msgstr "Epiphany"
+
+msgid "FIREFOX"
+msgstr "FIREFOX"
+
+msgid "LIBREWOLF"
+msgstr "LIBREWOLF"
+
+msgid "VIVALDI"
+msgstr "VİVALDİ"
+
+msgid "BRAVE (FLATPAK)"
+msgstr "CESUR (FLATPAK)"
+
+msgid "CHROME (FLATPAK)"
+msgstr "KROM (FLATPAK)"
+
+msgid "CHROMIUM (FLATPAK)"
+msgstr "KROM (FLATPAK)"
+
+msgid "EDGE (FLATPAK)"
+msgstr "KENAR (FLATPAK)"
+
+msgid "EPIPHANY (FLATPAK)"
+msgstr "EPIFANI (FLATPAK)"
+
+msgid "FIREFOX (FLATPAK)"
+msgstr "FIREFOX (FLATPAK)"
+
+msgid "LIBREWOLF (FLATPAK)"
+msgstr "LIBREWOLF (FLATPAK)"
 
 msgid "Categoria"
 msgstr "Kategori"
@@ -70,41 +97,62 @@ msgstr "OYUNLAR"
 msgid "MULTIMÍDIA"
 msgstr "MULTİMEDYA"
 
+msgid "WEBAPPS"
+msgstr "WEB UYGULAMALARI"
+
+msgid "WEBAPPS GOOGLE"
+msgstr "WEBAPPS GOOGLE"
+
 msgid "Criar atalho na Área de Trabalho"
 msgstr "Masaüstünde kısayol oluşturma"
 
 msgid "Perfil adicional"
 msgstr "Ek profil"
 
-msgid "YouTube Modo TV"
-msgstr "YouTube TV Modu"
+msgid "Selecione o ícone preferido:"
+msgstr "Tercih edilen simgeyi seçin:"
 
-msgid "Modo YouTube TV"
-msgstr "YouTube TV modu"
-
-msgid "Adicionar"
-msgstr "Ekle"
-
-msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
-msgstr "Bir WebApp eklemek için URL'yi ve Adı girmeniz gerekir."
+msgid "Não é possível aplicar a edição sem Nome!"
+msgstr "Adsız düzenleme uygulanamıyor!"
 
 msgid "Fechar"
 msgstr "Kapat"
 
-msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
-msgstr "Adı ve Simgeyi algılamak için URL'yi girmeniz gerekir."
+msgid "Não é possível aplicar a edição sem alterações!"
+msgstr "Değişiklik yapmadan düzenleme uygulayamazsınız!"
+
+msgid "O WebApp foi editado com sucesso!"
+msgstr "WebApp başarıyla düzenlendi!"
+
+msgid "Adicionar WebApps"
+msgstr "WebApps Ekleme"
+
+msgid "WebApps Adicionados"
+msgstr "WebApps eklendi"
+
+msgid "WebApps BigLinux"
+msgstr "WebApps BigLinux"
+
+msgid "https://www.exemplo.com"
+msgstr "https://www.exemplo.com"
+
+msgid "Exemplo"
+msgstr "Örnek"
+
+msgid "Adicionar"
+msgstr "Ekle"
+
+msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
+msgstr "WebApp eklemek için,<br> URL'yi ve Adı girmeniz gerekir."
+
+msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
+msgstr "Adı ve Simgeyi algılamak için,<br> URL'yi girmeniz gerekir."
 
 msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
 msgstr "URL geçersiz veya bağlantı başarısız oldu.<br>Simgeyi Değiştir düğmesiyle eklemeyi deneyin."
 
 msgid "O WebApp foi adicionado com sucesso!"
 msgstr "WebApp başarıyla eklendi!"
-
-msgid "Ícones encontrados"
-msgstr "Bulunan simgeler"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Tercih edilen simgeyi seçin:"
 
 msgid "Desenvolvimento"
 msgstr "Geliştirme"
@@ -121,20 +169,66 @@ msgstr "Oyunlar"
 msgid "Multimídia"
 msgstr "Multimedya"
 
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Bu WebApp'i kaldırmak istediğinizden emin misiniz?"
+msgid "Internet"
+msgstr "Internet"
+
+msgid "Google"
+msgstr "Google Mağazası"
+
+msgid "WebApps"
+msgstr "Web Uygulamaları"
 
 msgid "Nenhum WebApp adicionado!"
 msgstr "WebApp eklenmedi!"
 
+msgid "Aplicar"
+msgstr "Uygulamak"
+
+msgid "Cancelar"
+msgstr "İptal"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "Bu WebApp'i kaldırmak istediğinizden emin misiniz?"
+
+msgid "Editar WebApp"
+msgstr "WebApp'i Düzenle"
+
+msgid "O navegador não está instalado!"
+msgstr "Tarayıcı yüklü değil!"
+
+msgid "Não existem navegadores compatíveis instalados no sistema!"
+msgstr "Sistemde yüklü uyumlu tarayıcı yok!"
+
 msgid "Navegador padrão<br>dos WebApps:"
 msgstr "Varsayılan tarayıcı<br>web uygulamaları:"
-
-msgid "Alterar navegador"
-msgstr "Tarayıcıyı değiştir"
 
 msgid "Selecione o navegador preferido:"
 msgstr "Tercih ettiğiniz tarayıcıyı seçin:"
 
+msgid "Nativo"
+msgstr "Yerli"
+
+msgid "Flatpak"
+msgstr "Flatpak"
+
 msgid "WebApps Nativos"
 msgstr "Yerel Web Uygulamaları"
+
+msgid ""
+"O navegador definido para abrir os WebApps não está instalado! \\n"
+"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+msgstr ""
+"WebApps'i açmak için ayarlanmış tarayıcı yüklü değil! \\n"
+"WebApps Yöneticisi'nde tarayıcıyı değiştirmeyi deneyin! \\n"
+
+msgid "O Gerenciador de WebApps BigLinux já está aberto!"
+msgstr "BigLinux WebApps Yöneticisi artık açık!"
+
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "WebApps'i destekleyen yüklü tarayıcı yok!"
+
+msgid "Será necessário instalar mais um navegador!"
+msgstr "Bir tarayıcı daha yüklemeniz gerekecek!"
+
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "BigLinux WebApps Yöneticisi"

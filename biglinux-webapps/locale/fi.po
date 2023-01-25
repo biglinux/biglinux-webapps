@@ -16,24 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "BigLinux WebApps Manager"
-
-msgid "Selecionar imagem"
-msgstr "Valitse kuva"
-
-msgid "Adicionar WebApps"
-msgstr "Lisää WebApps"
-
-msgid "WebApps Adicionados"
-msgstr "WebApps lisätty"
-
-msgid "WebApps BigLinux"
-msgstr "WebApps BigLinux"
-
-msgid "Preencha os campos"
-msgstr "Kenttien täyttäminen"
-
 msgid "URL:"
 msgstr "URL:"
 
@@ -51,6 +33,51 @@ msgstr "Muuta"
 
 msgid "Navegador"
 msgstr "Selain"
+
+msgid "BRAVE"
+msgstr "ROHKEA"
+
+msgid "CHROME"
+msgstr "KROMI"
+
+msgid "CHROMIUM"
+msgstr "KROMI"
+
+msgid "EDGE"
+msgstr "REUNA"
+
+msgid "EPIPHANY"
+msgstr "Loppiainen"
+
+msgid "FIREFOX"
+msgstr "FIREFOX"
+
+msgid "LIBREWOLF"
+msgstr "LIBREWOLF"
+
+msgid "VIVALDI"
+msgstr "VIVALDI"
+
+msgid "BRAVE (FLATPAK)"
+msgstr "ROHKEA (FLATPAK)"
+
+msgid "CHROME (FLATPAK)"
+msgstr "KROMI (FLATPAK)"
+
+msgid "CHROMIUM (FLATPAK)"
+msgstr "KROMI (FLATPAK)"
+
+msgid "EDGE (FLATPAK)"
+msgstr "REUNA (FLATPAK)"
+
+msgid "EPIPHANY (FLATPAK)"
+msgstr "LOPPIAINEN (FLATPAK)"
+
+msgid "FIREFOX (FLATPAK)"
+msgstr "FIREFOX (FLATPAK)"
+
+msgid "LIBREWOLF (FLATPAK)"
+msgstr "LIBREWOLF (FLATPAK)"
 
 msgid "Categoria"
 msgstr "Luokka"
@@ -70,41 +97,62 @@ msgstr "PELIT"
 msgid "MULTIMÍDIA"
 msgstr "MULTIMEDIA"
 
+msgid "WEBAPPS"
+msgstr "WEBAPPS-sovellukset"
+
+msgid "WEBAPPS GOOGLE"
+msgstr "WEBAPPS GOOGLE"
+
 msgid "Criar atalho na Área de Trabalho"
 msgstr "Luo pikakuvake työpöydälle"
 
 msgid "Perfil adicional"
 msgstr "Lisäprofiili"
 
-msgid "YouTube Modo TV"
-msgstr "YouTube TV-tila"
+msgid "Selecione o ícone preferido:"
+msgstr "Valitse haluamasi kuvake:"
 
-msgid "Modo YouTube TV"
-msgstr "YouTube TV -tila"
-
-msgid "Adicionar"
-msgstr "Lisää"
-
-msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
-msgstr "Jos haluat lisätä WebAppin, sinun on annettava URL-osoite ja nimi."
+msgid "Não é possível aplicar a edição sem Nome!"
+msgstr "Nimeämätöntä muokkausta ei voi käyttää!"
 
 msgid "Fechar"
 msgstr "Sulje"
 
-msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
-msgstr "Jos haluat tunnistaa nimen ja kuvakkeen, sinun on annettava URL-osoite."
+msgid "Não é possível aplicar a edição sem alterações!"
+msgstr "Et voi käyttää muokkausta ilman muutoksia!"
+
+msgid "O WebApp foi editado com sucesso!"
+msgstr "WebAppia on muokattu onnistuneesti!"
+
+msgid "Adicionar WebApps"
+msgstr "Lisää WebApps"
+
+msgid "WebApps Adicionados"
+msgstr "WebApps lisätty"
+
+msgid "WebApps BigLinux"
+msgstr "WebApps BigLinux"
+
+msgid "https://www.exemplo.com"
+msgstr "https://www.exemplo.com"
+
+msgid "Exemplo"
+msgstr "Esimerkki"
+
+msgid "Adicionar"
+msgstr "Lisää"
+
+msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
+msgstr "WebAppin lisääminen:<br> sinun on annettava URL-osoite ja nimi."
+
+msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
+msgstr "Voit tunnistaa nimen ja kuvakkeen seuraavasti:<br> sinun on annettava URL-osoite."
 
 msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
 msgstr "URL-osoite on virheellinen tai yhteys epäonnistui.<br>Yritä lisätä kuvake Muuta-painikkeella."
 
 msgid "O WebApp foi adicionado com sucesso!"
 msgstr "WebApp lisättiin onnistuneesti!"
-
-msgid "Ícones encontrados"
-msgstr "Löydetyt kuvakkeet"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Valitse haluamasi kuvake:"
 
 msgid "Desenvolvimento"
 msgstr "Kehitys"
@@ -121,20 +169,66 @@ msgstr "Pelit"
 msgid "Multimídia"
 msgstr "Multimedia"
 
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Haluatko varmasti poistaa tämän verkkosovelluksen?"
+msgid "Internet"
+msgstr "Internet"
+
+msgid "Google"
+msgstr "Google"
+
+msgid "WebApps"
+msgstr "Web-sovellukset"
 
 msgid "Nenhum WebApp adicionado!"
 msgstr "WebAppia ei ole lisätty!"
 
+msgid "Aplicar"
+msgstr "Käyttää"
+
+msgid "Cancelar"
+msgstr "Perua"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "Haluatko varmasti poistaa tämän verkkosovelluksen?"
+
+msgid "Editar WebApp"
+msgstr "Muokkaa WebAppia"
+
+msgid "O navegador não está instalado!"
+msgstr "Selainta ei ole asennettu!"
+
+msgid "Não existem navegadores compatíveis instalados no sistema!"
+msgstr "Järjestelmään ei ole asennettu yhteensopivia selaimia!"
+
 msgid "Navegador padrão<br>dos WebApps:"
 msgstr "Oletusselain<br>verkkosovellukset:"
-
-msgid "Alterar navegador"
-msgstr "Vaihda selainta"
 
 msgid "Selecione o navegador preferido:"
 msgstr "Valitse haluamasi selain:"
 
+msgid "Nativo"
+msgstr "Alkuperäinen"
+
+msgid "Flatpak"
+msgstr "Flatpak"
+
 msgid "WebApps Nativos"
 msgstr "Natiivit verkkosovellukset"
+
+msgid ""
+"O navegador definido para abrir os WebApps não está instalado! \\n"
+"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+msgstr ""
+"WebAppsin avaamiseen asetettua selainta ei ole asennettu! \\n"
+"Yritä vaihtaa selain WebApps Managerissa! \\n"
+
+msgid "O Gerenciador de WebApps BigLinux já está aberto!"
+msgstr "BigLinux WebApps Manager on nyt auki!"
+
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "Ei ole asennettuja selaimia, jotka tukevat WebAppsia!"
+
+msgid "Será necessário instalar mais um navegador!"
+msgstr "Sinun on asennettava vielä yksi selain!"
+
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "BigLinux WebApps Manager"

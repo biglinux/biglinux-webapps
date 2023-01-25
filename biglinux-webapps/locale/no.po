@@ -16,24 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "BigLinux WebApp leder"
-
-msgid "Selecionar imagem"
-msgstr "Velg bilde"
-
-msgid "Adicionar WebApps"
-msgstr "Legg til WebApps"
-
-msgid "WebApps Adicionados"
-msgstr "WebApps lagt til"
-
-msgid "WebApps BigLinux"
-msgstr "BigLinux WebApps"
-
-msgid "Preencha os campos"
-msgstr "Fyll ut feltene"
-
 msgid "URL:"
 msgstr "URL-adresse:"
 
@@ -51,6 +33,51 @@ msgstr "Enendre"
 
 msgid "Navegador"
 msgstr "Nettleser"
+
+msgid "BRAVE"
+msgstr "MODIG"
+
+msgid "CHROME"
+msgstr "KROM"
+
+msgid "CHROMIUM"
+msgstr "KROM"
+
+msgid "EDGE"
+msgstr "KANT"
+
+msgid "EPIPHANY"
+msgstr "Helligtrekongersdag"
+
+msgid "FIREFOX"
+msgstr "FIREFOX"
+
+msgid "LIBREWOLF"
+msgstr "LIBREWOLF"
+
+msgid "VIVALDI"
+msgstr "VIVALDI"
+
+msgid "BRAVE (FLATPAK)"
+msgstr "MODIG (FLATPAK)"
+
+msgid "CHROME (FLATPAK)"
+msgstr "KROM (FLATPAK)"
+
+msgid "CHROMIUM (FLATPAK)"
+msgstr "KROM (FLATPAK)"
+
+msgid "EDGE (FLATPAK)"
+msgstr "KANT (FLATPAK)"
+
+msgid "EPIPHANY (FLATPAK)"
+msgstr "EPIPHANY (FLATPAK)"
+
+msgid "FIREFOX (FLATPAK)"
+msgstr "FIREFOX (FLATPAK)"
+
+msgid "LIBREWOLF (FLATPAK)"
+msgstr "LIBREWOLF (FLATPAK)"
 
 msgid "Categoria"
 msgstr "Kategori"
@@ -70,29 +97,56 @@ msgstr "SPILL"
 msgid "MULTIMÍDIA"
 msgstr "MULTIMEDIA"
 
+msgid "WEBAPPS"
+msgstr "NETTAPPER"
+
+msgid "WEBAPPS GOOGLE"
+msgstr "WEBAPPS GOOGLE"
+
 msgid "Criar atalho na Área de Trabalho"
 msgstr "Opprett snarvei på skrivebordet"
 
 msgid "Perfil adicional"
 msgstr "Ekstra profil"
 
-msgid "YouTube Modo TV"
-msgstr "YouTube TV-modus"
+msgid "Selecione o ícone preferido:"
+msgstr "Velg ønsket ikon:"
 
-msgid "Modo YouTube TV"
-msgstr "YouTube TV-modus"
-
-msgid "Adicionar"
-msgstr "Legg til"
-
-msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
-msgstr "For å legge til en WebApp, må du oppgi URL og navn."
+msgid "Não é possível aplicar a edição sem Nome!"
+msgstr "Kan ikke bruke ikke navngitt redigering!"
 
 msgid "Fechar"
 msgstr "Lukk"
 
-msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
-msgstr "For å oppdage navn og ikon må du oppgi URL-adressen."
+msgid "Não é possível aplicar a edição sem alterações!"
+msgstr "Du kan ikke bruke redigering uten endringer!"
+
+msgid "O WebApp foi editado com sucesso!"
+msgstr "WebApp har blitt redigert!"
+
+msgid "Adicionar WebApps"
+msgstr "Legg til WebApps"
+
+msgid "WebApps Adicionados"
+msgstr "WebApps lagt til"
+
+msgid "WebApps BigLinux"
+msgstr "BigLinux WebApps"
+
+msgid "https://www.exemplo.com"
+msgstr "https://www.exemplo.com"
+
+msgid "Exemplo"
+msgstr "Eksempel"
+
+msgid "Adicionar"
+msgstr "Legg til"
+
+msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
+msgstr "Slik legger du til en WebApp,<br> du må skrive inn URL og navn."
+
+msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
+msgstr "For å oppdage navnet og ikonet,<br> du må skrive inn URL-en."
 
 msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
 msgstr ""
@@ -101,12 +155,6 @@ msgstr ""
 
 msgid "O WebApp foi adicionado com sucesso!"
 msgstr "WebApp ble lagt til!"
-
-msgid "Ícones encontrados"
-msgstr "Funnet ikoner"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Velg ønsket ikon:"
 
 msgid "Desenvolvimento"
 msgstr "Utvikling"
@@ -123,20 +171,66 @@ msgstr "Spill"
 msgid "Multimídia"
 msgstr "Multimedia"
 
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Er du sikker på at du vil fjerne denne WebApp?"
+msgid "Internet"
+msgstr "Internett"
+
+msgid "Google"
+msgstr "Google"
+
+msgid "WebApps"
+msgstr "WebApps"
 
 msgid "Nenhum WebApp adicionado!"
 msgstr "Ingen WebApp lagt til!"
 
+msgid "Aplicar"
+msgstr "Bruke"
+
+msgid "Cancelar"
+msgstr "Annullere"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "Er du sikker på at du vil fjerne denne WebApp?"
+
+msgid "Editar WebApp"
+msgstr "Redigere webapp"
+
+msgid "O navegador não está instalado!"
+msgstr "Nettleseren er ikke installert!"
+
+msgid "Não existem navegadores compatíveis instalados no sistema!"
+msgstr "Det er ingen kompatible nettlesere installert på systemet!"
+
 msgid "Navegador padrão<br>dos WebApps:"
 msgstr "Standardleser<br>webapps:"
-
-msgid "Alterar navegador"
-msgstr "Endre nettleser"
 
 msgid "Selecione o navegador preferido:"
 msgstr "Velg din foretrukne nettleser:"
 
+msgid "Nativo"
+msgstr "Innfødt"
+
+msgid "Flatpak"
+msgstr "Flatpak"
+
 msgid "WebApps Nativos"
 msgstr "Innfødte WebApps"
+
+msgid ""
+"O navegador definido para abrir os WebApps não está instalado! \\n"
+"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+msgstr ""
+"Nettleseren som er satt til å åpne WebApps er ikke installert! \\n"
+"Prøv å endre nettleseren i WebApps Manager! \\n"
+
+msgid "O Gerenciador de WebApps BigLinux já está aberto!"
+msgstr "BigLinux WebApps Manager er nå åpen!"
+
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "Det er ingen installerte nettlesere som støtter WebApps!"
+
+msgid "Será necessário instalar mais um navegador!"
+msgstr "Du må installere en nettleser til!"
+
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "BigLinux WebApp leder"

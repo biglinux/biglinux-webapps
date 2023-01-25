@@ -16,24 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "BigLinux WebApp Manager"
-
-msgid "Selecionar imagem"
-msgstr "Odaberi sliku"
-
-msgid "Adicionar WebApps"
-msgstr "Dodaj WebApps"
-
-msgid "WebApps Adicionados"
-msgstr "Dodano WebApps"
-
-msgid "WebApps BigLinux"
-msgstr "BigLinux WebApps"
-
-msgid "Preencha os campos"
-msgstr "Ispunjavanje polja"
-
 msgid "URL:"
 msgstr "URL:"
 
@@ -51,6 +33,51 @@ msgstr "Izmijeniti"
 
 msgid "Navegador"
 msgstr "Preglednik"
+
+msgid "BRAVE"
+msgstr "HRABAR"
+
+msgid "CHROME"
+msgstr "KROM"
+
+msgid "CHROMIUM"
+msgstr "KROM"
+
+msgid "EDGE"
+msgstr "RUB"
+
+msgid "EPIPHANY"
+msgstr "Bogojavljenje"
+
+msgid "FIREFOX"
+msgstr "FIREFOX"
+
+msgid "LIBREWOLF"
+msgstr "LIBREWOLF"
+
+msgid "VIVALDI"
+msgstr "VIVALDI"
+
+msgid "BRAVE (FLATPAK)"
+msgstr "HRABAR (FLATPAK)"
+
+msgid "CHROME (FLATPAK)"
+msgstr "CHROME (FLATPAK)"
+
+msgid "CHROMIUM (FLATPAK)"
+msgstr "KROM (FLATPAK)"
+
+msgid "EDGE (FLATPAK)"
+msgstr "EDGE (FLATPAK)"
+
+msgid "EPIPHANY (FLATPAK)"
+msgstr "BOGOJAVLJENJE (FLATPAK)"
+
+msgid "FIREFOX (FLATPAK)"
+msgstr "FIREFOX (FLATPAK)"
+
+msgid "LIBREWOLF (FLATPAK)"
+msgstr "LIBREWOLF (FLATPAK)"
 
 msgid "Categoria"
 msgstr "Kategorija"
@@ -70,41 +97,62 @@ msgstr "IGRE"
 msgid "MULTIMÍDIA"
 msgstr "MULTIMEDIJALNI"
 
+msgid "WEBAPPS"
+msgstr "WEBAPPS"
+
+msgid "WEBAPPS GOOGLE"
+msgstr "WEBAPPS GOOGLE"
+
 msgid "Criar atalho na Área de Trabalho"
 msgstr "Stvorite prečac na radnoj površini"
 
 msgid "Perfil adicional"
 msgstr "Dodatni profil"
 
-msgid "YouTube Modo TV"
-msgstr "Način YouTube TV"
+msgid "Selecione o ícone preferido:"
+msgstr "Odaberite željenu ikonu:"
 
-msgid "Modo YouTube TV"
-msgstr "YouTube TV način rada"
-
-msgid "Adicionar"
-msgstr "Dodaj"
-
-msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
-msgstr "Da biste dodali WebApp, morate unijeti URL i naziv."
+msgid "Não é possível aplicar a edição sem Nome!"
+msgstr "Nije moguće primijeniti neimenovano uređivanje!"
 
 msgid "Fechar"
 msgstr "Zatvoriti"
 
-msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
-msgstr "Da biste otkrili naziv i ikonu, morate unijeti URL."
+msgid "Não é possível aplicar a edição sem alterações!"
+msgstr "Uređivanje ne možete primijeniti bez promjena!"
+
+msgid "O WebApp foi editado com sucesso!"
+msgstr "WebApp je uspješno uređen!"
+
+msgid "Adicionar WebApps"
+msgstr "Dodaj WebApps"
+
+msgid "WebApps Adicionados"
+msgstr "Dodano WebApps"
+
+msgid "WebApps BigLinux"
+msgstr "BigLinux WebApps"
+
+msgid "https://www.exemplo.com"
+msgstr "https://www.exemplo.com"
+
+msgid "Exemplo"
+msgstr "Primjer"
+
+msgid "Adicionar"
+msgstr "Dodaj"
+
+msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
+msgstr "Da biste dodali WebApp,<br> morate unijeti URL i naziv."
+
+msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
+msgstr "Da biste otkrili ime i ikonu,<br> morate unijeti URL."
 
 msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
 msgstr "URL nije valjan ili veza nije uspjela.<br>Pokušajte umetnuti ikonu pomoću gumba Promijeni."
 
 msgid "O WebApp foi adicionado com sucesso!"
 msgstr "WebApp je uspješno dodan!"
-
-msgid "Ícones encontrados"
-msgstr "Pronađene ikone"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Odaberite željenu ikonu:"
 
 msgid "Desenvolvimento"
 msgstr "Razvoj"
@@ -121,20 +169,66 @@ msgstr "Igre"
 msgid "Multimídia"
 msgstr "Multimedija"
 
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Jeste li sigurni da želite ukloniti ovaj WebApp?"
+msgid "Internet"
+msgstr "Internet"
+
+msgid "Google"
+msgstr "Google"
+
+msgid "WebApps"
+msgstr "WebApps"
 
 msgid "Nenhum WebApp adicionado!"
 msgstr "Ne WebApp dodao!"
 
+msgid "Aplicar"
+msgstr "Primijeniti"
+
+msgid "Cancelar"
+msgstr "Otkazati"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "Jeste li sigurni da želite ukloniti ovaj WebApp?"
+
+msgid "Editar WebApp"
+msgstr "Uređivanje WebAppa"
+
+msgid "O navegador não está instalado!"
+msgstr "Preglednik nije instaliran!"
+
+msgid "Não existem navegadores compatíveis instalados no sistema!"
+msgstr "Na sustavu nema kompatibilnih preglednika!"
+
 msgid "Navegador padrão<br>dos WebApps:"
 msgstr "Zadani preglednik<br>webapps:"
-
-msgid "Alterar navegador"
-msgstr "Promjena preglednika"
 
 msgid "Selecione o navegador preferido:"
 msgstr "Odaberite željeni preglednik:"
 
+msgid "Nativo"
+msgstr "Autohtonih"
+
+msgid "Flatpak"
+msgstr "Flatpak"
+
 msgid "WebApps Nativos"
 msgstr "Izvorni WebApps"
+
+msgid ""
+"O navegador definido para abrir os WebApps não está instalado! \\n"
+"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+msgstr ""
+"Preglednik postavljen za otvaranje WebAppsa nije instaliran! \\n"
+" Pokušajte promijeniti preglednik u upravitelju webappova! \\n"
+
+msgid "O Gerenciador de WebApps BigLinux já está aberto!"
+msgstr "BigLinux WebApps Manager je sada otvoren!"
+
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "Nema instaliranih preglednika koji podržavaju WebApps!"
+
+msgid "Será necessário instalar mais um navegador!"
+msgstr "Morat ćete instalirati još jedan preglednik!"
+
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "BigLinux WebApp Manager"

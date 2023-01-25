@@ -16,24 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "BigLinux WebApps Manager"
-
-msgid "Selecionar imagem"
-msgstr "Vybrat obrázek"
-
-msgid "Adicionar WebApps"
-msgstr "Přidání webových aplikací"
-
-msgid "WebApps Adicionados"
-msgstr "Přidání webových aplikací"
-
-msgid "WebApps BigLinux"
-msgstr "Webové aplikace BigLinux"
-
-msgid "Preencha os campos"
-msgstr "Vyplňte pole"
-
 msgid "URL:"
 msgstr "Adresa URL:"
 
@@ -51,6 +33,51 @@ msgstr "Změna"
 
 msgid "Navegador"
 msgstr "Prohlížeč"
+
+msgid "BRAVE"
+msgstr "STATEČNÝ"
+
+msgid "CHROME"
+msgstr "CHROM"
+
+msgid "CHROMIUM"
+msgstr "CHROM"
+
+msgid "EDGE"
+msgstr "OKRAJ"
+
+msgid "EPIPHANY"
+msgstr "Zjevení"
+
+msgid "FIREFOX"
+msgstr "FIREFOX"
+
+msgid "LIBREWOLF"
+msgstr "LIBREWOLF"
+
+msgid "VIVALDI"
+msgstr "VIVALDI"
+
+msgid "BRAVE (FLATPAK)"
+msgstr "STATEČNÝ (FLATPAK)"
+
+msgid "CHROME (FLATPAK)"
+msgstr "CHROM (FLATPAK)"
+
+msgid "CHROMIUM (FLATPAK)"
+msgstr "CHROM (FLATPAK)"
+
+msgid "EDGE (FLATPAK)"
+msgstr "OKRAJ (FLATPAK)"
+
+msgid "EPIPHANY (FLATPAK)"
+msgstr "ZJEVENÍ PÁNĚ (FLATPAK)"
+
+msgid "FIREFOX (FLATPAK)"
+msgstr "FIREFOX (FLATPAK)"
+
+msgid "LIBREWOLF (FLATPAK)"
+msgstr "LIBREWOLF (FLATPAK)"
 
 msgid "Categoria"
 msgstr "Kategorie"
@@ -70,41 +97,62 @@ msgstr "GAMES"
 msgid "MULTIMÍDIA"
 msgstr "MULTIMÉDIA"
 
+msgid "WEBAPPS"
+msgstr "WEBOVÉ APLIKACE"
+
+msgid "WEBAPPS GOOGLE"
+msgstr "WEBAPPS GOOGLE"
+
 msgid "Criar atalho na Área de Trabalho"
 msgstr "Vytvoření zástupce na ploše"
 
 msgid "Perfil adicional"
 msgstr "Další profil"
 
-msgid "YouTube Modo TV"
-msgstr "Režim YouTube TV"
+msgid "Selecione o ícone preferido:"
+msgstr "Vyberte preferovanou ikonu:"
 
-msgid "Modo YouTube TV"
-msgstr "Režim YouTube TV"
-
-msgid "Adicionar"
-msgstr "Přidat"
-
-msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
-msgstr "Chcete-li přidat webovou aplikaci, musíte zadat adresu URL a název."
+msgid "Não é possível aplicar a edição sem Nome!"
+msgstr "Nelze použít nepojmenované úpravy!"
 
 msgid "Fechar"
 msgstr "Zavřít"
 
-msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
-msgstr "Chcete-li zjistit název a ikonu, musíte zadat adresu URL."
+msgid "Não é possível aplicar a edição sem alterações!"
+msgstr "Úpravy nelze použít beze změn!"
+
+msgid "O WebApp foi editado com sucesso!"
+msgstr "WebApp byl úspěšně upraven!"
+
+msgid "Adicionar WebApps"
+msgstr "Přidání webových aplikací"
+
+msgid "WebApps Adicionados"
+msgstr "Přidání webových aplikací"
+
+msgid "WebApps BigLinux"
+msgstr "Webové aplikace BigLinux"
+
+msgid "https://www.exemplo.com"
+msgstr "https://www.exemplo.com"
+
+msgid "Exemplo"
+msgstr "Příklad"
+
+msgid "Adicionar"
+msgstr "Přidat"
+
+msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
+msgstr "Pokud chcete přidat webovou aplikaci,<br> musíte zadat adresu URL a název."
+
+msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
+msgstr "Chcete-li zjistit název a ikonu,<br> musíte zadat adresu URL."
 
 msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
 msgstr "Adresa URL je neplatná nebo se připojení nezdařilo.<br>Zkuste ikonu vložit tlačítkem Změnit."
 
 msgid "O WebApp foi adicionado com sucesso!"
 msgstr "Webová aplikace byla úspěšně přidána!"
-
-msgid "Ícones encontrados"
-msgstr "Nalezené ikony"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Vyberte preferovanou ikonu:"
 
 msgid "Desenvolvimento"
 msgstr "Vývoj"
@@ -121,20 +169,66 @@ msgstr "Hry"
 msgid "Multimídia"
 msgstr "Multimédia"
 
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Opravdu chcete tuto webovou aplikaci odebrat?"
+msgid "Internet"
+msgstr "Internet"
+
+msgid "Google"
+msgstr "Vyhledávač Google"
+
+msgid "WebApps"
+msgstr "Webové aplikace"
 
 msgid "Nenhum WebApp adicionado!"
 msgstr "Nebyla přidána žádná webová aplikace!"
 
+msgid "Aplicar"
+msgstr "Použít"
+
+msgid "Cancelar"
+msgstr "Zrušit"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "Opravdu chcete tuto webovou aplikaci odebrat?"
+
+msgid "Editar WebApp"
+msgstr "Upravit webovou aplikaci"
+
+msgid "O navegador não está instalado!"
+msgstr "Prohlížeč není nainstalován!"
+
+msgid "Não existem navegadores compatíveis instalados no sistema!"
+msgstr "V systému nejsou nainstalovány žádné kompatibilní prohlížeče!"
+
 msgid "Navegador padrão<br>dos WebApps:"
 msgstr "Výchozí prohlížeč<br>webové aplikace:"
-
-msgid "Alterar navegador"
-msgstr "Změna prohlížeče"
 
 msgid "Selecione o navegador preferido:"
 msgstr "Vyberte preferovaný prohlížeč:"
 
+msgid "Nativo"
+msgstr "Domorodý"
+
+msgid "Flatpak"
+msgstr "Flatpak"
+
 msgid "WebApps Nativos"
 msgstr "Nativní webové aplikace"
+
+msgid ""
+"O navegador definido para abrir os WebApps não está instalado! \\n"
+"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+msgstr ""
+"Prohlížeč nastavený na otevření webových aplikací není nainstalován! \\n"
+"Zkuste změnit prohlížeč ve WebApps Manageru! \\n"
+
+msgid "O Gerenciador de WebApps BigLinux já está aberto!"
+msgstr "BigLinux WebApps Manager je nyní otevřen!"
+
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "Nejsou nainstalovány žádné prohlížeče, které podporují WebApps!"
+
+msgid "Será necessário instalar mais um navegador!"
+msgstr "Budete muset nainstalovat ještě jeden prohlížeč!"
+
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "BigLinux WebApps Manager"
