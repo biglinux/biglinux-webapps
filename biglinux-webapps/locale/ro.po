@@ -16,24 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "BigLinux WebApps Manager"
-
-msgid "Selecionar imagem"
-msgstr "Selectați imaginea"
-
-msgid "Adicionar WebApps"
-msgstr "Adăugați WebApps"
-
-msgid "WebApps Adicionados"
-msgstr "Aplicații web adăugate"
-
-msgid "WebApps BigLinux"
-msgstr "WebApps BigLinux"
-
-msgid "Preencha os campos"
-msgstr "Completarea câmpurilor"
-
 msgid "URL:"
 msgstr "URL-ul:"
 
@@ -51,6 +33,51 @@ msgstr "Schimbare"
 
 msgid "Navegador"
 msgstr "Browser"
+
+msgid "BRAVE"
+msgstr "CURAJOS"
+
+msgid "CHROME"
+msgstr "CROM"
+
+msgid "CHROMIUM"
+msgstr "CROM"
+
+msgid "EDGE"
+msgstr "MARGINE"
+
+msgid "EPIPHANY"
+msgstr "Bobotează"
+
+msgid "FIREFOX"
+msgstr "FIREFOX"
+
+msgid "LIBREWOLF"
+msgstr "LIBREWOLF"
+
+msgid "VIVALDI"
+msgstr "VIVALDI"
+
+msgid "BRAVE (FLATPAK)"
+msgstr "CURAJOS (FLATPAK)"
+
+msgid "CHROME (FLATPAK)"
+msgstr "CROM (FLATPAK)"
+
+msgid "CHROMIUM (FLATPAK)"
+msgstr "CROM (FLATPAK)"
+
+msgid "EDGE (FLATPAK)"
+msgstr "EDGE (FLATPAK)"
+
+msgid "EPIPHANY (FLATPAK)"
+msgstr "BOBOTEAZĂ (FLATPAK)"
+
+msgid "FIREFOX (FLATPAK)"
+msgstr "FIREFOX (FLATPAK)"
+
+msgid "LIBREWOLF (FLATPAK)"
+msgstr "LIBREWOLF (FLATPAK)"
 
 msgid "Categoria"
 msgstr "Categorie"
@@ -70,29 +97,56 @@ msgstr "JOCURI"
 msgid "MULTIMÍDIA"
 msgstr "MULTIMEDIA"
 
+msgid "WEBAPPS"
+msgstr "WEBAPPS"
+
+msgid "WEBAPPS GOOGLE"
+msgstr "WEBAPPS GOOGLE"
+
 msgid "Criar atalho na Área de Trabalho"
 msgstr "Creați o comandă rapidă pe desktop"
 
 msgid "Perfil adicional"
 msgstr "Profil suplimentar"
 
-msgid "YouTube Modo TV"
-msgstr "Modul YouTube TV"
+msgid "Selecione o ícone preferido:"
+msgstr "Selectați pictograma preferată:"
 
-msgid "Modo YouTube TV"
-msgstr "Modul YouTube TV"
-
-msgid "Adicionar"
-msgstr "Adăugați"
-
-msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
-msgstr "Pentru a adăuga un WebApp, trebuie să introduceți adresa URL și Numele."
+msgid "Não é possível aplicar a edição sem Nome!"
+msgstr "Nu se poate aplica editarea fără nume!"
 
 msgid "Fechar"
 msgstr "Închideți"
 
-msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
-msgstr "Pentru a detecta numele și pictograma, trebuie să introduceți adresa URL."
+msgid "Não é possível aplicar a edição sem alterações!"
+msgstr "Nu puteți aplica editarea fără modificări!"
+
+msgid "O WebApp foi editado com sucesso!"
+msgstr "WebApp a fost editat cu succes!"
+
+msgid "Adicionar WebApps"
+msgstr "Adăugați WebApps"
+
+msgid "WebApps Adicionados"
+msgstr "Aplicații web adăugate"
+
+msgid "WebApps BigLinux"
+msgstr "WebApps BigLinux"
+
+msgid "https://www.exemplo.com"
+msgstr "https://www.exemplo.com"
+
+msgid "Exemplo"
+msgstr "Exemplu"
+
+msgid "Adicionar"
+msgstr "Adăugați"
+
+msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
+msgstr "Pentru a adăuga un WebApp,<br> trebuie să introduceți adresa URL și numele."
+
+msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
+msgstr "Pentru a detecta numele și pictograma,<br> trebuie să introduceți adresa URL."
 
 msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
 msgstr ""
@@ -101,12 +155,6 @@ msgstr ""
 
 msgid "O WebApp foi adicionado com sucesso!"
 msgstr "Aplicația Web a fost adăugată cu succes!"
-
-msgid "Ícones encontrados"
-msgstr "Icoane găsite"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Selectați pictograma preferată:"
 
 msgid "Desenvolvimento"
 msgstr "Dezvoltare"
@@ -123,20 +171,66 @@ msgstr "Jocuri"
 msgid "Multimídia"
 msgstr "Multimedia"
 
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Sunteți sigur că doriți să eliminați această aplicație web?"
+msgid "Internet"
+msgstr "Internet"
+
+msgid "Google"
+msgstr "Google"
+
+msgid "WebApps"
+msgstr "WebApps"
 
 msgid "Nenhum WebApp adicionado!"
 msgstr "Nu a fost adăugată nicio aplicație web!"
 
+msgid "Aplicar"
+msgstr "Aplica"
+
+msgid "Cancelar"
+msgstr "Anula"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "Sunteți sigur că doriți să eliminați această aplicație web?"
+
+msgid "Editar WebApp"
+msgstr "Editarea WebApp"
+
+msgid "O navegador não está instalado!"
+msgstr "Browserul nu este instalat!"
+
+msgid "Não existem navegadores compatíveis instalados no sistema!"
+msgstr "Nu există browsere compatibile instalate pe sistem!"
+
 msgid "Navegador padrão<br>dos WebApps:"
 msgstr "Browser implicit<br>webapps:"
-
-msgid "Alterar navegador"
-msgstr "Schimbați browserul"
 
 msgid "Selecione o navegador preferido:"
 msgstr "Selectați browserul preferat:"
 
+msgid "Nativo"
+msgstr "Indigen"
+
+msgid "Flatpak"
+msgstr "Pachet plat"
+
 msgid "WebApps Nativos"
 msgstr "Aplicații web native"
+
+msgid ""
+"O navegador definido para abrir os WebApps não está instalado! \\n"
+"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+msgstr ""
+"Browserul setat pentru a deschide WebApps nu este instalat! \\n"
+"Try pentru a schimba browser-ul în WebApps Manager! \\n"
+
+msgid "O Gerenciador de WebApps BigLinux já está aberto!"
+msgstr "BigLinux WebApps Manager este acum deschis!"
+
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "Nu există browsere instalate care acceptă WebApps!"
+
+msgid "Será necessário instalar mais um navegador!"
+msgstr "Va trebui să instalați încă un browser!"
+
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "BigLinux WebApps Manager"

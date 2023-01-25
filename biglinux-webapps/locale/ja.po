@@ -16,24 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "BigLinux WebApps Manager"
-
-msgid "Selecionar imagem"
-msgstr "画像を選択"
-
-msgid "Adicionar WebApps"
-msgstr "WebAppsを追加する"
-
-msgid "WebApps Adicionados"
-msgstr "WebAppsを追加しました"
-
-msgid "WebApps BigLinux"
-msgstr "BigLinux WebApps"
-
-msgid "Preencha os campos"
-msgstr "フィールドに入力する"
-
 msgid "URL:"
 msgstr "リンク:"
 
@@ -51,6 +33,51 @@ msgstr "変化する"
 
 msgid "Navegador"
 msgstr "ブラウザー"
+
+msgid "BRAVE"
+msgstr "勇ましい"
+
+msgid "CHROME"
+msgstr "クロム"
+
+msgid "CHROMIUM"
+msgstr "クロム"
+
+msgid "EDGE"
+msgstr "端"
+
+msgid "EPIPHANY"
+msgstr "公現祭"
+
+msgid "FIREFOX"
+msgstr "ファイアーフォックス"
+
+msgid "LIBREWOLF"
+msgstr "リーブルウルフ"
+
+msgid "VIVALDI"
+msgstr "ヴィヴァルディ"
+
+msgid "BRAVE (FLATPAK)"
+msgstr "ブレイブ(フラットパック)"
+
+msgid "CHROME (FLATPAK)"
+msgstr "クロム(フラットパック)"
+
+msgid "CHROMIUM (FLATPAK)"
+msgstr "クロム(フラットパック)"
+
+msgid "EDGE (FLATPAK)"
+msgstr "エッジ(フラットパック)"
+
+msgid "EPIPHANY (FLATPAK)"
+msgstr "エピファニー(フラットパック)"
+
+msgid "FIREFOX (FLATPAK)"
+msgstr "FIREFOX (FLATPAK)"
+
+msgid "LIBREWOLF (FLATPAK)"
+msgstr "リブレウルフ(フラットパック)"
 
 msgid "Categoria"
 msgstr "カテゴリ"
@@ -70,41 +97,62 @@ msgstr "ゲーム"
 msgid "MULTIMÍDIA"
 msgstr "マルチメディア"
 
+msgid "WEBAPPS"
+msgstr "ウェブアプリ"
+
+msgid "WEBAPPS GOOGLE"
+msgstr "ウェブアプリグーグル"
+
 msgid "Criar atalho na Área de Trabalho"
 msgstr "デスクトップショートカットを作成します"
 
 msgid "Perfil adicional"
 msgstr "追加のプロファイル"
 
-msgid "YouTube Modo TV"
-msgstr "YouTubeTVモード"
+msgid "Selecione o ícone preferido:"
+msgstr "お好みのアイコンを選択してください："
 
-msgid "Modo YouTube TV"
-msgstr "ユーチューブテレビモード"
-
-msgid "Adicionar"
-msgstr "追加"
-
-msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
-msgstr "Webアプリを追加するには、URL と名前を入力する必要があります。"
+msgid "Não é possível aplicar a edição sem Nome!"
+msgstr "名前のない編集を適用できません!"
 
 msgid "Fechar"
 msgstr "閉じる"
 
-msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
-msgstr "名前とアイコンを検出するには、URLを入力する必要があります。"
+msgid "Não é possível aplicar a edição sem alterações!"
+msgstr "変更せずに編集を適用することはできません!"
+
+msgid "O WebApp foi editado com sucesso!"
+msgstr "ウェブアプリが正常に編集されました!"
+
+msgid "Adicionar WebApps"
+msgstr "WebAppsを追加する"
+
+msgid "WebApps Adicionados"
+msgstr "WebAppsを追加しました"
+
+msgid "WebApps BigLinux"
+msgstr "BigLinux WebApps"
+
+msgid "https://www.exemplo.com"
+msgstr "https://www.exemplo.com"
+
+msgid "Exemplo"
+msgstr "例"
+
+msgid "Adicionar"
+msgstr "追加"
+
+msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
+msgstr "ウェブアプリを追加するには、<br> URL と名前を入力する必要があります。"
+
+msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
+msgstr "名前とアイコンを検出するには、<br> URLを入力する必要があります。"
 
 msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
 msgstr "URL が無効であるか、接続に失敗しました。<br>[変更] ボタンでアイコンを挿入してみてください。"
 
 msgid "O WebApp foi adicionado com sucesso!"
 msgstr "WebAppが正常に追加されました！"
-
-msgid "Ícones encontrados"
-msgstr "見つかったアイコン"
-
-msgid "Selecione o ícone preferido:"
-msgstr "お好みのアイコンを選択してください："
 
 msgid "Desenvolvimento"
 msgstr "開発"
@@ -121,20 +169,66 @@ msgstr "ゲーム"
 msgid "Multimídia"
 msgstr "マルチメディア"
 
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "このWebAppを削除してもよろしいですか？"
+msgid "Internet"
+msgstr "インターネット"
+
+msgid "Google"
+msgstr "ググる"
+
+msgid "WebApps"
+msgstr "ウェブアプリ"
 
 msgid "Nenhum WebApp adicionado!"
 msgstr "WebAppは追加されていません！"
 
+msgid "Aplicar"
+msgstr "申し込む"
+
+msgid "Cancelar"
+msgstr "キャンセル"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "このWebAppを削除してもよろしいですか？"
+
+msgid "Editar WebApp"
+msgstr "ウェブアプリの編集"
+
+msgid "O navegador não está instalado!"
+msgstr "ブラウザがインストールされていません!"
+
+msgid "Não existem navegadores compatíveis instalados no sistema!"
+msgstr "互換性のあるブラウザがシステムにインストールされていません!"
+
 msgid "Navegador padrão<br>dos WebApps:"
 msgstr "デフォルトブラウザ<br>ウェブアプリ:"
-
-msgid "Alterar navegador"
-msgstr "ブラウザを変更する"
 
 msgid "Selecione o navegador preferido:"
 msgstr "ご希望のブラウザを選択してください。"
 
+msgid "Nativo"
+msgstr "土着"
+
+msgid "Flatpak"
+msgstr "フラットパック"
+
 msgid "WebApps Nativos"
 msgstr "ネイティブWebApp"
+
+msgid ""
+"O navegador definido para abrir os WebApps não está instalado! \\n"
+"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+msgstr ""
+"WebAppsを開くように設定されたブラウザがインストールされていません!\\n"
+"WebApps マネージャでブラウザを変更してみてください!\\n"
+
+msgid "O Gerenciador de WebApps BigLinux já está aberto!"
+msgstr "BigLinux WebApps Manager がオープンしました!"
+
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "WebAppsをサポートするブラウザはインストールされていません。"
+
+msgid "Será necessário instalar mais um navegador!"
+msgstr "もう1つのブラウザをインストールする必要があります!"
+
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "BigLinux WebApps Manager"

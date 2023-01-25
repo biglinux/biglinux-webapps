@@ -16,24 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "Διαχειριστής εφαρμογών Web του BigLinux"
-
-msgid "Selecionar imagem"
-msgstr "Επιλέξτε εικόνα"
-
-msgid "Adicionar WebApps"
-msgstr "Προσθήκη WebApps"
-
-msgid "WebApps Adicionados"
-msgstr "Προστέθηκαν WebApps"
-
-msgid "WebApps BigLinux"
-msgstr "WebApps BigLinux"
-
-msgid "Preencha os campos"
-msgstr "Συμπληρώστε τα πεδία"
-
 msgid "URL:"
 msgstr "Διεύθυνση URL:"
 
@@ -51,6 +33,51 @@ msgstr "Αλλαγή"
 
 msgid "Navegador"
 msgstr "Πρόγραμμα περιήγησης"
+
+msgid "BRAVE"
+msgstr "ΑΝΔΡΕΊΟΣ"
+
+msgid "CHROME"
+msgstr "ΧΡΏΜΙΟ"
+
+msgid "CHROMIUM"
+msgstr "ΧΡΏΜΙΟ"
+
+msgid "EDGE"
+msgstr "ΆΚΡΟ"
+
+msgid "EPIPHANY"
+msgstr "Θεοφάνια"
+
+msgid "FIREFOX"
+msgstr "FIREFOX"
+
+msgid "LIBREWOLF"
+msgstr "ΛΙΜΠΡΕΒΟΥΛΦ"
+
+msgid "VIVALDI"
+msgstr "ΒΙΒΑΛΔΗ"
+
+msgid "BRAVE (FLATPAK)"
+msgstr "ΓΕΝΝΑΊΟς (ΠΛΑΤΥΠΟΔΊΑ)"
+
+msgid "CHROME (FLATPAK)"
+msgstr "ΧΡΏΜΙΟ (ΕΠΊΠΕΔΗPAK)"
+
+msgid "CHROMIUM (FLATPAK)"
+msgstr "ΧΡΏΜΙΟ (FLATPAK)"
+
+msgid "EDGE (FLATPAK)"
+msgstr "ΑΚΡΗ (ΕΠΙΠΕΔΑ)"
+
+msgid "EPIPHANY (FLATPAK)"
+msgstr "ΘΕΟΦΑΝΕΙΑ (ΠΛΑΤΥΠΑΚ)"
+
+msgid "FIREFOX (FLATPAK)"
+msgstr "FIREFOX (ΠΛΑΤΎΦΥΛΛΟ)"
+
+msgid "LIBREWOLF (FLATPAK)"
+msgstr "ΛΙΜΠΡΕΓΟΥΛΦ (ΠΛΑΤΠΑΚ)"
 
 msgid "Categoria"
 msgstr "Κατηγορία"
@@ -70,29 +97,56 @@ msgstr "ΠΑΙΧΝΙΔΙΑ"
 msgid "MULTIMÍDIA"
 msgstr "MULTIMEDIA"
 
+msgid "WEBAPPS"
+msgstr "ΔΙΑΔΙΚΤΥΑΚΕΣ ΕΦΑΡΜΟΓΕΣ"
+
+msgid "WEBAPPS GOOGLE"
+msgstr "ΕΦΑΡΜΟΓΈς ΙΣΤΟΎ GOOGLE"
+
 msgid "Criar atalho na Área de Trabalho"
 msgstr "Δημιουργία συντόμευσης στην επιφάνεια εργασίας"
 
 msgid "Perfil adicional"
 msgstr "Πρόσθετο προφίλ"
 
-msgid "YouTube Modo TV"
-msgstr "Λειτουργία YouTube TV"
+msgid "Selecione o ícone preferido:"
+msgstr "Επιλέξτε το προτιμώμενο εικονίδιο:"
 
-msgid "Modo YouTube TV"
-msgstr "Λειτουργία τηλεόρασης YouTube"
-
-msgid "Adicionar"
-msgstr "Προσθέστε"
-
-msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
-msgstr "Για να προσθέσετε μια WebApp, πρέπει να εισαγάγετε τη διεύθυνση URL και το όνομα."
+msgid "Não é possível aplicar a edição sem Nome!"
+msgstr "Δεν είναι δυνατή η εφαρμογή ανώνυμης επεξεργασίας!"
 
 msgid "Fechar"
 msgstr "Κλείστε το"
 
-msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
-msgstr "Για να εντοπίσετε το όνομα και το εικονίδιο, πρέπει να εισαγάγετε τη διεύθυνση URL."
+msgid "Não é possível aplicar a edição sem alterações!"
+msgstr "Δεν μπορείτε να εφαρμόσετε επεξεργασία χωρίς αλλαγές!"
+
+msgid "O WebApp foi editado com sucesso!"
+msgstr "Το WebApp έχει επεξεργαστεί με επιτυχία!"
+
+msgid "Adicionar WebApps"
+msgstr "Προσθήκη WebApps"
+
+msgid "WebApps Adicionados"
+msgstr "Προστέθηκαν WebApps"
+
+msgid "WebApps BigLinux"
+msgstr "WebApps BigLinux"
+
+msgid "https://www.exemplo.com"
+msgstr "https://www.exemplo.com"
+
+msgid "Exemplo"
+msgstr "Παράδειγμα"
+
+msgid "Adicionar"
+msgstr "Προσθέστε"
+
+msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
+msgstr "Για να προσθέσετε μια Εφαρμογή Web,<br> πρέπει να εισαγάγετε τη διεύθυνση URL και το όνομα."
+
+msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
+msgstr "Για να εντοπίσετε το όνομα και το εικονίδιο,<br> πρέπει να εισαγάγετε τη διεύθυνση URL."
 
 msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
 msgstr ""
@@ -101,12 +155,6 @@ msgstr ""
 
 msgid "O WebApp foi adicionado com sucesso!"
 msgstr "Η εφαρμογή WebApp προστέθηκε με επιτυχία!"
-
-msgid "Ícones encontrados"
-msgstr "Βρέθηκαν εικονίδια"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Επιλέξτε το προτιμώμενο εικονίδιο:"
 
 msgid "Desenvolvimento"
 msgstr "Ανάπτυξη"
@@ -123,20 +171,66 @@ msgstr "Παιχνίδια"
 msgid "Multimídia"
 msgstr "Πολυμέσα"
 
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Είστε σίγουροι ότι θέλετε να καταργήσετε αυτή την εφαρμογή WebApp"
+msgid "Internet"
+msgstr "Διαδίκτυο"
+
+msgid "Google"
+msgstr "Αγγελική"
+
+msgid "WebApps"
+msgstr "Διαδικτυακές Εφαρμογές"
 
 msgid "Nenhum WebApp adicionado!"
 msgstr "Δεν προστέθηκε WebApp!"
 
+msgid "Aplicar"
+msgstr "Εφαρμόζω"
+
+msgid "Cancelar"
+msgstr "Ακυρώνω"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "Είστε σίγουροι ότι θέλετε να καταργήσετε αυτή την εφαρμογή WebApp"
+
+msgid "Editar WebApp"
+msgstr "Επεξεργασία webApp"
+
+msgid "O navegador não está instalado!"
+msgstr "Το πρόγραμμα περιήγησης δεν είναι εγκατεστημένο!"
+
+msgid "Não existem navegadores compatíveis instalados no sistema!"
+msgstr "Δεν υπάρχουν συμβατά προγράμματα περιήγησης εγκατεστημένα στο σύστημα!"
+
 msgid "Navegador padrão<br>dos WebApps:"
 msgstr "Προεπιλεγμένο πρόγραμμα περιήγησης<br>εφαρμογές ιστού:"
-
-msgid "Alterar navegador"
-msgstr "Αλλαγή προγράμματος περιήγησης"
 
 msgid "Selecione o navegador preferido:"
 msgstr "Επιλέξτε το πρόγραμμα περιήγησης που προτιμάτε:"
 
+msgid "Nativo"
+msgstr "Γηγενής"
+
+msgid "Flatpak"
+msgstr "Φλατπάκ"
+
 msgid "WebApps Nativos"
 msgstr "Native WebApps"
+
+msgid ""
+"O navegador definido para abrir os WebApps não está instalado! \\n"
+"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+msgstr ""
+"Το πρόγραμμα περιήγησης που έχει ρυθμιστεί για άνοιγμα WebApps δεν είναι εγκατεστημένο! \\n"
+"Δοκιμάστε να αλλάξετε το πρόγραμμα περιήγησης στη Διαχείριση WebApps! \\n"
+
+msgid "O Gerenciador de WebApps BigLinux já está aberto!"
+msgstr "Ο Διαχειριστής Διαδικτυακών Εφαρμογών BigLinux είναι πλέον ανοιχτός!"
+
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "Δεν υπάρχουν εγκατεστημένα προγράμματα περιήγησης που υποστηρίζουν WebApps!"
+
+msgid "Será necessário instalar mais um navegador!"
+msgstr "Θα χρειαστεί να εγκαταστήσετε ένα ακόμη πρόγραμμα περιήγησης!"
+
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "Διαχειριστής εφαρμογών Web του BigLinux"

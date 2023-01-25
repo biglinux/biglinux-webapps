@@ -16,24 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "BigLinux WebApps Manager"
-
-msgid "Selecionar imagem"
-msgstr "Select image"
-
-msgid "Adicionar WebApps"
-msgstr "Add WebApps"
-
-msgid "WebApps Adicionados"
-msgstr "Added WebApps"
-
-msgid "WebApps BigLinux"
-msgstr "BigLinux WebApps"
-
-msgid "Preencha os campos"
-msgstr "Fill in the fields"
-
 msgid "URL:"
 msgstr "URL:"
 
@@ -51,6 +33,51 @@ msgstr "Change"
 
 msgid "Navegador"
 msgstr "Browser"
+
+msgid "BRAVE"
+msgstr "BRAVE"
+
+msgid "CHROME"
+msgstr "CHROME"
+
+msgid "CHROMIUM"
+msgstr "CHROMIUM"
+
+msgid "EDGE"
+msgstr "EDGE"
+
+msgid "EPIPHANY"
+msgstr "Epiphany"
+
+msgid "FIREFOX"
+msgstr "FIREFOX"
+
+msgid "LIBREWOLF"
+msgstr "LIBREWOLF"
+
+msgid "VIVALDI"
+msgstr "VIVALDI"
+
+msgid "BRAVE (FLATPAK)"
+msgstr "BRAVE (FLATPAK)"
+
+msgid "CHROME (FLATPAK)"
+msgstr "CHROME (FLATPAK)"
+
+msgid "CHROMIUM (FLATPAK)"
+msgstr "CHROMIUM (FLATPAK)"
+
+msgid "EDGE (FLATPAK)"
+msgstr "EDGE (FLATPAK)"
+
+msgid "EPIPHANY (FLATPAK)"
+msgstr "EPIPHANY (FLATPAK)"
+
+msgid "FIREFOX (FLATPAK)"
+msgstr "FIREFOX (FLATPAK)"
+
+msgid "LIBREWOLF (FLATPAK)"
+msgstr "LIBREWOLF (FLATPAK)"
 
 msgid "Categoria"
 msgstr "Category"
@@ -70,41 +97,62 @@ msgstr "GAMES"
 msgid "MULTIMÍDIA"
 msgstr "MULTIMEDIA"
 
+msgid "WEBAPPS"
+msgstr "WEBAPPS"
+
+msgid "WEBAPPS GOOGLE"
+msgstr "WEBAPPS GOOGLE"
+
 msgid "Criar atalho na Área de Trabalho"
 msgstr "Create desktop shortcut"
 
 msgid "Perfil adicional"
 msgstr "Additional profile"
 
-msgid "YouTube Modo TV"
-msgstr "YouTube TV Mode"
+msgid "Selecione o ícone preferido:"
+msgstr "Select your preferred icon:"
 
-msgid "Modo YouTube TV"
-msgstr "YouTube TV mode"
-
-msgid "Adicionar"
-msgstr "Add"
-
-msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
-msgstr "To add a WebApp, you need to enter the URL and Name."
+msgid "Não é possível aplicar a edição sem Nome!"
+msgstr "Can't apply unnamed editing!"
 
 msgid "Fechar"
 msgstr "Close"
 
-msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
-msgstr "To detect the Name and Icon you need to enter the URL."
+msgid "Não é possível aplicar a edição sem alterações!"
+msgstr "You can't apply editing without changes!"
+
+msgid "O WebApp foi editado com sucesso!"
+msgstr "WebApp has been successfully edited!"
+
+msgid "Adicionar WebApps"
+msgstr "Add WebApps"
+
+msgid "WebApps Adicionados"
+msgstr "Added WebApps"
+
+msgid "WebApps BigLinux"
+msgstr "BigLinux WebApps"
+
+msgid "https://www.exemplo.com"
+msgstr "https://www.exemplo.com"
+
+msgid "Exemplo"
+msgstr "Example"
+
+msgid "Adicionar"
+msgstr "Add"
+
+msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
+msgstr "To add a WebApp,<br> you must enter the URL and Name."
+
+msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
+msgstr "To detect the Name and Icon,<br> you need to enter the URL."
 
 msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
 msgstr "The URL is invalid or the connection failed.<br>Try inserting the icon by the Change button."
 
 msgid "O WebApp foi adicionado com sucesso!"
 msgstr "The WebApp has been successfully added!"
-
-msgid "Ícones encontrados"
-msgstr "Found icons"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Select your preferred icon:"
 
 msgid "Desenvolvimento"
 msgstr "Development"
@@ -121,20 +169,66 @@ msgstr "Games"
 msgid "Multimídia"
 msgstr "Multimedia"
 
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Are you sure you want to remove this WebApp?"
+msgid "Internet"
+msgstr "Internet"
+
+msgid "Google"
+msgstr "Google"
+
+msgid "WebApps"
+msgstr "WebApps"
 
 msgid "Nenhum WebApp adicionado!"
 msgstr "No WebApp Added!"
 
+msgid "Aplicar"
+msgstr "Apply"
+
+msgid "Cancelar"
+msgstr "Cancel"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "Are you sure you want to remove this WebApp?"
+
+msgid "Editar WebApp"
+msgstr "Edit WebApp"
+
+msgid "O navegador não está instalado!"
+msgstr "The browser is not installed!"
+
+msgid "Não existem navegadores compatíveis instalados no sistema!"
+msgstr "There are no compatible browsers installed on the system!"
+
 msgid "Navegador padrão<br>dos WebApps:"
 msgstr "Default browser<br>webapps:"
-
-msgid "Alterar navegador"
-msgstr "Change browser"
 
 msgid "Selecione o navegador preferido:"
 msgstr "Select your preferred browser:"
 
+msgid "Nativo"
+msgstr "Indigenous"
+
+msgid "Flatpak"
+msgstr "Flatpak"
+
 msgid "WebApps Nativos"
 msgstr "Native WebApps"
+
+msgid ""
+"O navegador definido para abrir os WebApps não está instalado! \\n"
+"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+msgstr ""
+"The browser set to open WebApps is not installed! \\n"
+"Try to change the browser in WebApps Manager! \\n"
+
+msgid "O Gerenciador de WebApps BigLinux já está aberto!"
+msgstr "The BigLinux WebApps Manager is now open!"
+
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "There are no installed browsers that support WebApps!"
+
+msgid "Será necessário instalar mais um navegador!"
+msgstr "You will need to install one more browser!"
+
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "BigLinux WebApps Manager"

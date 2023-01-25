@@ -16,24 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "Менеджер веб-додатків BigLinux"
-
-msgid "Selecionar imagem"
-msgstr "виберіть зображення"
-
-msgid "Adicionar WebApps"
-msgstr "Додайте веб-програми"
-
-msgid "WebApps Adicionados"
-msgstr "Додані веб-програми"
-
-msgid "WebApps BigLinux"
-msgstr "BigLinux WebApps"
-
-msgid "Preencha os campos"
-msgstr "Заповніть поля"
-
 msgid "URL:"
 msgstr "URL-адреса:"
 
@@ -51,6 +33,51 @@ msgstr "Змінити"
 
 msgid "Navegador"
 msgstr "Браузер"
+
+msgid "BRAVE"
+msgstr "ХОРОБРИЙ"
+
+msgid "CHROME"
+msgstr "ХРОМ"
+
+msgid "CHROMIUM"
+msgstr "ХРОМ"
+
+msgid "EDGE"
+msgstr "КРАЙ"
+
+msgid "EPIPHANY"
+msgstr "Прозріння"
+
+msgid "FIREFOX"
+msgstr "FIREFOX"
+
+msgid "LIBREWOLF"
+msgstr "ЛІБРЕВОЛЬФ"
+
+msgid "VIVALDI"
+msgstr "ВІВАЛЬДІ"
+
+msgid "BRAVE (FLATPAK)"
+msgstr "ХОРОБРИЙ (ФЛЕТПАК)"
+
+msgid "CHROME (FLATPAK)"
+msgstr "ХРОМ (ФЛЕТПАК)"
+
+msgid "CHROMIUM (FLATPAK)"
+msgstr "ХРОМ (ФЛЕТПАК)"
+
+msgid "EDGE (FLATPAK)"
+msgstr "КРАЙ (ФЛЕТПАК)"
+
+msgid "EPIPHANY (FLATPAK)"
+msgstr "БОГОЯВЛЕННЯ (ФЛЕТПАК)"
+
+msgid "FIREFOX (FLATPAK)"
+msgstr "FIREFOX (ФЛЕТПАК)"
+
+msgid "LIBREWOLF (FLATPAK)"
+msgstr "ЛІБРЕВОЛЬФ (ФЛЕТПАК)"
 
 msgid "Categoria"
 msgstr "Категорія"
@@ -70,29 +97,56 @@ msgstr "ІГРИ"
 msgid "MULTIMÍDIA"
 msgstr "МУЛЬТИМЕДІА"
 
+msgid "WEBAPPS"
+msgstr "ВЕБ-ПРОГРАМИ"
+
+msgid "WEBAPPS GOOGLE"
+msgstr "ВЕБ-ДОДАТКИ GOOGLE"
+
 msgid "Criar atalho na Área de Trabalho"
 msgstr "Створити ярлик на робочому столі"
 
 msgid "Perfil adicional"
 msgstr "додатковий профіль"
 
-msgid "YouTube Modo TV"
-msgstr "Режим YouTube TV"
+msgid "Selecione o ícone preferido:"
+msgstr "Виберіть потрібний значок:"
 
-msgid "Modo YouTube TV"
-msgstr "Телевізійний режим YouTube"
-
-msgid "Adicionar"
-msgstr "Додати"
-
-msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
-msgstr "Щоб додати WebApp, вам потрібно ввести URL-адресу та ім'я."
+msgid "Não é possível aplicar a edição sem Nome!"
+msgstr "Не вдається застосувати безіменне редагування!"
 
 msgid "Fechar"
 msgstr " Закрити"
 
-msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
-msgstr "Для виявлення імені та значка потрібно ввести URL-адресу."
+msgid "Não é possível aplicar a edição sem alterações!"
+msgstr "Ви не можете застосувати редагування без змін!"
+
+msgid "O WebApp foi editado com sucesso!"
+msgstr "WebApp успішно відредаговано!"
+
+msgid "Adicionar WebApps"
+msgstr "Додайте веб-програми"
+
+msgid "WebApps Adicionados"
+msgstr "Додані веб-програми"
+
+msgid "WebApps BigLinux"
+msgstr "BigLinux WebApps"
+
+msgid "https://www.exemplo.com"
+msgstr "https://www.exemplo.com"
+
+msgid "Exemplo"
+msgstr "Приклад"
+
+msgid "Adicionar"
+msgstr "Додати"
+
+msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
+msgstr "Щоб додати веб-програму,<br> необхідно ввести URL-адресу та ім'я."
+
+msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
+msgstr "Щоб визначити ім'я та піктограму,<br> потрібно ввести URL-адресу."
 
 msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
 msgstr ""
@@ -101,12 +155,6 @@ msgstr ""
 
 msgid "O WebApp foi adicionado com sucesso!"
 msgstr "WebApp успішно додано!"
-
-msgid "Ícones encontrados"
-msgstr "Знайдено значки"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Виберіть потрібний значок:"
 
 msgid "Desenvolvimento"
 msgstr "Розвиток"
@@ -123,20 +171,66 @@ msgstr "Ігри"
 msgid "Multimídia"
 msgstr "Мультимедіа"
 
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Ви впевнені, що хочете видалити цю веб-програму?"
+msgid "Internet"
+msgstr "Інтернет"
+
+msgid "Google"
+msgstr "Гугл"
+
+msgid "WebApps"
+msgstr "Веб-програми"
 
 msgid "Nenhum WebApp adicionado!"
 msgstr "Веб-додаток не додано!"
 
+msgid "Aplicar"
+msgstr "Застосовувати"
+
+msgid "Cancelar"
+msgstr "Скасувати"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "Ви впевнені, що хочете видалити цю веб-програму?"
+
+msgid "Editar WebApp"
+msgstr "Редагувати веб-додаток"
+
+msgid "O navegador não está instalado!"
+msgstr "Браузер не встановлений!"
+
+msgid "Não existem navegadores compatíveis instalados no sistema!"
+msgstr "Сумісних браузерів в системі не встановлено!"
+
 msgid "Navegador padrão<br>dos WebApps:"
 msgstr "Браузер за замовчуванням<br>веб-додатки:"
-
-msgid "Alterar navegador"
-msgstr "змінити браузер"
 
 msgid "Selecione o navegador preferido:"
 msgstr "Виберіть потрібний браузер:"
 
+msgid "Nativo"
+msgstr "Корінні"
+
+msgid "Flatpak"
+msgstr "Флетпак"
+
 msgid "WebApps Nativos"
 msgstr "Нативні веб-програми"
+
+msgid ""
+"O navegador definido para abrir os WebApps não está instalado! \\n"
+"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+msgstr ""
+"Браузер, налаштований на відкриття WebApps, не встановлено! \\n"
+"Спробуйте змінити браузер у WebApps Manager! \\n"
+
+msgid "O Gerenciador de WebApps BigLinux já está aberto!"
+msgstr "Менеджер веб-додатків BigLinux тепер відкритий!"
+
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "Немає встановлених браузерів, які підтримують WebApps!"
+
+msgid "Será necessário instalar mais um navegador!"
+msgstr "Вам потрібно буде встановити ще один браузер!"
+
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "Менеджер веб-додатків BigLinux"

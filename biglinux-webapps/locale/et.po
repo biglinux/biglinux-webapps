@@ -16,24 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "BigLinuxi veebirakenduste haldur"
-
-msgid "Selecionar imagem"
-msgstr "Valige pilt"
-
-msgid "Adicionar WebApps"
-msgstr "Veebirakenduste lisamine"
-
-msgid "WebApps Adicionados"
-msgstr "Lisatud veebirakendused"
-
-msgid "WebApps BigLinux"
-msgstr "Veebirakendused BigLinux"
-
-msgid "Preencha os campos"
-msgstr "Täitke väljad"
-
 msgid "URL:"
 msgstr "URL:"
 
@@ -51,6 +33,51 @@ msgstr "Muuda"
 
 msgid "Navegador"
 msgstr "Brauser"
+
+msgid "BRAVE"
+msgstr "JULGE"
+
+msgid "CHROME"
+msgstr "CHROME"
+
+msgid "CHROMIUM"
+msgstr "KROOM"
+
+msgid "EDGE"
+msgstr "ÄÄR"
+
+msgid "EPIPHANY"
+msgstr "Kolmekuningapäev"
+
+msgid "FIREFOX"
+msgstr "FIREFOX"
+
+msgid "LIBREWOLF"
+msgstr "LIBREWOLF"
+
+msgid "VIVALDI"
+msgstr "VIVALDI"
+
+msgid "BRAVE (FLATPAK)"
+msgstr "VAPPER (FLATPAK)"
+
+msgid "CHROME (FLATPAK)"
+msgstr "KROOM (FLATPAK)"
+
+msgid "CHROMIUM (FLATPAK)"
+msgstr "KROOM (FLATPAK)"
+
+msgid "EDGE (FLATPAK)"
+msgstr "SERV (FLATPAK)"
+
+msgid "EPIPHANY (FLATPAK)"
+msgstr "KOLMEKUNINGAPÄEV (FLATPAK)"
+
+msgid "FIREFOX (FLATPAK)"
+msgstr "FIREFOX (FLATPAK)"
+
+msgid "LIBREWOLF (FLATPAK)"
+msgstr "LIBREWOLF (FLATPAK)"
 
 msgid "Categoria"
 msgstr "Kategooria"
@@ -70,41 +97,62 @@ msgstr "MÄNGUD"
 msgid "MULTIMÍDIA"
 msgstr "MULTIMEDIA"
 
+msgid "WEBAPPS"
+msgstr "WEBAPPS"
+
+msgid "WEBAPPS GOOGLE"
+msgstr "WEBAPPS GOOGLE"
+
 msgid "Criar atalho na Área de Trabalho"
 msgstr "Loo otsetee töölauale"
 
 msgid "Perfil adicional"
 msgstr "Täiendav profiil"
 
-msgid "YouTube Modo TV"
-msgstr "YouTube TV režiim"
+msgid "Selecione o ícone preferido:"
+msgstr "Valige eelistatud ikoon:"
 
-msgid "Modo YouTube TV"
-msgstr "YouTube TV režiim"
-
-msgid "Adicionar"
-msgstr "Lisa"
-
-msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
-msgstr "WebAppi lisamiseks peate sisestama URL-i ja nime."
+msgid "Não é possível aplicar a edição sem Nome!"
+msgstr "Nimetamata redigeerimist ei saa rakendada!"
 
 msgid "Fechar"
 msgstr "Sulge"
 
-msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
-msgstr "Nime ja ikooni tuvastamiseks peate sisestama URL-i."
+msgid "Não é possível aplicar a edição sem alterações!"
+msgstr "Redigeerimist ei saa ilma muudatusteta rakendada!"
+
+msgid "O WebApp foi editado com sucesso!"
+msgstr "WebAppi on edukalt redigeeritud!"
+
+msgid "Adicionar WebApps"
+msgstr "Veebirakenduste lisamine"
+
+msgid "WebApps Adicionados"
+msgstr "Lisatud veebirakendused"
+
+msgid "WebApps BigLinux"
+msgstr "Veebirakendused BigLinux"
+
+msgid "https://www.exemplo.com"
+msgstr "https://www.exemplo.com"
+
+msgid "Exemplo"
+msgstr "Näide"
+
+msgid "Adicionar"
+msgstr "Lisa"
+
+msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
+msgstr "WebAppi lisamiseks tehke järgmist.<br> peate sisestama URL-i ja nime."
+
+msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
+msgstr "Nime ja ikooni tuvastamiseks tehke järgmist.<br> peate sisestama URL-i."
 
 msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
 msgstr "URL on sobimatu või ühendus nurjus.<br>Proovige ikoon sisestada nupu Muuda abil."
 
 msgid "O WebApp foi adicionado com sucesso!"
 msgstr "Veebirakendus lisati edukalt!"
-
-msgid "Ícones encontrados"
-msgstr "Leitud ikoonid"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Valige eelistatud ikoon:"
 
 msgid "Desenvolvimento"
 msgstr "Arendus"
@@ -121,20 +169,66 @@ msgstr "Mängud"
 msgid "Multimídia"
 msgstr "Multimeedia"
 
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Kas olete kindel, et soovite selle veebirakenduse eemaldada?"
+msgid "Internet"
+msgstr "Internet"
+
+msgid "Google"
+msgstr "Google"
+
+msgid "WebApps"
+msgstr "WebApps"
 
 msgid "Nenhum WebApp adicionado!"
 msgstr "Veebirakendust ei ole lisatud!"
 
+msgid "Aplicar"
+msgstr "Kohaldata"
+
+msgid "Cancelar"
+msgstr "Tühistama"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "Kas olete kindel, et soovite selle veebirakenduse eemaldada?"
+
+msgid "Editar WebApp"
+msgstr "Muuda WebAppi"
+
+msgid "O navegador não está instalado!"
+msgstr "Brauser pole installitud!"
+
+msgid "Não existem navegadores compatíveis instalados no sistema!"
+msgstr "Süsteemi pole installitud ühilduvaid brausereid!"
+
 msgid "Navegador padrão<br>dos WebApps:"
 msgstr "Vaikebrauser<br>webapps:"
-
-msgid "Alterar navegador"
-msgstr "Muutke brauserit"
 
 msgid "Selecione o navegador preferido:"
 msgstr "Valige oma eelistatud brauser:"
 
+msgid "Nativo"
+msgstr "Põlisrahvaste"
+
+msgid "Flatpak"
+msgstr "Lamepak"
+
 msgid "WebApps Nativos"
 msgstr "Natiivsed veebirakendused"
+
+msgid ""
+"O navegador definido para abrir os WebApps não está instalado! \\n"
+"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+msgstr ""
+"Brauser, mis on seatud WebAppsi avama, pole installitud! \\n"
+"Proovige brauserit muuta WebApps Manageris! \\n"
+
+msgid "O Gerenciador de WebApps BigLinux já está aberto!"
+msgstr "BigLinux WebApps Manager on nüüd avatud!"
+
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "Pole installitud brausereid, mis toetaksid WebAppsi!"
+
+msgid "Será necessário instalar mais um navegador!"
+msgstr "Peate installima veel ühe brauseri!"
+
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "BigLinuxi veebirakenduste haldur"

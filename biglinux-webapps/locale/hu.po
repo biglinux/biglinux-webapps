@@ -16,24 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "BigLinux WebApps Manager"
-
-msgid "Selecionar imagem"
-msgstr "Kép kiválasztása"
-
-msgid "Adicionar WebApps"
-msgstr "Webalkalmazások hozzáadása"
-
-msgid "WebApps Adicionados"
-msgstr "Hozzáadott webalkalmazások"
-
-msgid "WebApps BigLinux"
-msgstr "Webalkalmazások BigLinux"
-
-msgid "Preencha os campos"
-msgstr "Töltse ki a mezőket"
-
 msgid "URL:"
 msgstr "URL-cím:"
 
@@ -51,6 +33,51 @@ msgstr "Változás"
 
 msgid "Navegador"
 msgstr "Böngésző"
+
+msgid "BRAVE"
+msgstr "BÁTOR"
+
+msgid "CHROME"
+msgstr "KRÓM"
+
+msgid "CHROMIUM"
+msgstr "KRÓM"
+
+msgid "EDGE"
+msgstr "PEREM"
+
+msgid "EPIPHANY"
+msgstr "Vízkereszt"
+
+msgid "FIREFOX"
+msgstr "FIREFOX"
+
+msgid "LIBREWOLF"
+msgstr "LIBREWOLF"
+
+msgid "VIVALDI"
+msgstr "VIVALDI"
+
+msgid "BRAVE (FLATPAK)"
+msgstr "BÁTOR (FLATPAK)"
+
+msgid "CHROME (FLATPAK)"
+msgstr "KRÓM (FLATPAK)"
+
+msgid "CHROMIUM (FLATPAK)"
+msgstr "KRÓM (FLATPAK)"
+
+msgid "EDGE (FLATPAK)"
+msgstr "ÉL (FLATPAK)"
+
+msgid "EPIPHANY (FLATPAK)"
+msgstr "VÍZKERESZT (FLATPAK)"
+
+msgid "FIREFOX (FLATPAK)"
+msgstr "FIREFOX (FLATPAK)"
+
+msgid "LIBREWOLF (FLATPAK)"
+msgstr "LIBREWOLF (FLATPAK)"
 
 msgid "Categoria"
 msgstr "Kategória"
@@ -70,29 +97,56 @@ msgstr "JÁTÉKOK"
 msgid "MULTIMÍDIA"
 msgstr "MULTIMEDIA"
 
+msgid "WEBAPPS"
+msgstr "WEBALKALMAZÁSOK"
+
+msgid "WEBAPPS GOOGLE"
+msgstr "WEBALKALMAZÁSOK GOOGLE"
+
 msgid "Criar atalho na Área de Trabalho"
 msgstr "Párhuzamos parancsikon létrehozása az asztalon"
 
 msgid "Perfil adicional"
 msgstr "További profil"
 
-msgid "YouTube Modo TV"
-msgstr "YouTube TV mód"
+msgid "Selecione o ícone preferido:"
+msgstr "Válassza ki a kívánt ikont:"
 
-msgid "Modo YouTube TV"
-msgstr "YouTube TV mód"
-
-msgid "Adicionar"
-msgstr "Add"
-
-msgid "Para adicionar um WebApp, você precisa informar a URL e o Nome."
-msgstr "WebApp hozzáadásához meg kell adnia az URL-címet és a nevet."
+msgid "Não é possível aplicar a edição sem Nome!"
+msgstr "Nem lehet névtelen szerkesztést alkalmazni!"
 
 msgid "Fechar"
 msgstr "Zárja be a"
 
-msgid "Para detectar o Nome e o Ícone você precisa informar a URL."
-msgstr "A név és az ikon észleléséhez meg kell adnia az URL-címet."
+msgid "Não é possível aplicar a edição sem alterações!"
+msgstr "Változtatások nélkül nem alkalmazhatja a szerkesztést!"
+
+msgid "O WebApp foi editado com sucesso!"
+msgstr "A WebApp sikeresen szerkesztve lett!"
+
+msgid "Adicionar WebApps"
+msgstr "Webalkalmazások hozzáadása"
+
+msgid "WebApps Adicionados"
+msgstr "Hozzáadott webalkalmazások"
+
+msgid "WebApps BigLinux"
+msgstr "Webalkalmazások BigLinux"
+
+msgid "https://www.exemplo.com"
+msgstr "https://www.exemplo.com"
+
+msgid "Exemplo"
+msgstr "Példa"
+
+msgid "Adicionar"
+msgstr "Add"
+
+msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
+msgstr "WebApp hozzáadásához:<br> meg kell adnia az URL-címet és a nevet."
+
+msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
+msgstr "A név és az ikon észleléséhez:<br> meg kell adnia az URL-t."
 
 msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
 msgstr ""
@@ -101,12 +155,6 @@ msgstr ""
 
 msgid "O WebApp foi adicionado com sucesso!"
 msgstr "A webalkalmazás sikeresen hozzáadva!"
-
-msgid "Ícones encontrados"
-msgstr "Megtalált ikonok"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Válassza ki a kívánt ikont:"
 
 msgid "Desenvolvimento"
 msgstr "Fejlesztés"
@@ -123,20 +171,66 @@ msgstr "Játékok"
 msgid "Multimídia"
 msgstr "Multimédia"
 
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Biztos, hogy el akarja távolítani ezt a webalkalmazást?"
+msgid "Internet"
+msgstr "Internet"
+
+msgid "Google"
+msgstr "A Google"
+
+msgid "WebApps"
+msgstr "Webalkalmazások"
 
 msgid "Nenhum WebApp adicionado!"
 msgstr "Nincs WebApp hozzáadva!"
 
+msgid "Aplicar"
+msgstr "Alkalmaz"
+
+msgid "Cancelar"
+msgstr "Érvénytelenít"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "Biztos, hogy el akarja távolítani ezt a webalkalmazást?"
+
+msgid "Editar WebApp"
+msgstr "WebApp szerkesztése"
+
+msgid "O navegador não está instalado!"
+msgstr "A böngésző nincs telepítve!"
+
+msgid "Não existem navegadores compatíveis instalados no sistema!"
+msgstr "Nincsenek kompatibilis böngészők telepítve a rendszerre!"
+
 msgid "Navegador padrão<br>dos WebApps:"
 msgstr "Alapértelmezett böngésző<br>webes alkalmazások:"
-
-msgid "Alterar navegador"
-msgstr "Böngésző módosítása"
 
 msgid "Selecione o navegador preferido:"
 msgstr "Válassza ki a kívánt böngészőt:"
 
+msgid "Nativo"
+msgstr "Őshonos"
+
+msgid "Flatpak"
+msgstr "Lapospak"
+
 msgid "WebApps Nativos"
 msgstr "Natív webes alkalmazások"
+
+msgid ""
+"O navegador definido para abrir os WebApps não está instalado! \\n"
+"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+msgstr ""
+"A WebApps megnyitására beállított böngésző nincs telepítve! \\n"
+"Try a böngésző megváltoztatásához a WebApps Managerben! \\n"
+
+msgid "O Gerenciador de WebApps BigLinux já está aberto!"
+msgstr "Megnyílt a BigLinux WebApps Manager!"
+
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "Nincsenek telepített böngészők, amelyek támogatják a WebApps alkalmazást!"
+
+msgid "Será necessário instalar mais um navegador!"
+msgstr "Még egy böngészőt kell telepítenie!"
+
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "BigLinux WebApps Manager"
