@@ -14,6 +14,12 @@ msgstr  "Project-Id-Version: biglinux-webapps\n"
         "Content-Type: text/plain; charset=UTF-8\n"
         "Content-Transfer-Encoding: 8bit\n"
 
+msgid   "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr  ""
+
+msgid   "Será necessário instalar mais um navegador!"
+msgstr  ""
+
 msgid   "URL:"
 msgstr  ""
 
@@ -218,12 +224,6 @@ msgid   "O navegador definido para abrir os WebApps não está instalado! "
 msgstr  ""
 
 msgid   "O Gerenciador de WebApps BigLinux já está aberto!"
-msgstr  ""
-
-msgid   "Não existem navegadores instalados compatíveis com os WebApps!"
-msgstr  ""
-
-msgid   "Será necessário instalar mais um navegador!"
 msgstr  ""
 
 msgid   "Gerenciador de WebApps BigLinux"
