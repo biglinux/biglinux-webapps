@@ -116,4 +116,4 @@ fi
 
 bigbashview -s 960x620 -n $"Gerenciador de WebApps BigLinux" \
             -i icons/webapp.svg -p "webapp-manager-biglinux" \
-            /usr/share/bigbashview/bcc/apps/biglinux-webapps/index.sh.htm
+            -d "/usr/share/bigbashview/bcc/apps/biglinux-webapps" index.sh.htm
