@@ -9,7 +9,7 @@ if [ "$1" = "firelibre" ];then
     exit
 fi
 
-/usr/share/bigbashview/bcc/apps/biglinux-webapps/check_browser.sh &
+/usr/share/bigbashview/bcc/apps/biglinux-webapps/check_browser.sh
 
 _GET_BROWSER=$(<~/.bigwebapps/BROWSER)
 
