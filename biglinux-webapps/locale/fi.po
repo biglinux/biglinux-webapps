@@ -16,6 +16,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "Ei ole asennettuja selaimia, jotka tukevat WebAppsia!"
+
+msgid "Será necessário instalar mais um navegador compatível!"
+msgstr "Sinun on asennettava vielä yksi yhteensopiva selain!"
+
 msgid "URL:"
 msgstr "URL:"
 
@@ -223,12 +229,6 @@ msgstr ""
 
 msgid "O Gerenciador de WebApps BigLinux já está aberto!"
 msgstr "BigLinux WebApps Manager on nyt auki!"
-
-msgid "Não existem navegadores instalados compatíveis com os WebApps!"
-msgstr "Ei ole asennettuja selaimia, jotka tukevat WebAppsia!"
-
-msgid "Será necessário instalar mais um navegador!"
-msgstr "Sinun on asennettava vielä yksi selain!"
 
 msgid "Gerenciador de WebApps BigLinux"
 msgstr "BigLinux WebApps Manager"

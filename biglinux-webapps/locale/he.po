@@ -16,6 +16,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "אין דפדפנים מותקנים התומכים ב- WebApps!"
+
+msgid "Será necessário instalar mais um navegador compatível!"
+msgstr "יהיה עליך להתקין דפדפן תואם אחד נוסף!"
+
 msgid "URL:"
 msgstr "כתובת אתר:"
 
@@ -223,12 +229,6 @@ msgstr ""
 
 msgid "O Gerenciador de WebApps BigLinux já está aberto!"
 msgstr "מנהל אפליקציות האינטרנט של BigLinux פתוח כעת!"
-
-msgid "Não existem navegadores instalados compatíveis com os WebApps!"
-msgstr "אין דפדפנים מותקנים התומכים ב- WebApps!"
-
-msgid "Será necessário instalar mais um navegador!"
-msgstr "יהיה עליך להתקין דפדפן אחד נוסף!"
 
 msgid "Gerenciador de WebApps BigLinux"
 msgstr "מנהל אפליקציות האינטרנט של BigLinux"

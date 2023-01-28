@@ -16,6 +16,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "Nejsou nainstalovány žádné prohlížeče, které podporují WebApps!"
+
+msgid "Será necessário instalar mais um navegador compatível!"
+msgstr "Budete muset nainstalovat ještě jeden kompatibilní prohlížeč!"
+
 msgid "URL:"
 msgstr "Adresa URL:"
 
@@ -223,12 +229,6 @@ msgstr ""
 
 msgid "O Gerenciador de WebApps BigLinux já está aberto!"
 msgstr "BigLinux WebApps Manager je nyní otevřen!"
-
-msgid "Não existem navegadores instalados compatíveis com os WebApps!"
-msgstr "Nejsou nainstalovány žádné prohlížeče, které podporují WebApps!"
-
-msgid "Será necessário instalar mais um navegador!"
-msgstr "Budete muset nainstalovat ještě jeden prohlížeč!"
 
 msgid "Gerenciador de WebApps BigLinux"
 msgstr "BigLinux WebApps Manager"

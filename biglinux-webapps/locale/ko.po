@@ -16,6 +16,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "WebApps를 지원하는 설치된 브라우저가 없습니다!"
+
+msgid "Será necessário instalar mais um navegador compatível!"
+msgstr "호환되는 브라우저를 하나 더 설치해야합니다!"
+
 msgid "URL:"
 msgstr "URL:"
 
@@ -223,12 +229,6 @@ msgstr ""
 
 msgid "O Gerenciador de WebApps BigLinux já está aberto!"
 msgstr "BigLinux WebApps Manager가 이제 열려 있습니다!"
-
-msgid "Não existem navegadores instalados compatíveis com os WebApps!"
-msgstr "WebApps를 지원하는 설치된 브라우저가 없습니다!"
-
-msgid "Será necessário instalar mais um navegador!"
-msgstr "브라우저를 하나 더 설치해야합니다!"
 
 msgid "Gerenciador de WebApps BigLinux"
 msgstr "빅리눅스 웹앱 관리자"

@@ -16,6 +16,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "Δεν υπάρχουν εγκατεστημένα προγράμματα περιήγησης που υποστηρίζουν WebApps!"
+
+msgid "Será necessário instalar mais um navegador compatível!"
+msgstr "Θα χρειαστεί να εγκαταστήσετε ένα ακόμη συμβατό πρόγραμμα περιήγησης!"
+
 msgid "URL:"
 msgstr "Διεύθυνση URL:"
 
@@ -225,12 +231,6 @@ msgstr ""
 
 msgid "O Gerenciador de WebApps BigLinux já está aberto!"
 msgstr "Ο Διαχειριστής Διαδικτυακών Εφαρμογών BigLinux είναι πλέον ανοιχτός!"
-
-msgid "Não existem navegadores instalados compatíveis com os WebApps!"
-msgstr "Δεν υπάρχουν εγκατεστημένα προγράμματα περιήγησης που υποστηρίζουν WebApps!"
-
-msgid "Será necessário instalar mais um navegador!"
-msgstr "Θα χρειαστεί να εγκαταστήσετε ένα ακόμη πρόγραμμα περιήγησης!"
 
 msgid "Gerenciador de WebApps BigLinux"
 msgstr "Διαχειριστής εφαρμογών Web του BigLinux"

@@ -16,6 +16,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "Nincsenek telepített böngészők, amelyek támogatják a WebApps alkalmazást!"
+
+msgid "Será necessário instalar mais um navegador compatível!"
+msgstr "Még egy kompatibilis böngészőt kell telepítenie!"
+
 msgid "URL:"
 msgstr "URL-cím:"
 
@@ -225,12 +231,6 @@ msgstr ""
 
 msgid "O Gerenciador de WebApps BigLinux já está aberto!"
 msgstr "Megnyílt a BigLinux WebApps Manager!"
-
-msgid "Não existem navegadores instalados compatíveis com os WebApps!"
-msgstr "Nincsenek telepített böngészők, amelyek támogatják a WebApps alkalmazást!"
-
-msgid "Será necessário instalar mais um navegador!"
-msgstr "Még egy böngészőt kell telepítenie!"
 
 msgid "Gerenciador de WebApps BigLinux"
 msgstr "BigLinux WebApps Manager"
