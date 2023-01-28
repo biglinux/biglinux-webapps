@@ -11,7 +11,6 @@ export TEXTDOMAIN=biglinux-webapps
 
 WEBAPP_DIR="/usr/share/bigbashview/bcc/apps/biglinux-webapps/webapps"
 HOME_SHARE_DIR_APP="$HOME/.local/share/applications"
-ONLY=false
 
 # Criando diretórios necessários
 mkdir -p ~/.bigwebapps
@@ -19,7 +18,9 @@ mkdir -p ~/.local/share/icons
 mkdir -p "$HOME_SHARE_DIR_APP"
 mkdir -p ~/.local/bin
 
-/usr/share/bigbashview/bcc/apps/biglinux-webapps/check_browser.sh &
+if [ ! -e ~/.bigwebapps/BROWSER ];then
+    /usr/share/bigbashview/bcc/apps/biglinux-webapps/check_browser.sh
+fi
 
 if [ ! -e ~/.bigwebapps/NATIVE ];then
     for webapp in "$WEBAPP_DIR"/*.desktop; do
