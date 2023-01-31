@@ -6,5 +6,5 @@ Type=Application
 Name=Translator
 Name[pt]=Tradutor
 Exec=~/.local/bin/googletranslate-webapp-biglinux-io.gitlab.librewolf-community
-Icon=google-translate.png
+Icon=g-translate.png
 Categories=Google;

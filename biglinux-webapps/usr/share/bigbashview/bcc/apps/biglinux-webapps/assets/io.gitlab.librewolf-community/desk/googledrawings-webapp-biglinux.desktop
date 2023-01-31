@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Drawings
 Exec=~/.local/bin/googledrawings-webapp-biglinux-io.gitlab.librewolf-community
-Icon=google-drawings.png
+Icon=g-drawings.png
 Categories=Google;

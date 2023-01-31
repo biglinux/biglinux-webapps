@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Youtube Music
 Exec=~/.local/bin/youtubemusic-webapp-biglinux-librewolf
-Icon=google-youtubemusic.png
+Icon=g-youtubemusic.png
 Categories=Google;

@@ -6,5 +6,5 @@ Type=Application
 Name=Spreadsheets
 Name[pt]=Planilhas
 Exec=~/.local/bin/googlesheets-webapp-biglinux-io.gitlab.librewolf-community
-Icon=google-spreadsheets.png
+Icon=g-spreadsheets.png
 Categories=Google;
