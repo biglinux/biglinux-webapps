@@ -50,7 +50,7 @@ count=0
 while [ $count -lt 100 ];do
     wininfo=$(xwininfo -root -children -all | grep \"Navigator\"\ \"$CLASS\")
     if [ "$wininfo" ];then
-        xseticon -id "$(awk '{print $1}' <<< $wininfo)" /usr/share/icons/hicolor/128x128/apps/google-presentation.png
+        xseticon -id "$(awk '{print $1}' <<< $wininfo)" /usr/share/icons/hicolor/128x128/apps/g-presentation.png
         count=100
     else
         let count=count+1;
