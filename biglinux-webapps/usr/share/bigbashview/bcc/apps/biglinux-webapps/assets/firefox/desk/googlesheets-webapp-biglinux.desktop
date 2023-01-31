@@ -6,5 +6,5 @@ Type=Application
 Name=Spreadsheets
 Name[pt]=Planilhas
 Exec=~/.local/bin/googlesheets-webapp-biglinux-firefox
-Icon=google-spreadsheets.png
+Icon=g-spreadsheets.png
 Categories=Google;
