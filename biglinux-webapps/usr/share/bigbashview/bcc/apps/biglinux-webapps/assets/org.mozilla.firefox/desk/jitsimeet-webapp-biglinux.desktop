@@ -4,5 +4,5 @@ Terminal=false
 Type=Application
 Name=Jitsi Meet
 Exec=~/.local/bin/jitsimeet-webapp-biglinux-org.mozilla.firefox
-Icon=jitsi.png
+Icon=/usr/share/icons/hicolor/128x128/apps/jitsi.png
 Categories=Webapps;

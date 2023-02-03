@@ -5,6 +5,6 @@ Terminal=false
 Type=Application
 Name=Netflix
 Exec=/usr/bin/biglinux-webapp --class="www.netflix.com,Chromium-browser" --profile-directory=Default --app=https://www.netflix.com/
-Icon=netflix.png
+Icon=/usr/share/icons/hicolor/128x128/apps/netflix.png
 Categories=Webapps;
 StartupWMClass=www.netflix.com

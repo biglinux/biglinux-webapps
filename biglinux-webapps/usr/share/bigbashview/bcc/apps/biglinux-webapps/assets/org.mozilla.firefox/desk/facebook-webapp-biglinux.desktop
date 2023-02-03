@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Facebook
 Exec=~/.local/bin/facebook-webapp-biglinux-org.mozilla.firefox
-Icon=facebook.png
+Icon=/usr/share/icons/hicolor/128x128/apps/facebook.png
 Categories=Webapps;

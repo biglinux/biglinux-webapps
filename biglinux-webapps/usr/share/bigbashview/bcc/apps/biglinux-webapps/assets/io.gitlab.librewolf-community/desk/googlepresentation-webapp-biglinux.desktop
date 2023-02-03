@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Slides
 Exec=~/.local/bin/googlepresentation-webapp-biglinux-io.gitlab.librewolf-community
-Icon=g-presentation.png
+Icon=/usr/share/icons/hicolor/128x128/apps/g-presentation.png
 Categories=Google;

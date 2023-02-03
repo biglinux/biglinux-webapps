@@ -5,6 +5,6 @@ Terminal=false
 Type=Application
 Name=Spotify
 Exec=biglinux-webapp --class="open.spotify.com__browse_featured,Chromium-browser" --profile-directory=Default --app=https://open.spotify.com/browse/featured
-Icon=spotifywebapp.png
+Icon=/usr/share/icons/hicolor/128x128/apps/spotifywebapp.png
 Categories=Webapps;
 StartupWMClass=open.spotify.com__browse_featured

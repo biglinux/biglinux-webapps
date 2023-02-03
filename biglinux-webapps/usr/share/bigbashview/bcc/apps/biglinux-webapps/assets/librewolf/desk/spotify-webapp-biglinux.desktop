@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Spotify
 Exec=~/.local/bin/spotify-webapp-biglinux-librewolf
-Icon=spotifywebapp.png
+Icon=/usr/share/icons/hicolor/128x128/apps/spotifywebapp.png
 Categories=Webapps;

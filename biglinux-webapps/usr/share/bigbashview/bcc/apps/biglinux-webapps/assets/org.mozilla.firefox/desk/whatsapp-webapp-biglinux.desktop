@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=WhatsApp
 Exec=~/.local/bin/whatsapp-webapp-biglinux-org.mozilla.firefox
-Icon=whatsapp.png
+Icon=/usr/share/icons/hicolor/128x128/apps/whatsapp.png
 Categories=Webapps;

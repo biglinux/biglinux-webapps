@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Instagram
 Exec=~/.local/bin/instagram-webapp-biglinux-org.mozilla.firefox
-Icon=instagram.png
+Icon=/usr/share/icons/hicolor/128x128/apps/instagram.png
 Categories=Webapps;

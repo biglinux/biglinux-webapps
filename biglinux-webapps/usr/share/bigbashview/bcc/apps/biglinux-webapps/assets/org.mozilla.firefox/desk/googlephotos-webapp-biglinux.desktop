@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Photos
 Exec=~/.local/bin/googlephotos-webapp-biglinux-org.mozilla.firefox
-Icon=g-photos.png
+Icon=/usr/share/icons/hicolor/128x128/apps/g-photos.png
 Categories=Google;

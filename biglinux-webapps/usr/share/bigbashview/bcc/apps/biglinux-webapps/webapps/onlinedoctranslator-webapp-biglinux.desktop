@@ -6,6 +6,6 @@ Type=Application
 Name=Docs Translator
 Name[pt_BR]=Traduzir Docs
 Exec=/usr/bin/biglinux-webapp --class="www.onlinedoctranslator.com__translationform,Chromium-browser" --profile-directory=Default --app=https://www.onlinedoctranslator.com/translationform
-Icon=doctranslator.png
+Icon=/usr/share/icons/hicolor/128x128/apps/doctranslator.png
 StartupWMClass=www.onlinedoctranslator.com__translationform
 Categories=Webapps;

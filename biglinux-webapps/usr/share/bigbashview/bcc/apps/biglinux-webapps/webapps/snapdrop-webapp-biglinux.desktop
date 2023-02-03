@@ -4,6 +4,6 @@ Terminal=false
 Type=Application
 Name=Snapdrop
 Exec=/usr/bin/biglinux-webapp --class=snapdrop.net,Chromium-browser --profile-directory=Default --app=https://snapdrop.net
-Icon=snapdrop.png
+Icon=/usr/share/icons/hicolor/128x128/apps/snapdrop.png
 Categories=Webapps;
 StartupWMClass=snapdrop.net

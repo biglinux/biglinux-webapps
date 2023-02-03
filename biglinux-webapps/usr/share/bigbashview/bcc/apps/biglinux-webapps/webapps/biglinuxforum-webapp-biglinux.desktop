@@ -6,6 +6,6 @@ Type=Application
 Name=BigLinux Forum
 Name[pt]=Fórum BigLinux
 Exec=/usr/bin/biglinux-webapp --class="forum.biglinux.com.br,Chromium-browser" --profile-directory=Default --app=https://forum.biglinux.com.br
-Icon=biglinux-globo.png
+Icon=/usr/share/icons/hicolor/128x128/apps/biglinux-globo.png
 StartupWMClass=forum.biglinux.com.br
 Categories=Webapps;

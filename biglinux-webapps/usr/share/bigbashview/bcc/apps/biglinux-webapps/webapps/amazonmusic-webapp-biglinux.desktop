@@ -5,6 +5,6 @@ Terminal=false
 Type=Application
 Name=Amazon Music
 Exec=/usr/bin/biglinux-webapp --class="music.amazon.com.br__home,Chromium-browser" --profile-directory=Default --app=https://music.amazon.com.br/home
-Icon=amazonmusic.png
+Icon=/usr/share/icons/hicolor/128x128/apps/amazonmusic.png
 StartupWMClass=music.amazon.com.br__home
 Categories=Webapps;

@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Telegram
 Exec=~/.local/bin/telegram-webapp-biglinux-firefox
-Icon=telegram-webapp.png
+Icon=/usr/share/icons/hicolor/128x128/apps/telegram-webapp.png
 Categories=Webapps;
