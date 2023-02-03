@@ -959,7 +959,7 @@ echo -n '
 
     # Grabs icon
     /^Icon=/ {
-        icon = "/usr/share/icons/hicolor/128x128/apps/" gensub(/^Icon=/,"",1)
+        icon = gensub(/^Icon=/,"",1)
     }
 
     # Grabs url for the browser and for bbv

@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Waze
 Exec=~/.local/bin/waze-webapp-biglinux-io.gitlab.librewolf-community
-Icon=g-waze.png
+Icon=/usr/share/icons/hicolor/128x128/apps/g-waze.png
 Categories=Google;

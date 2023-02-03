@@ -5,6 +5,6 @@ Terminal=false
 Type=Application
 Name=Prime Video
 Exec=biglinux-webapp --class="www.primevideo.com,Chromium-browser" --profile-directory=Default --app=https://www.primevideo.com/
-Icon=primevideo.png
+Icon=/usr/share/icons/hicolor/128x128/apps/primevideo.png
 Categories=Webapps;
 StartupWMClass=www.primevideo.com

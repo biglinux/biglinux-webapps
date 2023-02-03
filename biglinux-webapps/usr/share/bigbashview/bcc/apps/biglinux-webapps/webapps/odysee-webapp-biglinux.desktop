@@ -4,6 +4,6 @@ Terminal=false
 Type=Application
 Name=Odysee
 Exec=/usr/bin/biglinux-webapp --class=odysee.com,Chromium-browser --profile-directory=Default --app=https://odysee.com/
-Icon=odysee.png
+Icon=/usr/share/icons/hicolor/128x128/apps/odysee.png
 Categories=Webapps;
 StartupWMClass=odysee.com

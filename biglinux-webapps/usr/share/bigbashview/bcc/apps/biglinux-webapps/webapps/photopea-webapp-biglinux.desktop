@@ -4,6 +4,6 @@ Terminal=false
 Type=Application
 Name=Photopea
 Exec=/usr/bin/biglinux-webapp --class=photopea.com,Chromium-browser --profile-directory=Default --app=https://photopea.com
-Icon=photopea.png
+Icon=/usr/share/icons/hicolor/128x128/apps/photopea.png
 StartupWMClass=photopea.com
 Categories=Webapps;
