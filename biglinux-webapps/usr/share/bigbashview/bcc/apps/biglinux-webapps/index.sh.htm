@@ -156,7 +156,7 @@ for browser in "${browser_bin_list[@]}"; do
   binary=$(which "$browser" 2>/dev/null)
   if [ -x "${binary##/usr/local/*}" ] || [ -x "${FLATPAK_BIN}/$browser" ] || [ -x "${SNAPD_BIN}/$browser" ]; then
     COUNT_BROWSER=$((COUNT_BROWSER + 1))
-    echo -n "<option value=\"${browser}\">${browser_trans["$browser"]}</option>"
+    echo -n "<option value=\"${browser}\" data-icon=\"$(resolve_icon "$browser")\">${browser_trans["$browser"]}</option>"
   fi
 done
 
@@ -172,15 +172,13 @@ echo -n '</select>
                         </div>
                         <div class="button-wrapper">
                           <div class="svg-center">
-                            <select class="svg-center" id="categorySelect" name="category">
-                              <option value="Development">'$"DESENVOLVIMENTO"'</option>
-                              <option value="Office">'$"ESCRITÓRIO"'</option>
-                              <option value="Graphics">'$"GRÁFICOS"'</option>
-                              <option value="Network">INTERNET</option>
-                              <option value="Game">'$"JOGOS"'</option>
-                              <option value="AudioVideo">'$"MULTIMÍDIA"'</option>
-                              <option value="Webapps" selected>'$"WEBAPPS"'</option>
-                              <option value="Google">'$"WEBAPPS GOOGLE"'</option>
+                            <select class="svg-center" id="categorySelect" name="category">' | tr -d "\t\n\r"
+
+for category in "${!categories[@]}"; do
+  echo -n "<option value=\"$category\">${categories["$category"]}</option>"
+done
+
+echo -n '
                             </select>
                           </div>
                         </div>
@@ -579,14 +577,7 @@ electron*) ICON='electron' ;;
     ICON='none'
     title=$"Não existem navegadores compatíveis instalados no sistema!"
   else
-    ICON="${BROWSER##*.}"
-    ICON="${ICON/-browser//}"
-    ICON="${ICON%-stable}" # removes versioning
-    ICON="${ICON%-community}"
-    ICON="${ICON#microsoft-}" # removes branding
-    ICON="${ICON#google-}"
-    ICON="${ICON#flashpeak-}"
-    ICON="${ICON,,}" # to lowercase
+    ICON=$(resolve_icon "$BROWSER") 
   fi
   ;;
 esac
@@ -632,28 +623,14 @@ else
       </button>' | tr -d "\t\n\r"
   }
   for browser in "${browser_bin_list[@]}"; do
-    case "$browser" in
-    com.brave.Browser) _icon='brave' ;;
-    electron*) _icon='electron' ;;
-    *)
-      _icon="${browser##*.}"
-      _icon="${_icon/-browser//}"
-      _icon="${_icon%-stable}" # removes versioning
-      _icon="${_icon%-community}"
-      _icon="${_icon#microsoft-}" # removes branding
-      _icon="${_icon#google-}"
-      _icon="${_icon#flashpeak-}"
-      _icon="${_icon,,}" # to lowercase
-      ;;
-    esac
-
+    icon=$(resolve_icon "$browser")
     binary=$(which "$browser" 2>/dev/null)
     if [ -x "${binary##/usr/local/*}" ]; then
-      native_browsers="$native_browsers$(button_tmplt "$browser" "$_icon")"
+      native_browsers="$native_browsers$(button_tmplt "$browser" "$icon")"
     elif [ -x "${FLATPAK_BIN}/$browser" ]; then
-      flatpak_browsers="$flatpak_browsers$(button_tmplt "$browser" "$_icon")"
+      flatpak_browsers="$flatpak_browsers$(button_tmplt "$browser" "$icon")"
     elif [ -x "${SNAPD_BIN}/$browser" ]; then
-      snapd_browsers="$snapd_browsers$(button_tmplt "$browser" "$_icon")"
+      snapd_browsers="$snapd_browsers$(button_tmplt "$browser" "$icon")"
     fi
 
   done

@@ -36,21 +36,6 @@ fi
 
 [ -L "$USER_DESKTOP/$DESKNAME" ] && checked='checked'
 
-case "$BROWSER" in
-com.brave.Browser) _ICON='brave' ;;
-electron*) _ICON='electron' ;;
-*)
-  _ICON="${BROWSER##*.}"
-  _ICON="${_ICON/-browser//}"
-  _ICON="${_ICON%-stable}" # removes versioning
-  _ICON="${_ICON%-community}"
-  _ICON="${_ICON#microsoft-}" # removes branding
-  _ICON="${_ICON#google-}"
-  _ICON="${_ICON#flashpeak-}"
-  _ICON="${_ICON,,}" # to lowercase
-  ;;
-esac
-
 echo -n '
 <div class="content-section">
   <ul style="margin-top:-20px">
@@ -102,7 +87,7 @@ echo -n '
     <li>
       <div class="products">
         <div class="svg-center" id="thumb">
-          <img height="58" width="58" id="browserEdit" src="icons/'"$_ICON"'.svg"/>
+          <img height="58" width="58" id="browserEdit" src="icons/'"$(resolve_icon "$BROWSER")"'.svg"/>
         </div>
         '$"Navegador"'
       </div>
@@ -112,26 +97,12 @@ echo -n '
 for browser in "${browser_bin_list[@]}"; do
   binary=$(which "$browser" 2>/dev/null)
   if [ -x "${binary##/usr/local/*}" ] || [ -x "${FLATPAK_BIN}/$browser" ] || [ -x "${SNAPD_BIN}/$browser" ]; then
-    echo -n "<option value=\"$browser\" $(
-    [ "$BROWSER" = "$browser" ] && echo -n "selected"
-  )>${browser_trans["$browser"]}</option>"
+    echo -n "<option value=\"$browser\" data-icon=\"$(resolve_icon "$browser")\" $(
+      [ "$BROWSER" = "$browser" ] && echo -n "selected"
+    )>${browser_trans["$browser"]}</option>"
   fi
 done
-# <option '$selected_brave' value="brave">$"BRAVE"</option>
-# <option '$selected_chrome' value="google-chrome-stable">$"CHROME"</option>
-# <option '$selected_chromium' value="chromium">$"CHROMIUM"</option>
-# <option '$selected_edge' value="microsoft-edge-stable">$"EDGE"</option>
-# <option '$selected_epiphany' value="epiphany">$"EPIPHANY"</option>
-# <option '$selected_firefox' value="firefox">$"FIREFOX"</option>
-# <option '$selected_librewolf' value="librewolf">$"LIBREWOLF"</option>
-# <option '$selected_vivaldi' value="vivaldi-stable">$"VIVALDI"</option>
-# <option '$selected_brave_flatpak' value="com.brave.Browser">$"BRAVE (FLATPAK)"</option>
-# <option '$selected_chrome_flatpak' value="com.google.Chrome">$"CHROME (FLATPAK)"</option>
-# <option '$selected_chromium_flatpak' value="org.chromium.Chromium">$"CHROMIUM (FLATPAK)"</option>
-# <option '$selected_edge_flatpak' value="com.microsoft.Edge">$"EDGE (FLATPAK)"</option>
-# <option '$selected_epiphany_flatpak' value="org.gnome.Epiphany">$"EPIPHANY (FLATPAK)"</option>
-# <option '$selected_firefox_flatpak' value="org.mozilla.firefox">$"FIREFOX (FLATPAK)"</option>
-# <option '$selected_librewolf_flatpak' value="io.gitlab.librewolf-community">$"LIBREWOLF (FLATPAK)"</option>
+
 echo -n '
         </select>
         <input type="hidden" name="browserOld" value="'"$BROWSER"'"/>
@@ -150,17 +121,6 @@ echo -n '
       <div class="button-wrapper">
         <div class="svg-center">
           <select class="svg-center" id="categorySelectEdit" name="category">' | tr -d "\t\n\r"
-
-declare -A categories=(
-  ["Development"]=$"DESENVOLVIMENTO"
-  ["Office"]=$"ESCRITÓRIO"
-  ["Graphics"]=$"GRÁFICOS"
-  ["Network"]=INTERNET
-  ["Game"]=$"JOGOS"
-  ["AudioVideo"]=$"MULTIMÍDIA"
-  ["Webapps"]=$"WEBAPPS"
-  ["Google"]=$"WEBAPPS GOOGLE"
-)
 
 for category in "${!categories[@]}"; do
   echo -n "<option value=\"$category\" $(
@@ -194,7 +154,7 @@ echo -n '
         '$"Perfil adicional"'
       </div>
       <div class="button-wrapper">
-        <input id="addPerfilEdit" type="checkbox" class="switch" name="newperfil" '$checked_perfil'/>
+        <input id="addPerfilEdit" type="checkbox" class="switch" name="newperfil" '"$checked_perfil"'/>
       </div>
     </li>
   </ul>
@@ -293,84 +253,19 @@ $(function(){
     });
   });
 
-  var boxcheck = $("#addPerfilEdit").is(":checked");
-  $("#browserSelectEdit").on("change", function(){
-    switch (this.value){
-      case "brave":
-      case "com.brave.Browser":
-        $("#browserEdit").attr("src", "icons/brave.svg");
-        $("#addPerfilEdit").removeClass("disabled");
-        if (boxcheck) {
-            $("#addPerfilEdit").prop("checked", true);
-        }
-        break;
-
-      case "google-chrome-stable":
-      case "com.google.Chrome":
-        $("#browserEdit").attr("src", "icons/chrome.svg");
-        $("#addPerfilEdit").removeClass("disabled");
-        if (boxcheck) {
-            $("#addPerfilEdit").prop("checked", true);
-        }
-        break;
-
-      case "chromium":
-      case "org.chromium.Chromium":
-        $("#browserEdit").attr("src", "icons/chromium.svg");
-        $("#addPerfilEdit").removeClass("disabled");
-        if (boxcheck) {
-            $("#addPerfilEdit").prop("checked", true);
-        }
-        break;
-
-      case "microsoft-edge-stable":
-      case "com.microsoft.Edge":
-        $("#browserEdit").attr("src", "icons/edge.svg");
-        $("#addPerfilEdit").removeClass("disabled");
-        if (boxcheck) {
-            $("#addPerfilEdit").prop("checked", true);
-        }
-        break;
-
-      case "epiphany":
-      case "org.gnome.Epiphany":
-        $("#browserEdit").attr("src", "icons/epiphany.svg");
-        $("#addPerfilEdit").addClass("disabled");
-        if (boxcheck) {
-            $("#addPerfilEdit").prop("checked", false);
-        }
-        break;
-
-      case "firefox":
-      case "org.mozilla.firefox":
-        $("#browserEdit").attr("src", "icons/firefox.svg");
-        $("#addPerfilEdit").addClass("disabled");
-        if (boxcheck) {
-            $("#addPerfilEdit").prop("checked", false);
-        }
-        break;
-
-      case "librewolf":
-      case "io.gitlab.librewolf-community":
-        $("#browserEdit").attr("src", "icons/librewolf.svg");
-        $("#addPerfilEdit").addClass("disabled");
-        if (boxcheck) {
-            $("#addPerfilEdit").prop("checked", false);
-        }
-        break;
-
-      case "vivaldi-stable":
-        $("#browserEdit").attr("src", "icons/vivaldi.svg");
-        $("#addPerfilEdit").removeClass("disabled");
-        if (boxcheck) {
-            $("#addPerfilEdit").prop("checked", true);
-        }
-        break;
-
-      default:
-          break;
-    }
-    console.log("Bowser-Combobox-Edit: "+this.value);
+  $("#browserSelectEdit").on("change", function() {
+    $("#browserEdit").attr("src", 
+      `icons/${this.querySelector("option:checked").dataset.icon}.svg`);
+    ((job, prop) => {
+      $("#addPerfilEdit")[`${job}Class`]("disabled");
+      $("#addPerfilEdit").is(":checked") &&
+        $("#addPerfilEdit").prop("checked", prop);
+    })(
+      this.value.match(/fire(fox|dragon)|librewolf|epiphany/g)
+        ? ["remove", true]
+        : ["add", false]
+    );
+    console.log("Bowser-Combobox-Edit:", this.value, `icons/${this.querySelector("option:checked").dataset.icon}.svg`);
   });
 
   $("select#categorySelectEdit").change(function(){

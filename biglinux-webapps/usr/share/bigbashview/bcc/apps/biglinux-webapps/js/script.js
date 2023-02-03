@@ -123,58 +123,22 @@ $(function(){
   }
 
   $("#browserSelect").on("change", function(){
-    switch (this.value){
-      case "brave":
-      case "com.brave.Browser":
-        $("#perfilAdd").removeClass('disabled');
-        $("#browser").attr("src", "icons/brave.svg");
-        break;
-
-      case "google-chrome-stable":
-      case "com.google.Chrome":
-        $("#perfilAdd").removeClass('disabled');
-        $("#browser").attr("src", "icons/chrome.svg");
-        break;
-
-      case "chromium":
-      case "org.chromium.Chromium":
-        $("#perfilAdd").removeClass('disabled');
-        $("#browser").attr("src", "icons/chromium.svg");
-        break;
-
-      case "microsoft-edge-stable":
-      case "com.microsoft.Edge":
-        $("#perfilAdd").removeClass('disabled');
-        $("#browser").attr("src", "icons/edge.svg");
-        break;
-
-      case "epiphany":
-      case "org.gnome.Epiphany":
-        $("#perfilAdd").addClass('disabled');
-        $("#browser").attr("src", "icons/epiphany.svg");
-        break;
-
-      case "firefox":
-      case "org.mozilla.firefox":
-        $("#perfilAdd").addClass('disabled');
-        $("#browser").attr("src", "icons/firefox.svg");
-        break;
-
-      case "librewolf":
-      case "io.gitlab.librewolf-community":
-        $("#perfilAdd").addClass('disabled');
-        $("#browser").attr("src", "icons/librewolf.svg");
-        break;
-
-      case "vivaldi-stable":
-        $("#perfilAdd").removeClass('disabled');
-        $("#browser").attr("src", "icons/vivaldi.svg");
-        break;
-
-      default:
-          break;
-    }
-    console.log("Bowser-Combobox: "+this.value);
+    $("#browser").attr(
+      "src",
+      `icons/${this.querySelector("option:checked").dataset.icon}.svg`
+    );
+    $("#perfilAdd")[
+      `${
+        this.value.match(/fire(fox|dragon)|librewolf|epiphany/g)
+          ? "add"
+          : "remove"
+      }Class`
+    ]("disabled");
+    console.log(
+      "Bowser-Combobox:",
+      this.value,
+      this.querySelector("option:checked").dataset.icon
+    );
   });
 
   $("#loadIcon").click(function(e){
@@ -390,6 +354,7 @@ function editOpen(filedesk){
   fetch(`/execute$./webapp-info.sh?filedesk=${filedesk}`)
   .then(resp => resp.text())
   .then(data => {
+    console.log(data)
     $("#formEdit").html(data);
     $("#editModal").addClass("visible");
   });
