@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Waze
 Exec=~/.local/bin/waze-webapp-biglinux-firefox
-Icon=/usr/share/icons/hicolor/128x128/apps/g-waze.png
+Icon=g-waze.png
 Categories=Google;

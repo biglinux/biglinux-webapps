@@ -4,5 +4,5 @@ Terminal=false
 Type=Application
 Name=Odysee
 Exec=~/.local/bin/odysee-webapp-biglinux-librewolf
-Icon=/usr/share/icons/hicolor/128x128/apps/odysee.png
+Icon=odysee.png
 Categories=Webapps;

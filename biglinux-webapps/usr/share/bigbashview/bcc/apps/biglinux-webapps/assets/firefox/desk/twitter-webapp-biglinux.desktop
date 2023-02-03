@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Twitter
 Exec=~/.local/bin/twitter-webapp-biglinux-firefox
-Icon=/usr/share/icons/hicolor/128x128/apps/twitter.png
+Icon=twitter.png
 Categories=Webapps;

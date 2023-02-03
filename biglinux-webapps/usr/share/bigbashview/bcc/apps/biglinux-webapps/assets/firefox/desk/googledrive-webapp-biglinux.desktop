@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Drive
 Exec=~/.local/bin/googledrive-webapp-biglinux-firefox
-Icon=/usr/share/icons/hicolor/128x128/apps/g-drive.png
+Icon=g-drive.png
 Categories=Google;

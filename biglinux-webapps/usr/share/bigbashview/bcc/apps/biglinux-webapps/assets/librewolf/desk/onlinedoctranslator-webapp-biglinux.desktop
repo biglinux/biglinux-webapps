@@ -6,5 +6,5 @@ Type=Application
 Name=Docs Translator
 Name[pt_BR]=Traduzir Docs
 Exec=~/.local/bin/onlinedoctranslator-webapp-biglinux-librewolf
-Icon=/usr/share/icons/hicolor/128x128/apps/doctranslator.png
+Icon=doctranslator.png
 Categories=Webapps;

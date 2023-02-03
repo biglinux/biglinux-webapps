@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# BigLinux wrapper for firefoxpwa
+
+PROFILE="00000000000000000000000000"
+APP_ID=$(firefoxpwa profile list | grep "WebApp Launcher" | awk -F "[()]" '{print $2}')
+[ "$APP_ID" ] || APP_ID=$(firefoxpwa site install --document-url https://127.0.0.1 --profile $PROFILE --name "WebApp Launcher" --no-system-integration "data:application/manifest+json;base64,eyJzdGFydF91cmwiOiJodHRwczovLzEyNy4wLjAuMS8iLCJuYW1lIjoiMTI3LjAuMC4xIiwiaWNvbnMiOlt7InNyYyI6ImZpbGU6Ly8vdXNyL3NoYXJlL2JpZ2Jhc2h2aWV3L2JjYy9hcHBzL2JpZ2xpbnV4LXdlYmFwcHMvaWNvbnMvYmJ2LWNsaWVudC5zdmciLCJ0eXBlIjpudWxsLCJwdXJwb3NlIjoiYW55Iiwic2l6ZXMiOiIifV19" | tail -1 | awk '{print $6}')
+
+for a in "$@"; do
+    if [[ "$a" == "--app="* ]]; then
+        exec firefoxpwa site launch --url "${a#*=}" "$APP_ID"
+        exit $?
+    fi
+done
+
+echo "ERROR: Missing \"--app\" argument!"
+exit 1

@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Twitch
 Exec=~/.local/bin/twitch-webapp-biglinux-librewolf
-Icon=/usr/share/icons/hicolor/128x128/apps/twitch.png
+Icon=twitch.png
 Categories=Webapps;

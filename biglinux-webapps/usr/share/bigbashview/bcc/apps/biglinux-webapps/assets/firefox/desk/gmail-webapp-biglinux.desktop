@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Gmail
 Exec=~/.local/bin/gmail-webapp-biglinux-firefox
-Icon=/usr/share/icons/hicolor/128x128/apps/g-gmail.png
+Icon=g-gmail.png
 Categories=Google;

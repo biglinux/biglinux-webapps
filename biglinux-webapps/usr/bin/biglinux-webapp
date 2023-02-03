@@ -4,100 +4,55 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
-if [ "$1" = "firelibre" ];then
-    kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
-    exit
+if [ "$1" = "firelibre" ]; then
+    kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title $"WebApps BigLinux"
+    exit 1
 fi
 
-if [ ! -e ~/.bigwebapps/BROWSER ];then
-    /usr/share/bigbashview/bcc/apps/biglinux-webapps/check_browser.sh
+. /usr/share/bigbashview/bcc/apps/biglinux-webapps/scripts/detect_browser.env
+
+parse_args() {
+    [[ "$*" = *"--app="* ]] && return
+
+    local newargs="" profile=""
+
+    local url="" prt="https"
+    for a in "$@"; do
+        if [[ "$a" != "--"* ]]; then       # if one of the arguments does not start with "--"
+            if [[ "$a" == *"://"* ]]; then # if that arg is an URL
+                url="${a#*://}"
+                prt="${a%://*}"
+            elif [[ "$a" == *"."* ]] && wget -q -O /dev/null "$a"; then
+                # if that arg is a domain and is ping-able
+                url="$a"
+            else
+                url=$(shortappname "$a")
+            fi
+        elif [[ "$a" != "--class"* ]]; then
+            newargs="$newargs $a"
+            [[ "$a" == "--profile"* ]] && profile=y
+        fi
+    done
+
+    [ "$profile" ] || newargs="$newargs --profile-directory=Default"
+
+    if [ -z "$url" ]; then
+        kdialog --sorry $"No URL/Application specified, or invalid argument, launching new instance... \n" --title $"WebApps BigLinux"
+        url="forum.biglinux.com.br"
+    fi
+
+    newargs="$newargs --class=\"${url%/*},Chromium-browser\""
+    args="$newargs --app=${prt}://${url}"
+}
+
+BROWSER="$(<~/.bigwebapps/BROWSER)"
+[ "$BROWSER" ] || BROWSER="$(detect_browser)"
+
+if [[ "$BROWSER" = *"."* ]] && [ -x "$FLATPAK_BIN/$BROWSER" ]; then
+    BROWSER="$FLATPAK_BIN/$BROWSER"
 fi
 
-_GET_BROWSER=$(<~/.bigwebapps/BROWSER)
+args=$@
+parse_args "$@"
 
-case $_GET_BROWSER in
-    brave)
-        if [ -e /usr/lib/brave-browser/brave ] || [ -e /usr/lib/brave-bin/brave ];then
-            BROWSER="brave"
-        else
-            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
-            exit
-        fi
-    ;;
-
-    com.brave.Browser)
-        if [ -e /var/lib/flatpak/exports/bin/com.brave.Browser ];then
-            BROWSER="/var/lib/flatpak/exports/bin/com.brave.Browser"
-        else
-            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
-            exit
-        fi
-    ;;
-
-    chromium)
-        if [ -e /usr/lib/chromium/chromium ];then
-            BROWSER="chromium"
-        else
-            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
-            exit
-        fi
-    ;;
-
-    org.chromium.Chromium)
-        if [ -e /var/lib/flatpak/exports/bin/org.chromium.Chromium ];then
-            BROWSER="/var/lib/flatpak/exports/bin/org.chromium.Chromium"
-        else
-            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
-            exit
-        fi
-    ;;
-
-    google-chrome-stable)
-        if [ -e /opt/google/chrome/google-chrome ];then
-            BROWSER="google-chrome-stable"
-        else
-            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
-            exit
-        fi
-    ;;
-
-    com.google.Chrome)
-        if [ -e /var/lib/flatpak/exports/bin/com.google.Chrome ];then
-            BROWSER="/var/lib/flatpak/exports/bin/com.google.Chrome"
-        else
-            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
-            exit
-        fi
-    ;;
-
-    microsoft-edge-stable)
-        if [ -e /opt/microsoft/msedge/microsoft-edge ];then
-            BROWSER="microsoft-edge-stable"
-        else
-            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
-            exit
-        fi
-    ;;
-
-    com.microsoft.Edge)
-        if [ -e /var/lib/flatpak/exports/bin/com.microsoft.Edge ];then
-            BROWSER="/var/lib/flatpak/exports/bin/com.microsoft.Edge"
-        else
-            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
-            exit
-        fi
-    ;;
-
-    vivaldi-stable)
-        if [ -e /opt/vivaldi/vivaldi ];then
-            BROWSER="vivaldi-stable"
-        else
-            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
-            exit
-        fi
-    ;;
-
-    *) exit ;;
-esac
-
-exec $BROWSER "$@"
+exec "$BROWSER" $args

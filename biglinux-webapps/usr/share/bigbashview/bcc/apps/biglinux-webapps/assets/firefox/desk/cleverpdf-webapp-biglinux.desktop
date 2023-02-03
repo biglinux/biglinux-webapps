@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=CleverPDF
 Exec=~/.local/bin/cleverpdf-webapp-biglinux-firefox
-Icon=/usr/share/icons/hicolor/128x128/apps/cleverpdf.png
+Icon=cleverpdf.png
 Categories=Webapps;

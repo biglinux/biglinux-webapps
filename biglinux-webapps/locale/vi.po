@@ -1,0 +1,234 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the biglinux-webapps package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: biglinux-webapps\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: Shadichy <EMAIL@ADDRESS>\n"
+"Language-Team: YuunixTeam <EMAIL@ADDRESS>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+msgid "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr "Không có trình duyệt đã cài đặt nào hỗ trợ Ứng dụng mạng!"
+
+msgid "Será necessário instalar mais um navegador compatível!"
+msgstr "Bạn sẽ cần phải cài đặt 1 hoặc nhiều trình duyệt tương thích!"
+
+msgid "URL:"
+msgstr "URL:"
+
+msgid "Detectar Nome e Ícone"
+msgstr "Dò Tên và Biểu tượng"
+
+msgid "Nome:"
+msgstr "Tên:"
+
+msgid "Ícone do WebApp"
+msgstr "Biểu tượng Ứng dụng Mạng"
+
+msgid "Alterar"
+msgstr "Thay đổi"
+
+msgid "Navegador"
+msgstr "Trình duyệt"
+
+msgid "BRAVE"
+msgstr "BRAVE"
+
+msgid "CHROME"
+msgstr "CHROME"
+
+msgid "CHROMIUM"
+msgstr "CHROMIUM"
+
+msgid "EDGE"
+msgstr "EDGE"
+
+msgid "EPIPHANY"
+msgstr "Epiphany"
+
+msgid "FIREFOX"
+msgstr "FIREFOX"
+
+msgid "LIBREWOLF"
+msgstr "LIBREWOLF"
+
+msgid "VIVALDI"
+msgstr "VIVALDI"
+
+msgid "BRAVE (FLATPAK)"
+msgstr "BRAVE (FLATPAK)"
+
+msgid "CHROME (FLATPAK)"
+msgstr "CHROME (FLATPAK)"
+
+msgid "CHROMIUM (FLATPAK)"
+msgstr "CHROMIUM (FLATPAK)"
+
+msgid "EDGE (FLATPAK)"
+msgstr "EDGE (FLATPAK)"
+
+msgid "EPIPHANY (FLATPAK)"
+msgstr "EPIPHANY (FLATPAK)"
+
+msgid "FIREFOX (FLATPAK)"
+msgstr "FIREFOX (FLATPAK)"
+
+msgid "LIBREWOLF (FLATPAK)"
+msgstr "LIBREWOLF (FLATPAK)"
+
+msgid "Categoria"
+msgstr "Phân loại"
+
+msgid "DESENVOLVIMENTO"
+msgstr "LẬP TRÌNH"
+
+msgid "ESCRITÓRIO"
+msgstr "VĂN PHÒNG"
+
+msgid "GRÁFICOS"
+msgstr "ĐỒ HOẠ"
+
+msgid "JOGOS"
+msgstr "TRÒ CHƠI"
+
+msgid "MULTIMÍDIA"
+msgstr "ĐA PHƯƠNG TIỆN"
+
+msgid "WEBAPPS"
+msgstr "ỨNG DỤNG"
+
+msgid "WEBAPPS GOOGLE"
+msgstr "ỨNG DỤNG GOOGLE"
+
+msgid "Criar atalho na Área de Trabalho"
+msgstr "Tạo đường dẫn trên màn hình chính"
+
+msgid "Perfil adicional"
+msgstr "Hồ sơ phụ"
+
+msgid "Selecione o ícone preferido:"
+msgstr "Chọn biểu tượng:"
+
+msgid "Não é possível aplicar a edição sem Nome!"
+msgstr "Không thể áp dụng chỉnh sửa!"
+
+msgid "Fechar"
+msgstr "Đóng"
+
+msgid "Não é possível aplicar a edição sem alterações!"
+msgstr "Chưa chỉnh sửa nào được thực hiện!"
+
+msgid "O WebApp foi editado com sucesso!"
+msgstr "Ứng dụng đã được chỉnh sửa!"
+
+msgid "Adicionar WebApps"
+msgstr "Thêm Ứng dụng"
+
+msgid "WebApps Adicionados"
+msgstr "Ứng dụng đã thêm"
+
+msgid "WebApps BigLinux"
+msgstr "Ứng dụng Mạng BigLinux"
+
+msgid "https://www.exemplo.com"
+msgstr "https://www.exemplo.com"
+
+msgid "Exemplo"
+msgstr "Mẫu"
+
+msgid "Adicionar"
+msgstr "Thêm"
+
+msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
+msgstr "Để thêm Ứng dụng,<br> bạn cần điền tên và URL."
+
+msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
+msgstr "Để dò tự động Tên và Biểu tượng bạn cần phải nhập URL."
+
+msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
+msgstr "URL không hợp lệ hoặc kết nối thất bại.<br>Hãy thử bấm Thay đổi để gán biểu tượng."
+
+msgid "O WebApp foi adicionado com sucesso!"
+msgstr "Ứng dụng đã được thêm vào thành công!"
+
+msgid "Desenvolvimento"
+msgstr "Lập trình"
+
+msgid "Escritório"
+msgstr "Văn phòng"
+
+msgid "Gráficos"
+msgstr "Đồ hoạ"
+
+msgid "Jogos"
+msgstr "Trò chơi"
+
+msgid "Multimídia"
+msgstr "Đa phương tiện"
+
+msgid "Internet"
+msgstr "Liên mạng"
+
+msgid "Google"
+msgstr "Google"
+
+msgid "WebApps"
+msgstr "Ứng dụng mạng"
+
+msgid "Nenhum WebApp adicionado!"
+msgstr "Chưa Ứng dụng nào được thêm vào!"
+
+msgid "Aplicar"
+msgstr "Áp dụng"
+
+msgid "Cancelar"
+msgstr "Huỷ"
+
+msgid "Tem certeza que deseja remover este WebApp?"
+msgstr "Bạn có chắc muốn gỡ Ứng dụng này?"
+
+msgid "Editar WebApp"
+msgstr "Sửa Ứng dụng"
+
+msgid "O navegador não está instalado!"
+msgstr "Trình duyệt chưa được cài đặt!"
+
+msgid "Não existem navegadores compatíveis instalados no sistema!"
+msgstr "Không có trình duyệt tương thích nào đã được cài đặt!"
+
+msgid "Navegador padrão<br>dos WebApps:"
+msgstr "Trình duyệt mặc định<br>Ứng dụng:"
+
+msgid "Selecione o navegador preferido:"
+msgstr "Chọn trình duyệt:"
+
+msgid "Nativo"
+msgstr "Thuần"
+
+msgid "Flatpak"
+msgstr "Flatpak"
+
+msgid "WebApps Nativos"
+msgstr "Ứng dụng Thuần"
+
+msgid ""
+"O navegador definido para abrir os WebApps não está instalado! \\n"
+"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+msgstr ""
+"Trình duyệt đã đặt để mở Ứng dúng chưa được cài đặt! \\n"
+"Hãy đổi trình duyệt qua Trình quản lý! \\n"
+
+msgid "O Gerenciador de WebApps BigLinux já está aberto!"
+msgstr "Trình quản lý Ứng dụng mạng BigLinux đang mở!"
+
+msgid "Gerenciador de WebApps BigLinux"
+msgstr "Trình quản lý Ứng dụng mạng BigLinux"

@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+#Translation
+
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-webapps
+
+. ./scripts/detect_browser.env
+
 DESKNAME=${filedesk##*/}
 USER_DESKTOP=$(xdg-user-dir DESKTOP)
 NAME=$(awk -F'=' '/Name/{print $2}' "$filedesk")
@@ -7,118 +14,41 @@ ICON=$(awk -F'=' '/Icon/{print $2}' "$filedesk")
 CATEGORY=$(awk -F'=' '/Categories/{print $2}' "$filedesk")
 EXEC=$(awk '/Exec/{print $0}' "$filedesk")
 
-if grep -q '.local.bin' <<< "$EXEC";then
-    BIN=$(awk -F'=' '{print $2}' <<< "$EXEC")
-    URL=$(awk '/new-instance/{gsub(/"/, "");print $9}' "$BIN")
-    BROWSER=$(awk '/new-instance/{print $3}' "$BIN")
+if grep -q '.local.bin' <<<"$EXEC"; then
+  BIN=$(awk -F'=' '{print $2}' <<<"$EXEC")
+  URL=$(awk '/new-instance/{gsub(/"/, "");print $9}' "$BIN")
+  BROWSER=$(awk '/new-instance/{print $3}' "$BIN")
 else
-    URL=$(awk -F'app=' '{print $2}' <<< "$EXEC")
-    BROWSER=$(awk '{gsub(/Exec=/, "");print $1}' <<< "$EXEC")
-    if [ ! "$URL" ];then
-        URL=$(awk '{print $4}' <<< "$EXEC")
-    fi
+  URL=$(awk -F'app=' '{print $2}' <<<"$EXEC")
+  BROWSER=$(awk '{gsub(/Exec=/, "");print $1}' <<<"$EXEC")
+  if [ ! "$URL" ]; then
+    URL=$(awk '{print $4}' <<<"$EXEC")
+  fi
 fi
 
-if grep -q '.var.lib.flatpak.exports.bin' <<< "$BROWSER";then
-    BROWSER=${BROWSER##*/}
+if grep -q '.var.lib.flatpak.exports.bin' <<<"$BROWSER"; then
+  BROWSER=${BROWSER##*/}
 fi
 
-if grep -q '..user.data.dir.' <<< "$EXEC";then
-    checked_perfil='checked'
+if grep -q '..user.data.dir.' <<<"$EXEC"; then
+  checked_perfil='checked'
 fi
 
 [ -L "$USER_DESKTOP/$DESKNAME" ] && checked='checked'
 
 case "$BROWSER" in
-    brave)
-        _ICON='brave'
-        selected_brave='selected'
-    ;;
-    com.brave.Browser)
-        _ICON='brave'
-        selected_brave_flatpak='selected'
-    ;;
-    google-chrome-stable)
-        _ICON='chrome'
-        selected_chrome='selected'
-    ;;
-    com.google.Chrome)
-        _ICON='chrome'
-        selected_chrome_flatpak='selected'
-    ;;
-    chromium)
-        _ICON='chromium'
-        selected_chromium='selected'
-    ;;
-    org.chromium.Chromium)
-        _ICON='chromium'
-        selected_chromium_flatpak='selected'
-    ;;
-    microsoft-edge-stable)
-        _ICON='edge'
-        selected_edge='selected'
-    ;;
-    com.microsoft.Edge)
-        _ICON='edge'
-        selected_edge_flatpak='selected'
-    ;;
-    epiphany)
-        _ICON='epiphany'
-        selected_epiphany='selected'
-    ;;
-    org.gnome.Epiphany)
-        _ICON='epiphany'
-        selected_epiphany_flatpak='selected'
-    ;;
-    firefox)
-        _ICON='firefox'
-        selected_firefox='selected'
-    ;;
-    org.mozilla.firefox)
-        _ICON='firefox'
-        selected_firefox_flatpak='selected'
-    ;;
-    librewolf)
-        _ICON='librewolf'
-        selected_librewolf='selected'
-    ;;
-    io.gitlab.librewolf-community)
-        _ICON='librewolf'
-        selected_librewolf_flatpak='selected'
-    ;;
-    vivaldi-stable)
-        _ICON='vivaldi'
-        selected_vivaldi='selected'
-    ;;
-    *):;;
-esac
-
-case "${CATEGORY/;/}" in
-    Development)
-        selected_Development='selected'
-    ;;
-    Office)
-        selected_Office='selected'
-    ;;
-    Graphics)
-        selected_Graphics='selected'
-    ;;
-    Network)
-        selected_Network='selected'
-    ;;
-    Game)
-        selected_Game='selected'
-    ;;
-    AudioVideo)
-        selected_AudioVideo='selected'
-    ;;
-    Webapps)
-        selected_Webapps='selected'
-    ;;
-    Google)
-        selected_Google='selected'
-    ;;
-    *):;;
+com.brave.Browser) _ICON='brave' ;;
+electron*) _ICON='electron' ;;
+*)
+  _ICON="${BROWSER##*.}"
+  _ICON="${_ICON/-browser//}"
+  _ICON="${_ICON%-stable}" # removes versioning
+  _ICON="${_ICON%-community}"
+  _ICON="${_ICON#microsoft-}" # removes branding
+  _ICON="${_ICON#google-}"
+  _ICON="${_ICON#flashpeak-}"
+  _ICON="${_ICON,,}" # to lowercase
+  ;;
 esac
 
 echo -n '
@@ -131,7 +61,7 @@ echo -n '
         </svg>
         '$"URL:"'
       </div>
-      <input type="search" class="input" id="urlDeskEdit" name="urldesk" value="'$URL'" readonly/>
+      <input type="search" class="input" id="urlDeskEdit" name="urldesk" value="'"$URL"'" readonly/>
       <div class="button-wrapper">
         <div class=app-card>
           <div class="button-wrapper">
@@ -148,7 +78,7 @@ echo -n '
         </svg>
         '$"Nome:"'
       </div>
-      <input type="search" class="input" id="nameDeskEdit" name="namedesk" value="'$NAME'"/>
+      <input type="search" class="input" id="nameDeskEdit" name="namedesk" value="'"$NAME"'"/>
     </li>
 
     <li>
@@ -159,8 +89,8 @@ echo -n '
               <svg viewBox="0 0 448 512" style="width:20px;height:20px;"><path d="M384 32C419.3 32 448 60.65 448 96V416C448 451.3 419.3 480 384 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H384zM143 208.1L190.1 255.1L143 303C133.7 312.4 133.7 327.6 143 336.1C152.4 346.3 167.6 346.3 176.1 336.1L223.1 289.9L271 336.1C280.4 346.3 295.6 346.3 304.1 336.1C314.3 327.6 314.3 312.4 304.1 303L257.9 255.1L304.1 208.1C314.3 199.6 314.3 184.4 304.1 175C295.6 165.7 280.4 165.7 271 175L223.1 222.1L176.1 175C167.6 165.7 152.4 165.7 143 175C133.7 184.4 133.7 199.6 143 208.1V208.1z"/></svg>
             </div>
           </div>
-          <img id="iconDeskEdit" src="'$ICON'" width="58" height="58" />
-          <input type="hidden" name="icondesk" value="'$ICON'" id="inputIconDeskEdit" />
+          <img id="iconDeskEdit" src="'"$ICON"'" width="58" height="58" />
+          <input type="hidden" name="icondesk" value="'"$ICON"'" id="inputIconDeskEdit" />
         </div>
         '$"Ícone do WebApp"'
       </div>
@@ -172,52 +102,73 @@ echo -n '
     <li>
       <div class="products">
         <div class="svg-center" id="thumb">
-          <img height="58" width="58" id="browserEdit" src="'icons/$_ICON.svg'"/>
+          <img height="58" width="58" id="browserEdit" src="icons/'"$_ICON"'.svg"/>
         </div>
         '$"Navegador"'
       </div>
       <div class="button-wrapper">
-        <select class="svg-center" id="browserSelectEdit" name="browserNew">
-          <option '$selected_brave' value="brave">'$"BRAVE"'</option>
-          <option '$selected_chrome' value="google-chrome-stable">'$"CHROME"'</option>
-          <option '$selected_chromium' value="chromium">'$"CHROMIUM"'</option>
-          <option '$selected_edge' value="microsoft-edge-stable">'$"EDGE"'</option>
-          <option '$selected_epiphany' value="epiphany">'$"EPIPHANY"'</option>
-          <option '$selected_firefox' value="firefox">'$"FIREFOX"'</option>
-          <option '$selected_librewolf' value="librewolf">'$"LIBREWOLF"'</option>
-          <option '$selected_vivaldi' value="vivaldi-stable">'$"VIVALDI"'</option>
-          <option '$selected_brave_flatpak' value="com.brave.Browser">'$"BRAVE (FLATPAK)"'</option>
-          <option '$selected_chrome_flatpak' value="com.google.Chrome">'$"CHROME (FLATPAK)"'</option>
-          <option '$selected_chromium_flatpak' value="org.chromium.Chromium">'$"CHROMIUM (FLATPAK)"'</option>
-          <option '$selected_edge_flatpak' value="com.microsoft.Edge">'$"EDGE (FLATPAK)"'</option>
-          <option '$selected_epiphany_flatpak' value="org.gnome.Epiphany">'$"EPIPHANY (FLATPAK)"'</option>
-          <option '$selected_firefox_flatpak' value="org.mozilla.firefox">'$"FIREFOX (FLATPAK)"'</option>
-          <option '$selected_librewolf_flatpak' value="io.gitlab.librewolf-community">'$"LIBREWOLF (FLATPAK)"'</option>
+        <select class="svg-center" id="browserSelectEdit" name="browserNew">' | tr -d "\t\n\r"
+
+for browser in "${browser_bin_list[@]}"; do
+  binary=$(which "$browser" 2>/dev/null)
+  if [ -x "${binary##/usr/local/*}" ] || [ -x "${FLATPAK_BIN}/$browser" ] || [ -x "${SNAPD_BIN}/$browser" ]; then
+    echo -n "<option value=\"$browser\" $(
+    [ "$BROWSER" = "$browser" ] && echo -n "selected"
+  )>${browser_trans["$browser"]}</option>"
+  fi
+done
+# <option '$selected_brave' value="brave">$"BRAVE"</option>
+# <option '$selected_chrome' value="google-chrome-stable">$"CHROME"</option>
+# <option '$selected_chromium' value="chromium">$"CHROMIUM"</option>
+# <option '$selected_edge' value="microsoft-edge-stable">$"EDGE"</option>
+# <option '$selected_epiphany' value="epiphany">$"EPIPHANY"</option>
+# <option '$selected_firefox' value="firefox">$"FIREFOX"</option>
+# <option '$selected_librewolf' value="librewolf">$"LIBREWOLF"</option>
+# <option '$selected_vivaldi' value="vivaldi-stable">$"VIVALDI"</option>
+# <option '$selected_brave_flatpak' value="com.brave.Browser">$"BRAVE (FLATPAK)"</option>
+# <option '$selected_chrome_flatpak' value="com.google.Chrome">$"CHROME (FLATPAK)"</option>
+# <option '$selected_chromium_flatpak' value="org.chromium.Chromium">$"CHROMIUM (FLATPAK)"</option>
+# <option '$selected_edge_flatpak' value="com.microsoft.Edge">$"EDGE (FLATPAK)"</option>
+# <option '$selected_epiphany_flatpak' value="org.gnome.Epiphany">$"EPIPHANY (FLATPAK)"</option>
+# <option '$selected_firefox_flatpak' value="org.mozilla.firefox">$"FIREFOX (FLATPAK)"</option>
+# <option '$selected_librewolf_flatpak' value="io.gitlab.librewolf-community">$"LIBREWOLF (FLATPAK)"</option>
+echo -n '
         </select>
-        <input type="hidden" name="browserOld" value="'$BROWSER'"/>
-        <input type="hidden" name="filedesk" value="'$filedesk'"/>
-        <input type="hidden" name="categoryOld" value="'${CATEGORY/;/}'"/>
-        <input type="hidden" name="namedeskOld" value="'$NAME'"/>
-        <input type="hidden" name="icondeskOld" value="'$ICON'"/>
+        <input type="hidden" name="browserOld" value="'"$BROWSER"'"/>
+        <input type="hidden" name="filedesk" value="'"$filedesk"'"/>
+        <input type="hidden" name="categoryOld" value="'"${CATEGORY/;/}"'"/>
+        <input type="hidden" name="namedeskOld" value="'"$NAME"'"/>
+        <input type="hidden" name="icondeskOld" value="'"$ICON"'"/>
       </div>
     </li>
 
     <li>
       <div class="products">
-        <div class="svg-center" id="imgCategoryEdit">'"$(<./icons/${CATEGORY/;/}.svg)"'</div>
+        <div class="svg-center" id="imgCategoryEdit">'$(<"./icons/${CATEGORY/;/}.svg")'</div>
         '$"Categoria"'
       </div>
       <div class="button-wrapper">
         <div class="svg-center">
-          <select class="svg-center" id="categorySelectEdit" name="category">
-            <option value="Development" '$selected_Development' >'$"DESENVOLVIMENTO"'</option>
-            <option value="Office" '$selected_Office' >'$"ESCRITÓRIO"'</option>
-            <option value="Graphics" '$selected_Graphics' >'$"GRÁFICOS"'</option>
-            <option value="Network" '$selected_Network' >INTERNET</option>
-            <option value="Game" '$selected_Game' >'$"JOGOS"'</option>
-            <option value="AudioVideo" '$selected_AudioVideo' >'$"MULTIMÍDIA"'</option>
-            <option value="Webapps" '$selected_Webapps' >'$"WEBAPPS"'</option>
-            <option value="Google" '$selected_Google' >'$"WEBAPPS GOOGLE"'</option>
+          <select class="svg-center" id="categorySelectEdit" name="category">' | tr -d "\t\n\r"
+
+declare -A categories=(
+  ["Development"]=$"DESENVOLVIMENTO"
+  ["Office"]=$"ESCRITÓRIO"
+  ["Graphics"]=$"GRÁFICOS"
+  ["Network"]=INTERNET
+  ["Game"]=$"JOGOS"
+  ["AudioVideo"]=$"MULTIMÍDIA"
+  ["Webapps"]=$"WEBAPPS"
+  ["Google"]=$"WEBAPPS GOOGLE"
+)
+
+for category in "${!categories[@]}"; do
+  echo -n "<option value=\"$category\" $(
+    [ "${CATEGORY/;/}" = "$category" ] && echo -n "selected"
+  )>${categories["$category"]}</option>"
+done
+
+echo -n '
           </select>
         </div>
       </div>
@@ -467,7 +418,7 @@ $(function(){
       if (data){
         if (/button/.test(data)){
           console.log("Multiple-Favicon");
-          $(".pop-up#detectIconEdit #menu-icon").html(data)
+          $(".pop-up#detectIconEdit .menu-icon").html(data)
           $(".lds-ring").css("display", "none");
           $(".pop-up#detectIconEdit").addClass("visible");
           $(".btn-img-favicon").each(function(index, el){
@@ -510,5 +461,5 @@ $(function(){
   }
 
 });
-</script>
-'
+
+</script>' | tr -d "\t\n\r"

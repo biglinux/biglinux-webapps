@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Youtube Music
 Exec=~/.local/bin/youtubemusic-webapp-biglinux-org.mozilla.firefox
-Icon=/usr/share/icons/hicolor/128x128/apps/g-youtubemusic.png
+Icon=g-youtubemusic.png
 Categories=Google;

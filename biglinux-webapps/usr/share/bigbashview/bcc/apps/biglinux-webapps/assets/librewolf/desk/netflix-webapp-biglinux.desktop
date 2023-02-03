@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Netflix
 Exec=~/.local/bin/netflix-webapp-biglinux-librewolf
-Icon=/usr/share/icons/hicolor/128x128/apps/netflix.png
+Icon=netflix.png
 Categories=Webapps;

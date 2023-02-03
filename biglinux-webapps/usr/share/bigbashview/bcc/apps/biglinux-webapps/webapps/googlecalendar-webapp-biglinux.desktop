@@ -6,6 +6,6 @@ Type=Application
 Name=Calendar
 Name[pt]=Agenda
 Exec=/usr/bin/biglinux-webapp --class="calendar.google.com,Chromium-browser" --profile-directory=Default --app=https://calendar.google.com
-Icon=/usr/share/icons/hicolor/128x128/apps/g-calendar.png
+Icon=g-calendar.png
 StartupWMClass=calendar.google.com
 Categories=Google;

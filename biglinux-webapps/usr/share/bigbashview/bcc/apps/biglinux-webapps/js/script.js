@@ -242,7 +242,7 @@ $(function(){
       if (data){
         if (/button/.test(data)){
           console.log("Multiple-Favicon");
-          $(".pop-up#detectIcon #menu-icon").html(data)
+          $(".pop-up#detectIcon .menu-icon").html(data)
           $(".lds-ring").css("display", "none");
           $(".pop-up#detectIcon").addClass("visible");
           $(".btn-img-favicon").each(function(index, el){

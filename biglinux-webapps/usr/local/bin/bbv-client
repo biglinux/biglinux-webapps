@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+for a in "$@"; do
+    if [[ "$a" == "--app="* ]]; then
+        exec python3 /usr/lib/bbv/client.py "${a#--app=}"
+        exit $?
+    fi
+done
+
+echo "ERROR: Missing \"--app\" argument!"
+exit 1

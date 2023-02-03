@@ -3,30 +3,27 @@
 CHANGE=false
 FILES=($(find ~/.local/share/applications -iname '*-webapp-biglinux.desktop'))
 
-
-if [ ! "$FILES" ];then
-    printf "%s" "$2" > ~/.bigwebapps/BROWSER
-    exit
+if [ ! "${FILES[@]}" ]; then
+    printf "%s" "$2" >~/.bigwebapps/BROWSER
+    exit 0
 fi
 
-function ChromeToFire(){
-    for w in "${FILES[@]}";do
+blink_to_gecko() {
+    for w in "${FILES[@]}"; do
         filename="${w##*/}"
-        cp -f "$PWD"/assets/"$1"/bin/"${filename%%.*}-$1" ~/.local/bin
-        cp -f "$PWD"/assets/"$1"/desk/"$filename" ~/.local/share/applications
+        cp -f "${PWD}/assets/${1}/bin/${filename%%.*}-$1" ~/.local/bin/
+        cp -f "${PWD}/assets/${1}/desk/${filename}" ~/.local/share/applications/
     done
 }
 
-
-function FireToChrome(){
-    for w in "${FILES[@]}";do
+gecko_to_blink() {
+    for w in "${FILES[@]}"; do
         cp -f "$PWD"/webapps/"${w##*/}" ~/.local/share/applications
     done
 }
 
-
-function ClearFiles(){
-    for w in "${FILES[@]}";do
+clear_files() {
+    for w in "${FILES[@]}"; do
         EXEC_BIN=~/.local/bin/$(sed -n '/^Exec/s/.*\/\([^\/]*\)$/\1/p' "$w")
         DATA_DIR=~/$(sed -n '/^FOLDER/s/.*=~\/\([^\n]*\).*/\1/p' "$EXEC_BIN")
 
@@ -35,40 +32,27 @@ function ClearFiles(){
     done
 }
 
-
-case "$1" in
-    firefox|org.mozilla.firefox|librewolf|io.gitlab.librewolf-community)
-        case "$2" in
-            firefox|org.mozilla.firefox|librewolf|io.gitlab.librewolf-community)
-                ClearFiles
-                ChromeToFire "$2"
-                CHANGE=true
-            ;;
-
-            *)  ClearFiles
-                FireToChrome
-                CHANGE=true
-            ;;
-        esac
-    ;;
-
-    *)  case "$2" in
-            firefox|org.mozilla.firefox|librewolf|io.gitlab.librewolf-community)
-                ChromeToFire "$2"
-                CHANGE=true
-            ;;
-
-            *):;;
-        esac
+case "$2" in
+*firefox* | *firedragon | *librewolf*)
+    blink_to_gecko "$2"
+    CHANGE=true
     ;;
 esac
 
+[[ "$2" != *"firefox"* ]] && [[ "$2" != *"librewolf"* ]] && notgecko=true
 
-if [ "$CHANGE" = "true" ];then
+case "$1" in
+*firefox* | *firedragon | *librewolf*)
+    clear_files
+    [ "$notgecko" ] && gecko_to_blink
+    CHANGE=true
+    ;;
+esac
+
+if [ "$CHANGE" = "true" ]; then
     update-desktop-database -q ~/.local/share/applications
     nohup kbuildsycoca5 &>/dev/null &
 fi
 
-
-printf "%s" "$2" > ~/.bigwebapps/BROWSER
-exit
+printf "%s" "$2" >~/.bigwebapps/BROWSER
+exit 0

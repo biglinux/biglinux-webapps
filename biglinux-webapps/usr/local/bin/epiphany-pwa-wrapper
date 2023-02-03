@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+FLATPAK_BIN=/var/lib/flatpak/exports/bin
+SNAPD_BIN=/var/lib/snapd/snap/bin
+
+epiphany_bin=$(which epiphany 2>/dev/null)
+[ "${epiphany_bin##/usr/local/*}" ] || epiphany_bin="$FLATPAK_BIN/org.gnome.Epiphany"
+[ -x "$epiphany_bin" ] || epiphany_bin="$SNAPD_BIN/epiphany"
+
+APP_NAME="org.gnome.Epiphany.WebApp-BigLinuxLauncher"
+APP_DIR="$HOME/.local/share/$APP_NAME"
+[ -d "$APP_DIR" ] || APP_DIR="$HOME/.config/epiphany/$APP_NAME"
+[ -d "$APP_DIR" ] || {
+    mkdir -p "$APP_DIR"
+    touch "$APP_DIR"/.app
+    cat <<EOF > "$APP_DIR"/"${APP_NAME}.desktop"
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=BigLinuxLauncher
+Icon=biglinux-globo
+Categories=webapps;
+X-KDE-StartupNotify=true"
+EOF
+}
+
+for a in "$@"; do
+    if [[ "$a" == "--app="* ]]; then
+        exec "$epiphany_bin" --application-mode --profile="$APP_DIR" "${a#*=}"
+        exit $?
+    fi
+done
+
+echo "ERROR: Missing \"--app\" argument!"
+exit 1
