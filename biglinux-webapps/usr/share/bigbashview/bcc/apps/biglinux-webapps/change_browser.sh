@@ -3,7 +3,7 @@
 CHANGE=false
 FILES=($(find ~/.local/share/applications -iname '*-webapp-biglinux.desktop'))
 
-if [ ! "${FILES[@]}" ]; then
+if [ ! "${FILES}" ]; then
     printf "%s" "$2" >~/.bigwebapps/BROWSER
     exit 0
 fi
@@ -37,9 +37,8 @@ case "$2" in
     blink_to_gecko "$2"
     CHANGE=true
     ;;
+*) notgecko=true ;;
 esac
-
-[[ "$2" != *"firefox"* ]] && [[ "$2" != *"librewolf"* ]] && notgecko=true
 
 case "$1" in
 *firefox* | *firedragon | *librewolf*)

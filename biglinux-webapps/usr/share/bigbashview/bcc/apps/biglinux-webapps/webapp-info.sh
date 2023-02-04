@@ -87,20 +87,17 @@ echo -n '
     <li>
       <div class="products">
         <div class="svg-center" id="thumb">
-          <img height="58" width="58" id="browserEdit" src="icons/'"$(resolve_icon "$BROWSER")"'.svg"/>
+          <img height="58" width="58" id="browserEdit" src="icons/'"$(resolve_icon "${BROWSER##*/}")"'.svg"/>
         </div>
         '$"Navegador"'
       </div>
       <div class="button-wrapper">
         <select class="svg-center" id="browserSelectEdit" name="browserNew">' | tr -d "\t\n\r"
 
-for browser in "${browser_bin_list[@]}"; do
-  binary=$(which "$browser" 2>/dev/null)
-  if [ -x "${binary##/usr/local/*}" ] || [ -x "${FLATPAK_BIN}/$browser" ] || [ -x "${SNAPD_BIN}/$browser" ]; then
-    echo -n "<option value=\"$browser\" data-icon=\"$(resolve_icon "$browser")\" $(
-      [ "$BROWSER" = "$browser" ] && echo -n "selected"
-    )>${browser_trans["$browser"]}</option>"
-  fi
+for browser in "${available_browsers[@]}"; do
+  echo -n "<option value=\"$browser\" data-icon=\"$(resolve_icon "${browser##*/}")\" $(
+    [ "$BROWSER" = "$browser" ] && echo -n "selected"
+  )>${browser_trans["${browser##*/}"]}</option>"
 done
 
 echo -n '

@@ -152,12 +152,9 @@ echo -n '
                         <div class="button-wrapper">
                           <select class="svg-center" id="browserSelect" name="browser">' | tr -d "\t\n\r"
 
-for browser in "${browser_bin_list[@]}"; do
-  binary=$(which "$browser" 2>/dev/null)
-  if [ -x "${binary##/usr/local/*}" ] || [ -x "${FLATPAK_BIN}/$browser" ] || [ -x "${SNAPD_BIN}/$browser" ]; then
-    COUNT_BROWSER=$((COUNT_BROWSER + 1))
-    echo -n "<option value=\"${browser}\" data-icon=\"$(resolve_icon "$browser")\">${browser_trans["$browser"]}</option>"
-  fi
+for browser in "${available_browsers[@]}"; do
+  COUNT_BROWSER=$((COUNT_BROWSER + 1))
+  echo -n "<option value=\"${browser}\" data-icon=\"$(resolve_icon "${browser##*/}")\">${browser_trans["${browser##*/}"]}</option>"
 done
 
 echo -n '</select>
@@ -568,19 +565,8 @@ echo -n '      <!--EDIT MODAL-->
                 <div style="display:flex;justify-content:center">' | tr -d "\t\n\r"
 
 BROWSER=$(<~/.bigwebapps/BROWSER)
-title=${browser_trans["$BROWSER"]}
-case "$BROWSER" in
-com.brave.Browser) ICON='brave' ;;
-electron*) ICON='electron' ;;
-*)
-  if [ $COUNT_BROWSER -eq 0 ]; then
-    ICON='none'
-    title=$"Não existem navegadores compatíveis instalados no sistema!"
-  else
-    ICON=$(resolve_icon "$BROWSER") 
-  fi
-  ;;
-esac
+title=${browser_trans["${BROWSER##*/}"]}
+ICON=$(resolve_icon "${BROWSER##*/}")
 echo -n '
     <div class="content-section-title" style="margin-bottom:0">
       '$"Navegador padrão<br>dos WebApps:"'
@@ -615,22 +601,20 @@ else
       </div>' | tr -d "\t\n\r"
   button_tmplt() {
     echo -n '
-    <button class="btn-img status-button btn-img-main" id="'"${1}"'">
+    <button class="btn-img status-button btn-img-main" id="'"${1##*/}"'" title="'"${browser_trans["${1##*/}"]}"'">
         <img src="icons/'"${2}"'.svg"
-          title="'"${browser_trans["$1"]}"'"
           data-bin="'"${1}"'"
           width="38" height="38">
       </button>' | tr -d "\t\n\r"
   }
-  for browser in "${browser_bin_list[@]}"; do
-    icon=$(resolve_icon "$browser")
-    binary=$(which "$browser" 2>/dev/null)
-    if [ -x "${binary##/usr/local/*}" ]; then
-      native_browsers="$native_browsers$(button_tmplt "$browser" "$icon")"
-    elif [ -x "${FLATPAK_BIN}/$browser" ]; then
+  for browser in "${available_browsers[@]}"; do
+    icon=$(resolve_icon "${browser##*/}")
+    if [[ "$browser" = "${FLATPAK_BIN}"* ]]; then
       flatpak_browsers="$flatpak_browsers$(button_tmplt "$browser" "$icon")"
-    elif [ -x "${SNAPD_BIN}/$browser" ]; then
+    elif [[ "$browser" = "${SNAPD_BIN}"* ]]; then
       snapd_browsers="$snapd_browsers$(button_tmplt "$browser" "$icon")"
+    else
+      native_browsers="$native_browsers$(button_tmplt "$browser" "$icon")"
     fi
 
   done
