@@ -16,7 +16,6 @@ export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
 . ./scripts/detect_browser.env
-COUNT_BROWSER=0
 
 echo -n '
 <!DOCTYPE html>
@@ -153,8 +152,7 @@ echo -n '
                           <select class="svg-center" id="browserSelect" name="browser">' | tr -d "\t\n\r"
 
 for browser in "${available_browsers[@]}"; do
-  COUNT_BROWSER=$((COUNT_BROWSER + 1))
-  echo -n "<option value=\"${browser}\" data-icon=\"$(resolve_icon "${browser##*/}")\">${browser_trans["${browser##*/}"]}</option>"
+	echo -n "<option value=\"${browser}\" data-icon=\"$(resolve_icon "${browser##*/}")\">$(get_title "$browser")</option>"
 done
 
 echo -n '</select>
@@ -172,7 +170,7 @@ echo -n '</select>
                             <select class="svg-center" id="categorySelect" name="category">' | tr -d "\t\n\r"
 
 for category in "${!categories[@]}"; do
-  echo -n "<option value=\"$category\">${categories["$category"]}</option>"
+	echo -n "<option value=\"$category\">${categories["$category"]}</option>"
 done
 
 echo -n '
@@ -272,18 +270,18 @@ compgen -G $LC &>/dev/null && CUSTOMFILES=($(find $LCDIR -iname "*-webapp-biglin
 
 # Start of gawk script
 gawk -v development=$"Desenvolvimento" \
-  -v office=$"Escritório" \
-  -v graphics=$"Gráficos" \
-  -v game=$"Jogos" \
-  -v audiovideo=$"Multimídia" \
-  -v internet=$"Internet" \
-  -v google=$"Google" \
-  -v webapp=$"WebApps" \
-  -v nenhum=$"Nenhum WebApp adicionado!" \
-  -v apply=$"Aplicar" \
-  -v cancel=$"Cancelar" \
-  -v certeza=$"Tem certeza que deseja remover este WebApp?" \
-  -v adicionar=$"Adicionar" -- '
+	-v office=$"Escritório" \
+	-v graphics=$"Gráficos" \
+	-v game=$"Jogos" \
+	-v audiovideo=$"Multimídia" \
+	-v internet=$"Internet" \
+	-v google=$"Google" \
+	-v webapp=$"WebApps" \
+	-v nenhum=$"Nenhum WebApp adicionado!" \
+	-v apply=$"Aplicar" \
+	-v cancel=$"Cancelar" \
+	-v certeza=$"Tem certeza que deseja remover este WebApp?" \
+	-v adicionar=$"Adicionar" -- '
 
     BEGIN {
       # This OFS helps writing readable code on printing
@@ -565,7 +563,7 @@ echo -n '      <!--EDIT MODAL-->
                 <div style="display:flex;justify-content:center">' | tr -d "\t\n\r"
 
 BROWSER=$(<~/.bigwebapps/BROWSER)
-title=${browser_trans["${BROWSER##*/}"]}
+title=$(get_title "$BROWSER")
 ICON=$(resolve_icon "${BROWSER##*/}")
 echo -n '
     <div class="content-section-title" style="margin-bottom:0">
@@ -575,65 +573,51 @@ echo -n '
       <img src="icons/'"$ICON"'.svg" width="38" height="38"
         class="iconBrowser" id="browserIcon" title="'"$title"'">
     </button>
-  </div>' | tr -d "\t\n\r"
-if [ $COUNT_BROWSER -eq 0 ]; then
-  # MODAL NO BROWSERS
-  echo -n '
-    <div class="pop-up" id="change-browser" style="padding-bottom:30px">
-      <div class="pop-up__subtitle">
-      '$"Não existem navegadores compatíveis instalados no sistema!"'
-      </div>
-      <div class="content-button-wrapper">
-        <button class="content-button status-button2 close">'$"Fechar"'</button>
-      </div>
+  </div>
+  <div class="pop-up" id="change-browser" style="padding-bottom:30px">
+    <div class="pop-up__title">'$"Selecione o navegador preferido:"'
+      <svg class="close" width="24" height="24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round"
+           stroke-linejoin="round" class="feather feather-x-circle">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M15 9l-6 6M9 9l6 6" />
+      </svg>
     </div>' | tr -d "\t\n\r"
-else
-  # CHANGE BROWSERS MODAL
-  echo -n '
-    <div class="pop-up" id="change-browser" style="padding-bottom:30px">
-      <div class="pop-up__title">'$"Selecione o navegador preferido:"'
-        <svg class="close" width="24" height="24" fill="none"
-             stroke="currentColor" stroke-width="2" stroke-linecap="round"
-             stroke-linejoin="round" class="feather feather-x-circle">
-          <circle cx="12" cy="12" r="10" />
-          <path d="M15 9l-6 6M9 9l6 6" />
-        </svg>
-      </div>' | tr -d "\t\n\r"
-  button_tmplt() {
-    echo -n '
-    <button class="btn-img status-button btn-img-main" id="'"${1##*/}"'" title="'"${browser_trans["${1##*/}"]}"'">
-        <img src="icons/'"${2}"'.svg"
-          data-bin="'"${1}"'"
-          width="38" height="38">
-      </button>' | tr -d "\t\n\r"
-  }
-  for browser in "${available_browsers[@]}"; do
-    icon=$(resolve_icon "${browser##*/}")
-    if [[ "$browser" = "${FLATPAK_BIN}"* ]]; then
-      flatpak_browsers="$flatpak_browsers$(button_tmplt "$browser" "$icon")"
-    elif [[ "$browser" = "${SNAPD_BIN}"* ]]; then
-      snapd_browsers="$snapd_browsers$(button_tmplt "$browser" "$icon")"
-    else
-      native_browsers="$native_browsers$(button_tmplt "$browser" "$icon")"
-    fi
 
-  done
+for browser in "${available_browsers[@]}"; do
+	icon=$(resolve_icon "${browser##*/}")
+	btn=$(tr -d "\t\n\r" <<<'<button class="btn-img status-button btn-img-main"
+         id="'"${browser##*/}"'"
+         title="'"$(get_title "$browser")"'">
+        <img src="icons/'"$icon"'.svg"
+           data-bin="'"$browser"'"
+           width="38" height="38">
+      </button>')
+	if [[ "$browser" = "${FLATPAK_BIN}"* ]]; then
+		flatpak_browsers="$flatpak_browsers $btn"
+	elif [[ "$browser" = "${SNAPD_BIN}"* ]]; then
+		snapd_browsers="$snapd_browsers $btn"
+	else
+		native_browsers="$native_browsers $btn"
+	fi
 
-  if [ "$native_browsers" ]; then
-    echo -n '<div class="pop-up__subtitle">'$"Nativo"'</div>
+done
+
+if [ "$native_browsers" ]; then
+	echo -n '<div class="pop-up__subtitle">'$"Nativo"'</div>
               <div class="pick menu">'"$native_browsers"'</div>'
-  fi
-
-  if [ "$flatpak_browsers" ]; then
-    echo -n '<div class="pop-up__subtitle">'$"Flatpak"'</div>
-              <div class="pick menu">'"$flatpak_browsers"'</div>'
-  fi
-
-  if [ "$snapd_browsers" ]; then
-    echo -n '<div class="pop-up__subtitle">'$"Snap"'</div>
-              <div class="pick menu">'"$snapd_browsers"'</div>'
-  fi
 fi
+
+if [ "$flatpak_browsers" ]; then
+	echo -n '<div class="pop-up__subtitle">'$"Flatpak"'</div>
+              <div class="pick menu">'"$flatpak_browsers"'</div>'
+fi
+
+if [ "$snapd_browsers" ]; then
+	echo -n '<div class="pop-up__subtitle">'$"Snap"'</div>
+              <div class="pick menu">'"$snapd_browsers"'</div>'
+fi
+
 echo -n '
   </div>
     <div class="content-section" style="margin-top:0">

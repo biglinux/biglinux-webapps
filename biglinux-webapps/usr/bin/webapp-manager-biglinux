@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-webapps
+
 if pidof webapp-manager-biglinux &>/dev/null;then
     kdialog --sorry $"O Gerenciador de WebApps BigLinux já está aberto!" --title $"WebApps BigLinux"
     exit
 fi
-
-#Translation
-export TEXTDOMAINDIR="/usr/share/locale"
-export TEXTDOMAIN=biglinux-webapps
 
 WEBAPP_DIR="/usr/share/bigbashview/bcc/apps/biglinux-webapps/webapps"
 HOME_SHARE_DIR_APP="$HOME/.local/share/applications"

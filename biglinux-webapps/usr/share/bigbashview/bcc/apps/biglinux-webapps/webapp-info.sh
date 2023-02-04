@@ -97,7 +97,7 @@ echo -n '
 for browser in "${available_browsers[@]}"; do
   echo -n "<option value=\"$browser\" data-icon=\"$(resolve_icon "${browser##*/}")\" $(
     [ "$BROWSER" = "$browser" ] && echo -n "selected"
-  )>${browser_trans["${browser##*/}"]}</option>"
+  )>$(get_title "$browser")</option>"
 done
 
 echo -n '

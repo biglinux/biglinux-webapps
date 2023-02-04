@@ -1222,9 +1222,10 @@ input {
   display: flex;
   justify-content: space-evenly;
   width: 100%;
-  overflow-x: auto;
-  height: 80px;
+  /* overflow-x: auto;
+  height: 80px; */
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .pick.menu a img {
@@ -1453,6 +1454,7 @@ li img {
 /* SCROLL BARRA DE ROLAGEM */
 ::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
   border-radius: 10px;
 }
 
@@ -2027,7 +2029,7 @@ input[type="button"] {
   cursor: pointer;
   padding: 3px;
   box-shadow: 0 0 5px #888;
-  margin:0 12px;
+  margin: 4px 12px 18px;
 }
 
 .btn-img-favicon {
