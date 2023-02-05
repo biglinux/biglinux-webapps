@@ -587,7 +587,7 @@ echo -n '
 for browser in "${available_browsers[@]}"; do
 	icon=$(resolve_icon "${browser##*/}")
 	btn=$(tr -d "\t\n\r" <<<'<button class="btn-img status-button btn-img-main"
-         id="'"${browser##*/}"'"
+         id="'"${browser//\//_}"'"
          title="'"$(get_title "$browser")"'">
         <img src="icons/'"$icon"'.svg"
            data-bin="'"$browser"'"

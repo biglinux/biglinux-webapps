@@ -75,7 +75,7 @@ $(function () {
       .attr("data-bin")
       .replace(/\./g, "\\.");
     console.log("Browser-Set-Native: " + curBin);
-    $("button#" + curBin).addClass("highlight");
+    $("button#" + curBin.replace(/\//g, "_")).addClass("highlight");
     $(".pop-up#change-browser").addClass("visible");
   });
 
