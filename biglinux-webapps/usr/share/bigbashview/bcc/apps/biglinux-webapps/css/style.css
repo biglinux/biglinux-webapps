@@ -1983,6 +1983,7 @@ input[type="button"] {
   vertical-align: middle;
   align-items: center;
   justify-content: center;
+  object-fit: contain;
 }
 
 .left {

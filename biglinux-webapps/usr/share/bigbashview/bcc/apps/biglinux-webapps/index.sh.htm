@@ -15,6 +15,7 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
+# shellcheck source=./scripts/detect_browser.env
 . ./scripts/detect_browser.env
 
 echo -n '
@@ -265,8 +266,8 @@ echo -n '
 
 CUSTOMFILES=()
 LCDIR=~/.local/share/applications
-LC=$LCDIR/*-webapp-biglinux-custom.desktop
-compgen -G $LC &>/dev/null && CUSTOMFILES=($(find $LCDIR -iname "*-webapp-biglinux-custom.desktop"))
+LC=( "$LCDIR"/*-webapp-biglinux-custom.desktop )
+compgen -G "${LC[@]}" &>/dev/null && mapfile -t CUSTOMFILES < <(find $LCDIR -iname "*-webapp-biglinux-custom.desktop")
 
 # Start of gawk script
 gawk -v development=$"Desenvolvimento" \
@@ -626,7 +627,7 @@ echo -n '
       </div>
       <ul id="content-ul">' | tr -d "\t\n\r"
 
-files=($(find ./webapps -iname "*-webapp-biglinux.desktop"))
+mapfile -t files < <(find ./webapps -iname "*-webapp-biglinux.desktop")
 gawk -v browser="${ICON}" '
     BEGIN {
         # This OFS helps write readable code on printing

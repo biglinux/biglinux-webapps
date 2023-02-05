@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
 CHANGE=false
-FILES=($(find ~/.local/share/applications -iname '*-webapp-biglinux.desktop'))
+mapfile -t FILES < <(find ~/.local/share/applications -iname "*-webapp-biglinux.desktop")
 
+# shellcheck disable=SC2128
 if [ ! "${FILES}" ]; then
     printf "%s" "$2" >~/.bigwebapps/BROWSER
     exit 0

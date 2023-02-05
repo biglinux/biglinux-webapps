@@ -14,7 +14,6 @@ case "$2" in
         rm "$DESKBIN" "$LOCAL_DIR"
     fi
     ;;
-
 *)
     if [ ! -e "$LOCAL_DIR" ]; then
         cp "$PWD/webapps/$1" ~/.local/share/applications
