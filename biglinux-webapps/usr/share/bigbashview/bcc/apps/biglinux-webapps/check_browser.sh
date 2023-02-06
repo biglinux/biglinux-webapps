@@ -6,6 +6,8 @@ export TEXTDOMAIN=biglinux-webapps
 
 ONLY=false
 
+mkdir -p ~/.bigwebapps
+
 if [ -e /usr/lib/brave-browser/brave ] || [ -e /usr/lib/brave-bin/brave ];then
     printf "%s" "brave" > ~/.bigwebapps/BROWSER
 elif [ -e /opt/google/chrome/google-chrome ];then
