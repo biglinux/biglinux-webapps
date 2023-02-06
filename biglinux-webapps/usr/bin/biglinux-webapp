@@ -9,6 +9,7 @@ if [ "$1" = "firelibre" ]; then
     exit 1
 fi
 
+# shellcheck source=/dev/null
 . /usr/share/bigbashview/bcc/apps/biglinux-webapps/scripts/detect_browser.env
 
 parse_args() {
@@ -52,7 +53,7 @@ if [[ "$BROWSER" = *"."* ]] && [ -x "$FLATPAK_BIN/$BROWSER" ]; then
     BROWSER="$FLATPAK_BIN/$BROWSER"
 fi
 
-args=$@
+args=$*
 parse_args "$@"
 
-exec "$BROWSER" $args
+exec "$BROWSER" "$args"
