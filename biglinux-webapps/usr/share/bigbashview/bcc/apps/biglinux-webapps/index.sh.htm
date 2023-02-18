@@ -808,7 +808,7 @@ echo -n '
             if [ "$NATIVE" = "true" ];then
             echo -n '<div class="pop-up__subtitle">'$"Nativo"'</div>
                   <div id="menu">'
-                    if [ -e /usr/lib/brave-browser/brave ];then
+                    if [ -e /usr/lib/brave-browser/brave ] || [ -e /usr/lib/brave-bin/brave ];then
                       echo -n '<button class="btn-img status-button btn-img-main"
                                     id="brave">
                             <img src="icons/brave.svg" width="38"
