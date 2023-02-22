@@ -2110,3 +2110,17 @@ hr {
 #categorySelectEdit{
   width: 180px;
 }
+
+#backup{
+  position: absolute;
+  margin-left: 175px;
+  width: 150px;
+  z-index: 1;
+}
+
+#restore{
+  position: relative;
+  left:120px;
+  top:-44px;
+  height:26px
+}

@@ -1,6 +1,7 @@
 var divs = $("div.content-section-title[id]");
 if(divs.length){
   var divsSorted = [];
+  divsSorted.push($("#backup"));
   divs.sort(function(a, b) {
       return $(a).text() > $(b).text() ? 1 : -1;
   });
@@ -9,6 +10,8 @@ if(divs.length){
       divsSorted.push("<br/>");
   }
   divsSorted.push($("div.pop-up#editModal"));
+  divsSorted.push($("div.pop-up#backupModal"));
+  divsSorted.push($("div.pop-up#restoreModal"));
   $("#list-tab-content").html(divsSorted);
 }
 
@@ -379,6 +382,28 @@ $(function(){
       }
     });
   });
+
+  $("#backup").click(function(e){
+    e.preventDefault();
+    $.get("/execute$./backup.sh", function(data){
+      if (data){
+        console.log(data);
+        $("#backupPath").text(data);
+        $(".pop-up#backupModal").addClass("visible");
+      }
+    });
+  });
+
+  $("#restore").click(function(e){
+    e.preventDefault();
+    $.get("/execute$./restore.sh", function(resp){
+      $("#restoreModal").addClass("visible");
+      $("#closeRestore").click(function(){
+        location.reload(true);
+      });
+    });
+  });
+
 });
 
 function delOpen(id){

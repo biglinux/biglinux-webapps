@@ -153,7 +153,7 @@ echo -n '
                         <div class="button-wrapper">
                           <select class="svg-center" id="browserSelect" name="browser">'
 
-                            if [ -e /usr/lib/brave-browser/brave ] || [ -e /usr/lib/brave-bin/brave ];then
+                            if [ -e /usr/lib/brave-browser/brave ] || [ -e /opt/brave-bin/brave ];then
                               echo -n '<option value="brave">'$"BRAVE"'</option>'
                               NATIVE=true
                               COUNT_BROWSER=$((COUNT_BROWSER+1))
@@ -367,6 +367,8 @@ echo -n '
          -v apply=$"Aplicar"                                       \
          -v cancel=$"Cancelar"                                     \
          -v certeza=$"Tem certeza que deseja remover este WebApp?" \
+         -v restaurar=$"Restaurar"                                 \
+         -v backup=$"Criar backup"                                 \
          -v adicionar=$"Adicionar" -- '
 
     BEGIN {
@@ -545,8 +547,9 @@ echo -n '
     "                 <li title=\"Adicionar\" style=\"all:initial\">",
     "                   <label for=\"tab1\" role=\"button\" id=\"#add-tab-content\" ",
     "                          style=\"text-align:center;display:flex;justify-content:center;\">",
-    "                     <button class=\"button\" style=\"height:26px\">" adicionar "</button>",
+    "                     <button class=\"button\" style=\"height:26px;margin-left:-90px\">" adicionar "</button>",
     "                   </label>",
+    "                   <button class=\"button\" id=\"restore\">" restaurar "</button>",
     "                 </li>",
     "               </ul>",
     "             </div>",
@@ -559,6 +562,7 @@ echo -n '
       for ( app_category in app_array ) {
         # Prints header of the category
         print(\
+    "           <button class=\"button\" style=\"height:26px\" id=\"backup\">" backup "</button>",
     "           <div class=\"content-section\" style=\"margin-top:0px;\" id=\"" app_category "\">",
     "             <div id=\"" app_category "\" class=\"content-section-title\" style=\"text-align:left;\">",
                   app_array[app_category]["name_category"], "(<span id=\"" app_category "\"></span>)",
@@ -622,7 +626,7 @@ echo -n '
     ' "${CUSTOMFILES[@]}"
     # End of gawk script
 
-    echo -n '      <!--EDIT MODAL-->
+    echo -n '   <!--EDIT MODAL-->
                 <div class="pop-up" id="editModal" style="width:700px">
                   <div class="pop-up__title">'$"Editar WebApp"'
                   <svg class="close" width="24" height="24" fill="none"
@@ -641,6 +645,24 @@ echo -n '
                   </form>
                 </div>
 
+                <!--BACKUP MODAL-->
+                <div class="pop-up" id="backupModal" style="width:550px">
+                  <div>'$"O backup dos WebApps foi salvo em: "'
+                    <b id="backupPath"></b>
+                  </div>
+                  <div class="content-button-wrapper">
+                    <button class="content-button status-button2 close">'$"Fechar"'</button>
+                  </div>
+                </div>
+                
+                <!--RESTORE MODAL-->
+                <div class="pop-up" id="restoreModal" style="width:550px">
+                  <div>'$"Os WebApps foram restaurados com sucesso!"'</div>
+                  <div class="content-button-wrapper">
+                    <button class="content-button status-button2 close" id="closeRestore">'$"Fechar"'</button>
+                  </div>
+                </div>
+
               </div>
               <!-- FIM TABS CONTENT LIST -->
 
@@ -652,7 +674,7 @@ echo -n '
                     case "$BROWSER" in
                         brave)
                             ICON='brave'
-                            if [ ! -e /usr/lib/brave-browser/brave ];then
+                            if [ ! -e /usr/lib/brave-browser/brave ] && [ ! -e /opt/brave-bin/brave ];then
                                 ICON='none'
                                 title='title="'$"O navegador não está instalado!"'"'
                             else
@@ -808,7 +830,7 @@ echo -n '
             if [ "$NATIVE" = "true" ];then
             echo -n '<div class="pop-up__subtitle">'$"Nativo"'</div>
                   <div id="menu">'
-                    if [ -e /usr/lib/brave-browser/brave ] || [ -e /usr/lib/brave-bin/brave ];then
+                    if [ -e /usr/lib/brave-browser/brave ] || [ -e /opt/brave-bin/brave ];then
                       echo -n '<button class="btn-img status-button btn-img-main"
                                     id="brave">
                             <img src="icons/brave.svg" width="38"
