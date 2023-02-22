@@ -232,3 +232,15 @@ msgstr "BigLinux WebApps Manager 现已开放！"
 
 msgid "Gerenciador de WebApps BigLinux"
 msgstr "BigLinux WebApps Manager"
+
+msgid "Restaurar"
+msgstr "恢复"
+
+msgid "Criar backup"
+msgstr "创建备份"
+
+msgid "O backup dos WebApps foi salvo em: "
+msgstr "WebApps 备份保存在： "
+
+msgid "Os WebApps foram restaurados com sucesso!"
+msgstr "网络应用程序已成功恢复！"

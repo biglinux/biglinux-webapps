@@ -234,3 +234,15 @@ msgstr "Ο Διαχειριστής Διαδικτυακών Εφαρμογών 
 
 msgid "Gerenciador de WebApps BigLinux"
 msgstr "Διαχειριστής εφαρμογών Web του BigLinux"
+
+msgid "Restaurar"
+msgstr "Αποκαθιστώ"
+
+msgid "Criar backup"
+msgstr "Δημιουργία αντιγράφου ασφαλείας"
+
+msgid "O backup dos WebApps foi salvo em: "
+msgstr "Το αντίγραφο ασφαλείας webApps αποθηκεύτηκε στη διεύθυνση: "
+
+msgid "Os WebApps foram restaurados com sucesso!"
+msgstr "Οι Διαδικτυακές Εφαρμογές έχουν αποκατασταθεί με επιτυχία!"

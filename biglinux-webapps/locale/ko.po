@@ -232,3 +232,15 @@ msgstr "BigLinux WebApps Manager가 이제 열려 있습니다!"
 
 msgid "Gerenciador de WebApps BigLinux"
 msgstr "빅리눅스 웹앱 관리자"
+
+msgid "Restaurar"
+msgstr "복원"
+
+msgid "Criar backup"
+msgstr "백업 만들기"
+
+msgid "O backup dos WebApps foi salvo em: "
+msgstr "웹앱 백업은 다음 위치에 저장되었습니다. "
+
+msgid "Os WebApps foram restaurados com sucesso!"
+msgstr "웹앱이 성공적으로 복원되었습니다!"

@@ -234,3 +234,15 @@ msgstr "Менеджер веб-додатків BigLinux тепер відкр�
 
 msgid "Gerenciador de WebApps BigLinux"
 msgstr "Менеджер веб-додатків BigLinux"
+
+msgid "Restaurar"
+msgstr "Відновити"
+
+msgid "Criar backup"
+msgstr "Створення резервної копії"
+
+msgid "O backup dos WebApps foi salvo em: "
+msgstr "Резервну копію веб-програм було збережено за адресою: "
+
+msgid "Os WebApps foram restaurados com sucesso!"
+msgstr "WebApps успішно відновлено!"

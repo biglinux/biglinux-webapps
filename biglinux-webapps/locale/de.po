@@ -234,3 +234,15 @@ msgstr "Der BigLinux WebApps Manager ist jetzt geöffnet!"
 
 msgid "Gerenciador de WebApps BigLinux"
 msgstr "BigLinux WebApps Manager"
+
+msgid "Restaurar"
+msgstr "Wiederherstellen"
+
+msgid "Criar backup"
+msgstr "Backup erstellen"
+
+msgid "O backup dos WebApps foi salvo em: "
+msgstr "Das WebApps-Backup wurde gespeichert unter: "
+
+msgid "Os WebApps foram restaurados com sucesso!"
+msgstr "WebApps wurden erfolgreich wiederhergestellt!"
