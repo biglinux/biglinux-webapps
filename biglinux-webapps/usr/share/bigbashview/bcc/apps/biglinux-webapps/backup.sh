@@ -35,5 +35,5 @@ cd /tmp
 tar -czf "${SAVE_DIR}/${NAME_FILE}" backup-webapps
 rm -r backup-webapps
 
-echo -n "${SAVE_DIR}/${NAME_FILE}"
+printf "%s/%s" "${SAVE_DIR}" "${NAME_FILE}"
 exit

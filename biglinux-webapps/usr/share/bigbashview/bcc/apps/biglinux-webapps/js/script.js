@@ -2,6 +2,7 @@ var divs = $("div.content-section-title[id]");
 if(divs.length){
   var divsSorted = [];
   divsSorted.push($("#backup"));
+  divsSorted.push($("#restore"));
   divs.sort(function(a, b) {
       return $(a).text() > $(b).text() ? 1 : -1;
   });
@@ -397,10 +398,12 @@ $(function(){
   $("#restore").click(function(e){
     e.preventDefault();
     $.get("/execute$./restore.sh", function(resp){
-      $("#restoreModal").addClass("visible");
-      $("#closeRestore").click(function(){
-        location.reload(true);
-      });
+      if (resp){
+        $("#restoreModal").addClass("visible");
+        $("#closeRestore").click(function(){
+          location.reload(true);
+        });
+      }
     });
   });
 
