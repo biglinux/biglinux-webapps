@@ -2072,6 +2072,28 @@ hr {
   margin: auto;
 }
 
+.btn-restore1{
+  position: absolute;
+  left: 470px;
+  height: 26px;
+  width: 170px;
+}
+
+.btn-restore2{
+  position: relative;
+  left: 90px;
+  top: -44px;
+  height: 26px;
+  width: 155px;
+}
+
+.btn-backup{
+  position: absolute;
+  margin-left: 175px;
+  width: 150px;
+  height: 26px;
+}
+
 ::placeholder{
   font-style: italic;
   opacity: 0.3;
@@ -2109,18 +2131,4 @@ hr {
 #categorySelect,
 #categorySelectEdit{
   width: 180px;
-}
-
-#backup{
-  position: absolute;
-  margin-left: 175px;
-  width: 150px;
-  z-index: 1;
-}
-
-#restore{
-  position: relative;
-  left:120px;
-  top:-44px;
-  height:26px
 }

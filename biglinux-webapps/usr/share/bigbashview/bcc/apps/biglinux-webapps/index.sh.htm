@@ -367,7 +367,7 @@ echo -n '
          -v apply=$"Aplicar"                                       \
          -v cancel=$"Cancelar"                                     \
          -v certeza=$"Tem certeza que deseja remover este WebApp?" \
-         -v restaurar=$"Restaurar"                                 \
+         -v restaurar=$"Importar webapps"                                 \
          -v backup=$"Criar backup"                                 \
          -v adicionar=$"Adicionar" -- '
 
@@ -547,9 +547,9 @@ echo -n '
     "                 <li title=\"Adicionar\" style=\"all:initial\">",
     "                   <label for=\"tab1\" role=\"button\" id=\"#add-tab-content\" ",
     "                          style=\"text-align:center;display:flex;justify-content:center;\">",
-    "                     <button class=\"button\" style=\"height:26px;margin-left:-90px\">" adicionar "</button>",
+    "                     <button class=\"button\" style=\"height:26px;margin-left:-160px\">" adicionar "</button>",
     "                   </label>",
-    "                   <button class=\"button\" id=\"restore\">" restaurar "</button>",
+    "                   <button class=\"button btn-restore2\" id=\"restore\">" restaurar "</button>",
     "                 </li>",
     "               </ul>",
     "             </div>",
@@ -562,7 +562,8 @@ echo -n '
       for ( app_category in app_array ) {
         # Prints header of the category
         print(\
-    "           <button class=\"button\" style=\"height:26px\" id=\"backup\">" backup "</button>",
+    "           <button class=\"button btn-restore1\" id=\"restore\">" restaurar "</button>",
+    "           <button class=\"button btn-backup\" id=\"backup\">" backup "</button>",
     "           <div class=\"content-section\" style=\"margin-top:0px;\" id=\"" app_category "\">",
     "             <div id=\"" app_category "\" class=\"content-section-title\" style=\"text-align:left;\">",
                   app_array[app_category]["name_category"], "(<span id=\"" app_category "\"></span>)",
@@ -654,7 +655,7 @@ echo -n '
                     <button class="content-button status-button2 close">'$"Fechar"'</button>
                   </div>
                 </div>
-                
+
                 <!--RESTORE MODAL-->
                 <div class="pop-up" id="restoreModal" style="width:550px">
                   <div>'$"Os WebApps foram restaurados com sucesso!"'</div>
