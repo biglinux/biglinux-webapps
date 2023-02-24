@@ -24,11 +24,6 @@ echo -n '
 <html>
   <head>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-      *{
-          font-family: ;
-      }
-    </style>
   </head>
   '"$(/usr/share/bigbashview/bcc/shell/getbgcolor.sh)"'
   <!-- loading -->
@@ -175,10 +170,6 @@ echo -n '
                               echo -n '<option value="microsoft-edge-stable">'$"EDGE"'</option>'
                               NATIVE=true
                               COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
-
-                            if [ -e /usr/bin/epiphany ];then
-                              echo -n '<option value="epiphany">'$"EPIPHANY"'</option>'
                             fi
 
                             if [ -e /usr/lib/firefox/firefox ];then
@@ -462,7 +453,7 @@ echo -n '
             break
         }
 
-      } else if (/epiphany/ || /.*org.gnome.Epiphany/) {
+      } else if (/.*org.gnome.Epiphany/) {
         url = $4
         browser_name = "epiphany"
       } else {

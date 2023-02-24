@@ -113,7 +113,6 @@ $(function(){
   console.log("First-Browser-Combobox: "+firstValue);
   console.log("Default-Icon: "+$("#inputIconDesk").val());
   switch (firstValue){
-    case "epiphany":
     case "firefox":
     case "librewolf":
     case "org.gnome.Epiphany":

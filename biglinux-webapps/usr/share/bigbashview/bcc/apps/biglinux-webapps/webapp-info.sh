@@ -62,10 +62,6 @@ case "$BROWSER" in
         _ICON='edge'
         selected_edge_flatpak='selected'
     ;;
-    epiphany)
-        _ICON='epiphany'
-        selected_epiphany='selected'
-    ;;
     org.gnome.Epiphany)
         _ICON='epiphany'
         selected_epiphany_flatpak='selected'
@@ -182,7 +178,6 @@ echo -n '
           <option '$selected_chrome' value="google-chrome-stable">'$"CHROME"'</option>
           <option '$selected_chromium' value="chromium">'$"CHROMIUM"'</option>
           <option '$selected_edge' value="microsoft-edge-stable">'$"EDGE"'</option>
-          <option '$selected_epiphany' value="epiphany">'$"EPIPHANY"'</option>
           <option '$selected_firefox' value="firefox">'$"FIREFOX"'</option>
           <option '$selected_librewolf' value="librewolf">'$"LIBREWOLF"'</option>
           <option '$selected_vivaldi' value="vivaldi-stable">'$"VIVALDI"'</option>
@@ -381,7 +376,6 @@ $(function(){
         }
         break;
 
-      case "epiphany":
       case "org.gnome.Epiphany":
         $("#browserEdit").attr("src", "icons/epiphany.svg");
         $("#addPerfilEdit").addClass("disabled");
@@ -495,7 +489,6 @@ $(function(){
 
   var optionSelected = $("#browserSelectEdit").val();
   switch (optionSelected){
-    case "epiphany":
     case "firefox":
     case "librewolf":
     case "org.gnome.Epiphany":

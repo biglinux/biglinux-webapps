@@ -16,8 +16,6 @@ elif [ -e /usr/lib/chromium/chromium ];then
     printf "%s" "chromium" > ~/.bigwebapps/BROWSER
 elif [ -e /opt/microsoft/msedge/microsoft-edge ];then
     printf "%s" "microsoft-edge-stable" > ~/.bigwebapps/BROWSER
-elif [ -e /usr/bin/epiphany ];then
-    ONLY=true
 elif [ -e /usr/lib/firefox/firefox ];then
     ./change_browser.sh "brave" "firefox"
 elif [ -e /usr/lib/librewolf/librewolf ];then
