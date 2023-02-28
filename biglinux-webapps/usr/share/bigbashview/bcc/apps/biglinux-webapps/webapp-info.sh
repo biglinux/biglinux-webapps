@@ -54,6 +54,10 @@ case "$BROWSER" in
         _ICON='chromium'
         selected_chromium_flatpak='selected'
     ;;
+    com.github.Eloston.UngoogledChromium)
+        _ICON='ungoogled'
+        selected_ungoogled_flatpak='selected'
+    ;;
     microsoft-edge-stable)
         _ICON='edge'
         selected_edge='selected'
@@ -61,10 +65,6 @@ case "$BROWSER" in
     com.microsoft.Edge)
         _ICON='edge'
         selected_edge_flatpak='selected'
-    ;;
-    epiphany)
-        _ICON='epiphany'
-        selected_epiphany='selected'
     ;;
     org.gnome.Epiphany)
         _ICON='epiphany'
@@ -182,13 +182,13 @@ echo -n '
           <option '$selected_chrome' value="google-chrome-stable">'$"CHROME"'</option>
           <option '$selected_chromium' value="chromium">'$"CHROMIUM"'</option>
           <option '$selected_edge' value="microsoft-edge-stable">'$"EDGE"'</option>
-          <option '$selected_epiphany' value="epiphany">'$"EPIPHANY"'</option>
           <option '$selected_firefox' value="firefox">'$"FIREFOX"'</option>
           <option '$selected_librewolf' value="librewolf">'$"LIBREWOLF"'</option>
           <option '$selected_vivaldi' value="vivaldi-stable">'$"VIVALDI"'</option>
           <option '$selected_brave_flatpak' value="com.brave.Browser">'$"BRAVE (FLATPAK)"'</option>
           <option '$selected_chrome_flatpak' value="com.google.Chrome">'$"CHROME (FLATPAK)"'</option>
           <option '$selected_chromium_flatpak' value="org.chromium.Chromium">'$"CHROMIUM (FLATPAK)"'</option>
+          <option '$selected_ungoogled_flatpak' value="com.github.Eloston.UngoogledChromium">'$"UNGOOGLED (FLATPAK)"'</option>
           <option '$selected_edge_flatpak' value="com.microsoft.Edge">'$"EDGE (FLATPAK)"'</option>
           <option '$selected_epiphany_flatpak' value="org.gnome.Epiphany">'$"EPIPHANY (FLATPAK)"'</option>
           <option '$selected_firefox_flatpak' value="org.mozilla.firefox">'$"FIREFOX (FLATPAK)"'</option>
@@ -372,6 +372,11 @@ $(function(){
         }
         break;
 
+      case "com.github.Eloston.UngoogledChromium":
+        $("#perfilAdd").removeClass('disabled');
+        $("#browser").attr("src", "icons/ungoogled.svg");
+        break;
+
       case "microsoft-edge-stable":
       case "com.microsoft.Edge":
         $("#browserEdit").attr("src", "icons/edge.svg");
@@ -381,7 +386,6 @@ $(function(){
         }
         break;
 
-      case "epiphany":
       case "org.gnome.Epiphany":
         $("#browserEdit").attr("src", "icons/epiphany.svg");
         $("#addPerfilEdit").addClass("disabled");
@@ -495,7 +499,6 @@ $(function(){
 
   var optionSelected = $("#browserSelectEdit").val();
   switch (optionSelected){
-    case "epiphany":
     case "firefox":
     case "librewolf":
     case "org.gnome.Epiphany":

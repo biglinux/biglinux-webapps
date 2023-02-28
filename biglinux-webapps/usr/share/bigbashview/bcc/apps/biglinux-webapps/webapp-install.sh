@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-_NAMEDESK=$(sed 's|https\:\/\/||;s|www\.||;s|\/.*||;s|\.|-|g' <<< "$urldesk")
+_NAMEDESK=$(sed 's|https\:\/\/||;s|http\:\/\/||;s|www\.||;s|\/.*||;s|\.|-|g' <<< "$urldesk")
 USER_DESKTOP=$(xdg-user-dir DESKTOP)
 LINK_APP="$HOME/.local/share/applications/$_NAMEDESK-$RANDOM-webapp-biglinux-custom.desktop"
 BASENAME_APP="${LINK_APP##*/}"
@@ -113,41 +113,30 @@ X-KDE-StartupNotify=true" > "$LINK_APP"
         gio set "$FILE_LINK" -t string metadata::trust "true"
     fi
 
-elif grep -qi 'epiphany' <<< "$browser";then
+elif grep -q 'org.gnome.Epiphany' <<< "$browser";then
 
     if ! grep -Eq '^http:|^https:|^localhost|^127' <<< "$urldesk";then
         urldesk="https://$urldesk"
     fi
 
-    if [ "$browser" = "epiphany" ];then
-        FOLDER_DATA="$HOME/.bigwebapps/org.gnome.Epiphany.WebApp_$NAME-webapp-biglinux-custom"
-        FLATPAK_LINE=""
-        EPI_FILEDESK="org.gnome.Epiphany.WebApp_$NAME-webapp-biglinux-custom.desktop"
-        EPI_DIR_FILEDESK="$FOLDER_DATA/$EPI_FILEDESK"
-        EPI_FILE_ICON="$FOLDER_DATA/app-icon.png"
-    else
-        DIR_PORTAL="$HOME/.local/share/xdg-desktop-portal"
-        DIR_PORTAL_APP="$DIR_PORTAL/applications"
-        DIR_PORTAL_ICON="$DIR_PORTAL/icons/64x64"
+    DIR_PORTAL="$HOME/.local/share/xdg-desktop-portal"
+    DIR_PORTAL_APP="$DIR_PORTAL/applications"
+    DIR_PORTAL_ICON="$DIR_PORTAL/icons/64x64"
 
-        mkdir -p "$DIR_PORTAL_APP"
-        mkdir -p "$DIR_PORTAL_ICON"
+    mkdir -p "$DIR_PORTAL_APP"
+    mkdir -p "$DIR_PORTAL_ICON"
 
-        FOLDER_DATA="$HOME/.var/app/org.gnome.Epiphany/data/org.gnome.Epiphany.WebApp_$NAME-webapp-biglinux-custom"
-        browser="/var/lib/flatpak/exports/bin/org.gnome.Epiphany"
-        FLATPAK_LINE="X-Flatpak=org.gnome.Epiphany"
-        EPI_FILEDESK="org.gnome.Epiphany.WebApp_$NAME-webapp-biglinux-custom.desktop"
-        EPI_DIR_FILEDESK="$DIR_PORTAL_APP/$EPI_FILEDESK"
-        EPI_FILE_ICON="$DIR_PORTAL_ICON/${EPI_FILEDESK/.desktop/}.png"
-    fi
+    FOLDER_DATA="$HOME/.var/app/org.gnome.Epiphany/data/org.gnome.Epiphany.WebApp_$NAME-webapp-biglinux-custom"
+    browser="/var/lib/flatpak/exports/bin/org.gnome.Epiphany"
+    EPI_FILEDESK="org.gnome.Epiphany.WebApp_$NAME-webapp-biglinux-custom.desktop"
+    EPI_DIR_FILEDESK="$DIR_PORTAL_APP/$EPI_FILEDESK"
+    EPI_FILE_ICON="$DIR_PORTAL_ICON/${EPI_FILEDESK/.desktop/}.png"
 
     EPI_LINK="$HOME/.local/share/applications/$EPI_FILEDESK"
     EPI_DESKTOP_LINK="$USER_DESKTOP/$EPI_FILEDESK"
     mkdir -p "$FOLDER_DATA"
     true > "$FOLDER_DATA/.app"
     echo -n 37 > "$FOLDER_DATA/.migrated"
-
-
 
     if [ "${icondesk##*/}" = "default-webapps.png" ];then
         cp "$icondesk" "$EPI_FILE_ICON"
@@ -165,7 +154,7 @@ Categories=$category;
 Icon=$EPI_FILE_ICON
 StartupWMClass=$namedesk
 X-Purism-FormFactor=Workstation;Mobile;
-$FLATPAK_LINE" > "$EPI_DIR_FILEDESK"
+X-Flatpak=org.gnome.Epiphany" > "$EPI_DIR_FILEDESK"
 
     chmod +x "$EPI_DIR_FILEDESK"
     ln -s "$EPI_DIR_FILEDESK" "$EPI_LINK"
@@ -196,6 +185,11 @@ else
         org.chromium.Chromium)
             browser="/var/lib/flatpak/exports/bin/org.chromium.Chromium"
             DIR_PROF="$HOME/.var/app/org.chromium.Chromium/data/$NAME"
+        ;;
+        
+        com.github.Eloston.UngoogledChromium)
+            browser="/var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium"
+            DIR_PROF="$HOME/.var/app/com.github.Eloston.UngoogledChromium/data/$NAME"
         ;;
     esac
 

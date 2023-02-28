@@ -51,6 +51,15 @@ case $_GET_BROWSER in
             exit
         fi
     ;;
+    
+    com.github.Eloston.UngoogledChromium)
+        if [ -e /var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium ];then
+            BROWSER="/var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium"
+        else
+            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
+            exit
+        fi
+    ;;
 
     google-chrome-stable)
         if [ -e /opt/google/chrome/google-chrome ];then

@@ -113,7 +113,6 @@ $(function(){
   console.log("First-Browser-Combobox: "+firstValue);
   console.log("Default-Icon: "+$("#inputIconDesk").val());
   switch (firstValue){
-    case "epiphany":
     case "firefox":
     case "librewolf":
     case "org.gnome.Epiphany":
@@ -144,6 +143,11 @@ $(function(){
       case "org.chromium.Chromium":
         $("#perfilAdd").removeClass('disabled');
         $("#browser").attr("src", "icons/chromium.svg");
+        break;
+
+      case "com.github.Eloston.UngoogledChromium":
+        $("#perfilAdd").removeClass('disabled');
+        $("#browser").attr("src", "icons/ungoogled.svg");
         break;
 
       case "microsoft-edge-stable":
@@ -386,7 +390,9 @@ $(function(){
 
   $("#backup").click(function(e){
     e.preventDefault();
+    $(".lds-ring").css("display", "inline-flex");
     $.get("/execute$./backup.sh", function(data){
+      $(".lds-ring").css("display", "none");
       if (data){
         console.log(data);
         $("#backupPath").text(data);
@@ -397,7 +403,9 @@ $(function(){
 
   $("#restore").click(function(e){
     e.preventDefault();
+    $(".lds-ring").css("display", "inline-flex");
     $.get("/execute$./restore.sh", function(resp){
+      $(".lds-ring").css("display", "none");
       if (resp){
         $("#restoreModal").addClass("visible");
         $("#closeRestore").click(function(){

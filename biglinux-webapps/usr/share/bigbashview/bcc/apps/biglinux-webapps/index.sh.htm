@@ -24,11 +24,6 @@ echo -n '
 <html>
   <head>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-      *{
-          font-family: ;
-      }
-    </style>
   </head>
   '"$(/usr/share/bigbashview/bcc/shell/getbgcolor.sh)"'
   <!-- loading -->
@@ -177,10 +172,6 @@ echo -n '
                               COUNT_BROWSER=$((COUNT_BROWSER+1))
                             fi
 
-                            if [ -e /usr/bin/epiphany ];then
-                              echo -n '<option value="epiphany">'$"EPIPHANY"'</option>'
-                            fi
-
                             if [ -e /usr/lib/firefox/firefox ];then
                               echo -n '<option value="firefox">'$"FIREFOX"'</option>'
                               NATIVE=true
@@ -235,6 +226,12 @@ echo -n '
 
                             if [ -e /var/lib/flatpak/exports/bin/io.gitlab.librewolf-community ];then
                               echo -n '<option value="io.gitlab.librewolf-community">'$"LIBREWOLF (FLATPAK)"'</option>'
+                              FLATPAK=true
+                              COUNT_BROWSER=$((COUNT_BROWSER+1))
+                            fi
+
+                            if [ -e /var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium ];then
+                              echo -n '<option value="com.github.Eloston.UngoogledChromium">'$"UNGOOGLED (FLATPAK)"'</option>'
                               FLATPAK=true
                               COUNT_BROWSER=$((COUNT_BROWSER+1))
                             fi
@@ -462,7 +459,7 @@ echo -n '
             break
         }
 
-      } else if (/epiphany/ || /.*org.gnome.Epiphany/) {
+      } else if (/.*org.gnome.Epiphany/) {
         url = $4
         browser_name = "epiphany"
       } else {
@@ -486,6 +483,10 @@ echo -n '
         case /chromium/:
         case /.*org.chromium.Chromium/:
           browser = "icons/chromium.svg"
+          break
+          
+        case /.*com.github.Eloston.UngoogledChromium/:
+          browser = "icons/ungoogled.svg"
           break
 
         case /microsoft-edge-stable/:
@@ -763,6 +764,15 @@ echo -n '
                                 title='title="'$"CHROMIUM (FLATPAK)"'"'
                             fi
                         ;;
+                        com.github.Eloston.UngoogledChromium)
+                            ICON='chromium'
+                            if [ ! -e /var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium ];then
+                                ICON='none'
+                                title='title="'$"O navegador não está instalado!"'"'
+                            else
+                                title='title="'$"UNGOOGLED (FLATPAK)"'"'
+                            fi
+                        ;;
                         com.microsoft.Edge)
                             ICON='edge'
                             if [ ! -e /var/lib/flatpak/exports/bin/com.microsoft.Edge ];then
@@ -807,6 +817,7 @@ echo -n '
                          class="iconBrowser" id="browserIcon" '$title'>
                   </button>
                 </div>'
+
           if [ $COUNT_BROWSER -eq 0 ];then
           echo -n '<!--MODAL NO BROWSERS-->
                 <div class="pop-up" id="change-browser" style="padding-bottom:30px">
@@ -915,6 +926,14 @@ echo -n '
                               <img src="icons/chromium.svg" width="38"
                                    height="38" data-bin="org.chromium.Chromium"
                                    title="'$"CHROMIUM (FLATPAK)"'">
+                            </button>'
+                    fi
+                    if [ -e /var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium ];then
+                      echo -n '<button class="btn-img status-button btn-img-main"
+                                    id="com.github.Eloston.UngoogledChromium">
+                              <img src="icons/ungoogled.svg" width="38"
+                                   height="38" data-bin="com.github.Eloston.UngoogledChromium"
+                                   title="'$"UNGOOGLED (FLATPAK)"'">
                             </button>'
                     fi
                     if [ -e /var/lib/flatpak/exports/bin/com.microsoft.Edge ];then
