@@ -5,7 +5,7 @@ FILES=($(find ~/.local/share/applications -iname '*-webapp-biglinux.desktop'))
 
 
 if [ ! "$FILES" ];then
-    printf "%s" "$2" > ~/.bigwebapps/BROWSER
+    printf "$2" > ~/.bigwebapps/BROWSER
     exit
 fi
 
@@ -70,5 +70,5 @@ if [ "$CHANGE" = "true" ];then
 fi
 
 
-printf "%s" "$2" > ~/.bigwebapps/BROWSER
+printf "$2" > ~/.bigwebapps/BROWSER
 exit

@@ -54,6 +54,10 @@ case "$BROWSER" in
         _ICON='chromium'
         selected_chromium_flatpak='selected'
     ;;
+    com.github.Eloston.UngoogledChromium)
+        _ICON='ungoogled'
+        selected_ungoogled_flatpak='selected'
+    ;;
     microsoft-edge-stable)
         _ICON='edge'
         selected_edge='selected'
@@ -184,6 +188,7 @@ echo -n '
           <option '$selected_brave_flatpak' value="com.brave.Browser">'$"BRAVE (FLATPAK)"'</option>
           <option '$selected_chrome_flatpak' value="com.google.Chrome">'$"CHROME (FLATPAK)"'</option>
           <option '$selected_chromium_flatpak' value="org.chromium.Chromium">'$"CHROMIUM (FLATPAK)"'</option>
+          <option '$selected_ungoogled_flatpak' value="com.github.Eloston.UngoogledChromium">'$"UNGOOGLED (FLATPAK)"'</option>
           <option '$selected_edge_flatpak' value="com.microsoft.Edge">'$"EDGE (FLATPAK)"'</option>
           <option '$selected_epiphany_flatpak' value="org.gnome.Epiphany">'$"EPIPHANY (FLATPAK)"'</option>
           <option '$selected_firefox_flatpak' value="org.mozilla.firefox">'$"FIREFOX (FLATPAK)"'</option>
@@ -365,6 +370,11 @@ $(function(){
         if (boxcheck) {
             $("#addPerfilEdit").prop("checked", true);
         }
+        break;
+
+      case "com.github.Eloston.UngoogledChromium":
+        $("#perfilAdd").removeClass('disabled');
+        $("#browser").attr("src", "icons/ungoogled.svg");
         break;
 
       case "microsoft-edge-stable":

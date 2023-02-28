@@ -145,6 +145,11 @@ $(function(){
         $("#browser").attr("src", "icons/chromium.svg");
         break;
 
+      case "com.github.Eloston.UngoogledChromium":
+        $("#perfilAdd").removeClass('disabled');
+        $("#browser").attr("src", "icons/ungoogled.svg");
+        break;
+
       case "microsoft-edge-stable":
       case "com.microsoft.Edge":
         $("#perfilAdd").removeClass('disabled');
@@ -385,7 +390,9 @@ $(function(){
 
   $("#backup").click(function(e){
     e.preventDefault();
+    $(".lds-ring").css("display", "inline-flex");
     $.get("/execute$./backup.sh", function(data){
+      $(".lds-ring").css("display", "none");
       if (data){
         console.log(data);
         $("#backupPath").text(data);
@@ -396,7 +403,9 @@ $(function(){
 
   $("#restore").click(function(e){
     e.preventDefault();
+    $(".lds-ring").css("display", "inline-flex");
     $.get("/execute$./restore.sh", function(resp){
+      $(".lds-ring").css("display", "none");
       if (resp){
         $("#restoreModal").addClass("visible");
         $("#closeRestore").click(function(){

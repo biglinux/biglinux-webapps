@@ -8,12 +8,32 @@ fi
 
 tar -xzf "$FILENAME" -C /tmp
 
-if [ -d /tmp/backup-webapps ];then
-    cp -f /tmp/backup-webapps/*.desktop ~/.local/share/applications
-    cp -f /tmp/backup-webapps/icons/* ~/.local/share/icons
-    cp -f /tmp/backup-webapps/bin/* ~/.local/bin
+TMP_FOLDER=/tmp/backup-webapps
+FLATPAK_FOLDER_DATA=~/.var/app
 
-    rm -r /tmp/backup-webapps
+if [ -d "$TMP_FOLDER" ];then
+    cp -f "$TMP_FOLDER"/*.desktop ~/.local/share/applications
+    cp -f "$TMP_FOLDER"/icons/* ~/.local/share/icons
+
+    if [ -d "$TMP_FOLDER"/bin ];then
+        cp -f "$TMP_FOLDER"/bin/* ~/.local/bin
+    fi
+
+    if [ -d "$TMP_FOLDER"/data ];then
+        cp -r "$TMP_FOLDER"/data/* ~/.bigwebapps
+    fi
+
+    if [ -d "$TMP_FOLDER"/epiphany ];then
+        cp -r "$TMP_FOLDER"/epiphany/data "$FLATPAK_FOLDER_DATA"/org.gnome.Epiphany
+        cp -r "$TMP_FOLDER"/epiphany/xdg-desktop-portal ~/.local/share
+        ln -s ~/.local/share/xdg-desktop-portal/applications/*.desktop ~/.local/share/applications
+    fi
+
+    if [ -d "$TMP_FOLDER"/flatpak ];then
+        cp -r "$TMP_FOLDER"/flatpak/* "$FLATPAK_FOLDER_DATA"
+    fi
+
+    rm -r "$TMP_FOLDER"
 
     update-desktop-database -q ~/.local/share/applications
     nohup kbuildsycoca5 &>/dev/null &

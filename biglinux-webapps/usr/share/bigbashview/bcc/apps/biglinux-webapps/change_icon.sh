@@ -7,5 +7,5 @@ if [ ! "$FILENAME" ];then
 fi
 
 NEW_FILE=$(./resize_favicon.sh.py "$FILENAME")
-printf '%s' "$NEW_FILE"
+printf "$NEW_FILE"
 exit

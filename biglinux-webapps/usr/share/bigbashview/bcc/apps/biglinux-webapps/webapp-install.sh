@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-_NAMEDESK=$(sed 's|https\:\/\/||;s|www\.||;s|\/.*||;s|\.|-|g' <<< "$urldesk")
+_NAMEDESK=$(sed 's|https\:\/\/||;s|http\:\/\/||;s|www\.||;s|\/.*||;s|\.|-|g' <<< "$urldesk")
 USER_DESKTOP=$(xdg-user-dir DESKTOP)
 LINK_APP="$HOME/.local/share/applications/$_NAMEDESK-$RANDOM-webapp-biglinux-custom.desktop"
 BASENAME_APP="${LINK_APP##*/}"
@@ -185,6 +185,11 @@ else
         org.chromium.Chromium)
             browser="/var/lib/flatpak/exports/bin/org.chromium.Chromium"
             DIR_PROF="$HOME/.var/app/org.chromium.Chromium/data/$NAME"
+        ;;
+        
+        com.github.Eloston.UngoogledChromium)
+            browser="/var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium"
+            DIR_PROF="$HOME/.var/app/com.github.Eloston.UngoogledChromium/data/$NAME"
         ;;
     esac
 
