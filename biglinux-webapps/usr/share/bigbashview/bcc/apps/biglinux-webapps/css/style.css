@@ -2074,9 +2074,10 @@ hr {
 
 .btn-restore1{
   position: absolute;
-  left: 470px;
+  left: 49.8%;
   height: 26px;
   width: 170px;
+  font-size:0.9rem;
 }
 
 .btn-restore2{
@@ -2092,6 +2093,7 @@ hr {
   margin-left: 175px;
   width: 150px;
   height: 26px;
+  font-size:0.9rem;
 }
 
 ::placeholder{
