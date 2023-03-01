@@ -32,6 +32,10 @@ if [ -d "$TMP_FOLDER" ];then
     if [ -d "$TMP_FOLDER"/flatpak ];then
         cp -r "$TMP_FOLDER"/flatpak/* "$FLATPAK_FOLDER_DATA"
     fi
+    
+    if [ -d "$TMP_FOLDER"/desktop ];then
+        cp "$TMP_FOLDER"/desktop/* "$(xdg-user-dir DESKTOP)"
+    fi
 
     rm -r "$TMP_FOLDER"
 

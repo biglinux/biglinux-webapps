@@ -13,6 +13,7 @@ TMP_DIR_ICON="$TMP_DIR/icons"
 TMP_DIR_EPIHANY="$TMP_DIR/epiphany"
 TMP_DIR_PORTAL="$TMP_DIR_EPIHANY/xdg-desktop-portal"
 TMP_DIR_EPIHANY_DATA="$TMP_DIR_EPIHANY/data"
+TMP_DIR_DESKTOP="$TMP_DIR/desktop"
 
 for w in "${WEBAPPS[@]}";do
     if grep -q '.local.bin' "$w";then
@@ -53,6 +54,11 @@ for w in "${WEBAPPS[@]}";do
         ICON=$(awk -F'=' '/^Icon/{print $2}' "$w")
         cp "$ICON" "$TMP_DIR_ICON"
         cp "$w" "$TMP_DIR"
+    fi
+    
+    if [ -L "$(xdg-user-dir DESKTOP)/${w##*/}" ];then
+        mkdir -p "$TMP_DIR_DESKTOP"
+        cp "$(xdg-user-dir DESKTOP)/${w##*/}" "$TMP_DIR_DESKTOP"
     fi
 done
 
