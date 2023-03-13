@@ -23,7 +23,10 @@ if grep -q '.local.bin' "$filedesk";then
     rm -r "$DATA_FOLDER"
 fi
 
-[ -L "$LINK" ] && unlink "$LINK"
+if [ -L "$LINK" -o -e "$LINK" ];then
+    unlink "$LINK"
+fi
+
 [ -e "$ICONDESK" ] && rm "$ICONDESK"
 rm "$filedesk"
 
