@@ -200,7 +200,7 @@ $(function(){
     });
   });
 
-  $("#urlDesk").on("keyup paste search", function(){
+  $("#urlDesk").on("keyup paste search blur", function(){
     checkUrl = $(this).val();
 
     if (!checkUrl){
@@ -232,11 +232,14 @@ $(function(){
     }
 
     $(".lds-ring").css("display", "inline-flex");
+    $("#text-loading-name").show();
 
     fetch(`/execute$./get_title.sh.py ${url}`)
     .then(resp => resp.text())
     .then(data => {
       if (data){
+        $("#text-loading-name").hide();
+        $("#text-loading-icon").show();
         $("#nameDesk").val(data);
         $("#nameDesk").keyup();
       } else {
@@ -252,6 +255,7 @@ $(function(){
           console.log("Multiple-Favicon");
           $(".pop-up#detectIcon #menu-icon").html(data)
           $(".lds-ring").css("display", "none");
+          $("#text-loading-icon").hide();
           $(".pop-up#detectIcon").addClass("visible");
           $(".btn-img-favicon").each(function(index, el){
             $(el).click(function(e){
@@ -271,10 +275,12 @@ $(function(){
           $("#iconDesk").attr("src", data);
           $("#inputIconDesk").val(data);
           $(".lds-ring").css("display", "none");
+          $("#text-loading-icon").hide();
         }
       } else {
         console.log("Favicon-Not-Found!");
         $(".lds-ring").css("display", "none");
+        $("#text-loading-icon").hide();
         $(".pop-up#detectIconError").addClass("visible");
       }
     });
@@ -294,10 +300,12 @@ $(function(){
     .then(resp => resp.text())
     .then(() => {
       $(".lds-ring").css("display", "inline-flex");
+      $("#text-loading-add").show();
       setTimeout(function(){
         $(".lds-ring").css("display", "none");
+        $("#text-loading-add").hide();
         $(".pop-up#installSuccess").addClass("visible");
-      }, 2000);
+      }, 3000);
       $("#installClose").click(function(){
         document.location.reload(true);
       });
@@ -347,6 +355,7 @@ $(function(){
     }
 
     $(".lds-ring").css("display", "inline-flex");
+    $("#text-loading-edit").show();
     fetch(`/execute$./${formUrl}?${formData}`)
     .then(resp => resp.json())
     .then(js => {
@@ -355,8 +364,9 @@ $(function(){
         if (js.return == 0){
           setTimeout(function(){
             $(".lds-ring").css("display", "none");
+            $("#text-loading-edit").hide();
             $(".pop-up#editSuccess").addClass("visible");
-          }, 2000);
+          }, 3000);
         } else {
           $(".pop-up#editError").addClass("visible");
           return;
@@ -380,10 +390,11 @@ $(function(){
           .then(() => {
             setTimeout(function(){
               $(".lds-ring").css("display", "none");
+              $("#text-loading-edit").hide();
               $(".pop-up#editSuccess").addClass("visible");
-            }, 1000);
+            }, 1500);
           });
-        }, 1000);
+        }, 1500);
       }
     });
   });
@@ -391,8 +402,11 @@ $(function(){
   $("#backup").click(function(e){
     e.preventDefault();
     $(".lds-ring").css("display", "inline-flex");
+    $("#text-loading-bkp").show();
+
     $.get("/execute$./backup.sh", function(data){
       $(".lds-ring").css("display", "none");
+      $("#text-loading-bkp").hide();
       if (data){
         console.log(data);
         $("#backupPath").text(data);
@@ -404,8 +418,10 @@ $(function(){
   $("#restore").click(function(e){
     e.preventDefault();
     $(".lds-ring").css("display", "inline-flex");
+    $("#text-loading-restore").show();
     $.get("/execute$./restore.sh", function(resp){
       $(".lds-ring").css("display", "none");
+      $("#text-loading-restore").hide();
       if (resp){
         $("#restoreModal").addClass("visible");
         $("#closeRestore").click(function(){
@@ -434,13 +450,15 @@ function editOpen(filedesk){
 function delDesk(filedesk){
   console.log("Delete: "+filedesk);
   $(".lds-ring").css("display", "inline-flex");
+  $("#text-loading-del").show();
 
   fetch(`/execute$./webapp-remove.sh?filedesk=${filedesk}`)
   .then(resp => resp.text())
   .then(() => {
     setTimeout(function(){
       $(".lds-ring").css("display", "none");
-    }, 2000);
+      $("#text-loading-del").hide();
+    }, 3000);
     document.location.reload(true);
   });
 }
