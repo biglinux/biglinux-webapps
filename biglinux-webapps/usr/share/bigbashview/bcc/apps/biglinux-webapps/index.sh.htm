@@ -27,7 +27,19 @@ echo -n '
   </head>
   '"$(/usr/share/bigbashview/bcc/shell/getbgcolor.sh)"'
   <!-- loading -->
-  <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+  <div class="lds-ring">
+    <span class="hide text-loading" id="text-loading-name">'$"Dectando o nome, aguarde..."'</span>
+    <span class="hide text-loading" id="text-loading-icon">'$"Dectando o ícone, aguarde..."'</span>
+    <span class="hide text-loading" id="text-loading-add">'$"Adicionando o webapp..."'</span>
+    <span class="hide text-loading" id="text-loading-edit">'$"Aplicando as alterações..."'</span>
+    <span class="hide text-loading" id="text-loading-bkp">'$"Criando o backup..."'</span>
+    <span class="hide text-loading" id="text-loading-restore">'$"Importando os webapps..."'</span>
+    <span class="hide text-loading" id="text-loading-del">'$"Removendo o webapp..."'</span>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
   <!-- toggle theme -->
   <div class="dark-light">
     <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">

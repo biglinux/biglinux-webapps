@@ -9,70 +9,16 @@ fi
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
-WEBAPP_DIR="/usr/share/bigbashview/bcc/apps/biglinux-webapps/webapps"
-HOME_SHARE_DIR_APP="$HOME/.local/share/applications"
-
 # Criando diretórios necessários
 mkdir -p ~/.bigwebapps
 mkdir -p ~/.local/share/icons
-mkdir -p "$HOME_SHARE_DIR_APP"
+mkdir -p ~/.local/share/applications
 mkdir -p ~/.local/bin
 
 if [ ! -e ~/.bigwebapps/BROWSER ];then
     /usr/share/bigbashview/bcc/apps/biglinux-webapps/check_browser.sh
 fi
 
-if [ ! -e ~/.bigwebapps/NATIVE ];then
-    for webapp in "$WEBAPP_DIR"/*.desktop; do
-        WEB_APP=~/.local/share/applications/${webapp##*/}
-        if [ -e "$WEB_APP" ] && ! grep -q 'Categories' "$WEB_APP";then
-            cp -f "$webapp" "$WEB_APP"
-        fi
-    done
-    update-desktop-database -q "$HOME_SHARE_DIR_APP"
-    kbuildsycoca5 &> /dev/null
-    true > ~/.bigwebapps/NATIVE
-fi
-
-if [ ! -e ~/.bigwebapps/CUSTOM ];then
-    for app in "$HOME_SHARE_DIR_APP"/*-webapp-biglinux-custom.desktop;do
-        if [ -e "$app" ] && ! grep -q 'Categories' "$app";then
-            echo 'Categories=Webapps;' >> "$app"
-        fi
-    done
-    update-desktop-database -q "$HOME_SHARE_DIR_APP"
-    kbuildsycoca5 &> /dev/null
-    true > ~/.bigwebapps/CUSTOM
-fi
-
-HOME_SHARE_DIR_DESK="$HOME/.local/share/desktop-directories"
-HOME_SHARE_DIR_MENU="$HOME/.config/menus/applications-merged"
-
-if [ -e "$HOME_SHARE_DIR_DESK"/google-apps.directory ];then
-    rm "$HOME_SHARE_DIR_DESK"/google-apps.directory 2>/dev/null
-    rm "$HOME_SHARE_DIR_DESK"/web-apps.directory 2>/dev/null
-fi
-
-if [ -e "$HOME_SHARE_DIR_MENU"/google-applications.menu ];then
-    rm "$HOME_SHARE_DIR_MENU"/google-applications.menu 2>/dev/null
-    rm "$HOME_SHARE_DIR_MENU"/user-web-apps.menu 2>/dev/null
-fi
-
-if [ -e "$HOME_SHARE_DIR_APP"/netflix-firefox.desktop ];then
-    rm "$HOME_SHARE_DIR_APP"/netflix-firefox.desktop
-    cp "$WEBAPP_DIR"/netflix-webapp-biglinux.desktop "$HOME_SHARE_DIR_APP"
-fi
-
-if [ -e "$HOME_SHARE_DIR_APP"/primevideo-firefox.desktop ];then
-    rm "$HOME_SHARE_DIR_APP"/primevideo-firefox.desktop
-    cp "$WEBAPP_DIR"/primevideo-webapp-biglinux.desktop "$HOME_SHARE_DIR_APP"
-fi
-
-if [ -e "$HOME_SHARE_DIR_APP"/spotify-firefox.desktop ];then
-    rm "$HOME_SHARE_DIR_APP"/spotify-firefox.desktop
-    cp "$WEBAPP_DIR"/spotify-webapp-biglinux.desktop "$HOME_SHARE_DIR_APP"
-fi
-
 bigbashview -s 960x620 -n $"Gerenciador de WebApps BigLinux" \
             -i icons/webapp.svg -p "webapp-manager-biglinux" \
-            -d "/usr/share/bigbashview/bcc/apps/biglinux-webapps" index.sh.htm
+            -d "/usr/share/bigbashview/bcc/apps/biglinux-webapps"
