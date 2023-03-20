@@ -279,3 +279,9 @@ msgstr "Import af webapps..."
 
 msgid "Removendo o webapp..."
 msgstr "Fjernelse af webapp..."
+
+msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
+msgstr "Hvis du vil tilføje en WebApp,<br> du skal indtaste URL'en og navnet."
+
+msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
+msgstr "For at registrere navnet og ikonet,<br> du skal indtaste URL'en."

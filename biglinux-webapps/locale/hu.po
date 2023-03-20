@@ -279,3 +279,9 @@ msgstr "A webalkalmazások importálása..."
 
 msgid "Removendo o webapp..."
 msgstr "Webapp eltávolítása..."
+
+msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
+msgstr "WebApp hozzáadásához<br> meg kell adnia az URL-t és a nevet."
+
+msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
+msgstr "A név és az ikon észleléséhez<br> meg kell adnia az URL-címet."

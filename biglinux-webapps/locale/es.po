@@ -279,3 +279,9 @@ msgstr "Importando las webapps..."
 
 msgid "Removendo o webapp..."
 msgstr "Eliminando webapp..."
+
+msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
+msgstr "Para agregar una WebApp,<br> debe ingresar la URL y el Nombre."
+
+msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
+msgstr "Para detectar el nombre y el icono,<br> debe ingresar la URL."

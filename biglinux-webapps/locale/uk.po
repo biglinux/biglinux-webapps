@@ -279,3 +279,9 @@ msgstr "Імпорт веб-програм..."
 
 msgid "Removendo o webapp..."
 msgstr "Видалення веб-додатків..."
+
+msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
+msgstr "Щоб додати веб-програму,<br> потрібно ввести URL і Ім'я."
+
+msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
+msgstr "Щоб визначити ім'я та піктограму,<br> потрібно ввести URL-адресу."

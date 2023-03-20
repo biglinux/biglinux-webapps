@@ -279,3 +279,9 @@ msgstr "Importowanie aplikacji internetowych..."
 
 msgid "Removendo o webapp..."
 msgstr "Usuwanie aplikacji internetowej..."
+
+msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
+msgstr "Aby dodać aplikację internetową,<br> musisz wprowadzić adres URL i nazwę."
+
+msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
+msgstr "Aby wykryć nazwę i ikonę,<br> musisz wprowadzić adres URL."

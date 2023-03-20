@@ -279,3 +279,9 @@ msgstr "Importul de aplicatii web ..."
 
 msgid "Removendo o webapp..."
 msgstr "Eliminarea webapp ..."
+
+msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
+msgstr "Pentru a adăuga un WebApp,<br> trebuie să introduceți adresa URL și numele."
+
+msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
+msgstr "Pentru a detecta numele și pictograma,<br> trebuie să introduceți adresa URL."

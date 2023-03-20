@@ -277,3 +277,9 @@ msgstr "웹 응용 프로그램 가져 오기 ..."
 
 msgid "Removendo o webapp..."
 msgstr "웹앱 제거 중..."
+
+msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
+msgstr "웹앱을 추가하려면<br> URL과 이름을 입력해야합니다."
+
+msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
+msgstr "이름과 아이콘을 감지하려면<br> URL을 입력해야합니다."

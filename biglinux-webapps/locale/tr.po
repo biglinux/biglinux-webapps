@@ -277,3 +277,9 @@ msgstr "Web uygulamaları içe aktarılıyor..."
 
 msgid "Removendo o webapp..."
 msgstr "Web uygulaması kaldırılıyor..."
+
+msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
+msgstr "WebApp eklemek için,<br> URL'yi ve Adı girmeniz gerekir."
+
+msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
+msgstr "Adı ve Simgeyi algılamak için,<br> URL'yi girmeniz gerekir."

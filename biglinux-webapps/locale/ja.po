@@ -277,3 +277,9 @@ msgstr "ウェブアプリをインポートしています..."
 
 msgid "Removendo o webapp..."
 msgstr "ウェブアプリを削除しています..."
+
+msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
+msgstr "ウェブアプリを追加するには、<br> URLと名前を入力する必要があります。"
+
+msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
+msgstr "名前とアイコンを検出するには、<br> URLを入力する必要があります。"

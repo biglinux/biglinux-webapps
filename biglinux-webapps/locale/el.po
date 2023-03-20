@@ -279,3 +279,9 @@ msgstr "Εισαγωγή των διαδικτυακών εφαρμογών..."
 
 msgid "Removendo o webapp..."
 msgstr "Κατάργηση εφαρμογής ιστού..."
+
+msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
+msgstr "Για να προσθέσετε μια Εφαρμογή Web,<br> πρέπει να εισαγάγετε τη διεύθυνση URL και το όνομα."
+
+msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
+msgstr "Για να εντοπίσετε το όνομα και το εικονίδιο,<br> πρέπει να εισαγάγετε τη διεύθυνση URL."

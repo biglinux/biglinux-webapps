@@ -277,3 +277,9 @@ msgstr "Uvoz web-aplikacija..."
 
 msgid "Removendo o webapp..."
 msgstr "Uklanjanje webappa..."
+
+msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
+msgstr "Da biste dodali WebApp,<br> morate unijeti URL i naziv."
+
+msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
+msgstr "Da biste otkrili ime i ikonu,<br> morate unijeti URL."

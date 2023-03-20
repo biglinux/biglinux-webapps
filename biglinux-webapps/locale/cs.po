@@ -277,3 +277,9 @@ msgstr "Import webových aplikací..."
 
 msgid "Removendo o webapp..."
 msgstr "Odebírání webové aplikace..."
+
+msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
+msgstr "Pokud chcete přidat webovou aplikaci,<br> musíte zadat adresu URL a název."
+
+msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
+msgstr "Chcete-li zjistit název a ikonu,<br> musíte zadat adresu URL."

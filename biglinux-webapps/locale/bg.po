@@ -279,3 +279,9 @@ msgstr "Импортиране на уеб приложенията..."
 
 msgid "Removendo o webapp..."
 msgstr "Премахване на уеб приложение..."
+
+msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
+msgstr "За да добавите WebApp,<br> трябва да въведете URL адреса и името."
+
+msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
+msgstr "За да откриете името и иконата,<br> трябва да въведете URL адреса."
