@@ -300,14 +300,15 @@ echo -n '
                     </ul>
                   </div>
 
-                  <div style="text-align:center;display:inline-block;">
-                    <button class="button" id="install" style="height:30px;margin-top:15px">'$"Adicionar"'</button>
+                  <div style="text-align:center;display:inline-block">
+                    <button class="button" type="reset" id="cancel" style="height:30px;margin:15px 5px 0 5px">'$"Cancelar"'</button>
+                    <button class="button" type="submit" id="install" style="height:30px;margin:15px 5px 0 5px">'$"Adicionar"'</button>
                   </div>
                 </form>
 
                 <!--URL OR NAME MODAL ERROR-->
                 <div class="pop-up" id="urlNameError">
-                  <div class="pop-up__subtitle">'$"Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."'</div>
+                  <div class="pop-up__subtitle">'$"Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."'</div>
                   <div class="content-button-wrapper">
                     <button class="content-button status-button2 close">'$"Fechar"'</button>
                   </div>
@@ -315,7 +316,7 @@ echo -n '
 
                 <!--EMPTY URL MODAL-->
                 <div class="pop-up" id="urlEmpty">
-                  <div class="pop-up__subtitle">'$"Para detectar o Nome e o Ícone,<br> é preciso informar a URL."'</div>
+                  <div class="pop-up__subtitle">'$"Para detectar o Nome e o Ícone,<br> você precisa informar a URL."'</div>
                   <div class="content-button-wrapper">
                     <button class="content-button status-button2 close">'$"Fechar"'</button>
                   </div>

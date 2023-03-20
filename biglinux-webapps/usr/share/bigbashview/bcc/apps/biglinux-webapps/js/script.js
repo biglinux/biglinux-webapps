@@ -49,7 +49,10 @@ $(function(){
     if (tab_content == "#add-tab-content"){
       $("#urlDesk").focus();
       $("#tab1").trigger("click");
-    };
+    }
+    if (tab_content == "#list-tab-content"){
+      $("#tab2").trigger("click");
+    }
   });
 
   $(".dark-light").click(function(e){
@@ -284,6 +287,11 @@ $(function(){
         $(".pop-up#detectIconError").addClass("visible");
       }
     });
+  });
+
+  $("#cancel").click(() => {
+    $("#urlDesk").css("border-bottom-color", "");
+    $('li label#' + $.escapeSelector('#list-tab-content')).click();
   });
 
   $("#install").click(function(e){
