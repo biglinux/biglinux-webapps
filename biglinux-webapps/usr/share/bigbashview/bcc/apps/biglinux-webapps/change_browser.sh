@@ -2,7 +2,7 @@
 
 CHANGE=false
 FILES=($(find ~/.local/share/applications -iname '*-webapp-biglinux.desktop'))
-
+BASEDIR=/usr/share/bigbashview/bcc/apps/biglinux-webapps
 
 if [ ! "$FILES" ];then
     printf "$2" > ~/.bigwebapps/BROWSER
@@ -12,15 +12,15 @@ fi
 function ChromeToFire(){
     for w in "${FILES[@]}";do
         filename="${w##*/}"
-        cp -f "$PWD"/assets/"$1"/bin/"${filename%%.*}-$1" ~/.local/bin
-        cp -f "$PWD"/assets/"$1"/desk/"$filename" ~/.local/share/applications
+        cp -f "$BASEDIR"/assets/"$1"/bin/"${filename%%.*}-$1" ~/.local/bin
+        cp -f "$BASEDIR"/assets/"$1"/desk/"$filename" ~/.local/share/applications
     done
 }
 
 
 function FireToChrome(){
     for w in "${FILES[@]}";do
-        cp -f "$PWD"/webapps/"${w##*/}" ~/.local/share/applications
+        cp -f "$BASEDIR"/webapps/"${w##*/}" ~/.local/share/applications
     done
 }
 

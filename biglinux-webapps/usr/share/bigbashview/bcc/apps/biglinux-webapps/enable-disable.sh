@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 LOCAL_DIR=~/.local/share/applications/"$1"
-
+BASEDIR=/usr/share/bigbashview/bcc/apps/biglinux-webapps
 
 case "$2" in
     firefox|org.mozilla.firefox|librewolf|io.gitlab.librewolf-community)
         if [ ! -e "$LOCAL_DIR" ];then
-            cp "$PWD"/assets/"$2"/desk/"$1" ~/.local/share/applications
-            cp "$PWD"/assets/"$2"/bin/"${1%%.*}-$2" ~/.local/bin
+            cp "$BASEDIR"/assets/"$2"/desk/"$1" ~/.local/share/applications
+            cp "$BASEDIR"/assets/"$2"/bin/"${1%%.*}-$2" ~/.local/bin
         else
             DESKBIN=~/.local/bin/$(sed -n '/^Exec/s/.*\/\([^\/]*\)$/\1/p' "$LOCAL_DIR")
             DATA_FOLDER=~/$(sed -n '/^FOLDER/s/.*=~\/\([^\n]*\).*/\1/p' "$DESKBIN")
@@ -17,7 +17,7 @@ case "$2" in
     ;;
 
     *)  if [ ! -e "$LOCAL_DIR" ];then
-            cp "$PWD"/webapps/"$1" ~/.local/share/applications
+            cp "$BASEDIR"/webapps/"$1" ~/.local/share/applications
         else
             rm "$LOCAL_DIR"
         fi

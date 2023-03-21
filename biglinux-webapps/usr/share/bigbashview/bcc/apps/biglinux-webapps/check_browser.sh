@@ -7,6 +7,7 @@ export TEXTDOMAIN=biglinux-webapps
 ONLY=false
 
 mkdir -p ~/.bigwebapps
+BASEDIR=/usr/share/bigbashview/bcc/apps/biglinux-webapps
 
 if [ -e /usr/lib/brave-browser/brave ] || [ -e /opt/brave-bin/brave ];then
     printf "brave" > ~/.bigwebapps/BROWSER
@@ -17,9 +18,9 @@ elif [ -e /usr/lib/chromium/chromium ];then
 elif [ -e /opt/microsoft/msedge/microsoft-edge ];then
     printf "microsoft-edge-stable" > ~/.bigwebapps/BROWSER
 elif [ -e /usr/lib/firefox/firefox ];then
-    ./change_browser.sh "brave" "firefox"
+    "$BASEDIR"/change_browser.sh "brave" "firefox"
 elif [ -e /usr/lib/librewolf/librewolf ];then
-    ./change_browser.sh "brave" "librewolf"
+    "$BASEDIR"/change_browser.sh "brave" "librewolf"
 elif [ -e /opt/vivaldi/vivaldi ];then
     printf "vivaldi-stable" > ~/.bigwebapps/BROWSER
 elif [ -e /var/lib/flatpak/exports/bin/com.brave.Browser ];then
@@ -35,9 +36,9 @@ elif [ -e /var/lib/flatpak/exports/bin/com.microsoft.Edge ];then
 elif [ -e /var/lib/flatpak/exports/bin/org.gnome.Epiphany ];then
     ONLY=true
 elif [ -e /var/lib/flatpak/exports/bin/org.mozilla.firefox ];then
-    ./change_browser.sh "brave" "org.mozilla.firefox"
+    "$BASEDIR"/change_browser.sh "brave" "org.mozilla.firefox"
 elif [ -e /var/lib/flatpak/exports/bin/io.gitlab.librewolf-community ];then
-    ./change_browser.sh "brave" "io.gitlab.librewolf-community"
+    "$BASEDIR"/change_browser.sh "brave" "io.gitlab.librewolf-community"
 else
     kdialog --sorry $"Não existem navegadores instalados compatíveis com os WebApps!" --title "WebApps BigLinux"
     exit
