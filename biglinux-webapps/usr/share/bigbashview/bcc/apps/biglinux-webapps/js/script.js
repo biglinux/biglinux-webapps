@@ -291,6 +291,10 @@ $(function(){
 
   $("#cancel").click(() => {
     $("#urlDesk").css("border-bottom-color", "");
+    $("#iconDesk").attr("src", "icons/default-webapp.svg");
+    $.get(`/execute$echo -n "$PWD"`, function(cwd){
+      $("#inputIconDesk").val(cwd+"/icons/default-webapps.png");
+    });
     $('li label#' + $.escapeSelector('#list-tab-content')).click();
   });
 
