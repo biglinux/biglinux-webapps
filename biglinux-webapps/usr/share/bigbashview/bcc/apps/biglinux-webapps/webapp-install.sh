@@ -36,61 +36,19 @@ DESKBIN="$HOME/.local/bin/$NAME"
 
 cat > "$DESKBIN" <<EOF
 #!/usr/bin/env sh
-#
-# Amofi - App mode for Firefox
-# Copyright (C) 2017-2019  SEPBIT
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <https://www.gnu.org/licenses/>.
-#
-# dash version 0.5
-#
-# @author    Vitor Guia <contato@vitor.guia.nom.br>
-# @Modified by Bruno Goncalves <www.biglinux.com.br>
-# @copyright 2017-2019 SEPBIT
-# @license   http://www.gnu.org/licenses GPL-3.0-or-later
-# @see       https://notabug.org/sepbit/amofi Repository of Amofi
 
 FOLDER=$DIR_PROF
-
-if ! grep -q 'toolkit.legacyUserProfileCustomizations.stylesheets' "\$FOLDER/prefs.js" 2>/dev/null;then
-    [ -d "\$FOLDER" ] && rm -r "\$FOLDER"
-    mkdir -p "\$FOLDER/chrome"
-    echo 'user_pref("media.eme.enabled", true);' >> "\$FOLDER/prefs.js"
-    echo 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);' >> "\$FOLDER/prefs.js"
-    sed -i 's|user_pref("browser.urlbar.placeholderName.*||g' "\$FOLDER/prefs.js"
-
-    # Custom profile
-    echo '#nav-bar{visibility: collapse;} #TabsToolbar{visibility: collapse;}' >> "\$FOLDER/chrome/userChrome.css"
-    echo 'user_pref("browser.tabs.warnOnClose", false);' >> "\$FOLDER/user.js"
-fi
-
 CLASS="$browser_name-webapp-$_NAMEDESK"
 
-MOZ_DISABLE_GMP_SANDBOX=1 MOZ_DISABLE_CONTENT_SANDBOX=1 \
-$browser --class="\$CLASS" --profile "\$FOLDER" --no-remote --new-instance "$urldesk" &
+if [ ! -d "\$FOLDER" ];then
+    mkdir -p "\$FOLDER/chrome"
+    cp -a /usr/share/bigbashview/bcc/apps/biglinux-webapps/profile/userChrome.css "\$FOLDER/chrome"
+    cp -a /usr/share/bigbashview/bcc/apps/biglinux-webapps/profile/user.js "\$FOLDER"
+fi
 
-count=0
-while [ \$count -lt 100 ];do
-    wininfo=\$(xwininfo -root -children -all | grep \\"Navigator\\"\\ \\"\$CLASS\\")
-    if [ "\$wininfo" ];then
-        xseticon -id "\$(awk '{print \$1}' <<< \$wininfo)" $ICON_FILE
-        count=100
-    else
-        let count=count+1;
-    fi
-    sleep 0.5
-done
+MOZ_DISABLE_GMP_SANDBOX=1 MOZ_DISABLE_CONTENT_SANDBOX=1 \\
+XAPP_FORCE_GTKWINDOW_ICON=$ICON_FILE \\
+$browser --class="\$CLASS" --profile "\$FOLDER" --no-remote --new-instance "$urldesk" &
 EOF
 
 chmod +x "$DESKBIN"
@@ -186,7 +144,7 @@ else
             browser="/var/lib/flatpak/exports/bin/org.chromium.Chromium"
             DIR_PROF="$HOME/.var/app/org.chromium.Chromium/data/$NAME"
         ;;
-        
+
         com.github.Eloston.UngoogledChromium)
             browser="/var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium"
             DIR_PROF="$HOME/.var/app/com.github.Eloston.UngoogledChromium/data/$NAME"
