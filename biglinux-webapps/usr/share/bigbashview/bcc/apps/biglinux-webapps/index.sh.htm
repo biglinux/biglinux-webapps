@@ -35,6 +35,7 @@ echo -n '
     <span class="hide text-loading" id="text-loading-bkp">'$"Criando o backup..."'</span>
     <span class="hide text-loading" id="text-loading-restore">'$"Importando os webapps..."'</span>
     <span class="hide text-loading" id="text-loading-del">'$"Removendo o webapp..."'</span>
+    <span class="hide text-loading" id="text-loading-del-all">'$"Removendo todos os webapps..."'</span>
     <div></div>
     <div></div>
     <div></div>
@@ -62,7 +63,7 @@ echo -n '
               <input type="radio" id="tab2" name="tab-control" checked/>
               <input type="radio" id="tab3" name="tab-control"/>
               <ul>
-                <li title="Adicionar">
+                <li>
                   <label for="tab1" role="button" id="#add-tab-content">
                     <svg viewBox="0 0 512 512">
                       <path d="M464,128H272L208,64H48A48,48,0,0,0,0,112V400a48,48,0,0,0,48,48H464a48,48,0,0,0,48-48V176A48,48,0,0,0,464,128ZM359.5,296a16,16,0,0,1-16,16h-64v64a16,16,0,0,1-16,16h-16a16,16,0,0,1-16-16V312h-64a16,16,0,0,1-16-16V280a16,16,0,0,1,16-16h64V200a16,16,0,0,1,16-16h16a16,16,0,0,1,16,16v64h64a16,16,0,0,1,16,16Z"/>
@@ -71,7 +72,7 @@ echo -n '
                   </label>
                 </li>
 
-                <li title="Lista de WebApps">
+                <li>
                   <label for="tab2" role="button" id="#list-tab-content">
                     <svg viewBox="0 0 576 512">
                       <path d="M572.694 292.093L500.27 416.248A63.997 63.997 0 0 1 444.989 448H45.025c-18.523 0-30.064-20.093-20.731-36.093l72.424-124.155A64 64 0 0 1 152 256h399.964c18.523 0 30.064 20.093 20.73 36.093zM152 224h328v-48c0-26.51-21.49-48-48-48H272l-64-64H48C21.49 64 0 85.49 0 112v278.046l69.077-118.418C86.214 242.25 117.989 224 152 224z"/>
@@ -80,7 +81,7 @@ echo -n '
                   </label>
                 </li>
 
-                <li title="WebApps BigLinux">
+                <li>
                   <label for="tab3" role="button" id="#webappsbig-tab-content">
                     <svg viewBox="0 0 576 512">
                       <path d="M384 64H192C86 64 0 150 0 256s86 192 192 192h192c106 0 192-86 192-192S490 64 384 64zm0 320c-70.8 0-128-57.3-128-128 0-70.8 57.3-128 128-128 70.8 0 128 57.3 128 128 0 70.8-57.3 128-128 128z"/>
@@ -379,6 +380,7 @@ echo -n '
          -v certeza=$"Tem certeza que deseja remover este WebApp?" \
          -v restaurar=$"Importar WebApps"                          \
          -v backup=$"Criar Backup"                                 \
+         -v all_remove=$"Remover Todos"                            \
          -v adicionar=$"Adicionar" -- '
 
     BEGIN {
@@ -576,9 +578,20 @@ echo -n '
       for ( app_category in app_array ) {
         # Prints header of the category
         print(\
-    "           <button class=\"button btn-restore1\" id=\"restore\">" restaurar "</button>",
-    "           <button class=\"button btn-backup\" id=\"backup\">" backup "</button>",
-    "           <div class=\"content-section\" style=\"margin-top:0px;\" id=\"" app_category "\">",
+    "           <div class=\"menu\">",
+    "           <svg viewBox=\"0 0 448 512\">",
+    "             <path d=\"M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z\"/>",
+    "           </svg>",
+    "             <button class=\"dropdown\">",
+    "               <ul>",
+    "                 <li id=\"add-li\"><a id=\"add\">" adicionar "</a></li>",
+    "                 <li id=\"backup-li\"><a id=\"backup\">" backup "</a></li>",
+    "                 <li id=\"restore-li\"><a id=\"restore\">" restaurar "</a></li>",
+    "                 <li><a id=\"del-all\">" all_remove "</a></li>",
+    "               </ul>",
+    "             </button>",
+    "           </div>",
+    "           <div class=\"content-section\" style=\"margin-top:-26px;\" id=\"" app_category "\">",
     "             <div id=\"" app_category "\" class=\"content-section-title\" style=\"text-align:left;\">",
                   app_array[app_category]["name_category"], "(<span id=\"" app_category "\"></span>)",
     "             </div>",
@@ -675,6 +688,15 @@ echo -n '
                   <div>'$"Os WebApps foram restaurados com sucesso!"'</div>
                   <div class="content-button-wrapper">
                     <button class="content-button status-button2 close" id="closeRestore">'$"Fechar"'</button>
+                  </div>
+                </div>
+                
+                <!--REMOVE ALL MODAL-->
+                <div class="pop-up" id="removeAllModal" style="width:550px">
+                  <div>'$"Você tem certeza que deseja remover todos os webapps?"'</div>
+                  <div class="content-button-wrapper">
+                    <button class="content-button status-button2 close">'$"Não"'</button>
+                    <button class="content-button status-button2 close" id="removeAllYes">'$"Sim"'</button>
                   </div>
                 </div>
 

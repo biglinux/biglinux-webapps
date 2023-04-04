@@ -133,9 +133,6 @@ body {
 .light-mode .pop-up__title {
   border-color: var(--theme-color);
 }
-.light-mode .dropdown.is-active ul {
-  background-color: rgba(255, 255, 255, 0.94);
-}
 
 body.light-mode:before,
 body.light-mode .video-bg:before {
@@ -1750,12 +1747,11 @@ li img {
 }
 
 .menu {
-  width: 5px;
-  height: 5px;
-  background-color: var(--button-inactive);
-  border-radius: 50%;
-  box-shadow: 7px 0 0 0 var(--button-inactive), 14px 0 0 0 var(--button-inactive);
-  margin: 0 12px;
+  fill: var(--text-a-color);
+  width: 15px;
+  height: 18px;
+  position: relative;
+  left:95%;
 }
 
 @media screen and (max-width: 415px) {
@@ -1763,44 +1759,53 @@ li img {
     display: none;
   }
 }
+
 .dropdown {
   position: relative;
-  height: 24px;
-  width: 28px;
-  top: -9px;
+  height: 22px;
+  width: 17px;
+  top: -29px;
   display: flex;
-  left: -4px;
+  left: -1px;
   background: transparent;
   border: none;
   cursor: pointer;
 }
+
 .dropdown ul {
   position: absolute;
   background: var(--dropdown-bg);
-  height: 65px;
-  width: 120px;
-  right: 0;
-  left: 39px;
-  top: -30px;
+  height: 150px;
+  width: 160px;
   pointer-events: none;
   opacity: 0;
   transform: translatey(10px);
   transition: all 0.2s ease;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  border: 1px solid var(--border-box);
+  left: -72px;
 }
+
+.dropdown ul li{
+  line-height: 30px;
+  width: 100%;
+}
+
 .dropdown ul li a {
   text-decoration: none;
   color: var(--theme-color);
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .dropdown.is-active ul {
   opacity: 1;
   pointer-events: all;
-  transform: translatey(15px);
-  left: 39px;
-  top: -35px;
-  height: 65px;
+  transform: translatey(25px);
 }
+
 .dropdown.is-active ul li:hover {
   background-color: var(--dropdown-hover);
 }
@@ -2072,28 +2077,12 @@ hr {
   margin: auto;
 }
 
-.btn-restore1{
-  position: absolute;
-  left: 49.8%;
-  height: 26px;
-  width: 170px;
-  font-size:0.9rem;
-}
-
 .btn-restore2{
   position: relative;
   left: 90px;
   top: -44px;
   height: 26px;
   width: 165px;
-}
-
-.btn-backup{
-  position: absolute;
-  margin-left: 175px;
-  width: 150px;
-  height: 26px;
-  font-size:0.9rem;
 }
 
 .text-loading{
@@ -2145,4 +2134,8 @@ hr {
 #categorySelect,
 #categorySelectEdit{
   width: 180px;
+}
+
+#backup-li, #restore-li, #add-li{
+  border-bottom: 2px solid var(--border-color);
 }
