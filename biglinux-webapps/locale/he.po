@@ -283,3 +283,33 @@ msgstr "כדי להוסיף WebApp,<br> עליך להזין את כתובת הא
 
 msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
 msgstr "כדי לזהות את השם והסמל,<br> עליך להזין את כתובת האתר."
+
+msgid "Selecione o diretório"
+msgstr "בחר את הספרייה"
+
+msgid "Selecionar o arquivo de backup"
+msgstr "בחר את קובץ הגיבוי"
+
+msgid "Backup WebApps"
+msgstr "גיבוי WebApps"
+
+msgid "Selecione o arquivo de imagem"
+msgstr "בחר את קובץ התמונה"
+
+msgid "Arquivos de Imagem"
+msgstr "קובצי תמונה"
+
+msgid "Removendo todos os webapps..."
+msgstr "הסרת כל אפליקציות האינטרנט..."
+
+msgid "Remover Todos"
+msgstr "הסר הכל"
+
+msgid "Você tem certeza que deseja remover todos os webapps?"
+msgstr "האם אתה בטוח שברצונך להסיר את כל אפליקציות האינטרנט?"
+
+msgid "Não"
+msgstr "לא"
+
+msgid "Sim"
+msgstr "כן"

@@ -283,3 +283,33 @@ msgstr "웹앱을 추가하려면<br> URL과 이름을 입력해야합니다."
 
 msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
 msgstr "이름과 아이콘을 감지하려면<br> URL을 입력해야합니다."
+
+msgid "Selecione o diretório"
+msgstr "디렉토리 선택"
+
+msgid "Selecionar o arquivo de backup"
+msgstr "백업 파일 선택"
+
+msgid "Backup WebApps"
+msgstr "백업 웹앱"
+
+msgid "Selecione o arquivo de imagem"
+msgstr "이미지 파일 선택"
+
+msgid "Arquivos de Imagem"
+msgstr "이미지 파일"
+
+msgid "Removendo todos os webapps..."
+msgstr "모든 웹앱 제거 중..."
+
+msgid "Remover Todos"
+msgstr "모두 제거"
+
+msgid "Você tem certeza que deseja remover todos os webapps?"
+msgstr "모든 웹앱을 제거하시겠습니까?"
+
+msgid "Não"
+msgstr "아니요"
+
+msgid "Sim"
+msgstr "예"

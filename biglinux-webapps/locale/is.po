@@ -283,3 +283,33 @@ msgstr "Til að bæta við WebApp,<br> þú þarft að slá inn slóðina og naf
 
 msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
 msgstr "Til að greina nafn og táknmynd,<br> þú þarft að slá inn slóðina."
+
+msgid "Selecione o diretório"
+msgstr "Veldu möppuna"
+
+msgid "Selecionar o arquivo de backup"
+msgstr "Veldu varaskrá"
+
+msgid "Backup WebApps"
+msgstr "Afritun WebApps"
+
+msgid "Selecione o arquivo de imagem"
+msgstr "Veldu myndskrá"
+
+msgid "Arquivos de Imagem"
+msgstr "Myndskrár"
+
+msgid "Removendo todos os webapps..."
+msgstr "Fjarlægi öll vefforrit ..."
+
+msgid "Remover Todos"
+msgstr "Fjarlægja allt"
+
+msgid "Você tem certeza que deseja remover todos os webapps?"
+msgstr "Ertu viss um að þú viljir fjarlægja öll vefforrit?"
+
+msgid "Não"
+msgstr "Nei"
+
+msgid "Sim"
+msgstr "Já"

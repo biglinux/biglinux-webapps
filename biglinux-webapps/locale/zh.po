@@ -283,3 +283,33 @@ msgstr "要添加 Web 应用，<br> 您需要输入 URL 和名称。"
 
 msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
 msgstr "要检测名称和图标，<br> 您需要输入网址。"
+
+msgid "Selecione o diretório"
+msgstr "选择目录"
+
+msgid "Selecionar o arquivo de backup"
+msgstr "选择备份文件"
+
+msgid "Backup WebApps"
+msgstr "备份网页应用"
+
+msgid "Selecione o arquivo de imagem"
+msgstr "选择图像文件"
+
+msgid "Arquivos de Imagem"
+msgstr "图像文件"
+
+msgid "Removendo todos os webapps..."
+msgstr "正在删除所有网络应用程序..."
+
+msgid "Remover Todos"
+msgstr "全部删除"
+
+msgid "Você tem certeza que deseja remover todos os webapps?"
+msgstr "是否确实要删除所有 Web 应用？"
+
+msgid "Não"
+msgstr "不"
+
+msgid "Sim"
+msgstr "是的"

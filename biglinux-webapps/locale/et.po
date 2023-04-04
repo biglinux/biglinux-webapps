@@ -283,3 +283,33 @@ msgstr "WebAppi lisamiseks tehke järgmist.<br> peate sisestama URL-i ja nime."
 
 msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
 msgstr "Nime ja ikooni tuvastamiseks tehke järgmist.<br> peate sisestama URL-i."
+
+msgid "Selecione o diretório"
+msgstr "Valige kataloog"
+
+msgid "Selecionar o arquivo de backup"
+msgstr "Valige varufail"
+
+msgid "Backup WebApps"
+msgstr "WebAppsi varundamine"
+
+msgid "Selecione o arquivo de imagem"
+msgstr "Valige pildifail"
+
+msgid "Arquivos de Imagem"
+msgstr "Pildifailid"
+
+msgid "Removendo todos os webapps..."
+msgstr "Kõigi veebirakenduste eemaldamine ..."
+
+msgid "Remover Todos"
+msgstr "Eemalda kõik"
+
+msgid "Você tem certeza que deseja remover todos os webapps?"
+msgstr "Kas olete kindel, et soovite kõik veebirakendused eemaldada?"
+
+msgid "Não"
+msgstr "Ei"
+
+msgid "Sim"
+msgstr "Jah"

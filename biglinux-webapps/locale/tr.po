@@ -283,3 +283,33 @@ msgstr "WebApp eklemek için,<br> URL'yi ve Adı girmeniz gerekir."
 
 msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
 msgstr "Adı ve Simgeyi algılamak için,<br> URL'yi girmeniz gerekir."
+
+msgid "Selecione o diretório"
+msgstr "Dizini seçin"
+
+msgid "Selecionar o arquivo de backup"
+msgstr "Yedekleme dosyasını seçin"
+
+msgid "Backup WebApps"
+msgstr "Yedekleme WebApps"
+
+msgid "Selecione o arquivo de imagem"
+msgstr "Görüntü dosyasını seçin"
+
+msgid "Arquivos de Imagem"
+msgstr "Görüntü Dosyaları"
+
+msgid "Removendo todos os webapps..."
+msgstr "Tüm web uygulamaları kaldırılıyor..."
+
+msgid "Remover Todos"
+msgstr "Tümünü Kaldır"
+
+msgid "Você tem certeza que deseja remover todos os webapps?"
+msgstr "Tüm web uygulamalarını kaldırmak istediğinizden emin misiniz?"
+
+msgid "Não"
+msgstr "Hayır"
+
+msgid "Sim"
+msgstr "Evet"

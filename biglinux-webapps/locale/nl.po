@@ -285,3 +285,33 @@ msgstr "Om een WebApp toe te voegen,<br> u moet de URL en naam invoeren."
 
 msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
 msgstr "Om de naam en het pictogram te detecteren,<br> u moet de URL invoeren."
+
+msgid "Selecione o diretório"
+msgstr "Selecteer de directory"
+
+msgid "Selecionar o arquivo de backup"
+msgstr "Selecteer het back-upbestand"
+
+msgid "Backup WebApps"
+msgstr "Back-up webapps"
+
+msgid "Selecione o arquivo de imagem"
+msgstr "Selecteer het afbeeldingsbestand"
+
+msgid "Arquivos de Imagem"
+msgstr "Afbeeldingsbestanden"
+
+msgid "Removendo todos os webapps..."
+msgstr "Alle webapps verwijderen..."
+
+msgid "Remover Todos"
+msgstr "Alles verwijderen"
+
+msgid "Você tem certeza que deseja remover todos os webapps?"
+msgstr "Weet je zeker dat je alle webapps wilt verwijderen?"
+
+msgid "Não"
+msgstr "Nee"
+
+msgid "Sim"
+msgstr "Ja"

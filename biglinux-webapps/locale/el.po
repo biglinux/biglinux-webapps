@@ -285,3 +285,33 @@ msgstr "Για να προσθέσετε μια Εφαρμογή Web,<br> πρέ
 
 msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
 msgstr "Για να εντοπίσετε το όνομα και το εικονίδιο,<br> πρέπει να εισαγάγετε τη διεύθυνση URL."
+
+msgid "Selecione o diretório"
+msgstr "Επιλέξτε τον κατάλογο"
+
+msgid "Selecionar o arquivo de backup"
+msgstr "Επιλέξτε το αρχείο αντιγράφου ασφαλείας"
+
+msgid "Backup WebApps"
+msgstr "Δημιουργία αντιγράφων ασφαλείας WebApps"
+
+msgid "Selecione o arquivo de imagem"
+msgstr "Επιλέξτε το αρχείο εικόνας"
+
+msgid "Arquivos de Imagem"
+msgstr "Αρχεία εικόνας"
+
+msgid "Removendo todos os webapps..."
+msgstr "Κατάργηση όλων των εφαρμογών ιστού..."
+
+msgid "Remover Todos"
+msgstr "Κατάργηση όλων"
+
+msgid "Você tem certeza que deseja remover todos os webapps?"
+msgstr "Είστε βέβαιοι ότι θέλετε να καταργήσετε όλες τις εφαρμογές ιστού;"
+
+msgid "Não"
+msgstr "Όχι"
+
+msgid "Sim"
+msgstr "Ναι"

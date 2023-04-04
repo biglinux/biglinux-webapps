@@ -283,3 +283,33 @@ msgstr "Da biste dodali WebApp,<br> morate unijeti URL i naziv."
 
 msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
 msgstr "Da biste otkrili ime i ikonu,<br> morate unijeti URL."
+
+msgid "Selecione o diretório"
+msgstr "Odabir imenika"
+
+msgid "Selecionar o arquivo de backup"
+msgstr "Odabir datoteke sigurnosne kopije"
+
+msgid "Backup WebApps"
+msgstr "Sigurnosno kopiranje WebApps"
+
+msgid "Selecione o arquivo de imagem"
+msgstr "Odabir slikovne datoteke"
+
+msgid "Arquivos de Imagem"
+msgstr "Slikovne datoteke"
+
+msgid "Removendo todos os webapps..."
+msgstr "Uklanjanje svih web-aplikacija..."
+
+msgid "Remover Todos"
+msgstr "Ukloni sve"
+
+msgid "Você tem certeza que deseja remover todos os webapps?"
+msgstr "Jeste li sigurni da želite ukloniti sve web-aplikacije?"
+
+msgid "Não"
+msgstr "Ne"
+
+msgid "Sim"
+msgstr "Da"

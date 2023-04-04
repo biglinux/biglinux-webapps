@@ -285,3 +285,33 @@ msgstr "Aby dodać aplikację internetową,<br> musisz wprowadzić adres URL i n
 
 msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
 msgstr "Aby wykryć nazwę i ikonę,<br> musisz wprowadzić adres URL."
+
+msgid "Selecione o diretório"
+msgstr "Wybierz katalog"
+
+msgid "Selecionar o arquivo de backup"
+msgstr "Wybierz plik kopii zapasowej"
+
+msgid "Backup WebApps"
+msgstr "Tworzenie kopii zapasowych WebApps"
+
+msgid "Selecione o arquivo de imagem"
+msgstr "Wybierz plik obrazu"
+
+msgid "Arquivos de Imagem"
+msgstr "Pliki obrazów"
+
+msgid "Removendo todos os webapps..."
+msgstr "Usuwanie wszystkich aplikacji internetowych..."
+
+msgid "Remover Todos"
+msgstr "Usuń wszystko"
+
+msgid "Você tem certeza que deseja remover todos os webapps?"
+msgstr "Czy na pewno chcesz usunąć wszystkie aplikacje internetowe?"
+
+msgid "Não"
+msgstr "Nie"
+
+msgid "Sim"
+msgstr "Tak"

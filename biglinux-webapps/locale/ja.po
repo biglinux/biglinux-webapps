@@ -283,3 +283,33 @@ msgstr "ウェブアプリを追加するには、<br> URLと名前を入力す�
 
 msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
 msgstr "名前とアイコンを検出するには、<br> URLを入力する必要があります。"
+
+msgid "Selecione o diretório"
+msgstr "ディレクトリを選択"
+
+msgid "Selecionar o arquivo de backup"
+msgstr "バックアップファイルを選択します"
+
+msgid "Backup WebApps"
+msgstr "ウェブアプリのバックアップ"
+
+msgid "Selecione o arquivo de imagem"
+msgstr "画像ファイルを選択"
+
+msgid "Arquivos de Imagem"
+msgstr "画像ファイル"
+
+msgid "Removendo todos os webapps..."
+msgstr "すべてのウェブアプリを削除しています..."
+
+msgid "Remover Todos"
+msgstr "すべて削除"
+
+msgid "Você tem certeza que deseja remover todos os webapps?"
+msgstr "すべての Web アプリを削除してもよろしいですか?"
+
+msgid "Não"
+msgstr "いいえ"
+
+msgid "Sim"
+msgstr "はい"

@@ -285,3 +285,33 @@ msgstr "Чтобы добавить веб-приложение, выполни�
 
 msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
 msgstr "Чтобы определить имя и значок,<br> необходимо ввести URL-адрес."
+
+msgid "Selecione o diretório"
+msgstr "Выберите каталог"
+
+msgid "Selecionar o arquivo de backup"
+msgstr "Выберите файл резервной копии"
+
+msgid "Backup WebApps"
+msgstr "Резервное копирование веб-приложений"
+
+msgid "Selecione o arquivo de imagem"
+msgstr "Выберите файл изображения"
+
+msgid "Arquivos de Imagem"
+msgstr "Файлы изображений"
+
+msgid "Removendo todos os webapps..."
+msgstr "Удаление всех веб-приложений..."
+
+msgid "Remover Todos"
+msgstr "Удалить все"
+
+msgid "Você tem certeza que deseja remover todos os webapps?"
+msgstr "Вы уверены, что хотите удалить все веб-приложения?"
+
+msgid "Não"
+msgstr "Нет"
+
+msgid "Sim"
+msgstr "Да"

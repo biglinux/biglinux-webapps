@@ -285,3 +285,33 @@ msgstr "Pour ajouter une WebApp,<br> vous devez entrer l’URL et le nom."
 
 msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
 msgstr "Pour détecter le nom et l’icône,<br> vous devez entrer l’URL."
+
+msgid "Selecione o diretório"
+msgstr "Sélectionnez le répertoire"
+
+msgid "Selecionar o arquivo de backup"
+msgstr "Sélectionnez le fichier de sauvegarde"
+
+msgid "Backup WebApps"
+msgstr "Sauvegarde WebApps"
+
+msgid "Selecione o arquivo de imagem"
+msgstr "Sélectionnez le fichier image"
+
+msgid "Arquivos de Imagem"
+msgstr "Fichiers image"
+
+msgid "Removendo todos os webapps..."
+msgstr "Suppression de toutes les applications web..."
+
+msgid "Remover Todos"
+msgstr "Supprimer tout"
+
+msgid "Você tem certeza que deseja remover todos os webapps?"
+msgstr "Voulez-vous vraiment supprimer toutes les applications Web ?"
+
+msgid "Não"
+msgstr "Non"
+
+msgid "Sim"
+msgstr "Oui"

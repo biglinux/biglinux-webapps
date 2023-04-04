@@ -285,3 +285,33 @@ msgstr "Щоб додати веб-програму,<br> потрібно вве
 
 msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
 msgstr "Щоб визначити ім'я та піктограму,<br> потрібно ввести URL-адресу."
+
+msgid "Selecione o diretório"
+msgstr "Виберіть каталог"
+
+msgid "Selecionar o arquivo de backup"
+msgstr "Виберіть файл резервної копії"
+
+msgid "Backup WebApps"
+msgstr "Резервне копіювання веб-додатків"
+
+msgid "Selecione o arquivo de imagem"
+msgstr "Виберіть файл зображення"
+
+msgid "Arquivos de Imagem"
+msgstr "Файли зображень"
+
+msgid "Removendo todos os webapps..."
+msgstr "Видалення всіх веб-додатків..."
+
+msgid "Remover Todos"
+msgstr "Видалити все"
+
+msgid "Você tem certeza que deseja remover todos os webapps?"
+msgstr "Ви дійсно хочете видалити всі веб-програми?"
+
+msgid "Não"
+msgstr "Ні"
+
+msgid "Sim"
+msgstr "Так"

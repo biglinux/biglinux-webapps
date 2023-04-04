@@ -285,3 +285,33 @@ msgstr "WebApp hozzáadásához<br> meg kell adnia az URL-t és a nevet."
 
 msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
 msgstr "A név és az ikon észleléséhez<br> meg kell adnia az URL-címet."
+
+msgid "Selecione o diretório"
+msgstr "Válassza ki a könyvtárat"
+
+msgid "Selecionar o arquivo de backup"
+msgstr "Válassza ki a biztonságimásolat-fájlt"
+
+msgid "Backup WebApps"
+msgstr "WebApps biztonsági mentése"
+
+msgid "Selecione o arquivo de imagem"
+msgstr "Válassza ki a képfájlt"
+
+msgid "Arquivos de Imagem"
+msgstr "Kép fájlok"
+
+msgid "Removendo todos os webapps..."
+msgstr "Az összes webalkalmazás eltávolítása..."
+
+msgid "Remover Todos"
+msgstr "Összes eltávolítása"
+
+msgid "Você tem certeza que deseja remover todos os webapps?"
+msgstr "Biztosan el akarja távolítani az összes webalkalmazást?"
+
+msgid "Não"
+msgstr "Nem"
+
+msgid "Sim"
+msgstr "Igen"

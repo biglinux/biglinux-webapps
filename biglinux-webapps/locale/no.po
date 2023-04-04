@@ -285,3 +285,33 @@ msgstr "Slik legger du til en WebApp,<br> du må skrive inn URL og navn."
 
 msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
 msgstr "For å oppdage navnet og ikonet,<br> du må skrive inn URL-en."
+
+msgid "Selecione o diretório"
+msgstr "Velg katalogen"
+
+msgid "Selecionar o arquivo de backup"
+msgstr "Velg sikkerhetskopifilen"
+
+msgid "Backup WebApps"
+msgstr "Sikkerhetskopier WebApps"
+
+msgid "Selecione o arquivo de imagem"
+msgstr "Velg bildefilen"
+
+msgid "Arquivos de Imagem"
+msgstr "Bildefiler"
+
+msgid "Removendo todos os webapps..."
+msgstr "Fjerner alle webapps ..."
+
+msgid "Remover Todos"
+msgstr "Fjern alle"
+
+msgid "Você tem certeza que deseja remover todos os webapps?"
+msgstr "Er du sikker på at du vil fjerne alle webapps?"
+
+msgid "Não"
+msgstr "Nei"
+
+msgid "Sim"
+msgstr "Ja"

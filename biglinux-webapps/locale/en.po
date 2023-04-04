@@ -283,3 +283,33 @@ msgstr "To add a WebApp,<br> you need to enter the URL and Name."
 
 msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
 msgstr "To detect the Name and Icon,<br> you need to enter the URL."
+
+msgid "Selecione o diretório"
+msgstr "Select the directory"
+
+msgid "Selecionar o arquivo de backup"
+msgstr "Select the backup file"
+
+msgid "Backup WebApps"
+msgstr "Backup WebApps"
+
+msgid "Selecione o arquivo de imagem"
+msgstr "Select the image file"
+
+msgid "Arquivos de Imagem"
+msgstr "Image Files"
+
+msgid "Removendo todos os webapps..."
+msgstr "Removing all webapps..."
+
+msgid "Remover Todos"
+msgstr "Remove All"
+
+msgid "Você tem certeza que deseja remover todos os webapps?"
+msgstr "Are you sure you want to remove all webapps?"
+
+msgid "Não"
+msgstr "No"
+
+msgid "Sim"
+msgstr "Yes"

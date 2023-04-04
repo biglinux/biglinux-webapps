@@ -283,3 +283,33 @@ msgstr "WebAppin lisääminen:<br> sinun on annettava URL-osoite ja nimi."
 
 msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
 msgstr "Voit tunnistaa nimen ja kuvakkeen seuraavasti:<br> sinun on annettava URL-osoite."
+
+msgid "Selecione o diretório"
+msgstr "Valitse hakemisto"
+
+msgid "Selecionar o arquivo de backup"
+msgstr "Valitse varmuuskopiotiedosto"
+
+msgid "Backup WebApps"
+msgstr "WebAppsin varmuuskopiointi"
+
+msgid "Selecione o arquivo de imagem"
+msgstr "Valitse kuvatiedosto"
+
+msgid "Arquivos de Imagem"
+msgstr "Kuva-tiedostot"
+
+msgid "Removendo todos os webapps..."
+msgstr "Kaikkien verkkosovellusten poistaminen..."
+
+msgid "Remover Todos"
+msgstr "Poista kaikki"
+
+msgid "Você tem certeza que deseja remover todos os webapps?"
+msgstr "Oletko varma, että haluat poistaa kaikki verkkosovellukset?"
+
+msgid "Não"
+msgstr "Ei"
+
+msgid "Sim"
+msgstr "Kyllä"

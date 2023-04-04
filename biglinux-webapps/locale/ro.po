@@ -285,3 +285,33 @@ msgstr "Pentru a adăuga un WebApp,<br> trebuie să introduceți adresa URL și 
 
 msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
 msgstr "Pentru a detecta numele și pictograma,<br> trebuie să introduceți adresa URL."
+
+msgid "Selecione o diretório"
+msgstr "Selectați directorul"
+
+msgid "Selecionar o arquivo de backup"
+msgstr "Selectați fișierul de rezervă"
+
+msgid "Backup WebApps"
+msgstr "Backup WebApps"
+
+msgid "Selecione o arquivo de imagem"
+msgstr "Selectarea fișierului imagine"
+
+msgid "Arquivos de Imagem"
+msgstr "Fișiere imagine"
+
+msgid "Removendo todos os webapps..."
+msgstr "Eliminarea tuturor aplicațiilor web ..."
+
+msgid "Remover Todos"
+msgstr "Eliminați toate"
+
+msgid "Você tem certeza que deseja remover todos os webapps?"
+msgstr "Sunteți sigur că doriți să eliminați toate aplicațiile web?"
+
+msgid "Não"
+msgstr "Nu"
+
+msgid "Sim"
+msgstr "Da"

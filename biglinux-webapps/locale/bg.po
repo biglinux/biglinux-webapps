@@ -285,3 +285,33 @@ msgstr "За да добавите WebApp,<br> трябва да въведет�
 
 msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
 msgstr "За да откриете името и иконата,<br> трябва да въведете URL адреса."
+
+msgid "Selecione o diretório"
+msgstr "Изберете директорията"
+
+msgid "Selecionar o arquivo de backup"
+msgstr "Изберете архивния файл"
+
+msgid "Backup WebApps"
+msgstr "Архивиране на уеб приложения"
+
+msgid "Selecione o arquivo de imagem"
+msgstr "Изберете файла с изображението"
+
+msgid "Arquivos de Imagem"
+msgstr "Файлове с изображения"
+
+msgid "Removendo todos os webapps..."
+msgstr "Премахване на всички уеб приложения..."
+
+msgid "Remover Todos"
+msgstr "Премахни всички"
+
+msgid "Você tem certeza que deseja remover todos os webapps?"
+msgstr "Наистина ли искате да премахнете всички уеб приложения?"
+
+msgid "Não"
+msgstr "Не"
+
+msgid "Sim"
+msgstr "Да"

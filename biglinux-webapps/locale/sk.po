@@ -283,3 +283,33 @@ msgstr "Ak chcete pridať webovú aplikáciu,<br> musíte zadať adresu URL a n�
 
 msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
 msgstr "Ak chcete zistiť názov a ikonu,<br> musíte zadať adresu URL."
+
+msgid "Selecione o diretório"
+msgstr "Vyberte adresár"
+
+msgid "Selecionar o arquivo de backup"
+msgstr "Vyberte záložný súbor"
+
+msgid "Backup WebApps"
+msgstr "Zálohovanie webových aplikácií"
+
+msgid "Selecione o arquivo de imagem"
+msgstr "Vyberte súbor s obrázkom"
+
+msgid "Arquivos de Imagem"
+msgstr "Obrazové súbory"
+
+msgid "Removendo todos os webapps..."
+msgstr "Odstraňuje sa všetky webové aplikácie..."
+
+msgid "Remover Todos"
+msgstr "Odstrániť všetko"
+
+msgid "Você tem certeza que deseja remover todos os webapps?"
+msgstr "Naozaj chcete odstrániť všetky webové aplikácie?"
+
+msgid "Não"
+msgstr "Nie"
+
+msgid "Sim"
+msgstr "Áno"
