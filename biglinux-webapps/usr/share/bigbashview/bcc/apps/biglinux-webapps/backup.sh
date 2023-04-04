@@ -1,8 +1,16 @@
 #!/usr/bin/env bash
 
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-webapps
+
+PROG_DIR="/usr/share/bigbashview/bcc/apps/biglinux-webapps"
 WEBAPPS=($(find ~/.local/share/applications -iname "*-webapp-biglinux-custom.desktop"))
 NAME_FILE="backup-webapps_$(date +%Y-%m-%d).tar.gz"
-SAVE_DIR=$(kdialog --getexistingdirectory ~ 2>/dev/null)
+SAVE_DIR=$(yad --file --directory --center                \
+               --window-icon="$PROG_DIR/icons/webapp.svg" \
+               --title=$"Selecione o diretório"           \
+               --width=900 --height=600 )
 
 if [ ! "$SAVE_DIR" ];then
     exit

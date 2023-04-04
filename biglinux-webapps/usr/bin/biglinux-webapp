@@ -4,9 +4,13 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
-if [ "$1" = "firelibre" ];then
-    kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
+function msg(){
+    zenity --warning --text=$"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n"
     exit
+}
+
+if [ "$1" = "firelibre" ];then
+    msg
 fi
 
 if [ ! -e ~/.bigwebapps/BROWSER ];then
@@ -20,8 +24,7 @@ case $_GET_BROWSER in
         if [ -e /usr/lib/brave-browser/brave ] || [ -e /usr/lib/brave-bin/brave ];then
             BROWSER="brave"
         else
-            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
-            exit
+            msg
         fi
     ;;
 
@@ -29,8 +32,7 @@ case $_GET_BROWSER in
         if [ -e /var/lib/flatpak/exports/bin/com.brave.Browser ];then
             BROWSER="/var/lib/flatpak/exports/bin/com.brave.Browser"
         else
-            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
-            exit
+            msg
         fi
     ;;
 
@@ -38,8 +40,7 @@ case $_GET_BROWSER in
         if [ -e /usr/lib/chromium/chromium ];then
             BROWSER="chromium"
         else
-            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
-            exit
+            msg
         fi
     ;;
 
@@ -47,8 +48,7 @@ case $_GET_BROWSER in
         if [ -e /var/lib/flatpak/exports/bin/org.chromium.Chromium ];then
             BROWSER="/var/lib/flatpak/exports/bin/org.chromium.Chromium"
         else
-            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
-            exit
+            msg
         fi
     ;;
     
@@ -56,8 +56,7 @@ case $_GET_BROWSER in
         if [ -e /var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium ];then
             BROWSER="/var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium"
         else
-            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
-            exit
+            msg
         fi
     ;;
 
@@ -65,8 +64,7 @@ case $_GET_BROWSER in
         if [ -e /opt/google/chrome/google-chrome ];then
             BROWSER="google-chrome-stable"
         else
-            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
-            exit
+            msg
         fi
     ;;
 
@@ -74,8 +72,7 @@ case $_GET_BROWSER in
         if [ -e /var/lib/flatpak/exports/bin/com.google.Chrome ];then
             BROWSER="/var/lib/flatpak/exports/bin/com.google.Chrome"
         else
-            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
-            exit
+            msg
         fi
     ;;
 
@@ -83,8 +80,7 @@ case $_GET_BROWSER in
         if [ -e /opt/microsoft/msedge/microsoft-edge ];then
             BROWSER="microsoft-edge-stable"
         else
-            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
-            exit
+            msg
         fi
     ;;
 
@@ -92,8 +88,7 @@ case $_GET_BROWSER in
         if [ -e /var/lib/flatpak/exports/bin/com.microsoft.Edge ];then
             BROWSER="/var/lib/flatpak/exports/bin/com.microsoft.Edge"
         else
-            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
-            exit
+            msg
         fi
     ;;
 
@@ -101,8 +96,7 @@ case $_GET_BROWSER in
         if [ -e /opt/vivaldi/vivaldi ];then
             BROWSER="vivaldi-stable"
         else
-            kdialog --sorry $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" --title "WebApps BigLinux"
-            exit
+            msg
         fi
     ;;
 

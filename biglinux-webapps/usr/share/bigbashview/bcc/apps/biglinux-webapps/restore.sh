@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 
-FILENAME=$(kdialog --getopenfilename ~ 'application/gzip' 2>/dev/null)
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=biglinux-webapps
+
+PROG_DIR="/usr/share/bigbashview/bcc/apps/biglinux-webapps"
+cd ~
+FILENAME=$(yad --file --window-icon="$PROG_DIR/icons/webapp.svg"   \
+               --title=$"Selecionar o arquivo de backup" \
+               --width=900 --height=600 --center         \
+               --mime-filter=$"Backup WebApps""|application/gzip")
 
 if [ ! "$FILENAME" ];then
     exit

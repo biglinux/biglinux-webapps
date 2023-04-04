@@ -1,8 +1,7 @@
 var divs = $("div.content-section-title[id]");
 if(divs.length){
   var divsSorted = [];
-  divsSorted.push($("#backup"));
-  divsSorted.push($("#restore"));
+  divsSorted.push($(".menu"));
   divs.sort(function(a, b) {
       return $(a).text() > $(b).text() ? 1 : -1;
   });
@@ -13,6 +12,7 @@ if(divs.length){
   divsSorted.push($("div.pop-up#editModal"));
   divsSorted.push($("div.pop-up#backupModal"));
   divsSorted.push($("div.pop-up#restoreModal"));
+  divsSorted.push($("div.pop-up#removeAllModal"));
   $("#list-tab-content").html(divsSorted);
 }
 
@@ -298,6 +298,10 @@ $(function(){
     $('li label#' + $.escapeSelector('#list-tab-content')).click();
   });
 
+  $("#add").click(() => {
+    $('li label#' + $.escapeSelector('#add-tab-content')).click();
+  });
+
   $("#install").click(function(e){
     e.preventDefault();
 
@@ -443,6 +447,22 @@ $(function(){
     });
   });
 
+  $("#del-all").click(function(e){
+    e.preventDefault();
+    $("#removeAllModal").addClass("visible");
+      $("#removeAllYes").click(function(e){
+      e.preventDefault();
+      $(".lds-ring").css("display", "inline-flex");
+      $("#text-loading-del-all").show();
+      fetch(`/execute$./webapp-remove-all.sh`)
+      .then(resp => resp.text())
+      .then(data => {
+        console.log(data);
+        location.reload(true);
+      });
+    });
+  });
+
 });
 
 function delOpen(id){
@@ -478,5 +498,14 @@ function delDesk(filedesk){
 $(document).keydown(function(event) {
   if (event.keyCode == 27) {
     $(".pop-up .close").click();
+  }
+});
+
+$(document).click(function(e){
+  console.log(e.target.className);
+  if(e.target.className === "dropdown"){
+    $(".dropdown").addClass("is-active");
+  } else{
+    $(".dropdown").removeClass("is-active");
   }
 });
