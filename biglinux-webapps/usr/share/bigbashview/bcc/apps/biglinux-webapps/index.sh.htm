@@ -378,9 +378,10 @@ echo -n '
          -v apply=$"Aplicar"                                       \
          -v cancel=$"Cancelar"                                     \
          -v certeza=$"Tem certeza que deseja remover este WebApp?" \
-         -v restaurar=$"Importar WebApps"                          \
+         -v restaurar=$"Importar Backup"                           \
          -v backup=$"Criar Backup"                                 \
-         -v all_remove=$"Remover Todos"                            \
+         -v all_remove=$"Remover WebApps"                          \
+         -v add=$"Adicionar WebApps"                               \
          -v adicionar=$"Adicionar" -- '
 
     BEGIN {
@@ -584,9 +585,9 @@ echo -n '
     "           </svg>",
     "             <button class=\"dropdown\">",
     "               <ul>",
-    "                 <li id=\"add-li\"><a id=\"add\">" adicionar "</a></li>",
     "                 <li id=\"backup-li\"><a id=\"backup\">" backup "</a></li>",
     "                 <li id=\"restore-li\"><a id=\"restore\">" restaurar "</a></li>",
+    "                 <li id=\"add-li\"><a id=\"add\">" add "</a></li>",
     "                 <li><a id=\"del-all\">" all_remove "</a></li>",
     "               </ul>",
     "             </button>",
@@ -693,7 +694,7 @@ echo -n '
                 
                 <!--REMOVE ALL MODAL-->
                 <div class="pop-up" id="removeAllModal" style="width:550px">
-                  <div>'$"Você tem certeza que deseja remover todos os webapps?"'</div>
+                  <div>'$"Você tem certeza que deseja remover todos os WebApps?"'</div>
                   <div class="content-button-wrapper">
                     <button class="content-button status-button2 close">'$"Não"'</button>
                     <button class="content-button status-button2 close" id="removeAllYes">'$"Sim"'</button>
