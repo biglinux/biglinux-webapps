@@ -7,6 +7,7 @@ export TEXTDOMAIN=biglinux-webapps
 PROG_DIR="/usr/share/bigbashview/bcc/apps/biglinux-webapps"
 WEBAPPS=($(find ~/.local/share/applications -iname "*-webapp-biglinux-custom.desktop"))
 NAME_FILE="backup-webapps_$(date +%Y-%m-%d).tar.gz"
+cd ~
 SAVE_DIR=$(yad --file --directory --center                \
                --window-icon="$PROG_DIR/icons/webapp.svg" \
                --title=$"Selecione o diretório"           \
