@@ -575,9 +575,7 @@ echo -n '
         # Because there is no desktop file, we shall exit the script now
         exit
       }
-      n=0
-      for ( app_category in app_array ) {
-        # Prints header of the category
+      {
         print(\
     "           <div class=\"menu\">",
     "           <svg viewBox=\"0 0 448 512\">",
@@ -591,7 +589,12 @@ echo -n '
     "                 <li><a id=\"del-all\">" all_remove "</a></li>",
     "               </ul>",
     "             </button>",
-    "           </div>",
+    "           </div>")
+      }
+      n=0
+      for ( app_category in app_array ) {
+        # Prints header of the category
+        print(\
     "           <div class=\"content-section\" style=\"margin-top:-26px;\" id=\"" app_category "\">",
     "             <div id=\"" app_category "\" class=\"content-section-title\" style=\"text-align:left;\">",
                   app_array[app_category]["name_category"], "(<span id=\"" app_category "\"></span>)",
