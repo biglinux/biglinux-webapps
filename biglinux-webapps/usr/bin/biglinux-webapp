@@ -21,7 +21,7 @@ _GET_BROWSER=$(<~/.bigwebapps/BROWSER)
 
 case $_GET_BROWSER in
     brave)
-        if [ -e /usr/lib/brave-browser/brave ] || [ -e /usr/lib/brave-bin/brave ];then
+        if [ -e /usr/lib/brave-browser/brave ] || [ -e /usr/lib/brave-bin/brave ] || [ -e /opt/brave-bin/brave ];then
             BROWSER="brave"
         else
             msg
