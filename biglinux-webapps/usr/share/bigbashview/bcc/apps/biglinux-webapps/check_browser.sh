@@ -40,12 +40,22 @@ elif [ -e /var/lib/flatpak/exports/bin/org.mozilla.firefox ];then
 elif [ -e /var/lib/flatpak/exports/bin/io.gitlab.librewolf-community ];then
     "$BASEDIR"/change_browser.sh "brave" "io.gitlab.librewolf-community"
 else
-    zenity --warning --text=$"Não existem navegadores instalados compatíveis com os WebApps!"
+    yad --image=emblem-warning --image-on-top --form --width=500 --height=100 --fixed \
+    --align=center \
+    --text $"Não existem navegadores instalados compatíveis com os WebApps!" \
+    --button=$" Fechar" \
+    --center --on-top --borders=20 --title=$"Navegador Compatível" \
+    --window-icon=emblem-warning
     exit
 fi
 
 if [ "$ONLY" = "true" ];then
-    zenity --warning --text=$"Será necessário instalar mais um navegador compatível!"
+    yad --image=emblem-warning --image-on-top --form --width=500 --height=100 --fixed \
+    --align=center \
+    --text $"Será necessário instalar mais um navegador compatível!" \
+    --button=$" Fechar" \
+    --center --on-top --borders=20 --title=$"Navegador Compatível" \
+    --window-icon=emblem-warning
     exit
 fi
 

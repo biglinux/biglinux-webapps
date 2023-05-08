@@ -5,7 +5,12 @@ export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
 function msg(){
-    zenity --warning --text=$"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n"
+    yad --image=emblem-warning --image-on-top --form --width=500 --height=100 --fixed \
+    --align=center \
+    --text $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" \
+    --button=$" Fechar" \
+    --center --on-top --borders=20 --title=$"Alterar o Navegador" \
+    --window-icon=emblem-warning
     exit
 }
 
