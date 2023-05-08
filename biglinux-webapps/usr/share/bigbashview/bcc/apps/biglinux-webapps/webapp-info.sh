@@ -90,6 +90,10 @@ case "$BROWSER" in
         _ICON='vivaldi'
         selected_vivaldi='selected'
     ;;
+    falkon)
+        _ICON='falkon'
+        selected_falkon='selected'
+    ;;
     *):;;
 esac
 
@@ -185,6 +189,7 @@ echo -n '
           <option '$selected_firefox' value="firefox">'$"FIREFOX"'</option>
           <option '$selected_librewolf' value="librewolf">'$"LIBREWOLF"'</option>
           <option '$selected_vivaldi' value="vivaldi-stable">'$"VIVALDI"'</option>
+          <option '$selected_falkon' value="falkon">'$"FALKON"'</option>
           <option '$selected_brave_flatpak' value="com.brave.Browser">'$"BRAVE (FLATPAK)"'</option>
           <option '$selected_chrome_flatpak' value="com.google.Chrome">'$"CHROME (FLATPAK)"'</option>
           <option '$selected_chromium_flatpak' value="org.chromium.Chromium">'$"CHROMIUM (FLATPAK)"'</option>
@@ -414,6 +419,14 @@ $(function(){
 
       case "vivaldi-stable":
         $("#browserEdit").attr("src", "icons/vivaldi.svg");
+        $("#addPerfilEdit").removeClass("disabled");
+        if (boxcheck) {
+            $("#addPerfilEdit").prop("checked", true);
+        }
+        break;
+
+      case "falkon":
+        $("#browserEdit").attr("src", "icons/falkon.svg");
         $("#addPerfilEdit").removeClass("disabled");
         if (boxcheck) {
             $("#addPerfilEdit").prop("checked", true);

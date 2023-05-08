@@ -190,7 +190,12 @@ echo -n '
                               NATIVE=true
                               COUNT_BROWSER=$((COUNT_BROWSER+1))
                             fi
-
+                            
+                            if [ -e /usr/bin/falkon ];then
+                              echo -n '<option value="falkon">'$"FALKON"'</option>'
+                              NATIVE=true
+                              COUNT_BROWSER=$((COUNT_BROWSER+1))
+                            fi
                             if [ -e /usr/lib/librewolf/librewolf ];then
                               echo -n '<option value="librewolf">'$"LIBREWOLF"'</option>'
                               NATIVE=true
@@ -517,6 +522,10 @@ echo -n '
         case /firefox/:
           browser = "icons/firefox.svg"
           break
+          
+        case /falkon/:
+          browser = "icons/falkon.svg"
+          break
 
         case /librewolf/:
           browser = "icons/librewolf.svg"
@@ -758,6 +767,15 @@ echo -n '
                                 title='title="'$"FIREFOX"'"'
                             fi
                         ;;
+                        falkon)
+                            ICON='falkon'
+                            if [ ! -e /usr/bin/falkon ];then
+                                ICON='none'
+                                title='title="'$"O navegador não está instalado!"'"'
+                            else
+                                title='title="'$"FALKON"'"'
+                            fi
+                        ;;
                         librewolf)
                             ICON='librewolf'
                             if [ ! -e /usr/lib/librewolf/librewolf ];then
@@ -919,6 +937,14 @@ echo -n '
                             <img src="icons/firefox.svg" width="38"
                                  height="38" data-bin="firefox"
                                  title="'$"FIREFOX"'">
+                            </button>'
+                    fi
+                    if [ -e /usr/bin/falkon ];then
+                      echo -n '<button class="btn-img status-button btn-img-main"
+                                    id="falkon">
+                            <img src="icons/falkon.svg" width="38"
+                                 height="38" data-bin="falkon"
+                                 title="'$"FALKON"'">
                             </button>'
                     fi
                     if [ -e /usr/lib/librewolf/librewolf ];then

@@ -21,6 +21,8 @@ elif [ -e /usr/lib/firefox/firefox ];then
     "$BASEDIR"/change_browser.sh "brave" "firefox"
 elif [ -e /usr/lib/librewolf/librewolf ];then
     "$BASEDIR"/change_browser.sh "brave" "librewolf"
+elif [ -e /usr/bin/falkon ];then
+    printf "falkon" > ~/.bigwebapps/BROWSER
 elif [ -e /opt/vivaldi/vivaldi ];then
     printf "vivaldi-stable" > ~/.bigwebapps/BROWSER
 elif [ -e /var/lib/flatpak/exports/bin/com.brave.Browser ];then

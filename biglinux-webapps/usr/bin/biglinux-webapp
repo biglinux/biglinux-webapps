@@ -105,6 +105,14 @@ case $_GET_BROWSER in
         fi
     ;;
 
+    falkon)
+        if [ -e /usr/bin/falkon ];then
+            BROWSER="falkon"
+        else
+            msg
+        fi
+    ;;
+
     *) exit ;;
 esac
 
