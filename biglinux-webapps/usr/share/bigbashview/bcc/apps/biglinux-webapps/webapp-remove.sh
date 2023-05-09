@@ -27,6 +27,11 @@ if [ -L "$LINK" -o -e "$LINK" ];then
     unlink "$LINK"
 fi
 
+if [ -n "$(grep 'falkon' "$filedesk")" ];then
+    folder=$(awk '/Exec=/{print $3}' "$filedesk")
+    rm -r ${HOME}/.config/falkon/profiles/${folder}
+fi
+
 [ -e "$ICONDESK" ] && rm "$ICONDESK"
 rm "$filedesk"
 

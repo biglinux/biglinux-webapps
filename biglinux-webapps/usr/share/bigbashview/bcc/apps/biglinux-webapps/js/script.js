@@ -182,6 +182,11 @@ $(function(){
         $("#browser").attr("src", "icons/vivaldi.svg");
         break;
 
+      case "falkon":
+        $("#perfilAdd").removeClass('disabled');
+        $("#browser").attr("src", "icons/falkon.svg");
+        break;
+
       default:
           break;
     }

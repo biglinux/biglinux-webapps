@@ -122,7 +122,43 @@ X-Flatpak=org.gnome.Epiphany" > "$EPI_DIR_FILEDESK"
         chmod 755 "$EPI_DESKTOP_LINK"
         gio set "$EPI_DESKTOP_LINK" -t string metadata::trust "true"
     fi
+    
+elif grep -q 'falkon' <<< "$browser";then
 
+    if ! grep -Eq '^http:|^https:|^localhost|^127' <<< "$urldesk";then
+        urldesk="https://$urldesk"
+    fi
+
+    if [ "$newperfil" = "on" ];then
+        mkdir -p $HOME/.config/falkon/profiles/$NAME
+        browser="$browser -p $NAME -ro"
+    else
+        browser="$browser -ro"
+    fi
+    
+    if [ "${icondesk##*/}" = "default-webapps.png" ];then
+        cp "$icondesk" "$ICON_FILE"
+    else
+        mv "$icondesk" "$ICON_FILE"
+    fi
+
+    echo "[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=$namedesk
+Exec=$browser $urldesk
+Icon=$ICON_FILE
+Categories=$category;" > "$LINK_APP"
+
+    chmod +x "$LINK_APP"
+
+    if [ "$shortcut" = "on" ];then
+        ln -s "$LINK_APP" "$FILE_LINK"
+        chmod 755 "$FILE_LINK"
+        gio set "$FILE_LINK" -t string metadata::trust "true"
+    fi
+    
 else
     case $browser in
         com.brave.Browser)

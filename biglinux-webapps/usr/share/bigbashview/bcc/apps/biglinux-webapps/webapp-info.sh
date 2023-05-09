@@ -11,6 +11,9 @@ if grep -q '.local.bin' <<< "$EXEC";then
     BIN=$(awk -F'=' '{print $2}' <<< "$EXEC")
     URL=$(awk '/new-instance/{gsub(/"/, "");print $9}' "$BIN")
     BROWSER=$(awk '/new-instance/{print $3}' "$BIN")
+elif grep -q 'falkon' <<< "$EXEC";then
+    URL=$(awk '{print $NF}' <<< "$EXEC")
+    BROWSER=$(awk '{gsub(/Exec=/, "");print $1}' <<< "$EXEC")
 else
     URL=$(awk -F'app=' '{print $2}' <<< "$EXEC")
     BROWSER=$(awk '{gsub(/Exec=/, "");print $1}' <<< "$EXEC")
@@ -24,6 +27,8 @@ if grep -q '.var.lib.flatpak.exports.bin' <<< "$BROWSER";then
 fi
 
 if grep -q '..user.data.dir.' <<< "$EXEC";then
+    checked_perfil='checked'
+elif grep -q 'falkon..p' <<< "$EXEC";then
     checked_perfil='checked'
 fi
 
@@ -89,6 +94,10 @@ case "$BROWSER" in
     vivaldi-stable)
         _ICON='vivaldi'
         selected_vivaldi='selected'
+    ;;
+    falkon)
+        _ICON='falkon'
+        selected_falkon='selected'
     ;;
     *):;;
 esac
@@ -185,6 +194,7 @@ echo -n '
           <option '$selected_firefox' value="firefox">'$"FIREFOX"'</option>
           <option '$selected_librewolf' value="librewolf">'$"LIBREWOLF"'</option>
           <option '$selected_vivaldi' value="vivaldi-stable">'$"VIVALDI"'</option>
+          <option '$selected_falkon' value="falkon">'$"FALKON"'</option>
           <option '$selected_brave_flatpak' value="com.brave.Browser">'$"BRAVE (FLATPAK)"'</option>
           <option '$selected_chrome_flatpak' value="com.google.Chrome">'$"CHROME (FLATPAK)"'</option>
           <option '$selected_chromium_flatpak' value="org.chromium.Chromium">'$"CHROMIUM (FLATPAK)"'</option>
@@ -414,6 +424,14 @@ $(function(){
 
       case "vivaldi-stable":
         $("#browserEdit").attr("src", "icons/vivaldi.svg");
+        $("#addPerfilEdit").removeClass("disabled");
+        if (boxcheck) {
+            $("#addPerfilEdit").prop("checked", true);
+        }
+        break;
+
+      case "falkon":
+        $("#browserEdit").attr("src", "icons/falkon.svg");
         $("#addPerfilEdit").removeClass("disabled");
         if (boxcheck) {
             $("#addPerfilEdit").prop("checked", true);
