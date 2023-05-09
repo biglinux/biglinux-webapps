@@ -9,8 +9,8 @@ if pidof webapp-manager-biglinux &>/dev/null;then
     --align=center \
     --text $"O Gerenciador de WebApps BigLinux já está aberto!" \
     --button=$" Fechar" \
-    --center --on-top --borders=20 --title=$"WebApps Aberto" \
-    --window-icon=emblem-warning
+    --center --on-top --borders=20 --title=$"BigLinux WebApps" \
+    --window-icon=/usr/share/bigbashview/bcc/apps/biglinux-webapps/icons/webapp.svg
     exit
 fi
 

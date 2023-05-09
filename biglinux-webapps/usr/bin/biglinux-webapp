@@ -9,8 +9,8 @@ function msg(){
     --align=center \
     --text $"O navegador definido para abrir os WebApps não está instalado! \nTente alterar o navegador no Gerenciador de WebApps! \n" \
     --button=$" Fechar" \
-    --center --on-top --borders=20 --title=$"Alterar o Navegador" \
-    --window-icon=emblem-warning
+    --center --on-top --borders=20 --title=$"BigLinux WebApps" \
+    --window-icon=/usr/share/bigbashview/bcc/apps/biglinux-webapps/icons/webapp.svg
     exit
 }
 

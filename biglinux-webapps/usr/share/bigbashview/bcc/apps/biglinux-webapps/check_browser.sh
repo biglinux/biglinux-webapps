@@ -46,8 +46,8 @@ else
     --align=center \
     --text $"Não existem navegadores instalados compatíveis com os WebApps!" \
     --button=$" Fechar" \
-    --center --on-top --borders=20 --title=$"Navegador Compatível" \
-    --window-icon=emblem-warning
+    --center --on-top --borders=20 --title=$"BigLinux WebApps" \
+    --window-icon=/usr/share/bigbashview/bcc/apps/biglinux-webapps/icons/webapp.svg
     exit
 fi
 
@@ -56,8 +56,8 @@ if [ "$ONLY" = "true" ];then
     --align=center \
     --text $"Será necessário instalar mais um navegador compatível!" \
     --button=$" Fechar" \
-    --center --on-top --borders=20 --title=$"Navegador Compatível" \
-    --window-icon=emblem-warning
+    --center --on-top --borders=20 --title=$"BigLinux WebApps" \
+    --window-icon=/usr/share/bigbashview/bcc/apps/biglinux-webapps/icons/webapp.svg
     exit
 fi
 
