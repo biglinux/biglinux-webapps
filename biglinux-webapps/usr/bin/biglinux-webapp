@@ -116,4 +116,9 @@ case $_GET_BROWSER in
     *) exit ;;
 esac
 
-exec $BROWSER "$@"
+if [ "$BROWSER" = "falkon" ];then
+    link=$(echo "$3" | cut -d "=" -f2)
+    exec $BROWSER -ro $link
+else
+    exec $BROWSER "$@"
+fi

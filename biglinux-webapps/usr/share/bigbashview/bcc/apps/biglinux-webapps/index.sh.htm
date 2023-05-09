@@ -483,6 +483,9 @@ echo -n '
       } else if (/.*org.gnome.Epiphany/) {
         url = $4
         browser_name = "epiphany"
+      } else if (/falkon/) {
+        url = $NF
+        browser_name = "falkon"
       } else {
         url = gensub(/.*app=/,"",1)
         browser_name = gensub(/^Exec=/,"",1,$1)
