@@ -9,8 +9,8 @@ EXEC=$(awk '/Exec/{print $0}' "$filedesk")
 
 if grep -q '.local.bin' <<< "$EXEC";then
     BIN=$(awk -F'=' '{print $2}' <<< "$EXEC")
-    URL=$(awk '/new-instance/{gsub(/"/, "");print $9}' "$BIN")
-    BROWSER=$(awk '/new-instance/{print $3}' "$BIN")
+    URL=$(awk '/new-instance/{gsub(/"/, "");print $7}' "$BIN")
+    BROWSER=$(awk '/new-instance/{print $1}' "$BIN")
 elif grep -q 'falkon' <<< "$EXEC";then
     URL=$(awk '{print $NF}' <<< "$EXEC")
     BROWSER=$(awk '{gsub(/Exec=/, "");print $1}' <<< "$EXEC")
