@@ -4,6 +4,6 @@ Terminal=false
 Type=Application
 Name=Notion
 Exec=/usr/bin/biglinux-webapp --class=www.notion.so,Chromium-browser --profile-directory=Default --app=https://www.notion.so
-Icon=/usr/share/icons/hicolor/128x128/apps/notion.png
+Icon=/usr/share/icons/hicolor/128x128/apps/notion.svg
 Categories=Webapps;
 StartupWMClass=www.notion.so

@@ -6,5 +6,5 @@ Type=Application
 Name=Docs
 Name[pt]=Documentos
 Exec=~/.local/bin/googledocs-webapp-biglinux-org.mozilla.firefox
-Icon=/usr/share/icons/hicolor/128x128/apps/g-docs.png
+Icon=/usr/share/icons/hicolor/128x128/apps/g-docs.svg
 Categories=Google;

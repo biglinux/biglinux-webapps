@@ -4,5 +4,5 @@ Terminal=false
 Type=Application
 Name=Discord
 Exec=~/.local/bin/discord-webapp-biglinux-firefox
-Icon=/usr/share/icons/hicolor/128x128/apps/discord.png
+Icon=/usr/share/icons/hicolor/128x128/apps/discord.svg
 Categories=Webapps;

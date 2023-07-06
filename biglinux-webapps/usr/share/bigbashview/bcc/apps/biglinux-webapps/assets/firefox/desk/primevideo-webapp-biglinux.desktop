@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Prime Video
 Exec=~/.local/bin/primevideo-webapp-biglinux-firefox
-Icon=/usr/share/icons/hicolor/128x128/apps/primevideo.png
+Icon=/usr/share/icons/hicolor/128x128/apps/primevideo.svg
 Categories=Webapps;
