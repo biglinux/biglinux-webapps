@@ -6,5 +6,5 @@ Type=Application
 Name=Deezer music
 Name[pt]=Deezer músicas
 Exec=~/.local/bin/deezer-webapp-biglinux-librewolf
-Icon=/usr/share/icons/hicolor/128x128/apps/deezer.png
+Icon=/usr/share/icons/hicolor/128x128/apps/deezer.svg
 Categories=Webapps;

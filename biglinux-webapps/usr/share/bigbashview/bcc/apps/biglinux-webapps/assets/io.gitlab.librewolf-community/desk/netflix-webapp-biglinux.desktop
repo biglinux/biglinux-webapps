@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Netflix
 Exec=~/.local/bin/netflix-webapp-biglinux-io.gitlab.librewolf-community
-Icon=/usr/share/icons/hicolor/128x128/apps/netflix.png
+Icon=/usr/share/icons/hicolor/128x128/apps/netflix.svg
 Categories=Webapps;

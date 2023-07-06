@@ -4,6 +4,6 @@ Terminal=false
 Type=Application
 Name=Discord
 Exec=/usr/bin/biglinux-webapp --class=discord.com,Chromium-browser --profile-directory=Default --app=https://discord.com
-Icon=/usr/share/icons/hicolor/128x128/apps/discord.png
+Icon=/usr/share/icons/hicolor/128x128/apps/discord.svg
 Categories=Webapps;
 StartupWMClass=discord.com

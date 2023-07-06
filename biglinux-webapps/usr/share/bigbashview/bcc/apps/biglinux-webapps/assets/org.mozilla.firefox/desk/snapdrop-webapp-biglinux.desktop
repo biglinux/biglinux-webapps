@@ -4,5 +4,5 @@ Terminal=false
 Type=Application
 Name=Snapdrop
 Exec=~/.local/bin/snapdrop-webapp-biglinux-org.mozilla.firefox
-Icon=/usr/share/icons/hicolor/128x128/apps/snapdrop.png
+Icon=/usr/share/icons/hicolor/128x128/apps/snapdrop.svg
 Categories=Webapps;

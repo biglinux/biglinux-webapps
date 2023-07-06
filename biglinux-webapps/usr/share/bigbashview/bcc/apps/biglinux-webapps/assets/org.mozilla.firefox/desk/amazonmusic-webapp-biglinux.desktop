@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Amazon Music
 Exec=~/.local/bin/amazonmusic-webapp-biglinux-org.mozilla.firefox
-Icon=/usr/share/icons/hicolor/128x128/apps/amazonmusic.png
+Icon=/usr/share/icons/hicolor/128x128/apps/amazonmusic.svg
 Categories=Webapps;

@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Outlook
 Exec=~/.local/bin/outlook-webapp-biglinux-org.mozilla.firefox
-Icon=/usr/share/icons/hicolor/128x128/apps/outlook.png
+Icon=/usr/share/icons/hicolor/128x128/apps/outlook.svg
 Categories=Webapps;

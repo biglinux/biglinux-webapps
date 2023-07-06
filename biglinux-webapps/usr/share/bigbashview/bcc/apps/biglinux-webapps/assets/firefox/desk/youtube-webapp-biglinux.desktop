@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Youtube
 Exec=~/.local/bin/youtube-webapp-biglinux-firefox
-Icon=/usr/share/icons/hicolor/128x128/apps/g-youtube.png
+Icon=/usr/share/icons/hicolor/128x128/apps/g-youtube.svg
 Categories=Google;
