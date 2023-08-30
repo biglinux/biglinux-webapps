@@ -5,6 +5,6 @@ Terminal=false
 Type=Application
 Name=Keep
 Exec=/usr/bin/biglinux-webapp --class="keep.google.com,Chromium-browser" --profile-directory=Default --app=https://keep.google.com
-Icon=/usr/share/icons/hicolor/128x128/apps/g-keep.svg
+Icon=webapp-g-keep
 StartupWMClass=keep.google.com
 Categories=Google;

@@ -5,6 +5,6 @@ Terminal=false
 Type=Application
 Name=Waze
 Exec=/usr/bin/biglinux-webapp --class="www.waze.com__livemap,Chromium-browser" --profile-directory=Default --app=https://www.waze.com/livemap
-Icon=/usr/share/icons/hicolor/128x128/apps/g-waze.svg
+Icon=webapp-g-waze
 StartupWMClass=www.waze.com__livemap
 Categories=Google;

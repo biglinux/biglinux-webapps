@@ -5,6 +5,6 @@ Terminal=false
 Type=Application
 Name=Maps
 Exec=/usr/bin/biglinux-webapp --class="www.google.com__maps_@,Chromium-browser" --profile-directory=Default --app=https://www.google.com/maps/@?api=1&map_action=map&basemap=satellite&layer=traffic
-Icon=/usr/share/icons/hicolor/128x128/apps/g-maps.svg
+Icon=webapp-g-maps
 StartupWMClass=www.google.com__maps_@
 Categories=Google;

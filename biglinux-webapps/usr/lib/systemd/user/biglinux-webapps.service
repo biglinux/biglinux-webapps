@@ -1,0 +1,10 @@
+[Unit]
+Description=BigLinux Webapps
+PartOf=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/biglinux-webapps-systemd
+
+[Install]
+WantedBy=default.target

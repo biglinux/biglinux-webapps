@@ -5,6 +5,6 @@ Terminal=false
 Type=Application
 Name=Gmail
 Exec=/usr/bin/biglinux-webapp --class="mail.google.com__mail,Chromium-browser" --profile-directory=Default --app=https://mail.google.com/mail/
-Icon=/usr/share/icons/hicolor/128x128/apps/g-gmail.svg
+Icon=webapp-g-gmail
 StartupWMClass=mail.google.com__mail
 Categories=Google;

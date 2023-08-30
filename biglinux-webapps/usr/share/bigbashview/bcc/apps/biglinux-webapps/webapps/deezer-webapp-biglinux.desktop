@@ -6,6 +6,6 @@ Type=Application
 Name=Deezer music
 Name[pt]=Deezer músicas
 Exec=/usr/bin/biglinux-webapp --class="www.deezer.com,Chromium-browser" --profile-directory=Default --app=https://www.deezer.com
-Icon=/usr/share/icons/hicolor/128x128/apps/deezer.svg
+Icon=webapp-deezer
 StartupWMClass=www.deezer.com
 Categories=Webapps;

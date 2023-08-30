@@ -6,6 +6,6 @@ Type=Application
 Name=Spreadsheets
 Name[pt]=Planilhas
 Exec=/usr/bin/biglinux-webapp --class="docs.google.com__spreadsheets,Chromium-browser" --profile-directory=Default --app=https://docs.google.com/spreadsheets
-Icon=/usr/share/icons/hicolor/128x128/apps/g-spreadsheets.svg
+Icon=webapp-g-spreadsheets
 StartupWMClass=docs.google.com__spreadsheets
 Categories=Google;
