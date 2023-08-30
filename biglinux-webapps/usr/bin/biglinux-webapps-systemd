@@ -23,7 +23,7 @@ done
 # Change the icon location to the generic name, remove this in future, fix to update in 2023-08-30
 if [ "$Found" = true ]; then
     if grep -q '/usr/share/icons/hicolor/128x128/apps/' *webapp-biglinux.desktop; then
-        sed -Ei 's/Icon=\/usr\/share\/icons\/hicolor\/128x128\/apps\/(.*)\..*/webapp-\1/g' *webapp-biglinux.desktop
+        sed -Ei 's/Icon=\/usr\/share\/icons\/hicolor\/128x128\/apps\/(.*)\..*/Icon=webapp-\1/g' *webapp-biglinux.desktop
     fi
 fi
 
