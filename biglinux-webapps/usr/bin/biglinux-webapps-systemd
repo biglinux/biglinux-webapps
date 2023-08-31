@@ -27,9 +27,8 @@ if [ "$Found" = true ]; then
     fi
 fi
 
-
 # If there is no default webapp active and the file /etc/biglinux-webapps-not-create-default does not exist, copy the default webapps
-if [[ "$Found" != false && ! -e "/etc/biglinux-webapps-not-create-default" && ! -e "$HOME/.config/biglinux-webapps-not-create-default" ]]; then
+if [[ "$Found" != true && ! -e "/etc/biglinux-webapps-not-create-default" && ! -e "$HOME/.config/biglinux-webapps-not-create-default" ]]; then
     cp /usr/share/bigbashview/bcc/apps/biglinux-webapps/webapps/* .
 
     # On first run create file to not recreate in next boot
