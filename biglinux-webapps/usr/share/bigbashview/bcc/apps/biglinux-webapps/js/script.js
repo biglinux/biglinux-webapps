@@ -37,6 +37,70 @@ $("select").each(function(i, s){
   $(this).html(getOptions);
 });
 
+function wrapper_browser(name_exec){
+  switch (name_exec){
+    case "brave":
+    case "com.brave.Browser":
+      $("#perfilAdd").removeClass('disabled');
+      $("#browser").attr("src", "icons/brave.svg");
+      break;
+
+    case "google-chrome-stable":
+    case "com.google.Chrome":
+      $("#perfilAdd").removeClass('disabled');
+      $("#browser").attr("src", "icons/chrome.svg");
+      break;
+
+    case "chromium":
+    case "org.chromium.Chromium":
+      $("#perfilAdd").removeClass('disabled');
+      $("#browser").attr("src", "icons/chromium.svg");
+      break;
+
+    case "com.github.Eloston.UngoogledChromium":
+      $("#perfilAdd").removeClass('disabled');
+      $("#browser").attr("src", "icons/ungoogled.svg");
+      break;
+
+    case "microsoft-edge-stable":
+    case "com.microsoft.Edge":
+      $("#perfilAdd").removeClass('disabled');
+      $("#browser").attr("src", "icons/edge.svg");
+      break;
+
+    case "epiphany":
+    case "org.gnome.Epiphany":
+      $("#perfilAdd").addClass('disabled');
+      $("#browser").attr("src", "icons/epiphany.svg");
+      break;
+
+    case "firefox":
+    case "org.mozilla.firefox":
+      $("#perfilAdd").addClass('disabled');
+      $("#browser").attr("src", "icons/firefox.svg");
+      break;
+
+    case "librewolf":
+    case "io.gitlab.librewolf-community":
+      $("#perfilAdd").addClass('disabled');
+      $("#browser").attr("src", "icons/librewolf.svg");
+      break;
+
+    case "vivaldi-stable":
+      $("#perfilAdd").removeClass('disabled');
+      $("#browser").attr("src", "icons/vivaldi.svg");
+      break;
+
+    case "falkon":
+      $("#perfilAdd").removeClass('disabled');
+      $("#browser").attr("src", "icons/falkon.svg");
+      break;
+
+    default:
+        break;
+  }
+}
+
 $(function(){
   var tab = $("li label");
   var checkUrl;
@@ -112,84 +176,13 @@ $(function(){
 
   var firstOption = $("#browserSelect option").first();
   var firstValue = firstOption.val();
-  $("#browser").attr("src", "icons/" + firstValue + ".svg");
   console.log("First-Browser-Combobox: "+firstValue);
-  console.log("Default-Icon: "+$("#inputIconDesk").val());
-  switch (firstValue){
-    case "firefox":
-    case "librewolf":
-    case "org.gnome.Epiphany":
-    case "org.mozilla.firefox":
-    case "io.gitlab.librewolf-community":
-      $("#perfilAdd").addClass('disabled');
-      break;
+  wrapper_browser(firstValue);
 
-    default:
-      break;
-  }
+  console.log("Default-Icon: "+$("#inputIconDesk").val());
 
   $("#browserSelect").on("change", function(){
-    switch (this.value){
-      case "brave":
-      case "com.brave.Browser":
-        $("#perfilAdd").removeClass('disabled');
-        $("#browser").attr("src", "icons/brave.svg");
-        break;
-
-      case "google-chrome-stable":
-      case "com.google.Chrome":
-        $("#perfilAdd").removeClass('disabled');
-        $("#browser").attr("src", "icons/chrome.svg");
-        break;
-
-      case "chromium":
-      case "org.chromium.Chromium":
-        $("#perfilAdd").removeClass('disabled');
-        $("#browser").attr("src", "icons/chromium.svg");
-        break;
-
-      case "com.github.Eloston.UngoogledChromium":
-        $("#perfilAdd").removeClass('disabled');
-        $("#browser").attr("src", "icons/ungoogled.svg");
-        break;
-
-      case "microsoft-edge-stable":
-      case "com.microsoft.Edge":
-        $("#perfilAdd").removeClass('disabled');
-        $("#browser").attr("src", "icons/edge.svg");
-        break;
-
-      case "epiphany":
-      case "org.gnome.Epiphany":
-        $("#perfilAdd").addClass('disabled');
-        $("#browser").attr("src", "icons/epiphany.svg");
-        break;
-
-      case "firefox":
-      case "org.mozilla.firefox":
-        $("#perfilAdd").addClass('disabled');
-        $("#browser").attr("src", "icons/firefox.svg");
-        break;
-
-      case "librewolf":
-      case "io.gitlab.librewolf-community":
-        $("#perfilAdd").addClass('disabled');
-        $("#browser").attr("src", "icons/librewolf.svg");
-        break;
-
-      case "vivaldi-stable":
-        $("#perfilAdd").removeClass('disabled');
-        $("#browser").attr("src", "icons/vivaldi.svg");
-        break;
-
-      case "falkon":
-        $("#perfilAdd").removeClass('disabled');
-        $("#browser").attr("src", "icons/falkon.svg");
-        break;
-
-      default:
-          break;
-    }
+    wrapper_browser(this.value);
     console.log("Bowser-Combobox: "+this.value);
   });
 
@@ -507,7 +500,6 @@ $(document).keydown(function(event) {
 });
 
 $(document).click(function(e){
-  console.log(e.target.className);
   if(e.target.className === "dropdown"){
     $(".dropdown").addClass("is-active");
   } else{
