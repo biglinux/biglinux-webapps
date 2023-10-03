@@ -25,28 +25,15 @@ function FireToChrome(){
 }
 
 
-function ClearFiles(){
-    for w in "${FILES[@]}";do
-        EXEC_BIN=~/.local/bin/$(sed -n '/^Exec/s/.*\/\([^\/]*\)$/\1/p' "$w")
-        DATA_DIR=~/$(sed -n '/^FOLDER/s/.*=~\/\([^\n]*\).*/\1/p' "$EXEC_BIN")
-
-        [ -d "$DATA_DIR" ] && rm -r "$DATA_DIR"
-        [ -e "$EXEC_BIN" ] && rm "$EXEC_BIN"
-    done
-}
-
-
 case "$1" in
     firefox|org.mozilla.firefox|librewolf|io.gitlab.librewolf-community)
         case "$2" in
             firefox|org.mozilla.firefox|librewolf|io.gitlab.librewolf-community)
-                ClearFiles
                 ChromeToFire "$2"
                 CHANGE=true
             ;;
 
-            *)  ClearFiles
-                FireToChrome
+            *)  FireToChrome
                 CHANGE=true
             ;;
         esac
