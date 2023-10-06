@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DESKNAME=${filedesk##*/}
+DESKNAME="${filedesk##*/}"
 USER_DESKTOP=$(xdg-user-dir DESKTOP)
 NAME=$(awk -F'=' '/Name/{print $2}' "$filedesk")
 ICON=$(awk -F'=' '/Icon/{print $2}' "$filedesk")
@@ -23,7 +23,7 @@ else
 fi
 
 if grep -q '.var.lib.flatpak.exports.bin' <<< "$BROWSER";then
-    BROWSER=${BROWSER##*/}
+    BROWSER="${BROWSER##*/}"
 fi
 
 if grep -q '..user.data.dir.' <<< "$EXEC";then

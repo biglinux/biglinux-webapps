@@ -2,8 +2,8 @@
 
 FILE=~/.local/share/applications/"$1"
 if grep -q '.local.bin' "$FILE";then
-    EXEC=~/$(sed -n '/^Exec/s/.*=~\/\([^\n]*\).*/\1/p' "$FILE")
-    "${EXEC}"
+    EXEC=$(grep -E -m1 '^Exec' "$FILE"|sed "s|^Exec=||;s|~|$HOME|")
+    "$EXEC"
 else
     gtk-launch "$1"
 fi

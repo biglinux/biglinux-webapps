@@ -9,8 +9,8 @@ case "$2" in
             cp "$BASEDIR"/assets/"$2"/desk/"$1" ~/.local/share/applications
             cp "$BASEDIR"/assets/"$2"/bin/"${1%%.*}-$2" ~/.local/bin
         else
-            DESKBIN=~/.local/bin/$(sed -n '/^Exec/s/.*\/\([^\/]*\)$/\1/p' "$LOCAL_DIR")
-            DATA_FOLDER=~/$(sed -n '/^FOLDER/s/.*=~\/\([^\n]*\).*/\1/p' "$DESKBIN")
+            DESKBIN=$(grep -E -m1 '^Exec' "$LOCAL_DIR"|sed "s|^Exec=||;s|~|$HOME|")
+            DATA_FOLDER=$(grep -E -m1 '^FOLDER' "$DESKBIN"|sed "s|^FOLDER=||;s|~|$HOME|")
             [ -d "$DATA_FOLDER" ] && rm -r "$DATA_FOLDER"
             rm "$DESKBIN" "$LOCAL_DIR"
         fi
