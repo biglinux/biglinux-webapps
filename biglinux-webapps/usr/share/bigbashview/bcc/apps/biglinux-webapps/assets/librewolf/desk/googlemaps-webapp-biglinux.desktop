@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Maps
 Exec=~/.local/bin/googlemaps-webapp-biglinux-librewolf
-Icon=/usr/share/icons/hicolor/128x128/apps/g-maps.svg
+Icon=webapp-g-maps
 Categories=Google;

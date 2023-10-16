@@ -6,5 +6,5 @@ Type=Application
 Name=Calendar
 Name[pt]=Agenda
 Exec=~/.local/bin/googlecalendar-webapp-biglinux-librewolf
-Icon=/usr/share/icons/hicolor/128x128/apps/g-calendar.svg
+Icon=webapp-g-calendar
 Categories=Google;

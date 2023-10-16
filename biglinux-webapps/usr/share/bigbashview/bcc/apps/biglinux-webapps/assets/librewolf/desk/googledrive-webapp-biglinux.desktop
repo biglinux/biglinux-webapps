@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Drive
 Exec=~/.local/bin/googledrive-webapp-biglinux-librewolf
-Icon=/usr/share/icons/hicolor/128x128/apps/g-drive.svg
+Icon=webapp-g-drive
 Categories=Google;

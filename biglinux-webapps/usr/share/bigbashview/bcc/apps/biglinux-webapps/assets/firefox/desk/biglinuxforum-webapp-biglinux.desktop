@@ -6,5 +6,5 @@ Type=Application
 Name=BigLinux Forum
 Name[pt]=Fórum BigLinux
 Exec=~/.local/bin/biglinuxforum-webapp-biglinux-firefox
-Icon=/usr/share/icons/hicolor/128x128/apps/biglinux-globo.svg
+Icon=webapp-biglinux-globo
 Categories=Webapps;

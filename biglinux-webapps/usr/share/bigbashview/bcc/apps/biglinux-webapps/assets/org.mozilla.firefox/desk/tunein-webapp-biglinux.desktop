@@ -6,5 +6,5 @@ Type=Application
 Name=TuneIn Radio
 Name[pt]=TuneIn Rádios
 Exec=~/.local/bin/tunein-webapp-biglinux-org.mozilla.firefox
-Icon=/usr/share/icons/hicolor/128x128/apps/tunein.svg
+Icon=webapp-tunein
 Categories=Webapps;

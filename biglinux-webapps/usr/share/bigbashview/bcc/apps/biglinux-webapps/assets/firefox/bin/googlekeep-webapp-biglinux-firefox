@@ -14,5 +14,5 @@ if [ ! -d "$FOLDER" ];then
 fi
 
 MOZ_DISABLE_GMP_SANDBOX=1 MOZ_DISABLE_CONTENT_SANDBOX=1 \
-XAPP_FORCE_GTKWINDOW_ICON=/usr/share/icons/hicolor/128x128/apps/g-keep.png \
+XAPP_FORCE_GTKWINDOW_ICON=/usr/share/icons/hicolor/128x128/apps/webapp-g-keep.svg \
 firefox --class="$CLASS" --profile "$FOLDER" --no-remote --new-instance "https://keep.google.com" &
