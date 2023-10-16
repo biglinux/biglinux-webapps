@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Spotify
 Exec=~/.local/bin/spotify-webapp-biglinux-org.mozilla.firefox
-Icon=/usr/share/icons/hicolor/128x128/apps/spotifywebapp.svg
+Icon=webapp-spotifywebapp
 Categories=Webapps;

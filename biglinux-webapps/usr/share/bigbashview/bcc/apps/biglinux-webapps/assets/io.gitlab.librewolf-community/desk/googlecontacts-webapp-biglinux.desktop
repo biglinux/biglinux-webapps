@@ -6,5 +6,5 @@ Type=Application
 Name=Contacts
 Name[pt]=Contatos
 Exec=~/.local/bin/googlecontacts-webapp-biglinux-io.gitlab.librewolf-community
-Icon=/usr/share/icons/hicolor/128x128/apps/g-contacts.svg
+Icon=webapp-g-contacts
 Categories=Google;

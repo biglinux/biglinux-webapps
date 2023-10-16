@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Office 365
 Exec=~/.local/bin/office365-webapp-biglinux-org.mozilla.firefox
-Icon=/usr/share/icons/hicolor/128x128/apps/office365.svg
+Icon=webapp-office365
 Categories=Webapps;
