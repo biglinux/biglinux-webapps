@@ -951,6 +951,7 @@ input {
   margin-top: 53px;
   width: 100%;
   color: #fff;
+  height: -webkit-fill-available;
 }
 
 .form-wrap a {
@@ -990,7 +991,7 @@ input {
   padding: 0 1em;
   background: var(--theme-bg-color);
   border-radius: 15px;
-  min-height: 530px;
+  min-height: 100%;
 }
 
 .help-action {
@@ -999,13 +1000,13 @@ input {
   text-align: center;
 }
 
-.form-wrap .tabs-content div[id$=tab-content] {
+.form-wrap .tabs-content div[id$=tab-content]:not(.active) {
   display: none;
 }
 
-.form-wrap .tabs-content .active {
+/* .form-wrap .tabs-content .active {
   display: block !important;
-}
+} */
 
 .form-wrap form .input {
     margin: 0;
