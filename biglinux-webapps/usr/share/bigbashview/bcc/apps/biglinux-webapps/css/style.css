@@ -1414,6 +1414,7 @@ li img {
   font-family: lato;
   font-size: 18px;
   color: var(--text-a-color);
+  user-select: none;
 }
 .tabs ul {
   list-style-type: none;
