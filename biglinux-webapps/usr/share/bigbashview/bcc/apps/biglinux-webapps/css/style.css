@@ -1669,6 +1669,7 @@ li img {
   align-items: center;
   height: 45px;
   min-width: 110px;
+  user-select: none;
 }
 
 .icone {
