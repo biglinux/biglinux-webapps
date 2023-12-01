@@ -1613,6 +1613,7 @@ li img {
 .content-section-title {
   color: var(--content-title-color);
   margin-bottom: 4px;
+  user-select: none;
 }
 
 .content-section ul {
