@@ -403,6 +403,10 @@ input[type=radio] + span {
 }
 
 /* BUTTON */
+button, .button{
+  user-select: none;
+}
+
 a.button {
   position: relative;
   left: 20px;
