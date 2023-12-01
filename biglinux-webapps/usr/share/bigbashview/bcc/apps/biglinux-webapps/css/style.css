@@ -1938,6 +1938,8 @@ select {
   font-weight: bold;
   height: 30px;
   width: 160px;
+  color: var(--theme-color);
+  background-color: var(--theme-bg-color);
 }
 
 input[type = 'search']::-webkit-search-cancel-button{
