@@ -1940,6 +1940,7 @@ select {
   width: 160px;
   color: var(--theme-color);
   background-color: var(--theme-bg-color);
+  user-select: none;
 }
 
 input[type = 'search']::-webkit-search-cancel-button{
