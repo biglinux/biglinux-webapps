@@ -952,7 +952,6 @@ input {
 /* USER (FORM WRAPPER) */
 .form-wrap {
   position: relative;
-  margin-top: 53px;
   width: 100%;
   color: #fff;
   height: -webkit-fill-available;
@@ -1403,9 +1402,6 @@ li img {
 /* breakpoints */
 /* selectors relative to radio inputs */
 .tabs {
-    left: 50%;
-    transform: translateX(-50%);
-    position: fixed;
     border-radius: 5px 5px 0 0;
     min-width: 100%;
     background-color: var(--tabs-bg-color);
@@ -2151,4 +2147,17 @@ hr {
 
 #backup-li, #restore-li, #add-li{
   border-bottom: 2px solid var(--border-color);
+}
+
+
+
+#content{
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#content .overflow-wrapper{
+  overflow-y: auto;
+  height: 100%;
 }
