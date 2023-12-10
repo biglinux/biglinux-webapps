@@ -995,7 +995,7 @@ input {
   padding: 0 1em;
   background: var(--theme-bg-color);
   border-radius: 15px;
-  min-height: 100%;
+  min-height: -webkit-fill-available;
 }
 
 .help-action {
