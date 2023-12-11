@@ -16,7 +16,7 @@ export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
 NATIVE=false
-FLATPAK=false
+FLATPAK=true
 COUNT_BROWSER=0
 
 echo -n '
@@ -802,76 +802,9 @@ echo -n '
                       <path d="M15 9l-6 6M9 9l6 6" />
                     </svg>
                   </div>'
-            if [ "$NATIVE" = "true" ];then
-            echo -n '<div class="pop-up__subtitle">'$"Nativo"'</div>
-                  <div id="menu">'
-                    if [ -e /usr/lib/brave-browser/brave ] || [ -e /opt/brave-bin/brave ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="brave">
-                            <img src="icons/brave.svg" width="38"
-                                 height="38" data-bin="brave"
-                                 title="'$"BRAVE"'">
-                            </button>'
-                    fi
-                    if [ -e /opt/google/chrome/google-chrome ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="google-chrome-stable">
-                            <img src="icons/chrome.svg" width="38"
-                                 height="38" data-bin="google-chrome-stable"
-                                 title="'$"CHROME"'">
-                            </button>'
-                    fi
-                    if [ -e /usr/lib/chromium/chromium ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="chromium">
-                            <img src="icons/chromium.svg" width="38"
-                                 height="38" data-bin="chromium"
-                                 title="'$"CHROMIUM"'">
-                            </button>'
-                    fi
-                    if [ -e /opt/microsoft/msedge/microsoft-edge ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="microsoft-edge-stable">
-                            <img src="icons/edge.svg" width="38"
-                                 height="38" data-bin="microsoft-edge-stable"
-                                 title="'$"EDGE"'">
-                            </button>'
-                    fi
-                    if [ -e /usr/lib/firefox/firefox ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="firefox">
-                            <img src="icons/firefox.svg" width="38"
-                                 height="38" data-bin="firefox"
-                                 title="'$"FIREFOX"'">
-                            </button>'
-                    fi
-                    if [ -e /usr/bin/falkon ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="falkon">
-                            <img src="icons/falkon.svg" width="38"
-                                 height="38" data-bin="falkon"
-                                 title="'$"FALKON"'">
-                            </button>'
-                    fi
-                    if [ -e /usr/lib/librewolf/librewolf ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="librewolf">
-                            <img src="icons/librewolf.svg" width="38"
-                                 height="38" data-bin="librewolf"
-                                 title="'$"LIBREWOLF"'">
-                            </button>'
-                    fi
-                    if [ -e /opt/vivaldi/vivaldi ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="vivaldi-stable">
-                            <img src="icons/vivaldi.svg" width="38"
-                                 height="38" data-bin="vivaldi-stable"
-                                 title="'$"VIVALDI"'">
-                            </button>'
-                    fi
-                    echo -n '
-                  </div>'
-            fi
+
+          echo -n '<div class="pop-up__subtitle">'$"Nativo"'</div><div id="menu" data-menu="native"></div>'
+            
             if [ "$FLATPAK" = "true" ];then
             echo -n '<div class="pop-up__subtitle">'$"Flatpak"'</div>
                   <div id="menu">'
