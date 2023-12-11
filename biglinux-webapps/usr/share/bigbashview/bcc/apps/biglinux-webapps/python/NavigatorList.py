@@ -5,42 +5,50 @@ NATIVE_NAVIGATORS_LIST = {
     "brave": {
         "name": "brave",
         "path": "/usr/lib/brave-browser/brave",
-        "label": "BRAVE"
+        "label": "BRAVE",
+        "icon": "icons/brave.svg"
     },
     "google-chrome-stable": {
         "name": "google-chrome-stable",
         "path": "/opt/google/chrome/google-chrome",
-        "label": "CHROME"
+        "label": "CHROME",
+        "icon": "icons/chrome.svg"
     },
     "chromium": {
         "name": "chromium",
         "path": "/usr/lib/chromium/chromium",
-        "label": "CHROMIUM"
+        "label": "CHROMIUM",
+        "icon": "icons/chromium.svg"
     },
     "microsoft-edge-stable": {
         "name": "microsoft-edge-stable",
         "path": "/opt/microsoft/msedge/microsoft-edge",
-        "label": "EDGE"
+        "label": "EDGE",
+        "icon": "icons/edge.svg"
     },
     "firefox": {
         "name": "firefox",
         "path": "/usr/lib/firefox/firefox",
-        "label": "FIREFOX"
+        "label": "FIREFOX",
+        "icon": "icons/firefox.svg"
     },
     "falkon": {
         "name": "falkon",
         "path": "/usr/bin/falkon",
-        "label": "FALKON"
+        "label": "FALKON",
+        "icon": "icons/falkon.svg"
     },
     "librewolf": {
         "name": "librewolf",
         "path": "/usr/lib/librewolf/librewolf",
-        "label": "LIBREWOLF"
+        "label": "LIBREWOLF",
+        "icon": "icons/librewolf.svg"
     },
     "vivaldi-stable": {
         "name": "vivaldi-stable",
         "path": "/opt/vivaldi/vivaldi",
-        "label": "VIVALDI"
+        "label": "VIVALDI",
+        "icon": "icons/vivaldi.svg"
     }
 }
 
@@ -48,42 +56,50 @@ FLATPAK_NAVIGATORS_LIST = {
     "brave": {
         "name": "com.brave.Browser",
         "path": "/var/lib/flatpak/exports/bin/com.brave.Browser",
-        "label": "BRAVE (FLATPAK)"
+        "label": "BRAVE (FLATPAK)",
+        "icon": "icons/brave.svg"
     },
     "chrome": {
         "name": "com.google.Chrome",
         "path": "/var/lib/flatpak/exports/bin/com.google.Chrome",
-        "label": "CHROME (FLATPAK)"
+        "label": "CHROME (FLATPAK)",
+        "icon": "icons/chrome.svg"
     },
     "chromium": {
         "name": "org.chromium.Chromium",
         "path": "/var/lib/flatpak/exports/bin/org.chromium.Chromium",
-        "label": "CHROMIUM (FLATPAK)"
+        "label": "CHROMIUM (FLATPAK)",
+        "icon": "icons/chromium.svg"
     },
     "edge": {
         "name": "com.microsoft.Edge",
         "path": "/var/lib/flatpak/exports/bin/com.microsoft.Edge",
-        "label": "EDGE (FLATPAK)"
+        "label": "EDGE (FLATPAK)",
+        "icon": "icons/edge.svg"
     },
     "epiphany": {
         "name": "org.gnome.Epiphany",
         "path": "/var/lib/flatpak/exports/bin/org.gnome.Epiphany",
-        "label": "EPIPHANY (FLATPAK)"
+        "label": "EPIPHANY (FLATPAK)",
+        "icon": "icons/epiphany.svg"
     },
     "firefox": {
         "name": "org.mozilla.firefox",
         "path": "/var/lib/flatpak/exports/bin/org.mozilla.firefox",
-        "label": "FIREFOX (FLATPAK)"
+        "label": "FIREFOX (FLATPAK)",
+        "icon": "icons/firefox.svg"
     },
     "librewolf": {
         "name": "io.gitlab.librewolf-community",
         "path": "/var/lib/flatpak/exports/bin/io.gitlab.librewolf-community",
-        "label": "LIBREWOLF (FLATPAK)"
+        "label": "LIBREWOLF (FLATPAK)",
+        "icon": "icons/librewolf.svg"
     },
     "ungoogled": {
         "name": "com.github.Eloston.UngoogledChromium",
         "path": "/var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium",
-        "label": "UNGOOGLED (FLATPAK)"
+        "label": "UNGOOGLED (FLATPAK)",
+        "icon": "icons/ungoogled.svg"
     }
 }
 
