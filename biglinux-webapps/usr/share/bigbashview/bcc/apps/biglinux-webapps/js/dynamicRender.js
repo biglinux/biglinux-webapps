@@ -40,6 +40,15 @@ function loadBrowsers(browserList) {
         }))
     })
 
+    const flatpakBrowsers = browserList.browsers.filter(browser => browser.flatpak)
+    flatpakBrowsers.forEach(browser => {
+        flatpakMenu.appendChild(makeMenuButton({
+            label: browser.label,
+            value: browser.name,
+            icon: browser.icon
+        }))
+    })
+
     $(".btn-img").each(function () {
         var img = $(this).children()[0]
         var src = $(img).attr("src")
