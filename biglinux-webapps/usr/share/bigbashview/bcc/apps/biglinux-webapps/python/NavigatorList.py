@@ -106,23 +106,19 @@ FLATPAK_NAVIGATORS_LIST = {
 INSTALLED_BROWSERS = []
 
 
-def checkNavigators(navigatorList: dict[str, dict[str, str]], callback):
+def checkNavigators(navigatorList: dict[str, dict[str, str]], getDynamicValues):
     for navigator in navigatorList:
         navigatorPath = navigatorList[navigator]["path"]
         if path.isfile(navigatorPath):
-            callback()
-            INSTALLED_BROWSERS.append(navigatorList[navigator].copy())
+            getDynamicValues()
+            INSTALLED_BROWSERS.append({
+                **navigatorList[navigator].copy(),
+                **getDynamicValues()
+            })
 
 
-nativesCount = 0
-
-
-def incrementNative():
-    global nativesCount
-    nativesCount += 1
-
-
-checkNavigators(NATIVE_NAVIGATORS_LIST, incrementNative)
+checkNavigators(NATIVE_NAVIGATORS_LIST, lambda: ({"native": True}))
+checkNavigators(FLATPAK_NAVIGATORS_LIST, lambda: ({"flatpak": True}))
 
 
 print(json.dumps({"browsers": INSTALLED_BROWSERS}, indent=4))
