@@ -174,11 +174,6 @@ $(function () {
     })
   })
 
-  var firstOption = $("#browserSelect option").first()
-  var firstValue = firstOption.val()
-  console.log("First-Browser-Combobox: " + firstValue)
-  wrapper_browser(firstValue)
-
   console.log("Default-Icon: " + $("#inputIconDesk").val())
 
   $("#browserSelect").on("change", function () {
