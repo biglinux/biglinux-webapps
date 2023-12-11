@@ -6,3 +6,18 @@ export function makeOption({ value, label }) {
 
     return option
 }
+
+export function makeMenuButton({ icon, label, name }) {
+    const button = document.createElement("button")
+
+    button.classList = "btn-img status-button btn-img-main"
+    button.id = name
+
+    button.innerHTML = `
+    <img src=${icon} width="38"
+         height="38" data-bin=${name}
+         title="${label}"
+    >`
+
+    return button
+}
