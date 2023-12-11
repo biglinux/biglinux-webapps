@@ -24,6 +24,7 @@ echo -n '
 <html>
   <head>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/dynamicRender.js" type="module"></script>
   </head>
   '"$(/usr/share/bigbashview/bcc/shell/getbgcolor.sh)"'
   <!-- loading -->
@@ -156,103 +157,7 @@ echo -n '
                           '$"Navegador"'
                         </div>
                         <div class="button-wrapper">
-                          <select class="svg-center" id="browserSelect" name="browser">'
-
-                            if [ -e /usr/lib/brave-browser/brave ] || [ -e /opt/brave-bin/brave ];then
-                              echo -n '<option value="brave">'$"BRAVE"'</option>'
-                              NATIVE=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
-
-                            if [ -e /opt/google/chrome/google-chrome ];then
-                              echo -n '<option value="google-chrome-stable">'$"CHROME"'</option>'
-                              NATIVE=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
-
-                            if [ -e /usr/lib/chromium/chromium ];then
-                              echo -n '<option value="chromium">'$"CHROMIUM"'</option>'
-                              NATIVE=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
-
-                            if [ -e /opt/microsoft/msedge/microsoft-edge ];then
-                              echo -n '<option value="microsoft-edge-stable">'$"EDGE"'</option>'
-                              NATIVE=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
-
-                            if [ -e /usr/lib/firefox/firefox ];then
-                              echo -n '<option value="firefox">'$"FIREFOX"'</option>'
-                              NATIVE=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
-
-                            if [ -e /usr/bin/falkon ];then
-                              echo -n '<option value="falkon">'$"FALKON"'</option>'
-                              NATIVE=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
-                            if [ -e /usr/lib/librewolf/librewolf ];then
-                              echo -n '<option value="librewolf">'$"LIBREWOLF"'</option>'
-                              NATIVE=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
-
-                            if [ -e /opt/vivaldi/vivaldi ];then
-                              echo -n '<option value="vivaldi-stable">'$"VIVALDI"'</option>'
-                              NATIVE=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
-
-                            if [ -e /var/lib/flatpak/exports/bin/com.brave.Browser ];then
-                              echo -n '<option value="com.brave.Browser">'$"BRAVE (FLATPAK)"'</option>'
-                              FLATPAK=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
-
-                            if [ -e /var/lib/flatpak/exports/bin/com.google.Chrome ];then
-                              echo -n '<option value="com.google.Chrome">'$"CHROME (FLATPAK)"'</option>'
-                              FLATPAK=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
-
-                            if [ -e /var/lib/flatpak/exports/bin/org.chromium.Chromium ];then
-                              echo -n '<option value="org.chromium.Chromium">'$"CHROMIUM (FLATPAK)"'</option>'
-                              FLATPAK=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
-
-                            if [ -e /var/lib/flatpak/exports/bin/com.microsoft.Edge ];then
-                              echo -n '<option value="com.microsoft.Edge">'$"EDGE (FLATPAK)"'</option>'
-                              FLATPAK=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
-
-                            if [ -e /var/lib/flatpak/exports/bin/org.gnome.Epiphany ];then
-                              echo -n '<option value="org.gnome.Epiphany">'$"EPIPHANY (FLATPAK)"'</option>'
-                            fi
-
-                            if [ -e /var/lib/flatpak/exports/bin/org.mozilla.firefox ];then
-                              echo -n '<option value="org.mozilla.firefox">'$"FIREFOX (FLATPAK)"'</option>'
-                              FLATPAK=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
-
-                            if [ -e /var/lib/flatpak/exports/bin/io.gitlab.librewolf-community ];then
-                              echo -n '<option value="io.gitlab.librewolf-community">'$"LIBREWOLF (FLATPAK)"'</option>'
-                              FLATPAK=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
-
-                            if [ -e /var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium ];then
-                              echo -n '<option value="com.github.Eloston.UngoogledChromium">'$"UNGOOGLED (FLATPAK)"'</option>'
-                              FLATPAK=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
-
-                    echo -n '</select>
-
+                          <select class="svg-center" id="browserSelect" name="browser"></select>
                         </div>
                       </li>
 
