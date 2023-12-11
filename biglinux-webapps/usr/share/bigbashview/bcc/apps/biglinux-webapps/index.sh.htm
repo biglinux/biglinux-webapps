@@ -767,7 +767,7 @@ echo -n '
                     esac
 
             if [ $COUNT_BROWSER -eq 0 ];then
-                ICON='none'
+                #ICON='none'
                 title='title="'$"Não existem navegadores compatíveis instalados no sistema!"'"'
             fi
 
@@ -780,7 +780,8 @@ echo -n '
                   </button>
                 </div>'
 
-          if [ $COUNT_BROWSER -eq 0 ];then
+          # Remove this later
+          if [ $COUNT_BROWSER -eq 9999 ];then
           echo -n '<!--MODAL NO BROWSERS-->
                 <div class="pop-up" id="change-browser" style="padding-bottom:30px">
                   <div class="pop-up__subtitle">
