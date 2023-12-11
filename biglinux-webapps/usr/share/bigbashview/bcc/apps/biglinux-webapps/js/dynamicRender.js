@@ -1,4 +1,4 @@
-import { makeOption } from "./components.js"
+import { makeMenuButton, makeOption } from "./components.js"
 
 /** @typedef {{browsers: {name: string, label: string}[]}} BrowserList  */
 
@@ -28,7 +28,39 @@ function loadBrowsers(browserList) {
         </div>`
     }
 
+    const nativeMenu = document.querySelector(`[data-menu="native"]`)
+    const flatpakMenu = document.querySelector(`[data-menu="flatpak"]`)
 
+    const nativeBrowsers = browserList.browsers.filter(browser => browser.native)
+    nativeBrowsers.forEach(browser => {
+        nativeMenu.appendChild(makeMenuButton({
+            label: browser.label,
+            value: browser.name,
+            icon: browser.icon
+        }))
+    })
+
+    $(".btn-img").each(function () {
+        var img = $(this).children()[0]
+        var src = $(img).attr("src")
+        var dataBin = $(img).attr("data-bin")
+        var title = $(img).attr("title")
+        $(this).click(function () {
+            var currBin = $("#open-change-browsers").attr("data-bin")
+            if (currBin === dataBin) {
+                $(".pop-up#change-browser").removeClass("visible")
+            } else {
+                $(".pop-up#change-browser").removeClass("visible")
+                $(".iconBrowser").attr("src", src)
+                $("#open-change-browsers").attr("data-bin", dataBin)
+                $("#browserIcon").attr("title", title)
+                fetch(`/execute$./change_browser.sh ${currBin} ${dataBin}`)
+            }
+            console.log("Browser-Old: " + currBin, "Browser-New: " + dataBin)
+        }).mouseover(function () {
+            $("button.btn-img").removeClass("highlight")
+        })
+    })
 }
 
 window.addEventListener("DOMContentLoaded", async () => {
