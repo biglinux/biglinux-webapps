@@ -32,22 +32,10 @@ function loadBrowsers(browserList) {
     const flatpakMenu = document.querySelector(`[data-menu="flatpak"]`)
 
     const nativeBrowsers = browserList.browsers.filter(browser => browser.native)
-    nativeBrowsers.forEach(browser => {
-        nativeMenu.appendChild(makeMenuButton({
-            label: browser.label,
-            value: browser.name,
-            icon: browser.icon
-        }))
-    })
+    nativeBrowsers.forEach(browser => nativeMenu.appendChild(makeMenuButton(browser)))
 
     const flatpakBrowsers = browserList.browsers.filter(browser => browser.flatpak)
-    flatpakBrowsers.forEach(browser => {
-        flatpakMenu.appendChild(makeMenuButton({
-            label: browser.label,
-            value: browser.name,
-            icon: browser.icon
-        }))
-    })
+    flatpakBrowsers.forEach(browser => flatpakMenu.appendChild(makeMenuButton(browser)))
 
     $(".btn-img").each(function () {
         var img = $(this).children()[0]
