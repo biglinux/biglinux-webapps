@@ -804,69 +804,9 @@ echo -n '
                   </div>'
 
           echo -n '<div class="pop-up__subtitle">'$"Nativo"'</div><div id="menu" data-menu="native"></div>'
+
+          echo -n '<div class="pop-up__subtitle">'$"Flatpak"'</div><div id="menu" data-menu="flatpak"></div>'
             
-            if [ "$FLATPAK" = "true" ];then
-            echo -n '<div class="pop-up__subtitle">'$"Flatpak"'</div>
-                  <div id="menu">'
-                    if [ -e /var/lib/flatpak/exports/bin/com.brave.Browser ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="com.brave.Browser">
-                              <img src="icons/brave.svg" width="38"
-                                   height="38" data-bin="com.brave.Browser"
-                                   title="'$"BRAVE (FLATPAK)"'">
-                            </button>'
-                    fi
-                    if [ -e /var/lib/flatpak/exports/bin/com.google.Chrome ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="com.google.Chrome">
-                              <img src="icons/chrome.svg" width="38"
-                                   height="38" data-bin="com.google.Chrome"
-                                   title="'$"CHROME (FLATPAK)"'">
-                            </button>'
-                    fi
-                    if [ -e /var/lib/flatpak/exports/bin/org.chromium.Chromium ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="org.chromium.Chromium">
-                              <img src="icons/chromium.svg" width="38"
-                                   height="38" data-bin="org.chromium.Chromium"
-                                   title="'$"CHROMIUM (FLATPAK)"'">
-                            </button>'
-                    fi
-                    if [ -e /var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="com.github.Eloston.UngoogledChromium">
-                              <img src="icons/ungoogled.svg" width="38"
-                                   height="38" data-bin="com.github.Eloston.UngoogledChromium"
-                                   title="'$"UNGOOGLED (FLATPAK)"'">
-                            </button>'
-                    fi
-                    if [ -e /var/lib/flatpak/exports/bin/com.microsoft.Edge ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="com.microsoft.Edge">
-                              <img src="icons/edge.svg" width="38"
-                                   height="38" data-bin="com.microsoft.Edge"
-                                   title="'$"EDGE (FLATPAK)"'">
-                            </button>'
-                    fi
-                    if [ -e /var/lib/flatpak/exports/bin/org.mozilla.firefox ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="org.mozilla.firefox">
-                              <img src="icons/firefox.svg" width="38"
-                                   height="38" data-bin="org.mozilla.firefox"
-                                   title="'$"FIREFOX (FLATPAK)"'">
-                            </button>'
-                    fi
-                    if [ -e /var/lib/flatpak/exports/bin/io.gitlab.librewolf-community ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="io.gitlab.librewolf-community">
-                              <img src="icons/librewolf.svg" width="38"
-                                   height="38" data-bin="io.gitlab.librewolf-community"
-                                   title="'$"LIBREWOLF (FLATPAK)"'">
-                            </button>'
-                    fi
-                    echo -n '
-                  </div>'
-            fi
           echo -n '</div>'
           fi
           echo -n '<div class="content-section" style="margin-top:0">
