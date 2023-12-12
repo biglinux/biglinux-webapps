@@ -629,152 +629,102 @@ echo -n '
                             ICON='brave'
                             if [ ! -e /usr/lib/brave-browser/brave ] && [ ! -e /opt/brave-bin/brave ];then
                                 ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"BRAVE"'"'
                             fi
                         ;;
                         google-chrome-stable)
                             ICON='chrome'
                             if [ ! -e /opt/google/chrome/google-chrome ];then
                                 ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"CHROME"'"'
                             fi
                         ;;
                         chromium)
                             ICON='chromium'
                             if [ ! -e /usr/lib/chromium/chromium ];then
                                 ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"CHROMIUM"'"'
                             fi
                         ;;
                         microsoft-edge-stable)
                             ICON='edge'
                             if [ ! -e /opt/microsoft/msedge/microsoft-edge ];then
                                 ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"EDGE"'"'
                             fi
                         ;;
                         firefox)
                             ICON='firefox'
                             if [ ! -e /usr/lib/firefox/firefox ];then
                                 ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"FIREFOX"'"'
                             fi
                         ;;
                         falkon)
                             ICON='falkon'
                             if [ ! -e /usr/bin/falkon ];then
                                 ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"FALKON"'"'
                             fi
                         ;;
                         librewolf)
                             ICON='librewolf'
                             if [ ! -e /usr/lib/librewolf/librewolf ];then
                                 ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"LIBREWOLF"'"'
                             fi
                         ;;
                         vivaldi-stable)
                             ICON='vivaldi'
                             if [ ! -e /opt/vivaldi/vivaldi ];then
                                 ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"VIVALDI"'"'
                             fi
                         ;;
                         com.brave.Browser)
                             ICON='brave'
                             if [ ! -e /var/lib/flatpak/exports/bin/com.brave.Browser ];then
                                 ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"BRAVE (FLATPAK)"'"'
                             fi
                         ;;
                         com.google.Chrome)
                             ICON='chrome'
                             if [ ! -e /var/lib/flatpak/exports/bin/com.google.Chrome ];then
                                 ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"CHROME (FLATPAK)"'"'
                             fi
                         ;;
                         org.chromium.Chromium)
                             ICON='chromium'
                             if [ ! -e /var/lib/flatpak/exports/bin/org.chromium.Chromium ];then
                                 ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"CHROMIUM (FLATPAK)"'"'
                             fi
                         ;;
                         com.github.Eloston.UngoogledChromium)
                             ICON='chromium'
                             if [ ! -e /var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium ];then
                                 ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"UNGOOGLED (FLATPAK)"'"'
                             fi
                         ;;
                         com.microsoft.Edge)
                             ICON='edge'
                             if [ ! -e /var/lib/flatpak/exports/bin/com.microsoft.Edge ];then
                                 ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"EDGE (FLATPAK)"'"'
                             fi
                         ;;
                         org.mozilla.firefox)
                             ICON='firefox'
                             if [ ! -e /var/lib/flatpak/exports/bin/org.mozilla.firefox ];then
                                 ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"FIREFOX (FLATPAK)"'"'
                             fi
                         ;;
                         io.gitlab.librewolf-community)
                             ICON='librewolf'
                             if [ ! -e /var/lib/flatpak/exports/bin/io.gitlab.librewolf-community ];then
                                 ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"LIBREWOLF (FLATPAK)"'"'
                             fi
                         ;;
 
                         *):;;
                     esac
 
-            if [ $COUNT_BROWSER -eq 0 ];then
-                #ICON='none'
-                title='title="'$"Não existem navegadores compatíveis instalados no sistema!"'"'
-            fi
-
             echo -n '<div class="content-section-title" style="margin-bottom:0">
                     '$"Navegador padrão<br>dos WebApps:"'
                   </div>
                   <button class="btn-img-main status-button" id="open-change-browsers" data-bin="'"$BROWSER"'">
-                    <img src="icons/'"$ICON"'.svg" width="38" height="38"
-                         class="iconBrowser" id="browserIcon" '"$title"'>
+                    <img width="38" height="38"
+                         class="iconBrowser" id="browserIcon">
                   </button>
                 </div>'
 
