@@ -1,6 +1,7 @@
 const needed_translations = [
     "Não existem navegadores compatíveis instalados no sistema!",
-    "Navegador padrão<br>dos WebApps:"
+    "Navegador padrão<br>dos WebApps:",
+    "O navegador não está instalado!"
 ]
 
 /** @returns {Promise<{[key: string]: string}>} */

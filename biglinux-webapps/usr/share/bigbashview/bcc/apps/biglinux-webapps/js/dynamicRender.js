@@ -6,7 +6,7 @@ import { translations } from "./translations.js"
 const browserSelect = document.querySelector("#browserSelect")
 
 /** @param {BrowserList} browserList */
-function loadBrowsers(browserList) {
+async function loadBrowsers(browserList) {
     browserList.browsers.forEach(browser => {
         browserSelect.appendChild(makeOption({
             label: browser.label,
@@ -39,26 +39,42 @@ function loadBrowsers(browserList) {
     flatpakBrowsers.forEach(browser => flatpakMenu.appendChild(makeMenuButton(browser)))
 
     $(".btn-img").each(function () {
-        var img = $(this).children()[0]
-        var src = $(img).attr("src")
-        var dataBin = $(img).attr("data-bin")
-        var title = $(img).attr("title")
-        $(this).click(function () {
-            var currBin = $("#open-change-browsers").attr("data-bin")
-            if (currBin === dataBin) {
-                $(".pop-up#change-browser").removeClass("visible")
-            } else {
-                $(".pop-up#change-browser").removeClass("visible")
-                $(".iconBrowser").attr("src", src)
-                $("#open-change-browsers").attr("data-bin", dataBin)
-                $("#browserIcon").attr("title", title)
-                fetch(`/execute$./change_browser.sh ${currBin} ${dataBin}`)
-            }
-            console.log("Browser-Old: " + currBin, "Browser-New: " + dataBin)
-        }).mouseover(function () {
-            $("button.btn-img").removeClass("highlight")
-        })
+        const img = $(this).children()[0]
+        const src = $(img).attr("src")
+        const dataBin = $(img).attr("data-bin")
+        const title = $(img).attr("title")
+        $(this)
+            .click(function () {
+                const currBin = $("#open-change-browsers").attr("data-bin")
+                if (currBin === dataBin) {
+                    $(".pop-up#change-browser").removeClass("visible")
+                } else {
+                    $(".pop-up#change-browser").removeClass("visible")
+                    $(".iconBrowser").attr("src", src)
+                    $("#open-change-browsers").attr("data-bin", dataBin)
+                    $("#browserIcon").attr("title", title)
+                    fetch(`/execute$./change_browser.sh ${currBin} ${dataBin}`)
+                }
+                console.log("Browser-Old: " + currBin, "Browser-New: " + dataBin)
+            })
+            .mouseover(function () {
+                $("button.btn-img").removeClass("highlight")
+            })
     })
+
+    const currentBrowser = await fetch("/execute$cat ~/.bigwebapps/BROWSER", { method: "GET" })
+        .then(res => res.text())
+
+    const {
+        icon = "icons/none.svg",
+        label = browserList.browsers.length
+            ? translations["O navegador não está instalado!"]
+            : translations["Não existem navegadores compatíveis instalados no sistema!"]
+    } = browserList.browsers.find(({ name }) => name === currentBrowser)
+
+    $("#browserIcon")
+        .attr("src", icon)
+        .attr("title", label)
 }
 
 // window.addEventListener("load", async () => {
@@ -66,7 +82,6 @@ function loadBrowsers(browserList) {
 await fetch("/execute$python ./python/NavigatorList.py", { method: "GET" })
     .then(res => res.json())
     .then(data => {
-        console.log("Loaded Browsers:")
         console.log(data)
         loadBrowsers(data)
     })
