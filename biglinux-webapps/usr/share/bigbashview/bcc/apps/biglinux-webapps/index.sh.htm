@@ -778,18 +778,7 @@ echo -n '
                   </button>
                 </div>'
 
-          # Remove this later
-          if [ $COUNT_BROWSER -eq 9999 ];then
-          echo -n '<!--MODAL NO BROWSERS-->
-                <div class="pop-up" id="change-browser" style="padding-bottom:30px">
-                  <div class="pop-up__subtitle">
-                  '$"Não existem navegadores compatíveis instalados no sistema!"'
-                  </div>
-                  <div class="content-button-wrapper">
-                    <button class="content-button status-button2 close">'$"Fechar"'</button>
-                  </div>
-                </div>'
-          else
+          
           echo -n '<!--CHANGE BROWSERS MODAL-->
                 <div class="pop-up" id="change-browser" style="padding-bottom:30px">
                   <div class="pop-up__title">'$"Selecione o navegador preferido:"'
@@ -808,7 +797,7 @@ echo -n '
                   <div id="menu" data-menu="flatpak"></div>
                   
                 </div>'
-          fi
+          
           echo -n '<div class="content-section" style="margin-top:0">
                   <div class="content-section-title" style="text-align:left">'$"WebApps Nativos"'</div>
                   <ul id="content-ul">'
