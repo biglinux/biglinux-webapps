@@ -1,0 +1,315 @@
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the biglinux-webapps package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# #-#-#-#-#  python.pot (PACKAGE VERSION)  #-#-#-#-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid   ""
+msgstr  "#-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#\n"
+        "Project-Id-Version: biglinux-webapps\n"
+        "Report-Msgid-Bugs-To: \n"
+        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+        "Language-Team: LANGUAGE <LL@li.org>\n"
+        "Language: \n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=UTF-8\n"
+        "Content-Transfer-Encoding: 8bit\n"
+        "#-#-#-#-#  python.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+        "Project-Id-Version: PACKAGE VERSION\n"
+        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+        "Language-Team: LANGUAGE <LL@li.org>\n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=UTF-8\n"
+        "Content-Transfer-Encoding: 8bit\n"
+        "Generated-By: pygettext.py 1.5\n"
+#
+msgid   "O Gerenciador de WebApps BigLinux já está aberto!"
+msgstr  ""
+#
+msgid   " Fechar"
+msgstr  ""
+#
+msgid   "BigLinux WebApps"
+msgstr  ""
+#
+msgid   "Gerenciador de WebApps BigLinux"
+msgstr  ""
+#
+msgid   "O navegador definido para abrir os WebApps não está instalado! \\nTente alterar o navegador no Gerenciador de WebApps! \\n"
+msgstr  ""
+#
+msgid   "Selecione o arquivo de imagem"
+msgstr  ""
+#
+msgid   "Arquivos de Imagem"
+msgstr  ""
+#
+msgid   "Selecionar o arquivo de backup"
+msgstr  ""
+#
+msgid   "Backup WebApps"
+msgstr  ""
+#
+msgid   "URL:"
+msgstr  ""
+#
+msgid   "Detectar Nome e Ícone"
+msgstr  ""
+#
+msgid   "Nome:"
+msgstr  ""
+#
+msgid   "Ícone do WebApp"
+msgstr  ""
+#
+msgid   "Alterar"
+msgstr  ""
+#
+msgid   "Navegador"
+msgstr  ""
+#
+msgid   "BRAVE"
+msgstr  ""
+#
+msgid   "CHROME"
+msgstr  ""
+#
+msgid   "CHROMIUM"
+msgstr  ""
+#
+msgid   "EDGE"
+msgstr  ""
+#
+msgid   "FIREFOX"
+msgstr  ""
+#
+msgid   "LIBREWOLF"
+msgstr  ""
+#
+msgid   "VIVALDI"
+msgstr  ""
+#
+msgid   "FALKON"
+msgstr  ""
+#
+msgid   "BRAVE (FLATPAK)"
+msgstr  ""
+#
+msgid   "CHROME (FLATPAK)"
+msgstr  ""
+#
+msgid   "CHROMIUM (FLATPAK)"
+msgstr  ""
+#
+msgid   "UNGOOGLED (FLATPAK)"
+msgstr  ""
+#
+msgid   "EDGE (FLATPAK)"
+msgstr  ""
+#
+msgid   "EPIPHANY (FLATPAK)"
+msgstr  ""
+#
+msgid   "FIREFOX (FLATPAK)"
+msgstr  ""
+#
+msgid   "LIBREWOLF (FLATPAK)"
+msgstr  ""
+#
+msgid   "Categoria"
+msgstr  ""
+#
+msgid   "DESENVOLVIMENTO"
+msgstr  ""
+#
+msgid   "ESCRITÓRIO"
+msgstr  ""
+#
+msgid   "GRÁFICOS"
+msgstr  ""
+#
+msgid   "JOGOS"
+msgstr  ""
+#
+msgid   "MULTIMÍDIA"
+msgstr  ""
+#
+msgid   "WEBAPPS"
+msgstr  ""
+#
+msgid   "WEBAPPS GOOGLE"
+msgstr  ""
+#
+msgid   "Criar atalho na Área de Trabalho"
+msgstr  ""
+#
+msgid   "Perfil adicional"
+msgstr  ""
+#
+msgid   "Selecione o ícone preferido:"
+msgstr  ""
+#
+msgid   "Não é possível aplicar a edição sem Nome!"
+msgstr  ""
+#
+msgid   "Fechar"
+msgstr  ""
+#
+msgid   "Não é possível aplicar a edição sem alterações!"
+msgstr  ""
+#
+msgid   "O WebApp foi editado com sucesso!"
+msgstr  ""
+#
+msgid   "Não existem navegadores instalados compatíveis com os WebApps!"
+msgstr  ""
+#
+msgid   "Será necessário instalar mais um navegador compatível!"
+msgstr  ""
+#
+msgid   "Selecione o diretório"
+msgstr  ""
+#
+msgid   "Dectando o nome, aguarde..."
+msgstr  ""
+#
+msgid   "Dectando o ícone, aguarde..."
+msgstr  ""
+#
+msgid   "Adicionando o webapp..."
+msgstr  ""
+#
+msgid   "Aplicando as alterações..."
+msgstr  ""
+#
+msgid   "Criando o backup..."
+msgstr  ""
+#
+msgid   "Importando os webapps..."
+msgstr  ""
+#
+msgid   "Removendo o webapp..."
+msgstr  ""
+#
+msgid   "Removendo todos os webapps..."
+msgstr  ""
+#
+msgid   "Adicionar WebApps"
+msgstr  ""
+#
+msgid   "WebApps Adicionados"
+msgstr  ""
+#
+msgid   "WebApps BigLinux"
+msgstr  ""
+#
+msgid   "https://www.exemplo.com"
+msgstr  ""
+#
+msgid   "Exemplo"
+msgstr  ""
+#
+msgid   "Cancelar"
+msgstr  ""
+#
+msgid   "Adicionar"
+msgstr  ""
+#
+msgid   "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
+msgstr  ""
+#
+msgid   "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
+msgstr  ""
+#
+msgid   "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
+msgstr  ""
+#
+msgid   "O WebApp foi adicionado com sucesso!"
+msgstr  ""
+#
+msgid   "Desenvolvimento"
+msgstr  ""
+#
+msgid   "Escritório"
+msgstr  ""
+#
+msgid   "Gráficos"
+msgstr  ""
+#
+msgid   "Jogos"
+msgstr  ""
+#
+msgid   "Multimídia"
+msgstr  ""
+#
+msgid   "Internet"
+msgstr  ""
+#
+msgid   "Google"
+msgstr  ""
+#
+msgid   "WebApps"
+msgstr  ""
+#
+msgid   "Nenhum WebApp adicionado!"
+msgstr  ""
+#
+msgid   "Aplicar"
+msgstr  ""
+#
+msgid   "Tem certeza que deseja remover este WebApp?"
+msgstr  ""
+#
+msgid   "Importar Backup"
+msgstr  ""
+#
+msgid   "Criar Backup"
+msgstr  ""
+#
+msgid   "Remover WebApps"
+msgstr  ""
+#
+msgid   "Editar WebApp"
+msgstr  ""
+#
+msgid   "O backup dos WebApps foi salvo em: "
+msgstr  ""
+#
+msgid   "Os WebApps foram restaurados com sucesso!"
+msgstr  ""
+#
+msgid   "Você deseja remover todos os WebApps?"
+msgstr  ""
+#
+msgid   "Não"
+msgstr  ""
+#
+msgid   "Sim"
+msgstr  ""
+#
+msgid   "O navegador não está instalado!"
+msgstr  ""
+#
+msgid   "Não existem navegadores compatíveis instalados no sistema!"
+msgstr  ""
+#
+msgid   "Navegador padrão<br>dos WebApps:"
+msgstr  ""
+#
+msgid   "Selecione o navegador preferido:"
+msgstr  ""
+#
+msgid   "Nativo"
+msgstr  ""
+#
+msgid   "Flatpak"
+msgstr  ""
+#
+msgid   "WebApps Nativos"
+msgstr  ""
