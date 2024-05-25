@@ -4,6 +4,11 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
+    declare -g webappspath='/usr/share/bigbashview/bcc/apps/biglinux-webapps'
+	declare -g webapps_icon_file='icons/webapp.svg'
+	declare -g TITLE="biglinux-webapps"
+	declare -g webapps_sub="biglinux-webapps"
+	
 if pidof webapp-manager-biglinux &>/dev/null;then
     yad --image=emblem-warning --image-on-top --form --width=500 --height=100 --fixed \
     --align=center \
@@ -28,6 +33,6 @@ if [ ! -e ~/.bigwebapps/BROWSER ];then
     /usr/share/bigbashview/bcc/apps/biglinux-webapps/check_browser.sh
 fi
 
-bigbashview -s 960x620 -n $"Gerenciador de WebApps BigLinux" \
-            -i icons/webapp.svg -p "webapp-manager-biglinux" \
-            -d "/usr/share/bigbashview/bcc/apps/biglinux-webapps"
+COMMON_OPTIONS="QT_QPA_PLATFORM=xcb SDL_VIDEODRIVER=x11 WINIT_UNIX_BACKEND=x11 GDK_BACKEND=x11 bigbashview -n \"$TITLE\" -s 960x620 "
+ 
+ eval "$COMMON_OPTIONS  -p $webapps_sub -d $webappspath index.sh.htm -i $webapps_icon_file"
