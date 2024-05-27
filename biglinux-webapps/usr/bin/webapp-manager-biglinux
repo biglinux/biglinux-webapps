@@ -4,6 +4,13 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
+# Comandos específicos para cada ambiente
+if [[ "$XDG_CURRENT_DESKTOP" == "GNOME" ]]; then
+    TITLE="biglinux-webapps"
+else
+    TITLE="BigLinux WebApps"
+fi
+
 if pidof webapp-manager-biglinux &>/dev/null;then
     yad --image=emblem-warning --image-on-top --form --width=500 --height=100 --fixed \
     --align=center \
@@ -13,10 +20,6 @@ if pidof webapp-manager-biglinux &>/dev/null;then
     --window-icon=/usr/share/bigbashview/bcc/apps/biglinux-webapps/icons/webapp.svg
     exit
 fi
-
-#Translation
-export TEXTDOMAINDIR="/usr/share/locale"
-export TEXTDOMAIN=biglinux-webapps
 
 # Criando diretórios necessários
 mkdir -p ~/.bigwebapps
@@ -28,6 +31,6 @@ if [ ! -e ~/.bigwebapps/BROWSER ];then
     /usr/share/bigbashview/bcc/apps/biglinux-webapps/check_browser.sh
 fi
 
-bigbashview -s 960x620 -n $"Gerenciador de WebApps BigLinux" \
-            -i icons/webapp.svg -p "webapp-manager-biglinux" \
-            -d "/usr/share/bigbashview/bcc/apps/biglinux-webapps"
+QT_QPA_PLATFORM=xcb SDL_VIDEODRIVER=x11 WINIT_UNIX_BACKEND=x11 GDK_BACKEND=x11 bigbashview -s 960x620 -n "$TITLE" \
+-i icons/webapp.svg -p "webapp-manager-biglinux" \
+-d "/usr/share/bigbashview/bcc/apps/biglinux-webapps"
