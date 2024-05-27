@@ -4,19 +4,11 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
-    declare -g webappspath='/usr/share/bigbashview/bcc/apps/biglinux-webapps'
-	declare -g webapps_icon_file='icons/webapp.svg'
-
-	declare -g webapps_sub="biglinux-webapps"
-	
-# Verifica o ambiente de área de trabalho
-desktop_environment=$(echo $XDG_CURRENT_DESKTOP)
-
 # Comandos específicos para cada ambiente
-if [[ "$desktop_environment" == "GNOME" ]]; then
-    declare -g TITLE="biglinux-webapps"
+if [[ "$XDG_CURRENT_DESKTOP" == "GNOME" ]]; then
+    TITLE="biglinux-webapps"
 else
-    declare -g TITLE=$(gettext "BigLinux WebApps")
+    TITLE="BigLinux WebApps"
 fi
 
 if pidof webapp-manager-biglinux &>/dev/null;then
@@ -29,10 +21,6 @@ if pidof webapp-manager-biglinux &>/dev/null;then
     exit
 fi
 
-#Translation
-export TEXTDOMAINDIR="/usr/share/locale"
-export TEXTDOMAIN=biglinux-webapps
-
 # Criando diretórios necessários
 mkdir -p ~/.bigwebapps
 mkdir -p ~/.local/share/icons
@@ -43,6 +31,6 @@ if [ ! -e ~/.bigwebapps/BROWSER ];then
     /usr/share/bigbashview/bcc/apps/biglinux-webapps/check_browser.sh
 fi
 
-COMMON_OPTIONS="QT_QPA_PLATFORM=xcb SDL_VIDEODRIVER=x11 WINIT_UNIX_BACKEND=x11 GDK_BACKEND=x11 bigbashview -n \"$TITLE\" -s 960x620 "
- 
- eval "$COMMON_OPTIONS  -p $webapps_sub -d $webappspath index.sh.htm -i $webapps_icon_file"
+QT_QPA_PLATFORM=xcb SDL_VIDEODRIVER=x11 WINIT_UNIX_BACKEND=x11 GDK_BACKEND=x11 bigbashview -s 960x620 -n "$TITLE" \
+-i icons/webapp.svg -p "webapp-manager-biglinux" \
+-d "/usr/share/bigbashview/bcc/apps/biglinux-webapps"
