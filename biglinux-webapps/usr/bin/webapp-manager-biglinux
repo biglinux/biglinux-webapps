@@ -6,9 +6,9 @@ export TEXTDOMAIN=biglinux-webapps
 
 # Comandos específicos para cada ambiente
 if [[ "$XDG_CURRENT_DESKTOP" == "GNOME" ]]; then
-    declare -g TITLE="biglinux-webapps"
+    TITLE="biglinux-webapps"
 else
-    declare -g TITLE="BigLinux WebApps"
+    TITLE="BigLinux WebApps"
 fi
 
 if pidof webapp-manager-biglinux &>/dev/null;then
@@ -20,10 +20,6 @@ if pidof webapp-manager-biglinux &>/dev/null;then
     --window-icon=/usr/share/bigbashview/bcc/apps/biglinux-webapps/icons/webapp.svg
     exit
 fi
-
-#Translation
-export TEXTDOMAINDIR="/usr/share/locale"
-export TEXTDOMAIN=biglinux-webapps
 
 # Criando diretórios necessários
 mkdir -p ~/.bigwebapps
