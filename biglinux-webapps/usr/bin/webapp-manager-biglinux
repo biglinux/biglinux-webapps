@@ -5,11 +5,7 @@ export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=biglinux-webapps
 
 # Comandos específicos para cada ambiente
-if [[ "$XDG_CURRENT_DESKTOP" == "GNOME" ]]; then
-    TITLE="biglinux-webapps"
-else
-    TITLE="BigLinux WebApps"
-fi
+declare -g TITLE="$([[ "$XDG_CURRENT_DESKTOP" == "GNOME" ]] && echo "biglinux-webapps" || echo "BigLinux WebApps")"
 
 if pidof webapp-manager-biglinux &>/dev/null;then
     yad --image=emblem-warning --image-on-top --form --width=500 --height=100 --fixed \
