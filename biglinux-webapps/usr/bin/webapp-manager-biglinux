@@ -6,9 +6,19 @@ export TEXTDOMAIN=biglinux-webapps
 
     declare -g webappspath='/usr/share/bigbashview/bcc/apps/biglinux-webapps'
 	declare -g webapps_icon_file='icons/webapp.svg'
-	declare -g TITLE="biglinux-webapps"
+
 	declare -g webapps_sub="biglinux-webapps"
 	
+# Verifica o ambiente de área de trabalho
+desktop_environment=$(echo $XDG_CURRENT_DESKTOP)
+
+# Comandos específicos para cada ambiente
+if [[ "$desktop_environment" == "GNOME" ]]; then
+    declare -g TITLE="biglinux-webapps"
+else
+    declare -g TITLE=$(gettext "BigLinux WebApps")
+fi
+
 if pidof webapp-manager-biglinux &>/dev/null;then
     yad --image=emblem-warning --image-on-top --form --width=500 --height=100 --fixed \
     --align=center \
