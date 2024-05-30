@@ -6,9 +6,9 @@ export TEXTDOMAIN=biglinux-webapps
 
 # Comandos específicos para cada ambiente
 if [[ "$XDG_CURRENT_DESKTOP" == "GNOME" ]]; then
-    TITLE="biglinux-webapps"
+    title="biglinux-webapps"
 else
-    TITLE="BigLinux WebApps"
+    title=$"BigLinux WebApps"
 fi
 
 if pidof webapp-manager-biglinux &>/dev/null;then
@@ -31,6 +31,6 @@ if [ ! -e ~/.bigwebapps/BROWSER ];then
     /usr/share/bigbashview/bcc/apps/biglinux-webapps/check_browser.sh
 fi
 
-QT_QPA_PLATFORM=xcb SDL_VIDEODRIVER=x11 WINIT_UNIX_BACKEND=x11 GDK_BACKEND=x11 bigbashview -s 960x620 -n "$TITLE" \
+QT_QPA_PLATFORM=xcb SDL_VIDEODRIVER=x11 WINIT_UNIX_BACKEND=x11 GDK_BACKEND=x11 bigbashview -s 960x620 -n "$title" \
 -i icons/webapp.svg -p "webapp-manager-biglinux" \
 -d "/usr/share/bigbashview/bcc/apps/biglinux-webapps"
