@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 #shellcheck disable=SC2155,SC2034
 #shellcheck source=/dev/null
-
+#shellcheck source=${LIBRARY}/bcclib.sh
+#shellcheck source=${LIBRARY}/tinilib.sh
+#shellcheck source=${LIBRARY}/weblib.sh
 #  /usr/share/bigbashview/bcc/apps/biglinux-webapps/change_icon.sh
 #  Description: WebApps installing programs for BigLinux
 #
@@ -105,42 +107,18 @@ function sh_index_sh_config() {
 	declare -g Importar_Backup=$(gettext "Importar Backup")
 	declare -g Criar_Backup=$(gettext "Criar Backup")
 	declare -g Nativo=$(gettext "Nativo")
-	declare -ga aPathNative=('/usr/lib/brave-browser/brave'
-									'/opt/brave-bin/brave'
-									'/opt/google/chrome/google-chrome'
-									'/usr/lib/chromium/chromium'
-									'/opt/microsoft/msedge/microsoft-edge'
-									'/usr/lib/firefox/firefox'
-									'/usr/bin/falkon'
-									'/usr/lib/librewolf/librewolf'
-									'/opt/vivaldi/vivaldi'
-									)
-	declare -ga aIdNative=('brave' 'brave' 'google-chrome-stable' 'chromium' 'microsoft-edge-stable' 'firefox' 'falkon' 'librewolf' 'vivaldi-stable')
-	declare -ga aImgNative=('brave' 'brave' 'chrome' 'chromium' 'edge' 'firefox' 'falkon' 'librewolf' 'vivaldi')
-	declare -ga aTitleNative=('BRAVE' 'BRAVE' 'CHROME' 'CHROMIUM' 'EDGE' 'FIREFOX' 'FALKON' 'LIBREWOLF' 'VIVALDI')
-	declare -ga aPathFlatPak=('/var/lib/flatpak/exports/bin/com.brave.Browser'
-									'/var/lib/flatpak/exports/bin/com.google.Chrome'
-									'/var/lib/flatpak/exports/bin/org.chromium.Chromium'
-									'/var/lib/flatpak/exports/bin/com.microsoft.Edge'
-									'/var/lib/flatpak/exports/bin/org.gnome.Epiphany'
-									'/var/lib/flatpak/exports/bin/org.mozilla.firefox'
-									'/var/lib/flatpak/exports/bin/io.gitlab.librewolf-community'
-									'/var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium'
-									)
-	declare -ga aIdFlatPak=('com.brave.Browser' 'com.google.Chrome' 'org.chromium.Chromium' 'com.microsoft.Edge' 'org.gnome.Epiphany' 'org.mozilla.firefox' 'io.gitlab.librewolf-community' 'com.github.Eloston.UngoogledChromium')
-	declare -ga aTitleFlatPak=('BRAVE (FlatPak)' 'CHROME (FlatPak)' 'CHROMIUM (FlatPak)' 'EDGE (FlatPak)' 'EPIPHANY (FlatPak)' 'FIREFOX (FlatPak)' 'LIBREWOLF (FlatPak)' 'UNGOOGLED (FlatPak)')
 }
 
 function sh_index_sh_setbrowse() {
 	local cpath
 	local nc=0
 
-	for cpath in "${aPathNative[@]}"; do
+	for cpath in "${aBrowserPathNative[@]}"; do
 		if [[ -e $cpath ]]; then
 			NATIVE=1
 			((++COUNT_BROWSER))
-			option_value=${aIdNative[nc]}
-			option_text=${aTitleNative[nc]}
+			option_value="${aBrowserIdNative[nc]}"
+			option_text="${aBrowserTitleNative[nc]}"
 			cat <<-EOF
 				<option value=$option_value>$option_text</option>
 			EOF
@@ -148,12 +126,12 @@ function sh_index_sh_setbrowse() {
 		((++nc))
 	done
 
-	for cpath in "${aPathFlatPak[@]}"; do
+	for cpath in "${aBrowserPathFlatPak[@]}"; do
 		if [[ -e $cpath ]]; then
 			FLATPAK=1
 			((++COUNT_BROWSER))
-			option_value=${aIdFlatPak[nc]}
-			option_text=${aTitleFlatPak[nc]}
+			option_value="${aBrowserIdFlatPak[nc]}"
+			option_text="${aBrowserTitleFlatPak[nc]}"
 			cat <<-EOF
 				<option value=$option_value>$option_text</option>
 			EOF
@@ -339,7 +317,11 @@ function sh_index_sh_main() {
 		</div>
 		</div>
 		</li>
+	EOF
 
+	checked=$(TIni.Get "$INI_FILE_WEBAPPS" "conf" "shortcut")
+
+	cat <<-EOF
 		<li>
 		<div class="products">
 		<svg viewBox="0 0 512 512">
@@ -348,10 +330,39 @@ function sh_index_sh_main() {
 		$Criar_atalho_na_Area_de_Trabalho
 		</div>
 		<div class="button-wrapper">
+		<!-- Checkbox -->
+		<!-- input id="shortcut" type="checkbox" class="switch" name="shortcut" onchange="checkIfChecked()"/ -->
 		<input id="shortcut" type="checkbox" class="switch" name="shortcut"/>
 		</div>
 		</li>
 
+		<script>
+		// Variável que você deseja ler
+		var myVariable = true; // Aqui você pode definir o valor da variável conforme necessário
+
+		// Função para marcar ou desmarcar o checkbox com base no valor da variável
+		function updateCheckbox() {
+		  var checkbox = document.getElementById("shortcut");
+		  checkbox.checked = myVariable;
+		}
+
+		// Chama a função para atualizar o estado do checkbox
+		updateCheckbox();
+		</script>
+
+		<script>
+		function checkIfChecked() {
+		  var checkbox = document.getElementById("shortcut");
+		  if (checkbox.checked) {
+		    alert("O checkbox está marcado!");
+		  } else {
+		    alert("O checkbox não está marcado.");
+		  }
+		}
+		</script>
+	EOF
+
+	cat <<-EOF
 		<li id="perfilAdd">
 		<div class="products">
 		<svg viewBox="0 0 640 512">
@@ -785,146 +796,164 @@ function sh_index_sh_main() {
 		<div style="display:flex;justify-content:center">
 	EOF
 
-	BROWSER=$(<"$HOME_FOLDER"/BROWSER)
-	case "$BROWSER" in
-	brave)
-		ICON='brave'
-		if [ ! -e /usr/lib/brave-browser/brave ] && [ ! -e /opt/brave-bin/brave ]; then
-			ICON='none'
-			title=$O_navegador_nao_esta_instalado
-		else
-			title='BRAVE'
-		fi
-		;;
-	google-chrome-stable)
-		ICON='chrome'
-		if [ ! -e /opt/google/chrome/google-chrome ]; then
-			ICON='none'
-			title=$O_navegador_nao_esta_instalado
-		else
-			title='CHROME'
-		fi
-		;;
-	chromium)
-		ICON='chromium'
-		if [ ! -e /usr/lib/chromium/chromium ]; then
-			ICON='none'
-			title=$O_navegador_nao_esta_instalado
-		else
-			title='CHROMIUM'
-		fi
-		;;
-	microsoft-edge-stable)
-		ICON='edge'
-		if [ ! -e /opt/microsoft/msedge/microsoft-edge ]; then
-			ICON='none'
-			title=$O_navegador_nao_esta_instalado
-		else
-			title='EDGE'
-		fi
-		;;
-	firefox)
-		ICON='firefox'
-		if [ ! -e /usr/lib/firefox/firefox ]; then
-			ICON='none'
-			title=$O_navegador_nao_esta_instalado
-		else
-			title='FIREFOX'
-		fi
-		;;
-	falkon)
-		ICON='falkon'
-		if [ ! -e /usr/bin/falkon ]; then
-			ICON='none'
-			title=$O_navegador_nao_esta_instalado
-		else
-			title='FALKON'
-		fi
-		;;
-	librewolf)
-		ICON='librewolf'
-		if [ ! -e /usr/lib/librewolf/librewolf ]; then
-			ICON='none'
-			title=$O_navegador_nao_esta_instalado
-		else
-			title='LIBREWOLF'
-		fi
-		;;
-	vivaldi-stable)
-		ICON='vivaldi'
-		if [ ! -e /opt/vivaldi/vivaldi ]; then
-			ICON='none'
-			title=$O_navegador_nao_esta_instalado
-		else
-			title='VIVALDI'
-		fi
-		;;
-	com.brave.Browser)
-		ICON='brave'
-		if [ ! -e /var/lib/flatpak/exports/bin/com.brave.Browser ]; then
-			ICON='none'
-			title=$O_navegador_nao_esta_instalado
-		else
-			title='BRAVE (FlatPak)'
-		fi
-		;;
-	com.google.Chrome)
-		ICON='chrome'
-		if [ ! -e /var/lib/flatpak/exports/bin/com.google.Chrome ]; then
-			ICON='none'
-			title=$O_navegador_nao_esta_instalado
-		else
-			title='CHROME (FlatPak)'
-		fi
-		;;
-	org.chromium.Chromium)
-		ICON='chromium'
-		if [ ! -e /var/lib/flatpak/exports/bin/org.chromium.Chromium ]; then
-			ICON='none'
-			title=$O_navegador_nao_esta_instalado
-		else
-			title='CHROMIUM (FlatPak)'
-		fi
-		;;
-	com.github.Eloston.UngoogledChromium)
-		ICON='chromium'
-		if [ ! -e /var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium ]; then
-			ICON='none'
-			title=$O_navegador_nao_esta_instalado
-		else
-			title='UNGOOGLED (FlatPak)'
-		fi
-		;;
-	com.microsoft.Edge)
-		ICON='edge'
-		if [ ! -e /var/lib/flatpak/exports/bin/com.microsoft.Edge ]; then
-			ICON='none'
-			title=$O_navegador_nao_esta_instalado
-		else
-			title='EDGE (FlatPak)'
-		fi
-		;;
-	org.mozilla.firefox)
-		ICON='firefox'
-		if [ ! -e /var/lib/flatpak/exports/bin/org.mozilla.firefox ]; then
-			ICON='none'
-			title=$O_navegador_nao_esta_instalado
-		else
-			title='FIREFOX (FlatPak)'
-		fi
-		;;
-	io.gitlab.librewolf-community)
-		ICON='librewolf'
-		if [ ! -e /var/lib/flatpak/exports/bin/io.gitlab.librewolf-community ]; then
-			ICON='none'
-			title=$O_navegador_nao_esta_instalado
-		else
-			title='LIBREWOLF (FlatPak)'
-		fi
-		;;
+#[browser]
+#id=brave
+#compatible=1
+#title=BRAVE
+#path=/usr/lib/brave-browser/brave
+#img=brave
+#data_bin=brave
+#name=brave
+	BROWSER=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "id")
+	cpath=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "path")
+	if [[ -e $cpath ]]; then
+		ICON=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "img")
+		title=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "title")
+	else
+		ICON='none'
+		title=$O_navegador_nao_esta_instalado
+	fi
 
-	*) : ;;
-	esac
+#	BROWSER=$(<"$HOME_FOLDER"/BROWSER)
+#	case "$BROWSER" in
+#	brave)
+#		ICON='brave'
+#		if [ ! -e /usr/lib/brave-browser/brave ] && [ ! -e /opt/brave-bin/brave ]; then
+#			ICON='none'
+#			title=$O_navegador_nao_esta_instalado
+#		else
+#			title='BRAVE'
+#		fi
+#		;;
+#	google-chrome-stable)
+#		ICON='chrome'
+#		if [ ! -e /opt/google/chrome/google-chrome ]; then
+#			ICON='none'
+#			title=$O_navegador_nao_esta_instalado
+#		else
+#			title='CHROME'
+#		fi
+#		;;
+#	chromium)
+#		ICON='chromium'
+#		if [ ! -e /usr/lib/chromium/chromium ]; then
+#			ICON='none'
+#			title=$O_navegador_nao_esta_instalado
+#		else
+#			title='CHROMIUM'
+#		fi
+#		;;
+#	microsoft-edge-stable)
+#		ICON='edge'
+#		if [ ! -e /opt/microsoft/msedge/microsoft-edge ]; then
+#			ICON='none'
+#			title=$O_navegador_nao_esta_instalado
+#		else
+#			title='EDGE'
+#		fi
+#		;;
+#	firefox)
+#		ICON='firefox'
+#		if [ ! -e /usr/lib/firefox/firefox ]; then
+#			ICON='none'
+#			title=$O_navegador_nao_esta_instalado
+#		else
+#			title='FIREFOX'
+#		fi
+#		;;
+#	falkon)
+#		ICON='falkon'
+#		if [ ! -e /usr/bin/falkon ]; then
+#			ICON='none'
+#			title=$O_navegador_nao_esta_instalado
+#		else
+#			title='FALKON'
+#		fi
+#		;;
+#	librewolf)
+#		ICON='librewolf'
+#		if [ ! -e /usr/lib/librewolf/librewolf ]; then
+#			ICON='none'
+#			title=$O_navegador_nao_esta_instalado
+#		else
+#			title='LIBREWOLF'
+#		fi
+#		;;
+#	vivaldi-stable)
+#		ICON='vivaldi'
+#		if [ ! -e /opt/vivaldi/vivaldi ]; then
+#			ICON='none'
+#			title=$O_navegador_nao_esta_instalado
+#		else
+#			title='VIVALDI'
+#		fi
+#		;;
+#	com.brave.Browser)
+#		ICON='brave'
+#		if [ ! -e /var/lib/flatpak/exports/bin/com.brave.Browser ]; then
+#			ICON='none'
+#			title=$O_navegador_nao_esta_instalado
+#		else
+#			title='BRAVE (FlatPak)'
+#		fi
+#		;;
+#	com.google.Chrome)
+#		ICON='chrome'
+#		if [ ! -e /var/lib/flatpak/exports/bin/com.google.Chrome ]; then
+#			ICON='none'
+#			title=$O_navegador_nao_esta_instalado
+#		else
+#			title='CHROME (FlatPak)'
+#		fi
+#		;;
+#	org.chromium.Chromium)
+#		ICON='chromium'
+#		if [ ! -e /var/lib/flatpak/exports/bin/org.chromium.Chromium ]; then
+#			ICON='none'
+#			title=$O_navegador_nao_esta_instalado
+#		else
+#			title='CHROMIUM (FlatPak)'
+#		fi
+#		;;
+#	com.github.Eloston.UngoogledChromium)
+#		ICON='chromium'
+#		if [ ! -e /var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium ]; then
+#			ICON='none'
+#			title=$O_navegador_nao_esta_instalado
+#		else
+#			title='UNGOOGLED (FlatPak)'
+#		fi
+#		;;
+#	com.microsoft.Edge)
+#		ICON='edge'
+#		if [ ! -e /var/lib/flatpak/exports/bin/com.microsoft.Edge ]; then
+#			ICON='none'
+#			title=$O_navegador_nao_esta_instalado
+#		else
+#			title='EDGE (FlatPak)'
+#		fi
+#		;;
+#	org.mozilla.firefox)
+#		ICON='firefox'
+#		if [ ! -e /var/lib/flatpak/exports/bin/org.mozilla.firefox ]; then
+#			ICON='none'
+#			title=$O_navegador_nao_esta_instalado
+#		else
+#			title='FIREFOX (FlatPak)'
+#		fi
+#		;;
+#	io.gitlab.librewolf-community)
+#		ICON='librewolf'
+#		if [ ! -e /var/lib/flatpak/exports/bin/io.gitlab.librewolf-community ]; then
+#			ICON='none'
+#			title=$O_navegador_nao_esta_instalado
+#		else
+#			title='LIBREWOLF (FlatPak)'
+#		fi
+#		;;
+#
+#	*) : ;;
+#	esac
 
 	if ! ((COUNT_BROWSER)) then
 		ICON='none'
@@ -979,16 +1008,16 @@ function sh_index_sh_main() {
 				local cpath
 				local nc=0
 
-				for cpath in "${aPathNative[@]}"; do
+				for cpath in "${aBrowserPathNative[@]}"; do
 					if [[ -e $cpath ]]; then
 						cat <<-EOF
 							<button class="btn-img status-button btn-img-main"
-								id=${aIdNative[nc]}>
-								<img src="icons/${aImgNative[nc]}.svg"
+								id=${aBrowserIdNative[nc]}>
+								<img src="icons/${aBrowserImgNative[nc]}.svg"
 									width="38"
 									height="38"
-									data-bin=${aIdNative[nc]}
-									title=${aTitleNative[nc]^^}>
+									data-bin=${aBrowserIdNative[nc]}
+									title=${aBrowserTitleNative[nc]^^}>
 							</button>
 						EOF
 					fi

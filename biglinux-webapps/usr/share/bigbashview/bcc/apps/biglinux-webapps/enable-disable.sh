@@ -6,7 +6,7 @@
 #  Description: WebApps installing programs for BigLinux
 #
 #  Created: 2020/01/11
-#  Altered: 2024/06/01
+#  Altered: 2024/06/03
 #
 #  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
 #                2022-2023, Bruno Gonçalves <www.biglinux.com.br>
@@ -35,37 +35,10 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 APP="${0##*/}"
-_VERSION_="1.0.0-20240601"
+_VERSION_="1.0.0-20240603"
 LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 [[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
 [[ -f "${LIBRARY}/tinilib.sh" ]] && source "${LIBRARY}/tinilib.sh"
 [[ -f "${LIBRARY}/weblib.sh" ]] && source "${LIBRARY}/weblib.sh"
-
-function sh_webapp_enable_disable_main() {
-	local LOCAL_DIR="$HOME_LOCAL/share/applications/$1"
-
-	case "$2" in
-	firefox | org.mozilla.firefox | librewolf | io.gitlab.librewolf-community)
-		if [[ ! -e "$LOCAL_DIR" ]]; then
-			cp "$WEBAPPS_PATH/assets/$2/desk/$1" "$HOME_LOCAL"/share/applications
-			cp "$WEBAPPS_PATH/assets/$2/bin/${1%%.*}-$2" "$HOME_LOCAL"/bin
-		else
-			rm "$LOCAL_DIR"
-		fi
-		;;
-
-	*)
-		if [[ ! -e "$LOCAL_DIR" ]]; then
-			cp "$WEBAPP_PATH/webapps/$1" "$HOME_LOCAL"/share/applications
-		else
-			rm "$LOCAL_DIR"
-		fi
-		;;
-	esac
-
-	update-desktop-database -q "$HOME_LOCAL"/share/applications
-	nohup kbuildsycoca5 &>/dev/null &
-	exit
-}
 
 sh_webapp_enable_disable_main "$@"

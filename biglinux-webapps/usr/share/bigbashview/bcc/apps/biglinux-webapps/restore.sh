@@ -6,7 +6,7 @@
 #  Description: WebApps installing programs for BigLinux
 #
 #  Created: 2020/01/11
-#  Altered: 2024/06/01
+#  Altered: 2024/06/03
 #
 #  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
 #                2022-2023, Bruno Gonçalves <www.biglinux.com.br>
@@ -35,68 +35,10 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 APP="${0##*/}"
-_VERSION_="1.0.0-20240601"
+_VERSION_="1.0.0-20240603"
 LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 [[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
 [[ -f "${LIBRARY}/tinilib.sh" ]] && source "${LIBRARY}/tinilib.sh"
 [[ -f "${LIBRARY}/weblib.sh" ]] && source "${LIBRARY}/weblib.sh"
 
-function sh_webapp_restore_main() {
-	local SUBTITLE="$(gettext $"Selecionar o arquivo de backup para restaurar: ")"
-	local BKP_FOLDER="$TMP_FOLDER/backup-webapps"
-	local FLATPAK_FOLDER_DATA="$HOME"/.var/app
-	local backup_file
-	local cancel=1
-
-	cd "$HOME_FOLDER" || return
-	backup_file=$(
-		yad --title="$SUBTITLE" \
-			--file \
-			--window-icon="$WEBAPPS_PATH/icons/webapp.svg" \
-			--width=900 \
-			--height=600 \
-			--center \
-			--mime-filter=$"Backup WebApps""|application/gzip"
-	)
-	if [[ "$?" -eq "$cancel" ]] || [[ -z "$backup_file" ]]; then
-		exit
-	fi
-
-	if tar -xzf "$backup_file" -C "$TMP_FOLDER"; then
-		if [[ -d "$BKP_FOLDER" ]]; then
-			cp -a "$BKP_FOLDER"/*.desktop "$HOME_LOCAL"/share/applications
-			cp -a "$BKP_FOLDER"/icons/* "$HOME_LOCAL"/share/icons
-
-			if [[ -d "$BKP_FOLDER"/bin ]]; then
-				cp -a "$BKP_FOLDER"/bin/* "$HOME_LOCAL"/bin
-			fi
-
-			if [[ -d "$BKP_FOLDER"/data ]]; then
-				cp -a "$BKP_FOLDER"/data/* "$HOME_FOLDER"
-			fi
-
-			if [[ -d "$BKP_FOLDER"/epiphany ]]; then
-				cp -a "$BKP_FOLDER"/epiphany/data "$FLATPAK_FOLDER_DATA"/org.gnome.Epiphany
-				cp -a "$BKP_FOLDER"/epiphany/xdg-desktop-portal "$HOME_LOCAL"/share
-				ln -sf "$HOME"/.local/share/xdg-desktop-portal/applications/*.desktop "$HOME_LOCAL"/share/applications
-			fi
-
-			if [[ -d "$BKP_FOLDER"/flatpak ]]; then
-				cp -a "$BKP_FOLDER"/flatpak/* "$FLATPAK_FOLDER_DATA"
-			fi
-
-			if [[ -d "$BKP_FOLDER"/desktop ]]; then
-				cp -a "$BKP_FOLDER"/desktop/* "$(xdg-user-dir DESKTOP)"
-			fi
-
-			rm -r "$BKP_FOLDER"
-			update-desktop-database -q "$HOME_LOCAL"/share/applications
-			nohup kbuildsycoca5 &>/dev/null &
-
-			printf 0
-			exit
-		fi
-	fi
-}
-
-sh_webapp_restore_main "$@"
+sh_webapp_restore "$@"

@@ -6,7 +6,7 @@
 #  Description: WebApps installing programs for BigLinux
 #
 #  Created: 2020/01/11
-#  Altered: 2024/06/01
+#  Altered: 2024/06/03
 #
 #  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
 #                2022-2023, Bruno Gonçalves <www.biglinux.com.br>
@@ -35,36 +35,10 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 APP="${0##*/}"
-_VERSION_="1.0.0-20240601"
+_VERSION_="1.0.0-20240603"
 LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 [[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
 [[ -f "${LIBRARY}/tinilib.sh" ]] && source "${LIBRARY}/tinilib.sh"
 [[ -f "${LIBRARY}/weblib.sh" ]] && source "${LIBRARY}/weblib.sh"
 
-function sh_webapp_change_icon_main() {
-	local file_icon
-	local new_file_icon
-	local SUBTITLE="$(gettext $"Selecione o arquivo de imagem")"
-	local cancel=1
-
-	cd "$(xdg-user-dir PICTURES)"
-	file_icon=$(
-		yad --title "$SUBTITLE" \
-			--file \
-			--center \
-			--width=900 \
-			--height=600 \
-			--window-icon="$WEBAPPS_PATH/icons/webapp.svg" \
-			--mime-filter=$"Arquivos de Imagem""|image/bmp image/jpeg image/png image/x-icon"
-	)
-
-	if [[ "$?" -eq "$cancel" ]] || [[ -z "$file_icon" ]]; then
-		exit
-	fi
-
-	new_file_icon=$("$WEBAPPS_PATH"/resize_favicon.sh.py "$file_icon")
-	printf "$new_file_icon"
-	exit
-}
-
-sh_webapp_change_icon_main "$@"
+sh_webapp_change_icon "$@"
