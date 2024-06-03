@@ -1,4 +1,45 @@
 #!/usr/bin/env bash
+#shellcheck disable=SC2155,SC2034
+#shellcheck source=/dev/null
+
+#  /usr/share/bigbashview/bcc/apps/biglinux-webapps/webapp-info.sh
+#  Description: WebApps installing programs for BigLinux
+#
+#  Created: 2020/01/11
+#  Altered: 2024/06/01
+#
+#  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
+#                2022-2023, Bruno Gonçalves <www.biglinux.com.br>
+#                2022-2023, Rafael Ruscher <rruscher@gmail.com>
+#                2020-2023, eltonff <www.biglinux.com.br>
+#  All rights reserved.
+#
+#  Redistribution and use in source and binary forms, with or without
+#  modification, are permitted provided that the following conditions
+#  are met:
+#  1. Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+#  2. Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+#  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+#  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+#  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+#  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+#  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+#  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+#  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+#  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+#  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+APP="${0##*/}"
+_VERSION_="1.0.0-20240601"
+LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
+[[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
+[[ -f "${LIBRARY}/tinilib.sh" ]] && source "${LIBRARY}/tinilib.sh"
+[[ -f "${LIBRARY}/weblib.sh" ]] && source "${LIBRARY}/weblib.sh"
 
 DESKNAME=${filedesk##*/}
 USER_DESKTOP=$(xdg-user-dir DESKTOP)
@@ -7,127 +48,127 @@ ICON=$(awk -F'=' '/Icon/{print $2}' "$filedesk")
 CATEGORY=$(awk -F'=' '/Categories/{print $2}' "$filedesk")
 EXEC=$(awk '/Exec/{print $0}' "$filedesk")
 
-if grep -q '.local.bin' <<< "$EXEC";then
-    BIN=$(awk -F'=' '{print $2}' <<< "$EXEC")
-    URL=$(awk '/new-instance/{gsub(/"/, "");print $7}' "$BIN")
-    BROWSER=$(awk '/new-instance/{print $1}' "$BIN")
-elif grep -q 'falkon' <<< "$EXEC";then
-    URL=$(awk '{print $NF}' <<< "$EXEC")
-    BROWSER=$(awk '{gsub(/Exec=/, "");print $1}' <<< "$EXEC")
+if grep -q '.local.bin' <<<"$EXEC"; then
+	BIN=$(awk -F'=' '{print $2}' <<<"$EXEC")
+	URL=$(awk '/new-instance/{gsub(/"/, "");print $7}' "$BIN")
+	BROWSER=$(awk '/new-instance/{print $1}' "$BIN")
+elif grep -q 'falkon' <<<"$EXEC"; then
+	URL=$(awk '{print $NF}' <<<"$EXEC")
+	BROWSER=$(awk '{gsub(/Exec=/, "");print $1}' <<<"$EXEC")
 else
-    URL=$(awk -F'app=' '{print $2}' <<< "$EXEC")
-    BROWSER=$(awk '{gsub(/Exec=/, "");print $1}' <<< "$EXEC")
-    if [ ! "$URL" ];then
-        URL=$(awk '{print $4}' <<< "$EXEC")
-    fi
+	URL=$(awk -F'app=' '{print $2}' <<<"$EXEC")
+	BROWSER=$(awk '{gsub(/Exec=/, "");print $1}' <<<"$EXEC")
+	if [ ! "$URL" ]; then
+		URL=$(awk '{print $4}' <<<"$EXEC")
+	fi
 fi
 
-if grep -q '.var.lib.flatpak.exports.bin' <<< "$BROWSER";then
-    BROWSER=${BROWSER##*/}
+if grep -q '.var.lib.flatpak.exports.bin' <<<"$BROWSER"; then
+	BROWSER=${BROWSER##*/}
 fi
 
-if grep -q '..user.data.dir.' <<< "$EXEC";then
-    checked_perfil='checked'
-elif grep -q 'falkon..p' <<< "$EXEC";then
-    checked_perfil='checked'
+if grep -q '..user.data.dir.' <<<"$EXEC"; then
+	checked_perfil='checked'
+elif grep -q 'falkon..p' <<<"$EXEC"; then
+	checked_perfil='checked'
 fi
 
 [ -L "$USER_DESKTOP/$DESKNAME" ] && checked='checked'
 
 case "$BROWSER" in
-    brave)
-        _ICON='brave'
-        selected_brave='selected'
-    ;;
-    com.brave.Browser)
-        _ICON='brave'
-        selected_brave_flatpak='selected'
-    ;;
-    google-chrome-stable)
-        _ICON='chrome'
-        selected_chrome='selected'
-    ;;
-    com.google.Chrome)
-        _ICON='chrome'
-        selected_chrome_flatpak='selected'
-    ;;
-    chromium)
-        _ICON='chromium'
-        selected_chromium='selected'
-    ;;
-    org.chromium.Chromium)
-        _ICON='chromium'
-        selected_chromium_flatpak='selected'
-    ;;
-    com.github.Eloston.UngoogledChromium)
-        _ICON='ungoogled'
-        selected_ungoogled_flatpak='selected'
-    ;;
-    microsoft-edge-stable)
-        _ICON='edge'
-        selected_edge='selected'
-    ;;
-    com.microsoft.Edge)
-        _ICON='edge'
-        selected_edge_flatpak='selected'
-    ;;
-    org.gnome.Epiphany)
-        _ICON='epiphany'
-        selected_epiphany_flatpak='selected'
-    ;;
-    firefox)
-        _ICON='firefox'
-        selected_firefox='selected'
-    ;;
-    org.mozilla.firefox)
-        _ICON='firefox'
-        selected_firefox_flatpak='selected'
-    ;;
-    librewolf)
-        _ICON='librewolf'
-        selected_librewolf='selected'
-    ;;
-    io.gitlab.librewolf-community)
-        _ICON='librewolf'
-        selected_librewolf_flatpak='selected'
-    ;;
-    vivaldi-stable)
-        _ICON='vivaldi'
-        selected_vivaldi='selected'
-    ;;
-    falkon)
-        _ICON='falkon'
-        selected_falkon='selected'
-    ;;
-    *):;;
+brave)
+	_ICON='brave'
+	selected_brave='selected'
+	;;
+com.brave.Browser)
+	_ICON='brave'
+	selected_brave_flatpak='selected'
+	;;
+google-chrome-stable)
+	_ICON='chrome'
+	selected_chrome='selected'
+	;;
+com.google.Chrome)
+	_ICON='chrome'
+	selected_chrome_flatpak='selected'
+	;;
+chromium)
+	_ICON='chromium'
+	selected_chromium='selected'
+	;;
+org.chromium.Chromium)
+	_ICON='chromium'
+	selected_chromium_flatpak='selected'
+	;;
+com.github.Eloston.UngoogledChromium)
+	_ICON='ungoogled'
+	selected_ungoogled_flatpak='selected'
+	;;
+microsoft-edge-stable)
+	_ICON='edge'
+	selected_edge='selected'
+	;;
+com.microsoft.Edge)
+	_ICON='edge'
+	selected_edge_flatpak='selected'
+	;;
+org.gnome.Epiphany)
+	_ICON='epiphany'
+	selected_epiphany_flatpak='selected'
+	;;
+firefox)
+	_ICON='firefox'
+	selected_firefox='selected'
+	;;
+org.mozilla.firefox)
+	_ICON='firefox'
+	selected_firefox_flatpak='selected'
+	;;
+librewolf)
+	_ICON='librewolf'
+	selected_librewolf='selected'
+	;;
+io.gitlab.librewolf-community)
+	_ICON='librewolf'
+	selected_librewolf_flatpak='selected'
+	;;
+vivaldi-stable)
+	_ICON='vivaldi'
+	selected_vivaldi='selected'
+	;;
+falkon)
+	_ICON='falkon'
+	selected_falkon='selected'
+	;;
+*) : ;;
 esac
 
 case "${CATEGORY/;/}" in
-    Development)
-        selected_Development='selected'
-    ;;
-    Office)
-        selected_Office='selected'
-    ;;
-    Graphics)
-        selected_Graphics='selected'
-    ;;
-    Network)
-        selected_Network='selected'
-    ;;
-    Game)
-        selected_Game='selected'
-    ;;
-    AudioVideo)
-        selected_AudioVideo='selected'
-    ;;
-    Webapps)
-        selected_Webapps='selected'
-    ;;
-    Google)
-        selected_Google='selected'
-    ;;
-    *):;;
+Development)
+	selected_Development='selected'
+	;;
+Office)
+	selected_Office='selected'
+	;;
+Graphics)
+	selected_Graphics='selected'
+	;;
+Network)
+	selected_Network='selected'
+	;;
+Game)
+	selected_Game='selected'
+	;;
+AudioVideo)
+	selected_AudioVideo='selected'
+	;;
+Webapps)
+	selected_Webapps='selected'
+	;;
+Google)
+	selected_Google='selected'
+	;;
+*) : ;;
 esac
 
 echo -n '
