@@ -44,16 +44,21 @@ LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 function sh_webapps_main {
 	# Define o tamanho padrão da janela
 	local default_size='960x720'
-	local file_content
+	local BROWSER
 	local width
 	local height
 	local half_width
 	local half_height
 
-	# Verifica se o arquivo BROWSER existe no HOME_FOLDER, senão executa um script de checagem dos navegadores
-	[[ -r $HOME_FOLDER/BROWSER ]] || sh_webapp_check_browser
-	# Verifica se o arquivo BROWSER tem algum conteudo, senão executa um script de checagem dos navegadores
-	if file_content="$(<$HOME_FOLDER/BROWSER)" && [[ -z "$file_content" ]]; then sh_webapp_check_browser; fi
+	# Verifica se o arquivo .ini existe no HOME_FOLDER, senão executa um script de checagem dos navegadores
+	[[ -r "$INI_FILE_WEBAPPS" ]] || sh_webapp_check_browser
+	# Verifica se o arquivo .ini tem algum browser default, senão executa um script de checagem dos navegadores
+	if BROWSER=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "id") && [[ -z "$BROWSER" ]]; then sh_webapp_check_browser; fi
+	if ! sh_webapp_verify_browser "$BROWSER"; then
+#		notify-send -u critical --icon=webapps --app-name "$0" "$TITLE" "${Amsg[error_browser]}" --expire-time=2000
+		yadmsg "${Amsg[error_browser]}"
+		sh_webapp_check_browser
+	fi
 
 	# Obtém a largura da tela primária usando xrandr
 	if width=$(xrandr | grep -oP 'primary \K[0-9]+(?=x)') && [[ -n "$width" ]]; then
