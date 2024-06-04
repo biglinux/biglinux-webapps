@@ -124,6 +124,17 @@ $(function(){
     $("body").toggleClass("light-mode");
   });
 
+	// Vilmar Catafesta, <vcatafesta@gmail.com> ter 04 jun 2024 07:27:38 -04
+	const toggleButton = document.querySelector(".dark-light");
+	toggleButton.addEventListener("click", () => {
+		document.body.classList.toggle("light-mode");
+		$("body").toggleClass("light-mode");
+		_run(
+			'sh_setbgcolor "' + document.body.classList.contains("light-mode") + '"',
+		);
+	});
+	// Vilmar Catafesta, <vcatafesta@gmail.com> ter 04 jun 2024 07:27:38 -04
+
   $(".product input").click(function(){
     let inputId = this.id.replace(/.*\_/, "");
     let circleId = "#circle_" + inputId;
