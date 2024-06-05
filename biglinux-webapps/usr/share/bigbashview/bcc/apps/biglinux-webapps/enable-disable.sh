@@ -41,4 +41,4 @@ LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 [[ -f "${LIBRARY}/tinilib.sh" ]] && source "${LIBRARY}/tinilib.sh"
 [[ -f "${LIBRARY}/weblib.sh" ]] && source "${LIBRARY}/weblib.sh"
 
-sh_webapp_enable_disable_main "$@"
+sh_webapp_enable-disable "$@"

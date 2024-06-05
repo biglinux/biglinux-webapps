@@ -78,7 +78,7 @@ function sh_webapps_main {
 	# -p Define o nome do aplicativo
 	# -d Define o caminho das webapps
 	# -i Define o ícone do aplicativo
-# MOZ_ENABLE_WAYLAND=1 QT_QPA_PLATFORM=wayland \
+#MOZ_ENABLE_WAYLAND=1 QT_QPA_PLATFORM=wayland \
 QT_QPA_PLATFORM=xcb SDL_VIDEODRIVER=x11 WINIT_UNIX_BACKEND=x11 GDK_BACKEND=x11 \
 		bigbashview index.sh.htm \
 		-s ${default_size} \

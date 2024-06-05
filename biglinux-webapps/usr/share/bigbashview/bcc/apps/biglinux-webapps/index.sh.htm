@@ -306,7 +306,7 @@ function sh_index_sh_main() {
 		</li>
 	EOF
 
-	checked=$(TIni.Get "$INI_FILE_WEBAPPS" "conf" "shortcut")
+#	checked=$(TIni.Get "$INI_FILE_WEBAPPS" "conf" "shortcut")
 
 	cat <<-EOF
 		<li>
@@ -985,31 +985,30 @@ function sh_index_sh_main() {
 			</div>
 		EOF
 
-			function sh_set_popup_browser() {
-				local NativeOrFlatPak="$1" # Native=1, FlatPak=0
-				local cpath
-				local nc=0
+		function sh_set_popup_browser() {
+			local NativeOrFlatPak="$1" # Native=1, FlatPak=0
+			local cpath
+			local nc=0
 
-				for cpath in "${aBrowserPath[@]}"; do
-					if [[ -e "$cpath" ]]; then
-						if ((NativeOrFlatPak)); then # Native
-							[[ "$cpath" =~ '/flatpak/' ]] && continue
-						fi
-						cat <<-EOF
-							<button class="btn-img status-button btn-img-main"
-								id=${aBrowserIdNative[nc]}>
-								<img src="icons/${aBrowserIcon[nc]}.svg"
-									width="38"
-									height="38"
-									data-bin=${aBrowserId[nc]}
-									title=${aBrowserTitle[nc]^^}>
-							</button>
-						EOF
+			for cpath in "${aBrowserPath[@]}"; do
+				if [[ -e "$cpath" ]]; then
+					if ((NativeOrFlatPak)); then # Native
+						[[ "$cpath" =~ '/flatpak/' ]] && continue
 					fi
-					((++nc))
-				done
-			}
-
+					cat <<-EOF
+						<button class="btn-img status-button btn-img-main"
+							id=${aBrowserIdNative[nc]}>
+							<img src="icons/${aBrowserIcon[nc]}.svg"
+								width="38"
+								height="38"
+								data-bin=${aBrowserId[nc]}
+								title=${aBrowserTitle[nc]^^}>
+						</button>
+					EOF
+				fi
+				((++nc))
+			done
+		}
 
 		if ((NATIVE)); then
 			cat <<-EOF
