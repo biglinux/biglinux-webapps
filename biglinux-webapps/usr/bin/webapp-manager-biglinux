@@ -6,7 +6,7 @@
 #  Description: WebApps installing programs for BigLinux
 #
 #  Created: 2020/01/11
-#  Altered: 2024/05/31
+#  Altered: 2024/06/06
 #
 #  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
 #                2022-2023, Bruno Gonçalves <www.biglinux.com.br>
@@ -35,11 +35,21 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 APP="${0##*/}"
-_VERSION_="1.0.0-20240601"
+_VERSION_="1.0.0-20240606"
 LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 [[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
 [[ -f "${LIBRARY}/tinilib.sh" ]] && source "${LIBRARY}/tinilib.sh"
 [[ -f "${LIBRARY}/weblib.sh" ]] && source "${LIBRARY}/weblib.sh"
+
+
+function sh_unset_config() {
+	unset QT_QPA_PLATFORM
+	unset SDL_VIDEODRIVER
+	unset WINIT_UNIX_BACKEND
+	unset GDK_BACKEND
+	unset MOZ_ENABLE_WAYLAND
+	unset QT_QPA_PLATFORM
+}
 
 function sh_webapps_main {
 	# Define o tamanho padrão da janela
@@ -49,13 +59,14 @@ function sh_webapps_main {
 	local height
 	local half_width
 	local half_height
+	local _session
 
 	# Verifica se o arquivo .ini existe no HOME_FOLDER, senão executa um script de checagem dos navegadores
 	[[ -r "$INI_FILE_WEBAPPS" ]] || sh_webapp_check_browser
 	# Verifica se o arquivo .ini tem algum browser default, senão executa um script de checagem dos navegadores
 	if BROWSER=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "id") && [[ -z "$BROWSER" ]]; then sh_webapp_check_browser; fi
 	if ! sh_webapp_verify_browser "$BROWSER"; then
-#		notify-send -u critical --icon=webapps --app-name "$0" "$TITLE" "${Amsg[error_browser]}" --expire-time=2000
+		#		notify-send -u critical --icon=webapps --app-name "$0" "$TITLE" "${Amsg[error_browser]}" --expire-time=2000
 		yadmsg "${Amsg[error_browser]}"
 		sh_webapp_check_browser
 	fi
@@ -66,7 +77,7 @@ function sh_webapps_main {
 		if height=$(xrandr | grep -oP 'primary \K[0-9]+x\K[0-9]+') && [[ -n "$height" ]]; then
 			# Calcula metade da largura e altura
 			half_width=$((width / 2))
-			half_height=$((height / 2))
+			half_height=$((height / 2 * 3 / 2))
 			# Atualiza o tamanho padrão com metade da largura e altura da tela
 			default_size="${half_width}x${half_height}"
 		fi
@@ -78,14 +89,28 @@ function sh_webapps_main {
 	# -p Define o nome do aplicativo
 	# -d Define o caminho das webapps
 	# -i Define o ícone do aplicativo
-#MOZ_ENABLE_WAYLAND=1 QT_QPA_PLATFORM=wayland \
-QT_QPA_PLATFORM=xcb SDL_VIDEODRIVER=x11 WINIT_UNIX_BACKEND=x11 GDK_BACKEND=x11 \
-		bigbashview index.sh.htm \
+
+	sh_unset_config
+	_session="$(sh_get_desktop_session)"
+	case "${_session^^}" in
+	X11)
+		export QT_QPA_PLATFORM=xcb
+		export SDL_VIDEODRIVER=x11
+		export WINIT_UNIX_BACKEND=x11
+		export GDK_BACKEND=x11
+		;;
+	WAYLAND)
+		:
+		;;
+	esac
+
+	bigbashview index.sh.htm \
 		-s ${default_size} \
 		-n "$TITLE" \
 		-p "$APP" \
 		-d "$WEBAPPS_PATH" \
 		-i icons/webapp.svg
+	sh_unset_config
 }
 
 #sh_debug
