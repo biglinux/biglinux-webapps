@@ -1,390 +1,455 @@
 #!/usr/bin/env bash
-##################################
-#  Author Create:eltonff (www.biglinux.com.br)
-#  Author Modify:Rafael Ruscher (rruscher@gmail.com)
-#  Create Date:   2020/09/01
-#  Modify Date:   2022/05/07
-#  Update Date:   2023/01/19
+#shellcheck disable=SC2155,SC2034
+#shellcheck source=/dev/null
+#shellcheck source=${LIBRARY}/bcclib.sh
+#shellcheck source=${LIBRARY}/tinilib.sh
+#shellcheck source=${LIBRARY}/weblib.sh
+#  /usr/share/bigbashview/bcc/apps/biglinux-webapps/change_icon.sh
+#  Description: WebApps installing programs for BigLinux
 #
-#  Description:WebApps usage of BigLinux
+#  Created: 2020/01/11
+#  Altered: 2024/06/04
 #
-#  Licensed by GPL V2 or greater
-##################################
+#  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
+#                2020-2023, Bruno Gonçalves <www.biglinux.com.br>
+#                2020-2023, Rafael Ruscher <rruscher@gmail.com>
+#                2020-2023, eltonff <www.biglinux.com.br>
+#  All rights reserved.
+#
+#  Redistribution and use in source and binary forms, with or without
+#  modification, are permitted provided that the following conditions
+#  are met:
+#  1. Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+#  2. Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+#  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+#  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+#  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+#  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+#  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+#  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+#  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+#  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+#  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#Translation
-export TEXTDOMAINDIR="/usr/share/locale"
-export TEXTDOMAIN=biglinux-webapps
+APP="${0##*/}"
+_VERSION_="1.0.0-20240604"
+LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
+[[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
+[[ -f "${LIBRARY}/tinilib.sh" ]] && source "${LIBRARY}/tinilib.sh"
+[[ -f "${LIBRARY}/weblib.sh" ]] && source "${LIBRARY}/weblib.sh"
 
-NATIVE=false
-FLATPAK=false
-COUNT_BROWSER=0
+function sh_index_sh_config() {
+	declare -g option_value
+	declare -g option_text
+	declare -g NATIVE=0
+	declare -g FLATPAK=0
+	declare -g COUNT_BROWSER=0
+	declare -g Detectando_o_nome=$(gettext "Detectando o nome, aguarde...")
+	declare -g Detectando_o_icone=$(gettext "Detectando o icone, aguarde...")
+	declare -g Adicionando_o_webapp=$(gettext "Adicionando o webapp...")
+	declare -g Aplicando_as_alteracoes=$(gettext "Aplicando as alterações...")
+	declare -g Criando_o_backup=$(gettext "Criando o backup...")
+	declare -g Importando_os_webapps=$(gettext "Importando os webapps...")
+	declare -g Removendo_o_webapp=$(gettext "Removendo o webapp...")
+	declare -g Removendo_todos_os_webapps=$(gettext "Removendo todos os webapps...")
+	declare -g Adicionar_WebApps=$(gettext "Adicionar WebApps")
+	declare -g Remover_WebApps=$(gettext "Remover WebApps")
+	declare -g Editar_WebApp=$(gettext "Editar WebApp")
+	declare -g WebApps_Adicionados=$(gettext "WebApps Adicionados")
+	declare -g WebApps_BigLinux="WebApps BigLinux"
+	declare -g Exemplo=$(gettext "Exemplo")
+	declare -g Url_Exemplo="https://www.exemplo.com"
+	declare -g URL="URL"
+	declare -g Nome=$(gettext "Nome")
+	declare -g Icone_do_WebApp=$(gettext "Icone do WebApp")
+	declare -g Alterar=$(gettext "Alterar")
+	declare -g Cancelar=$(gettext "Cancelar")
+	declare -g Aplicar=$(gettext "Aplicar")
+	declare -g Adicionar=$(gettext "Adicionar")
+	declare -g Fechar=$(gettext "Fechar")
+	declare -g Detectar_Nome_e_Icone=$(gettext "Detectar nome e icone")
+	declare -g Navegador=$(gettext "Navegador")
+	declare -g Categoria=$(gettext "Categoria")
+	declare -g Criar_atalho_na_Area_de_Trabalho=$(gettext "Criar atalho na Área de Trabalho")
+	declare -g Perfil_Adicional=$(gettext "Perfil Adicional")
+	declare -g Desenvolvimento=$(gettext "Desenvolvimento")
+	declare -g Escritorio=$(gettext "Escritório")
+	declare -g Graficos=$(gettext "Gráficos")
+	declare -g Internet=$(gettext "Internet")
+	declare -g Jogos=$(gettext "Jogos")
+	declare -g Multimidia=$(gettext "Multimidia")
+	declare -g WebApps_Nativos=$(gettext "WebApps Nativos")
+	declare -g Navegador_padrao=$(gettext "Navegador Padrão")
+	declare -g dos=$(gettext "dos")
+	declare -g Sim=$(gettext "Sim")
+	declare -g Nao=$(gettext "Não")
+	declare -g O_navegador_nao_esta_instalado=$(gettext "O navegador não está instalado!")
+	declare -g Nao_existem_navegadores_compativeis_instalados_no_sistema=$(gettext "Não existem navegadores compatíveis instalados no sistema!")
+	declare -g Selecione_o_navegador_preferido=$(gettext "Selecione o navegador preferido")
+	declare -g Voce_deseja_remover_todos_os_WebApps=$(gettext "Você deseja remover todos os WebApps?")
+	declare -g Os_WebApps_foram_restaurados_com_sucesso=$(gettext "Os WebApps foram restaurados com sucesso!")
+	declare -g O_backup_dos_WebApps_foi_salvo_em=$(gettext "O backup dos WebApps foi salvo em")
+	declare -g Selecione_o_icone_preferido=$(gettext "Selecione o ícone preferido")
+	declare -g O_WebApp_foi_adicionado_com_sucesso=$(gettext "O WebApp foi adicionado com sucesso!")
+	declare -g A_URL_invalida_ou_conexao_falhou=$(gettext "A URL é inválida ou a conexão falhou.")
+	declare -g Tente_inserir_o_icone_pelo_botao_Alterar=$(gettext "Tente inserir o ícone pelo botão Alterar.")
+	declare -g Para_detectar_o_Nome_e_o_icone=$(gettext "Para detectar o Nome e o Ícone,")
+	declare -g voce_precisa_informar_a_URL=$(gettext "você precisa informar a URL.")
+	declare -g Para_adicionar_um_WebApp=$(gettext "Para adicionar um WebApp,")
+	declare -g voce_precisa_informar_a_URL_e_o_Nome=$(gettext "você precisa informar a URL e o Nome.")
+	declare -g Nenhum_WebApp_adicionado=$(gettext "Nenhum WebApp adicionado!")
+	declare -g Tem_certeza_que_deseja_remover_este_WebApp=$(gettext "Tem certeza que deseja remover este WebApp?")
+	declare -g Importar_Backup=$(gettext "Importar Backup")
+	declare -g Criar_Backup=$(gettext "Criar Backup")
+	declare -g Nativo=$(gettext "Nativo")
+}
 
-echo -n '
-<!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  '"$(/usr/share/bigbashview/bcc/shell/getbgcolor.sh)"'
-  <!-- loading -->
-  <div class="lds-ring">
-    <span class="hide text-loading" id="text-loading-name">'$"Dectando o nome, aguarde..."'</span>
-    <span class="hide text-loading" id="text-loading-icon">'$"Dectando o ícone, aguarde..."'</span>
-    <span class="hide text-loading" id="text-loading-add">'$"Adicionando o webapp..."'</span>
-    <span class="hide text-loading" id="text-loading-edit">'$"Aplicando as alterações..."'</span>
-    <span class="hide text-loading" id="text-loading-bkp">'$"Criando o backup..."'</span>
-    <span class="hide text-loading" id="text-loading-restore">'$"Importando os webapps..."'</span>
-    <span class="hide text-loading" id="text-loading-del">'$"Removendo o webapp..."'</span>
-    <span class="hide text-loading" id="text-loading-del-all">'$"Removendo todos os webapps..."'</span>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
-  <!-- toggle theme -->
-  <div class="dark-light">
-    <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-    </svg>
-  </div>
+function sh_index_sh_setbrowse() {
+	local cpath
+	local nc=0
 
-  <div class="principal">
-    <div class="wrap">
-      <div class="user">
-        <div class="logo">
-          <img src="icons/logo-big-trans-branco.png" alt="logo" class="logo-biglinux"/>
-        </div>
-        <div class="user" id="content">
-          <!-- TABS -->
-          <div class="tabs">
-            <input type="radio" id="tab1" name="tab-control"/>
-            <input type="radio" id="tab2" name="tab-control" checked/>
-            <input type="radio" id="tab3" name="tab-control"/>
-            <ul>
-              <li>
-                <label for="tab1" role="button" id="#add-tab-content">
-                  <svg viewBox="0 0 512 512">
-                    <path d="M464,128H272L208,64H48A48,48,0,0,0,0,112V400a48,48,0,0,0,48,48H464a48,48,0,0,0,48-48V176A48,48,0,0,0,464,128ZM359.5,296a16,16,0,0,1-16,16h-64v64a16,16,0,0,1-16,16h-16a16,16,0,0,1-16-16V312h-64a16,16,0,0,1-16-16V280a16,16,0,0,1,16-16h64V200a16,16,0,0,1,16-16h16a16,16,0,0,1,16,16v64h64a16,16,0,0,1,16,16Z"/>
-                  </svg>
-                  <span>'$"Adicionar WebApps"'</span>
-                </label>
-              </li>
-              <li>
-                <label for="tab2" role="button" id="#list-tab-content">
-                  <svg viewBox="0 0 576 512">
-                    <path d="M572.694 292.093L500.27 416.248A63.997 63.997 0 0 1 444.989 448H45.025c-18.523 0-30.064-20.093-20.731-36.093l72.424-124.155A64 64 0 0 1 152 256h399.964c18.523 0 30.064 20.093 20.73 36.093zM152 224h328v-48c0-26.51-21.49-48-48-48H272l-64-64H48C21.49 64 0 85.49 0 112v278.046l69.077-118.418C86.214 242.25 117.989 224 152 224z"/>
-                  </svg>
-                  <span>'$"WebApps Adicionados"'</span>
-                </label>
-              </li>
-              <li>
-                <label for="tab3" role="button" id="#webappsbig-tab-content">
-                  <svg viewBox="0 0 576 512">
-                    <path d="M384 64H192C86 64 0 150 0 256s86 192 192 192h192c106 0 192-86 192-192S490 64 384 64zm0 320c-70.8 0-128-57.3-128-128 0-70.8 57.3-128 128-128 70.8 0 128 57.3 128 128 0 70.8-57.3 128-128 128z"/>
-                  </svg>
-                  <span>'$"WebApps BigLinux"'</span>
-                </label>
-              </li>
-            </ul>
-            <div class="slider">
-              <div class="indicator"></div>
-            </div>
-          </div>
-          <div class="overflow-wrapper">
-            <div class="form-wrap">
+	for cpath in "${aBrowserPath[@]}"; do
+		if [[ -e "$cpath" ]]; then
+			[[ "$cpath" =~ '/flatpak/' ]] && FLATPAK=1 || NATIVE=1
+			option_value="${aBrowserId[nc]}"
+			option_text="${aBrowserTitle[nc]}"
+			((++COUNT_BROWSER))
+			cat <<-EOF
+				<option value=$option_value>$option_text</option>
+			EOF
+		fi
+		((++nc))
+	done
+}
 
-              <!-- TABS CONTENT -->
-            <div class="tabs-content">
+function sh_index_sh_main() {
+	cat <<-EOF
+		<!DOCTYPE html>
+		<html>
+		<head>
+		<link rel="stylesheet" href="css/style.css">
+		$(sh_get_de)
+		</head>
+		$(sh_getbgcolor)
 
-              <!-- INICIO TABS CONTENT ADD -->
-              <div id="add-tab-content" class="fc-card">
-                <form class="login-form" id="formAdd" action="webapp-install.sh">
-                  <div class="content-section" style="margin-top:0px;">
-                    <ul style="margin-top:-10px;">
-                      <li>
-                        <div class="products">
-                          <svg viewBox="0 0 512 512">
-                            <path fill="currentColor" d="M512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM57.71 192.1L67.07 209.4C75.36 223.9 88.99 234.6 105.1 239.2L162.1 255.7C180.2 260.6 192 276.3 192 294.2V334.1C192 345.1 198.2 355.1 208 359.1C217.8 364.9 224 374.9 224 385.9V424.9C224 440.5 238.9 451.7 253.9 447.4C270.1 442.8 282.5 429.1 286.6 413.7L289.4 402.5C293.6 385.6 304.6 371.1 319.7 362.4L327.8 357.8C342.8 349.3 352 333.4 352 316.1V307.9C352 295.1 346.9 282.9 337.9 273.9L334.1 270.1C325.1 261.1 312.8 255.1 300.1 255.1H256.1C245.9 255.1 234.9 253.1 225.2 247.6L190.7 227.8C186.4 225.4 183.1 221.4 181.6 216.7C178.4 207.1 182.7 196.7 191.7 192.1L197.7 189.2C204.3 185.9 211.9 185.3 218.1 187.7L242.2 195.4C250.3 198.1 259.3 195 264.1 187.9C268.8 180.8 268.3 171.5 262.9 165L249.3 148.8C239.3 136.8 239.4 119.3 249.6 107.5L265.3 89.12C274.1 78.85 275.5 64.16 268.8 52.42L266.4 48.26C262.1 48.09 259.5 48 256 48C163.1 48 84.4 108.9 57.71 192.1L57.71 192.1zM437.6 154.5L412 164.8C396.3 171.1 388.2 188.5 393.5 204.6L410.4 255.3C413.9 265.7 422.4 273.6 433 276.3L462.2 283.5C463.4 274.5 464 265.3 464 256C464 219.2 454.4 184.6 437.6 154.5H437.6z"/>
-                          </svg>
-                          '$"URL:"'
-                        </div>
-                        <input type="search" class="input" id="urlDesk" required
-                               name="urldesk" placeholder="'$"https://www.exemplo.com"'"/>
-                        <div class="button-wrapper">
-                          <div class=app-card>
-                            <div class="button-wrapper">
-                              <button class="button" style="height:30px" id="detectAll">'$"Detectar Nome e Ícone"'</button>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
+		<!-- loading -->
+		<div class="lds-ring">
+		<span class="hide text-loading" id="text-loading-name">$Detectando_o_nome</span>
+		<span class="hide text-loading" id="text-loading-icon">$Detectando_o_icone</span>
+		<span class="hide text-loading" id="text-loading-add">$Adicionando_o_webapp</span>
+		<span class="hide text-loading" id="text-loading-edit">$Aplicando_as_alteracoes</span>
+		<span class="hide text-loading" id="text-loading-bkp">$Criando_o_backup</span>
+		<span class="hide text-loading" id="text-loading-restore">$Importando_os_webapps</span>
+		<span class="hide text-loading" id="text-loading-del">$Removendo_o_webapp</span>
+		<span class="hide text-loading" id="text-loading-del-all">$Removendo_todos_os_webapps</span>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		</div>
 
-                      <li>
-                        <div class="products">
-                          <svg viewBox="0 0 512 512">
-                            <path fill="currentColor" d="M96 0C113.7 0 128 14.33 128 32V64H480C497.7 64 512 78.33 512 96C512 113.7 497.7 128 480 128H128V480C128 497.7 113.7 512 96 512C78.33 512 64 497.7 64 480V128H32C14.33 128 0 113.7 0 96C0 78.33 14.33 64 32 64H64V32C64 14.33 78.33 0 96 0zM448 160C465.7 160 480 174.3 480 192V352C480 369.7 465.7 384 448 384H192C174.3 384 160 369.7 160 352V192C160 174.3 174.3 160 192 160H448z"/>
-                          </svg>
-                          '$"Nome:"'
-                        </div>
-                        <input type="search" class="input" id="nameDesk" name="namedesk" required
-                               placeholder="'$"Exemplo"'"/>
-                      </li>
+		<!-- toggle theme -->
+		<div class="dark-light">
+		<svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+		<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+		</svg>
+		</div>
+	EOF
 
-                      <li>
-                        <div class="products">
-                          <div style="margin-bottom:15px" class="svg-center">
-                            <div class="iconDetect-display">
-                              <div class="iconDetect-remove">
-                                <svg viewBox="0 0 448 512" style="width:20px;height:20px;"><path d="M384 32C419.3 32 448 60.65 448 96V416C448 451.3 419.3 480 384 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H384zM143 208.1L190.1 255.1L143 303C133.7 312.4 133.7 327.6 143 336.1C152.4 346.3 167.6 346.3 176.1 336.1L223.1 289.9L271 336.1C280.4 346.3 295.6 346.3 304.1 336.1C314.3 327.6 314.3 312.4 304.1 303L257.9 255.1L304.1 208.1C314.3 199.6 314.3 184.4 304.1 175C295.6 165.7 280.4 165.7 271 175L223.1 222.1L176.1 175C167.6 165.7 152.4 165.7 143 175C133.7 184.4 133.7 199.6 143 208.1V208.1z"/></svg>
-                              </div>
-                            </div>
-                            <img id="iconDesk" src="icons/default-webapp.svg" width="58" height="58" />
-                            <input type="hidden" name="icondesk" value="'"${PWD}/icons/default-webapps.png"'" id="inputIconDesk" />
-                          </div>
-                          '$"Ícone do WebApp"'
-                        </div>
-                        <div class="button-wrapper">
-                          <button class="button" style="height:30px" id="loadIcon">'$"Alterar"'</button>
-                        </div>
-                      </li>
+	cat <<-EOF
+		<div class="principal">
+		<div class="wrap">
+		<div class="user">
+		<div class="logo">
+		<img src="icons/logo-big-trans-branco.png" alt="logo" class="logo-biglinux"/>
+		</div>
+		<div class="user" id="content">
 
-                      <li>
-                        <div class="products">
-                          <div class="svg-center" id="thumb">
-                            <img height="58" width="58" id="browser"/>
-                          </div>
-                          '$"Navegador"'
-                        </div>
-                        <div class="button-wrapper">
-                          <select class="svg-center" id="browserSelect" name="browser">'
+		<!-- TABS -->
+		<div class="tabs">
+		<input type="radio" id="tab1" name="tab-control"/>
+		<input type="radio" id="tab2" name="tab-control" checked/>
+		<input type="radio" id="tab3" name="tab-control"/>
+		<ul>
+		<li>
+		<label for="tab1" role="button" id="#add-tab-content">
+		<svg viewBox="0 0 512 512">
+		<path d="M464,128H272L208,64H48A48,48,0,0,0,0,112V400a48,48,0,0,0,48,48H464a48,48,0,0,0,48-48V176A48,48,0,0,0,464,128ZM359.5,296a16,16,0,0,1-16,16h-64v64a16,16,0,0,1-16,16h-16a16,16,0,0,1-16-16V312h-64a16,16,0,0,1-16-16V280a16,16,0,0,1,16-16h64V200a16,16,0,0,1,16-16h16a16,16,0,0,1,16,16v64h64a16,16,0,0,1,16,16Z"/>
+		</svg>
+		<span>
+		$Adicionar_WebApps
+		</span>
+		</label>
+		</li>
+		<li>
+		<label for="tab2" role="button" id="#list-tab-content">
+		<svg viewBox="0 0 576 512">
+			<path d="M572.694 292.093L500.27 416.248A63.997 63.997 0 0 1 444.989 448H45.025c-18.523 0-30.064-20.093-20.731-36.093l72.424-124.155A64 64 0 0 1 152 256h399.964c18.523 0 30.064 20.093 20.73 36.093zM152 224h328v-48c0-26.51-21.49-48-48-48H272l-64-64H48C21.49 64 0 85.49 0 112v278.046l69.077-118.418C86.214 242.25 117.989 224 152 224z"/>
+		</svg>
+		<span>
+			$WebApps_Adicionados
+		</span>
+		</label>
+		</li>
 
-                            if [ -e /usr/lib/brave-browser/brave ] || [ -e /opt/brave-bin/brave ];then
-                              echo -n '<option value="brave">'$"BRAVE"'</option>'
-                              NATIVE=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
+		<li>
+		<label for="tab3" role="button" id="#webappsbig-tab-content">
+		<svg viewBox="0 0 576 512">
+			<path d="M384 64H192C86 64 0 150 0 256s86 192 192 192h192c106 0 192-86 192-192S490 64 384 64zm0 320c-70.8 0-128-57.3-128-128 0-70.8 57.3-128 128-128 70.8 0 128 57.3 128 128 0 70.8-57.3 128-128 128z"/>
+		</svg>
+		<span>
+			$WebApps_BigLinux
+		</span>
+		</label>
+		</li>
+		</ul>
+		<div class="slider">
+		<div class="indicator"></div>
+		</div>
+		</div>
+		<div class="overflow-wrapper">
+		<div class="form-wrap">
 
-                            if [ -e /opt/google/chrome/google-chrome ];then
-                              echo -n '<option value="google-chrome-stable">'$"CHROME"'</option>'
-                              NATIVE=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
+		<!-- TABS CONTENT -->
+		<div class="tabs-content">
 
-                            if [ -e /usr/lib/chromium/chromium ];then
-                              echo -n '<option value="chromium">'$"CHROMIUM"'</option>'
-                              NATIVE=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
+		<!-- INICIO TABS CONTENT ADD -->
+		<div id="add-tab-content" class="fc-card">
+		<form class="login-form" id="formAdd" action="webapp-install.sh">
+		<div class="content-section" style="margin-top:0px;">
+		<ul style="margin-top:-10px;">
+		<li>
+		<div class="products">
+		<svg viewBox="0 0 512 512">
+			<path fill="currentColor" d="M512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM57.71 192.1L67.07 209.4C75.36 223.9 88.99 234.6 105.1 239.2L162.1 255.7C180.2 260.6 192 276.3 192 294.2V334.1C192 345.1 198.2 355.1 208 359.1C217.8 364.9 224 374.9 224 385.9V424.9C224 440.5 238.9 451.7 253.9 447.4C270.1 442.8 282.5 429.1 286.6 413.7L289.4 402.5C293.6 385.6 304.6 371.1 319.7 362.4L327.8 357.8C342.8 349.3 352 333.4 352 316.1V307.9C352 295.1 346.9 282.9 337.9 273.9L334.1 270.1C325.1 261.1 312.8 255.1 300.1 255.1H256.1C245.9 255.1 234.9 253.1 225.2 247.6L190.7 227.8C186.4 225.4 183.1 221.4 181.6 216.7C178.4 207.1 182.7 196.7 191.7 192.1L197.7 189.2C204.3 185.9 211.9 185.3 218.1 187.7L242.2 195.4C250.3 198.1 259.3 195 264.1 187.9C268.8 180.8 268.3 171.5 262.9 165L249.3 148.8C239.3 136.8 239.4 119.3 249.6 107.5L265.3 89.12C274.1 78.85 275.5 64.16 268.8 52.42L266.4 48.26C262.1 48.09 259.5 48 256 48C163.1 48 84.4 108.9 57.71 192.1L57.71 192.1zM437.6 154.5L412 164.8C396.3 171.1 388.2 188.5 393.5 204.6L410.4 255.3C413.9 265.7 422.4 273.6 433 276.3L462.2 283.5C463.4 274.5 464 265.3 464 256C464 219.2 454.4 184.6 437.6 154.5H437.6z"/>
+		</svg>
+		$URL
+		</div>
+		<input type="search" class="input" id="urlDesk" required name="urldesk" placeholder=$Url_Exemplo>
+		<div class="button-wrapper">
+		<div class=app-card>
+		<div class="button-wrapper">
+		<button class="button" style="height:30px" id="detectAll">$Detectar_Nome_e_Icone</button>
+		</div>
+		</div>
+		</div>
+		</li>
 
-                            if [ -e /opt/microsoft/msedge/microsoft-edge ];then
-                              echo -n '<option value="microsoft-edge-stable">'$"EDGE"'</option>'
-                              NATIVE=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
+		<li>
+		<div class="products">
+		<svg viewBox="0 0 512 512">
+			<path fill="currentColor" d="M96 0C113.7 0 128 14.33 128 32V64H480C497.7 64 512 78.33 512 96C512 113.7 497.7 128 480 128H128V480C128 497.7 113.7 512 96 512C78.33 512 64 497.7 64 480V128H32C14.33 128 0 113.7 0 96C0 78.33 14.33 64 32 64H64V32C64 14.33 78.33 0 96 0zM448 160C465.7 160 480 174.3 480 192V352C480 369.7 465.7 384 448 384H192C174.3 384 160 369.7 160 352V192C160 174.3 174.3 160 192 160H448z"/>
+		</svg>
+		$Nome
+		</div>
+		<input type="search" class="input" id="nameDesk" name="namedesk" required placeholder=$Exemplo>
+		</li>
 
-                            if [ -e /usr/lib/firefox/firefox ];then
-                              echo -n '<option value="firefox">'$"FIREFOX"'</option>'
-                              NATIVE=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
+		<li>
+		<div class="products">
+		<div style="margin-bottom:15px" class="svg-center">
+		<div class="iconDetect-display">
+		<div class="iconDetect-remove">
+		<svg viewBox="0 0 448 512" style="width:20px;height:20px;">
+			<path d="M384 32C419.3 32 448 60.65 448 96V416C448 451.3 419.3 480 384 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H384zM143 208.1L190.1 255.1L143 303C133.7 312.4 133.7 327.6 143 336.1C152.4 346.3 167.6 346.3 176.1 336.1L223.1 289.9L271 336.1C280.4 346.3 295.6 346.3 304.1 336.1C314.3 327.6 314.3 312.4 304.1 303L257.9 255.1L304.1 208.1C314.3 199.6 314.3 184.4 304.1 175C295.6 165.7 280.4 165.7 271 175L223.1 222.1L176.1 175C167.6 165.7 152.4 165.7 143 175C133.7 184.4 133.7 199.6 143 208.1V208.1z"/></svg>
+		</div>
+		</div>
+		<img id="iconDesk" src="icons/default-webapp.svg" width="58" height="58" />
+		<input type="hidden" name="icondesk" value="'"${PWD}/icons/default-webapps.png"'" id="inputIconDesk" />
+		</div>
+		$Icone_do_WebApp
+		</div>
+		<div class="button-wrapper">
+		<button class="button" style="height:30px" id="loadIcon">$Alterar</button>
+		</div>
+		</li>
 
-                            if [ -e /usr/bin/falkon ];then
-                              echo -n '<option value="falkon">'$"FALKON"'</option>'
-                              NATIVE=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
-                            if [ -e /usr/lib/librewolf/librewolf ];then
-                              echo -n '<option value="librewolf">'$"LIBREWOLF"'</option>'
-                              NATIVE=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
+		<li>
+		<div class="products">
+		<div class="svg-center" id="thumb">
+		<img height="58" width="58" id="browser"/>
+		</div>
+		$Navegador
+		</div>
+		<div class="button-wrapper">
+		<select class="svg-center" id="browserSelect" name="browser">
+	EOF
 
-                            if [ -e /opt/vivaldi/vivaldi ];then
-                              echo -n '<option value="vivaldi-stable">'$"VIVALDI"'</option>'
-                              NATIVE=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
+	sh_index_sh_setbrowse
 
-                            if [ -e /var/lib/flatpak/exports/bin/com.brave.Browser ];then
-                              echo -n '<option value="com.brave.Browser">'$"BRAVE (FLATPAK)"'</option>'
-                              FLATPAK=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
+	cat <<-EOF
+		</select>
+		</div>
+		</li>
+		<li>
+		<div class="products">
+		<div class="svg-center" id="imgCategory">$(<./icons/Webapps.svg)</div>
+		$Categoria
+		</div>
+		<div class="button-wrapper">
+		<div class="svg-center">
+		<select class="svg-center" id="categorySelect" name="category">
+			<option value="Development">${Desenvolvimento^^}</option>
+			<option value="Office">${Escritorio^^}</option>
+			<option value="Graphics">${Graficos^^}</option>
+			<option value="Network">${Internet^^}</option>
+			<option value="Game">${Jogos^^}</option>
+			<option value="AudioVideo">${Multimidia^^}</option>
+			<option value="Webapps" selected>WEBAPPS</option>
+			<option value="Google">WEBAPPS GOOGLE</option>
+		</select>
+		</div>
+		</div>
+		</li>
+	EOF
 
-                            if [ -e /var/lib/flatpak/exports/bin/com.google.Chrome ];then
-                              echo -n '<option value="com.google.Chrome">'$"CHROME (FLATPAK)"'</option>'
-                              FLATPAK=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
+#	checked=$(TIni.Get "$INI_FILE_WEBAPPS" "conf" "shortcut")
 
-                            if [ -e /var/lib/flatpak/exports/bin/org.chromium.Chromium ];then
-                              echo -n '<option value="org.chromium.Chromium">'$"CHROMIUM (FLATPAK)"'</option>'
-                              FLATPAK=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
+	cat <<-EOF
+		<li>
+		<div class="products">
+		<svg viewBox="0 0 512 512">
+			<path fill="currentColor" d="M464 96h-192l-64-64h-160C21.5 32 0 53.5 0 80v352C0 458.5 21.5 480 48 480h416c26.5 0 48-21.5 48-48v-288C512 117.5 490.5 96 464 96zM336 311.1h-56v56C279.1 381.3 269.3 392 256 392c-13.27 0-23.1-10.74-23.1-23.1V311.1H175.1C162.7 311.1 152 301.3 152 288c0-13.26 10.74-23.1 23.1-23.1h56V207.1C232 194.7 242.7 184 256 184s23.1 10.74 23.1 23.1V264h56C349.3 264 360 274.7 360 288S349.3 311.1 336 311.1z"/>
+		</svg>
+		$Criar_atalho_na_Area_de_Trabalho
+		</div>
+		<div class="button-wrapper">
+		<!-- Checkbox -->
+		<!-- input id="shortcut" type="checkbox" class="switch" name="shortcut" onchange="checkIfChecked()"/ -->
+		<input id="shortcut" type="checkbox" class="switch" name="shortcut"/>
+		</div>
+		</li>
 
-                            if [ -e /var/lib/flatpak/exports/bin/com.microsoft.Edge ];then
-                              echo -n '<option value="com.microsoft.Edge">'$"EDGE (FLATPAK)"'</option>'
-                              FLATPAK=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
+		<script>
+		// Variável que você deseja ler
+		var myVariable = true; // Aqui você pode definir o valor da variável conforme necessário
 
-                            if [ -e /var/lib/flatpak/exports/bin/org.gnome.Epiphany ];then
-                              echo -n '<option value="org.gnome.Epiphany">'$"EPIPHANY (FLATPAK)"'</option>'
-                            fi
+		// Função para marcar ou desmarcar o checkbox com base no valor da variável
+		function updateCheckbox() {
+		  var checkbox = document.getElementById("shortcut");
+		  checkbox.checked = myVariable;
+		}
 
-                            if [ -e /var/lib/flatpak/exports/bin/org.mozilla.firefox ];then
-                              echo -n '<option value="org.mozilla.firefox">'$"FIREFOX (FLATPAK)"'</option>'
-                              FLATPAK=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
+		// Chama a função para atualizar o estado do checkbox
+		updateCheckbox();
+		</script>
 
-                            if [ -e /var/lib/flatpak/exports/bin/io.gitlab.librewolf-community ];then
-                              echo -n '<option value="io.gitlab.librewolf-community">'$"LIBREWOLF (FLATPAK)"'</option>'
-                              FLATPAK=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
+		<script>
+		function checkIfChecked() {
+		  var checkbox = document.getElementById("shortcut");
+		  if (checkbox.checked) {
+		    alert("O checkbox está marcado!");
+		  } else {
+		    alert("O checkbox não está marcado.");
+		  }
+		}
+		</script>
+	EOF
 
-                            if [ -e /var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium ];then
-                              echo -n '<option value="com.github.Eloston.UngoogledChromium">'$"UNGOOGLED (FLATPAK)"'</option>'
-                              FLATPAK=true
-                              COUNT_BROWSER=$((COUNT_BROWSER+1))
-                            fi
+	cat <<-EOF
+		<li id="perfilAdd">
+		<div class="products">
+		<svg viewBox="0 0 640 512">
+			<path fill="currentColor" d="M224 256c70.7 0 128-57.31 128-128S294.7 0 224 0C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3C0 496.5 15.52 512 34.66 512h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304zM616 200h-48v-48C568 138.8 557.3 128 544 128s-24 10.75-24 24v48h-48C458.8 200 448 210.8 448 224s10.75 24 24 24h48v48C520 309.3 530.8 320 544 320s24-10.75 24-24v-48h48C629.3 248 640 237.3 640 224S629.3 200 616 200z"/>
+		</svg>
+		$Perfil_Adicional
+		</div>
+		<div class="button-wrapper">
+		<input id="addPerfil" type="checkbox" class="switch" name="newperfil"/>
+		</div>
+		</li>
+		</ul>
+		</div>
 
-                    echo -n '</select>
+		<div style="text-align:center;display:inline-block">
+		<button class="button" type="reset" id="cancel" style="height:30px;margin:15px 5px 0 5px">$Cancelar</button>
+		<button class="button" type="submit" id="install" style="height:30px;margin:15px 5px 0 5px">$Adicionar</button>
+		</div>
+		</form>
 
-                        </div>
-                      </li>
+		<!--URL OR NAME MODAL ERROR-->
+		<div class="pop-up" id="urlNameError">
+		<div class="pop-up__subtitle">$Para_adicionar_um_WebApp<br>$voce_precisa_informar_a_URL_e_o_Nome</div>
+		<div class="content-button-wrapper">
+		<button class="content-button status-button2 close">$Fechar</button>
+		</div>
+		</div>
 
-                      <li>
-                        <div class="products">
-                          <div class="svg-center" id="imgCategory">'"$(<./icons/Webapps.svg)"'</div>
-                          '$"Categoria"'
-                        </div>
-                        <div class="button-wrapper">
-                          <div class="svg-center">
-                            <select class="svg-center" id="categorySelect" name="category">
-                              <option value="Development">'$"DESENVOLVIMENTO"'</option>
-                              <option value="Office">'$"ESCRITÓRIO"'</option>
-                              <option value="Graphics">'$"GRÁFICOS"'</option>
-                              <option value="Network">INTERNET</option>
-                              <option value="Game">'$"JOGOS"'</option>
-                              <option value="AudioVideo">'$"MULTIMÍDIA"'</option>
-                              <option value="Webapps" selected>'$"WEBAPPS"'</option>
-                              <option value="Google">'$"WEBAPPS GOOGLE"'</option>
-                            </select>
-                          </div>
-                        </div>
-                      </li>
+		<!--EMPTY URL MODAL-->
+		<div class="pop-up" id="urlEmpty">
+		<div class="pop-up__subtitle">$Para_detectar_o_Nome_e_o_icone<br>$voce_precisa_informar_a_URL</div>
+		<div class="content-button-wrapper">
+		<button class="content-button status-button2 close">$Fechar</button>
+		</div>
+		</div>
 
-                      <li>
-                        <div class="products">
-                          <svg viewBox="0 0 512 512">
-                            <path fill="currentColor" d="M464 96h-192l-64-64h-160C21.5 32 0 53.5 0 80v352C0 458.5 21.5 480 48 480h416c26.5 0 48-21.5 48-48v-288C512 117.5 490.5 96 464 96zM336 311.1h-56v56C279.1 381.3 269.3 392 256 392c-13.27 0-23.1-10.74-23.1-23.1V311.1H175.1C162.7 311.1 152 301.3 152 288c0-13.26 10.74-23.1 23.1-23.1h56V207.1C232 194.7 242.7 184 256 184s23.1 10.74 23.1 23.1V264h56C349.3 264 360 274.7 360 288S349.3 311.1 336 311.1z"/>
-                          </svg>
-                          '$"Criar atalho na Área de Trabalho"'
-                        </div>
-                        <div class="button-wrapper">
-                          <input id="shortcut" type="checkbox" class="switch" name="shortcut"/>
-                        </div>
-                      </li>
+		<!--DETECT ICON MODAL ERROR-->
+		<div class="pop-up" id="detectIconError">
+		<div class="pop-up__subtitle">$A_URL_invalida_ou_conexao_falhou<br>$Tente_inserir_o_icone_pelo_botao_Alterar</div>
+		<div class="content-button-wrapper">
+		<button class="content-button status-button2 close">$Fechar</button>
+		</div>
+		</div>
 
-                      <li id="perfilAdd">
-                        <div class="products">
-                          <svg viewBox="0 0 640 512">
-                            <path fill="currentColor" d="M224 256c70.7 0 128-57.31 128-128S294.7 0 224 0C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3C0 496.5 15.52 512 34.66 512h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304zM616 200h-48v-48C568 138.8 557.3 128 544 128s-24 10.75-24 24v48h-48C458.8 200 448 210.8 448 224s10.75 24 24 24h48v48C520 309.3 530.8 320 544 320s24-10.75 24-24v-48h48C629.3 248 640 237.3 640 224S629.3 200 616 200z"/>
-                          </svg>
-                          '$"Perfil adicional"'
-                        </div>
-                        <div class="button-wrapper">
-                          <input id="addPerfil" type="checkbox" class="switch" name="newperfil"/>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
+		<!--INSTALL MODAL SUCCESS-->
+		<div class="pop-up" id="installSuccess">
+		<div class="pop-up__subtitle">$O_WebApp_foi_adicionado_com_sucesso</div>
+		<div class="content-button-wrapper">
+		<button class="content-button status-button2 close" id="installClose">$Fechar</button>
+		</div>
+		</div>
 
-                  <div style="text-align:center;display:inline-block">
-                    <button class="button" type="reset" id="cancel" style="height:30px;margin:15px 5px 0 5px">'$"Cancelar"'</button>
-                    <button class="button" type="submit" id="install" style="height:30px;margin:15px 5px 0 5px">'$"Adicionar"'</button>
-                  </div>
-                </form>
+		<!--DETECT ICON MODAL-->
+		<div class="pop-up" id="detectIcon">
+		<div class="pop-up__title">$Selecione_o_icone_preferido :
+		<svg class="close" width="24" height="24" fill="none"
+			stroke="currentColor" stroke-width="2"
+			stroke-linecap="round" stroke-linejoin="round"
+			class="feather feather-x-circle">
+			<circle cx="12" cy="12" r="10" />
+			<path d="M15 9l-6 6M9 9l6 6" />
+		</svg>
+		</div>
+		<div id="desc">
+		<div id="menu-icon"></div>
+		</div>
+		</div>
+		</div>
+		<!-- FIM TABS CONTENT ADD -->
 
-                <!--URL OR NAME MODAL ERROR-->
-                <div class="pop-up" id="urlNameError">
-                  <div class="pop-up__subtitle">'$"Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."'</div>
-                  <div class="content-button-wrapper">
-                    <button class="content-button status-button2 close">'$"Fechar"'</button>
-                  </div>
-                </div>
+		<!-- INICIO TABS CONTENT LIST -->
+		<div id="list-tab-content" class="fc-card active">
+	EOF
 
-                <!--EMPTY URL MODAL-->
-                <div class="pop-up" id="urlEmpty">
-                  <div class="pop-up__subtitle">'$"Para detectar o Nome e o Ícone,<br> você precisa informar a URL."'</div>
-                  <div class="content-button-wrapper">
-                    <button class="content-button status-button2 close">'$"Fechar"'</button>
-                  </div>
-                </div>
+	CUSTOMFILES=""
+#	if compgen -G "$HOME_LOCAL"/share/applications/*-webapp-biglinux-custom.desktop >/dev/null; then
+#		IFS=$'\n' read -r -d '' -a CUSTOMFILES < <(find "$HOME_LOCAL"/share/applications -iname "*-webapp-biglinux-custom.desktop")
+#	fi
+	mapfile -t CUSTOMFILES < <(find "$HOME_LOCAL"/share/applications -iname "*-webapp-biglinux-custom.desktop")
 
-                <!--DETECT ICON MODAL ERROR-->
-                <div class="pop-up" id="detectIconError">
-                  <div class="pop-up__subtitle">'$"A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."'</div>
-                  <div class="content-button-wrapper">
-                    <button class="content-button status-button2 close">'$"Fechar"'</button>
-                  </div>
-                </div>
-
-                <!--INSTALL MODAL SUCCESS-->
-                <div class="pop-up" id="installSuccess">
-                  <div class="pop-up__subtitle">'$"O WebApp foi adicionado com sucesso!"'</div>
-                  <div class="content-button-wrapper">
-                    <button class="content-button status-button2 close" id="installClose">'$"Fechar"'</button>
-                  </div>
-                </div>
-
-                <!--DETECT ICON MODAL-->
-                <div class="pop-up" id="detectIcon">
-                  <div class="pop-up__title">'$"Selecione o ícone preferido:"'
-                    <svg class="close" width="24" height="24" fill="none"
-                         stroke="currentColor" stroke-width="2"
-                         stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-x-circle">
-                      <circle cx="12" cy="12" r="10" />
-                      <path d="M15 9l-6 6M9 9l6 6" />
-                    </svg>
-                  </div>
-                  <div id="desc">
-                    <div id="menu-icon"></div>
-                  </div>
-                </div>
-              </div>
-              <!-- FIM TABS CONTENT ADD -->
-
-              <!-- INICIO TABS CONTENT LIST -->
-              <div id="list-tab-content" class="fc-card active">'
-
-    CUSTOMFILES=""
-    if compgen -G ~/.local/share/applications/*-webapp-biglinux-custom.desktop >/dev/null;then
-        IFS=$'\n' read -r -d '' -a CUSTOMFILES < <(find ~/.local/share/applications -iname "*-webapp-biglinux-custom.desktop")
-    fi
-
-    # Start of gawk script
-    gawk -v development=$"Desenvolvimento"                         \
-         -v office=$"Escritório"                                   \
-         -v graphics=$"Gráficos"                                   \
-         -v game=$"Jogos"                                          \
-         -v audiovideo=$"Multimídia"                               \
-         -v internet=$"Internet"                                   \
-         -v google=$"Google"                                       \
-         -v webapp=$"WebApps"                                      \
-         -v nenhum=$"Nenhum WebApp adicionado!"                    \
-         -v apply=$"Aplicar"                                       \
-         -v cancel=$"Cancelar"                                     \
-         -v certeza=$"Tem certeza que deseja remover este WebApp?" \
-         -v restaurar=$"Importar Backup"                           \
-         -v backup=$"Criar Backup"                                 \
-         -v all_remove=$"Remover WebApps"                          \
-         -v add=$"Adicionar WebApps"                               \
-         -v adicionar=$"Adicionar" -- '
+	# Start of gawk script
+	gawk -v development="$Desenvolvimento" \
+		-v office="$Escritorio" \
+		-v graphics="$Graficos" \
+		-v game="$Jogos" \
+		-v audiovideo="$Multimidia" \
+		-v internet="$Internet" \
+		-v google="Google" \
+		-v webapp="WebApps" \
+		-v nenhum="$Nenhum_WebApp_adicionado" \
+		-v apply="$Aplicar" \
+		-v cancel="$Cancelar" \
+		-v certeza="$Tem_certeza_que_deseja_remover_este_WebApp" \
+		-v restaurar="$Importar_Backup" \
+		-v backup="$Criar_Backup" \
+		-v all_remove="$Remover_WebApps" \
+		-v add="$Adicionar_WebApps" \
+		-v adicionar="$Adicionar" -- '
 
     BEGIN {
       # This OFS helps writing readable code on printing
@@ -665,377 +730,180 @@ echo -n '
       }
     }
     ' "${CUSTOMFILES[@]}"
-    # End of gawk script
+	# End of gawk script
 
-    echo -n '   <!--EDIT MODAL-->
-                <div class="pop-up" id="editModal" style="width:700px">
-                  <div class="pop-up__title">'$"Editar WebApp"'
-                  <svg class="close" width="24" height="24" fill="none"
-                       stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                       stroke-linejoin="round" class="feather feather-x-circle">
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M15 9l-6 6M9 9l6 6" />
-                  </svg>
-                  </div>
-                  <form action="webapp-edit.sh" method="get" id="editForm">
-                    <div id="formEdit"></div>
-                    <div class="content-button-wrapper">
-                      <button type="reset" class="content-button status-button2 close">'$"Cancelar"'</button>
-                      <button id="submitEdit" class="content-button status-button2" >'$"Aplicar"'</button>
-                    </div>
-                  </form>
-                </div>
+	cat <<-EOF
+		<!--EDIT MODAL-->
+		<div class="pop-up" id="editModal" style="width:700px">
+		<div class="pop-up__title">$Editar_WebApp
+		<svg class="close" width="24" height="24" fill="none"
+			stroke="currentColor" stroke-width="2" stroke-linecap="round"
+			stroke-linejoin="round" class="feather feather-x-circle">
+			<circle cx="12" cy="12" r="10" />
+			<path d="M15 9l-6 6M9 9l6 6" />
+		</svg>
+		</div>
+		<form action="webapp-edit.sh" method="get" id="editForm">
+		<div id="formEdit"></div>
+		<div class="content-button-wrapper">
+		<button type="reset" class="content-button status-button2 close">$Cancelar</button>
+		<button id="submitEdit" class="content-button status-button2" >$Aplicar</button>
+		</div>
+		</form>
+		</div>
 
-                <!--BACKUP MODAL-->
-                <div class="pop-up" id="backupModal" style="width:550px">
-                  <div>'$"O backup dos WebApps foi salvo em: "'
-                    <b id="backupPath"></b>
-                  </div>
-                  <div class="content-button-wrapper">
-                    <button class="content-button status-button2 close">'$"Fechar"'</button>
-                  </div>
-                </div>
+		<!--BACKUP MODAL-->
+		<div class="pop-up" id="backupModal" style="width:550px">
+		<div>$O_backup_dos_WebApps_foi_salvo_em :
+		<b id="backupPath"></b>
+		</div>
+		<div class="content-button-wrapper">
+		<button class="content-button status-button2 close">$Fechar</button>
+		</div>
+		</div>
 
-                <!--RESTORE MODAL-->
-                <div class="pop-up" id="restoreModal" style="width:550px">
-                  <div>'$"Os WebApps foram restaurados com sucesso!"'</div>
-                  <div class="content-button-wrapper">
-                    <button class="content-button status-button2 close" id="closeRestore">'$"Fechar"'</button>
-                  </div>
-                </div>
+		<!--RESTORE MODAL-->
+		<div class="pop-up" id="restoreModal" style="width:550px">
+		<div>$Os_WebApps_foram_restaurados_com_sucesso</div>
+		<div class="content-button-wrapper">
+		<button class="content-button status-button2 close" id="closeRestore">$Fechar</button>
+		</div>
+		</div>
 
-                <!--REMOVE ALL MODAL-->
-                <div class="pop-up" id="removeAllModal" style="width:550px">
-                  <div>'$"Você deseja remover todos os WebApps?"'</div>
-                  <div class="content-button-wrapper">
-                    <button class="content-button status-button2 close">'$"Não"'</button>
-                    <button class="content-button status-button2 close" id="removeAllYes">'$"Sim"'</button>
-                  </div>
-                </div>
+		<!--REMOVE ALL MODAL-->
+		<div class="pop-up" id="removeAllModal" style="width:550px">
+		<div>$Voce_deseja_remover_todos_os_WebApps</div>
+		<div class="content-button-wrapper">
+		<button class="content-button status-button2 close">$Nao</button>
+		<button class="content-button status-button2 close" id="removeAllYes">$Sim</button>
+		</div>
+		</div>
+		</div>
+		<!-- FIM TABS CONTENT LIST -->
 
-              </div>
-              <!-- FIM TABS CONTENT LIST -->
+		<!-- INICIO TABS CONTENT WEBAPPBIG -->
+		<div id="webappsbig-tab-content" class="fc-card">
+		<div style="display:flex;justify-content:center">
+	EOF
 
-              <!-- INICIO TABS CONTENT WEBAPPBIG -->
-              <div id="webappsbig-tab-content" class="fc-card">
-                <div style="display:flex;justify-content:center">'
+	BROWSER=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "id")
+	cpath=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "path")
+	if [[ -e $cpath ]]; then
+		ICON=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "icon")
+		title=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "title")
+	else
+		ICON='none'
+		title=$O_navegador_nao_esta_instalado
+	fi
 
-                    BROWSER=$(<~/.bigwebapps/BROWSER)
-                    case "$BROWSER" in
-                        brave)
-                            ICON='brave'
-                            if [ ! -e /usr/lib/brave-browser/brave ] && [ ! -e /opt/brave-bin/brave ];then
-                                ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"BRAVE"'"'
-                            fi
-                        ;;
-                        google-chrome-stable)
-                            ICON='chrome'
-                            if [ ! -e /opt/google/chrome/google-chrome ];then
-                                ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"CHROME"'"'
-                            fi
-                        ;;
-                        chromium)
-                            ICON='chromium'
-                            if [ ! -e /usr/lib/chromium/chromium ];then
-                                ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"CHROMIUM"'"'
-                            fi
-                        ;;
-                        microsoft-edge-stable)
-                            ICON='edge'
-                            if [ ! -e /opt/microsoft/msedge/microsoft-edge ];then
-                                ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"EDGE"'"'
-                            fi
-                        ;;
-                        firefox)
-                            ICON='firefox'
-                            if [ ! -e /usr/lib/firefox/firefox ];then
-                                ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"FIREFOX"'"'
-                            fi
-                        ;;
-                        falkon)
-                            ICON='falkon'
-                            if [ ! -e /usr/bin/falkon ];then
-                                ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"FALKON"'"'
-                            fi
-                        ;;
-                        librewolf)
-                            ICON='librewolf'
-                            if [ ! -e /usr/lib/librewolf/librewolf ];then
-                                ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"LIBREWOLF"'"'
-                            fi
-                        ;;
-                        vivaldi-stable)
-                            ICON='vivaldi'
-                            if [ ! -e /opt/vivaldi/vivaldi ];then
-                                ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"VIVALDI"'"'
-                            fi
-                        ;;
-                        com.brave.Browser)
-                            ICON='brave'
-                            if [ ! -e /var/lib/flatpak/exports/bin/com.brave.Browser ];then
-                                ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"BRAVE (FLATPAK)"'"'
-                            fi
-                        ;;
-                        com.google.Chrome)
-                            ICON='chrome'
-                            if [ ! -e /var/lib/flatpak/exports/bin/com.google.Chrome ];then
-                                ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"CHROME (FLATPAK)"'"'
-                            fi
-                        ;;
-                        org.chromium.Chromium)
-                            ICON='chromium'
-                            if [ ! -e /var/lib/flatpak/exports/bin/org.chromium.Chromium ];then
-                                ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"CHROMIUM (FLATPAK)"'"'
-                            fi
-                        ;;
-                        com.github.Eloston.UngoogledChromium)
-                            ICON='chromium'
-                            if [ ! -e /var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium ];then
-                                ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"UNGOOGLED (FLATPAK)"'"'
-                            fi
-                        ;;
-                        com.microsoft.Edge)
-                            ICON='edge'
-                            if [ ! -e /var/lib/flatpak/exports/bin/com.microsoft.Edge ];then
-                                ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"EDGE (FLATPAK)"'"'
-                            fi
-                        ;;
-                        org.mozilla.firefox)
-                            ICON='firefox'
-                            if [ ! -e /var/lib/flatpak/exports/bin/org.mozilla.firefox ];then
-                                ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"FIREFOX (FLATPAK)"'"'
-                            fi
-                        ;;
-                        io.gitlab.librewolf-community)
-                            ICON='librewolf'
-                            if [ ! -e /var/lib/flatpak/exports/bin/io.gitlab.librewolf-community ];then
-                                ICON='none'
-                                title='title="'$"O navegador não está instalado!"'"'
-                            else
-                                title='title="'$"LIBREWOLF (FLATPAK)"'"'
-                            fi
-                        ;;
+	if ! ((COUNT_BROWSER)) then
+		ICON='none'
+		title=$Nao_existem_navegadores_compativeis_instalados_no_sistema
+	fi
 
-                        *):;;
-                    esac
+	cat <<-EOF
+		<div class="content-section-title" style="margin-bottom:0">
+		$Navegador_padrao<br>$dos WebApps:
+		</div>
+		<button class="btn-img-main status-button" id="open-change-browsers" data-bin=$BROWSER>
+		<img src="icons/$ICON.svg" width="38" height="38"	class="iconBrowser" id="browserIcon" title=$title>
+		</button>
+		</div>
+	EOF
 
-            if [ $COUNT_BROWSER -eq 0 ];then
-                ICON='none'
-                title='title="'$"Não existem navegadores compatíveis instalados no sistema!"'"'
-            fi
+	if ! ((COUNT_BROWSER)) then
+		cat <<-EOF
+			<!--MODAL NO BROWSERS-->
+			<div class="pop-up" id="change-browser" style="padding-bottom:30px">
+			<div class="pop-up__subtitle">
+				$Nao_existem_navegadores_compativeis_instalados_no_sistema
+			</div>
+			<div class="content-button-wrapper">
+			<button class="content-button status-button2 close">
+				$Fechar
+			</button>
+			</div>
+			</div>
+		EOF
+	else
+		cat <<-EOF
+			<!--CHANGE BROWSERS MODAL-->
+			<div class="pop-up" id="change-browser" style="padding-bottom:30px">
+			<div class="pop-up__title">$Selecione_o_navegador_preferido:
+			<svg class="close" width="24" height="24" fill="none"
+				stroke="currentColor" stroke-width="2" stroke-linecap="round"
+				stroke-linejoin="round" class="feather feather-x-circle">
+				<circle cx="12" cy="12" r="10" />
+				<path d="M15 9l-6 6M9 9l6 6" />
+			</svg>
+			</div>
+		EOF
 
-            echo -n '<div class="content-section-title" style="margin-bottom:0">
-                    '$"Navegador padrão<br>dos WebApps:"'
-                  </div>
-                  <button class="btn-img-main status-button" id="open-change-browsers" data-bin="'"$BROWSER"'">
-                    <img src="icons/'"$ICON"'.svg" width="38" height="38"
-                         class="iconBrowser" id="browserIcon" '"$title"'>
-                  </button>
-                </div>'
+		function sh_set_popup_browser() {
+			local NativeOrFlatPak="$1" # Native=1, FlatPak=0
+			local cpath
+			local nc=0
 
-          if [ $COUNT_BROWSER -eq 0 ];then
-          echo -n '<!--MODAL NO BROWSERS-->
-                <div class="pop-up" id="change-browser" style="padding-bottom:30px">
-                  <div class="pop-up__subtitle">
-                  '$"Não existem navegadores compatíveis instalados no sistema!"'
-                  </div>
-                  <div class="content-button-wrapper">
-                    <button class="content-button status-button2 close">'$"Fechar"'</button>
-                  </div>
-                </div>'
-          else
-          echo -n '<!--CHANGE BROWSERS MODAL-->
-                <div class="pop-up" id="change-browser" style="padding-bottom:30px">
-                  <div class="pop-up__title">'$"Selecione o navegador preferido:"'
-                    <svg class="close" width="24" height="24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                         stroke-linejoin="round" class="feather feather-x-circle">
-                      <circle cx="12" cy="12" r="10" />
-                      <path d="M15 9l-6 6M9 9l6 6" />
-                    </svg>
-                  </div>'
-            if [ "$NATIVE" = "true" ];then
-            echo -n '<div class="pop-up__subtitle">'$"Nativo"'</div>
-                  <div id="menu">'
-                    if [ -e /usr/lib/brave-browser/brave ] || [ -e /opt/brave-bin/brave ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="brave">
-                            <img src="icons/brave.svg" width="38"
-                                 height="38" data-bin="brave"
-                                 title="'$"BRAVE"'">
-                            </button>'
-                    fi
-                    if [ -e /opt/google/chrome/google-chrome ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="google-chrome-stable">
-                            <img src="icons/chrome.svg" width="38"
-                                 height="38" data-bin="google-chrome-stable"
-                                 title="'$"CHROME"'">
-                            </button>'
-                    fi
-                    if [ -e /usr/lib/chromium/chromium ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="chromium">
-                            <img src="icons/chromium.svg" width="38"
-                                 height="38" data-bin="chromium"
-                                 title="'$"CHROMIUM"'">
-                            </button>'
-                    fi
-                    if [ -e /opt/microsoft/msedge/microsoft-edge ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="microsoft-edge-stable">
-                            <img src="icons/edge.svg" width="38"
-                                 height="38" data-bin="microsoft-edge-stable"
-                                 title="'$"EDGE"'">
-                            </button>'
-                    fi
-                    if [ -e /usr/lib/firefox/firefox ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="firefox">
-                            <img src="icons/firefox.svg" width="38"
-                                 height="38" data-bin="firefox"
-                                 title="'$"FIREFOX"'">
-                            </button>'
-                    fi
-                    if [ -e /usr/bin/falkon ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="falkon">
-                            <img src="icons/falkon.svg" width="38"
-                                 height="38" data-bin="falkon"
-                                 title="'$"FALKON"'">
-                            </button>'
-                    fi
-                    if [ -e /usr/lib/librewolf/librewolf ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="librewolf">
-                            <img src="icons/librewolf.svg" width="38"
-                                 height="38" data-bin="librewolf"
-                                 title="'$"LIBREWOLF"'">
-                            </button>'
-                    fi
-                    if [ -e /opt/vivaldi/vivaldi ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="vivaldi-stable">
-                            <img src="icons/vivaldi.svg" width="38"
-                                 height="38" data-bin="vivaldi-stable"
-                                 title="'$"VIVALDI"'">
-                            </button>'
-                    fi
-                    echo -n '
-                  </div>'
-            fi
-            if [ "$FLATPAK" = "true" ];then
-            echo -n '<div class="pop-up__subtitle">'$"Flatpak"'</div>
-                  <div id="menu">'
-                    if [ -e /var/lib/flatpak/exports/bin/com.brave.Browser ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="com.brave.Browser">
-                              <img src="icons/brave.svg" width="38"
-                                   height="38" data-bin="com.brave.Browser"
-                                   title="'$"BRAVE (FLATPAK)"'">
-                            </button>'
-                    fi
-                    if [ -e /var/lib/flatpak/exports/bin/com.google.Chrome ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="com.google.Chrome">
-                              <img src="icons/chrome.svg" width="38"
-                                   height="38" data-bin="com.google.Chrome"
-                                   title="'$"CHROME (FLATPAK)"'">
-                            </button>'
-                    fi
-                    if [ -e /var/lib/flatpak/exports/bin/org.chromium.Chromium ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="org.chromium.Chromium">
-                              <img src="icons/chromium.svg" width="38"
-                                   height="38" data-bin="org.chromium.Chromium"
-                                   title="'$"CHROMIUM (FLATPAK)"'">
-                            </button>'
-                    fi
-                    if [ -e /var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="com.github.Eloston.UngoogledChromium">
-                              <img src="icons/ungoogled.svg" width="38"
-                                   height="38" data-bin="com.github.Eloston.UngoogledChromium"
-                                   title="'$"UNGOOGLED (FLATPAK)"'">
-                            </button>'
-                    fi
-                    if [ -e /var/lib/flatpak/exports/bin/com.microsoft.Edge ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="com.microsoft.Edge">
-                              <img src="icons/edge.svg" width="38"
-                                   height="38" data-bin="com.microsoft.Edge"
-                                   title="'$"EDGE (FLATPAK)"'">
-                            </button>'
-                    fi
-                    if [ -e /var/lib/flatpak/exports/bin/org.mozilla.firefox ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="org.mozilla.firefox">
-                              <img src="icons/firefox.svg" width="38"
-                                   height="38" data-bin="org.mozilla.firefox"
-                                   title="'$"FIREFOX (FLATPAK)"'">
-                            </button>'
-                    fi
-                    if [ -e /var/lib/flatpak/exports/bin/io.gitlab.librewolf-community ];then
-                      echo -n '<button class="btn-img status-button btn-img-main"
-                                    id="io.gitlab.librewolf-community">
-                              <img src="icons/librewolf.svg" width="38"
-                                   height="38" data-bin="io.gitlab.librewolf-community"
-                                   title="'$"LIBREWOLF (FLATPAK)"'">
-                            </button>'
-                    fi
-                    echo -n '
-                  </div>'
-            fi
-          echo -n '</div>'
-          fi
-          echo -n '<div class="content-section" style="margin-top:0">
-                  <div class="content-section-title" style="text-align:left">'$"WebApps Nativos"'</div>
-                  <ul id="content-ul">'
+			for cpath in "${aBrowserPath[@]}"; do
+				if [[ -e "$cpath" ]]; then
+					if ((NativeOrFlatPak)); then # Native
+						[[ "$cpath" =~ '/flatpak/' ]] && continue
+					fi
+					cat <<-EOF
+						<button class="btn-img status-button btn-img-main"
+							id=${aBrowserIdNative[nc]}>
+							<img src="icons/${aBrowserIcon[nc]}.svg"
+								width="38"
+								height="38"
+								data-bin=${aBrowserId[nc]}
+								title=${aBrowserTitle[nc]^^}>
+						</button>
+					EOF
+				fi
+				((++nc))
+			done
+		}
 
-    IFS=$'\n' read -r -d '' -a files < <(find ./webapps -iname "*-webapp-biglinux.desktop")
-    gawk -v browser="${ICON}" '
+		if ((NATIVE)); then
+			cat <<-EOF
+				<div class="pop-up__subtitle">$Nativo</div>
+            <div id="menu">
+			EOF
+
+			sh_set_popup_browser "1" # Native=1, FlatPak=0
+
+			cat <<-EOF
+				</div>
+			EOF
+		fi
+
+		if ((FLATPAK)); then
+			cat <<-EOF
+				<div class="pop-up__subtitle">FlatPak</div>
+				<div id="menu">
+			EOF
+
+			sh_set_popup_browser "0" # Native=1, FlatPak=0
+
+			cat <<-EOF
+				</div>
+			EOF
+		fi
+		cat <<-EOF
+			</div>
+		EOF
+	fi
+
+	cat <<-EOF
+		<div class="content-section" style="margin-top:0">
+		<div class="content-section-title" style="text-align:left">
+		$WebApps_Nativos
+		</div>
+		<ul id="content-ul">'
+	EOF
+
+	IFS=$'\n' read -r -d '' -a files < <(find ./webapps -iname "*-webapp-biglinux.desktop")
+	gawk -v browser="${ICON}" '
     BEGIN {
         # This OFS helps write readable code on printing
         OFS = "\n"
@@ -1122,24 +990,27 @@ echo -n '
     "               </li>")
 
     }' "${files[@]}"
-    # End of gawk script
+	# End of gawk script
 
-    echo -n '
-                  </ul>
-                </div><br/>
-              </div>
-              <!-- FIM TABS CONTENT WEBAPPBIG -->
+	cat <<-EOF
+		</ul>
+		</div><br/>
+		</div>
+		<!-- FIM TABS CONTENT WEBAPPBIG -->
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		<!-- scripts -->
+		<script src="js/jquery-3.6.0.min.js"></script>
+		<script  src="js/script.js"></script>
+		</body>
+		</html>
+	EOF
+}
 
-            </div>
-          </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- scripts -->
-  <script src="js/jquery-3.6.0.min.js"></script>
-  <script  src="js/script.js"></script>
-
-  </body>
-</html>'
+sh_index_sh_config
+sh_index_sh_main

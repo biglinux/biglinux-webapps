@@ -1,230 +1,44 @@
 #!/usr/bin/env bash
+#shellcheck disable=SC2155,SC2034
+#shellcheck source=/dev/null
 
-_NAMEDESK=$(sed 's|https\:\/\/||;s|http\:\/\/||;s|www\.||;s|\/.*||;s|\.|-|g' <<< "$urldesk")
-USER_DESKTOP=$(xdg-user-dir DESKTOP)
-LINK_APP="$HOME/.local/share/applications/$_NAMEDESK-$RANDOM-webapp-biglinux-custom.desktop"
-BASENAME_APP="${LINK_APP##*/}"
-NAME="${BASENAME_APP/-webapp-biglinux-custom.desktop/}"
-DIR_PROF="$HOME/.bigwebapps/$NAME"
-FILE_LINK="$USER_DESKTOP/$NAME-webapp-biglinux-custom.desktop"
-BASENAME_ICON="${icondesk##*/}"
-NAME_FILE="${BASENAME_ICON// /-}"
-ICON_FILE=~/.local/share/icons/"$NAME_FILE"
+#  /usr/share/bigbashview/bcc/apps/biglinux-webapps/webapp-install.sh
+#  Description: WebApps installing programs for BigLinux
+#
+#  Created: 2020/01/11
+#  Altered: 2024/06/03
+#
+#  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
+#                2022-2023, Bruno Gonçalves <www.biglinux.com.br>
+#                2022-2023, Rafael Ruscher <rruscher@gmail.com>
+#                2020-2023, eltonff <www.biglinux.com.br>
+#  All rights reserved.
+#
+#  Redistribution and use in source and binary forms, with or without
+#  modification, are permitted provided that the following conditions
+#  are met:
+#  1. Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+#  2. Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+#  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+#  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+#  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+#  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+#  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+#  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+#  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+#  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+#  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-if grep -qiE 'firefox|librewolf' <<< "$browser";then
-    browser_name="$browser"
+APP="${0##*/}"
+_VERSION_="1.0.0-20240603"
+LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
+[[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
+[[ -f "${LIBRARY}/tinilib.sh" ]] && source "${LIBRARY}/tinilib.sh"
+[[ -f "${LIBRARY}/weblib.sh" ]] && source "${LIBRARY}/weblib.sh"
 
-    if ! grep -qiE '^http:|^https:|^localhost|^127' <<< "$urldesk";then
-        urldesk="https://$urldesk"
-    fi
-
-    if [ "${icondesk##*/}" = "default-webapps.png" ];then
-        cp "$icondesk" "$ICON_FILE"
-    else
-        mv "$icondesk" "$ICON_FILE"
-    fi
-
-    if [ "$browser" = "org.mozilla.firefox" ];then
-        browser="/var/lib/flatpak/exports/bin/org.mozilla.firefox"
-        DIR_PROF="$HOME/.var/app/org.mozilla.firefox/data/$NAME"
-    elif [ "$browser" = "io.gitlab.librewolf-community" ];then
-        browser="/var/lib/flatpak/exports/bin/io.gitlab.librewolf-community"
-        DIR_PROF="$HOME/.var/app/io.gitlab.librewolf-community/data/$NAME"
-    fi
-
-DESKBIN="$HOME/.local/bin/$NAME"
-
-cat > "$DESKBIN" <<EOF
-#!/usr/bin/env sh
-
-FOLDER=$DIR_PROF
-CLASS="$browser_name-webapp-$_NAMEDESK"
-
-if [ ! -d "\$FOLDER" ];then
-    mkdir -p "\$FOLDER/chrome"
-    cp -a /usr/share/bigbashview/bcc/apps/biglinux-webapps/profile/userChrome.css "\$FOLDER/chrome"
-    cp -a /usr/share/bigbashview/bcc/apps/biglinux-webapps/profile/user.js "\$FOLDER"
-fi
-
-MOZ_DISABLE_GMP_SANDBOX=1 MOZ_DISABLE_CONTENT_SANDBOX=1 \\
-XAPP_FORCE_GTKWINDOW_ICON=$ICON_FILE \\
-$browser --class="\$CLASS" --profile "\$FOLDER" --no-remote --new-instance "$urldesk" &
-EOF
-
-chmod +x "$DESKBIN"
-
-echo "[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=$namedesk
-Exec=$DESKBIN
-Icon=$ICON_FILE
-Categories=$category;
-X-KDE-StartupNotify=true" > "$LINK_APP"
-
-    chmod +x "$LINK_APP"
-
-    if [ "$shortcut" = "on" ];then
-        ln -s "$LINK_APP" "$FILE_LINK"
-        chmod 755 "$FILE_LINK"
-        gio set "$FILE_LINK" -t string metadata::trust "true"
-    fi
-
-elif grep -q 'org.gnome.Epiphany' <<< "$browser";then
-
-    if ! grep -Eq '^http:|^https:|^localhost|^127' <<< "$urldesk";then
-        urldesk="https://$urldesk"
-    fi
-
-    DIR_PORTAL="$HOME/.local/share/xdg-desktop-portal"
-    DIR_PORTAL_APP="$DIR_PORTAL/applications"
-    DIR_PORTAL_ICON="$DIR_PORTAL/icons/64x64"
-
-    mkdir -p "$DIR_PORTAL_APP"
-    mkdir -p "$DIR_PORTAL_ICON"
-
-    FOLDER_DATA="$HOME/.var/app/org.gnome.Epiphany/data/org.gnome.Epiphany.WebApp_$NAME-webapp-biglinux-custom"
-    browser="/var/lib/flatpak/exports/bin/org.gnome.Epiphany"
-    EPI_FILEDESK="org.gnome.Epiphany.WebApp_$NAME-webapp-biglinux-custom.desktop"
-    EPI_DIR_FILEDESK="$DIR_PORTAL_APP/$EPI_FILEDESK"
-    EPI_FILE_ICON="$DIR_PORTAL_ICON/${EPI_FILEDESK/.desktop/}.png"
-
-    EPI_LINK="$HOME/.local/share/applications/$EPI_FILEDESK"
-    EPI_DESKTOP_LINK="$USER_DESKTOP/$EPI_FILEDESK"
-    mkdir -p "$FOLDER_DATA"
-    true > "$FOLDER_DATA/.app"
-    echo -n 37 > "$FOLDER_DATA/.migrated"
-
-    if [ "${icondesk##*/}" = "default-webapps.png" ];then
-        cp "$icondesk" "$EPI_FILE_ICON"
-    else
-        mv "$icondesk" "$EPI_FILE_ICON"
-    fi
-
-echo "[Desktop Entry]
-Name=$namedesk
-Exec=$browser --application-mode --profile=$FOLDER_DATA $urldesk
-StartupNotify=true
-Terminal=false
-Type=Application
-Categories=$category;
-Icon=$EPI_FILE_ICON
-StartupWMClass=$namedesk
-X-Purism-FormFactor=Workstation;Mobile;
-X-Flatpak=org.gnome.Epiphany" > "$EPI_DIR_FILEDESK"
-
-    chmod +x "$EPI_DIR_FILEDESK"
-    ln -s "$EPI_DIR_FILEDESK" "$EPI_LINK"
-
-    if [ "$shortcut" = "on" ];then
-        ln -s "$EPI_DIR_FILEDESK" "$EPI_DESKTOP_LINK"
-        chmod 755 "$EPI_DESKTOP_LINK"
-        gio set "$EPI_DESKTOP_LINK" -t string metadata::trust "true"
-    fi
-    
-elif grep -q 'falkon' <<< "$browser";then
-
-    if ! grep -Eq '^http:|^https:|^localhost|^127' <<< "$urldesk";then
-        urldesk="https://$urldesk"
-    fi
-
-    if [ "$newperfil" = "on" ];then
-        mkdir -p $HOME/.config/falkon/profiles/$NAME
-        browser="$browser -p $NAME -ro"
-    else
-        browser="$browser -ro"
-    fi
-    
-    if [ "${icondesk##*/}" = "default-webapps.png" ];then
-        cp "$icondesk" "$ICON_FILE"
-    else
-        mv "$icondesk" "$ICON_FILE"
-    fi
-
-    echo "[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=$namedesk
-Exec=$browser $urldesk
-Icon=$ICON_FILE
-Categories=$category;" > "$LINK_APP"
-
-    chmod +x "$LINK_APP"
-
-    if [ "$shortcut" = "on" ];then
-        ln -s "$LINK_APP" "$FILE_LINK"
-        chmod 755 "$FILE_LINK"
-        gio set "$FILE_LINK" -t string metadata::trust "true"
-    fi
-    
-else
-    case $browser in
-        com.brave.Browser)
-            browser="/var/lib/flatpak/exports/bin/com.brave.Browser"
-            DIR_PROF="$HOME/.var/app/com.brave.Browser/data/$NAME"
-        ;;
-
-        com.google.Chrome)
-            browser="/var/lib/flatpak/exports/bin/com.google.Chrome"
-            DIR_PROF="$HOME/.var/app/com.google.Chrome/data/$NAME"
-        ;;
-
-        com.microsoft.Edge)
-            browser="/var/lib/flatpak/exports/bin/com.microsoft.Edge"
-            DIR_PROF="$HOME/.var/app/com.microsoft.Edge/data/$NAME"
-        ;;
-
-        org.chromium.Chromium)
-            browser="/var/lib/flatpak/exports/bin/org.chromium.Chromium"
-            DIR_PROF="$HOME/.var/app/org.chromium.Chromium/data/$NAME"
-        ;;
-
-        com.github.Eloston.UngoogledChromium)
-            browser="/var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium"
-            DIR_PROF="$HOME/.var/app/com.github.Eloston.UngoogledChromium/data/$NAME"
-        ;;
-    esac
-
-    if ! grep -Eq '^http:|^https:|^localhost|^127' <<< "$urldesk";then
-        urldesk="https://$urldesk"
-    fi
-
-    if [ "$newperfil" = "on" ];then
-        browser="$browser --user-data-dir=$DIR_PROF --no-first-run"
-    fi
-
-    if [ "${icondesk##*/}" = "default-webapps.png" ];then
-        cp "$icondesk" "$ICON_FILE"
-    else
-        mv "$icondesk" "$ICON_FILE"
-    fi
-
-    CUT_HTTP=$(sed 's|https://||;s|/|_|g;s|_|__|1;s|_$||;s|_$||;s|&|_|g;s|?||g;s|=|_|g' <<< "$urldesk")
-
-echo "[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=$namedesk
-Exec=$browser --class=$CUT_HTTP,Chromium-browser --profile-directory=Default --app=$urldesk
-Icon=$ICON_FILE
-Categories=$category;
-StartupWMClass=$CUT_HTTP" > "$LINK_APP"
-
-    chmod +x "$LINK_APP"
-
-    if [ "$shortcut" = "on" ];then
-        ln -s "$LINK_APP" "$FILE_LINK"
-        chmod 755 "$FILE_LINK"
-        gio set "$FILE_LINK" -t string metadata::trust "true"
-    fi
-fi
-
-nohup update-desktop-database -q ~/.local/share/applications &
-nohup kbuildsycoca5 &> /dev/null &
-
-rm -f /tmp/*.png
-rm -rf /tmp/.bigwebicons
-exit
+sh_webapp-install "$@"

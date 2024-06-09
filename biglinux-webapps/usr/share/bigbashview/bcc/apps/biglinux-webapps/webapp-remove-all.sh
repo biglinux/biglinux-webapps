@@ -1,45 +1,44 @@
 #!/usr/bin/env bash
+#shellcheck disable=SC2155,SC2034
+#shellcheck source=/dev/null
 
-WEBAPPS=($(find ~/.local/share/applications -iname "*-webapp-biglinux-custom.desktop"))
+#  /usr/share/bigbashview/bcc/apps/biglinux-webapps/webapp-remove-all.sh
+#  Description: WebApps installing programs for BigLinux
+#
+#  Created: 2020/01/11
+#  Altered: 2024/06/03
+#
+#  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
+#                2022-2023, Bruno Gonçalves <www.biglinux.com.br>
+#                2022-2023, Rafael Ruscher <rruscher@gmail.com>
+#                2020-2023, eltonff <www.biglinux.com.br>
+#  All rights reserved.
+#
+#  Redistribution and use in source and binary forms, with or without
+#  modification, are permitted provided that the following conditions
+#  are met:
+#  1. Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+#  2. Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+#  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+#  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+#  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+#  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+#  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+#  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+#  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+#  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+#  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-for filedesk in "${WEBAPPS[@]}";do
-    ICONDESK=$(awk -F'=' '/Icon/{print $2}' "$filedesk")
-    LINK=$(xdg-user-dir DESKTOP)/"${filedesk##*/}"
+APP="${0##*/}"
+_VERSION_="1.0.0-20240603"
+LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
+[[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
+[[ -f "${LIBRARY}/tinilib.sh" ]] && source "${LIBRARY}/tinilib.sh"
+[[ -f "${LIBRARY}/weblib.sh" ]] && source "${LIBRARY}/weblib.sh"
 
-    #if grep -q '..no.first.run' "$filedesk";then
-    #    DATA_DIR=$(awk '/Exec/{sub(/--user-data-dir=/,"");print $2}' "$filedesk")
-    #    [ -d "$DATA_DIR" ] && rm -r "$DATA_DIR"
-    #fi
-
-    if grep -q '..profile=' "$filedesk";then
-        #EPI_DATA=$(awk '/Exec/{sub(/--profile=/,"");print $3}' "$filedesk")
-        DIR_PORTAL_APP=~/.local/share/xdg-desktop-portal/applications
-        DIR_PORTAL_FILEDESK="$DIR_PORTAL_APP/${filedesk##*/}"
-        [ -e "$DIR_PORTAL_FILEDESK" ] && rm "$DIR_PORTAL_FILEDESK"
-        #rm -r "$EPI_DATA"
-    fi
-
-    #if grep -q '.local.bin' "$filedesk";then
-    #    DESKBIN=~/.local/bin/$(sed -n '/^Exec/s/.*\/\([^\/]*\)$/\1/p' "$filedesk")
-    #    DATA_FOLDER=$(sed -n '/^FOLDER/s/.*=\([^\n]*\).*/\1/p' "$DESKBIN")
-    #    rm "$DESKBIN"
-    #    rm -r "$DATA_FOLDER"
-    #fi
-
-    if [ -L "$LINK" ] || [ -e "$LINK" ];then
-        unlink "$LINK"
-    fi
-
-    #if [ -n "$(grep 'falkon' "$filedesk")" ];then
-    #    folder=$(awk '/Exec=/{print $3}' "$filedesk")
-    #    rm -r ${HOME}/.config/falkon/profiles/${folder}
-    #fi
-
-    [ -e "$ICONDESK" ] && rm "$ICONDESK"
-    rm "$filedesk"
-done
-
-nohup update-desktop-database -q ~/.local/share/applications &
-nohup kbuildsycoca5 &> /dev/null &
-printf 0
-exit
+sh_webapp-remove-all "$@"

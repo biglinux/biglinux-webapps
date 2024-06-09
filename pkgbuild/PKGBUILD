@@ -7,37 +7,32 @@ arch=('any')
 license=('GPL')
 url="https://github.com/biglinux/biglinux-webapps"
 pkgdesc="Installs and removes BigLinux WebApps"
-depends=('bigbashview' 'python-bs4' 'python-requests' 'python-pillow' 'yad')
+depends=('bigbashview' 'python-bs4' 'python-requests' 'python-pillow' 'yad' 'gettext' 'bigcontrolcenter-base')
 source=("git+https://github.com/biglinux/biglinux-webapps.git")
 md5sums=(SKIP)
-if [ -e "${pkgname}.install" ];then
-    install=${pkgname}.install
+if [ -e "${pkgname}.install" ]; then
+	install=${pkgname}.install
 fi
 
 package() {
-    # Verify default folder
-    if [ -d "${srcdir}/${pkgname}/${pkgname}" ]; then
-        InternalDir="${srcdir}/${pkgname}/${pkgname}"
-    else
-        InternalDir="${srcdir}/${pkgname}"
-    fi
+	# Verify default folder
+	if [ -d "${srcdir}/${pkgname}/${pkgname}" ]; then
+		InternalDir="${srcdir}/${pkgname}/${pkgname}"
+	else
+		InternalDir="${srcdir}/${pkgname}"
+	fi
 
+	# Copy files
+	if [ -d "${InternalDir}/usr" ]; then
+		cp -r "${InternalDir}/usr" "${pkgdir}/"
+	fi
 
-    # Copy files
-    if [ -d "${InternalDir}/usr" ]; then
-        cp -r "${InternalDir}/usr" "${pkgdir}/"
-    fi
+	if [ -d "${InternalDir}/etc" ]; then
+		cp -r "${InternalDir}/etc" "${pkgdir}/"
+	fi
 
-    if [ -d "${InternalDir}/etc" ]; then
-        cp -r "${InternalDir}/etc" "${pkgdir}/"
-    fi
-
-    if [ -d "${InternalDir}/opt" ]; then
-        cp -r "${InternalDir}/opt" "${pkgdir}/"
-    fi
-
+	if [ -d "${InternalDir}/opt" ]; then
+		cp -r "${InternalDir}/opt" "${pkgdir}/"
+	fi
 
 }
-
-
-
