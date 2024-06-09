@@ -8,7 +8,7 @@
 #  Description: WebApps installing programs for BigLinux
 #
 #  Created: 2020/01/11
-#  Altered: 2024/06/04
+#  Altered: 2024/06/09
 #
 #  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
 #                2020-2023, Bruno Gonçalves <www.biglinux.com.br>
@@ -37,7 +37,7 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 APP="${0##*/}"
-_VERSION_="1.0.0-20240604"
+_VERSION_="1.0.0-20240609"
 LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 [[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
 [[ -f "${LIBRARY}/tinilib.sh" ]] && source "${LIBRARY}/tinilib.sh"
@@ -430,7 +430,7 @@ function sh_index_sh_main() {
 #	if compgen -G "$HOME_LOCAL"/share/applications/*-webapp-biglinux-custom.desktop >/dev/null; then
 #		IFS=$'\n' read -r -d '' -a CUSTOMFILES < <(find "$HOME_LOCAL"/share/applications -iname "*-webapp-biglinux-custom.desktop")
 #	fi
-	mapfile -t CUSTOMFILES < <(find "$HOME_LOCAL"/share/applications -iname "*-webapp-biglinux-custom.desktop")
+	mapfile -t CUSTOMFILES < <(find "$HOME_LOCAL/share/applications" \( -iname "*-webapp-biglinux-custom.desktop" -o -iname "*-Default.desktop" \))
 
 	# Start of gawk script
 	gawk -v development="$Desenvolvimento" \
