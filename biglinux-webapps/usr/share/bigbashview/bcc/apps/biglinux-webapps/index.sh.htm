@@ -798,7 +798,7 @@ function sh_index_sh_main() {
 		title=$O_navegador_nao_esta_instalado
 	fi
 
-	if ! ((COUNT_BROWSER)) then
+	if ! ((COUNT_BROWSER)); then
 		ICON='none'
 		title=$Nao_existem_navegadores_compativeis_instalados_no_sistema
 	fi
@@ -813,7 +813,7 @@ function sh_index_sh_main() {
 		</div>
 	EOF
 
-	if ! ((COUNT_BROWSER)) then
+	if ! ((COUNT_BROWSER)); then
 		cat <<-EOF
 			<!--MODAL NO BROWSERS-->
 			<div class="pop-up" id="change-browser" style="padding-bottom:30px">
