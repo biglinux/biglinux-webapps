@@ -430,10 +430,11 @@ function sh_index_sh_main() {
 #	if compgen -G "$HOME_LOCAL"/share/applications/*-webapp-biglinux-custom.desktop >/dev/null; then
 #		IFS=$'\n' read -r -d '' -a CUSTOMFILES < <(find "$HOME_LOCAL"/share/applications -iname "*-webapp-biglinux-custom.desktop")
 #	fi
-	mapfile -t CUSTOMFILES < <(find "$HOME_LOCAL/share/applications" \( -iname "*-webapp-biglinux-custom.desktop" -o -iname "*-Default.desktop" \))
+	mapfile -t CUSTOMFILES < <(find "$HOME_LOCAL/share/applications" \( -iname "*-webapp-biglinux-custom.desktop" -o -iname "*-Default.desktop"  -o -iname "*.desktop" \))
 
 	# Start of gawk script
 	gawk -v development="$Desenvolvimento" \
+		-v icon_path="$HOME_LOCAL/share/icons" \
 		-v office="$Escritorio" \
 		-v graphics="$Graficos" \
 		-v game="$Jogos" \
@@ -510,6 +511,7 @@ function sh_index_sh_main() {
 
     /^Icon=/ {
       icon = gensub(/^Icon=/,"",1)
+      icon = icon_path "/" icon
     }
 
     /^Name=/ {
