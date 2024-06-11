@@ -6,7 +6,7 @@
 #  Description: WebApps installing programs for BigLinux
 #
 #  Created: 2020/01/11
-#  Altered: 2024/06/07
+#  Altered: 2024/06/11
 #
 #  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
 #                2022-2023, Bruno Gonçalves <www.biglinux.com.br>
@@ -35,13 +35,14 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 APP="${0##*/}"
-_VERSION_="1.0.0-20240607"
+_VERSION_="1.0.0-20240611"
 LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 #[[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
 [[ -f "${LIBRARY}/tinilib.sh" ]] && source "${LIBRARY}/tinilib.sh"
 [[ -f "${LIBRARY}/weblib.sh" ]] && source "${LIBRARY}/weblib.sh"
 
 function sh_biglinux_webapp_main {
+	local _session
 	local BROWSER
 
 	if [[ "$1" = "firelibre" ]]; then
@@ -59,11 +60,22 @@ function sh_biglinux_webapp_main {
 		sh_webapp_check_browser
 	fi
 
+	_session="$(sh_get_desktop_session)"
+	line_exec="$@"
+	case "${_session^^}" in
+	X11)
+		line_exec="${line_exec/,Chromium-browser/}"
+		;;
+	WAYLAND)
+		:
+		;;
+	esac
+
 	if [[ "$BROWSER" = "falkon" ]]; then
 		link=$(echo "$3" | cut -d "=" -f2)
 		exec $BROWSER -ro "$link"
 	else
-		exec $BROWSER "$@"
+		exec $BROWSER "$line_exec"
 	fi
 }
 export -f sh_biglinux_webapp_main
