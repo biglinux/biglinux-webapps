@@ -509,7 +509,7 @@ function sh_index_sh_main() {
 
     /^Icon=/ {
       icon = gensub(/^Icon=/,"",1)
-      icon = icon_path "/" icon
+      icon = icon_path "/" icon ".png"
     }
 
     /^Name=/ {
