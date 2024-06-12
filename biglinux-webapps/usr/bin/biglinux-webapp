@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#shellcheck disable=SC2155,SC2034
+#shellcheck disable=SC2155,SC2034,SC2154
 #shellcheck source=/dev/null
 
 #  /usr/bin/biglinux-webapp
@@ -37,11 +37,13 @@
 APP="${0##*/}"
 _VERSION_="1.0.0-20240611"
 LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
-#[[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
+[[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
 [[ -f "${LIBRARY}/tinilib.sh" ]] && source "${LIBRARY}/tinilib.sh"
 [[ -f "${LIBRARY}/weblib.sh" ]] && source "${LIBRARY}/weblib.sh"
 
 function sh_biglinux_webapp_main {
+	local parameters="$*"
+	local link
 	local _session
 	local BROWSER
 
@@ -63,21 +65,22 @@ function sh_biglinux_webapp_main {
 	fi
 
 	_session="$(sh_get_desktop_session)"
-	line_exec=" --user-data-dir=$USER_DATA_DIR $@"
+	line_exec=" --user-data-dir=$USER_DATA_DIR $parameters"
 	case "${_session^^}" in
 	X11)
 		line_exec="${line_exec/,Chromium-browser/}"
 		;;
 	WAYLAND)
+		line_exec="${line_exec/,Chromium-browser/}"
 		:
 		;;
 	esac
 
 	if [[ "$BROWSER" = "falkon" ]]; then
 		link=$(echo "$3" | cut -d "=" -f2)
-		exec $BROWSER -ro "$link"
+		exec $BROWSER -ro $link
 	else
-		exec $BROWSER "$line_exec"
+		exec $BROWSER $line_exec
 	fi
 }
 export -f sh_biglinux_webapp_main
