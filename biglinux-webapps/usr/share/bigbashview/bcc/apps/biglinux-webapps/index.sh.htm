@@ -8,7 +8,7 @@
 #  Description: WebApps installing programs for BigLinux
 #
 #  Created: 2020/01/11
-#  Altered: 2024/06/09
+#  Altered: 2024/06/12
 #
 #  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
 #                2020-2023, Bruno Gonçalves <www.biglinux.com.br>
@@ -37,7 +37,7 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 APP="${0##*/}"
-_VERSION_="1.0.0-20240609"
+_VERSION_="1.0.0-20240612"
 LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 [[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
 [[ -f "${LIBRARY}/tinilib.sh" ]] && source "${LIBRARY}/tinilib.sh"
@@ -550,7 +550,9 @@ function sh_index_sh_main() {
         browser_name = "falkon"
       } else {
         url = gensub(/.*app=/,"",1)
-        browser_name = gensub(/^Exec=/,"",1,$1)
+        # pega o 2nd parametro da string Exec=, qual seja o browser
+        #browser_name = gensub(/^Exec=/,"",1,$1)
+        browser_name = gensub(/^Exec=/,"",1,$2)
       }
     }
 
