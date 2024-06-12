@@ -902,7 +902,8 @@ function sh_index_sh_main() {
 		<ul id="content-ul">'
 	EOF
 
-	IFS=$'\n' read -r -d '' -a files < <(find ./webapps -iname "*-webapp-biglinux.desktop")
+#	IFS=$'\n' read -r -d '' -a files < <(find ./webapps -iname "*-webapp-biglinux.desktop")
+	mapfile -t files < <(find ./webapps \( -iname "*-webapp-biglinux.desktop" -o -iname "*-Default.desktop" \))
 	gawk -v browser="${ICON}" '
     BEGIN {
         # This OFS helps write readable code on printing

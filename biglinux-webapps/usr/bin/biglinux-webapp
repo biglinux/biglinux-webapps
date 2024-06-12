@@ -71,7 +71,6 @@ function sh_biglinux_webapp_main {
 		line_exec="${line_exec/,Chromium-browser/}"
 		;;
 	WAYLAND)
-		line_exec="${line_exec/,Chromium-browser/}"
 		:
 		;;
 	esac
@@ -80,6 +79,7 @@ function sh_biglinux_webapp_main {
 		link=$(echo "$3" | cut -d "=" -f2)
 		exec $BROWSER -ro $link
 	else
+		PATH="/usr/bin:/usr/local/bin"
 		exec $BROWSER $line_exec
 	fi
 }
