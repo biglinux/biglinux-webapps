@@ -308,8 +308,6 @@ function sh_index_sh_main() {
 		</li>
 	EOF
 
-#	checked=$(TIni.Get "$INI_FILE_WEBAPPS" "conf" "shortcut")
-
 	cat <<-EOF
 		<li>
 		<div class="products">
@@ -511,7 +509,7 @@ function sh_index_sh_main() {
 
     /^Icon=/ {
       icon = gensub(/^Icon=/,"",1)
-      icon = icon_path "/" icon
+      icon = icon_path "/" icon ".png"
     }
 
     /^Name=/ {
@@ -904,7 +902,8 @@ function sh_index_sh_main() {
 		<ul id="content-ul">'
 	EOF
 
-	IFS=$'\n' read -r -d '' -a files < <(find ./webapps -iname "*-webapp-biglinux.desktop")
+#	IFS=$'\n' read -r -d '' -a files < <(find ./webapps -iname "*-webapp-biglinux.desktop")
+	mapfile -t files < <(find ./webapps \( -iname "*-webapp-biglinux.desktop" -o -iname "*-Default.desktop" \))
 	gawk -v browser="${ICON}" '
     BEGIN {
         # This OFS helps write readable code on printing
