@@ -43,16 +43,24 @@ LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 
 function sh_biglinux_webapp_main {
 	local parameters="$*"
+	local paramClass="$1"
+	local paramBrowser="$2"
 	local link
 	local _session
 	local BROWSER
+	local cache_dir="$USER_DATA_DIR"
 
-	if [[ "$1" = "firelibre" ]]; then
+	paramClass="${paramClass/,Chromium-browser/}"
+	paramClass="${paramClass/--class=/}"
+	paramClass="${paramClass/www./}"
+	cache_dir+="/$paramClass"
+
+	if [[ "$paramBrowser" = "firelibre" ]]; then
 		yadmsg "${Amsg[error_browser_not_installed]}"
 		exit 1
 	fi
 
-	sh_webapp_check_dirs
+	sh_webapp_check_dirs "$cache_dir"
 
 	# Verifica se o arquivo .ini existe no HOME_FOLDER, senão executa um script de checagem dos navegadores
 	[[ -r "$INI_FILE_WEBAPPS" ]] || sh_webapp_check_browser
@@ -65,7 +73,7 @@ function sh_biglinux_webapp_main {
 	fi
 
 	_session="$(sh_get_desktop_session)"
-	line_exec=" --user-data-dir=$USER_DATA_DIR $parameters"
+	line_exec=" --user-data-dir=$cache_dir $parameters"
 	case "${_session^^}" in
 	X11)
 		line_exec="${line_exec/,Chromium-browser/}"

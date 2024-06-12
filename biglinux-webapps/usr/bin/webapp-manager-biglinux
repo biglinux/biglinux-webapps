@@ -109,7 +109,7 @@ function sh_webapps_main {
 		-n "$TITLE" \
 		-p "$APP" \
 		-d "$WEBAPPS_PATH" \
-		-i icons/webapp.svg
+		-i "$WEBAPPS_PATH/icons/webapp.svg"
 	sh_unset_config
 }
 
