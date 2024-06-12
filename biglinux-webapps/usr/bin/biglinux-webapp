@@ -79,7 +79,7 @@ function sh_biglinux_webapp_main {
 		link=$(echo "$3" | cut -d "=" -f2)
 		exec $BROWSER -ro $link
 	else
-		PATH="/usr/bin:/usr/local/bin" exec $BROWSER $line_exec
+		PATH="/usr/local/bin:/usr/bin" exec $BROWSER $line_exec
 	fi
 }
 export -f sh_biglinux_webapp_main
