@@ -6,7 +6,7 @@
 #  Description: WebApps installing programs for BigLinux
 #
 #  Created: 2020/01/11
-#  Altered: 2024/06/12
+#  Altered: 2024/06/13
 #
 #  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
 #                2022-2023, Bruno Gonçalves <www.biglinux.com.br>
@@ -35,7 +35,7 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 APP="${0##*/}"
-_VERSION_="1.0.0-20240612"
+_VERSION_="1.0.0-20240613"
 LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 [[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
 [[ -f "${LIBRARY}/tinilib.sh" ]] && source "${LIBRARY}/tinilib.sh"
@@ -44,29 +44,38 @@ LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 function sh_biglinux_webapp_main {
 	local parameters="$*"
 	local paramClass="$1"
-	local paramBrowser="$2"
+	local paramProfile="$2"
+	local paramApp="$3"
+	local paramDesktopFile
+	local cache_dir="$USER_DATA_DIR"
 	local link
 	local _session
-	local BROWSER
-	local cache_dir="$USER_DATA_DIR"
-
-	paramClass="${paramClass/,Chromium-browser/}"
-	paramClass="${paramClass/--class=/}"
-	paramClass="${paramClass/www./}"
-	cache_dir+="/$paramClass"
-
-	if [[ "$paramBrowser" = "firelibre" ]]; then
-		yadmsg "${Amsg[error_browser_not_installed]}"
-		exit 1
-	fi
+	local browser_default
+	local paramlBrowser
 
 	sh_webapp_check_dirs "$cache_dir"
 
 	# Verifica se o arquivo .ini existe no HOME_FOLDER, senão executa um script de checagem dos navegadores
 	[[ -r "$INI_FILE_WEBAPPS" ]] || sh_webapp_check_browser
 	# Verifica se o arquivo .ini tem algum browser default, senão executa um script de checagem dos navegadores
-	if BROWSER=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "id") && [[ -z "$BROWSER" ]]; then sh_webapp_check_browser; fi
-	if ! sh_webapp_verify_browser "$BROWSER"; then
+	if browser_default=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "id") && [[ -z "$browser_default" ]]; then sh_webapp_check_browser; fi
+
+	paramClass="${paramClass/,Chromium-browser/}"
+	paramClass="${paramClass/--class=/}"
+	paramClass="${paramClass/www./}"
+	cache_dir+="/$paramClass"
+	paramDesktopFile="${browser_default}-${paramClass}__.Default.desktop"
+	paramBrowser=$(TIni.Get "$paramDesktopFile" "Desktop Entry" "X-WebApp-Browser")
+
+	if [[ -n "$paramBrowser" ]]; then
+		browser_default="$paramBrowser"
+		if [[ "$browser_default" = "firelibre" ]]; then
+			yadmsg "${Amsg[error_browser_not_installed]}"
+			exit 1
+		fi
+	fi
+
+	if ! sh_webapp_verify_browser "$browser_default"; then
 		#     notify-send -u critical --icon=webapps --app-name "$0" "$TITLE" "${Amsg[error_browser]}" --expire-time=2000
 		yadmsg "${Amsg[error_browser]}"
 		sh_webapp_check_browser
@@ -83,11 +92,11 @@ function sh_biglinux_webapp_main {
 		;;
 	esac
 
-	if [[ "$BROWSER" = "falkon" ]]; then
+	if [[ "$browser_default" = "falkon" ]]; then
 		link=$(echo "$3" | cut -d "=" -f2)
-		exec $BROWSER -ro $link
+		exec $browser_default -ro $link
 	else
-		PATH="/usr/local/bin:/usr/bin" exec $BROWSER $line_exec
+		PATH="/usr/local/bin:/usr/bin" exec $browser_default $line_exec
 	fi
 }
 export -f sh_biglinux_webapp_main
