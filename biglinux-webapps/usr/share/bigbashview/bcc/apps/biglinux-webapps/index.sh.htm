@@ -906,7 +906,7 @@ function sh_index_sh_main() {
 
 #	IFS=$'\n' read -r -d '' -a files < <(find ./webapps -iname "*-webapp-biglinux.desktop")
 	mapfile -t files < <(find ./webapps \( -iname "*-webapp-biglinux.desktop" -o -iname "*-Default.desktop" \))
-	gawk -v browser="${ICON}" '
+	gawk -v browser_default="$BROWSER" -v browser="${ICON}" '
     BEGIN {
         # This OFS helps write readable code on printing
         OFS = "\n"
@@ -955,7 +955,7 @@ function sh_index_sh_main() {
     # ENDFILE block runs after each file is read
     ENDFILE {
         # Checks if webapp is installed
-        if ( system("[ ! -e ~/.local/share/applications/"webapp" ]") ) {
+        if ( system("[ ! -e ~/.local/share/applications/"browser_default"-"webapp" ]") ) {
           color = "green"
           checked = "checked"
           disabled = ""
