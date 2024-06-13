@@ -8,7 +8,7 @@
 #  Description: WebApps installing programs for BigLinux
 #
 #  Created: 2020/01/11
-#  Altered: 2024/06/12
+#  Altered: 2024/06/13
 #
 #  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
 #                2020-2023, Bruno Gonçalves <www.biglinux.com.br>
@@ -37,7 +37,7 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 APP="${0##*/}"
-_VERSION_="1.0.0-20240612"
+_VERSION_="1.0.0-20240613"
 LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 [[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
 [[ -f "${LIBRARY}/tinilib.sh" ]] && source "${LIBRARY}/tinilib.sh"
@@ -512,6 +512,10 @@ function sh_index_sh_main() {
       icon = icon_path "/" icon ".png"
     }
 
+    /^Custom=/ {
+      custom = gensub(/^Icon=/,"",1)
+    }
+
     /^Name=/ {
       name = gensub(/^Name=/,"",1)
     }
@@ -554,6 +558,10 @@ function sh_index_sh_main() {
         #browser_name = gensub(/^Exec=/,"",1,$1)
         browser_name = gensub(/^Exec=/,"",1,$2)
       }
+    }
+
+    /^X-WebApp-Browser=/ {
+      browser_name = gensub(/^X-WebApp-Browser=/,"",1)
     }
 
     {
@@ -607,7 +615,7 @@ function sh_index_sh_main() {
     }
 
     # If all variables are set, skip to ENDFILE block
-    app_category && name_category && icon && name && deskexec && url && browser {
+    app_category && name_category && icon && name && deskexec && url && browser && custom {
       ++allset
       nextfile
     }
