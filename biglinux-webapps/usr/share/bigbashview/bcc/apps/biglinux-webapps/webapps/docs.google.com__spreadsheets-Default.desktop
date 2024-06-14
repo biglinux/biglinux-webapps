@@ -1,0 +1,18 @@
+[Desktop Entry]
+MimeType=text/html
+Name=Spreadsheets
+Name[pt]=Planilhas
+Type=Application
+StartupWMClass=docs.google.com__spreadsheets
+X-WebApp-Browser=brave
+Categories=Google
+Icon=webapp-g-spreadsheets
+Terminal=false
+Version=1.0
+Exec=/usr/bin/biglinux-webapp --class="docs.google.com__spreadsheets,Chromium-browser" --profile-directory=Default --app=https://docs.google.com/spreadsheets
+
+Actions=SoftwareRender;
+
+[Desktop Action SoftwareRender]
+Name=Software Render
+Exec=SoftwareRender /usr/bin/biglinux-webapp --class="docs.google.com__spreadsheets,Chromium-browser" --profile-directory=Default --app=https://docs.google.com/spreadsheets

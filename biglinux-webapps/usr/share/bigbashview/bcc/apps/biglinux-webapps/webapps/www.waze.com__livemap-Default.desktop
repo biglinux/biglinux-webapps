@@ -1,0 +1,17 @@
+[Desktop Entry]
+MimeType=text/html
+Name=Waze
+Type=Application
+StartupWMClass=www.waze.com__livemap
+X-WebApp-Browser=brave
+Categories=Google
+Icon=webapp-g-waze
+Terminal=false
+Version=1.0
+Exec=/usr/bin/biglinux-webapp --class="www.waze.com__livemap,Chromium-browser" --profile-directory=Default --app=https://www.waze.com/livemap
+
+Actions=SoftwareRender;
+
+[Desktop Action SoftwareRender]
+Name=Software Render
+Exec=SoftwareRender /usr/bin/biglinux-webapp --class="www.waze.com__livemap,Chromium-browser" --profile-directory=Default --app=https://www.waze.com/livemap

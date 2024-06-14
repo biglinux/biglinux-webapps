@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name[pt_BR]=Traduzir Docs
+MimeType=text/html
+Name=Docs Translator
+Type=Application
+StartupWMClass=www.onlinedoctranslator.com__translationform
+X-WebApp-Browser=brave
+Categories=Webapps
+Icon=webapp-doctranslator
+Terminal=false
+Version=1.0
+Exec=/usr/bin/biglinux-webapp --class="www.onlinedoctranslator.com__translationform,Chromium-browser" --profile-directory=Default --app=https://www.onlinedoctranslator.com/translationform
+
+Actions=SoftwareRender;
+
+[Desktop Action SoftwareRender]
+Name=Software Render
+Exec=SoftwareRender /usr/bin/biglinux-webapp --class="www.onlinedoctranslator.com__translationform,Chromium-browser" --profile-directory=Default --app=https://www.onlinedoctranslator.com/translationform
