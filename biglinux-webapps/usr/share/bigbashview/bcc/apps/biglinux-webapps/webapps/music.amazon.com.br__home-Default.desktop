@@ -1,0 +1,17 @@
+[Desktop Entry]
+MimeType=text/html
+Name=Amazon Music
+Type=Application
+StartupWMClass=music.amazon.com.br__home
+X-WebApp-Browser=brave
+Categories=Webapps
+Icon=webapp-amazonmusic
+Terminal=false
+Version=1.0
+Exec=/usr/bin/biglinux-webapp --class="music.amazon.com.br__home,Chromium-browser" --profile-directory=Default --app=https://music.amazon.com.br/home
+
+Actions=SoftwareRender;
+
+[Desktop Action SoftwareRender]
+Name=Software Render
+Exec=SoftwareRender /usr/bin/biglinux-webapp --class="music.amazon.com.br__home,Chromium-browser" --profile-directory=Default --app=https://music.amazon.com.br/home
