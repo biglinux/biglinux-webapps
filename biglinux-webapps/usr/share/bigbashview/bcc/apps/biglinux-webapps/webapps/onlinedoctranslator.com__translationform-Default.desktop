@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name[pt_BR]=Traduzir Docs
+MimeType=text/html
+Name=Docs Translator
+Type=Application
+Terminal=false
+Version=1.0
+Exec=/usr/bin/biglinux-webapp --class="onlinedoctranslator.com__translationform,Chromium-browser" --profile-directory=Default --app=https://onlinedoctranslator.com/translationform
+Icon=webapp-doctranslator
+StartupWMClass=onlinedoctranslator.com__translationform
+Categories=Webapps

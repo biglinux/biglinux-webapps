@@ -48,7 +48,7 @@ function sh_biglinux_webapp_main {
 	local paramApp="$3"
 	local paramDesktopFile
 	local cache_dir="$USER_DATA_DIR"
-	local link
+	local link="$(cut -d "=" -f2 <<< $paramApp)"
 	local _session
 	local browser_default
 	local paramlBrowser
@@ -76,7 +76,7 @@ function sh_biglinux_webapp_main {
 	fi
 
 	if ! sh_webapp_verify_browser "$browser_default"; then
-		#     notify-send -u critical --icon=webapps --app-name "$0" "$TITLE" "${Amsg[error_browser]}" --expire-time=2000
+		#notify-send -u critical --icon=webapps --app-name "$0" "$TITLE" "${Amsg[error_browser]}" --expire-time=2000
 		yadmsg "${Amsg[error_browser]}"
 		sh_webapp_check_browser
 	fi
@@ -93,11 +93,11 @@ function sh_biglinux_webapp_main {
 	esac
 
 	if [[ "$browser_default" = "falkon" ]]; then
-		link=$(echo "$3" | cut -d "=" -f2)
-		exec $browser_default -ro $link
+		PATH="/usr/local/bin:/usr/bin" exec $browser_default --portable --no-remote $link
 	else
 		PATH="/usr/local/bin:/usr/bin" exec $browser_default $line_exec
 	fi
+
 }
 export -f sh_biglinux_webapp_main
 

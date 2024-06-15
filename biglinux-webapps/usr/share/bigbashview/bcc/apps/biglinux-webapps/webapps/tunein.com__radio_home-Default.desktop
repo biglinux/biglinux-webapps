@@ -3,16 +3,9 @@ MimeType=text/html
 Name=TuneIn Radio
 Name[pt]=TuneIn Rádios
 Type=Application
-StartupWMClass=tunein.com__radio_home
-X-WebApp-Browser=brave
-Categories=Webapps
-Icon=webapp-tunein
 Terminal=false
 Version=1.0
 Exec=/usr/bin/biglinux-webapp --class="tunein.com__radio_home,Chromium-browser" --profile-directory=Default --app=https://tunein.com/radio/home
-
-Actions=SoftwareRender;
-
-[Desktop Action SoftwareRender]
-Name=Software Render
-Exec=SoftwareRender /usr/bin/biglinux-webapp --class="tunein.com__radio_home,Chromium-browser" --profile-directory=Default --app=https://tunein.com/radio/home
+Icon=webapp-tunein
+StartupWMClass=tunein.com__radio_home
+Categories=Webapps

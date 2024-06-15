@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=OpenStreetMap
+Exec=/usr/bin/biglinux-webapp --class="openstreetmap.org,Chromium-browser" --profile-directory=Default --app=https://openstreetmap.org
+Icon=webapp-openstreetmap
+StartupWMClass=openstreetmap.org
+Categories=Webapps;
