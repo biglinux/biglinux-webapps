@@ -8,7 +8,7 @@
 #  Description: WebApps installing programs for BigLinux
 #
 #  Created: 2020/01/11
-#  Altered: 2024/06/13
+#  Altered: 2024/06/14
 #
 #  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
 #                2020-2023, Bruno Gonçalves <www.biglinux.com.br>
@@ -37,7 +37,7 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 APP="${0##*/}"
-_VERSION_="1.0.0-20240613"
+_VERSION_="1.0.0-20240614"
 LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 [[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
 [[ -f "${LIBRARY}/tinilib.sh" ]] && source "${LIBRARY}/tinilib.sh"
@@ -520,48 +520,58 @@ function sh_index_sh_main() {
       name = gensub(/^Name=/,"",1)
     }
 
-    /^Exec=/ {
+
+#    /^Exec=/ {
+#      deskexec = gensub(/^Exec=/,"",1)
+#
+#      if ( /local\/bin/ ) {
+#      # Reads the whole amofiexec file as a string, and removes the unimportant parts to keep the url
+#      # More info about this maneuver:https://www.gnu.org/software/gawk/manual/html_node/Readfile-Function.html
+#        RS_BAK = RS
+#        RS = "^$"
+#        getline amofiexec < deskexec
+#        close(deskexec)
+#        RS = RS_BAK
+#        url = gensub(/.*new-instance "|" .*$/,"","g",amofiexec)
+#        browser_amofiexec = gensub(/.*T_SANDBOX=1 | --cl.*$/,"","g",amofiexec)
+#
+#        switch(browser_amofiexec){
+#          case /firefox/:
+#          case /.*org.mozilla.firefox/:
+#            browser_name = "firefox"
+#            break
+#
+#          case /librewolf/:
+#          case /.*io.gitlab.librewolf-community/:
+#            browser_name = "librewolf"
+#            break
+#        }
+#
+#      } else if (/.*org.gnome.Epiphany/) {
+#        url = $4
+#        browser_name = "epiphany"
+#      } else if (/falkon/) {
+#        url = $NF
+#        browser_name = "falkon"
+#      } else {
+#        url = gensub(/.*app=/,"",1)
+#        # pega o 2nd parametro da string Exec=, qual seja o browser
+#        #browser_name = gensub(/^Exec=/,"",1,$1)
+#        browser_name = gensub(/^Exec=/,"",1,$2)
+#      }
+#    }
+
+
+	 /^Exec=/ {
       deskexec = gensub(/^Exec=/,"",1)
-
-      if ( /local\/bin/ ) {
-      # Reads the whole amofiexec file as a string, and removes the unimportant parts to keep the url
-      # More info about this maneuver:https://www.gnu.org/software/gawk/manual/html_node/Readfile-Function.html
-        RS_BAK = RS
-        RS = "^$"
-        getline amofiexec < deskexec
-        close(deskexec)
-        RS = RS_BAK
-        url = gensub(/.*new-instance "|" .*$/,"","g",amofiexec)
-        browser_amofiexec = gensub(/.*T_SANDBOX=1 | --cl.*$/,"","g",amofiexec)
-
-        switch(browser_amofiexec){
-          case /firefox/:
-          case /.*org.mozilla.firefox/:
-            browser_name = "firefox"
-            break
-
-          case /librewolf/:
-          case /.*io.gitlab.librewolf-community/:
-            browser_name = "librewolf"
-            break
-        }
-
-      } else if (/.*org.gnome.Epiphany/) {
-        url = $4
-        browser_name = "epiphany"
-      } else if (/falkon/) {
-        url = $NF
-        browser_name = "falkon"
-      } else {
-        url = gensub(/.*app=/,"",1)
-        # pega o 2nd parametro da string Exec=, qual seja o browser
-        #browser_name = gensub(/^Exec=/,"",1,$1)
-        browser_name = gensub(/^Exec=/,"",1,$2)
-      }
-    }
+	 }
 
     /^X-WebApp-Browser=/ {
       browser_name = gensub(/^X-WebApp-Browser=/,"",1)
+    }
+
+    /^X-WebApp-URL=/ {
+      url = gensub(/^X-WebApp-URL=/,"",1)
     }
 
     {
@@ -796,7 +806,7 @@ function sh_index_sh_main() {
 		<div style="display:flex;justify-content:center">
 	EOF
 
-	BROWSER=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "id")
+	BROWSER=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "short_name")
 	cpath=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "path")
 	if [[ -e $cpath ]]; then
 		ICON=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "icon")
@@ -915,7 +925,7 @@ function sh_index_sh_main() {
 #	IFS=$'\n' read -r -d '' -a files < <(find ./webapps -iname "*-webapp-biglinux.desktop")
 	mapfile -t files < <(find ./webapps \( -iname "*-webapp-biglinux.desktop" -o -iname "*-Default.desktop" \))
 	gawk -v browser_default="$BROWSER" -v browser="${ICON}" '
-    BEGIN {
+	 BEGIN {
         # This OFS helps write readable code on printing
         OFS = "\n"
         # Grabs localization language, e.g., en_US.UTF-8 --> en

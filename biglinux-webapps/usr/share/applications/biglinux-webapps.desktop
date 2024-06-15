@@ -30,6 +30,7 @@ Name[uk]=Додавання та видалення веб-програм
 Name[zh]=添加和删除 Web 应用
 Icon=webapp
 Exec=webapp-manager-biglinux
+StartupWMClass=BigBashView
 Categories=Webapps;
 Terminal=false
 StartupNotify=true
