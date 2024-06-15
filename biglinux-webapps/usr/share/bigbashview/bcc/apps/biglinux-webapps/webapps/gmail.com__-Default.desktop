@@ -2,16 +2,9 @@
 MimeType=text/html
 Name=Gmail
 Type=Application
-StartupWMClass=gmail.com
-X-WebApp-Browser=brave
-Categories=Google
-Icon=webapp-g-gmail
 Terminal=false
 Version=1.0
 Exec=/usr/bin/biglinux-webapp --class="gmail.com,Chromium-browser" --profile-directory=Default --app=https://gmail.com
-
-Actions=SoftwareRender;
-
-[Desktop Action SoftwareRender]
-Name=Software Render
-Exec=SoftwareRender /usr/bin/biglinux-webapp --class="gmail.com,Chromium-browser" --profile-directory=Default --app=https://gmail.com
+Icon=webapp-g-gmail
+StartupWMClass=gmail.com
+Categories=Google

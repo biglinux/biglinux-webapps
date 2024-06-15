@@ -5,5 +5,5 @@ Type=Application
 Name=Jitsi Meet
 Exec=/usr/bin/biglinux-webapp --class=meet.jit.si,Chromium-browser --profile-directory=Default --app=https://meet.jit.si/
 Icon=webapp-jitsi
-Categories=Webapps;
 StartupWMClass=meet.jit.si
+Categories=Webapps;

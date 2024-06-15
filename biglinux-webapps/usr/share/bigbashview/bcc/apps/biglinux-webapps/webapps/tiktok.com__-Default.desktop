@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=TikTok
+Exec=/usr/bin/biglinux-webapp --class="tiktok.com,Chromium-browser" --profile-directory=Default --app=https://tiktok.com
+Icon=webapp-tiktok
+StartupWMClass=tiktok.com
+Categories=Webapps;

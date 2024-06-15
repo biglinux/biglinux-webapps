@@ -38,6 +38,9 @@
 
 APP="${0##*/}"
 _VERSION_="1.0.0-20240614"
+LOCAL_VERSION="1.0.0-20240614"
+_UPDATED_="14/06/2024"
+
 LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 [[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
 [[ -f "${LIBRARY}/tinilib.sh" ]] && source "${LIBRARY}/tinilib.sh"
@@ -107,6 +110,7 @@ function sh_index_sh_config() {
 	declare -g Importar_Backup=$(gettext "Importar Backup")
 	declare -g Criar_Backup=$(gettext "Criar Backup")
 	declare -g Nativo=$(gettext "Nativo")
+	declare -g Sobre=$(gettext "Sobre")
 }
 
 function sh_index_sh_setbrowse() {
@@ -156,7 +160,7 @@ function sh_index_sh_main() {
 		<!-- toggle theme -->
 		<div class="dark-light">
 		<svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-		<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+			<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
 		</svg>
 		</div>
 	EOF
@@ -175,6 +179,11 @@ function sh_index_sh_main() {
 		<input type="radio" id="tab1" name="tab-control"/>
 		<input type="radio" id="tab2" name="tab-control" checked/>
 		<input type="radio" id="tab3" name="tab-control"/>
+
+<!-- INSERT -->
+		<input type="radio" id="tab4" name="tab-control"/>
+<!-- INSERT -->
+
 		<ul>
 		<li>
 		<label for="tab1" role="button" id="#add-tab-content">
@@ -182,10 +191,11 @@ function sh_index_sh_main() {
 		<path d="M464,128H272L208,64H48A48,48,0,0,0,0,112V400a48,48,0,0,0,48,48H464a48,48,0,0,0,48-48V176A48,48,0,0,0,464,128ZM359.5,296a16,16,0,0,1-16,16h-64v64a16,16,0,0,1-16,16h-16a16,16,0,0,1-16-16V312h-64a16,16,0,0,1-16-16V280a16,16,0,0,1,16-16h64V200a16,16,0,0,1,16-16h16a16,16,0,0,1,16,16v64h64a16,16,0,0,1,16,16Z"/>
 		</svg>
 		<span>
-		$Adicionar_WebApps
+			$Adicionar_WebApps
 		</span>
 		</label>
 		</li>
+
 		<li>
 		<label for="tab2" role="button" id="#list-tab-content">
 		<svg viewBox="0 0 576 512">
@@ -207,6 +217,20 @@ function sh_index_sh_main() {
 		</span>
 		</label>
 		</li>
+
+<!-- INSERT -->
+		<li>
+		<label for="tab4" role="button" id="#about-tab-content">
+		<svg viewBox="0 0 576 512">
+			<path d="M384 64H192C86 64 0 150 0 256s86 192 192 192h192c106 0 192-86 192-192S490 64 384 64zm0 320c-70.8 0-128-57.3-128-128 0-70.8 57.3-128 128-128 70.8 0 128 57.3 128 128 0 70.8-57.3 128-128 128z"/>
+		</svg>
+		<span>
+			$Sobre
+		</span>
+		</label>
+		</li>
+<!-- INSERT -->
+
 		</ul>
 		<div class="slider">
 		<div class="indicator"></div>
@@ -223,12 +247,13 @@ function sh_index_sh_main() {
 		<form class="login-form" id="formAdd" action="webapp-install.sh">
 		<div class="content-section" style="margin-top:0px;">
 		<ul style="margin-top:-10px;">
+
 		<li>
 		<div class="products">
 		<svg viewBox="0 0 512 512">
 			<path fill="currentColor" d="M512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM57.71 192.1L67.07 209.4C75.36 223.9 88.99 234.6 105.1 239.2L162.1 255.7C180.2 260.6 192 276.3 192 294.2V334.1C192 345.1 198.2 355.1 208 359.1C217.8 364.9 224 374.9 224 385.9V424.9C224 440.5 238.9 451.7 253.9 447.4C270.1 442.8 282.5 429.1 286.6 413.7L289.4 402.5C293.6 385.6 304.6 371.1 319.7 362.4L327.8 357.8C342.8 349.3 352 333.4 352 316.1V307.9C352 295.1 346.9 282.9 337.9 273.9L334.1 270.1C325.1 261.1 312.8 255.1 300.1 255.1H256.1C245.9 255.1 234.9 253.1 225.2 247.6L190.7 227.8C186.4 225.4 183.1 221.4 181.6 216.7C178.4 207.1 182.7 196.7 191.7 192.1L197.7 189.2C204.3 185.9 211.9 185.3 218.1 187.7L242.2 195.4C250.3 198.1 259.3 195 264.1 187.9C268.8 180.8 268.3 171.5 262.9 165L249.3 148.8C239.3 136.8 239.4 119.3 249.6 107.5L265.3 89.12C274.1 78.85 275.5 64.16 268.8 52.42L266.4 48.26C262.1 48.09 259.5 48 256 48C163.1 48 84.4 108.9 57.71 192.1L57.71 192.1zM437.6 154.5L412 164.8C396.3 171.1 388.2 188.5 393.5 204.6L410.4 255.3C413.9 265.7 422.4 273.6 433 276.3L462.2 283.5C463.4 274.5 464 265.3 464 256C464 219.2 454.4 184.6 437.6 154.5H437.6z"/>
 		</svg>
-		$URL
+			$URL
 		</div>
 		<input type="search" class="input" id="urlDesk" required name="urldesk" placeholder=$Url_Exemplo>
 		<div class="button-wrapper">
@@ -245,7 +270,7 @@ function sh_index_sh_main() {
 		<svg viewBox="0 0 512 512">
 			<path fill="currentColor" d="M96 0C113.7 0 128 14.33 128 32V64H480C497.7 64 512 78.33 512 96C512 113.7 497.7 128 480 128H128V480C128 497.7 113.7 512 96 512C78.33 512 64 497.7 64 480V128H32C14.33 128 0 113.7 0 96C0 78.33 14.33 64 32 64H64V32C64 14.33 78.33 0 96 0zM448 160C465.7 160 480 174.3 480 192V352C480 369.7 465.7 384 448 384H192C174.3 384 160 369.7 160 352V192C160 174.3 174.3 160 192 160H448z"/>
 		</svg>
-		$Nome
+			$Nome
 		</div>
 		<input type="search" class="input" id="nameDesk" name="namedesk" required placeholder=$Exemplo>
 		</li>
@@ -262,7 +287,7 @@ function sh_index_sh_main() {
 		<img id="iconDesk" src="icons/default-webapp.svg" width="58" height="58" />
 		<input type="hidden" name="icondesk" value="'"${PWD}/icons/default-webapps.png"'" id="inputIconDesk" />
 		</div>
-		$Icone_do_WebApp
+			$Icone_do_WebApp
 		</div>
 		<div class="button-wrapper">
 		<button class="button" style="height:30px" id="loadIcon">$Alterar</button>
@@ -425,9 +450,6 @@ function sh_index_sh_main() {
 	EOF
 
 	CUSTOMFILES=""
-#	if compgen -G "$HOME_LOCAL"/share/applications/*-webapp-biglinux-custom.desktop >/dev/null; then
-#		IFS=$'\n' read -r -d '' -a CUSTOMFILES < <(find "$HOME_LOCAL"/share/applications -iname "*-webapp-biglinux-custom.desktop")
-#	fi
 	mapfile -t CUSTOMFILES < <(find "$HOME_LOCAL/share/applications" \( -iname "*-webapp-biglinux-custom.desktop" -o -iname "*-Default.desktop"  -o -iname "*.desktop" \))
 
 	# Start of gawk script
@@ -1019,6 +1041,30 @@ function sh_index_sh_main() {
 		</div><br/>
 		</div>
 		<!-- FIM TABS CONTENT WEBAPPBIG -->
+
+<!-- INSERT -->
+		<!-- INICIO TABS CONTENT LIST -->
+		<div id="about-tab-content" class="fc-card">
+		<div class="content-section" style="margin-top:0px;">
+		<ul style="margin-top:-10px;">
+
+		<li>Aplicativo:
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;Nome          : $TEXTDOMAIN</span>
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;Sessão        : $(sh_get_de)
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;Versão        : $LOCAL_VERSION
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;Atualizado em : $_UPDATED_
+
+		<li>Desenvolvedores:
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;Bruno Gonçalves, www.biglinux.com.br
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;Vilmar Catafesta, vcatafesta@gmail.com
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;Rafael Ruscher, rruscher@gmail.com
+		</li>
+		</ul>
+
+		</div>
+		</div>
+<!-- INSERT -->
+
 		</div>
 		</div>
 		</div>
@@ -1026,6 +1072,10 @@ function sh_index_sh_main() {
 		</div>
 		</div>
 		</div>
+
+<!-- INSERT -->
+<!-- INSERT -->
+
 		<!-- scripts -->
 		<script src="js/jquery-3.6.0.min.js"></script>
 		<script  src="js/script.js"></script>
