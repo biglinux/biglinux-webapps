@@ -828,11 +828,11 @@ function sh_index_sh_main() {
 		<div style="display:flex;justify-content:center">
 	EOF
 
-	BROWSER=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "short_name")
-	cpath=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "path")
+	BROWSER=$(desktop.get "$INI_FILE_WEBAPPS" "browser" "short_name")
+	cpath=$(desktop.get "$INI_FILE_WEBAPPS" "browser" "path")
 	if [[ -e $cpath ]]; then
-		ICON=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "icon")
-		title=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "title")
+		ICON=$(desktop.get "$INI_FILE_WEBAPPS" "browser" "icon")
+		title=$(desktop.get "$INI_FILE_WEBAPPS" "browser" "title")
 	else
 		ICON='none'
 		title=$O_navegador_nao_esta_instalado
@@ -1098,10 +1098,10 @@ function sh_index_sh_main() {
 		browser_default="$BROWSER"
 		browser_icon="$ICON"
 		webapp="${app##*/}"
-		urldesk="$(TIni.Get "$app" "Desktop Entry" "Exec")"
-		name="$(TIni.Get "$app" "Desktop Entry" "Name")"
-		icon="$(TIni.Get "$app" "Desktop Entry" "Icon")"
-		url="$(TIni.Get "$app" "Desktop Entry" "X-WebApp-URL")"
+		urldesk="$(desktop.get "$app" "Desktop Entry" "Exec")"
+		name="$(desktop.get "$app" "Desktop Entry" "Name")"
+		icon="$(desktop.get "$app" "Desktop Entry" "Icon")"
+		url="$(desktop.get "$app" "Desktop Entry" "X-WebApp-URL")"
 
 		if [[ -z "$url" ]]; then
 			# Remover tudo antes de --app=
@@ -1115,7 +1115,7 @@ function sh_index_sh_main() {
  		disabled="disabled"
 
 		for custom in "${CUSTOMFILES[@]}"; do
-			browser_custom="$(TIni.Get "$custom" "Desktop Entry" "X-WebApp-Browser")"
+			browser_custom="$(desktop.get "$custom" "Desktop Entry" "X-WebApp-Browser")"
 			if [[ -e "$HOME_LOCAL/share/applications/$browser_custom-$webapp" ]]; then
 				browser_icon="$browser_custom"
 				browser_default="$browser_custom"
