@@ -9,3 +9,4 @@ Exec=/usr/bin/biglinux-webapp --class="tunein.com__radio_home,Chromium-browser" 
 Icon=webapp-tunein
 StartupWMClass=tunein.com__radio_home
 Categories=Webapps
+X-WebApp-URL=https://tunein.com/radio/home

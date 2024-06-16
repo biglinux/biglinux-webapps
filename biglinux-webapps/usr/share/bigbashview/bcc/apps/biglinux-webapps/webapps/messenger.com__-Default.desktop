@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="messenger.com,Chromium-browser" --profile
 Icon=webapp-messenger
 StartupWMClass=messenger.com
 Categories=Webapps;
+X-WebApp-URL=https://messenger.com

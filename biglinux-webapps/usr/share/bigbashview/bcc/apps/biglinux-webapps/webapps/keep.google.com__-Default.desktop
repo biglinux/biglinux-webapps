@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="keep.google.com,Chromium-browser" --profi
 Icon=webapp-g-keep
 StartupWMClass=keep.google.com
 Categories=Google;
+X-WebApp-URL=https://keep.google.com

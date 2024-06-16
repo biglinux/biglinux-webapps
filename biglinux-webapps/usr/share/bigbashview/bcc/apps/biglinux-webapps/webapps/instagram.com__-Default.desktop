@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="instagram.com,Chromium-browser" --profile
 Icon=webapp-instagram
 StartupWMClass=instagram.com
 Categories=Webapps;
+X-WebApp-URL=https://instagram.com

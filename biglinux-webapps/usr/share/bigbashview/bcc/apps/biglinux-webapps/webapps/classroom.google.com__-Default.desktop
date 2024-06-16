@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="classroom.google.com,Chromium-browser" --
 Icon=webapp-g-classroom
 StartupWMClass=classroom.google.com
 Categories=Google;
+X-WebApp-URL=https://classroom.google.com

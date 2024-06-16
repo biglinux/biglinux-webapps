@@ -7,3 +7,4 @@ Exec=/usr/bin/biglinux-webapp --class=discord.com,Chromium-browser --profile-dir
 Icon=webapp-discord
 Categories=Webapps;
 StartupWMClass=discord.com
+X-WebApp-URL=https://discord.com

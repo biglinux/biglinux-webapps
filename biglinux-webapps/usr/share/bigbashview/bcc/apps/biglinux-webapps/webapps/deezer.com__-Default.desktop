@@ -9,3 +9,4 @@ Exec=/usr/bin/biglinux-webapp --class="deezer.com,Chromium-browser" --profile-di
 Icon=webapp-deezer
 StartupWMClass=deezer.com
 Categories=Webapps;
+X-WebApp-URL=https://deezer.com

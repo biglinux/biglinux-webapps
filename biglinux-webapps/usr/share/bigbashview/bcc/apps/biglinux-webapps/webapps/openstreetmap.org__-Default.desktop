@@ -7,3 +7,4 @@ Exec=/usr/bin/biglinux-webapp --class="openstreetmap.org,Chromium-browser" --pro
 Icon=webapp-openstreetmap
 StartupWMClass=openstreetmap.org
 Categories=Webapps;
+X-WebApp-URL=https://openstreetmap.org

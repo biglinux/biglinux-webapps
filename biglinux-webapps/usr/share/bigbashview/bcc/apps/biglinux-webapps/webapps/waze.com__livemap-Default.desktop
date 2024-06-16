@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="waze.com__livemap,Chromium-browser" --pro
 Icon=webapp-g-waze
 StartupWMClass=waze.com__livemap
 Categories=Google
+X-WebApp-URL=https://waze.com/livemap

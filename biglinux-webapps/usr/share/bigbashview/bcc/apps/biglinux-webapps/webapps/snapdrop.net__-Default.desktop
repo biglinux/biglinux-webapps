@@ -7,3 +7,4 @@ Exec=/usr/bin/biglinux-webapp --class=snapdrop.net,Chromium-browser --profile-di
 Icon=webapp-snapdrop
 StartupWMClass=snapdrop.net
 Categories=Webapps;
+X-WebApp-URL=https://snapdrop.net

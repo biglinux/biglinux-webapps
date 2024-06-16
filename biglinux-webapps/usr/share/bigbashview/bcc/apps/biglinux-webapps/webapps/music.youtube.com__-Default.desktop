@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="music.youtube.com,Chromium-browser" --pro
 Icon=webapp-g-youtubemusic
 StartupWMClass=music.youtube.com
 Categories=Google;
+X-WebApp-URL=https://music.youtube.com

@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="cleverpdf.com,Chromium-browser" --profile
 Icon=webapp-cleverpdf
 StartupWMClass=cleverpdf.com
 Categories=Webapps;
+X-WebApp-URL=https://cleverpdf.com

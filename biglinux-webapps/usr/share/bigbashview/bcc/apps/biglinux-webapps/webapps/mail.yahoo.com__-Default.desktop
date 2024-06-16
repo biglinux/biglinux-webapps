@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="mail.yahoo.com,Chromium-browser" --profil
 Icon=webapp-mailyahoo
 StartupWMClass=mail.yahoo.com
 Categories=Webapps;
+X-WebApp-URL=https://mail.yahoo.com

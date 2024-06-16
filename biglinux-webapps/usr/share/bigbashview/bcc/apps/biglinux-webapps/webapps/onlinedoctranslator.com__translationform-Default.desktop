@@ -9,3 +9,4 @@ Exec=/usr/bin/biglinux-webapp --class="onlinedoctranslator.com__translationform,
 Icon=webapp-doctranslator
 StartupWMClass=onlinedoctranslator.com__translationform
 Categories=Webapps
+X-WebApp-URL=https://onlinedoctranslator.com/translationform

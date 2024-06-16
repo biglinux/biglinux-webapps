@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="drive.google.com,Chromium-browser" --prof
 Icon=webapp-g-drive
 StartupWMClass=drive.google.com
 Categories=Google;
+X-WebApp-URL=https://drive.google.com

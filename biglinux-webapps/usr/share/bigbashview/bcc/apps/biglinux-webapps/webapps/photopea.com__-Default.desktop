@@ -7,3 +7,4 @@ Exec=/usr/bin/biglinux-webapp --class=photopea.com,Chromium-browser --profile-di
 Icon=webapp-photopea
 StartupWMClass=photopea.com
 Categories=Webapps;
+X-WebApp-URL=https://photopea.com

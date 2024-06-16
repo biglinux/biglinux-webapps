@@ -9,3 +9,4 @@ Exec=/usr/bin/biglinux-webapp --class="calendar.google.com,Chromium-browser" --p
 Icon=webapp-g-calendar
 StartupWMClass=calendar.google.com
 Categories=Google;
+X-WebApp-URL=https://calendar.google.com

@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="facebook.com,Chromium-browser" --profile-
 Icon=webapp-facebook
 StartupWMClass=facebook.com
 Categories=Webapps;
+X-WebApp-URL=https://facebook.com

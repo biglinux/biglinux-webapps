@@ -8,3 +8,4 @@ Exec=biglinux-webapp --class="primevideo.com,Chromium-browser" --profile-directo
 Icon=webapp-primevideo
 StartupWMClass=primevideo.com
 Categories=Webapps;
+X-WebApp-URL=https://primevideo.com/

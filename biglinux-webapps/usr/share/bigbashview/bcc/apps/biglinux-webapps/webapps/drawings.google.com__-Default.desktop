@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="drawings.google.com,Chromium-browser" --p
 Icon=webapp-g-drawings
 StartupWMClass=drawings.google.com
 Categories=Google;
+X-WebApp-URL=https://drawings.google.com

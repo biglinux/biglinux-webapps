@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="web.whatsapp.com,Chromium-browser" --prof
 Icon=webapp-whatsapp
 StartupWMClass=web.whatsapp.com
 Categories=Webapps;
+X-WebApp-URL=https://web.whatsapp.com

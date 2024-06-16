@@ -7,3 +7,4 @@ Exec=/usr/bin/biglinux-webapp --class=meet.jit.si,Chromium-browser --profile-dir
 Icon=webapp-jitsi
 StartupWMClass=meet.jit.si
 Categories=Webapps;
+X-WebApp-URL=https://meet.jit.si/

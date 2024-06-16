@@ -9,3 +9,4 @@ Exec=/usr/bin/biglinux-webapp --class="forum.biglinux.com.br,Chromium-browser" -
 Icon=webapp-biglinux-globo
 StartupWMClass=forum.biglinux.com.br
 Categories=Webapps;
+X-WebApp-URL=https://forum.biglinux.com.br

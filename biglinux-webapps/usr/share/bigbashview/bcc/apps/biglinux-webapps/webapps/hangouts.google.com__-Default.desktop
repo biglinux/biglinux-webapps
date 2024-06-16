@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="hangouts.google.com,Chromium-browser" --p
 Icon=webapp-g-hangouts
 StartupWMClass=hangouts.google.com
 Categories=Google;
+X-WebApp-URL=https://hangouts.google.com
