@@ -98,6 +98,7 @@ function sh_biglinux_webapp_main {
 			;;
 		esac
 #		XAPP_FORCE_GTKWINDOW_ICON=/usr/share/icons/hicolor/128x128/apps/webapp-netflix.svg \
+		MOZ_APP_REMOTINGNAME="$CLASS" \
 		MOZ_DISABLE_CONTENT_SANDBOX=1 \
 			MOZ_DISABLE_GMP_SANDBOX=1 \
 			PATH="/usr/local/bin:/usr/bin" \
