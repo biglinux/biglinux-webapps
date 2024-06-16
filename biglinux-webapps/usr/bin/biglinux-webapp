@@ -6,7 +6,7 @@
 #  Description: WebApps installing programs for BigLinux
 #
 #  Created: 2020/01/11
-#  Altered: 2024/06/13
+#  Altered: 2024/06/15
 #
 #  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
 #                2022-2023, Bruno Gonçalves <www.biglinux.com.br>
@@ -35,7 +35,7 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 APP="${0##*/}"
-_VERSION_="1.0.0-20240613"
+_VERSION_="1.0.0-20240615"
 LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 [[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
 [[ -f "${LIBRARY}/tinilib.sh" ]] && source "${LIBRARY}/tinilib.sh"
@@ -46,39 +46,36 @@ function sh_biglinux_webapp_main {
 	local paramClass="$1"
 	local paramProfile="$2"
 	local paramApp="$3"
-	local paramDesktopFile
+	local paramBrowser="$4"
 	local cache_dir="$USER_DATA_DIR"
 	local link="$(cut -d "=" -f2 <<< $paramApp)"
 	local _session
 	local browser_default
-	local paramlBrowser
 
 	sh_webapp_check_dirs "$cache_dir"
-
-	# Verifica se o arquivo .ini existe no HOME_FOLDER, senão executa um script de checagem dos navegadores
-	[[ -r "$INI_FILE_WEBAPPS" ]] || sh_webapp_check_browser
-	# Verifica se o arquivo .ini tem algum browser default, senão executa um script de checagem dos navegadores
-	if browser_default=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "id") && [[ -z "$browser_default" ]]; then sh_webapp_check_browser; fi
 
 	paramClass="${paramClass/,Chromium-browser/}"
 	paramClass="${paramClass/--class=/}"
 	paramClass="${paramClass/www./}"
 	cache_dir+="/$paramClass"
-	paramDesktopFile="${browser_default}-${paramClass}__.Default.desktop"
-	paramBrowser=$(TIni.Get "$paramDesktopFile" "Desktop Entry" "X-WebApp-Browser")
 
-	if [[ -n "$paramBrowser" ]]; then
-		browser_default="$paramBrowser"
-		if [[ "$browser_default" = "firelibre" ]]; then
-			yadmsg "${Amsg[error_browser_not_installed]}"
-			exit 1
+	if [[ -z "$paramBrowser" ]]; then
+		# Verifica se o arquivo .ini existe no HOME_FOLDER, senão executa um script de checagem dos navegadores
+		if [[ -r "$INI_FILE_WEBAPPS" ]]; then
+			# Verifica se o arquivo .ini tem algum browser default, senão executa um script de checagem dos navegadores
+			if browser_default=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "id") && [[ -z "$browser_default" ]]; then
+				browser_default=$(sh_webapp_check_browser)
+			fi
+		else
+			browser_default=$(sh_webapp_check_browser)
 		fi
-	fi
-
-	if ! sh_webapp_verify_browser "$browser_default"; then
-		#notify-send -u critical --icon=webapps --app-name "$0" "$TITLE" "${Amsg[error_browser]}" --expire-time=2000
-		yadmsg "${Amsg[error_browser]}"
-		sh_webapp_check_browser
+	else
+		browser_default="$paramBrowser"
+		if ! sh_webapp_verify_browser "$paramBrowser"; then
+			#notify-send -u critical --icon=webapps --app-name "$0" "$TITLE" "${Amsg[error_browser]}" --expire-time=2000
+			yadmsg "${Amsg[error_browser]}"
+			browser_default=$(sh_webapp_check_browser)
+		fi
 	fi
 
 	_session="$(sh_get_desktop_session)"
