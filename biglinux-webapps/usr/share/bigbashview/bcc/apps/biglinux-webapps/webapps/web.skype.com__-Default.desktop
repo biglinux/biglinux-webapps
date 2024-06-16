@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="web.skype.com,Chromium-browser" --profile
 Icon=webapp-skype
 StartupWMClass=web.skype.com
 Categories=Webapps;
+X-WebApp-URL=https://web.skype.com

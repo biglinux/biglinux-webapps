@@ -9,3 +9,4 @@ Exec=/usr/bin/biglinux-webapp --class="pdfwordconvert.com__convertform,Chromium-
 Icon=webapp-pdfconvert
 StartupWMClass=pdfwordconvert.com__convertform
 Categories=Webapps;
+X-WebApp-URL=https://pdfwordconvert.com/convertform

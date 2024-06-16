@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="twitter.com,Chromium-browser" --profile-d
 Icon=webapp-twitter
 StartupWMClass=twitter.com
 Categories=Webapps;
+X-WebApp-URL=https://twitter.com

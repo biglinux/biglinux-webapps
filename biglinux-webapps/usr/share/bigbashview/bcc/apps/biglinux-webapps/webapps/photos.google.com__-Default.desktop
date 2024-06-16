@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="photos.google.com,Chromium-browser" --pro
 Icon=webapp-g-photos
 StartupWMClass=photos.google.com
 Categories=Google;
+X-WebApp-URL=https://photos.google.com

@@ -944,96 +944,210 @@ function sh_index_sh_main() {
 		<ul id="content-ul">'
 	EOF
 
-#	IFS=$'\n' read -r -d '' -a files < <(find ./webapps -iname "*-webapp-biglinux.desktop")
-	mapfile -t files < <(find ./webapps \( -iname "*-webapp-biglinux.desktop" -o -iname "*-Default.desktop" \))
-	gawk -v browser_default="$BROWSER" -v browser="${ICON}" '
-	 BEGIN {
-        # This OFS helps write readable code on printing
-        OFS = "\n"
-        # Grabs localization language, e.g., en_US.UTF-8 --> en
-        lang = gensub(/[._].*/,"",1,ENVIRON["LANG"])
-    }
+#	# Definindo os diretórios e executando o find para obter os nomes dos arquivos desejados
+#	mapfile -t files < <(find ./webapps \( -iname "*-webapp-biglinux.desktop" -o -iname "*-Default.desktop" \) -exec basename {} \;)
+#	mapfile -t files2 < <(find $HOME_LOCAL/share/applications \( -iname "*-webapp-biglinux.desktop" -o -iname "*-Default.desktop" \) -exec basename {} \;)
 
-    # BEGINFILE block runs before each file is read
-    BEGINFILE {
-        # Resets current webapp variables
-        name = namelang = icon = urldesk = url = ""
-        webapp = gensub(/.+\//,"","g",FILENAME)
-        # n counts the webapps
-        ++n
-    }
+#	# Definindo os diretórios e executando o find para obter os arquivos desejados
+#	mapfile -t files < <(find ./webapps \( -iname "*-webapp-biglinux.desktop" -o -iname "*-Default.desktop" \))
+#	mapfile -t files2 < <(find $HOME_LOCAL/share/applications \( -iname "*-webapp-biglinux.desktop" -o -iname "*-Default.desktop" \))
+#
+##	xdebug "${files[*]}"
+##	xdebug "${files2[*]}"
+#
+#	# Executando o awk para processamento e comparação
+#	gawk -v home_local="$HOME/.local/share/applications" -v browser_default="$BROWSER" -v browser_icon="$ICON" '
+#	BEGIN {
+#	    # Definindo o separador de campos de saída como uma quebra de linha para facilitar a leitura do código
+#	    OFS = "\n"
+#	    # Captura do idioma da localização, por exemplo, en_US.UTF-8 --> en
+#	    lang = gensub(/[._].*/, "", 1, ENVIRON["LANG"])
+#
+#	    # Convertendo os arrays files1 e files2 em arrays do awk
+#	    split(files1, files_array1)
+#	    split(files2, files_array2)
+#	}
+#
+#	# Função para verificar a existência de um arquivo no diretório local
+#	function file_exists(file, arr, n) {
+#	    for (n in arr) {
+#	        if (file == arr[n]) {
+#	            return 1
+#	        }
+#	    }
+#	    return 0
+#	}
+#
+#   # Função para obter o basename
+#   function basename(path) {
+#       sub(".*/", "", path)
+#       return path
+#   }
+#
+#
+#	# Bloco BEGINFILE é executado antes de ler cada arquivo
+#	BEGINFILE {
+#	    # Resetando as variáveis do webapp atual
+#	    name = namelang = icon = urldesk = url = ""
+#	    webapp = gensub(/.+\//, "", "g", FILENAME)
+#	    n++
+#	}
+#
+#	# Verificando se o nome já foi localizado
+#	/^Name=/ {
+#	    name = (name) ? name : gensub(/^Name=/, "", 1)
+#	}
+#
+#	# Capturando o nome do navegador padrão e do ícone
+#	/^X-WebApp-Browser=/ {
+#	    browser_default = browser_icon = gensub(/^X-WebApp-Browser=/, "", 1)
+#	}
+#
+#	# Localizando o nome
+#	$0 ~ "^Name\\[" lang {
+#	    name = gensub(/^Name\[.+\]=/, "", 1)
+#	    namelang = "localizado"
+#	}
+#
+#	# Capturando o ícone
+#	/^Icon=/ {
+#	    icon = gensub(/^Icon=/, "", 1)
+#	}
+#
+#	# Capturando a URL para o navegador e para o bbv
+#	/^Exec=/ {
+#	    urldesk = gensub(/^Exec=|"/, "", "g")
+#	    url = gensub(/.*--app=/, "", "g")
+#	}
+#
+#	# Ignora o próximo arquivo se todas as variáveis já estiverem definidas
+#	name && namelang && icon && urldesk && url && browser_default && browser_icon {
+#	    nextfile
+#	}
+#
+#	# Bloco ENDFILE é executado após a leitura de cada arquivo
+#	ENDFILE {
+##		# Checks if webapp is installed
+##
+##		# Definir diretório base onde os aplicativos estão instalados localmente
+##		home_local = ENVIRON["HOME"] "/.local/share/applications"
+##
+##		# Definir o nome completo do aplicativo
+##		local_app_name = home_local "/" browser_default "-" webapp
+##
+##		# Verificar a existência do arquivo
+##		if (system("[ -e \"" local_app_name "\" ]")) {
+##	  	# Se o arquivo existe
+##	    	color = "gray"
+##	    	checked = ""
+##	    	disabled = "disabled"
+##		} else {
+##	    	# Se o arquivo não existe
+##	    	color = "green"
+##	    	checked = "checked"
+##	    	disabled = ""
+##		}
+#
+#	    # Verifica se o webapp está instalado no diretório local
+#	    local_app_name = browser_default "-" webapp
+#	    if (file_exists(local_app_name, files_array2)) {
+#	        color = "green"
+#	        checked = "checked"
+#	        disabled = ""
+#	    } else {
+#	        color = "gray"
+#	        checked = ""
+#	        disabled = "disabled"
+#	    }
+#
+#
+#	    # Gerando saída HTML
+#	    print (\
+#	        "<li class=\"product\">",
+#	        "<input value=\"" webapp "\" id=\"webapp_" n "\" type=\"checkbox\" class=\"switch\"",
+#	        "style=\"margin-right:10px;\" " checked "/>",
+#	        "<div class=\"products\">",
+#	        "<img src=\"/usr/share/icons/hicolor/scalable/apps/" icon ".svg\" height=\"25\" width=\"25\" class=\"svg-center\"/>",
+#	        name,
+#	        "</div>",
+#	        "<span class=\"status\">",
+#	        "<span id=\"circle_" n "\" class=\"status-circle " color "\"></span>",
+#	        "<div class=\"truncate\">",
+#	        "<a href=\"#!\" onclick=\"_run(`./webapp-launch.sh " webapp "`);\" class=\"urlNative " disabled "\" id=\"link_" n "\">",
+#	        "<svg viewBox=\"0 0 448 512\" style=\"width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none\">",
+#	        "<path fill=\"currentcolor\" d=\"M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z\"/>",
+#	        "</svg>",
+#	        url,
+#	        "</a>",
+#	        "</div>",
+#	        "</span>",
+#	        "<img src=\"icons/" browser_icon ".svg\" height=\"16\" width=\"16\" class=\"iconBrowser\" />",
+#	        "</li>")
+#
+#	}' "${files[@]}" "${files2[@]}"
+#	# Fim do script gawk
+#
 
-    # Ternary condition checks if name has already been localized
-    # This may happen depending on position of Name= and Name[XX]= on file
-    /^Name=/ {
-        name = ( name ) ? ( name ) :gensub(/^Name=/,"",1)
-    }
+	notify-send -u normal --icon=webapps --app-name "webapp-manager-biglinux" "$TITLE" "Aguarde, Processando arquivos..." --expire-time=5000
+	yad --title="$TITLE" --image="webapps" --text="Aguarde, Processando arquivos..." --timeout=5 --center --width=300 --height=50 --no-buttons &
 
-    # Localizing name
-    $0 ~ "^Name\\["lang {
-        name = gensub(/^Name\[.+\]=/,"",1)
-        namelang = "localized"
-    }
+	# Definindo os diretórios e executando o find para obter os arquivos desejados
+	mapfile -t bigwebfiles < <(find $WEBAPPS_PATH/webapps \( -iname "*-Default.desktop" \))
 
-    # Grabs icon
-    /^Icon=/ {
-        icon = gensub(/^Icon=/,"",1)
-    }
+	for app in "${bigwebfiles[@]}"; do
+		browser_default="$BROWSER"
+		browser_icon="$ICON"
+		webapp="${app##*/}"
+		urldesk="$(TIni.Get "$app" "Desktop Entry" "Exec")"
+		name="$(TIni.Get "$app" "Desktop Entry" "Name")"
+		icon="$(TIni.Get "$app" "Desktop Entry" "Icon")"
+		url="$(TIni.Get "$app" "Desktop Entry" "X-WebApp-URL")"
 
-    # Grabs url for the browser and for bbv
-    /^Exec=/ {
-        urldesk = gensub(/^Exec=|"/,"","g")
-        url = gensub(/.*--app=/,"","g")
-    }
+		if [[ -z "$url" ]]; then
+			# Remover tudo antes de --app=
+			app_part=${urldesk#*--app=}
+			# Extrair somente a URL
+			url=${app_part%% *}
+		fi
 
-    # Skips to next file if all the variables are already set
-    name && namelang && icon && urldesk && url {
-        nextfile
-    }
+  	 	color="gray"
+  	 	checked=""
+ 		disabled="disabled"
 
+		for custom in "${CUSTOMFILES[@]}"; do
+			browser_custom="$(TIni.Get "$custom" "Desktop Entry" "X-WebApp-Browser")"
+			if [[ -e "$HOME_LOCAL/share/applications/$browser_custom-$webapp" ]]; then
+				browser_icon="$browser_custom"
+				browser_default="$browser_custom"
+		    	color="green"
+   		 	checked="checked"
+	    		disabled=""
+    		fi
+    	done
 
-    # ENDFILE block runs after each file is read
-    ENDFILE {
-        # Checks if webapp is installed
-        if ( system("[ ! -e ~/.local/share/applications/"browser_default"-"webapp" ]") ) {
-          color = "green"
-          checked = "checked"
-          disabled = ""
-        } else {
-          color = "gray"
-          checked = ""
-          disabled = "disabled"
-        }
-
-    ### Printing the HTML ###
-    # The comma between strings returns the OFS variable, which was set in the BEGIN block as \n to create a line break at the html code
-    #
-    # Caution:
-    # some double quotes (") are being escaped, and others are real double quotes which opens and closes strings to concatenate gawk variables
-    print(\
-    "               <li class=\"product\">",
-    "                 <input value=\""webapp"\" id=\"webapp_"n"\" type=\"checkbox\" class=\"switch\"",
-    "                        style=\"margin-right:10px;\" "checked"/>",
-    "                 <div class=\"products\">",
-    "                   <img src=\"/usr/share/icons/hicolor/scalable/apps/"icon".svg\" height=\"25\" width=\"25\" class=\"svg-center\"/>",
-                        name,
-    "                 </div>",
-    "                 <span class=\"status\">",
-    "                   <span id=\"circle_"n"\" class=\"status-circle "color"\"></span>",
-    "                     <div class=\"truncate\">",
-    "                       <a href=\"#!\" onclick=\"_run(`./webapp-launch.sh "webapp"`);\" class=\"urlNative "disabled"\" id=\"link_"n"\">",
-    "                         <svg viewBox=\"0 0 448 512\" style=\"width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none\">",
-    "                           <path fill=\"currentcolor\" d=\"M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z\"/>",
-    "                         </svg>",
-                              url,
-    "                       </a>",
-    "                     </div>",
-    "                   </span>",
-    "                   <img src=\"icons/"browser".svg\" height=\"16\" width=\"16\" class=\"iconBrowser\" />",
-    "               </li>")
-
-    }' "${files[@]}"
-	# End of gawk script
+		cat <<-EOF
+	   	<li class="product">
+			<input value="$webapp" id="webapp_$n" type="checkbox" class="switch" style="margin-right:10px;" $checked />
+			<div class="products">
+			<img src="/usr/share/icons/hicolor/scalable/apps/$icon.svg" height="25" width="25" class="svg-center" />
+			$name
+	      </div>
+			<span class="status">
+			<span id="circle_$n" class="status-circle $color"></span>
+			<div class="truncate">
+			<a href="#!" onclick="_run('./webapp-launch.sh $webapp $browser_default');" class="urlNative $disabled" id="link_$n" >
+			<svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none">
+			<path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+			</svg>
+			$url
+			</a>
+			</div>
+			</span>
+			<img src="icons/$browser_icon.svg" height="16" width="16" class="iconBrowser" />
+			</li>
+		EOF
+		((++n))
+	done
 
 	cat <<-EOF
 		</ul>

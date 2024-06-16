@@ -9,3 +9,4 @@ Exec=/usr/bin/biglinux-webapp --class="docs.google.com__spreadsheets,Chromium-br
 Icon=webapp-g-spreadsheets
 StartupWMClass=docs.google.com__spreadsheets
 Categories=Google
+X-WebApp-URL=https://docs.google.com/spreadsheets

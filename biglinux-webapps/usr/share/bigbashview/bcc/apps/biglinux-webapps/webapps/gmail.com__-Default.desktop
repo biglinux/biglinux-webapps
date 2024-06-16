@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="gmail.com,Chromium-browser" --profile-dir
 Icon=webapp-g-gmail
 StartupWMClass=gmail.com
 Categories=Google
+X-WebApp-URL=https://gmail.com

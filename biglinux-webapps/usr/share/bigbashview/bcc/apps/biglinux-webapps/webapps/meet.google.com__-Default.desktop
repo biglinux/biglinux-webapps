@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="meet.google.com,Chromium-browser" --profi
 Icon=webapp-g-meet
 StartupWMClass=meet.google.com
 Categories=Google;
+X-WebApp-URL=https://meet.google.com

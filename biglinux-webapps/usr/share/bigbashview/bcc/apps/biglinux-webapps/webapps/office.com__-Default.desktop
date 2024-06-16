@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="office.com,Chromium-browser" --profile-di
 Icon=webapp-office365
 StartupWMClass=office.com
 Categories=Webapps;
+X-WebApp-URL=https://office.com

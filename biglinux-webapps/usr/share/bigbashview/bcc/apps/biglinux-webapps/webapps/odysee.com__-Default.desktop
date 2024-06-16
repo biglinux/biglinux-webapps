@@ -7,3 +7,4 @@ Exec=/usr/bin/biglinux-webapp --class=odysee.com,Chromium-browser --profile-dire
 Icon=webapp-odysee
 StartupWMClass=odysee.com
 Categories=Webapps;
+X-WebApp-URL=https://odysee.com/

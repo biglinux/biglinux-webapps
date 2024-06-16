@@ -8,3 +8,4 @@ Exec=biglinux-webapp --class="open.spotify.com__browse_featured,Chromium-browser
 Icon=webapp-spotifywebapp
 StartupWMClass=open.spotify.com__browse_featured
 Categories=Webapps
+X-WebApp-URL=https://open.spotify.com/browse/featured

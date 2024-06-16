@@ -9,3 +9,4 @@ Exec=/usr/bin/biglinux-webapp --class="contacts.google.com,Chromium-browser" --p
 Icon=webapp-g-contacts
 StartupWMClass=contacts.google.com
 Categories=Google;
+X-WebApp-URL=https://contacts.google.com

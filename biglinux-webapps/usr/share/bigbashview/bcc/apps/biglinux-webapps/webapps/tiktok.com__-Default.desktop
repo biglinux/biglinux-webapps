@@ -7,3 +7,4 @@ Exec=/usr/bin/biglinux-webapp --class="tiktok.com,Chromium-browser" --profile-di
 Icon=webapp-tiktok
 StartupWMClass=tiktok.com
 Categories=Webapps;
+X-WebApp-URL=https://tiktok.com

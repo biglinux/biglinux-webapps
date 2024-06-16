@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="music.amazon.com.br__home,Chromium-browse
 Icon=webapp-amazonmusic
 StartupWMClass=music.amazon.com.br__home
 Categories=Webapps
+X-WebApp-URL=https://music.amazon.com.br/home

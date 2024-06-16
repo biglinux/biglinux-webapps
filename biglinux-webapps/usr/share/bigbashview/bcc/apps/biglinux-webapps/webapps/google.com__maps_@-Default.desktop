@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="google.com__maps_@,Chromium-browser" --pr
 Icon=webapp-g-maps
 StartupWMClass=google.com__maps_@
 Categories=Google
+X-WebApp-URL=https://google.com/maps/@?api=1&map_action=map&basemap=satellite&layer=traffic

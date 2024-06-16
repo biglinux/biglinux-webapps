@@ -8,3 +8,4 @@ Exec=/usr/bin/biglinux-webapp --class="web.telegram.org,Chromium-browser" --prof
 Icon=webapp-telegram-webapp
 StartupWMClass=web.telegram.org
 Categories=Webapps;
+X-WebApp-URL=https://web.telegram.org
