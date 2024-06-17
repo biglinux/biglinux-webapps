@@ -94,15 +94,15 @@ function sh_biglinux_webapp_main {
 		fi
 		case "${_session^^}" in
 		WAYLAND)
-			MOZ_ENABLE_WAYLAND=1
+			MOZ_ENABLE_WAYLAND=1 \
 			;;
 		esac
 #		XAPP_FORCE_GTKWINDOW_ICON=/usr/share/icons/hicolor/128x128/apps/webapp-netflix.svg \
 		MOZ_APP_REMOTINGNAME="$CLASS" \
 		MOZ_DISABLE_CONTENT_SANDBOX=1 \
-			MOZ_DISABLE_GMP_SANDBOX=1 \
-			PATH="/usr/local/bin:/usr/bin" \
-			exec firefox --class="$CLASS" \
+		MOZ_DISABLE_GMP_SANDBOX=1 \
+		PATH="/usr/local/bin:/usr/bin" \
+		exec firefox --class="$CLASS" \
 			--profile "$FOLDER" \
 			--user-data-dir="$cache_dir" \
 			--no-remote \
