@@ -13,26 +13,30 @@ from PIL import Image, UnidentifiedImageError
 
 class GetFavicon(object):
     """Get favicon from site"""
+
     def __init__(self, url):
         self.path = "/tmp/.bigwebicons"
         if isdir(self.path):
             rmtree(self.path)
         mkdir(self.path)
         html = self.get_favicon_site(url)
-        print(html, end='')
+        print(html, end="")
 
     def get_favicon_site(self, url):
         try:
             icons = favicon.get(url)
-            htm = ''
+            htm = ""
             num = 0
             if len(icons) > 1:
                 for icon in icons:
                     iconSave = self.saveImg(icon.url, 0)
-                    htm += '''
+                    htm += """
                     <button class="btn-img-favicon" id="btn-icon-%s">
                       <img src="%s" class="img-max"/>
-                    </button>''' % (num, iconSave)
+                    </button>""" % (
+                        num,
+                        iconSave,
+                    )
                     num += 1
                 return htm
             else:
@@ -46,11 +50,11 @@ class GetFavicon(object):
     def img_fallback(self, uri):
         from pycurl import Curl
 
-        random_img = f'{self.path}/favicon-{randint(0, 10000000)}.png'
+        random_img = f"{self.path}/favicon-{randint(0, 10000000)}.png"
         crl = Curl()
-        url_icon = f'https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url={uri}&size=256'
+        url_icon = f"https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url={uri}&size=256"
         crl.setopt(crl.URL, url_icon)
-        crl.setopt(crl.WRITEDATA, open(random_img, 'wb'))
+        crl.setopt(crl.WRITEDATA, open(random_img, "wb"))
         crl.perform()
         crl.close()
         return random_img
@@ -58,15 +62,15 @@ class GetFavicon(object):
     def saveImg(self, link, qtd):
         base_name = basename(link)
         string, extension = splitext(base_name)
-        name = ''.join(c for c in string if c.isalnum())
-        name_file = f'{self.path}/{name}-{randint(0, 10000000)}.png'
+        name = "".join(c for c in string if c.isalnum())
+        name_file = f"{self.path}/{name}-{randint(0, 10000000)}.png"
         if qtd == 1:
-            name_file = f'/tmp/{name}-{randint(0, 10000000)}.png'
+            name_file = f"/tmp/{name}-{randint(0, 10000000)}.png"
 
         headers = {
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64)'
-            'AppleWebKit/537.36 (KHTML, like Gecko)'
-            'Chrome/107.0.0.0 Safari/537.36'
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64)"
+            "AppleWebKit/537.36 (KHTML, like Gecko)"
+            "Chrome/107.0.0.0 Safari/537.36"
         }
 
         try:
@@ -89,8 +93,8 @@ class GetFavicon(object):
             return img
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     url = sys.argv[1].strip()
-    if 'http' not in url:
-        url = 'https://'+url
+    if "http" not in url:
+        url = "https://" + url
     GetFavicon(url)

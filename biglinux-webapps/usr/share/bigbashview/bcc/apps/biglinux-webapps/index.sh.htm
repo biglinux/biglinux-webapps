@@ -39,7 +39,7 @@
 APP="${0##*/}"
 _VERSION_="1.0.0-20240617"
 LOCAL_VERSION="1.0.0-20240617"
-_UPDATED_="17/06/2024 - 14:20"
+_UPDATED_="17/06/2024 - 20:33"
 
 LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 [[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
@@ -531,7 +531,8 @@ function sh_add_custom_desktop_files() {
 
 		/^Icon=/ {
     		icon = gensub(/^Icon=/, "", 1)
-    		icon = icon_path "/" icon ".png"
+#    		icon = icon_path "/" icon ".png"
+    		icon = icon_path "/" icon
 		}
 
 		/^Custom=/ {

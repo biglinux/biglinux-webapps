@@ -83,7 +83,7 @@ function sh_biglinux_webapp_main {
 	_session="$(sh_get_desktop_session)"
 
 	case "$browser_default" in
-	firefox | org.mozilla.firefox | io.gitlab.librewolf-community)
+	firefox|org.mozilla.firefox|io.gitlab.librewolf-community)
 		FOLDER="$HOME_FOLDER/$paramClass"
 		CLASS="$paramClass"
 
@@ -93,8 +93,8 @@ function sh_biglinux_webapp_main {
 			cp -a "$WEBAPPS_PATH"/profile/user.js "$FOLDER"
 		fi
 		case "${_session^^}" in
-		WAYLAND)
-			MOZ_ENABLE_WAYLAND=1 \
+			WAYLAND)
+				MOZ_ENABLE_WAYLAND=1 \
 			;;
 		esac
 #		XAPP_FORCE_GTKWINDOW_ICON=/usr/share/icons/hicolor/128x128/apps/webapp-netflix.svg \
@@ -119,8 +119,8 @@ function sh_biglinux_webapp_main {
 			cp -a "$WEBAPPS_PATH"/profile/user.js "$FOLDER"
 		fi
 		case "${_session^^}" in
-		WAYLAND)
-			MOZ_ENABLE_WAYLAND=1 \
+			WAYLAND)
+				MOZ_ENABLE_WAYLAND=1 \
 			;;
 		esac
 #		XAPP_FORCE_GTKWINDOW_ICON=/usr/share/icons/hicolor/128x128/apps/webapp-netflix.svg \
@@ -138,11 +138,11 @@ function sh_biglinux_webapp_main {
 	*)
 		line_exec=" --user-data-dir=$cache_dir $parameters"
 		case "${_session^^}" in
-		X11)
-			line_exec="${line_exec/,Chromium-browser/}"
+			X11)
+				line_exec="${line_exec/,Chromium-browser/}"
 			;;
-		WAYLAND)
-			:
+			WAYLAND)
+				:
 			;;
 		esac
 
