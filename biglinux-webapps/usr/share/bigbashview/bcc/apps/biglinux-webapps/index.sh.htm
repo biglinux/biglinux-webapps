@@ -8,7 +8,7 @@
 #  Description: WebApps installing programs for BigLinux
 #
 #  Created: 2020/01/11
-#  Altered: 2024/06/17
+#  Altered: 2024/06/18
 #
 #  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
 #                2020-2023, Bruno Gonçalves <www.biglinux.com.br>
@@ -37,104 +37,18 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 APP="${0##*/}"
-_VERSION_="1.0.0-20240617"
-LOCAL_VERSION="1.0.0-20240617"
-_UPDATED_="17/06/2024 - 20:33"
+_VERSION_="1.0.0-20240618"
+LOCAL_VERSION="1.0.0-20240618"
+_UPDATED_="18/06/2024 - 00:43"
 
 LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 [[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
 [[ -f "${LIBRARY}/tinilib.sh" ]] && source "${LIBRARY}/tinilib.sh"
 [[ -f "${LIBRARY}/weblib.sh" ]] && source "${LIBRARY}/weblib.sh"
 
-function sh_index_sh_config() {
-	declare -g option_value
-	declare -g option_text
-	declare -g NATIVE=0
-	declare -g FLATPAK=0
-	declare -g COUNT_BROWSER=0
-	declare -g Detectando_o_nome=$(gettext "Detectando o nome, aguarde...")
-	declare -g Detectando_o_icone=$(gettext "Detectando o icone, aguarde...")
-	declare -g Adicionando_o_webapp=$(gettext "Adicionando o webapp...")
-	declare -g Aplicando_as_alteracoes=$(gettext "Aplicando as alterações...")
-	declare -g Criando_o_backup=$(gettext "Criando o backup...")
-	declare -g Importando_os_webapps=$(gettext "Importando os webapps...")
-	declare -g Removendo_o_webapp=$(gettext "Removendo o webapp...")
-	declare -g Removendo_todos_os_webapps=$(gettext "Removendo todos os webapps...")
-	declare -g Adicionar_WebApps=$(gettext "Adicionar WebApps")
-	declare -g Remover_WebApps=$(gettext "Remover WebApps")
-	declare -g Editar_WebApp=$(gettext "Editar WebApp")
-	declare -g WebApps_Adicionados=$(gettext "WebApps Adicionados")
-	declare -g WebApps_BigLinux="WebApps BigLinux"
-	declare -g Exemplo=$(gettext "Exemplo")
-	declare -g Url_Exemplo="https://www.exemplo.com"
-	declare -g URL="URL"
-	declare -g Nome=$(gettext "Nome")
-	declare -g Icone_do_WebApp=$(gettext "Icone do WebApp")
-	declare -g Alterar=$(gettext "Alterar")
-	declare -g Cancelar=$(gettext "Cancelar")
-	declare -g Aplicar=$(gettext "Aplicar")
-	declare -g Adicionar=$(gettext "Adicionar")
-	declare -g Fechar=$(gettext "Fechar")
-	declare -g Detectar_Nome_e_Icone=$(gettext "Detectar nome e icone")
-	declare -g Navegador=$(gettext "Navegador")
-	declare -g Categoria=$(gettext "Categoria")
-	declare -g Criar_atalho_na_Area_de_Trabalho=$(gettext "Criar atalho na Área de Trabalho")
-	declare -g Perfil_Adicional=$(gettext "Perfil Adicional")
-	declare -g Desenvolvimento=$(gettext "Desenvolvimento")
-	declare -g Escritorio=$(gettext "Escritório")
-	declare -g Graficos=$(gettext "Gráficos")
-	declare -g Internet=$(gettext "Internet")
-	declare -g Jogos=$(gettext "Jogos")
-	declare -g Multimidia=$(gettext "Multimidia")
-	declare -g WebApps_Nativos=$(gettext "WebApps Nativos")
-	declare -g Navegador_padrao=$(gettext "Navegador Padrão")
-	declare -g dos=$(gettext "dos")
-	declare -g Sim=$(gettext "Sim")
-	declare -g Nao=$(gettext "Não")
-	declare -g O_navegador_nao_esta_instalado=$(gettext "O navegador não está instalado!")
-	declare -g Nao_existem_navegadores_compativeis_instalados_no_sistema=$(gettext "Não existem navegadores compatíveis instalados no sistema!")
-	declare -g Selecione_o_navegador_preferido=$(gettext "Selecione o navegador preferido")
-	declare -g Voce_deseja_remover_todos_os_WebApps=$(gettext "Você deseja remover todos os WebApps?")
-	declare -g Os_WebApps_foram_restaurados_com_sucesso=$(gettext "Os WebApps foram restaurados com sucesso!")
-	declare -g O_backup_dos_WebApps_foi_salvo_em=$(gettext "O backup dos WebApps foi salvo em")
-	declare -g Selecione_o_icone_preferido=$(gettext "Selecione o ícone preferido")
-	declare -g O_WebApp_foi_adicionado_com_sucesso=$(gettext "O WebApp foi adicionado com sucesso!")
-	declare -g A_URL_invalida_ou_conexao_falhou=$(gettext "A URL é inválida ou a conexão falhou.")
-	declare -g Tente_inserir_o_icone_pelo_botao_Alterar=$(gettext "Tente inserir o ícone pelo botão Alterar.")
-	declare -g Para_detectar_o_Nome_e_o_icone=$(gettext "Para detectar o Nome e o Ícone,")
-	declare -g voce_precisa_informar_a_URL=$(gettext "você precisa informar a URL.")
-	declare -g Para_adicionar_um_WebApp=$(gettext "Para adicionar um WebApp,")
-	declare -g voce_precisa_informar_a_URL_e_o_Nome=$(gettext "você precisa informar a URL e o Nome.")
-	declare -g Nenhum_WebApp_adicionado=$(gettext "Nenhum WebApp adicionado!")
-	declare -g Tem_certeza_que_deseja_remover_este_WebApp=$(gettext "Tem certeza que deseja remover este WebApp?")
-	declare -g Importar_Backup=$(gettext "Importar Backup")
-	declare -g Criar_Backup=$(gettext "Criar Backup")
-	declare -g Nativo=$(gettext "Nativo")
-	declare -g Sobre=$(gettext "Sobre")
-	declare -g CUSTOMFILES
-}
-
-function sh_index_sh_setbrowse() {
-	local cpath
-	local nc=0
-
-	for cpath in "${aBrowserPath[@]}"; do
-		if [[ -e "$cpath" ]]; then
-			[[ "$cpath" =~ '/flatpak/' ]] && FLATPAK=1 || NATIVE=1
-			option_value="${aBrowserId[nc]}"
-			option_text="${aBrowserTitle[nc]}"
-			((++COUNT_BROWSER))
-			cat <<-EOF
-				<option value=$option_value>$option_text</option>
-			EOF
-		fi
-		((++nc))
-	done
-}
-
 function sh_index_sh_main() {
-#	notify-send -u normal --icon=webapps --app-name "webapp-manager-biglinux" "$TITLE" "Aguarde, Processando arquivos..." --expire-time=600
-#	yad --title="$TITLE" --image="webapps" --text="Aguarde, Processando arquivos..." --timeout=5 --center --width=300 --height=50 --no-buttons &
+	#	notify-send -u normal --icon=webapps --app-name "webapp-manager-biglinux" "$TITLE" "Aguarde, Processando arquivos..." --expire-time=600
+	#	yad --title="$TITLE" --image="webapps" --text="Aguarde, Processando arquivos..." --timeout=5 --center --width=300 --height=50 --no-buttons &
 
 	cat <<-EOF
 		<!DOCTYPE html>
@@ -225,8 +139,33 @@ function sh_index_sh_main() {
 <!-- INSERT -->
 		<li>
 		<label for="tab4" role="button" id="#about-tab-content">
-		<svg viewBox="0 0 576 512">
-			<path d="M384 64H192C86 64 0 150 0 256s86 192 192 192h192c106 0 192-86 192-192S490 64 384 64zm0 320c-70.8 0-128-57.3-128-128 0-70.8 57.3-128 128-128 70.8 0 128 57.3 128 128 0 70.8-57.3 128-128 128z"/>
+		<svg viewBox="0 0 576 512" width="64" height="192" style="border-radius: 0px;">
+			<?xml version="1.0" standalone="no"?>
+			<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+			 "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+			<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+			 width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
+			 preserveAspectRatio="xMidYMid meet">
+			<g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+			fill="#FFFFFF" stroke="none">
+			<path d="M2325 4874 c-342 -49 -526 -102 -780 -224 -238 -115 -428 -252 -626
+			-449 -355 -355 -567 -767 -656 -1276 -25 -143 -25 -587 0 -730 89 -509 301
+			-921 656 -1276 356 -356 775 -571 1279 -656 153 -26 571 -26 724 0 504 85 923
+			300 1279 656 356 356 571 775 656 1279 26 153 26 571 0 724 -85 504 -300 923
+			-656 1279 -354 353 -770 568 -1271 655 -91 16 -529 29 -605 18z m595 -915 c67
+			-31 140 -102 172 -166 19 -40 23 -64 23 -138 0 -81 -3 -95 -29 -143 -35 -63
+			-86 -111 -158 -149 -48 -25 -63 -28 -158 -28 -93 0 -112 3 -162 27 -69 32
+			-136 97 -169 163 -20 41 -24 65 -24 135 0 72 4 93 27 135 26 51 103 131 149
+			155 88 48 236 52 329 9z m-331 -950 c70 -15 145 -56 193 -105 88 -89 113 -181
+			97 -359 -8 -83 -29 -171 -95 -408 -105 -371 -125 -460 -127 -562 -2 -94 16
+			-135 73 -162 53 -25 177 -23 269 5 40 13 75 21 78 18 3 -2 -3 -39 -13 -80
+			l-18 -76 -50 -19 c-312 -117 -328 -121 -476 -121 -168 -1 -265 29 -352 108
+			-90 82 -124 176 -114 320 9 123 21 178 110 494 96 338 116 429 116 524 0 138
+			-41 178 -185 178 -55 0 -103 -7 -154 -22 -40 -13 -75 -22 -77 -20 -5 6 34 150
+			43 158 12 12 189 76 289 105 148 44 266 51 393 24z"/>
+			</g>
+			</svg>
+
 		</svg>
 		<span>
 			$Sobre
@@ -309,7 +248,7 @@ function sh_index_sh_main() {
 		<select class="svg-center" id="browserSelect" name="browser">
 	EOF
 
-	sh_index_sh_setbrowse
+	sh_webapp_index_sh_setbrowse		# source: /usr/share/bigbashview/bcc/shell/weblib.sh
 
 	cat <<-EOF
 		</select>
@@ -453,322 +392,8 @@ function sh_index_sh_main() {
 		<div id="list-tab-content" class="fc-card active">
 	EOF
 
-function sh_add_custom_desktop_files() {
-	CUSTOMFILES=""
-	mapfile -t CUSTOMFILES < <(find "$HOME_LOCAL/share/applications" \( -iname "*-Default.desktop" \))
-
-	# Start of gawk script
-	gawk -v development="$Desenvolvimento" \
-		-v icon_path="$HOME_LOCAL/share/icons" \
-		-v office="$Escritorio" \
-		-v graphics="$Graficos" \
-		-v game="$Jogos" \
-		-v audiovideo="$Multimidia" \
-		-v internet="$Internet" \
-		-v google="Google" \
-		-v webapp="WebApps" \
-		-v nenhum="$Nenhum_WebApp_adicionado" \
-		-v apply="$Aplicar" \
-		-v cancel="$Cancelar" \
-		-v certeza="$Tem_certeza_que_deseja_remover_este_WebApp" \
-		-v restaurar="$Importar_Backup" \
-		-v backup="$Criar_Backup" \
-		-v all_remove="$Remover_WebApps" \
-		-v add="$Adicionar_WebApps" \
-		-v adicionar="$Adicionar" -- '
-
-		BEGIN {
-			OFS = "\n"
-			filesread = 0
-			#PROCINFO["sorted_in"] = "@ind_str_asc"
-		}
-
-		BEGINFILE {
-			if (FILENAME == "-") {
-        		++noinput
-				exit
-			}
-			allset = 0
-			app_category = name_category = icon = name = deskexec = url = browser = browser_name = name_file = custom = ""
-		}
-
-		# Extracting necessary fields
-		/^Categories=/ {
-			app_category = gensub(/^Categories=|;/, "", "g")
-
-	      # Deploys translations over the name_category variable
-   	   # The untranslated texts are assigned using the -v argument in the first line of this script
-			switch (app_category) {
-        		case /Development/:
-          		name_category = development
-          		break
-        		case /Office/:
-          		name_category = office
-          		break
-        		case /Graphics/:
-          		name_category = graphics
-          		break
-        		case /Network/:
-          		name_category = internet
-          		break
-        		case /Game/:
-          		name_category = game
-          		break
-        		case /AudioVideo/:
-          		name_category = audiovideo
-          		break
-        		case /Webapps/:
-          		name_category = webapp
-          		break
-        		case /Google/:
-          		name_category = google
-          		break
-        		default:
-        			# Undefined category found. Skips to next file.
-          		nextfile
-      	}
-		}
-
-		/^Icon=/ {
-    		icon = gensub(/^Icon=/, "", 1)
-#    		icon = icon_path "/" icon ".png"
-    		icon = icon_path "/" icon
-		}
-
-		/^Custom=/ {
-      	custom = gensub(/^Custom=/, "", 1)
-		}
-
-		/^Name=/ {
-      	name = gensub(/^Name=/, "", 1)
-		}
-
-#    /^Exec=/ {
-#      deskexec = gensub(/^Exec=/,"",1)
-#
-#      if ( /local\/bin/ ) {
-#      # Reads the whole amofiexec file as a string, and removes the unimportant parts to keep the url
-#      # More info about this maneuver:https://www.gnu.org/software/gawk/manual/html_node/Readfile-Function.html
-#        RS_BAK = RS
-#        RS = "^$"
-#        getline amofiexec < deskexec
-#        close(deskexec)
-#        RS = RS_BAK
-#        url = gensub(/.*new-instance "|" .*$/,"","g",amofiexec)
-#        browser_amofiexec = gensub(/.*T_SANDBOX=1 | --cl.*$/,"","g",amofiexec)
-#
-#        switch(browser_amofiexec){
-#          case /firefox/:
-#          case /.*org.mozilla.firefox/:
-#            browser_name = "firefox"
-#            break
-#
-#          case /librewolf/:
-#          case /.*io.gitlab.librewolf-community/:
-#            browser_name = "librewolf"
-#            break
-#        }
-#
-#      } else if (/.*org.gnome.Epiphany/) {
-#        url = $4
-#        browser_name = "epiphany"
-#      } else if (/falkon/) {
-#        url = $NF
-#        browser_name = "falkon"
-#      } else {
-#        url = gensub(/.*app=/,"",1)
-#        # pega o 2nd parametro da string Exec=, qual seja o browser
-#        #browser_name = gensub(/^Exec=/,"",1,$1)
-#        browser_name = gensub(/^Exec=/,"",1,$2)
-#      }
-#    }
-
-		/^Exec=/ {
-      	deskexec = gensub(/^Exec=/,"",1)
-	 	}
-
-    	/^X-WebApp-Browser=/ {
-      	browser_name = gensub(/^X-WebApp-Browser=/,"",1)
-    	}
-
-    	/^X-WebApp-URL=/ {
-      	url = gensub(/^X-WebApp-URL=/,"",1)
-    	}
-
-    	{
-      	switch( browser_name ) {
-        		case /brave/:
-        		case /.*com.brave.Browser/:
-          		browser = "icons/brave.svg"
-          		break
-        		case /google-chrome-stable/:
-        		case /.*com.google.Chrome/:
-          		browser = "icons/chrome.svg"
-          		break
-        		case /chromium/:
-				case /.*org.chromium.Chromium/:
-          		browser = "icons/chromium.svg"
-          		break
-        		case /.*com.github.Eloston.UngoogledChromium/:
-          		browser = "icons/ungoogled.svg"
-          		break
-        		case /microsoft-edge-stable/:
-        		case /.*com.microsoft.Edge/:
-          		browser = "icons/edge.svg"
-          		break
-        		case /epiphany/:
-          		browser = "icons/epiphany.svg"
-          		break
-        		case /firefox/:
-          		browser = "icons/firefox.svg"
-          		break
-        		case /falkon/:
-          		browser = "icons/falkon.svg"
-          		break
-        		case /librewolf/:
-          		browser = "icons/librewolf.svg"
-          		break
-        		case /vivaldi-stable/:
-          		browser = "icons/vivaldi.svg"
-          		break
-      	}
-	   	name_file = gensub(/.*\//, "", 1, FILENAME)
-    	}
-
-		# Checking if all necessary variables are set
-    	# If all variables are set, skip to ENDFILE block
-    	app_category && name_category && icon && name && deskexec && url && browser && custom {
-      	++allset
-      	nextfile
-    	}
-
-    	# Runs after each file is read, or when nextfile statement is called
-		ENDFILE {
-	  		# Only includes webapps if all variables are set (app_category, name_category, icon, name, etc.)
-			if ( allset ) {
-				app_array[app_category][FILENAME]["name_file"] = name_file
-    			app_array[app_category]["name_category"] = name_category
-   	 		app_array[app_category][FILENAME]["name_category"] = name_category
-			   app_array[app_category][FILENAME]["icon"] = icon
-			   app_array[app_category][FILENAME]["name"] = name
-    			app_array[app_category][FILENAME]["url"] = url
-    			app_array[app_category][FILENAME]["browser"] = browser
-    			++filesread
-  			}
-		}
-
-		# Runs after all desktop files are read, or if there is no desktop file at all
-		END {
-	      if ((noinput > 0) || (filesread == 0)) {
-				print(\
-				    "           <!-- INICIO - TELA QUANDO NÃO ENCONTRAR NENHUM WEBAPP -->",
-				    "           <div class=\"content-section\" style=\"margin-top:20%;\">",
-				    "             <div style=\"text-align:center;margin:auto;padding:auto;\">",
-				    "               <div class=\"content-section-title\" style=\"text-align:center;\">" nenhum "</div>",
-				    "               <ul style=\"all:initial\">",
-				    "                 <li title=\"Adicionar\" style=\"all:initial\">",
-				    "                   <label for=\"tab1\" role=\"button\" id=\"#add-tab-content\" ",
-				    "                          style=\"text-align:center;display:flex;justify-content:center;\">",
-				    "                     <button class=\"button\" style=\"height:26px;margin-left:-160px\">" adicionar "</button>",
-				    "                   </label>",
-				    "                   <button class=\"button btn-restore2\" id=\"restore\">" restaurar "</button>",
-				    "                 </li>",
-				    "               </ul>",
-				    "             </div>",
-				    "           </div>",
-				    "           <!-- FIM - TELA QUANDO NÃO ENCONTRAR NENHUM WEBAPP -->")
-				# Because there is no desktop file, we shall exit the script now
-				exit
-			}
-			{
-        		print(\
-				   "           <div class=\"menu\">",
-				   "           <svg viewBox=\"0 0 448 512\">",
-				   "             <path d=\"M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z\"/>",
-				   "           </svg>",
-				   "             <button class=\"dropdown\">",
-				   "               <ul>",
-				   "                 <li id=\"backup-li\"><a id=\"backup\">" backup "</a></li>",
-				   "                 <li id=\"restore-li\"><a id=\"restore\">" restaurar "</a></li>",
-				   "                 <li id=\"add-li\"><a id=\"add\">" add "</a></li>",
-				   "                 <li><a id=\"del-all\">" all_remove "</a></li>",
-				   "               </ul>",
-				   "             </button>",
-					"           </div>")
-			}
-
-	      n=0
-			for (app_category in app_array) {
-				# Prints header of the category
-				print(\
-					"           <div class=\"content-section\" style=\"margin-top:-26px;\" id=\"" app_category "\">",
-				   "             <div id=\"" app_category "\" class=\"content-section-title\" style=\"text-align:left;\">",
-				                 app_array[app_category]["name_category"], "(<span id=\"" app_category "\"></span>)",
-				   "             </div>",
-				   "             <ul style=\"margin-top:0px;\" id=\"" app_category "\">")
-
-				for (filename in app_array[app_category]) {
-          		# Skips "name_category" index from the app_array[app_category] array
-          		if (filename == "name_category") {
-            		continue
-          		}
-
-          		# Prints info about each webapp installed by the user
-          		print(\
-						"               <li>",
-						"                 <div class=\"products\">",
-					  	"                   <div class=\"img-icon\">",
-					   "                     <img src=\"" app_array[app_category][filename]["icon"] "\" class=\"svg-center\"/>",
-					   "                   </div>",
-					   "                   <div class=\"truncate\" style=\"text-align:left\">" app_array[app_category][filename]["name"] "</div>",
-					   "                 </div>",
-					   "                   <img src=\"" app_array[app_category][filename]["browser"] "\" class=\"img-browser\" />",
-					   "                   <div class=\"truncate\">",
-					   "                     <a href=\"#!\" onclick=\"_run(`gtk-launch " app_array[app_category][filename]["name_file"] "`)\" class=\"urlCustom\">",
-					   "                       <svg viewBox=\"0 0 448 512\" style=\"width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;\">",
-					   "                         <path fill=\"currentcolor\" d=\"M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z\"/>",
-					   "                       </svg> ",
-					                            app_array[app_category][filename]["url"],
-					   "                     </a>",
-					   "                   </div>",
-					   "                 <div class=\"button-wrapper\">",
-					   "                   <a href=\"#!\" onclick=\"editOpen(`" filename "`)\">",
-					   "                     <svg viewBox=\"0 0 122.88 119.19\"",
-					   "                          style=\"width:21px;border-radius:0px;margin:0px 0px -3px 0px;\">",
-					   "                       <path fill=\"currentcolor\" d=\"M104.84 1.62 121.25 18a5.58 5.58 0 0 1 0 7.88L112.17 35l-24.3-24.3L97 1.62a5.6 5.6 0 0 1 7.88 0ZM31.26 3.43h36.3L51.12 19.87H31.26A14.75 14.75 0 0 0 20.8 24.2l0 0a14.75 14.75 0 0 0-4.33 10.46v68.07H84.5A14.78 14.78 0 0 0 95 98.43l0 0a14.78 14.78 0 0 0 4.33-10.47V75.29l16.44-16.44V87.93A31.22 31.22 0 0 1 106.59 110l0 .05a31.2 31.2 0 0 1-22 9.15h-72a12.5 12.5 0 0 1-8.83-3.67l0 0A12.51 12.51 0 0 1 0 106.65v-72a31.15 31.15 0 0 1 9.18-22l.05-.05a31.17 31.17 0 0 1 22-9.16ZM72.33 74.8 52.6 80.9c-13.85 3-13.73 6.15-11.16-6.91l6.64-23.44h0l0 0L83.27 15.31l24.3 24.3L72.35 74.83l0 0ZM52.22 54.7l16 16-13 4c-10.15 3.13-10.1 5.22-7.34-4.55l4.34-15.4Z\"/>",
-					   "                     </svg>",
-					   "                   </a>",
-					   "                 </div>",
-					   "                 <div class=\"button-wrapper\" style=\"margin-left:10px;\">",
-					   "                   <a href=\"#!\" onclick=\"delOpen(`del" n "`)\">",
-					   "                     <svg viewBox=\"0 0 109.484 122.88\"",
-					   "                          style=\"width:18px;border-radius:0px;margin:0px 0px -3px 0px;\">",
-					   "                       <path fill=\"currentcolor\" d=\"M2.347 9.633h38.297V3.76c0-2.068 1.689-3.76 3.76-3.76h21.144 c2.07 0 3.76 1.691 3.76 3.76v5.874h37.83c1.293 0 2.347 1.057 2.347 2.349v11.514H0V11.982C0 10.69 1.055 9.633 2.347 9.633 L2.347 9.633z M8.69 29.605h92.921c1.937 0 3.696 1.599 3.521 3.524l-7.864 86.229c-0.174 1.926-1.59 3.521-3.523 3.521h-77.3 c-1.934 0-3.352-1.592-3.524-3.521L5.166 33.129C4.994 31.197 6.751 29.605 8.69 29.605L8.69 29.605z M69.077 42.998h9.866v65.314 h-9.866V42.998L69.077 42.998z M30.072 42.998h9.867v65.314h-9.867V42.998L30.072 42.998z M49.572 42.998h9.869v65.314h-9.869 V42.998L49.572 42.998z\"/>",
-					   "                    </svg>",
-					   "                  </a>",
-					   "                </div>",
-					   "                <!--REMOVE MODAL ASK-->",
-					   "                <div class=\"pop-up\" id=\"del" n "\">",
-					   "                  <div class=\"pop-up__subtitle\">" certeza "</div>",
-					   "                  <div class=\"content-button-wrapper\">",
-					   "                    <button class=\"content-button status-button2 close\">" cancel "</button>",
-					   "                    <button class=\"content-button status-button2\" onclick=\"delDesk(`" filename "`)\">" apply "</button>",
-					   "                  </div>",
-					   "                </div>",
-					   "              </li>")
-					n++
-				}
-				print(\
-					"	</ul>",
-					"	</div>",
-					"	<br>")
-			}
-		}
-	' "${CUSTOMFILES[@]}"
-	# End of gawk script
-}
-
-	sh_add_custom_desktop_files
+	# rotina para inclusao dos .desktop customizados pelo usuário
+	sh_add_custom_desktop_files		# source: /usr/share/bigbashview/bcc/shell/weblib.sh
 
 	cat <<-EOF
 		<!--EDIT MODAL-->
@@ -940,211 +565,8 @@ function sh_add_custom_desktop_files() {
 		<ul id="content-ul">'
 	EOF
 
-#	# Definindo os diretórios e executando o find para obter os nomes dos arquivos desejados
-#	mapfile -t files < <(find ./webapps \( -iname "*-webapp-biglinux.desktop" -o -iname "*-Default.desktop" \) -exec basename {} \;)
-#	mapfile -t files2 < <(find $HOME_LOCAL/share/applications \( -iname "*-webapp-biglinux.desktop" -o -iname "*-Default.desktop" \) -exec basename {} \;)
-
-#	# Definindo os diretórios e executando o find para obter os arquivos desejados
-#	mapfile -t files < <(find ./webapps \( -iname "*-webapp-biglinux.desktop" -o -iname "*-Default.desktop" \))
-#	mapfile -t files2 < <(find $HOME_LOCAL/share/applications \( -iname "*-webapp-biglinux.desktop" -o -iname "*-Default.desktop" \))
-#
-##	xdebug "${files[*]}"
-##	xdebug "${files2[*]}"
-#
-#	# Executando o awk para processamento e comparação
-#	gawk -v home_local="$HOME/.local/share/applications" -v browser_default="$BROWSER" -v browser_icon="$ICON" '
-#	BEGIN {
-#	    # Definindo o separador de campos de saída como uma quebra de linha para facilitar a leitura do código
-#	    OFS = "\n"
-#	    # Captura do idioma da localização, por exemplo, en_US.UTF-8 --> en
-#	    lang = gensub(/[._].*/, "", 1, ENVIRON["LANG"])
-#
-#	    # Convertendo os arrays files1 e files2 em arrays do awk
-#	    split(files1, files_array1)
-#	    split(files2, files_array2)
-#	}
-#
-#	# Função para verificar a existência de um arquivo no diretório local
-#	function file_exists(file, arr, n) {
-#	    for (n in arr) {
-#	        if (file == arr[n]) {
-#	            return 1
-#	        }
-#	    }
-#	    return 0
-#	}
-#
-#   # Função para obter o basename
-#   function basename(path) {
-#       sub(".*/", "", path)
-#       return path
-#   }
-#
-#
-#	# Bloco BEGINFILE é executado antes de ler cada arquivo
-#	BEGINFILE {
-#	    # Resetando as variáveis do webapp atual
-#	    name = namelang = icon = urldesk = url = ""
-#	    webapp = gensub(/.+\//, "", "g", FILENAME)
-#	    n++
-#	}
-#
-#	# Verificando se o nome já foi localizado
-#	/^Name=/ {
-#	    name = (name) ? name : gensub(/^Name=/, "", 1)
-#	}
-#
-#	# Capturando o nome do navegador padrão e do ícone
-#	/^X-WebApp-Browser=/ {
-#	    browser_default = browser_icon = gensub(/^X-WebApp-Browser=/, "", 1)
-#	}
-#
-#	# Localizando o nome
-#	$0 ~ "^Name\\[" lang {
-#	    name = gensub(/^Name\[.+\]=/, "", 1)
-#	    namelang = "localizado"
-#	}
-#
-#	# Capturando o ícone
-#	/^Icon=/ {
-#	    icon = gensub(/^Icon=/, "", 1)
-#	}
-#
-#	# Capturando a URL para o navegador e para o bbv
-#	/^Exec=/ {
-#	    urldesk = gensub(/^Exec=|"/, "", "g")
-#	    url = gensub(/.*--app=/, "", "g")
-#	}
-#
-#	# Ignora o próximo arquivo se todas as variáveis já estiverem definidas
-#	name && namelang && icon && urldesk && url && browser_default && browser_icon {
-#	    nextfile
-#	}
-#
-#	# Bloco ENDFILE é executado após a leitura de cada arquivo
-#	ENDFILE {
-##		# Checks if webapp is installed
-##
-##		# Definir diretório base onde os aplicativos estão instalados localmente
-##		home_local = ENVIRON["HOME"] "/.local/share/applications"
-##
-##		# Definir o nome completo do aplicativo
-##		local_app_name = home_local "/" browser_default "-" webapp
-##
-##		# Verificar a existência do arquivo
-##		if (system("[ -e \"" local_app_name "\" ]")) {
-##	  	# Se o arquivo existe
-##	    	color = "gray"
-##	    	checked = ""
-##	    	disabled = "disabled"
-##		} else {
-##	    	# Se o arquivo não existe
-##	    	color = "green"
-##	    	checked = "checked"
-##	    	disabled = ""
-##		}
-#
-#	    # Verifica se o webapp está instalado no diretório local
-#	    local_app_name = browser_default "-" webapp
-#	    if (file_exists(local_app_name, files_array2)) {
-#	        color = "green"
-#	        checked = "checked"
-#	        disabled = ""
-#	    } else {
-#	        color = "gray"
-#	        checked = ""
-#	        disabled = "disabled"
-#	    }
-#
-#
-#	    # Gerando saída HTML
-#	    print (\
-#	        "<li class=\"product\">",
-#	        "<input value=\"" webapp "\" id=\"webapp_" n "\" type=\"checkbox\" class=\"switch\"",
-#	        "style=\"margin-right:10px;\" " checked "/>",
-#	        "<div class=\"products\">",
-#	        "<img src=\"/usr/share/icons/hicolor/scalable/apps/" icon ".svg\" height=\"25\" width=\"25\" class=\"svg-center\"/>",
-#	        name,
-#	        "</div>",
-#	        "<span class=\"status\">",
-#	        "<span id=\"circle_" n "\" class=\"status-circle " color "\"></span>",
-#	        "<div class=\"truncate\">",
-#	        "<a href=\"#!\" onclick=\"_run(`./webapp-launch.sh " webapp "`);\" class=\"urlNative " disabled "\" id=\"link_" n "\">",
-#	        "<svg viewBox=\"0 0 448 512\" style=\"width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none\">",
-#	        "<path fill=\"currentcolor\" d=\"M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z\"/>",
-#	        "</svg>",
-#	        url,
-#	        "</a>",
-#	        "</div>",
-#	        "</span>",
-#	        "<img src=\"icons/" browser_icon ".svg\" height=\"16\" width=\"16\" class=\"iconBrowser\" />",
-#	        "</li>")
-#
-#	}' "${files[@]}" "${files2[@]}"
-#	# Fim do script gawk
-#
-
-function sh_add_native_desktop_files() {
-	# Definindo os diretórios e executando o find para obter os arquivos desejados
-	mapfile -t bigwebfiles < <(find $WEBAPPS_PATH/webapps \( -iname "*-Default.desktop" \))
-
-	for app in "${bigwebfiles[@]}"; do
-		browser_default="$BROWSER"
-		browser_icon="$ICON"
-		webapp="${app##*/}"
-		urldesk="$(desktop.get "$app" "Desktop Entry" "Exec")"
-		name="$(desktop.get "$app" "Desktop Entry" "Name")"
-		icon="$(desktop.get "$app" "Desktop Entry" "Icon")"
-		url="$(desktop.get "$app" "Desktop Entry" "X-WebApp-URL")"
-
-		if [[ -z "$url" ]]; then
-			# Remover tudo antes de --app=
-			app_part=${urldesk#*--app=}
-			# Extrair somente a URL
-			url=${app_part%% *}
-		fi
-
-  	 	color="gray"
-  	 	checked=""
- 		disabled="disabled"
-
-		for custom in "${CUSTOMFILES[@]}"; do
-			browser_custom="$(desktop.get "$custom" "Desktop Entry" "X-WebApp-Browser")"
-			if [[ -e "$HOME_LOCAL/share/applications/$browser_custom-$webapp" ]]; then
-				browser_icon="$browser_custom"
-				browser_default="$browser_custom"
-		    	color="green"
-   		 	checked="checked"
-	    		disabled=""
-    		fi
-    	done
-
-		cat <<-EOF
-	   	<li class="product">
-			<input value="$webapp" id="webapp_$n" type="checkbox" class="switch" style="margin-right:10px;" $checked />
-			<div class="products">
-			<img src="/usr/share/icons/hicolor/scalable/apps/$icon.svg" height="25" width="25" class="svg-center" />
-			$name
-	      </div>
-			<span class="status">
-			<span id="circle_$n" class="status-circle $color"></span>
-			<div class="truncate">
-			<a href="#!" onclick="_run('./webapp-launch.sh $webapp $browser_default');" class="urlNative $disabled" id="link_$n" >
-			<svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none">
-			<path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
-			</svg>
-			$url
-			</a>
-			</div>
-			</span>
-			<img src="icons/$browser_icon.svg" height="16" width="16" class="iconBrowser" />
-			</li>
-		EOF
-		((++n))
-	done
-}
-
-	sh_add_native_desktop_files
+	# rotina para inclusao dos .desktop nativos do BigLinux
+	sh_add_native_desktop_files		# source: /usr/share/bigbashview/bcc/shell/weblib.sh
 
 	cat <<-EOF
 		</ul>
@@ -1194,5 +616,5 @@ function sh_add_native_desktop_files() {
 	EOF
 }
 
-sh_index_sh_config
+sh_webapp_index_sh_config		# source: /usr/share/bigbashview/bcc/shell/weblib.sh
 sh_index_sh_main
