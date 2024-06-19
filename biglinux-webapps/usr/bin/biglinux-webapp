@@ -65,7 +65,7 @@ function sh_biglinux_webapp_main {
 		# Verifica se o arquivo .ini existe no HOME_FOLDER, senão executa um script de checagem dos navegadores
 		if [[ -r "$INI_FILE_WEBAPPS" ]]; then
 			# Verifica se o arquivo .ini tem algum browser default, senão executa um script de checagem dos navegadores
-			if browser_default=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "id") && [[ -z "$browser_default" ]]; then
+			if browser_default=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "short_name") && [[ -z "$browser_default" ]]; then
 				browser_default=$(sh_webapp_check_browser)
 			fi
 		else
@@ -74,8 +74,8 @@ function sh_biglinux_webapp_main {
 	else
 		browser_default="$paramBrowser"
 		if ! sh_webapp_verify_browser "$paramBrowser"; then
-			#notify-send -u critical --icon=webapps --app-name "$0" "$TITLE" "${Amsg[error_browser]}" --expire-time=2000
-			yadmsg "${Amsg[error_browser]}"
+			#notify-send -u critical --icon=webapps --app-name "$0" "$TITLE" "${Amsg[error_browser_config]}" --expire-time=2000
+			yadmsg "${Amsg[error_browser_config]}"
 			browser_default=$(sh_webapp_check_browser)
 		fi
 	fi

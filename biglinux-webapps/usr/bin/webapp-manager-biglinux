@@ -64,10 +64,10 @@ function sh_webapps_main {
 	# Verifica se o arquivo .ini existe no HOME_FOLDER, senão executa um script de checagem dos navegadores
 	[[ -r "$INI_FILE_WEBAPPS" ]] || sh_webapp_check_browser
 	# Verifica se o arquivo .ini tem algum browser default, senão executa um script de checagem dos navegadores
-	if BROWSER=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "id") && [[ -z "$BROWSER" ]]; then sh_webapp_check_browser; fi
+	if BROWSER=$(TIni.Get "$INI_FILE_WEBAPPS" "browser" "short_name") && [[ -z "$BROWSER" ]]; then sh_webapp_check_browser; fi
 	if ! sh_webapp_verify_browser "$BROWSER"; then
 		#		notify-send -u critical --icon=webapps --app-name "$0" "$TITLE" "${Amsg[error_browser]}" --expire-time=2000
-		yadmsg "${Amsg[error_browser]}"
+		yadmsg "${Amsg[error_browser_config]}"
 		sh_webapp_check_browser
 	fi
 
