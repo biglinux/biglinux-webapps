@@ -8,7 +8,7 @@
 #  Description: WebApps installing programs for BigLinux
 #
 #  Created: 2020/01/11
-#  Altered: 2024/06/18
+#  Altered: 2024/06/19
 #
 #  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
 #                2020-2023, Bruno Gonçalves <www.biglinux.com.br>
@@ -37,9 +37,9 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 APP="${0##*/}"
-_DATE_ALTERED_="18/06/2024"
-_TIME_ALTERED_="00:43"
-_VERSION_="1.0.0-20240618"
+_DATE_ALTERED_="19/06/2024"
+_TIME_ALTERED_="04:54"
+_VERSION_="1.0.0-20240619"
 LOCAL_VERSION="${_VERSION_} - ${_TIME_ALTERED_}"
 _UPDATED_="${_DATE_ALTERED_} - ${_TIME_ALTERED_}"
 
@@ -567,7 +567,6 @@ function sh_index_sh_main() {
 		<ul id="content-ul">'
 	EOF
 
-	# rotina para inclusao dos .desktop nativos do BigLinux
 	sh_add_native_desktop_files		# source: /usr/share/bigbashview/bcc/shell/weblib.sh
 
 	cat <<-EOF
