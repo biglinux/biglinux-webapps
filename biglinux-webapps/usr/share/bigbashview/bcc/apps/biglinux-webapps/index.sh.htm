@@ -37,9 +37,11 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 APP="${0##*/}"
+_DATE_ALTERED_="18/06/2024"
+_TIME_ALTERED_="00:43"
 _VERSION_="1.0.0-20240618"
-LOCAL_VERSION="1.0.0-20240618"
-_UPDATED_="18/06/2024 - 00:43"
+LOCAL_VERSION="${_VERSION_} - ${_TIME_ALTERED_}"
+_UPDATED_="${_DATE_ALTERED_} - ${_TIME_ALTERED_}"
 
 LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 [[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
@@ -580,17 +582,29 @@ function sh_index_sh_main() {
 		<div class="content-section" style="margin-top:0px;">
 		<ul style="margin-top:-10px;">
 
-		<li>Aplicativo:
-		<br>&nbsp;&nbsp;&nbsp;&nbsp;Nome          : $TEXTDOMAIN</span>
-		<br>&nbsp;&nbsp;&nbsp;&nbsp;Sessão        : $(sh_get_de)
-		<br>&nbsp;&nbsp;&nbsp;&nbsp;Versão        : $LOCAL_VERSION
-		<br>&nbsp;&nbsp;&nbsp;&nbsp;Atualizado em : $_UPDATED_
+		<li>$(gettext "Ambiente"):
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;$(gettext "Desktop") : $XDG_CURRENT_DESKTOP
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;$(gettext "Sessão") : $XDG_SESSION_TYPE
 
-		<li>Desenvolvedores:
+		<li>$(gettext "Aplicativo"):
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;$(gettext "Nome") : $TEXTDOMAIN</span>
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;$(gettext "Htm versão") : $LOCAL_VERSION
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;$(gettext "Lib versão") : $_WEBLIB_VERSION_
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;$(gettext "Atualizado em") : $_UPDATED_
+
+		<li>$(gettext "Desenvolvedores"):
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;2023-2024, Vilmar Catafesta, vcatafesta@gmail.com
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;2023-2023, Bruno Gonçalves, www.biglinux.com.br
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;2023-2023, Rafael Ruscher, rruscher@gmail.com
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;2020-2023, eltonff, www.biglinux.com.br
+
+		<li>$(gettext "Colaboradores"):
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;-2024, Thales, @talesam
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;-2024, Narayan, @narayansilva
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;-2024, Thiago, @thiago_brgs
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;-2024, Marcelo, @elppans
+
+
 		</li>
 		</ul>
 
