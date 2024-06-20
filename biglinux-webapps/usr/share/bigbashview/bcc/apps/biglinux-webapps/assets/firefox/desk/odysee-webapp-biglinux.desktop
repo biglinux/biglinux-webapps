@@ -1,8 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=Odysee
-Exec=~/.local/bin/odysee-webapp-biglinux-firefox
-Icon=webapp-odysee
-Categories=Webapps;

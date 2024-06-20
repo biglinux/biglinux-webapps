@@ -1,9 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=Waze
-Exec=~/.local/bin/waze-webapp-biglinux-io.gitlab.librewolf-community
-Icon=webapp-g-waze
-Categories=Google;
