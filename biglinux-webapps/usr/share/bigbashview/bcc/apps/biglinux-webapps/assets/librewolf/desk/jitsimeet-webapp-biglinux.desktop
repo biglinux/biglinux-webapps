@@ -1,8 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=Jitsi Meet
-Exec=~/.local/bin/jitsimeet-webapp-biglinux-librewolf
-Icon=webapp-jitsi
-Categories=Webapps;

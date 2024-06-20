@@ -1,9 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=Photos
-Exec=~/.local/bin/googlephotos-webapp-biglinux-org.mozilla.firefox
-Icon=webapp-g-photos
-Categories=Google;

@@ -83,7 +83,11 @@ function sh_biglinux_webapp_main {
 	_session="$(sh_get_desktop_session)"
 
 	case "$browser_default" in
-	firefox|org.mozilla.firefox|io.gitlab.librewolf-community)
+	firefox|org.mozilla.firefox|librewolf|io.gitlab.librewolf-community)
+#		FOLDER=~/.var/app/io.gitlab.librewolf-community/data/netflix-webapp-biglinux-io.gitlab.librewolf-community
+#		exec /var/lib/flatpak/exports/bin/io.gitlab.librewolf-community
+#		FOLDER=~/.var/app/org.mozilla.firefox/data/netflix-webapp-biglinux-org.mozilla.firefox
+#		exec /var/lib/flatpak/exports/bin/org.mozilla.firefox
 		FOLDER="$HOME_FOLDER/$paramClass"
 		CLASS="$paramClass"
 
@@ -97,44 +101,19 @@ function sh_biglinux_webapp_main {
 				MOZ_ENABLE_WAYLAND=1 \
 			;;
 		esac
+
 #		XAPP_FORCE_GTKWINDOW_ICON=/usr/share/icons/hicolor/128x128/apps/webapp-netflix.svg \
 		MOZ_APP_REMOTINGNAME="$CLASS" \
 		MOZ_DISABLE_CONTENT_SANDBOX=1 \
 		MOZ_DISABLE_GMP_SANDBOX=1 \
 		PATH="/usr/local/bin:/usr/bin" \
-		exec firefox --class="$CLASS" \
+		exec $browser_default \
+			--class="$CLASS" \
 			--profile "$FOLDER" \
 			--user-data-dir="$cache_dir" \
 			--no-remote \
 			--new-instance "${paramApp/--app=/}"
 		;;
-
-	librewolf)
-		FOLDER="$HOME_FOLDER/$paramClass"
-		CLASS="$paramClass"
-
-		if [[ ! -d "$FOLDER" ]]; then
-			mkdir -p "$FOLDER/chrome"
-			cp -a "$WEBAPPS_PATH"/profile/userChrome.css "$FOLDER/chrome"
-			cp -a "$WEBAPPS_PATH"/profile/user.js "$FOLDER"
-		fi
-		case "${_session^^}" in
-			WAYLAND)
-				MOZ_ENABLE_WAYLAND=1 \
-			;;
-		esac
-#		XAPP_FORCE_GTKWINDOW_ICON=/usr/share/icons/hicolor/128x128/apps/webapp-netflix.svg \
-		MOZ_APP_REMOTINGNAME="$CLASS" \
-		MOZ_DISABLE_CONTENT_SANDBOX=1 \
-		MOZ_DISABLE_GMP_SANDBOX=1 \
-		PATH="/usr/local/bin:/usr/bin" \
-		exec librewolf --class="$CLASS" \
-			--profile "$FOLDER" \
-			--user-data-dir="$cache_dir" \
-			--no-remote \
-			--new-instance "${paramApp/--app=/}"
-		;;
-
 	*)
 		line_exec=" --user-data-dir=$cache_dir $parameters"
 		case "${_session^^}" in

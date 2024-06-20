@@ -1,9 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=Amazon Music
-Exec=~/.local/bin/amazonmusic-webapp-biglinux-firefox
-Icon=webapp-amazonmusic
-Categories=Webapps;

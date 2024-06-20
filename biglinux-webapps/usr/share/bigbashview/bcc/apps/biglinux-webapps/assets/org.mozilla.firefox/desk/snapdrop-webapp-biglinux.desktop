@@ -1,8 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=Snapdrop
-Exec=~/.local/bin/snapdrop-webapp-biglinux-org.mozilla.firefox
-Icon=webapp-snapdrop
-Categories=Webapps;
