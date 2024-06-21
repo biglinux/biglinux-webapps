@@ -35,4 +35,7 @@ package() {
 		cp -r "${InternalDir}/opt" "${pkgdir}/"
 	fi
 
+   # Add link to bin path
+   mkdir -p "${pkgdir}/usr/bin"
+   ln -sf "/usr/share/bigbashview/bcc/apps/biglinux-webapps/webapp-manager-biglinux.sh" "${pkgdir}/usr/bin/big-webapps"
 }

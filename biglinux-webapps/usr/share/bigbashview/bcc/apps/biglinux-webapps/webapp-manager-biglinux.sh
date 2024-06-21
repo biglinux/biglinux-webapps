@@ -6,7 +6,7 @@
 #  Description: WebApps installing programs for BigLinux
 #
 #  Created: 2020/01/11
-#  Altered: 2024/06/06
+#  Altered: 2024/06/20
 #
 #  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
 #                2022-2023, Bruno Gonçalves <www.biglinux.com.br>
@@ -35,12 +35,11 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 APP="${0##*/}"
-_VERSION_="1.0.0-20240606"
+_VERSION_="1.0.0-20240620"
 LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 [[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
 [[ -f "${LIBRARY}/tinilib.sh" ]] && source "${LIBRARY}/tinilib.sh"
 [[ -f "${LIBRARY}/weblib.sh" ]] && source "${LIBRARY}/weblib.sh"
-
 
 function sh_unset_config() {
 	unset QT_QPA_PLATFORM
@@ -49,6 +48,7 @@ function sh_unset_config() {
 	unset GDK_BACKEND
 	unset MOZ_ENABLE_WAYLAND
 	unset QT_QPA_PLATFORM
+	unset MOZ_ENABLE_WAYLAND
 }
 
 function sh_webapps_main {
@@ -60,6 +60,11 @@ function sh_webapps_main {
 	local half_width
 	local half_height
 	local _session
+
+	cd "$WEBAPPS_PATH" || {
+		notify-send --icon=webapp.svg --app-name "$0" "$TITLE" "${Amsg[error_access_dir]}\n$WEBAPP_PATH" --expire-time=2000
+		return 1
+	}
 
 	# Verifica se o arquivo .ini existe no HOME_FOLDER, senão executa um script de checagem dos navegadores
 	[[ -r "$INI_FILE_WEBAPPS" ]] || sh_webapp_check_browser
@@ -100,6 +105,7 @@ function sh_webapps_main {
 		export GDK_BACKEND=x11
 		;;
 	WAYLAND)
+		export MOZ_ENABLE_WAYLAND=1
 		:
 		;;
 	esac
@@ -109,7 +115,7 @@ function sh_webapps_main {
 		-n "$TITLE" \
 		-p "$APP" \
 		-d "$WEBAPPS_PATH" \
-		-i "$WEBAPPS_PATH/icons/webapp.svg"
+		-i "icons/big-webapps.svg"
 	sh_unset_config
 }
 
