@@ -16,321 +16,103 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Não existem navegadores instalados compatíveis com os WebApps!"
-msgstr "WebAppsをサポートするブラウザはインストールされていません。"
-
-msgid "Será necessário instalar mais um navegador compatível!"
-msgstr "互換性のあるブラウザをもう1つインストールする必要があります。"
-
-msgid "URL:"
-msgstr "リンク:"
-
-msgid "Detectar Nome e Ícone"
-msgstr "名前とアイコンを検出する"
-
-msgid "Nome:"
-msgstr "名前："
-
-msgid "Ícone do WebApp"
-msgstr "ウェブアプリアイコン"
-
-msgid "Alterar"
-msgstr "変化する"
-
-msgid "Navegador"
-msgstr "ブラウザー"
-
-msgid "BRAVE"
-msgstr "勇ましい"
-
-msgid "CHROME"
-msgstr "クロム"
-
-msgid "CHROMIUM"
-msgstr "クロム"
-
-msgid "EDGE"
-msgstr "端"
-
-msgid "EPIPHANY"
-msgstr "公現祭"
-
-msgid "FIREFOX"
-msgstr "ファイアーフォックス"
-
-msgid "LIBREWOLF"
-msgstr "リーブルウルフ"
-
-msgid "VIVALDI"
-msgstr "ヴィヴァルディ"
-
-msgid "BRAVE (FLATPAK)"
-msgstr "ブレイブ(フラットパック)"
-
-msgid "CHROME (FLATPAK)"
-msgstr "クロム(フラットパック)"
-
-msgid "CHROMIUM (FLATPAK)"
-msgstr "クロム(フラットパック)"
-
-msgid "EDGE (FLATPAK)"
-msgstr "エッジ(フラットパック)"
-
-msgid "EPIPHANY (FLATPAK)"
-msgstr "エピファニー(フラットパック)"
-
-msgid "FIREFOX (FLATPAK)"
-msgstr "FIREFOX (FLATPAK)"
-
-msgid "LIBREWOLF (FLATPAK)"
-msgstr "リブレウルフ(フラットパック)"
-
-msgid "Categoria"
-msgstr "カテゴリ"
-
-msgid "DESENVOLVIMENTO"
-msgstr "発達"
-
-msgid "ESCRITÓRIO"
-msgstr "オフィス"
-
-msgid "GRÁFICOS"
-msgstr "グラフィックス"
-
-msgid "JOGOS"
-msgstr "ゲーム"
-
-msgid "MULTIMÍDIA"
-msgstr "マルチメディア"
-
-msgid "WEBAPPS"
-msgstr "ウェブアプリ"
-
-msgid "WEBAPPS GOOGLE"
-msgstr "ウェブアプリグーグル"
-
-msgid "Criar atalho na Área de Trabalho"
-msgstr "デスクトップショートカットを作成します"
-
-msgid "Perfil adicional"
-msgstr "追加のプロファイル"
-
-msgid "Selecione o ícone preferido:"
-msgstr "お好みのアイコンを選択してください："
-
-msgid "Não é possível aplicar a edição sem Nome!"
-msgstr "名前のない編集を適用できません!"
-
-msgid "Fechar"
-msgstr "閉じる"
-
-msgid "Não é possível aplicar a edição sem alterações!"
-msgstr "変更せずに編集を適用することはできません!"
-
-msgid "O WebApp foi editado com sucesso!"
-msgstr "ウェブアプリが正常に編集されました!"
-
-msgid "Adicionar WebApps"
-msgstr "WebAppsを追加する"
-
-msgid "WebApps Adicionados"
-msgstr "WebAppsを追加しました"
-
-msgid "WebApps BigLinux"
-msgstr "BigLinux WebApps"
-
-msgid "https://www.exemplo.com"
-msgstr "https://www.exemplo.com"
-
-msgid "Exemplo"
-msgstr "例"
-
-msgid "Adicionar"
-msgstr "追加"
-
-msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
-msgstr "ウェブアプリを追加するには、<br> URL と名前を入力する必要があります。"
-
-msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
-msgstr "名前とアイコンを検出するには、<br> URLを入力する必要があります。"
-
-msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
-msgstr "URL が無効であるか、接続に失敗しました。<br>[変更] ボタンでアイコンを挿入してみてください。"
-
-msgid "O WebApp foi adicionado com sucesso!"
-msgstr "WebAppが正常に追加されました！"
-
-msgid "Desenvolvimento"
-msgstr "開発"
-
-msgid "Escritório"
-msgstr "オフィス"
-
-msgid "Gráficos"
-msgstr "グラフィック"
-
-msgid "Jogos"
-msgstr "ゲーム"
-
-msgid "Multimídia"
-msgstr "マルチメディア"
-
-msgid "Internet"
-msgstr "インターネット"
-
-msgid "Google"
-msgstr "ググる"
-
 msgid "WebApps"
 msgstr "ウェブアプリ"
 
-msgid "Nenhum WebApp adicionado!"
-msgstr "WebAppは追加されていません！"
-
-msgid "Aplicar"
-msgstr "申し込む"
-
-msgid "Cancelar"
-msgstr "キャンセル"
-
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "このWebAppを削除してもよろしいですか？"
-
-msgid "Editar WebApp"
-msgstr "ウェブアプリの編集"
-
-msgid "O navegador não está instalado!"
-msgstr "ブラウザがインストールされていません!"
-
-msgid "Não existem navegadores compatíveis instalados no sistema!"
-msgstr "互換性のあるブラウザがシステムにインストールされていません!"
-
-msgid "Navegador padrão<br>dos WebApps:"
-msgstr "デフォルトブラウザ<br>ウェブアプリ:"
-
-msgid "Selecione o navegador preferido:"
-msgstr "ご希望のブラウザを選択してください。"
-
-msgid "Nativo"
-msgstr "土着"
-
-msgid "Flatpak"
-msgstr "フラットパック"
-
-msgid "WebApps Nativos"
-msgstr "ネイティブWebApp"
+msgid "Using Your Android Device's Internet on Linux via USB"
+msgstr "Linuxを介してAndroidデバイスのインターネットをUSB経由で使用する"
 
 msgid ""
-"O navegador definido para abrir os WebApps não está instalado! \\n"
-"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+"To share your Android smartphone's internet connection with a Linux computer using a USB cable, "
+"follow these steps:"
+msgstr "Androidスマートフォンのインターネット接続をUSBケーブルを使用してLinuxコンピュータと共有するには、次の手順に従ってください："
+
+msgid "Connect your Android smartphone to the Linux computer using a USB cable."
+msgstr "AndroidスマートフォンをUSBケーブルでLinuxコンピュータに接続してください。"
+
+msgid ""
+"On your smartphone, open 'Settings' and navigate to 'Network &amp; Internet' or 'Connections &amp; "
+"Sharing'."
+msgstr "スマートフォンで、「設定」を開き、「ネットワーク＆インターネット」または「接続＆共有」に移動してください。"
+
+msgid "Look for 'USB Tethering', 'USB Tether', or similar terms and enable it."
+msgstr "「USBテザリング」、「USBテザ」などの用語を検索して有効にしてください。"
+
+msgid ""
+"This will automatically establish the internet connection on your Linux computer without requiring "
+"any additional configuration."
+msgstr "この機能により、追加の設定を必要とせずにLinuxコンピューターでインターネット接続を自動的に確立します。"
+
+msgid ""
+"If your Android device is not connected to Wi-Fi and is using cellular data, this tethering will "
+"consume data from your cellular plan. To avoid data charges, ensure that your Android device is "
+"connected to a Wi-Fi network before enabling tethering."
 msgstr ""
-"WebAppsを開くように設定されたブラウザがインストールされていません!\\n"
-"WebApps マネージャでブラウザを変更してみてください!\\n"
+"Android デバイスが Wi-Fi に接続されておらず、携帯データを使用している場合、このテザリングは携帯プランからデータを消費します。データ料金を回避するためには、テザリングを有効にする前に "
+"Android デバイスが Wi-Fi ネットワークに接続されていることを確認してください。"
 
-msgid "O Gerenciador de WebApps BigLinux já está aberto!"
-msgstr "BigLinux WebApps Manager がオープンしました!"
+msgid "Close"
+msgstr "閉じる"
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "BigLinux WebApps Manager"
+msgid "Using Your iOS Device's Internet on Linux via USB"
+msgstr "iOSデバイスのインターネットをLinuxでUSB経由で使用する"
 
-msgid "Restaurar"
-msgstr "戻す"
+msgid ""
+"To share your iOS smartphone's internet connection with a Linux computer using a USB cable, follow "
+"these steps:"
+msgstr "iOSスマートフォンのインターネット接続をUSBケーブルを使用してLinuxコンピュータと共有するには、次の手順に従ってください:"
 
-msgid "Criar backup"
-msgstr "バックアップの作成"
+msgid "Connect your iOS device to the Linux computer using a USB cable."
+msgstr "iOSデバイスをUSBケーブルでLinuxコンピュータに接続してください。"
 
-msgid "O backup dos WebApps foi salvo em: "
-msgstr "WebApps のバックアップは次の場所に保存されました。 "
+msgid "On your iOS device, go to 'Settings', then select 'Personal Hotspot'."
+msgstr "iOSデバイスで、「設定」に移動し、「パーソナルホットスポット」を選択します。"
 
-msgid "Os WebApps foram restaurados com sucesso!"
-msgstr "ウェブアプリが正常に復元されました!"
+msgid ""
+"Enable 'Allow Others to Join'. This may automatically enable 'USB Tethering' if a USB connection is "
+"detected."
+msgstr "「他のユーザーの参加を許可」を有効にします。これにより、USB接続が検出されると自動的に「USBテザリング」が有効になる場合があります。"
 
-msgid "Importar webapps"
-msgstr "ウェブアプリのインポート"
+msgid ""
+"If your iOS device is not connected to Wi-Fi and is using cellular data, this tethering will "
+"consume data from your cellular plan. To avoid data charges, ensure that your iOS device is "
+"connected to a Wi-Fi network before enabling tethering."
+msgstr ""
+"iOS デバイスが Wi-Fi に接続されておらず、セルラーデータを使用している場合、このテザリングはセルラープランからデータを消費します。データ料金を回避するためには、テザリングを有効にする前に "
+"iOS デバイスが Wi-Fi ネットワークに接続されていることを確認してください。"
 
-msgid "UNGOOGLED (FLATPAK)"
-msgstr "アングーグル(フラットパック)"
+msgid "Main"
+msgstr "メイン"
 
-msgid "Importar WebApps"
-msgstr "ウェブアプリのインポート"
+msgid "Network and Internet"
+msgstr "ネットワークとインターネット"
 
-msgid "Criar Backup"
-msgstr "バックアップの作成"
+msgid "Phone"
+msgstr "電話"
 
-msgid "Dectando o nome, aguarde..."
-msgstr "名前を布告して、待ってください..."
+msgid "Customize"
+msgstr "カスタマイズ"
 
-msgid "Dectando o ícone, aguarde..."
-msgstr "アイコンを布告して、待ってください..."
+msgid "Region and Language"
+msgstr "地域と言語"
 
-msgid "Adicionando o webapp..."
-msgstr "ウェブアプリを追加しています..."
+msgid "Multimedia"
+msgstr "マルチメディア"
 
-msgid "Aplicando as alterações..."
-msgstr "変更を適用しています..."
+msgid "Accounts"
+msgstr "アカウント"
 
-msgid "Criando o backup..."
-msgstr "バックアップを作成しています..."
+msgid "Devices"
+msgstr "デバイス"
 
-msgid "Importando os webapps..."
-msgstr "ウェブアプリをインポートしています..."
+msgid "System"
+msgstr "システム"
 
-msgid "Removendo o webapp..."
-msgstr "ウェブアプリを削除しています..."
+msgid "About"
+msgstr "について"
 
-msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
-msgstr "ウェブアプリを追加するには、<br> URLと名前を入力する必要があります。"
+msgid "Other"
+msgstr "その他"
 
-msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
-msgstr "名前とアイコンを検出するには、<br> URLを入力する必要があります。"
-
-msgid "Selecione o diretório"
-msgstr "ディレクトリを選択"
-
-msgid "Selecionar o arquivo de backup"
-msgstr "バックアップファイルを選択します"
-
-msgid "Backup WebApps"
-msgstr "ウェブアプリのバックアップ"
-
-msgid "Selecione o arquivo de imagem"
-msgstr "画像ファイルを選択"
-
-msgid "Arquivos de Imagem"
-msgstr "画像ファイル"
-
-msgid "Removendo todos os webapps..."
-msgstr "すべてのウェブアプリを削除しています..."
-
-msgid "Remover Todos"
-msgstr "すべて削除"
-
-msgid "Você tem certeza que deseja remover todos os webapps?"
-msgstr "すべての Web アプリを削除してもよろしいですか?"
-
-msgid "Não"
-msgstr "いいえ"
-
-msgid "Sim"
-msgstr "はい"
-
-msgid "Importar Backup"
-msgstr "バックアップのインポート"
-
-msgid "Remover WebApps"
-msgstr "ウェブアプリを削除する"
-
-msgid "Você tem certeza que deseja remover todos os WebApps?"
-msgstr "すべての WebApp を削除してもよろしいですか?"
-
-msgid " Fechar"
-msgstr " 閉める"
-
-msgid "BigLinux WebApps"
-msgstr "BigLinux WebApps"
-
-msgid "FALKON"
-msgstr "ファルコン"
-
-msgid "Você deseja remover todos os WebApps?"
-msgstr "すべての Web アプリを削除しますか?"
+msgid "Search..."
+msgstr "検索..."

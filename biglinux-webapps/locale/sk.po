@@ -16,321 +16,115 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Não existem navegadores instalados compatíveis com os WebApps!"
-msgstr "Neexistujú žiadne nainštalované prehliadače, ktoré podporujú WebApps!"
-
-msgid "Será necessário instalar mais um navegador compatível!"
-msgstr "Budete si musieť nainštalovať ešte jeden kompatibilný prehliadač!"
-
-msgid "URL:"
-msgstr "Adresa URL:"
-
-msgid "Detectar Nome e Ícone"
-msgstr "Zistiť názov a ikonu"
-
-msgid "Nome:"
-msgstr "Názov:"
-
-msgid "Ícone do WebApp"
-msgstr "Ikona aplikácie WebApp"
-
-msgid "Alterar"
-msgstr "Zmena"
-
-msgid "Navegador"
-msgstr "Prehliadač"
-
-msgid "BRAVE"
-msgstr "STATOČNÝ"
-
-msgid "CHROME"
-msgstr "CHRÓM"
-
-msgid "CHROMIUM"
-msgstr "CHRÓM"
-
-msgid "EDGE"
-msgstr "HRANA"
-
-msgid "EPIPHANY"
-msgstr "Epiphany"
-
-msgid "FIREFOX"
-msgstr "FIREFOX"
-
-msgid "LIBREWOLF"
-msgstr "LIBREWOLF"
-
-msgid "VIVALDI"
-msgstr "VIVALDI"
-
-msgid "BRAVE (FLATPAK)"
-msgstr "STATOČNÝ (FLATPAK)"
-
-msgid "CHROME (FLATPAK)"
-msgstr "CHRÓM (FLATPAK)"
-
-msgid "CHROMIUM (FLATPAK)"
-msgstr "CHRÓM (FLATPAK)"
-
-msgid "EDGE (FLATPAK)"
-msgstr "HRANA (FLATPAK)"
-
-msgid "EPIPHANY (FLATPAK)"
-msgstr "EPIPHANY (FLATPAK)"
-
-msgid "FIREFOX (FLATPAK)"
-msgstr "FIREFOX (FLATPAK)"
-
-msgid "LIBREWOLF (FLATPAK)"
-msgstr "LIBREWOLF (FLATPAK)"
-
-msgid "Categoria"
-msgstr "Kategória"
-
-msgid "DESENVOLVIMENTO"
-msgstr "VÝVOJ"
-
-msgid "ESCRITÓRIO"
-msgstr "OFFICE"
-
-msgid "GRÁFICOS"
-msgstr "GRAFIKA"
-
-msgid "JOGOS"
-msgstr "HRY"
-
-msgid "MULTIMÍDIA"
-msgstr "MULTIMÉDIÁ"
-
-msgid "WEBAPPS"
-msgstr "WEBOVÉ APLIKÁCIE"
-
-msgid "WEBAPPS GOOGLE"
-msgstr "WEBOVÉ APLIKÁCIE GOOGLE"
-
-msgid "Criar atalho na Área de Trabalho"
-msgstr "Vytvorenie zástupcu na pracovnej ploche"
-
-msgid "Perfil adicional"
-msgstr "Ďalší profil"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Vyberte uprednostňovanú ikonu:"
-
-msgid "Não é possível aplicar a edição sem Nome!"
-msgstr "Nie je možné použiť nepomenované úpravy!"
-
-msgid "Fechar"
-msgstr "Zatvoriť"
-
-msgid "Não é possível aplicar a edição sem alterações!"
-msgstr "Bez zmien nemôžete použiť úpravy!"
-
-msgid "O WebApp foi editado com sucesso!"
-msgstr "WebApp bol úspešne upravený!"
-
-msgid "Adicionar WebApps"
-msgstr "Pridanie webových aplikácií"
-
-msgid "WebApps Adicionados"
-msgstr "Pridanie webových aplikácií"
-
-msgid "WebApps BigLinux"
-msgstr "Webové aplikácie BigLinux"
-
-msgid "https://www.exemplo.com"
-msgstr "https://www.exemplo.com"
-
-msgid "Exemplo"
-msgstr "Príklad"
-
-msgid "Adicionar"
-msgstr "Pridať"
-
-msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
-msgstr "Ak chcete pridať webovú aplikáciu,<br> musíte zadať adresu URL a názov."
-
-msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
-msgstr "Ak chcete zistiť názov a ikonu,<br> musíte zadať adresu URL."
-
-msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
-msgstr "Adresa URL je neplatná alebo pripojenie zlyhalo.<br>Skúste ikonu vložiť pomocou tlačidla Zmeniť."
-
-msgid "O WebApp foi adicionado com sucesso!"
-msgstr "Webová aplikácia bola úspešne pridaná!"
-
-msgid "Desenvolvimento"
-msgstr "Vývoj"
-
-msgid "Escritório"
-msgstr "Kancelária"
-
-msgid "Gráficos"
-msgstr "Grafika"
-
-msgid "Jogos"
-msgstr "Hry"
-
-msgid "Multimídia"
-msgstr "Multimédiá"
-
-msgid "Internet"
-msgstr "Internet"
-
-msgid "Google"
-msgstr "Google"
-
 msgid "WebApps"
 msgstr "WebApps"
 
-msgid "Nenhum WebApp adicionado!"
-msgstr "Nebola pridaná žiadna webová aplikácia!"
-
-msgid "Aplicar"
-msgstr "Použiť"
-
-msgid "Cancelar"
-msgstr "Zrušiť"
-
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Ste si istí, že chcete odstrániť túto webovú aplikáciu?"
-
-msgid "Editar WebApp"
-msgstr "Upraviť webovú aplikáciu"
-
-msgid "O navegador não está instalado!"
-msgstr "Prehliadač nie je nainštalovaný!"
-
-msgid "Não existem navegadores compatíveis instalados no sistema!"
-msgstr "V systéme nie sú nainštalované žiadne kompatibilné prehliadače!"
-
-msgid "Navegador padrão<br>dos WebApps:"
-msgstr "Predvolený prehliadač<br>webové aplikácie:"
-
-msgid "Selecione o navegador preferido:"
-msgstr "Vyberte preferovaný prehliadač:"
-
-msgid "Nativo"
-msgstr "Autochtónny"
-
-msgid "Flatpak"
-msgstr "Flatpak"
-
-msgid "WebApps Nativos"
-msgstr "Natívne webové aplikácie"
+msgid "Using Your Android Device's Internet on Linux via USB"
+msgstr "Používanie internetu z vášho zariadenia Android na Linuxe cez USB"
 
 msgid ""
-"O navegador definido para abrir os WebApps não está instalado! \\n"
-"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+"To share your Android smartphone's internet connection with a Linux computer using a USB cable, "
+"follow these steps:"
 msgstr ""
-"Prehliadač nastavený na otvorenie WebApps nie je nainštalovaný! \\n"
-"Skúste zmeniť prehliadač v aplikácii WebApps Manager! \\n"
+"Na zdieľanie pripojenia k internetu z Android smartfónu s Linux počítačom cez USB kábel postupujte "
+"podľa týchto krokov:"
 
-msgid "O Gerenciador de WebApps BigLinux já está aberto!"
-msgstr "BigLinux WebApps Manager je teraz otvorený!"
+msgid "Connect your Android smartphone to the Linux computer using a USB cable."
+msgstr "Pripojte svoj Android smartfón k počítaču so systémom Linux pomocou USB kábla."
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "BigLinux WebApps Manager"
+msgid ""
+"On your smartphone, open 'Settings' and navigate to 'Network &amp; Internet' or 'Connections &amp; "
+"Sharing'."
+msgstr ""
+"Na svojom smartfóne otvorte „Nastavenia“ a prejdite na „Sieť a internet“ alebo „Pripojenia a "
+"zdieľanie“."
 
-msgid "Restaurar"
-msgstr "Obnoviť"
+msgid "Look for 'USB Tethering', 'USB Tether', or similar terms and enable it."
+msgstr "Hľadajte „USB zdieľanie pripojenia“, „USB zdieľanie“ alebo podobné termíny a povolte ho."
 
-msgid "Criar backup"
-msgstr "Vytvorenie zálohy"
+msgid ""
+"This will automatically establish the internet connection on your Linux computer without requiring "
+"any additional configuration."
+msgstr ""
+"Toto automaticky vytvorí internetové pripojenie na vašom počítači so systémom Linux bez potreby "
+"ďalšej konfigurácie."
 
-msgid "O backup dos WebApps foi salvo em: "
-msgstr "Zálohovanie WebApps bolo uložené na adrese: "
+msgid ""
+"If your Android device is not connected to Wi-Fi and is using cellular data, this tethering will "
+"consume data from your cellular plan. To avoid data charges, ensure that your Android device is "
+"connected to a Wi-Fi network before enabling tethering."
+msgstr ""
+"Ak váš zariadenie s Androidom nie je pripojené k Wi-Fi a používa mobilné dáta, toto zdieľanie "
+"spotrebuje dáta z vášho mobilného plánu. Aby ste sa vyhli poplatkom za dáta, uistite sa, že je vaše "
+"zariadenie s Androidom pripojené k Wi-Fi sieti pred povolením zdieľania."
 
-msgid "Os WebApps foram restaurados com sucesso!"
-msgstr "WebApps boli úspešne obnovené!"
+msgid "Close"
+msgstr "Zavrieť"
 
-msgid "Importar webapps"
-msgstr "Importovanie webových aplikácií"
+msgid "Using Your iOS Device's Internet on Linux via USB"
+msgstr "Používanie internetu z vášho zariadenia iOS na Linuxe cez USB"
 
-msgid "UNGOOGLED (FLATPAK)"
-msgstr "UNGOOGLED (FLATPAK)"
+msgid ""
+"To share your iOS smartphone's internet connection with a Linux computer using a USB cable, follow "
+"these steps:"
+msgstr ""
+"Na zdieľanie internetového pripojenia vášho smartfónu s iOS s počítačom Linux cez USB kábel "
+"postupujte podľa týchto krokov:"
 
-msgid "Importar WebApps"
-msgstr "Importovanie webových aplikácií"
+msgid "Connect your iOS device to the Linux computer using a USB cable."
+msgstr "Pripojte svoje zariadenie iOS k počítaču so systémom Linux pomocou USB kábla."
 
-msgid "Criar Backup"
-msgstr "Vytvorte zálohu"
+msgid "On your iOS device, go to 'Settings', then select 'Personal Hotspot'."
+msgstr "Na vašom zariadení iOS prejdite na „Nastavenia“, potom vyberte „Osobný hotspot“."
 
-msgid "Dectando o nome, aguarde..."
-msgstr "Vyhlásiť meno, počkajte..."
+msgid ""
+"Enable 'Allow Others to Join'. This may automatically enable 'USB Tethering' if a USB connection is "
+"detected."
+msgstr ""
+"Povoliť „Povoliť ostatným pripojiť sa“. To môže automaticky povoliť „USB prepojenie“ v prípade "
+"zistenia USB pripojenia."
 
-msgid "Dectando o ícone, aguarde..."
-msgstr "Nariaďte ikonu, počkajte..."
+msgid ""
+"If your iOS device is not connected to Wi-Fi and is using cellular data, this tethering will "
+"consume data from your cellular plan. To avoid data charges, ensure that your iOS device is "
+"connected to a Wi-Fi network before enabling tethering."
+msgstr ""
+"Ak váš iOS zariadenie nie je pripojené k Wi-Fi a používa mobilné dáta, toto zdieľanie spotrebuje "
+"dáta z vášho mobilného plánu. Aby ste sa vyhli poplatkom za dáta, uistite sa, že je vaše iOS "
+"zariadenie pripojené k Wi-Fi sieti pred povolením zdieľania."
 
-msgid "Adicionando o webapp..."
-msgstr "Pridáva sa webová aplikácia..."
+msgid "Main"
+msgstr "Hlavný"
 
-msgid "Aplicando as alterações..."
-msgstr "Použitie zmien..."
+msgid "Network and Internet"
+msgstr "Sieť a internet"
 
-msgid "Criando o backup..."
-msgstr "Vytvára sa záloha..."
+msgid "Phone"
+msgstr "Telefón"
 
-msgid "Importando os webapps..."
-msgstr "Importuje sa webová aplikácia..."
+msgid "Customize"
+msgstr "Prispôsobiť"
 
-msgid "Removendo o webapp..."
-msgstr "Odstraňuje sa webová aplikácia..."
+msgid "Region and Language"
+msgstr "Región a Jazyk"
 
-msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
-msgstr "Ak chcete pridať webovú aplikáciu,<br> musíte zadať adresu URL a názov."
+msgid "Multimedia"
+msgstr "Multimédia"
 
-msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
-msgstr "Ak chcete zistiť názov a ikonu,<br> musíte zadať adresu URL."
+msgid "Accounts"
+msgstr "Účty"
 
-msgid "Selecione o diretório"
-msgstr "Vyberte adresár"
+msgid "Devices"
+msgstr "Zariadenia"
 
-msgid "Selecionar o arquivo de backup"
-msgstr "Vyberte záložný súbor"
+msgid "System"
+msgstr "Systém"
 
-msgid "Backup WebApps"
-msgstr "Zálohovanie webových aplikácií"
+msgid "About"
+msgstr "O programe"
 
-msgid "Selecione o arquivo de imagem"
-msgstr "Vyberte súbor s obrázkom"
+msgid "Other"
+msgstr "Iné"
 
-msgid "Arquivos de Imagem"
-msgstr "Obrazové súbory"
-
-msgid "Removendo todos os webapps..."
-msgstr "Odstraňuje sa všetky webové aplikácie..."
-
-msgid "Remover Todos"
-msgstr "Odstrániť všetko"
-
-msgid "Você tem certeza que deseja remover todos os webapps?"
-msgstr "Naozaj chcete odstrániť všetky webové aplikácie?"
-
-msgid "Não"
-msgstr "Nie"
-
-msgid "Sim"
-msgstr "Áno"
-
-msgid "Importar Backup"
-msgstr "Importovať zálohu"
-
-msgid "Remover WebApps"
-msgstr "Odstránenie webových aplikácií"
-
-msgid "Você tem certeza que deseja remover todos os WebApps?"
-msgstr "Naozaj chcete odstrániť všetky webové aplikácie?"
-
-msgid " Fechar"
-msgstr " Zavrieť"
-
-msgid "BigLinux WebApps"
-msgstr "BigLinux WebApps"
-
-msgid "FALKON"
-msgstr "FALKON"
-
-msgid "Você deseja remover todos os WebApps?"
-msgstr "Chcete odstrániť všetky webové aplikácie?"
+msgid "Search..."
+msgstr "Vyhľadať..."

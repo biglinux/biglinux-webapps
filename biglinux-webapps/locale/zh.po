@@ -16,321 +16,99 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Não existem navegadores instalados compatíveis com os WebApps!"
-msgstr "没有安装支持 WebApps 的浏览器！"
-
-msgid "Será necessário instalar mais um navegador compatível!"
-msgstr "您将需要安装另一个兼容的浏览器！"
-
-msgid "URL:"
-msgstr "网址："
-
-msgid "Detectar Nome e Ícone"
-msgstr "檢測名稱和圖標"
-
-msgid "Nome:"
-msgstr "姓名："
-
-msgid "Ícone do WebApp"
-msgstr "“网络应用”图标"
-
-msgid "Alterar"
-msgstr "改變"
-
-msgid "Navegador"
-msgstr "浏览器"
-
-msgid "BRAVE"
-msgstr "勇敢"
-
-msgid "CHROME"
-msgstr "铬"
-
-msgid "CHROMIUM"
-msgstr "铬"
-
-msgid "EDGE"
-msgstr "边缘"
-
-msgid "EPIPHANY"
-msgstr "主显节"
-
-msgid "FIREFOX"
-msgstr "火狐"
-
-msgid "LIBREWOLF"
-msgstr "自由狼"
-
-msgid "VIVALDI"
-msgstr "维瓦尔第"
-
-msgid "BRAVE (FLATPAK)"
-msgstr "勇敢（平坦帕克）"
-
-msgid "CHROME (FLATPAK)"
-msgstr "铬（平帕克）"
-
-msgid "CHROMIUM (FLATPAK)"
-msgstr "铬（平帕克）"
-
-msgid "EDGE (FLATPAK)"
-msgstr "边缘（平帕克）"
-
-msgid "EPIPHANY (FLATPAK)"
-msgstr "顿悟（平帕克）"
-
-msgid "FIREFOX (FLATPAK)"
-msgstr "火狐 （FLATPAK）"
-
-msgid "LIBREWOLF (FLATPAK)"
-msgstr "自由狼（弗拉帕克）"
-
-msgid "Categoria"
-msgstr "类别"
-
-msgid "DESENVOLVIMENTO"
-msgstr "發展"
-
-msgid "ESCRITÓRIO"
-msgstr "辦公室"
-
-msgid "GRÁFICOS"
-msgstr "圖形"
-
-msgid "JOGOS"
-msgstr "遊戲"
-
-msgid "MULTIMÍDIA"
-msgstr "多媒體"
-
-msgid "WEBAPPS"
-msgstr "网络应用"
-
-msgid "WEBAPPS GOOGLE"
-msgstr "网络应用 谷歌"
-
-msgid "Criar atalho na Área de Trabalho"
-msgstr "創建桌面快捷方式"
-
-msgid "Perfil adicional"
-msgstr "附加配置文件"
-
-msgid "Selecione o ícone preferido:"
-msgstr "選擇您喜歡的圖標："
-
-msgid "Não é possível aplicar a edição sem Nome!"
-msgstr "无法应用未命名的编辑！"
-
-msgid "Fechar"
-msgstr "关闭"
-
-msgid "Não é possível aplicar a edição sem alterações!"
-msgstr "如果不进行更改，则无法应用编辑！"
-
-msgid "O WebApp foi editado com sucesso!"
-msgstr "网页应用已成功编辑！"
-
-msgid "Adicionar WebApps"
-msgstr "WebApp 添加"
-
-msgid "WebApps Adicionados"
-msgstr "添加了 WebApp"
-
-msgid "WebApps BigLinux"
-msgstr "WebApps BigLinux"
-
-msgid "https://www.exemplo.com"
-msgstr "https://www.exemplo.com"
-
-msgid "Exemplo"
-msgstr "例"
-
-msgid "Adicionar"
-msgstr "添加"
-
-msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
-msgstr "要添加 Web 应用，<br> 您必须输入 URL 和名称。"
-
-msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
-msgstr "要检测名称和图标，<br> 您需要输入网址。"
-
-msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
-msgstr "URL 无效或连接失败。<br>尝试通过“更改”按钮插入图标。"
-
-msgid "O WebApp foi adicionado com sucesso!"
-msgstr "WebApp 已成功添加！"
-
-msgid "Desenvolvimento"
-msgstr "发展"
-
-msgid "Escritório"
-msgstr "办公室"
-
-msgid "Gráficos"
-msgstr "图形"
-
-msgid "Jogos"
-msgstr "游戏"
-
-msgid "Multimídia"
-msgstr "多媒体"
-
-msgid "Internet"
-msgstr "互联网"
-
-msgid "Google"
-msgstr "谷歌"
-
 msgid "WebApps"
 msgstr "网络应用"
 
-msgid "Nenhum WebApp adicionado!"
-msgstr "沒有添加 WebApp！"
-
-msgid "Aplicar"
-msgstr "应用"
-
-msgid "Cancelar"
-msgstr "取消"
-
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "您確定要刪除此 WebApp 嗎？"
-
-msgid "Editar WebApp"
-msgstr "编辑网页应用"
-
-msgid "O navegador não está instalado!"
-msgstr "浏览器未安装！"
-
-msgid "Não existem navegadores compatíveis instalados no sistema!"
-msgstr "系统上没有安装兼容的浏览器！"
-
-msgid "Navegador padrão<br>dos WebApps:"
-msgstr "默认浏览器<br>网络应用："
-
-msgid "Selecione o navegador preferido:"
-msgstr "選擇您喜歡的瀏覽器："
-
-msgid "Nativo"
-msgstr "土著"
-
-msgid "Flatpak"
-msgstr "弗拉特帕克"
-
-msgid "WebApps Nativos"
-msgstr "本地网络应用程序"
+msgid "Using Your Android Device's Internet on Linux via USB"
+msgstr "通过 USB 在 Linux 上使用您的 Android 设备的互联网"
 
 msgid ""
-"O navegador definido para abrir os WebApps não está instalado! \\n"
-"Tente alterar o navegador no Gerenciador de WebApps! \\n"
-msgstr ""
-"未安装设置为打开 Web 应用程序的浏览器！\\n"
-"尝试在 Web 应用管理器中更改浏览器！\\n"
+"To share your Android smartphone's internet connection with a Linux computer using a USB cable, "
+"follow these steps:"
+msgstr "要使用USB电缆将Android智能手机的互联网连接与Linux计算机共享，请按照以下步骤操作："
 
-msgid "O Gerenciador de WebApps BigLinux já está aberto!"
-msgstr "BigLinux WebApps Manager 现已开放！"
+msgid "Connect your Android smartphone to the Linux computer using a USB cable."
+msgstr "使用USB电缆将您的安卓智能手机连接到Linux计算机。"
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "BigLinux WebApps Manager"
+msgid ""
+"On your smartphone, open 'Settings' and navigate to 'Network &amp; Internet' or 'Connections &amp; "
+"Sharing'."
+msgstr "在您的智能手机上，打开“设置”，然后导航到“网络和互联网”或“连接与共享”。"
 
-msgid "Restaurar"
-msgstr "恢复"
+msgid "Look for 'USB Tethering', 'USB Tether', or similar terms and enable it."
+msgstr "查找“USB网络共享”、“USB共享”或类似术语并启用。"
 
-msgid "Criar backup"
-msgstr "创建备份"
+msgid ""
+"This will automatically establish the internet connection on your Linux computer without requiring "
+"any additional configuration."
+msgstr "这将在您的Linux计算机上自动建立互联网连接，无需任何额外配置。"
 
-msgid "O backup dos WebApps foi salvo em: "
-msgstr "WebApps 备份保存在： "
+msgid ""
+"If your Android device is not connected to Wi-Fi and is using cellular data, this tethering will "
+"consume data from your cellular plan. To avoid data charges, ensure that your Android device is "
+"connected to a Wi-Fi network before enabling tethering."
+msgstr "如果您的Android设备未连接到Wi-Fi并正在使用蜂窝数据，则此共享功能将消耗您蜂窝计划中的数据。为避免数据费用，请确保在启用共享功能之前将您的Android设备连接到Wi-Fi网络。"
 
-msgid "Os WebApps foram restaurados com sucesso!"
-msgstr "网络应用程序已成功恢复！"
+msgid "Close"
+msgstr "关闭"
 
-msgid "Importar webapps"
-msgstr "导入网络应用"
+msgid "Using Your iOS Device's Internet on Linux via USB"
+msgstr "在Linux上通过USB使用您的iOS设备的互联网"
 
-msgid "UNGOOGLED (FLATPAK)"
-msgstr "UNGOOGLED （FLATPAK）"
+msgid ""
+"To share your iOS smartphone's internet connection with a Linux computer using a USB cable, follow "
+"these steps:"
+msgstr "要使用USB电缆将iOS智能手机的互联网连接与Linux计算机共享，请按照以下步骤操作："
 
-msgid "Importar WebApps"
-msgstr "导入网页应用"
+msgid "Connect your iOS device to the Linux computer using a USB cable."
+msgstr "将您的iOS设备通过USB电缆连接到Linux计算机。"
 
-msgid "Criar Backup"
-msgstr "创建备份"
+msgid "On your iOS device, go to 'Settings', then select 'Personal Hotspot'."
+msgstr "在您的iOS设备上，转到“设置”，然后选择“个人热点”。"
 
-msgid "Dectando o nome, aguarde..."
-msgstr "念叨的名字，等等..."
+msgid ""
+"Enable 'Allow Others to Join'. This may automatically enable 'USB Tethering' if a USB connection is "
+"detected."
+msgstr "启用“允许其他人加入”。如果检测到USB连接，这可能会自动启用“USB网络共享”。"
 
-msgid "Dectando o ícone, aguarde..."
-msgstr "命令图标，等待..."
+msgid ""
+"If your iOS device is not connected to Wi-Fi and is using cellular data, this tethering will "
+"consume data from your cellular plan. To avoid data charges, ensure that your iOS device is "
+"connected to a Wi-Fi network before enabling tethering."
+msgstr "如果您的iOS设备未连接到Wi-Fi并正在使用蜂窝数据，则此共享功能将消耗您蜂窝计划中的数据。为避免数据费用，请确保在启用共享功能之前将您的iOS设备连接到Wi-Fi网络。"
 
-msgid "Adicionando o webapp..."
-msgstr "正在添加网络应用..."
+msgid "Main"
+msgstr "主要"
 
-msgid "Aplicando as alterações..."
-msgstr "正在应用更改..."
+msgid "Network and Internet"
+msgstr "网络和互联网"
 
-msgid "Criando o backup..."
-msgstr "正在创建备份..."
+msgid "Phone"
+msgstr "电话"
 
-msgid "Importando os webapps..."
-msgstr "正在导入网络应用..."
+msgid "Customize"
+msgstr "定制化"
 
-msgid "Removendo o webapp..."
-msgstr "正在删除网络应用..."
+msgid "Region and Language"
+msgstr "区域和语言"
 
-msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
-msgstr "要添加 Web 应用，<br> 您需要输入 URL 和名称。"
+msgid "Multimedia"
+msgstr "多媒体"
 
-msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
-msgstr "要检测名称和图标，<br> 您需要输入网址。"
+msgid "Accounts"
+msgstr "帐户"
 
-msgid "Selecione o diretório"
-msgstr "选择目录"
+msgid "Devices"
+msgstr "设备"
 
-msgid "Selecionar o arquivo de backup"
-msgstr "选择备份文件"
+msgid "System"
+msgstr "系统"
 
-msgid "Backup WebApps"
-msgstr "备份网页应用"
+msgid "About"
+msgstr "关于"
 
-msgid "Selecione o arquivo de imagem"
-msgstr "选择图像文件"
+msgid "Other"
+msgstr "其他"
 
-msgid "Arquivos de Imagem"
-msgstr "图像文件"
-
-msgid "Removendo todos os webapps..."
-msgstr "正在删除所有网络应用程序..."
-
-msgid "Remover Todos"
-msgstr "全部删除"
-
-msgid "Você tem certeza que deseja remover todos os webapps?"
-msgstr "是否确实要删除所有 Web 应用？"
-
-msgid "Não"
-msgstr "不"
-
-msgid "Sim"
-msgstr "是的"
-
-msgid "Importar Backup"
-msgstr "导入备份"
-
-msgid "Remover WebApps"
-msgstr "删除网络应用"
-
-msgid "Você tem certeza que deseja remover todos os WebApps?"
-msgstr "是否确实要删除所有 Web 应用？"
-
-msgid " Fechar"
-msgstr " 关闭"
-
-msgid "BigLinux WebApps"
-msgstr "BigLinux WebApps"
-
-msgid "FALKON"
-msgstr "福尔康"
-
-msgid "Você deseja remover todos os WebApps?"
-msgstr "是否要删除所有 Web 应用？"
+msgid "Search..."
+msgstr "搜索..."

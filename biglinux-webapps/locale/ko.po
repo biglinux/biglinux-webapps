@@ -16,321 +16,103 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Não existem navegadores instalados compatíveis com os WebApps!"
-msgstr "WebApps를 지원하는 설치된 브라우저가 없습니다!"
-
-msgid "Será necessário instalar mais um navegador compatível!"
-msgstr "호환되는 브라우저를 하나 더 설치해야합니다!"
-
-msgid "URL:"
-msgstr "URL:"
-
-msgid "Detectar Nome e Ícone"
-msgstr "이름 및 아이콘 감지"
-
-msgid "Nome:"
-msgstr "이름:"
-
-msgid "Ícone do WebApp"
-msgstr "웹앱 아이콘"
-
-msgid "Alterar"
-msgstr "고치다"
-
-msgid "Navegador"
-msgstr "브라우저"
-
-msgid "BRAVE"
-msgstr "용감한"
-
-msgid "CHROME"
-msgstr "크롬"
-
-msgid "CHROMIUM"
-msgstr "크로뮴"
-
-msgid "EDGE"
-msgstr "가장자리"
-
-msgid "EPIPHANY"
-msgstr "주현절"
-
-msgid "FIREFOX"
-msgstr "파이어폭스"
-
-msgid "LIBREWOLF"
-msgstr "리브르울프"
-
-msgid "VIVALDI"
-msgstr "비발디"
-
-msgid "BRAVE (FLATPAK)"
-msgstr "브레이브 (플랫팩)"
-
-msgid "CHROME (FLATPAK)"
-msgstr "크롬 (플랫팩)"
-
-msgid "CHROMIUM (FLATPAK)"
-msgstr "크롬 (플랫팩)"
-
-msgid "EDGE (FLATPAK)"
-msgstr "가장자리 (플랫팩)"
-
-msgid "EPIPHANY (FLATPAK)"
-msgstr "주현절 (플랫팩)"
-
-msgid "FIREFOX (FLATPAK)"
-msgstr "파이어폭스 (플랫팩)"
-
-msgid "LIBREWOLF (FLATPAK)"
-msgstr "리브레울프 (플랫팩)"
-
-msgid "Categoria"
-msgstr "범주"
-
-msgid "DESENVOLVIMENTO"
-msgstr "개발"
-
-msgid "ESCRITÓRIO"
-msgstr "사무실"
-
-msgid "GRÁFICOS"
-msgstr "그래픽"
-
-msgid "JOGOS"
-msgstr "게임"
-
-msgid "MULTIMÍDIA"
-msgstr "멀티미디어"
-
-msgid "WEBAPPS"
-msgstr "웹앱"
-
-msgid "WEBAPPS GOOGLE"
-msgstr "웹앱 구글"
-
-msgid "Criar atalho na Área de Trabalho"
-msgstr "바탕 화면에 바로 가기 만들기"
-
-msgid "Perfil adicional"
-msgstr "추가 프로필"
-
-msgid "Selecione o ícone preferido:"
-msgstr "기본 아이콘을 선택합니다."
-
-msgid "Não é possível aplicar a edição sem Nome!"
-msgstr "이름 없는 편집을 적용할 수 없습니다!"
-
-msgid "Fechar"
-msgstr "닫기"
-
-msgid "Não é possível aplicar a edição sem alterações!"
-msgstr "변경 없이는 편집을 적용 할 수 없습니다!"
-
-msgid "O WebApp foi editado com sucesso!"
-msgstr "웹앱이 성공적으로 편집되었습니다!"
-
-msgid "Adicionar WebApps"
-msgstr "웹앱 추가"
-
-msgid "WebApps Adicionados"
-msgstr "웹앱 추가됨"
-
-msgid "WebApps BigLinux"
-msgstr "빅 리눅스 웹 앱"
-
-msgid "https://www.exemplo.com"
-msgstr "https://www.exemplo.com"
-
-msgid "Exemplo"
-msgstr "본보기"
-
-msgid "Adicionar"
-msgstr "추가"
-
-msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
-msgstr "웹앱을 추가하려면<br> URL과 이름을 입력해야 합니다."
-
-msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
-msgstr "이름과 아이콘을 감지하려면<br> URL을 입력해야합니다."
-
-msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
-msgstr "URL이 잘못되었거나 연결에 실패했습니다.<br>변경 단추 옆에 아이콘을 삽입해 봅니다."
-
-msgid "O WebApp foi adicionado com sucesso!"
-msgstr "웹앱이 성공적으로 추가되었습니다!"
-
-msgid "Desenvolvimento"
-msgstr "개발"
-
-msgid "Escritório"
-msgstr "사무실"
-
-msgid "Gráficos"
-msgstr "그래픽스"
-
-msgid "Jogos"
-msgstr "게임"
-
-msgid "Multimídia"
-msgstr "멀티미디어"
-
-msgid "Internet"
-msgstr "인터넷"
-
-msgid "Google"
-msgstr "구글"
-
 msgid "WebApps"
 msgstr "웹앱"
 
-msgid "Nenhum WebApp adicionado!"
-msgstr "웹앱이 추가되지 않았습니다!"
-
-msgid "Aplicar"
-msgstr "적용하다"
-
-msgid "Cancelar"
-msgstr "취소"
-
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "이 웹앱을 제거하시겠습니까?"
-
-msgid "Editar WebApp"
-msgstr "웹앱 편집"
-
-msgid "O navegador não está instalado!"
-msgstr "브라우저가 설치되지 않았습니다!"
-
-msgid "Não existem navegadores compatíveis instalados no sistema!"
-msgstr "시스템에 호환되는 브라우저가 설치되어 있지 않습니다!"
-
-msgid "Navegador padrão<br>dos WebApps:"
-msgstr "기본 브라우저<br>웹앱:"
-
-msgid "Selecione o navegador preferido:"
-msgstr "원하는 브라우저를 선택합니다."
-
-msgid "Nativo"
-msgstr "토착의"
-
-msgid "Flatpak"
-msgstr "플랫팩"
-
-msgid "WebApps Nativos"
-msgstr "네이티브 웹앱"
+msgid "Using Your Android Device's Internet on Linux via USB"
+msgstr "안드로이드 기기의 인터넷을 USB를 통해 리눅스에서 사용하기"
 
 msgid ""
-"O navegador definido para abrir os WebApps não está instalado! \\n"
-"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+"To share your Android smartphone's internet connection with a Linux computer using a USB cable, "
+"follow these steps:"
+msgstr "안드로이드 스마트폰의 인터넷 연결을 USB 케이블을 사용하여 리눅스 컴퓨터와 공유하려면 다음 단계를 따르세요:"
+
+msgid "Connect your Android smartphone to the Linux computer using a USB cable."
+msgstr "안드로이드 스마트폰을 USB 케이블을 사용하여 리눅스 컴퓨터에 연결하세요."
+
+msgid ""
+"On your smartphone, open 'Settings' and navigate to 'Network &amp; Internet' or 'Connections &amp; "
+"Sharing'."
+msgstr "스마트폰에서 '설정'을 열고 '네트워크 및 인터넷' 또는 '연결 및 공유'로 이동하세요."
+
+msgid "Look for 'USB Tethering', 'USB Tether', or similar terms and enable it."
+msgstr "'USB 테더링', 'USB 테더', 또는 유사한 용어를 찾아 활성화하세요."
+
+msgid ""
+"This will automatically establish the internet connection on your Linux computer without requiring "
+"any additional configuration."
+msgstr "이것은 추가 구성 없이 Linux 컴퓨터에서 인터넷 연결을 자동으로 설정합니다."
+
+msgid ""
+"If your Android device is not connected to Wi-Fi and is using cellular data, this tethering will "
+"consume data from your cellular plan. To avoid data charges, ensure that your Android device is "
+"connected to a Wi-Fi network before enabling tethering."
 msgstr ""
-"WebApps를 열도록 설정된 브라우저가 설치되어 있지 않습니다! \\n"
-" 웹 응용 프로그램 관리자에서 브라우저를 변경하려고! \\n"
+"안드로이드 기기가 Wi-Fi에 연결되어 있지 않고 셀룰러 데이터를 사용하는 경우, 이 테더링은 셀룰러 요금제에서 데이터를 사용합니다. 데이터 요금을 피하려면 테더링을 활성화하기 "
+"전에 안드로이드 기기가 Wi-Fi 네트워크에 연결되어 있는지 확인하십시오."
 
-msgid "O Gerenciador de WebApps BigLinux já está aberto!"
-msgstr "BigLinux WebApps Manager가 이제 열려 있습니다!"
+msgid "Close"
+msgstr "닫기"
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "빅리눅스 웹앱 관리자"
+msgid "Using Your iOS Device's Internet on Linux via USB"
+msgstr "iOS 기기의 인터넷을 USB를 통해 Linux에서 사용하기"
 
-msgid "Restaurar"
-msgstr "복원"
+msgid ""
+"To share your iOS smartphone's internet connection with a Linux computer using a USB cable, follow "
+"these steps:"
+msgstr "iOS 스마트폰의 인터넷 연결을 USB 케이블을 사용하여 Linux 컴퓨터와 공유하려면 다음 단계를 따르세요:"
 
-msgid "Criar backup"
-msgstr "백업 만들기"
+msgid "Connect your iOS device to the Linux computer using a USB cable."
+msgstr "iOS 기기를 USB 케이블을 사용하여 Linux 컴퓨터에 연결하세요."
 
-msgid "O backup dos WebApps foi salvo em: "
-msgstr "웹앱 백업은 다음 위치에 저장되었습니다. "
+msgid "On your iOS device, go to 'Settings', then select 'Personal Hotspot'."
+msgstr "iOS 기기에서 '설정'으로 이동한 다음 '개인 핫스팟'을 선택하세요."
 
-msgid "Os WebApps foram restaurados com sucesso!"
-msgstr "웹앱이 성공적으로 복원되었습니다!"
+msgid ""
+"Enable 'Allow Others to Join'. This may automatically enable 'USB Tethering' if a USB connection is "
+"detected."
+msgstr "'다른 사용자 참여 허용'을 활성화합니다. USB 연결이 감지되면 'USB 테더링'이 자동으로 활성화될 수 있습니다."
 
-msgid "Importar webapps"
-msgstr "웹앱 가져오기"
+msgid ""
+"If your iOS device is not connected to Wi-Fi and is using cellular data, this tethering will "
+"consume data from your cellular plan. To avoid data charges, ensure that your iOS device is "
+"connected to a Wi-Fi network before enabling tethering."
+msgstr ""
+"iOS 기기가 Wi-Fi에 연결되어 있지 않고 셀룰러 데이터를 사용하는 경우, 이 테더링은 셀룰러 요금제에서 데이터를 사용합니다. 데이터 요금을 피하려면 테더링을 활성화하기 전에 "
+"iOS 기기가 Wi-Fi 네트워크에 연결되어 있는지 확인하십시오."
 
-msgid "UNGOOGLED (FLATPAK)"
-msgstr "검색되지 않음 (플랫팩)"
+msgid "Main"
+msgstr "주요"
 
-msgid "Importar WebApps"
-msgstr "웹앱 가져오기"
+msgid "Network and Internet"
+msgstr "네트워크 및 인터넷"
 
-msgid "Criar Backup"
-msgstr "백업 생성"
+msgid "Phone"
+msgstr "전화"
 
-msgid "Dectando o nome, aguarde..."
-msgstr "이름을 선언하고 기다리십시오 ..."
+msgid "Customize"
+msgstr "사용자 정의"
 
-msgid "Dectando o ícone, aguarde..."
-msgstr "아이콘을 선언하고 기다리십시오 ..."
+msgid "Region and Language"
+msgstr "지역 및 언어"
 
-msgid "Adicionando o webapp..."
-msgstr "웹앱 추가 중..."
+msgid "Multimedia"
+msgstr "멀티미디어"
 
-msgid "Aplicando as alterações..."
-msgstr "변경 사항 적용 중..."
+msgid "Accounts"
+msgstr "계정"
 
-msgid "Criando o backup..."
-msgstr "백업 생성 중..."
+msgid "Devices"
+msgstr "장치"
 
-msgid "Importando os webapps..."
-msgstr "웹 응용 프로그램 가져 오기 ..."
+msgid "System"
+msgstr "시스템"
 
-msgid "Removendo o webapp..."
-msgstr "웹앱 제거 중..."
+msgid "About"
+msgstr "대하여"
 
-msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
-msgstr "웹앱을 추가하려면<br> URL과 이름을 입력해야합니다."
+msgid "Other"
+msgstr "다른"
 
-msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
-msgstr "이름과 아이콘을 감지하려면<br> URL을 입력해야합니다."
-
-msgid "Selecione o diretório"
-msgstr "디렉토리 선택"
-
-msgid "Selecionar o arquivo de backup"
-msgstr "백업 파일 선택"
-
-msgid "Backup WebApps"
-msgstr "백업 웹앱"
-
-msgid "Selecione o arquivo de imagem"
-msgstr "이미지 파일 선택"
-
-msgid "Arquivos de Imagem"
-msgstr "이미지 파일"
-
-msgid "Removendo todos os webapps..."
-msgstr "모든 웹앱 제거 중..."
-
-msgid "Remover Todos"
-msgstr "모두 제거"
-
-msgid "Você tem certeza que deseja remover todos os webapps?"
-msgstr "모든 웹앱을 제거하시겠습니까?"
-
-msgid "Não"
-msgstr "아니요"
-
-msgid "Sim"
-msgstr "예"
-
-msgid "Importar Backup"
-msgstr "백업 가져오기"
-
-msgid "Remover WebApps"
-msgstr "웹앱 제거"
-
-msgid "Você tem certeza que deseja remover todos os WebApps?"
-msgstr "모든 웹앱을 제거하시겠습니까?"
-
-msgid " Fechar"
-msgstr " 닫다"
-
-msgid "BigLinux WebApps"
-msgstr "BigLinux 웹앱"
-
-msgid "FALKON"
-msgstr "팔콘"
-
-msgid "Você deseja remover todos os WebApps?"
-msgstr "모든 WebApps를 제거하시겠습니까?"
+msgid "Search..."
+msgstr "검색..."

@@ -16,321 +16,109 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Não existem navegadores instalados compatíveis com os WebApps!"
-msgstr "Pole installitud brausereid, mis toetaksid WebAppsi!"
-
-msgid "Será necessário instalar mais um navegador compatível!"
-msgstr "Peate installima veel ühe ühilduva brauseri!"
-
-msgid "URL:"
-msgstr "URL:"
-
-msgid "Detectar Nome e Ícone"
-msgstr "Nimetuse ja ikooni tuvastamine"
-
-msgid "Nome:"
-msgstr "Nimi:"
-
-msgid "Ícone do WebApp"
-msgstr "WebAppi ikoon"
-
-msgid "Alterar"
-msgstr "Muuda"
-
-msgid "Navegador"
-msgstr "Brauser"
-
-msgid "BRAVE"
-msgstr "JULGE"
-
-msgid "CHROME"
-msgstr "CHROME"
-
-msgid "CHROMIUM"
-msgstr "KROOM"
-
-msgid "EDGE"
-msgstr "ÄÄR"
-
-msgid "EPIPHANY"
-msgstr "Kolmekuningapäev"
-
-msgid "FIREFOX"
-msgstr "FIREFOX"
-
-msgid "LIBREWOLF"
-msgstr "LIBREWOLF"
-
-msgid "VIVALDI"
-msgstr "VIVALDI"
-
-msgid "BRAVE (FLATPAK)"
-msgstr "VAPPER (FLATPAK)"
-
-msgid "CHROME (FLATPAK)"
-msgstr "KROOM (FLATPAK)"
-
-msgid "CHROMIUM (FLATPAK)"
-msgstr "KROOM (FLATPAK)"
-
-msgid "EDGE (FLATPAK)"
-msgstr "SERV (FLATPAK)"
-
-msgid "EPIPHANY (FLATPAK)"
-msgstr "KOLMEKUNINGAPÄEV (FLATPAK)"
-
-msgid "FIREFOX (FLATPAK)"
-msgstr "FIREFOX (FLATPAK)"
-
-msgid "LIBREWOLF (FLATPAK)"
-msgstr "LIBREWOLF (FLATPAK)"
-
-msgid "Categoria"
-msgstr "Kategooria"
-
-msgid "DESENVOLVIMENTO"
-msgstr "ARENDUS"
-
-msgid "ESCRITÓRIO"
-msgstr "OFFICE"
-
-msgid "GRÁFICOS"
-msgstr "GRAAFIKA"
-
-msgid "JOGOS"
-msgstr "MÄNGUD"
-
-msgid "MULTIMÍDIA"
-msgstr "MULTIMEDIA"
-
-msgid "WEBAPPS"
-msgstr "WEBAPPS"
-
-msgid "WEBAPPS GOOGLE"
-msgstr "WEBAPPS GOOGLE"
-
-msgid "Criar atalho na Área de Trabalho"
-msgstr "Loo otsetee töölauale"
-
-msgid "Perfil adicional"
-msgstr "Täiendav profiil"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Valige eelistatud ikoon:"
-
-msgid "Não é possível aplicar a edição sem Nome!"
-msgstr "Nimetamata redigeerimist ei saa rakendada!"
-
-msgid "Fechar"
-msgstr "Sulge"
-
-msgid "Não é possível aplicar a edição sem alterações!"
-msgstr "Redigeerimist ei saa ilma muudatusteta rakendada!"
-
-msgid "O WebApp foi editado com sucesso!"
-msgstr "WebAppi on edukalt redigeeritud!"
-
-msgid "Adicionar WebApps"
-msgstr "Veebirakenduste lisamine"
-
-msgid "WebApps Adicionados"
-msgstr "Lisatud veebirakendused"
-
-msgid "WebApps BigLinux"
-msgstr "Veebirakendused BigLinux"
-
-msgid "https://www.exemplo.com"
-msgstr "https://www.exemplo.com"
-
-msgid "Exemplo"
-msgstr "Näide"
-
-msgid "Adicionar"
-msgstr "Lisa"
-
-msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
-msgstr "WebAppi lisamiseks tehke järgmist.<br> peate sisestama URL-i ja nime."
-
-msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
-msgstr "Nime ja ikooni tuvastamiseks tehke järgmist.<br> peate sisestama URL-i."
-
-msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
-msgstr "URL on sobimatu või ühendus nurjus.<br>Proovige ikoon sisestada nupu Muuda abil."
-
-msgid "O WebApp foi adicionado com sucesso!"
-msgstr "Veebirakendus lisati edukalt!"
-
-msgid "Desenvolvimento"
-msgstr "Arendus"
-
-msgid "Escritório"
-msgstr "Kontor"
-
-msgid "Gráficos"
-msgstr "Graafika"
-
-msgid "Jogos"
-msgstr "Mängud"
-
-msgid "Multimídia"
-msgstr "Multimeedia"
-
-msgid "Internet"
-msgstr "Internet"
-
-msgid "Google"
-msgstr "Google"
-
 msgid "WebApps"
 msgstr "WebApps"
 
-msgid "Nenhum WebApp adicionado!"
-msgstr "Veebirakendust ei ole lisatud!"
-
-msgid "Aplicar"
-msgstr "Kohaldata"
-
-msgid "Cancelar"
-msgstr "Tühistama"
-
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Kas olete kindel, et soovite selle veebirakenduse eemaldada?"
-
-msgid "Editar WebApp"
-msgstr "Muuda WebAppi"
-
-msgid "O navegador não está instalado!"
-msgstr "Brauser pole installitud!"
-
-msgid "Não existem navegadores compatíveis instalados no sistema!"
-msgstr "Süsteemi pole installitud ühilduvaid brausereid!"
-
-msgid "Navegador padrão<br>dos WebApps:"
-msgstr "Vaikebrauser<br>webapps:"
-
-msgid "Selecione o navegador preferido:"
-msgstr "Valige oma eelistatud brauser:"
-
-msgid "Nativo"
-msgstr "Põlisrahvaste"
-
-msgid "Flatpak"
-msgstr "Lamepak"
-
-msgid "WebApps Nativos"
-msgstr "Natiivsed veebirakendused"
+msgid "Using Your Android Device's Internet on Linux via USB"
+msgstr "Kasutage oma Android-seadme Interneti-ühendust Linuxis USB kaudu"
 
 msgid ""
-"O navegador definido para abrir os WebApps não está instalado! \\n"
-"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+"To share your Android smartphone's internet connection with a Linux computer using a USB cable, "
+"follow these steps:"
 msgstr ""
-"Brauser, mis on seatud WebAppsi avama, pole installitud! \\n"
-"Proovige brauserit muuta WebApps Manageris! \\n"
+"Android nutitelefoni internetiühenduse jagamiseks Linuxi arvutiga USB-kaabli abil järgige neid "
+"samme:"
 
-msgid "O Gerenciador de WebApps BigLinux já está aberto!"
-msgstr "BigLinux WebApps Manager on nüüd avatud!"
+msgid "Connect your Android smartphone to the Linux computer using a USB cable."
+msgstr "Ühendage oma Android nutitelefon Linuxi arvutiga USB-kaabli abil."
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "BigLinuxi veebirakenduste haldur"
+msgid ""
+"On your smartphone, open 'Settings' and navigate to 'Network &amp; Internet' or 'Connections &amp; "
+"Sharing'."
+msgstr ""
+"Avaage oma nutitelefonis menüüsse „Seaded“ ja liigu valikuni „Võrk ja internet“ või „Ühendused ja "
+"jagamine“."
 
-msgid "Restaurar"
-msgstr "Taastada"
+msgid "Look for 'USB Tethering', 'USB Tether', or similar terms and enable it."
+msgstr "Otsige 'USB jagamine', 'USB jagamine' või sarnased terminid ning luba see."
 
-msgid "Criar backup"
-msgstr "Varukoopia loomine"
+msgid ""
+"This will automatically establish the internet connection on your Linux computer without requiring "
+"any additional configuration."
+msgstr "See loob automaatselt internetiühenduse teie Linuxi arvutis ilma täiendava konfiguratsioonita."
 
-msgid "O backup dos WebApps foi salvo em: "
-msgstr "WebAppsi varukoopia salvestati aadressil: "
+msgid ""
+"If your Android device is not connected to Wi-Fi and is using cellular data, this tethering will "
+"consume data from your cellular plan. To avoid data charges, ensure that your Android device is "
+"connected to a Wi-Fi network before enabling tethering."
+msgstr ""
+"Kui teie Android-seade pole Wi-Fi-ga ühendatud ja kasutab mobiilset andmesidet, siis see jagamine "
+"kasutab andmeid teie mobiilsest plaanist. Andmetasude vältimiseks veenduge, et teie Android-seade "
+"on enne jagamise lubamist ühendatud Wi-Fi-võrku."
 
-msgid "Os WebApps foram restaurados com sucesso!"
-msgstr "WebApps on edukalt taastatud!"
+msgid "Close"
+msgstr "Sulge"
 
-msgid "Importar webapps"
-msgstr "Veebirakenduste importimine"
+msgid "Using Your iOS Device's Internet on Linux via USB"
+msgstr "Kasutage oma iOS-seadme Interneti-ühendust Linuxis USB kaudu"
 
-msgid "UNGOOGLED (FLATPAK)"
-msgstr "UNGOOGLED (FLATPAK)"
+msgid ""
+"To share your iOS smartphone's internet connection with a Linux computer using a USB cable, follow "
+"these steps:"
+msgstr "iOS nutitelefoni internetiühenduse jagamiseks Linuxi arvutiga USB-kaabli abil järgige neid samme:"
 
-msgid "Importar WebApps"
-msgstr "Veebirakenduste importimine"
+msgid "Connect your iOS device to the Linux computer using a USB cable."
+msgstr "Ühendage oma iOS-seade Linuxi arvutiga USB-kaabli abil."
 
-msgid "Criar Backup"
-msgstr "Loo varukoopia"
+msgid "On your iOS device, go to 'Settings', then select 'Personal Hotspot'."
+msgstr "Teie iOS-seadmes minge jaotisse „Sätted“ ning valige seejärel „Isiklik leviala“."
 
-msgid "Dectando o nome, aguarde..."
-msgstr "Nime määramine, oota..."
+msgid ""
+"Enable 'Allow Others to Join'. This may automatically enable 'USB Tethering' if a USB connection is "
+"detected."
+msgstr "Luba teistel liituda. See võib automaatselt lubada 'USB jagamise', kui USB-ühendus tuvastatakse."
 
-msgid "Dectando o ícone, aguarde..."
-msgstr "Ikooni määramine, oodake..."
+msgid ""
+"If your iOS device is not connected to Wi-Fi and is using cellular data, this tethering will "
+"consume data from your cellular plan. To avoid data charges, ensure that your iOS device is "
+"connected to a Wi-Fi network before enabling tethering."
+msgstr ""
+"Kui teie iOS-seade pole Wi-Fi-ga ühendatud ja kasutab mobiilset andmesidet, siis see jagamine "
+"kasutab andmeid teie mobiilsest plaanist. Andmetasude vältimiseks veenduge, et teie iOS-seade on "
+"enne jagamise lubamist ühendatud Wi-Fi-võrku."
 
-msgid "Adicionando o webapp..."
-msgstr "Veebirakenduse lisamine ..."
+msgid "Main"
+msgstr "Peakomponent"
 
-msgid "Aplicando as alterações..."
-msgstr "Muudatuste rakendamine..."
+msgid "Network and Internet"
+msgstr "Võrgu- ja internet"
 
-msgid "Criando o backup..."
-msgstr "Varukoopia loomine..."
+msgid "Phone"
+msgstr "Telefon"
 
-msgid "Importando os webapps..."
-msgstr "Veebirakenduste importimine ..."
+msgid "Customize"
+msgstr "Kohandamine"
 
-msgid "Removendo o webapp..."
-msgstr "Webappi eemaldamine..."
+msgid "Region and Language"
+msgstr "Piirkond ja keel"
 
-msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
-msgstr "WebAppi lisamiseks tehke järgmist.<br> peate sisestama URL-i ja nime."
+msgid "Multimedia"
+msgstr "Multimeedia"
 
-msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
-msgstr "Nime ja ikooni tuvastamiseks tehke järgmist.<br> peate sisestama URL-i."
+msgid "Accounts"
+msgstr "Kontod"
 
-msgid "Selecione o diretório"
-msgstr "Valige kataloog"
+msgid "Devices"
+msgstr "Seadmed"
 
-msgid "Selecionar o arquivo de backup"
-msgstr "Valige varufail"
+msgid "System"
+msgstr "Süsteem"
 
-msgid "Backup WebApps"
-msgstr "WebAppsi varundamine"
+msgid "About"
+msgstr "Teave"
 
-msgid "Selecione o arquivo de imagem"
-msgstr "Valige pildifail"
+msgid "Other"
+msgstr "Muu"
 
-msgid "Arquivos de Imagem"
-msgstr "Pildifailid"
-
-msgid "Removendo todos os webapps..."
-msgstr "Kõigi veebirakenduste eemaldamine ..."
-
-msgid "Remover Todos"
-msgstr "Eemalda kõik"
-
-msgid "Você tem certeza que deseja remover todos os webapps?"
-msgstr "Kas olete kindel, et soovite kõik veebirakendused eemaldada?"
-
-msgid "Não"
-msgstr "Ei"
-
-msgid "Sim"
-msgstr "Jah"
-
-msgid "Importar Backup"
-msgstr "Varukoopia importimine"
-
-msgid "Remover WebApps"
-msgstr "Eemaldage WebApps"
-
-msgid "Você tem certeza que deseja remover todos os WebApps?"
-msgstr "Kas olete kindel, et soovite kõik WebAppid eemaldada?"
-
-msgid " Fechar"
-msgstr " Sulgema"
-
-msgid "BigLinux WebApps"
-msgstr "BigLinuxi veebirakendused"
-
-msgid "FALKON"
-msgstr "FALKON"
-
-msgid "Você deseja remover todos os WebApps?"
-msgstr "Kas soovite eemaldada kõik WebAppid?"
+msgid "Search..."
+msgstr "Otsi..."
