@@ -19,7 +19,6 @@ if [[ $browser =~ (firefox|librewolf) ]]; then
         cp -a /usr/share/bigbashview/bcc/apps/biglinux-webapps/profile/userChrome.css "$HOME/.bigwebapps/$browser/$filename/chrome/"
         cp -a /usr/share/bigbashview/bcc/apps/biglinux-webapps/profile/user.js "$HOME/.bigwebapps/$browser/$filename/"
     fi
-kdialog --msgbox "firefox $icon"
     # Execute the browser with the profile
     XAPP_FORCE_GTKWINDOW_ICON="$icon" MOZ_APP_REMOTINGNAME="$class" exec $browser --class="$class" --name="$filename" --profile "$HOME/.bigwebapps/$browser/$filename" --no-remote "$url"
 

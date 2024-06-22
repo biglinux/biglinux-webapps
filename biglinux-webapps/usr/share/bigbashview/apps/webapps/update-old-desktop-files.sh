@@ -13,6 +13,9 @@ for file in *webapp-biglinux*; do
         exit
     fi
 
+    # Clean info before verify next file
+    unset browser name url icon categories profile
+
     # Read any file and get the name, url, icon and categories
     while IFS= read -r line; do
         case $line in
@@ -30,6 +33,7 @@ for file in *webapp-biglinux*; do
                     oldScript=$browser
                     browser=$(grep -m1 '\--new-instance' "$oldScript" | grep -o '^[^ ]*')
                     url=$(grep -m1 '\--new-instance' "$oldScript" | grep -o 'http[^" ]*')
+                    profile='Default'
                 fi
 
                 # Extract the URL and profile directory if they are not already set
