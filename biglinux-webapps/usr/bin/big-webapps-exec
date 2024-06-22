@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+# If in the future we need to do something before starting the server, we can do it here
+
+# Set global variables
+browser="$1"
+class="${2/--class=/}"
+profile="${3/--profile-directory=/}"
+url="${4/--app=/}"
+icon=$(grep ^Icon= $HOME/.local/share/applications/$filename)
+icon=${icon/Icon=/}
+
+if [[ $browser =~ (firefox|librewolf) ]]; then
+
+    filename=${filename//.desktop}
+    # Firefox and another browsers based on it need to have a profile to work changing the userChrome.css and user.js
+    if [ ! -d "$HOME/.bigwebapps/$browser/$filename/chrome" ];then
+        mkdir -p "$HOME/.bigwebapps/$browser/$filename/chrome"
+        cp -a /usr/share/bigbashview/bcc/apps/biglinux-webapps/profile/userChrome.css "$HOME/.bigwebapps/$browser/$filename/chrome/"
+        cp -a /usr/share/bigbashview/bcc/apps/biglinux-webapps/profile/user.js "$HOME/.bigwebapps/$browser/$filename/"
+    fi
+kdialog --msgbox "firefox $icon"
+    # Execute the browser with the profile
+    XAPP_FORCE_GTKWINDOW_ICON="$icon" MOZ_APP_REMOTINGNAME="$class" exec $browser --class="$class" --name="$filename" --profile "$HOME/.bigwebapps/$browser/$filename" --no-remote "$url"
+
+fi
+
+# If the big-webapp-version is set and using wayland, we change desktop file temporarily
+if echo $filename | grep -q '\-BigWebApp' && [[ $XDG_SESSION_TYPE == 'wayland' ]]; then
+    filename_orig="$HOME/.local/share/applications/$(echo $filename | sed 's/-BigWebApp[0-9]*//g')"
+    filename_orig_bkp="${filename_orig//.desktop/-bkp.desktop}-bkp"
+    # Add folder path to filename
+    filename="$HOME/.local/share/applications/$filename"
+
+    # If have problem with the original file, we restore it
+    if [[ -e $filename_orig_bkp ]]; then
+        mv -f "$filename_orig_bkp" "$filename_orig"
+    fi
+
+    # In wayland, we don't have option to set two different icons for same site
+    # Because of that, we change the desktop file temporarily
+    mv -f "$filename_orig" "$filename_orig_bkp"
+    cp "$filename" "$filename_orig"
+    # Wait to system detect updated icon
+    sleep 2
+    $* &
+
+    sleep 2
+    mv -f "$filename_orig_bkp" "$filename_orig"
+else
+
+    # If have problem with the original file, we restore it
+    filename="$HOME/.local/share/applications/$filename"
+    filename_bkp="${filename//.desktop/-bkp.desktop}-bkp"
+    if [[ -e $filename_bkp ]]; then
+        mv -f "$filename_bkp" "$filename"
+    fi
+    exec $*
+fi
+
