@@ -16,323 +16,120 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Não existem navegadores instalados compatíveis com os WebApps!"
-msgstr "Nie ma zainstalowanych przeglądarek obsługujących WebApps!"
-
-msgid "Será necessário instalar mais um navegador compatível!"
-msgstr "Musisz zainstalować jeszcze jedną kompatybilną przeglądarkę!"
-
-msgid "URL:"
-msgstr "Adres internetowy:"
-
-msgid "Detectar Nome e Ícone"
-msgstr "Wykryj nazwę i ikonę"
-
-msgid "Nome:"
-msgstr "Nazwa:"
-
-msgid "Ícone do WebApp"
-msgstr "Ikona aplikacji WebApp"
-
-msgid "Alterar"
-msgstr "Zmiana"
-
-msgid "Navegador"
-msgstr "Przeglądarka"
-
-msgid "BRAVE"
-msgstr "ODWAŻNY"
-
-msgid "CHROME"
-msgstr "CHROM"
-
-msgid "CHROMIUM"
-msgstr "CHROM"
-
-msgid "EDGE"
-msgstr "BRZEG"
-
-msgid "EPIPHANY"
-msgstr "Epifania"
-
-msgid "FIREFOX"
-msgstr "PRZEGLĄDARKA FIREFOX"
-
-msgid "LIBREWOLF"
-msgstr "LIBREWOLF"
-
-msgid "VIVALDI"
-msgstr "VIVALDI"
-
-msgid "BRAVE (FLATPAK)"
-msgstr "ODWAŻNY (FLATPAK)"
-
-msgid "CHROME (FLATPAK)"
-msgstr "CHROM (FLATPAK)"
-
-msgid "CHROMIUM (FLATPAK)"
-msgstr "CHROM (FLATPAK)"
-
-msgid "EDGE (FLATPAK)"
-msgstr "KRAWĘDŹ (FLATPAK)"
-
-msgid "EPIPHANY (FLATPAK)"
-msgstr "EPIPHANY (FLATPAK)"
-
-msgid "FIREFOX (FLATPAK)"
-msgstr "FIREFOX (FLATPAK)"
-
-msgid "LIBREWOLF (FLATPAK)"
-msgstr "LIBREWOLF (FLATPAK)"
-
-msgid "Categoria"
-msgstr "Kategoria"
-
-msgid "DESENVOLVIMENTO"
-msgstr "ROZWÓJ"
-
-msgid "ESCRITÓRIO"
-msgstr "BIURO"
-
-msgid "GRÁFICOS"
-msgstr "GRAFIKA"
-
-msgid "JOGOS"
-msgstr "GAMES"
-
-msgid "MULTIMÍDIA"
-msgstr "MULTIMEDIA"
-
-msgid "WEBAPPS"
-msgstr "APLIKACJE INTERNETOWE"
-
-msgid "WEBAPPS GOOGLE"
-msgstr "APLIKACJE INTERNETOWE Google"
-
-msgid "Criar atalho na Área de Trabalho"
-msgstr "Utwórz skrót na Pulpicie"
-
-msgid "Perfil adicional"
-msgstr "Profil dodatkowy"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Wybrać preferowaną ikonę:"
-
-msgid "Não é possível aplicar a edição sem Nome!"
-msgstr "Nie można zastosować nienazwanej edycji!"
-
-msgid "Fechar"
-msgstr "Zamknij"
-
-msgid "Não é possível aplicar a edição sem alterações!"
-msgstr "Nie możesz zastosować edycji bez zmian!"
-
-msgid "O WebApp foi editado com sucesso!"
-msgstr "WebApp został pomyślnie edytowany!"
-
-msgid "Adicionar WebApps"
-msgstr "Dodaj WebApps"
-
-msgid "WebApps Adicionados"
-msgstr "Dodano WebApps"
-
-msgid "WebApps BigLinux"
-msgstr "WebApps BigLinux"
-
-msgid "https://www.exemplo.com"
-msgstr "https://www.exemplo.com"
-
-msgid "Exemplo"
-msgstr "Przykład"
-
-msgid "Adicionar"
-msgstr "Dodaj"
-
-msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
-msgstr "Aby dodać aplikację internetową,<br> musisz wprowadzić adres URL i nazwę."
-
-msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
-msgstr "Aby wykryć nazwę i ikonę,<br> musisz wprowadzić adres URL."
-
-msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
-msgstr ""
-"Adres URL jest nieprawidłowy lub połączenie nie powiodło się.<br>Spróbuj wstawić ikonę za pomocą "
-"przycisku Zmień."
-
-msgid "O WebApp foi adicionado com sucesso!"
-msgstr "WebApp został dodany pomyślnie!"
-
-msgid "Desenvolvimento"
-msgstr "Rozwój"
-
-msgid "Escritório"
-msgstr "Biuro"
-
-msgid "Gráficos"
-msgstr "Grafika"
-
-msgid "Jogos"
-msgstr "Gry"
-
-msgid "Multimídia"
-msgstr "Multimedia"
-
-msgid "Internet"
-msgstr "Internet"
-
-msgid "Google"
-msgstr "Wyszukiwarka Google"
-
 msgid "WebApps"
 msgstr "Aplikacje webowe"
 
-msgid "Nenhum WebApp adicionado!"
-msgstr "Nie dodano WebApp!"
-
-msgid "Aplicar"
-msgstr "Zastosować"
-
-msgid "Cancelar"
-msgstr "Anuluj"
-
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Czy jest Pan pewien, że chce Pan usunąć tę aplikację WebApp?"
-
-msgid "Editar WebApp"
-msgstr "Edytowanie aplikacji internetowej"
-
-msgid "O navegador não está instalado!"
-msgstr "Przeglądarka nie jest zainstalowana!"
-
-msgid "Não existem navegadores compatíveis instalados no sistema!"
-msgstr "W systemie nie ma zainstalowanych kompatybilnych przeglądarek!"
-
-msgid "Navegador padrão<br>dos WebApps:"
-msgstr "Domyślna przeglądarka<br>webapps:"
-
-msgid "Selecione o navegador preferido:"
-msgstr "Proszę wybrać preferowaną przeglądarkę:"
-
-msgid "Nativo"
-msgstr "Tubylczy"
-
-msgid "Flatpak"
-msgstr "Flatpak"
-
-msgid "WebApps Nativos"
-msgstr "Natywne aplikacje internetowe"
+msgid "Using Your Android Device's Internet on Linux via USB"
+msgstr ""
+"Korzystanie z Internetu urządzenia z systemem Android na komputerze z systemem Linux za pomocą "
+"kabla USB"
 
 msgid ""
-"O navegador definido para abrir os WebApps não está instalado! \\n"
-"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+"To share your Android smartphone's internet connection with a Linux computer using a USB cable, "
+"follow these steps:"
 msgstr ""
-"Przeglądarka ustawiona na otwieranie WebApps nie jest zainstalowana! \\n"
-"Spróbuj zmienić przeglądarkę w Menedżerze WebApps! \\n"
+"Aby udostępnić połączenie internetowe z telefonu z systemem Android komputerowi z systemem Linux za "
+"pomocą kabla USB, postępuj zgodnie z poniższymi krokami:"
 
-msgid "O Gerenciador de WebApps BigLinux já está aberto!"
-msgstr "Menedżer WebApps BigLinux jest już otwarty!"
+msgid "Connect your Android smartphone to the Linux computer using a USB cable."
+msgstr "Podłącz swój smartfon z systemem Android do komputera z systemem Linux za pomocą kabla USB."
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "BigLinux WebApps Manager"
+msgid ""
+"On your smartphone, open 'Settings' and navigate to 'Network &amp; Internet' or 'Connections &amp; "
+"Sharing'."
+msgstr ""
+"Na smartfonie otwórz \"Ustawienia\" i przejdź do \"Sieć i Internet\" lub \"Połączenia i "
+"udostępnianie\"."
 
-msgid "Restaurar"
-msgstr "Przywrócić"
+msgid "Look for 'USB Tethering', 'USB Tether', or similar terms and enable it."
+msgstr "Znajdź \"Udostępnianie internetu przez USB\", \"Udostępnianie USB\" lub podobne terminy i włącz je."
 
-msgid "Criar backup"
-msgstr "Utwórz kopię zapasową"
+msgid ""
+"This will automatically establish the internet connection on your Linux computer without requiring "
+"any additional configuration."
+msgstr ""
+"To automatycznie ustanowi połączenie internetowe na komputerze z systemem Linux bez konieczności "
+"dodatkowej konfiguracji."
 
-msgid "O backup dos WebApps foi salvo em: "
-msgstr "Kopia zapasowa WebApps została zapisana w: "
+msgid ""
+"If your Android device is not connected to Wi-Fi and is using cellular data, this tethering will "
+"consume data from your cellular plan. To avoid data charges, ensure that your Android device is "
+"connected to a Wi-Fi network before enabling tethering."
+msgstr ""
+"Jeśli urządzenie z systemem Android nie jest podłączone do sieci Wi-Fi i korzysta z danych "
+"komórkowych, udostępnianie połączenia zużyje dane z Twojego planu komórkowego. Aby uniknąć opłat za "
+"dane, upewnij się, że urządzenie z systemem Android jest podłączone do sieci Wi-Fi przed włączeniem "
+"udostępniania połączenia."
 
-msgid "Os WebApps foram restaurados com sucesso!"
-msgstr "WebApps zostały pomyślnie przywrócone!"
+msgid "Close"
+msgstr "Zamknij"
 
-msgid "Importar webapps"
-msgstr "Importowanie aplikacji internetowych"
+msgid "Using Your iOS Device's Internet on Linux via USB"
+msgstr "Korzystanie z Internetu urządzenia iOS na systemie Linux za pomocą USB"
 
-msgid "UNGOOGLED (FLATPAK)"
-msgstr "UNGOOGLED (FLATPAK)"
+msgid ""
+"To share your iOS smartphone's internet connection with a Linux computer using a USB cable, follow "
+"these steps:"
+msgstr ""
+"Aby udostępnić połączenie internetowe z iPhone'a z systemem Linux za pomocą kabla USB, postępuj "
+"zgodnie z poniższymi krokami:"
 
-msgid "Importar WebApps"
-msgstr "Importowanie aplikacji WebApps"
+msgid "Connect your iOS device to the Linux computer using a USB cable."
+msgstr "Podłącz urządzenie iOS do komputera z systemem Linux za pomocą kabla USB."
 
-msgid "Criar Backup"
-msgstr "Utwórz kopię zapasową"
+msgid "On your iOS device, go to 'Settings', then select 'Personal Hotspot'."
+msgstr ""
+"Na urządzeniu z systemem iOS przejdź do sekcji \"Ustawienia\", a następnie wybierz \"Hotspot "
+"osobisty\"."
 
-msgid "Dectando o nome, aguarde..."
-msgstr "Dekretowanie nazwy, czekaj..."
+msgid ""
+"Enable 'Allow Others to Join'. This may automatically enable 'USB Tethering' if a USB connection is "
+"detected."
+msgstr ""
+"Włącz opcję „Zezwalaj innym na dołączanie”. Może to automatycznie włączyć „Udostępnianie internetu "
+"przez USB”, jeśli wykryto połączenie USB."
 
-msgid "Dectando o ícone, aguarde..."
-msgstr "Dekretowanie ikony, czekaj..."
+msgid ""
+"If your iOS device is not connected to Wi-Fi and is using cellular data, this tethering will "
+"consume data from your cellular plan. To avoid data charges, ensure that your iOS device is "
+"connected to a Wi-Fi network before enabling tethering."
+msgstr ""
+"Jeśli urządzenie iOS nie jest podłączone do Wi-Fi i korzysta z danych komórkowych, udostępnianie "
+"połączenia zużyje dane z Twojego planu komórkowego. Aby uniknąć opłat za dane, upewnij się, że "
+"Twoje urządzenie iOS jest podłączone do sieci Wi-Fi przed włączeniem udostępniania połączenia."
 
-msgid "Adicionando o webapp..."
-msgstr "Dodawanie aplikacji internetowej..."
+msgid "Main"
+msgstr "Główny"
 
-msgid "Aplicando as alterações..."
-msgstr "Zastosowanie zmian..."
+msgid "Network and Internet"
+msgstr "Sieć i Internet"
 
-msgid "Criando o backup..."
-msgstr "Tworzenie kopii zapasowej..."
+msgid "Phone"
+msgstr "Telefon"
 
-msgid "Importando os webapps..."
-msgstr "Importowanie aplikacji internetowych..."
+msgid "Customize"
+msgstr "Dostosuj"
 
-msgid "Removendo o webapp..."
-msgstr "Usuwanie aplikacji internetowej..."
+msgid "Region and Language"
+msgstr "Region i Język"
 
-msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
-msgstr "Aby dodać aplikację internetową,<br> musisz wprowadzić adres URL i nazwę."
+msgid "Multimedia"
+msgstr "Multimedia"
 
-msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
-msgstr "Aby wykryć nazwę i ikonę,<br> musisz wprowadzić adres URL."
+msgid "Accounts"
+msgstr "Konta"
 
-msgid "Selecione o diretório"
-msgstr "Wybierz katalog"
+msgid "Devices"
+msgstr "Urządzenia"
 
-msgid "Selecionar o arquivo de backup"
-msgstr "Wybierz plik kopii zapasowej"
+msgid "System"
+msgstr "System"
 
-msgid "Backup WebApps"
-msgstr "Tworzenie kopii zapasowych WebApps"
+msgid "About"
+msgstr "O programie"
 
-msgid "Selecione o arquivo de imagem"
-msgstr "Wybierz plik obrazu"
+msgid "Other"
+msgstr "Inne"
 
-msgid "Arquivos de Imagem"
-msgstr "Pliki obrazów"
-
-msgid "Removendo todos os webapps..."
-msgstr "Usuwanie wszystkich aplikacji internetowych..."
-
-msgid "Remover Todos"
-msgstr "Usuń wszystko"
-
-msgid "Você tem certeza que deseja remover todos os webapps?"
-msgstr "Czy na pewno chcesz usunąć wszystkie aplikacje internetowe?"
-
-msgid "Não"
-msgstr "Nie"
-
-msgid "Sim"
-msgstr "Tak"
-
-msgid "Importar Backup"
-msgstr "Importuj kopię zapasową"
-
-msgid "Remover WebApps"
-msgstr "Usuwanie aplikacji WebApps"
-
-msgid "Você tem certeza que deseja remover todos os WebApps?"
-msgstr "Czy na pewno chcesz usunąć wszystkie WebApps?"
-
-msgid " Fechar"
-msgstr " Zamykać"
-
-msgid "BigLinux WebApps"
-msgstr "BigLinux WebApps"
-
-msgid "FALKON"
-msgstr "FALKON"
-
-msgid "Você deseja remover todos os WebApps?"
-msgstr "Czy chcesz usunąć wszystkie WebApps?"
+msgid "Search..."
+msgstr "Szukaj..."

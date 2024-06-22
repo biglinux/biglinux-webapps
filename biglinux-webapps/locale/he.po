@@ -16,321 +16,111 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Não existem navegadores instalados compatíveis com os WebApps!"
-msgstr "אין דפדפנים מותקנים התומכים ב- WebApps!"
-
-msgid "Será necessário instalar mais um navegador compatível!"
-msgstr "יהיה עליך להתקין דפדפן תואם אחד נוסף!"
-
-msgid "URL:"
-msgstr "כתובת אתר:"
-
-msgid "Detectar Nome e Ícone"
-msgstr "זיהוי שם וסמל"
-
-msgid "Nome:"
-msgstr "שם:"
-
-msgid "Ícone do WebApp"
-msgstr "סמל WebApp"
-
-msgid "Alterar"
-msgstr "לתקן"
-
-msgid "Navegador"
-msgstr "דפדפן"
-
-msgid "BRAVE"
-msgstr "אמיץ"
-
-msgid "CHROME"
-msgstr "כרום"
-
-msgid "CHROMIUM"
-msgstr "כרום"
-
-msgid "EDGE"
-msgstr "גבול"
-
-msgid "EPIPHANY"
-msgstr "חג ההתגלות"
-
-msgid "FIREFOX"
-msgstr "פיירפוקס"
-
-msgid "LIBREWOLF"
-msgstr "ליברוולף"
-
-msgid "VIVALDI"
-msgstr "ויואלדי"
-
-msgid "BRAVE (FLATPAK)"
-msgstr "אמיץ (פלאטפאק)"
-
-msgid "CHROME (FLATPAK)"
-msgstr "כרום (פלאטפאק)"
-
-msgid "CHROMIUM (FLATPAK)"
-msgstr "כרום (פלאטפאק)"
-
-msgid "EDGE (FLATPAK)"
-msgstr "אדג' (פלאטפאק)"
-
-msgid "EPIPHANY (FLATPAK)"
-msgstr "אפיפניה (פלאטפאק)"
-
-msgid "FIREFOX (FLATPAK)"
-msgstr "פיירפוקס (פלאטפאק)"
-
-msgid "LIBREWOLF (FLATPAK)"
-msgstr "LIBREWOLF (FLATPAK)"
-
-msgid "Categoria"
-msgstr "קטגוריה"
-
-msgid "DESENVOLVIMENTO"
-msgstr "פיתוח"
-
-msgid "ESCRITÓRIO"
-msgstr "משרד"
-
-msgid "GRÁFICOS"
-msgstr "גרפיקה"
-
-msgid "JOGOS"
-msgstr "משחקים"
-
-msgid "MULTIMÍDIA"
-msgstr "מולטימדיה"
-
-msgid "WEBAPPS"
-msgstr "אפליקציות אינטרנט"
-
-msgid "WEBAPPS GOOGLE"
-msgstr "וובאפים גוגל"
-
-msgid "Criar atalho na Área de Trabalho"
-msgstr "צור קיצור דרך בשולחן העבודה"
-
-msgid "Perfil adicional"
-msgstr "פרופיל נוסף"
-
-msgid "Selecione o ícone preferido:"
-msgstr "בחר בסמל המועדף:"
-
-msgid "Não é possível aplicar a edição sem Nome!"
-msgstr "לא ניתן להחיל עריכה ללא שם!"
-
-msgid "Fechar"
-msgstr "סגור"
-
-msgid "Não é possível aplicar a edição sem alterações!"
-msgstr "לא ניתן להחיל עריכה ללא שינויים!"
-
-msgid "O WebApp foi editado com sucesso!"
-msgstr "WebApp נערך בהצלחה!"
-
-msgid "Adicionar WebApps"
-msgstr "הוסף אפליקציות אינטרנט"
-
-msgid "WebApps Adicionados"
-msgstr "WebApps נוסף"
-
-msgid "WebApps BigLinux"
-msgstr "אפליקציות אינטרנט של BigLinux"
-
-msgid "https://www.exemplo.com"
-msgstr "https://www.exemplo.com"
-
-msgid "Exemplo"
-msgstr "דוגמה"
-
-msgid "Adicionar"
-msgstr "הוסף"
-
-msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
-msgstr "כדי להוסיף WebApp,<br> עליך להזין את כתובת האתר ואת השם."
-
-msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
-msgstr "כדי לזהות את השם והסמל,<br> עליך להזין את כתובת האתר."
-
-msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
-msgstr "כתובת ה- URL אינה חוקית או שהחיבור נכשל.<br>נסה להוסיף את הסמל על-ידי הלחצן 'שנה'."
-
-msgid "O WebApp foi adicionado com sucesso!"
-msgstr "ה- WebApp נוסף בהצלחה!"
-
-msgid "Desenvolvimento"
-msgstr "פיתוח"
-
-msgid "Escritório"
-msgstr "משרד"
-
-msgid "Gráficos"
-msgstr "גרפיקה"
-
-msgid "Jogos"
-msgstr "משחקים"
-
-msgid "Multimídia"
-msgstr "מולטימדיה"
-
-msgid "Internet"
-msgstr "אינטרנט"
-
-msgid "Google"
-msgstr "גוגל"
-
 msgid "WebApps"
 msgstr "אפליקציות אינטרנט"
 
-msgid "Nenhum WebApp adicionado!"
-msgstr "לא הוסיף WebApp!"
-
-msgid "Aplicar"
-msgstr "החל"
-
-msgid "Cancelar"
-msgstr "ביטל"
-
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "האם אתה בטוח שברצונך להסיר WebApp זה?"
-
-msgid "Editar WebApp"
-msgstr "ערוך את אפליקציית האינטרנט"
-
-msgid "O navegador não está instalado!"
-msgstr "הדפדפן אינו מותקן!"
-
-msgid "Não existem navegadores compatíveis instalados no sistema!"
-msgstr "אין דפדפנים תואמים המותקנים במערכת!"
-
-msgid "Navegador padrão<br>dos WebApps:"
-msgstr "דפדפן ברירת מחדל<br>webapps:"
-
-msgid "Selecione o navegador preferido:"
-msgstr "בחר את הדפדפן המועדף עליך:"
-
-msgid "Nativo"
-msgstr "הילידים"
-
-msgid "Flatpak"
-msgstr "פלאטפאק"
-
-msgid "WebApps Nativos"
-msgstr "אפליקציות אינטרנט מקוריות"
+msgid "Using Your Android Device's Internet on Linux via USB"
+msgstr "שימוש באינטרנט של המכשיר האנדרואיד שלך ב-Linux דרך USB"
 
 msgid ""
-"O navegador definido para abrir os WebApps não está instalado! \\n"
-"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+"To share your Android smartphone's internet connection with a Linux computer using a USB cable, "
+"follow these steps:"
 msgstr ""
-"הדפדפן המוגדר לפתיחת WebApps אינו מותקן! \\n"
-"נסה לשנות את הדפדפן ב- WebApps Manager! \\n"
+"כדי לשתף את חיבור האינטרנט של הסמארטפון שלך במערכת ההפעלה Linux באמצעות כבל USB, עקוב אחר השלבים "
+"הבאים:"
 
-msgid "O Gerenciador de WebApps BigLinux já está aberto!"
-msgstr "מנהל אפליקציות האינטרנט של BigLinux פתוח כעת!"
+msgid "Connect your Android smartphone to the Linux computer using a USB cable."
+msgstr "חבר את הטלפון החכם שלך המשתמש במערכת ההפעלה אנדרואיד למחשב הלינוקס באמצעות כבל USB."
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "מנהל אפליקציות האינטרנט של BigLinux"
+msgid ""
+"On your smartphone, open 'Settings' and navigate to 'Network &amp; Internet' or 'Connections &amp; "
+"Sharing'."
+msgstr "על הסמארטפון שלך, פתח 'הגדרות' ונווט אל 'רשת ואינטרנט' או 'חיבורים ושיתוף'."
 
-msgid "Restaurar"
-msgstr "לשחזר"
+msgid "Look for 'USB Tethering', 'USB Tether', or similar terms and enable it."
+msgstr "חפש את 'USB Tethering', 'USB Tether', או ביטויים דומים והפעל אותם."
 
-msgid "Criar backup"
-msgstr "יצירת גיבוי"
+msgid ""
+"This will automatically establish the internet connection on your Linux computer without requiring "
+"any additional configuration."
+msgstr "זה יקים את חיבור האינטרנט באופן אוטומטי במחשב ה-Linux שלך בלי צורך בתצורה נוספת."
 
-msgid "O backup dos WebApps foi salvo em: "
-msgstr "גיבוי WebApps נשמר ב: "
+msgid ""
+"If your Android device is not connected to Wi-Fi and is using cellular data, this tethering will "
+"consume data from your cellular plan. To avoid data charges, ensure that your Android device is "
+"connected to a Wi-Fi network before enabling tethering."
+msgstr ""
+"אם המכשיר שלך ב-Android אינו מחובר לרשת Wi-Fi ומשתמש בנתונים סלולריים, השימוש בטתרינג יצרף נתונים "
+"מתוך תוכנית הסלולר שלך. כדי למנוע חיובים בנתונים, וודא שהמכשיר שלך ב-Android מחובר לרשת Wi-Fi לפני "
+"הפעלת הטתרינג."
 
-msgid "Os WebApps foram restaurados com sucesso!"
-msgstr "אפליקציות אינטרנט שוחזרו בהצלחה!"
+msgid "Close"
+msgstr "סגור"
 
-msgid "Importar webapps"
-msgstr "ייבוא אפליקציות אינטרנט"
+msgid "Using Your iOS Device's Internet on Linux via USB"
+msgstr "שימוש באינטרנט של המכשיר שלך ב-iOS על Linux דרך USB"
 
-msgid "UNGOOGLED (FLATPAK)"
-msgstr "UNGOOGLED (FLATPAK)"
+msgid ""
+"To share your iOS smartphone's internet connection with a Linux computer using a USB cable, follow "
+"these steps:"
+msgstr ""
+"כדי לשתף את חיבור האינטרנט של הטלפון החכם שלך במערכת ההפעלה Linux באמצעות כבל USB, עקוב אחרי השלבים "
+"הבאים:"
 
-msgid "Importar WebApps"
-msgstr "ייבוא אפליקציות אינטרנט"
+msgid "Connect your iOS device to the Linux computer using a USB cable."
+msgstr "חבר את המכשיר שלך המשתמש במערכת ההפעלה iOS למחשב המשתמש במערכת ההפעלה Linux באמצעות כבל USB."
 
-msgid "Criar Backup"
-msgstr "צור גיבוי"
+msgid "On your iOS device, go to 'Settings', then select 'Personal Hotspot'."
+msgstr "על מכשיר ה- iOS שלך, עבור ל 'הגדרות', ואז בחר 'נקודת גישה אישית'."
 
-msgid "Dectando o nome, aguarde..."
-msgstr "גוזר את השם, חכה..."
+msgid ""
+"Enable 'Allow Others to Join'. This may automatically enable 'USB Tethering' if a USB connection is "
+"detected."
+msgstr ""
+"הפעל 'אפשר לאחרים להצטרף'. זה עשוי להפעיל באופן אוטומטי 'שיתוף גישה לאינטרנט דרך USB' אם חיבור USB "
+"זוהה."
 
-msgid "Dectando o ícone, aguarde..."
-msgstr "גוזר את הסמל, חכה..."
+msgid ""
+"If your iOS device is not connected to Wi-Fi and is using cellular data, this tethering will "
+"consume data from your cellular plan. To avoid data charges, ensure that your iOS device is "
+"connected to a Wi-Fi network before enabling tethering."
+msgstr ""
+"אם המכשיר שלך במערכת ה-iOS אינו מחובר לרשת Wi-Fi ומשתמש בנתונים ניידים, השימוש בטתרינג יצרוך נתונים "
+"מתוך תוכנית הנתונים הניידים שלך. כדי למנוע חיובים בנתונים, וודא שהמכשיר שלך מחובר לרשת Wi-Fi לפני "
+"הפעלת הטתרינג."
 
-msgid "Adicionando o webapp..."
-msgstr "הוספת אפליקציית האינטרנט..."
+msgid "Main"
+msgstr "ראשי"
 
-msgid "Aplicando as alterações..."
-msgstr "החלת השינויים..."
+msgid "Network and Internet"
+msgstr "רשת ואינטרנט"
 
-msgid "Criando o backup..."
-msgstr "יצירת הגיבוי..."
+msgid "Phone"
+msgstr "טלפון"
 
-msgid "Importando os webapps..."
-msgstr "ייבוא אפליקציות האינטרנט..."
+msgid "Customize"
+msgstr "התאמה אישית"
 
-msgid "Removendo o webapp..."
-msgstr "הסרת webapp..."
+msgid "Region and Language"
+msgstr "אזור ושפה"
 
-msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
-msgstr "כדי להוסיף WebApp,<br> עליך להזין את כתובת האתר ואת השם."
+msgid "Multimedia"
+msgstr "מולטימדיה"
 
-msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
-msgstr "כדי לזהות את השם והסמל,<br> עליך להזין את כתובת האתר."
+msgid "Accounts"
+msgstr "חשבונות"
 
-msgid "Selecione o diretório"
-msgstr "בחר את הספרייה"
+msgid "Devices"
+msgstr "התקן"
 
-msgid "Selecionar o arquivo de backup"
-msgstr "בחר את קובץ הגיבוי"
+msgid "System"
+msgstr "מערכת"
 
-msgid "Backup WebApps"
-msgstr "גיבוי WebApps"
+msgid "About"
+msgstr "אודות"
 
-msgid "Selecione o arquivo de imagem"
-msgstr "בחר את קובץ התמונה"
+msgid "Other"
+msgstr "אחר"
 
-msgid "Arquivos de Imagem"
-msgstr "קובצי תמונה"
-
-msgid "Removendo todos os webapps..."
-msgstr "הסרת כל אפליקציות האינטרנט..."
-
-msgid "Remover Todos"
-msgstr "הסר הכל"
-
-msgid "Você tem certeza que deseja remover todos os webapps?"
-msgstr "האם אתה בטוח שברצונך להסיר את כל אפליקציות האינטרנט?"
-
-msgid "Não"
-msgstr "לא"
-
-msgid "Sim"
-msgstr "כן"
-
-msgid "Importar Backup"
-msgstr "ייבוא גיבוי"
-
-msgid "Remover WebApps"
-msgstr "הסרת WebApps"
-
-msgid "Você tem certeza que deseja remover todos os WebApps?"
-msgstr "האם אתה בטוח שברצונך להסיר את כל WebApps?"
-
-msgid " Fechar"
-msgstr " קרוב"
-
-msgid "BigLinux WebApps"
-msgstr "BigLinux WebApps"
-
-msgid "FALKON"
-msgstr "פלקון"
-
-msgid "Você deseja remover todos os WebApps?"
-msgstr "האם ברצונך להסיר את כל WebApps?"
+msgid "Search..."
+msgstr "חיפוש..."

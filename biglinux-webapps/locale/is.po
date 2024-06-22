@@ -16,321 +16,113 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Não existem navegadores instalados compatíveis com os WebApps!"
-msgstr "Það eru engir uppsettir vafrar sem styðja WebApps!"
-
-msgid "Será necessário instalar mais um navegador compatível!"
-msgstr "Þú verður að setja upp einn samhæfan vafra í viðbót!"
-
-msgid "URL:"
-msgstr "Vefslóð:"
-
-msgid "Detectar Nome e Ícone"
-msgstr "Uppgötvaðu nafn og tákn"
-
-msgid "Nome:"
-msgstr "Nafn:"
-
-msgid "Ícone do WebApp"
-msgstr "WebApp táknið"
-
-msgid "Alterar"
-msgstr "breyta"
-
-msgid "Navegador"
-msgstr "Vafri"
-
-msgid "BRAVE"
-msgstr "HUGRAKKUR"
-
-msgid "CHROME"
-msgstr "KRÓM"
-
-msgid "CHROMIUM"
-msgstr "KRÓM"
-
-msgid "EDGE"
-msgstr "BRÚN"
-
-msgid "EPIPHANY"
-msgstr "Þrettándi"
-
-msgid "FIREFOX"
-msgstr "FIREFOX"
-
-msgid "LIBREWOLF"
-msgstr "LIBREWOLF"
-
-msgid "VIVALDI"
-msgstr "VIVALDI"
-
-msgid "BRAVE (FLATPAK)"
-msgstr "HUGRAKKUR (FLATPAK)"
-
-msgid "CHROME (FLATPAK)"
-msgstr "KRÓM (FLATPAK)"
-
-msgid "CHROMIUM (FLATPAK)"
-msgstr "KRÓM (FLATPAK)"
-
-msgid "EDGE (FLATPAK)"
-msgstr "EDGE (FLATPAK)"
-
-msgid "EPIPHANY (FLATPAK)"
-msgstr "EPIPHANY (FLATPAK)"
-
-msgid "FIREFOX (FLATPAK)"
-msgstr "FIREFOX (FLATPAK)"
-
-msgid "LIBREWOLF (FLATPAK)"
-msgstr "LIBREWOLF (FLATPAK)"
-
-msgid "Categoria"
-msgstr "Flokkur"
-
-msgid "DESENVOLVIMENTO"
-msgstr "ÞRÓUN"
-
-msgid "ESCRITÓRIO"
-msgstr "SKRIFSTOFA"
-
-msgid "GRÁFICOS"
-msgstr "GRAFÍK"
-
-msgid "JOGOS"
-msgstr "LEIKIR"
-
-msgid "MULTIMÍDIA"
-msgstr "MARGMIÐLUN"
-
-msgid "WEBAPPS"
-msgstr "VEFFORRIT"
-
-msgid "WEBAPPS GOOGLE"
-msgstr "WEBAPPS GOOGLE"
-
-msgid "Criar atalho na Área de Trabalho"
-msgstr "Búðu til flýtileið á skjáborðinu"
-
-msgid "Perfil adicional"
-msgstr "Viðbótarupplýsingar upplýsingar"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Veldu valinn táknið:"
-
-msgid "Não é possível aplicar a edição sem Nome!"
-msgstr "Get ekki beitt ónefndri klippingu!"
-
-msgid "Fechar"
-msgstr "Loka"
-
-msgid "Não é possível aplicar a edição sem alterações!"
-msgstr "Þú getur ekki beitt klippingu án breytinga!"
-
-msgid "O WebApp foi editado com sucesso!"
-msgstr "WebApp hefur verið breytt með góðum árangri!"
-
-msgid "Adicionar WebApps"
-msgstr "Setja WebApps"
-
-msgid "WebApps Adicionados"
-msgstr "WebApps bætt"
-
-msgid "WebApps BigLinux"
-msgstr "BigLinux WebApps"
-
-msgid "https://www.exemplo.com"
-msgstr "https://www.exemplo.com"
-
-msgid "Exemplo"
-msgstr "Dæmi"
-
-msgid "Adicionar"
-msgstr "Bæta"
-
-msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
-msgstr "Til að bæta við WebApp,<br> þú verður að slá inn vefslóðina og nafnið."
-
-msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
-msgstr "Til að greina nafn og táknmynd,<br> þú þarft að slá inn slóðina."
-
-msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
-msgstr "Vefslóðin er ógild eða tengingin mistókst.<br>Prófaðu að setja inn táknið með hnappinn Breyta."
-
-msgid "O WebApp foi adicionado com sucesso!"
-msgstr "The WebApp var bætt við!"
-
-msgid "Desenvolvimento"
-msgstr "Þróun"
-
-msgid "Escritório"
-msgstr "Skrifstofa"
-
-msgid "Gráficos"
-msgstr "Grafík"
-
-msgid "Jogos"
-msgstr "Leikir"
-
-msgid "Multimídia"
-msgstr "Margmiðlun"
-
-msgid "Internet"
-msgstr "Internet"
-
-msgid "Google"
-msgstr "Google"
-
 msgid "WebApps"
 msgstr "WebApps"
 
-msgid "Nenhum WebApp adicionado!"
-msgstr "Engin WebApp bætt við!"
-
-msgid "Aplicar"
-msgstr "Nota"
-
-msgid "Cancelar"
-msgstr "Afturkalla"
-
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Ertu viss um að þú viljir fjarlægja þetta WebApp?"
-
-msgid "Editar WebApp"
-msgstr "Breyta WebApp"
-
-msgid "O navegador não está instalado!"
-msgstr "Vafrinn er ekki uppsettur!"
-
-msgid "Não existem navegadores compatíveis instalados no sistema!"
-msgstr "Það eru engir samhæfir vafrar settir upp á kerfinu!"
-
-msgid "Navegador padrão<br>dos WebApps:"
-msgstr "Sjálfgefinn vafri<br>webapps:"
-
-msgid "Selecione o navegador preferido:"
-msgstr "Veldu valinn vafra:"
-
-msgid "Nativo"
-msgstr "Innlendur"
-
-msgid "Flatpak"
-msgstr "Flatpak"
-
-msgid "WebApps Nativos"
-msgstr "Innfædd vefforrit"
+msgid "Using Your Android Device's Internet on Linux via USB"
+msgstr "Menggunakan Internet Peranti Android Anda pada Linux melalui USB"
 
 msgid ""
-"O navegador definido para abrir os WebApps não está instalado! \\n"
-"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+"To share your Android smartphone's internet connection with a Linux computer using a USB cable, "
+"follow these steps:"
 msgstr ""
-"Vafrasettið til að opna WebApps er ekki uppsett! \\n"
-"Reyndu að breyta vafranum í WebApps Manager! \\n"
+"Untuk membagikan koneksi internet smartphone Android Anda dengan komputer Linux menggunakan kabel "
+"USB, ikuti langkah-langkah berikut:"
 
-msgid "O Gerenciador de WebApps BigLinux já está aberto!"
-msgstr "BigLinux WebApps Manager er nú opinn!"
+msgid "Connect your Android smartphone to the Linux computer using a USB cable."
+msgstr "Sambungkan smartphone Android anda ke komputer Linux menggunakan kabel USB."
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "BigLinux WebApp Framkvæmdastjóri"
+msgid ""
+"On your smartphone, open 'Settings' and navigate to 'Network &amp; Internet' or 'Connections &amp; "
+"Sharing'."
+msgstr "Di ponsel pintarmu, buka 'Pengaturan' dan arahkan ke 'Jaringan & Internet' atau 'Koneksi & Berbagi'."
 
-msgid "Restaurar"
-msgstr "Endurheimta"
+msgid "Look for 'USB Tethering', 'USB Tether', or similar terms and enable it."
+msgstr "Cari 'USB Tethering', 'USB Tether', atau istilah serupa dan aktifkan."
 
-msgid "Criar backup"
-msgstr "Búa til öryggisafrit"
+msgid ""
+"This will automatically establish the internet connection on your Linux computer without requiring "
+"any additional configuration."
+msgstr ""
+"Ini akan secara otomatis menjalankan koneksi internet pada komputer Linux Anda tanpa memerlukan "
+"konfigurasi tambahan."
 
-msgid "O backup dos WebApps foi salvo em: "
-msgstr "WebApps öryggisafrit var vistað á: "
+msgid ""
+"If your Android device is not connected to Wi-Fi and is using cellular data, this tethering will "
+"consume data from your cellular plan. To avoid data charges, ensure that your Android device is "
+"connected to a Wi-Fi network before enabling tethering."
+msgstr ""
+"Jika peranti Android anda tidak disambungkan ke Wi-Fi dan menggunakan data selular, pengikatan ini "
+"akan menggunakan data dari rancangan selular anda. Untuk mengelakkan caj data, pastikan bahawa "
+"peranti Android anda disambungkan ke rangkaian Wi-Fi sebelum mengaktifkan pengikatan."
 
-msgid "Os WebApps foram restaurados com sucesso!"
-msgstr "WebApps hafa verið endurreist með góðum árangri!"
+msgid "Close"
+msgstr "Tutup"
 
-msgid "Importar webapps"
-msgstr "Flytja inn vefforrit"
+msgid "Using Your iOS Device's Internet on Linux via USB"
+msgstr "Menggunakan Internet Peranti iOS Anda pada Linux melalui USB"
 
-msgid "UNGOOGLED (FLATPAK)"
-msgstr "UNGOOGLED (FLATPAK)"
+msgid ""
+"To share your iOS smartphone's internet connection with a Linux computer using a USB cable, follow "
+"these steps:"
+msgstr ""
+"Untuk membagikan koneksi internet smartphone iOS Anda dengan komputer Linux menggunakan kabel USB, "
+"ikuti langkah-langkah berikut:"
 
-msgid "Importar WebApps"
-msgstr "Flytja inn WebApps"
+msgid "Connect your iOS device to the Linux computer using a USB cable."
+msgstr "Sambungkan perangkat iOS Anda ke komputer Linux menggunakan kabel USB."
 
-msgid "Criar Backup"
-msgstr "Búa til öryggisafrit"
+msgid "On your iOS device, go to 'Settings', then select 'Personal Hotspot'."
+msgstr "Pada peranti iOS anda, pergi ke 'Tetapan', kemudian pilih 'Hotspot Peribadi'."
 
-msgid "Dectando o nome, aguarde..."
-msgstr "Ég ákveð nafnið, bíddu..."
+msgid ""
+"Enable 'Allow Others to Join'. This may automatically enable 'USB Tethering' if a USB connection is "
+"detected."
+msgstr ""
+"Aktifkan 'Izinkan Orang Lain Bergabung'. Ini mungkin secara otomatis mengaktifkan 'USB Tethering' "
+"jika koneksi USB terdeteksi."
 
-msgid "Dectando o ícone, aguarde..."
-msgstr "Ég ákveð táknið, bíddu..."
+msgid ""
+"If your iOS device is not connected to Wi-Fi and is using cellular data, this tethering will "
+"consume data from your cellular plan. To avoid data charges, ensure that your iOS device is "
+"connected to a Wi-Fi network before enabling tethering."
+msgstr ""
+"Jika peranti iOS anda tidak disambungkan ke Wi-Fi dan menggunakan data selular, pengikatan ini akan "
+"menggunakan data dari rancangan selular anda. Untuk mengelakkan caj data, pastikan bahawa peranti "
+"iOS anda disambungkan ke rangkaian Wi-Fi sebelum mengaktifkan pengikatan."
 
-msgid "Adicionando o webapp..."
-msgstr "Bætir við vefforritinu ..."
+msgid "Main"
+msgstr "Utama"
 
-msgid "Aplicando as alterações..."
-msgstr "Beiting breytinganna..."
+msgid "Network and Internet"
+msgstr "Rangkaian dan Internet"
 
-msgid "Criando o backup..."
-msgstr "Búa til öryggisafrit ..."
+msgid "Phone"
+msgstr "Telefon"
 
-msgid "Importando os webapps..."
-msgstr "Flyt inn vefforritin..."
+msgid "Customize"
+msgstr "Sesuaikan"
 
-msgid "Removendo o webapp..."
-msgstr "Fjarlægi webapp ..."
+msgid "Region and Language"
+msgstr "Kawasan dan Bahasa"
 
-msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
-msgstr "Til að bæta við WebApp,<br> þú þarft að slá inn slóðina og nafnið."
+msgid "Multimedia"
+msgstr "Multimedia"
 
-msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
-msgstr "Til að greina nafn og táknmynd,<br> þú þarft að slá inn slóðina."
+msgid "Accounts"
+msgstr "Akaun"
 
-msgid "Selecione o diretório"
-msgstr "Veldu möppuna"
+msgid "Devices"
+msgstr "Peranti"
 
-msgid "Selecionar o arquivo de backup"
-msgstr "Veldu varaskrá"
+msgid "System"
+msgstr "Sistem"
 
-msgid "Backup WebApps"
-msgstr "Afritun WebApps"
+msgid "About"
+msgstr "Tentang"
 
-msgid "Selecione o arquivo de imagem"
-msgstr "Veldu myndskrá"
+msgid "Other"
+msgstr "lainnya"
 
-msgid "Arquivos de Imagem"
-msgstr "Myndskrár"
-
-msgid "Removendo todos os webapps..."
-msgstr "Fjarlægi öll vefforrit ..."
-
-msgid "Remover Todos"
-msgstr "Fjarlægja allt"
-
-msgid "Você tem certeza que deseja remover todos os webapps?"
-msgstr "Ertu viss um að þú viljir fjarlægja öll vefforrit?"
-
-msgid "Não"
-msgstr "Nei"
-
-msgid "Sim"
-msgstr "Já"
-
-msgid "Importar Backup"
-msgstr "Flytja inn öryggisafrit"
-
-msgid "Remover WebApps"
-msgstr "Fjarlægja WebApps"
-
-msgid "Você tem certeza que deseja remover todos os WebApps?"
-msgstr "Ertu viss um að þú viljir fjarlægja öll vefforrit?"
-
-msgid " Fechar"
-msgstr " Loka"
-
-msgid "BigLinux WebApps"
-msgstr "BigLinux WebApps"
-
-msgid "FALKON"
-msgstr "FALKÓN"
-
-msgid "Você deseja remover todos os WebApps?"
-msgstr "Á að fjarlægja öll WebApps?"
+msgid "Search..."
+msgstr "Cari..."

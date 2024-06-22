@@ -16,321 +16,117 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 
-msgid "Não existem navegadores instalados compatíveis com os WebApps!"
-msgstr "Nema instaliranih preglednika koji podržavaju WebApps!"
-
-msgid "Será necessário instalar mais um navegador compatível!"
-msgstr "Morat ćete instalirati još jedan kompatibilan preglednik!"
-
-msgid "URL:"
-msgstr "URL:"
-
-msgid "Detectar Nome e Ícone"
-msgstr "Otkrivanje imena i ikone"
-
-msgid "Nome:"
-msgstr "Ime:"
-
-msgid "Ícone do WebApp"
-msgstr "Ikona webappa"
-
-msgid "Alterar"
-msgstr "Izmijeniti"
-
-msgid "Navegador"
-msgstr "Preglednik"
-
-msgid "BRAVE"
-msgstr "HRABAR"
-
-msgid "CHROME"
-msgstr "KROM"
-
-msgid "CHROMIUM"
-msgstr "KROM"
-
-msgid "EDGE"
-msgstr "RUB"
-
-msgid "EPIPHANY"
-msgstr "Bogojavljenje"
-
-msgid "FIREFOX"
-msgstr "FIREFOX"
-
-msgid "LIBREWOLF"
-msgstr "LIBREWOLF"
-
-msgid "VIVALDI"
-msgstr "VIVALDI"
-
-msgid "BRAVE (FLATPAK)"
-msgstr "HRABAR (FLATPAK)"
-
-msgid "CHROME (FLATPAK)"
-msgstr "CHROME (FLATPAK)"
-
-msgid "CHROMIUM (FLATPAK)"
-msgstr "KROM (FLATPAK)"
-
-msgid "EDGE (FLATPAK)"
-msgstr "EDGE (FLATPAK)"
-
-msgid "EPIPHANY (FLATPAK)"
-msgstr "BOGOJAVLJENJE (FLATPAK)"
-
-msgid "FIREFOX (FLATPAK)"
-msgstr "FIREFOX (FLATPAK)"
-
-msgid "LIBREWOLF (FLATPAK)"
-msgstr "LIBREWOLF (FLATPAK)"
-
-msgid "Categoria"
-msgstr "Kategorija"
-
-msgid "DESENVOLVIMENTO"
-msgstr "RAZVOJ"
-
-msgid "ESCRITÓRIO"
-msgstr "URED"
-
-msgid "GRÁFICOS"
-msgstr "GRAFIKA"
-
-msgid "JOGOS"
-msgstr "IGRE"
-
-msgid "MULTIMÍDIA"
-msgstr "MULTIMEDIJALNI"
-
-msgid "WEBAPPS"
-msgstr "WEBAPPS"
-
-msgid "WEBAPPS GOOGLE"
-msgstr "WEBAPPS GOOGLE"
-
-msgid "Criar atalho na Área de Trabalho"
-msgstr "Stvorite prečac na radnoj površini"
-
-msgid "Perfil adicional"
-msgstr "Dodatni profil"
-
-msgid "Selecione o ícone preferido:"
-msgstr "Odaberite željenu ikonu:"
-
-msgid "Não é possível aplicar a edição sem Nome!"
-msgstr "Nije moguće primijeniti neimenovano uređivanje!"
-
-msgid "Fechar"
-msgstr "Zatvoriti"
-
-msgid "Não é possível aplicar a edição sem alterações!"
-msgstr "Uređivanje ne možete primijeniti bez promjena!"
-
-msgid "O WebApp foi editado com sucesso!"
-msgstr "WebApp je uspješno uređen!"
-
-msgid "Adicionar WebApps"
-msgstr "Dodaj WebApps"
-
-msgid "WebApps Adicionados"
-msgstr "Dodano WebApps"
-
-msgid "WebApps BigLinux"
-msgstr "BigLinux WebApps"
-
-msgid "https://www.exemplo.com"
-msgstr "https://www.exemplo.com"
-
-msgid "Exemplo"
-msgstr "Primjer"
-
-msgid "Adicionar"
-msgstr "Dodaj"
-
-msgid "Para adicionar um WebApp,<br> é preciso informar a URL e o Nome."
-msgstr "Da biste dodali WebApp,<br> morate unijeti URL i naziv."
-
-msgid "Para detectar o Nome e o Ícone,<br> é preciso informar a URL."
-msgstr "Da biste otkrili ime i ikonu,<br> morate unijeti URL."
-
-msgid "A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar."
-msgstr "URL nije valjan ili veza nije uspjela.<br>Pokušajte umetnuti ikonu pomoću gumba Promijeni."
-
-msgid "O WebApp foi adicionado com sucesso!"
-msgstr "WebApp je uspješno dodan!"
-
-msgid "Desenvolvimento"
-msgstr "Razvoj"
-
-msgid "Escritório"
-msgstr "Ured"
-
-msgid "Gráficos"
-msgstr "Grafika"
-
-msgid "Jogos"
-msgstr "Igre"
-
-msgid "Multimídia"
-msgstr "Multimedija"
-
-msgid "Internet"
-msgstr "Internet"
-
-msgid "Google"
-msgstr "Google"
-
 msgid "WebApps"
 msgstr "WebApps"
 
-msgid "Nenhum WebApp adicionado!"
-msgstr "Ne WebApp dodao!"
-
-msgid "Aplicar"
-msgstr "Primijeniti"
-
-msgid "Cancelar"
-msgstr "Otkazati"
-
-msgid "Tem certeza que deseja remover este WebApp?"
-msgstr "Jeste li sigurni da želite ukloniti ovaj WebApp?"
-
-msgid "Editar WebApp"
-msgstr "Uređivanje WebAppa"
-
-msgid "O navegador não está instalado!"
-msgstr "Preglednik nije instaliran!"
-
-msgid "Não existem navegadores compatíveis instalados no sistema!"
-msgstr "Na sustavu nema kompatibilnih preglednika!"
-
-msgid "Navegador padrão<br>dos WebApps:"
-msgstr "Zadani preglednik<br>webapps:"
-
-msgid "Selecione o navegador preferido:"
-msgstr "Odaberite željeni preglednik:"
-
-msgid "Nativo"
-msgstr "Autohtonih"
-
-msgid "Flatpak"
-msgstr "Flatpak"
-
-msgid "WebApps Nativos"
-msgstr "Izvorni WebApps"
+msgid "Using Your Android Device's Internet on Linux via USB"
+msgstr "Korištenje interneta s Android uređaja na Linuxu putem USB-a"
 
 msgid ""
-"O navegador definido para abrir os WebApps não está instalado! \\n"
-"Tente alterar o navegador no Gerenciador de WebApps! \\n"
+"To share your Android smartphone's internet connection with a Linux computer using a USB cable, "
+"follow these steps:"
 msgstr ""
-"Preglednik postavljen za otvaranje WebAppsa nije instaliran! \\n"
-" Pokušajte promijeniti preglednik u upravitelju webappova! \\n"
+"Za dijeljenje internetske veze Android pametnog telefona s Linux računalom putem USB kabela "
+"slijedite ove korake:"
 
-msgid "O Gerenciador de WebApps BigLinux já está aberto!"
-msgstr "BigLinux WebApps Manager je sada otvoren!"
+msgid "Connect your Android smartphone to the Linux computer using a USB cable."
+msgstr "Povežite svoj Android pametni telefon s Linux računalom pomoću USB kabela."
 
-msgid "Gerenciador de WebApps BigLinux"
-msgstr "BigLinux WebApp Manager"
+msgid ""
+"On your smartphone, open 'Settings' and navigate to 'Network &amp; Internet' or 'Connections &amp; "
+"Sharing'."
+msgstr ""
+"Na svom pametnom telefonu otvorite 'Postavke' i navigirajte do 'Mreže i internet' ili 'Veze i "
+"dijeljenje'."
 
-msgid "Restaurar"
-msgstr "Vratiti"
+msgid "Look for 'USB Tethering', 'USB Tether', or similar terms and enable it."
+msgstr "Potražite 'USB vezivanje', 'USB veza', ili slične termine i omogućite ih."
 
-msgid "Criar backup"
-msgstr "Stvori sigurnosnu kopiju"
+msgid ""
+"This will automatically establish the internet connection on your Linux computer without requiring "
+"any additional configuration."
+msgstr ""
+"Ovo će automatski uspostaviti internetsku vezu na vašem računalu s Linuxom bez potrebe za dodatnom "
+"konfiguracijom."
 
-msgid "O backup dos WebApps foi salvo em: "
-msgstr "WebApps sigurnosna kopija spremljena je na: "
+msgid ""
+"If your Android device is not connected to Wi-Fi and is using cellular data, this tethering will "
+"consume data from your cellular plan. To avoid data charges, ensure that your Android device is "
+"connected to a Wi-Fi network before enabling tethering."
+msgstr ""
+"Ako vaš Android uređaj nije povezan s Wi-Fi-jem i koristi mobilne podatke, ovo dijeljenje "
+"internetskog pristupa trošit će podatke iz vašeg mobilnog plana. Kako biste izbjegli troškove "
+"podataka, provjerite je li vaš Android uređaj povezan s Wi-Fi mrežom prije omogućavanja dijeljenja "
+"internetskog pristupa."
 
-msgid "Os WebApps foram restaurados com sucesso!"
-msgstr "WebApps su uspješno obnovljeni!"
+msgid "Close"
+msgstr "Zatvori"
 
-msgid "Importar webapps"
-msgstr "Uvoz web-aplikacija"
+msgid "Using Your iOS Device's Internet on Linux via USB"
+msgstr "Korištenje interneta s vašeg iOS uređaja na Linuxu putem USB-a"
 
-msgid "UNGOOGLED (FLATPAK)"
-msgstr "NEGOOGLED (FLATPAK)"
+msgid ""
+"To share your iOS smartphone's internet connection with a Linux computer using a USB cable, follow "
+"these steps:"
+msgstr ""
+"Za dijeljenje internetske veze iOS pametnog telefona s Linux računalom putem USB kabela slijedite "
+"ove korake:"
 
-msgid "Importar WebApps"
-msgstr "Uvoz web-aplikacija WebApps"
+msgid "Connect your iOS device to the Linux computer using a USB cable."
+msgstr "Povežite svoj iOS uređaj s Linux računalom pomoću USB kabela."
 
-msgid "Criar Backup"
-msgstr "Stvori sigurnosnu kopiju"
+msgid "On your iOS device, go to 'Settings', then select 'Personal Hotspot'."
+msgstr "Na vašem iOS uređaju idite na 'Postavke', zatim odaberite 'Osobna vruća točka'."
 
-msgid "Dectando o nome, aguarde..."
-msgstr "Dekretanje imena, čekaj..."
+msgid ""
+"Enable 'Allow Others to Join'. This may automatically enable 'USB Tethering' if a USB connection is "
+"detected."
+msgstr ""
+"Omogući 'Dopusti drugima da se pridruže'. To može automatski omogućiti 'USB tethering' ako se "
+"otkrije USB veza."
 
-msgid "Dectando o ícone, aguarde..."
-msgstr "Dekretom ikone, čekajte..."
+msgid ""
+"If your iOS device is not connected to Wi-Fi and is using cellular data, this tethering will "
+"consume data from your cellular plan. To avoid data charges, ensure that your iOS device is "
+"connected to a Wi-Fi network before enabling tethering."
+msgstr ""
+"Ako vaš uređaj iOS nije povezan s Wi-Fi mrežom i koristi mobilne podatke, ovo dijeljenje "
+"internetskog pristupa će trošiti podatke iz vašeg mobilnog plana. Kako biste izbjegli troškove "
+"podataka, provjerite je li vaš uređaj iOS povezan s Wi-Fi mrežom prije omogućavanja dijeljenja "
+"internetskog pristupa."
 
-msgid "Adicionando o webapp..."
-msgstr "Dodavanje webappa..."
+msgid "Main"
+msgstr "Glavni"
 
-msgid "Aplicando as alterações..."
-msgstr "Primjena promjena..."
+msgid "Network and Internet"
+msgstr "Mreža i internet"
 
-msgid "Criando o backup..."
-msgstr "Stvaranje sigurnosne kopije..."
+msgid "Phone"
+msgstr "Telefon"
 
-msgid "Importando os webapps..."
-msgstr "Uvoz web-aplikacija..."
+msgid "Customize"
+msgstr "Prilagodi"
 
-msgid "Removendo o webapp..."
-msgstr "Uklanjanje webappa..."
+msgid "Region and Language"
+msgstr "Regija i jezik"
 
-msgid "Para adicionar um WebApp,<br> você precisa informar a URL e o Nome."
-msgstr "Da biste dodali WebApp,<br> morate unijeti URL i naziv."
+msgid "Multimedia"
+msgstr "Multimedijski"
 
-msgid "Para detectar o Nome e o Ícone,<br> você precisa informar a URL."
-msgstr "Da biste otkrili ime i ikonu,<br> morate unijeti URL."
+msgid "Accounts"
+msgstr "Računi"
 
-msgid "Selecione o diretório"
-msgstr "Odabir imenika"
+msgid "Devices"
+msgstr "Uređaji"
 
-msgid "Selecionar o arquivo de backup"
-msgstr "Odabir datoteke sigurnosne kopije"
+msgid "System"
+msgstr "Sustav"
 
-msgid "Backup WebApps"
-msgstr "Sigurnosno kopiranje WebApps"
+msgid "About"
+msgstr "O programu"
 
-msgid "Selecione o arquivo de imagem"
-msgstr "Odabir slikovne datoteke"
+msgid "Other"
+msgstr "Drugo"
 
-msgid "Arquivos de Imagem"
-msgstr "Slikovne datoteke"
-
-msgid "Removendo todos os webapps..."
-msgstr "Uklanjanje svih web-aplikacija..."
-
-msgid "Remover Todos"
-msgstr "Ukloni sve"
-
-msgid "Você tem certeza que deseja remover todos os webapps?"
-msgstr "Jeste li sigurni da želite ukloniti sve web-aplikacije?"
-
-msgid "Não"
-msgstr "Ne"
-
-msgid "Sim"
-msgstr "Da"
-
-msgid "Importar Backup"
-msgstr "Uvoz sigurnosne kopije"
-
-msgid "Remover WebApps"
-msgstr "Ukloni WebApps"
-
-msgid "Você tem certeza que deseja remover todos os WebApps?"
-msgstr "Jeste li sigurni da želite ukloniti sve WebApps?"
-
-msgid " Fechar"
-msgstr " Blizak"
-
-msgid "BigLinux WebApps"
-msgstr "BigLinux WebApps"
-
-msgid "FALKON"
-msgstr "FALKON"
-
-msgid "Você deseja remover todos os WebApps?"
-msgstr "Želite li ukloniti sve WebApps?"
+msgid "Search..."
+msgstr "Pretraži..."
