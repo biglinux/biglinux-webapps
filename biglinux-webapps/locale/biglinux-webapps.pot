@@ -15,38 +15,54 @@ msgstr  "Project-Id-Version: biglinux-webapps\n"
         "Content-Transfer-Encoding: 8bit\n"
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid   "WebApps"
 msgstr  ""
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid   "Using Your Android Device's Internet on Linux via USB"
 msgstr  ""
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid   "To share your Android smartphone's internet connection with a Linux "
         "computer using a USB cable, follow these steps:"
 msgstr  ""
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid   "Connect your Android smartphone to the Linux computer using a USB "
         "cable."
 msgstr  ""
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid   "On your smartphone, open 'Settings' and navigate to 'Network &amp; "
         "Internet' or 'Connections &amp; Sharing'."
 msgstr  ""
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid   "Look for 'USB Tethering', 'USB Tether', or similar terms and enable "
         "it."
 msgstr  ""
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid   "This will automatically establish the internet connection on your "
         "Linux computer without requiring any additional configuration."
 msgstr  ""
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid   "If your Android device is not connected to Wi-Fi and is using "
         "cellular data, this tethering will consume data from your cellular "
@@ -55,31 +71,45 @@ msgid   "If your Android device is not connected to Wi-Fi and is using "
 msgstr  ""
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid   "Close"
 msgstr  ""
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid   "Using Your iOS Device's Internet on Linux via USB"
 msgstr  ""
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid   "To share your iOS smartphone's internet connection with a Linux "
         "computer using a USB cable, follow these steps:"
 msgstr  ""
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid   "Connect your iOS device to the Linux computer using a USB cable."
 msgstr  ""
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid   "On your iOS device, go to 'Settings', then select 'Personal Hotspot'."
 msgstr  ""
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid   "Enable 'Allow Others to Join'. This may automatically enable 'USB "
         "Tethering' if a USB connection is detected."
 msgstr  ""
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid   "If your iOS device is not connected to Wi-Fi and is using cellular "
         "data, this tethering will consume data from your cellular plan. To "
@@ -88,49 +118,73 @@ msgid   "If your iOS device is not connected to Wi-Fi and is using cellular "
 msgstr  ""
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid   "Main"
 msgstr  ""
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid   "Network and Internet"
 msgstr  ""
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid   "Phone"
 msgstr  ""
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid   "Customize"
 msgstr  ""
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid   "Region and Language"
 msgstr  ""
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid   "Multimedia"
 msgstr  ""
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid   "Accounts"
 msgstr  ""
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid   "Devices"
 msgstr  ""
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid   "System"
 msgstr  ""
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid   "About"
 msgstr  ""
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid   "Other"
 msgstr  ""
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid   "Search..."
 msgstr  ""
