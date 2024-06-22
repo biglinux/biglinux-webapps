@@ -1546,17 +1546,18 @@ li img {
   position: relative;
   /* width: 33.3333333333%; */
   width: 25.0%;
-  transition: all 0.13s cubic-bezier(0.38, 0.8, 0.32, 1.07);
+  transition: all 0.13s cubic-bezier(0.38, 0.8, 0.32, 1.07, 1.07);
 }
 
 .tabs .slider .indicator {
   position: relative;
-  width: 50px;
+  width: 200px;
   max-width: 100%;
   margin: 0 auto;
-  height: 4px;
-  background: #007bff;
-  border-radius: 1px;
+  height: 8px;
+/*  background: #007bff; */
+  background: #00FF00;
+  border-radius: 20px;
 }
 
 .tabs .content {
@@ -1589,102 +1590,32 @@ li img {
   left: 1px;
 }
 
-.tabs input[name=tab-control]:nth-of-type(1):checked~ul>li:nth-child(1)>label {
-  cursor: default;
-  color: #007bff;
-}
+/*******************************************************************************************/
 
-.tabs input[name=tab-control]:nth-of-type(1):checked~ul>li:nth-child(1)>label svg {
-  fill: #007bff;
-}
-
-@media (max-width: 450px) {
-  .tabs input[name=tab-control]:nth-of-type(1):checked~ul>li:nth-child(1)>label {
-    background: rgba(0, 0, 0, 0.08);
-  }
-}
-
-.tabs input[name=tab-control]:nth-of-type(1):checked~.slider {
-  transform: translateX(0%);
-}
-
-.tabs input[name=tab-control]:nth-of-type(1):checked~.content>section:nth-child(1) {
-  display: block;
-}
-
-
-.tabs input[name=tab-control]:nth-of-type(2):checked~ul>li:nth-child(2)>label {
-  cursor: default;
-  color: #007bff;
-}
-
-.tabs input[name=tab-control]:nth-of-type(2):checked~ul>li:nth-child(2)>label svg {
-  fill: #007bff;
-}
-
-@media (max-width: 450px) {
-  .tabs input[name=tab-control]:nth-of-type(2):checked~ul>li:nth-child(2)>label {
-    background: rgba(0, 0, 0, 0.08);
-  }
-}
-
-.tabs input[name=tab-control]:nth-of-type(2):checked~.slider {
-  transform: translateX(100%);
-}
-
-.tabs input[name=tab-control]:nth-of-type(2):checked~.content>section:nth-child(2) {
-  display: block;
-}
-
-
-.tabs input[name=tab-control]:nth-of-type(3):checked~ul>li:nth-child(3)>label {
-  cursor: default;
-  color: #007bff;
-}
-
-.tabs input[name=tab-control]:nth-of-type(3):checked~ul>li:nth-child(3)>label svg {
-  fill: #007bff;
-}
-
-@media (max-width: 450px) {
-  .tabs input[name=tab-control]:nth-of-type(3):checked~ul>li:nth-child(3)>label {
-    background: rgba(0, 0, 0, 0.08);
-  }
-}
-
-.tabs input[name=tab-control]:nth-of-type(3):checked~.slider {
-  transform: translateX(200%);
-}
-
-.tabs input[name=tab-control]:nth-of-type(3):checked~.content>section:nth-child(3) {
-  display: block;
-}
-
-/* insert */
-.tabs input[name=tab-control]:nth-of-type(4):checked~ul>li:nth-child(4)>label {
-  cursor: default;
-  color: #007bff;
-}
-
-.tabs input[name=tab-control]:nth-of-type(4):checked~ul>li:nth-child(4)>label svg {
-  fill: #007bff;
-}
-
-@media (max-width: 450px) {
-  .tabs input[name=tab-control]:nth-of-type(4):checked~ul>li:nth-child(4)>label {
-    background: rgba(0, 0, 0, 0.08);
-  }
-}
-
-.tabs input[name=tab-control]:nth-of-type(4):checked~.slider {
-  transform: translateX(200%);
-}
-
-.tabs input[name=tab-control]:nth-of-type(4):checked~.content>section:nth-child(4) {
-  display: block;
-}
-
-/* insert */
+.tabs input[name=tab-control]:nth-of-type(1):checked~ul>li:nth-child(1)>label {cursor: default; color: #007bff;}
+.tabs input[name=tab-control]:nth-of-type(1):checked~ul>li:nth-child(1)>label svg {fill: #007bff;}
+@media (max-width: 450px) { .tabs input[name=tab-control]:nth-of-type(1):checked~ul>li:nth-child(1)>label { background: rgba(0, 0, 0, 0.08);}}
+.tabs input[name=tab-control]:nth-of-type(1):checked~.slider { transform: translateX(0%);}
+.tabs input[name=tab-control]:nth-of-type(1):checked~.content>section:nth-child(1) {display: block;}
+/*******************************************************************************************/
+.tabs input[name=tab-control]:nth-of-type(2):checked~ul>li:nth-child(2)>label {cursor: default;color: #007bff;}
+.tabs input[name=tab-control]:nth-of-type(2):checked~ul>li:nth-child(2)>label svg {fill: #007bff;}
+@media (max-width: 450px) {.tabs input[name=tab-control]:nth-of-type(2):checked~ul>li:nth-child(2)>label {background: rgba(0, 0, 0, 0.08);}}
+.tabs input[name=tab-control]:nth-of-type(2):checked~.slider {transform: translateX(100%);}
+.tabs input[name=tab-control]:nth-of-type(2):checked~.content>section:nth-child(2) {display: block;}
+/*******************************************************************************************/
+.tabs input[name=tab-control]:nth-of-type(3):checked~ul>li:nth-child(3)>label {cursor: default; color: #007bff;}
+.tabs input[name=tab-control]:nth-of-type(3):checked~ul>li:nth-child(3)>label svg {fill: #007bff;}
+@media (max-width: 450px) {.tabs input[name=tab-control]:nth-of-type(3):checked~ul>li:nth-child(3)>label {background: rgba(0, 0, 0, 0.08);}}
+.tabs input[name=tab-control]:nth-of-type(3):checked~.slider {transform: translateX(200%);}
+.tabs input[name=tab-control]:nth-of-type(3):checked~.content>section:nth-child(3) {display: block;}
+/*******************************************************************************************/
+.tabs input[name=tab-control]:nth-of-type(4):checked~ul>li:nth-child(4)>label {cursor: default; color: #007bff;}
+.tabs input[name=tab-control]:nth-of-type(4):checked~ul>li:nth-child(4)>label svg {fill: #007bff;}
+@media (max-width: 450px) { .tabs input[name=tab-control]:nth-of-type(4):checked~ul>li:nth-child(4)>label { background: rgba(0, 0, 0, 0.08);}}
+.tabs input[name=tab-control]:nth-of-type(4):checked~.slider { transform: translateX(300%);}
+.tabs input[name=tab-control]:nth-of-type(4):checked~.content>section:nth-child(4) {display: block;}
+/*******************************************************************************************/
 
 @keyframes content {
   from {
