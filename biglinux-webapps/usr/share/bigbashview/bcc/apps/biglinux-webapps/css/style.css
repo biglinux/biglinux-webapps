@@ -1543,10 +1543,9 @@ li img {
 }
 
 .tabs .slider {
-  position: relative;
-  /* width: 33.3333333333%; */
-  width: 25.0%;
-  transition: all 0.13s cubic-bezier(0.38, 0.8, 0.32, 1.07, 1.07);
+	position: relative;
+	width: 25%;
+	transition: all 0.13s cubic-bezier(0.38, 0.8, 0.32, 1.07, 1.07);
 }
 
 .tabs .slider .indicator {
@@ -1554,7 +1553,7 @@ li img {
   width: 200px;
   max-width: 100%;
   margin: 0 auto;
-  height: 8px;
+  height: 1px;
 /*  background: #007bff; */
   background: #00FF00;
   border-radius: 20px;

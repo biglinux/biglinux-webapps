@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/style.css">
+GNOME (Wayland)
+</head>
+<body>
+
+<!-- loading -->
+<div class="lds-ring">
+<span class="hide text-loading" id="text-loading-name">Detectando o nome, aguarde...</span>
+<span class="hide text-loading" id="text-loading-icon">Detectando o icone, aguarde...</span>
+<span class="hide text-loading" id="text-loading-add">Adicionando o webapp...</span>
+<span class="hide text-loading" id="text-loading-edit">Aplicando as alterações...</span>
+<span class="hide text-loading" id="text-loading-bkp">Criando o backup...</span>
+<span class="hide text-loading" id="text-loading-restore">Importando os webapps...</span>
+<span class="hide text-loading" id="text-loading-del">Removendo o webapp...</span>
+<span class="hide text-loading" id="text-loading-del-all">Removendo todos os webapps...</span>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+
+<!-- toggle theme -->
+<div class="dark-light">
+<svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+</svg>
+</div>
+<div class="principal">
+<div class="wrap">
+<div class="user">
+<div class="logo">
+<img src="icons/logo-big-trans-branco.png" alt="logo" class="logo-biglinux"/>
+</div>
+<div class="user" id="content">
+
+<!-- TABS -->
+<div class="tabs">
+<input type="radio" id="tab1" name="tab-control"/>
+<input type="radio" id="tab2" name="tab-control" checked/>
+<input type="radio" id="tab3" name="tab-control"/>
+
+<!-- INSERT -->
+<input type="radio" id="tab4" name="tab-control"/>
+<!-- INSERT -->
+
+<ul>
+<li>
+<label for="tab1" role="button" id="#add-tab-content">
+<svg viewBox="0 0 512 512">
+<path d="M464,128H272L208,64H48A48,48,0,0,0,0,112V400a48,48,0,0,0,48,48H464a48,48,0,0,0,48-48V176A48,48,0,0,0,464,128ZM359.5,296a16,16,0,0,1-16,16h-64v64a16,16,0,0,1-16,16h-16a16,16,0,0,1-16-16V312h-64a16,16,0,0,1-16-16V280a16,16,0,0,1,16-16h64V200a16,16,0,0,1,16-16h16a16,16,0,0,1,16,16v64h64a16,16,0,0,1,16,16Z"/>
+</svg>
+<span>
+Adicionar WebApps
+</span>
+</label>
+</li>
+
+<li>
+<label for="tab2" role="button" id="#list-tab-content">
+<svg viewBox="0 0 576 512">
+<path d="M572.694 292.093L500.27 416.248A63.997 63.997 0 0 1 444.989 448H45.025c-18.523 0-30.064-20.093-20.731-36.093l72.424-124.155A64 64 0 0 1 152 256h399.964c18.523 0 30.064 20.093 20.73 36.093zM152 224h328v-48c0-26.51-21.49-48-48-48H272l-64-64H48C21.49 64 0 85.49 0 112v278.046l69.077-118.418C86.214 242.25 117.989 224 152 224z"/>
+</svg>
+<span>
+WebApps Adicionados
+</span>
+</label>
+</li>
+
+<li>
+<label for="tab3" role="button" id="#webappsbig-tab-content">
+<svg viewBox="0 0 576 512">
+<path d="M384 64H192C86 64 0 150 0 256s86 192 192 192h192c106 0 192-86 192-192S490 64 384 64zm0 320c-70.8 0-128-57.3-128-128 0-70.8 57.3-128 128-128 70.8 0 128 57.3 128 128 0 70.8-57.3 128-128 128z"/>
+</svg>
+<span>
+WebApps BigLinux
+</span>
+</label>
+</li>
+
+<!-- INSERT -->
+<li>
+<label for="tab4" role="button" id="#about-tab-content">
+<svg viewBox="0 0 576 512" width="64" height="192" style="border-radius: 0px;">
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
+ preserveAspectRatio="xMidYMid meet">
+<g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+fill="#FFFFFF" stroke="none">
+<path d="M2325 4874 c-342 -49 -526 -102 -780 -224 -238 -115 -428 -252 -626
+-449 -355 -355 -567 -767 -656 -1276 -25 -143 -25 -587 0 -730 89 -509 301
+-921 656 -1276 356 -356 775 -571 1279 -656 153 -26 571 -26 724 0 504 85 923
+300 1279 656 356 356 571 775 656 1279 26 153 26 571 0 724 -85 504 -300 923
+-656 1279 -354 353 -770 568 -1271 655 -91 16 -529 29 -605 18z m595 -915 c67
+-31 140 -102 172 -166 19 -40 23 -64 23 -138 0 -81 -3 -95 -29 -143 -35 -63
+-86 -111 -158 -149 -48 -25 -63 -28 -158 -28 -93 0 -112 3 -162 27 -69 32
+-136 97 -169 163 -20 41 -24 65 -24 135 0 72 4 93 27 135 26 51 103 131 149
+155 88 48 236 52 329 9z m-331 -950 c70 -15 145 -56 193 -105 88 -89 113 -181
+97 -359 -8 -83 -29 -171 -95 -408 -105 -371 -125 -460 -127 -562 -2 -94 16
+-135 73 -162 53 -25 177 -23 269 5 40 13 75 21 78 18 3 -2 -3 -39 -13 -80
+l-18 -76 -50 -19 c-312 -117 -328 -121 -476 -121 -168 -1 -265 29 -352 108
+-90 82 -124 176 -114 320 9 123 21 178 110 494 96 338 116 429 116 524 0 138
+-41 178 -185 178 -55 0 -103 -7 -154 -22 -40 -13 -75 -22 -77 -20 -5 6 34 150
+43 158 12 12 189 76 289 105 148 44 266 51 393 24z"/>
+</g>
+</svg>
+
+</svg>
+<span>
+Sobre
+</span>
+</label>
+</li>
+<!-- INSERT -->
+
+</ul>
+<div class="slider">
+<div class="indicator"></div>
+</div>
+</div>
+<div class="overflow-wrapper">
+<div class="form-wrap">
+
+<!-- TABS CONTENT -->
+<div class="tabs-content">
+
+<!-- INICIO TABS CONTENT ADD -->
+<div id="add-tab-content" class="fc-card">
+<form class="login-form" id="formAdd" action="webapp-install.sh">
+<div class="content-section" style="margin-top:0px;">
+<ul style="margin-top:-10px;">
+
+<li>
+<div class="products">
+<svg viewBox="0 0 512 512">
+<path fill="currentColor" d="M512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM57.71 192.1L67.07 209.4C75.36 223.9 88.99 234.6 105.1 239.2L162.1 255.7C180.2 260.6 192 276.3 192 294.2V334.1C192 345.1 198.2 355.1 208 359.1C217.8 364.9 224 374.9 224 385.9V424.9C224 440.5 238.9 451.7 253.9 447.4C270.1 442.8 282.5 429.1 286.6 413.7L289.4 402.5C293.6 385.6 304.6 371.1 319.7 362.4L327.8 357.8C342.8 349.3 352 333.4 352 316.1V307.9C352 295.1 346.9 282.9 337.9 273.9L334.1 270.1C325.1 261.1 312.8 255.1 300.1 255.1H256.1C245.9 255.1 234.9 253.1 225.2 247.6L190.7 227.8C186.4 225.4 183.1 221.4 181.6 216.7C178.4 207.1 182.7 196.7 191.7 192.1L197.7 189.2C204.3 185.9 211.9 185.3 218.1 187.7L242.2 195.4C250.3 198.1 259.3 195 264.1 187.9C268.8 180.8 268.3 171.5 262.9 165L249.3 148.8C239.3 136.8 239.4 119.3 249.6 107.5L265.3 89.12C274.1 78.85 275.5 64.16 268.8 52.42L266.4 48.26C262.1 48.09 259.5 48 256 48C163.1 48 84.4 108.9 57.71 192.1L57.71 192.1zM437.6 154.5L412 164.8C396.3 171.1 388.2 188.5 393.5 204.6L410.4 255.3C413.9 265.7 422.4 273.6 433 276.3L462.2 283.5C463.4 274.5 464 265.3 464 256C464 219.2 454.4 184.6 437.6 154.5H437.6z"/>
+</svg>
+URL
+</div>
+<input type="search" class="input" id="urlDesk" required name="urldesk" placeholder=https://www.exemplo.com>
+<div class="button-wrapper">
+<div class=app-card>
+<div class="button-wrapper">
+<button class="button" style="height:30px" id="detectAll">Detectar nome e icone</button>
+</div>
+</div>
+</div>
+</li>
+
+<li>
+<div class="products">
+<svg viewBox="0 0 512 512">
+<path fill="currentColor" d="M96 0C113.7 0 128 14.33 128 32V64H480C497.7 64 512 78.33 512 96C512 113.7 497.7 128 480 128H128V480C128 497.7 113.7 512 96 512C78.33 512 64 497.7 64 480V128H32C14.33 128 0 113.7 0 96C0 78.33 14.33 64 32 64H64V32C64 14.33 78.33 0 96 0zM448 160C465.7 160 480 174.3 480 192V352C480 369.7 465.7 384 448 384H192C174.3 384 160 369.7 160 352V192C160 174.3 174.3 160 192 160H448z"/>
+</svg>
+Nome
+</div>
+<input type="search" class="input" id="nameDesk" name="namedesk" required placeholder=Exemplo>
+</li>
+
+<li>
+<div class="products">
+<div style="margin-bottom:15px" class="svg-center">
+<div class="iconDetect-display">
+<div class="iconDetect-remove">
+<svg viewBox="0 0 448 512" style="width:20px;height:20px;">
+<path d="M384 32C419.3 32 448 60.65 448 96V416C448 451.3 419.3 480 384 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H384zM143 208.1L190.1 255.1L143 303C133.7 312.4 133.7 327.6 143 336.1C152.4 346.3 167.6 346.3 176.1 336.1L223.1 289.9L271 336.1C280.4 346.3 295.6 346.3 304.1 336.1C314.3 327.6 314.3 312.4 304.1 303L257.9 255.1L304.1 208.1C314.3 199.6 314.3 184.4 304.1 175C295.6 165.7 280.4 165.7 271 175L223.1 222.1L176.1 175C167.6 165.7 152.4 165.7 143 175C133.7 184.4 133.7 199.6 143 208.1V208.1z"/></svg>
+</div>
+</div>
+<img id="iconDesk" src="icons/default-webapp.svg" width="58" height="58" />
+<input type="hidden" name="icondesk" value="'"/github/bcc/biglinux-webapps/biglinux-webapps/usr/share/bigbashview/bcc/apps/biglinux-webapps/icons/default-webapps.png"'" id="inputIconDesk" />
+</div>
+Icone do WebApp
+</div>
+<div class="button-wrapper">
+<button class="button" style="height:30px" id="loadIcon">Alterar</button>
+</div>
+</li>
+
+<li>
+<div class="products">
+<div class="svg-center" id="thumb">
+<img height="58" width="58" id="browser"/>
+</div>
+Navegador
+</div>
+<div class="button-wrapper">
+<select class="svg-center" id="browserSelect" name="browser">
+            <option value=brave>BRAVE</option>
+            <option value=google-chrome-stable>CHROME</option>
+            <option value=chromium>CHROMIUM</option>
+            <option value=firefox>FIREFOX</option>
+            <option value=falkon>FALKON</option>
+            <option value=librewolf>LIBREWOLF</option>
+            <option value=vivaldi-stable>VIVALDI</option>
+</select>
+</div>
+</li>
+<li>
+<div class="products">
+<div class="svg-center" id="imgCategory"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm0 394c0 3.3-2.7 6-6 6H54c-3.3 0-6-2.7-6-6V192h416v234z"/></svg></div>
+Categoria
+</div>
+<div class="button-wrapper">
+<div class="svg-center">
+<select class="svg-center" id="categorySelect" name="category">
+<option value="Development">DESENVOLVIMENTO</option>
+<option value="Office">ESCRITÓRIO</option>
+<option value="Graphics">GRÁFICOS</option>
+<option value="Network">INTERNET</option>
+<option value="Game">JOGOS</option>
+<option value="AudioVideo">MULTIMIDIA</option>
+<option value="Webapps" selected>WEBAPPS</option>
+<option value="Google">WEBAPPS GOOGLE</option>
+</select>
+</div>
+</div>
+</li>
+<li>
+<div class="products">
+<svg viewBox="0 0 512 512">
+<path fill="currentColor" d="M464 96h-192l-64-64h-160C21.5 32 0 53.5 0 80v352C0 458.5 21.5 480 48 480h416c26.5 0 48-21.5 48-48v-288C512 117.5 490.5 96 464 96zM336 311.1h-56v56C279.1 381.3 269.3 392 256 392c-13.27 0-23.1-10.74-23.1-23.1V311.1H175.1C162.7 311.1 152 301.3 152 288c0-13.26 10.74-23.1 23.1-23.1h56V207.1C232 194.7 242.7 184 256 184s23.1 10.74 23.1 23.1V264h56C349.3 264 360 274.7 360 288S349.3 311.1 336 311.1z"/>
+</svg>
+Criar atalho na Área de Trabalho
+</div>
+<div class="button-wrapper">
+<!-- Checkbox -->
+<!-- input id="shortcut" type="checkbox" class="switch" name="shortcut" onchange="checkIfChecked()"/ -->
+<input id="shortcut" type="checkbox" class="switch" name="shortcut"/>
+</div>
+</li>
+
+<script>
+// Variável que você deseja ler
+var myVariable = true; // Aqui você pode definir o valor da variável conforme necessário
+
+// Função para marcar ou desmarcar o checkbox com base no valor da variável
+function updateCheckbox() {
+  var checkbox = document.getElementById("shortcut");
+  checkbox.checked = myVariable;
+}
+
+// Chama a função para atualizar o estado do checkbox
+updateCheckbox();
+</script>
+
+<script>
+function checkIfChecked() {
+  var checkbox = document.getElementById("shortcut");
+  if (checkbox.checked) {
+    alert("O checkbox está marcado!");
+  } else {
+    alert("O checkbox não está marcado.");
+  }
+}
+</script>
+<li id="perfilAdd">
+<div class="products">
+<svg viewBox="0 0 640 512">
+<path fill="currentColor" d="M224 256c70.7 0 128-57.31 128-128S294.7 0 224 0C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3C0 496.5 15.52 512 34.66 512h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304zM616 200h-48v-48C568 138.8 557.3 128 544 128s-24 10.75-24 24v48h-48C458.8 200 448 210.8 448 224s10.75 24 24 24h48v48C520 309.3 530.8 320 544 320s24-10.75 24-24v-48h48C629.3 248 640 237.3 640 224S629.3 200 616 200z"/>
+</svg>
+Perfil Adicional
+</div>
+<div class="button-wrapper">
+<input id="addPerfil" type="checkbox" class="switch" name="newperfil"/>
+</div>
+</li>
+</ul>
+</div>
+
+<div style="text-align:center;display:inline-block">
+<button class="button" type="reset" id="cancel" style="height:30px;margin:15px 5px 0 5px">Cancelar</button>
+<button class="button" type="submit" id="install" style="height:30px;margin:15px 5px 0 5px">Adicionar</button>
+</div>
+</form>
+
+<!--URL OR NAME MODAL ERROR-->
+<div class="pop-up" id="urlNameError">
+<div class="pop-up__subtitle">Para adicionar um WebApp,<br>você precisa informar a URL e o Nome.</div>
+<div class="content-button-wrapper">
+<button class="content-button status-button2 close">Fechar</button>
+</div>
+</div>
+
+<!--EMPTY URL MODAL-->
+<div class="pop-up" id="urlEmpty">
+<div class="pop-up__subtitle">Para detectar o Nome e o Ícone,<br>você precisa informar a URL.</div>
+<div class="content-button-wrapper">
+<button class="content-button status-button2 close">Fechar</button>
+</div>
+</div>
+
+<!--DETECT ICON MODAL ERROR-->
+<div class="pop-up" id="detectIconError">
+<div class="pop-up__subtitle">A URL é inválida ou a conexão falhou.<br>Tente inserir o ícone pelo botão Alterar.</div>
+<div class="content-button-wrapper">
+<button class="content-button status-button2 close">Fechar</button>
+</div>
+</div>
+
+<!--INSTALL MODAL SUCCESS-->
+<div class="pop-up" id="installSuccess">
+<div class="pop-up__subtitle">O WebApp foi adicionado com sucesso!</div>
+<div class="content-button-wrapper">
+<button class="content-button status-button2 close" id="installClose">Fechar</button>
+</div>
+</div>
+
+<!--DETECT ICON MODAL-->
+<div class="pop-up" id="detectIcon">
+<div class="pop-up__title">Selecione o ícone preferido :
+<svg class="close" width="24" height="24" fill="none"
+stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round"
+class="feather feather-x-circle">
+<circle cx="12" cy="12" r="10" />
+<path d="M15 9l-6 6M9 9l6 6" />
+</svg>
+</div>
+<div id="desc">
+<div id="menu-icon"></div>
+</div>
+</div>
+</div>
+<!-- FIM TABS CONTENT ADD -->
+
+<!-- INICIO TABS CONTENT LIST -->
+<div id="list-tab-content" class="fc-card active">
+           <div class="menu">
+           <svg viewBox="0 0 448 512">
+             <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+           </svg>
+             <button class="dropdown">
+               <ul>
+                 <li id="backup-li"><a id="backup">Criar Backup</a></li>
+                 <li id="restore-li"><a id="restore">Restaurar Backup</a></li>
+                 <li id="add-li"><a id="add">Adicionar WebApps</a></li>
+                 <li><a id="del-all">Remover WebApps</a></li>
+               </ul>
+             </button>
+           </div>
+           <div class="content-section" style="margin-top:-26px;" id="Webapps">
+             <div id="Webapps" class="content-section-title" style="text-align:left;">
+WebApps
+(<span id="Webapps"></span>)
+             </div>
+             <ul style="margin-top:0px;" id="Webapps">
+               <li>
+                 <div class="products">
+                   <div class="img-icon">
+                     <img src="/home/vcatafesta/.local/share/icons/vcatafesta.png" class="svg-center"/>
+                   </div>
+                   <div class="truncate" style="text-align:left">Netflix Watch TV Shows Online Watch Movies Online</div>
+                 </div>
+                   <img src="icons/vivaldi.svg" class="img-browser" />
+                   <div class="truncate">
+                     <a href="#!" onclick="_run(`gtk-launch vivaldi-netflix.com__-Default.desktop`)" class="urlCustom">
+                       <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                         <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                       </svg> 
+https://netflix.com
+                     </a>
+                   </div>
+                 <div class="button-wrapper">
+                   <a href="#!" onclick="editOpen(`/home/vcatafesta/.local/share/applications/vivaldi-netflix.com__-Default.desktop`)">
+                     <svg viewBox="0 0 122.88 119.19"
+                          style="width:21px;border-radius:0px;margin:0px 0px -3px 0px;">
+                       <path fill="currentcolor" d="M104.84 1.62 121.25 18a5.58 5.58 0 0 1 0 7.88L112.17 35l-24.3-24.3L97 1.62a5.6 5.6 0 0 1 7.88 0ZM31.26 3.43h36.3L51.12 19.87H31.26A14.75 14.75 0 0 0 20.8 24.2l0 0a14.75 14.75 0 0 0-4.33 10.46v68.07H84.5A14.78 14.78 0 0 0 95 98.43l0 0a14.78 14.78 0 0 0 4.33-10.47V75.29l16.44-16.44V87.93A31.22 31.22 0 0 1 106.59 110l0 .05a31.2 31.2 0 0 1-22 9.15h-72a12.5 12.5 0 0 1-8.83-3.67l0 0A12.51 12.51 0 0 1 0 106.65v-72a31.15 31.15 0 0 1 9.18-22l.05-.05a31.17 31.17 0 0 1 22-9.16ZM72.33 74.8 52.6 80.9c-13.85 3-13.73 6.15-11.16-6.91l6.64-23.44h0l0 0L83.27 15.31l24.3 24.3L72.35 74.83l0 0ZM52.22 54.7l16 16-13 4c-10.15 3.13-10.1 5.22-7.34-4.55l4.34-15.4Z"/>
+                     </svg>
+                   </a>
+                 </div>
+                 <div class="button-wrapper" style="margin-left:10px;">
+                   <a href="#!" onclick="delOpen(`del0`)">
+                     <svg viewBox="0 0 109.484 122.88"
+                          style="width:18px;border-radius:0px;margin:0px 0px -3px 0px;">
+                       <path fill="currentcolor" d="M2.347 9.633h38.297V3.76c0-2.068 1.689-3.76 3.76-3.76h21.144 c2.07 0 3.76 1.691 3.76 3.76v5.874h37.83c1.293 0 2.347 1.057 2.347 2.349v11.514H0V11.982C0 10.69 1.055 9.633 2.347 9.633 L2.347 9.633z M8.69 29.605h92.921c1.937 0 3.696 1.599 3.521 3.524l-7.864 86.229c-0.174 1.926-1.59 3.521-3.523 3.521h-77.3 c-1.934 0-3.352-1.592-3.524-3.521L5.166 33.129C4.994 31.197 6.751 29.605 8.69 29.605L8.69 29.605z M69.077 42.998h9.866v65.314 h-9.866V42.998L69.077 42.998z M30.072 42.998h9.867v65.314h-9.867V42.998L30.072 42.998z M49.572 42.998h9.869v65.314h-9.869 V42.998L49.572 42.998z"/>
+                    </svg>
+                  </a>
+                </div>
+                <!--REMOVE MODAL ASK-->
+                <div class="pop-up" id="del0">
+                  <div class="pop-up__subtitle">Tem certeza que deseja remover este WebApp?</div>
+                  <div class="content-button-wrapper">
+                    <button class="content-button status-button2 close">Cancelar</button>
+                    <button class="content-button status-button2" onclick="delDesk(`/home/vcatafesta/.local/share/applications/vivaldi-netflix.com__-Default.desktop`)">Aplicar</button>
+                  </div>
+                </div>
+              </li>
+	</ul>
+	</div>
+	<br>
+<!--EDIT MODAL-->
+<div class="pop-up" id="editModal" style="width:700px">
+<div class="pop-up__title">Editar WebApp
+<svg class="close" width="24" height="24" fill="none"
+stroke="currentColor" stroke-width="2" stroke-linecap="round"
+stroke-linejoin="round" class="feather feather-x-circle">
+<circle cx="12" cy="12" r="10" />
+<path d="M15 9l-6 6M9 9l6 6" />
+</svg>
+</div>
+<form action="webapp-edit.sh" method="get" id="editForm">
+<div id="formEdit"></div>
+<div class="content-button-wrapper">
+<button type="reset" class="content-button status-button2 close">Cancelar</button>
+<button id="submitEdit" class="content-button status-button2" >Aplicar</button>
+</div>
+</form>
+</div>
+
+<!--BACKUP MODAL-->
+<div class="pop-up" id="backupModal" style="width:550px">
+<div>O backup dos WebApps foi salvo em :
+<b id="backupPath"></b>
+</div>
+<div class="content-button-wrapper">
+<button class="content-button status-button2 close">Fechar</button>
+</div>
+</div>
+
+<!--RESTORE MODAL-->
+<div class="pop-up" id="restoreModal" style="width:550px">
+<div>Os WebApps foram restaurados com sucesso!</div>
+<div class="content-button-wrapper">
+<button class="content-button status-button2 close" id="closeRestore">Fechar</button>
+</div>
+</div>
+
+<!--REMOVE ALL MODAL-->
+<div class="pop-up" id="removeAllModal" style="width:550px">
+<div>Você deseja remover todos os WebApps?</div>
+<div class="content-button-wrapper">
+<button class="content-button status-button2 close">Não</button>
+<button class="content-button status-button2 close" id="removeAllYes">Sim</button>
+</div>
+</div>
+</div>
+<!-- FIM TABS CONTENT LIST -->
+
+<!-- INICIO TABS CONTENT WEBAPPBIG -->
+<div id="webappsbig-tab-content" class="fc-card">
+<div style="display:flex;justify-content:center">
+<div class="content-section-title" style="margin-bottom:0">
+Navegador Padrão<br>dos WebApps:
+</div>
+<button class="btn-img-main status-button" id="open-change-browsers" data-bin=brave>
+<img src="icons/brave.svg" width="38" height="38" class="iconBrowser" id="browserIcon" title=BRAVE>
+</button>
+</div>
+<!--CHANGE BROWSERS MODAL-->
+<div class="pop-up" id="change-browser" style="padding-bottom:30px">
+<div class="pop-up__title">Selecione o navegador preferido:
+<svg class="close" width="24" height="24" fill="none"
+stroke="currentColor" stroke-width="2" stroke-linecap="round"
+stroke-linejoin="round" class="feather feather-x-circle">
+<circle cx="12" cy="12" r="10" />
+<path d="M15 9l-6 6M9 9l6 6" />
+</svg>
+</div>
+<div class="pop-up__subtitle">Nativo</div>
+            <div id="menu">
+<button class="btn-img status-button btn-img-main"
+id=>
+<img src="icons/brave.svg"
+width="38"
+height="38"
+data-bin=brave
+title=BRAVE>
+</button>
+<button class="btn-img status-button btn-img-main"
+id=>
+<img src="icons/chrome.svg"
+width="38"
+height="38"
+data-bin=google-chrome-stable
+title=CHROME>
+</button>
+<button class="btn-img status-button btn-img-main"
+id=>
+<img src="icons/chromium.svg"
+width="38"
+height="38"
+data-bin=chromium
+title=CHROMIUM>
+</button>
+<button class="btn-img status-button btn-img-main"
+id=>
+<img src="icons/firefox.svg"
+width="38"
+height="38"
+data-bin=firefox
+title=FIREFOX>
+</button>
+<button class="btn-img status-button btn-img-main"
+id=>
+<img src="icons/falkon.svg"
+width="38"
+height="38"
+data-bin=falkon
+title=FALKON>
+</button>
+<button class="btn-img status-button btn-img-main"
+id=>
+<img src="icons/librewolf.svg"
+width="38"
+height="38"
+data-bin=librewolf
+title=LIBREWOLF>
+</button>
+<button class="btn-img status-button btn-img-main"
+id=>
+<img src="icons/vivaldi.svg"
+width="38"
+height="38"
+data-bin=vivaldi-stable
+title=VIVALDI>
+</button>
+</div>
+</div>
+<div class="content-section" style="margin-top:0">
+<div class="content-section-title" style="text-align:left">
+WebApps Nativos
+</div>
+<ul id="content-ul">'
+<li class="product">
+    <input value="calendar.google.com__-Default.desktop" id="webapp_" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-g-calendar.svg" height="25" width="25" class="svg-center" />
+        Calendar
+    </div>
+    <span class="status">
+        <span id="circle_" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh calendar.google.com__-Default.desktop brave');" class="urlNative " id="link_">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://calendar.google.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="classroom.google.com__-Default.desktop" id="webapp_1" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-g-classroom.svg" height="25" width="25" class="svg-center" />
+        Classroom
+    </div>
+    <span class="status">
+        <span id="circle_1" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh classroom.google.com__-Default.desktop librewolf');" class="urlNative " id="link_1">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://classroom.google.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/librewolf.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="cleverpdf.com__-Default.desktop" id="webapp_2" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-cleverpdf.svg" height="25" width="25" class="svg-center" />
+        CleverPDF
+    </div>
+    <span class="status">
+        <span id="circle_2" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh cleverpdf.com__-Default.desktop falkon');" class="urlNative " id="link_2">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://cleverpdf.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/falkon.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="contacts.google.com__-Default.desktop" id="webapp_3" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-g-contacts.svg" height="25" width="25" class="svg-center" />
+        Contacts
+    </div>
+    <span class="status">
+        <span id="circle_3" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh contacts.google.com__-Default.desktop vivaldi');" class="urlNative " id="link_3">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://contacts.google.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/vivaldi.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="deezer.com__-Default.desktop" id="webapp_4" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-deezer.svg" height="25" width="25" class="svg-center" />
+        Deezer music
+    </div>
+    <span class="status">
+        <span id="circle_4" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh deezer.com__-Default.desktop brave');" class="urlNative " id="link_4">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://deezer.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="discord.com__-Default.desktop" id="webapp_5" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-discord.svg" height="25" width="25" class="svg-center" />
+        Discord
+    </div>
+    <span class="status">
+        <span id="circle_5" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh discord.com__-Default.desktop brave');" class="urlNative " id="link_5">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://discord.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="docs.google.com__spreadsheets-Default.desktop" id="webapp_6" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-g-spreadsheets.svg" height="25" width="25" class="svg-center" />
+        Spreadsheets
+    </div>
+    <span class="status">
+        <span id="circle_6" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh docs.google.com__spreadsheets-Default.desktop brave');" class="urlNative " id="link_6">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://docs.google.com/spreadsheets
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="drawings.google.com__-Default.desktop" id="webapp_7" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-g-drawings.svg" height="25" width="25" class="svg-center" />
+        Drawings
+    </div>
+    <span class="status">
+        <span id="circle_7" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh drawings.google.com__-Default.desktop brave');" class="urlNative " id="link_7">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://drawings.google.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="drive.google.com__-Default.desktop" id="webapp_8" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-g-drive.svg" height="25" width="25" class="svg-center" />
+        Drive
+    </div>
+    <span class="status">
+        <span id="circle_8" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh drive.google.com__-Default.desktop brave');" class="urlNative " id="link_8">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://drive.google.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="facebook.com__-Default.desktop" id="webapp_9" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-facebook.svg" height="25" width="25" class="svg-center" />
+        Facebook
+    </div>
+    <span class="status">
+        <span id="circle_9" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh facebook.com__-Default.desktop brave');" class="urlNative " id="link_9">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://facebook.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="forum.biglinux.com.br__-Default.desktop" id="webapp_10" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-biglinux-globo.svg" height="25" width="25" class="svg-center" />
+        BigLinux Forum
+    </div>
+    <span class="status">
+        <span id="circle_10" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh forum.biglinux.com.br__-Default.desktop firefox');" class="urlNative " id="link_10">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://forum.biglinux.com.br
+            </a>
+        </div>
+    </span>
+    <img src="icons/firefox.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="gmail.com__-Default.desktop" id="webapp_11" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-g-gmail.svg" height="25" width="25" class="svg-center" />
+        Gmail
+    </div>
+    <span class="status">
+        <span id="circle_11" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh gmail.com__-Default.desktop brave');" class="urlNative " id="link_11">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://gmail.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="google.com__maps_@-Default.desktop" id="webapp_12" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-g-maps.svg" height="25" width="25" class="svg-center" />
+        Maps
+    </div>
+    <span class="status">
+        <span id="circle_12" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh google.com__maps_@-Default.desktop brave');" class="urlNative " id="link_12">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://google.com/maps/@?api=1&map_action=map&basemap=satellite&layer=traffic
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="hangouts.google.com__-Default.desktop" id="webapp_13" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-g-hangouts.svg" height="25" width="25" class="svg-center" />
+        Hangouts
+    </div>
+    <span class="status">
+        <span id="circle_13" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh hangouts.google.com__-Default.desktop brave');" class="urlNative " id="link_13">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://hangouts.google.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="instagram.com__-Default.desktop" id="webapp_14" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-instagram.svg" height="25" width="25" class="svg-center" />
+        Instagram
+    </div>
+    <span class="status">
+        <span id="circle_14" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh instagram.com__-Default.desktop brave');" class="urlNative " id="link_14">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://instagram.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="keep.google.com__-Default.desktop" id="webapp_15" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-g-keep.svg" height="25" width="25" class="svg-center" />
+        Keep
+    </div>
+    <span class="status">
+        <span id="circle_15" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh keep.google.com__-Default.desktop brave');" class="urlNative " id="link_15">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://keep.google.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="mail.yahoo.com__-Default.desktop" id="webapp_16" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-mailyahoo.svg" height="25" width="25" class="svg-center" />
+        Yahoo Mail
+    </div>
+    <span class="status">
+        <span id="circle_16" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh mail.yahoo.com__-Default.desktop brave');" class="urlNative " id="link_16">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://mail.yahoo.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="meet.google.com__-Default.desktop" id="webapp_17" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-g-meet.svg" height="25" width="25" class="svg-center" />
+        Meet
+    </div>
+    <span class="status">
+        <span id="circle_17" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh meet.google.com__-Default.desktop brave');" class="urlNative " id="link_17">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://meet.google.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="meet.jit.si__-Default.desktop" id="webapp_18" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-jitsi.svg" height="25" width="25" class="svg-center" />
+        Jitsi Meet
+    </div>
+    <span class="status">
+        <span id="circle_18" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh meet.jit.si__-Default.desktop brave');" class="urlNative " id="link_18">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://meet.jit.si/
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="messenger.com__-Default.desktop" id="webapp_19" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-messenger.svg" height="25" width="25" class="svg-center" />
+        Messenger
+    </div>
+    <span class="status">
+        <span id="circle_19" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh messenger.com__-Default.desktop brave');" class="urlNative " id="link_19">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://messenger.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="music.amazon.com.br__home-Default.desktop" id="webapp_20" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-amazonmusic.svg" height="25" width="25" class="svg-center" />
+        Amazon Music
+    </div>
+    <span class="status">
+        <span id="circle_20" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh music.amazon.com.br__home-Default.desktop brave');" class="urlNative " id="link_20">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://music.amazon.com.br/home
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="music.youtube.com__-Default.desktop" id="webapp_21" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-g-youtubemusic.svg" height="25" width="25" class="svg-center" />
+        Youtube Music
+    </div>
+    <span class="status">
+        <span id="circle_21" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh music.youtube.com__-Default.desktop brave');" class="urlNative " id="link_21">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://music.youtube.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="netflix.com__-Default.desktop" id="webapp_22" type="checkbox" class="switch" style="margin-right:10px;"  />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-netflix.svg" height="25" width="25" class="svg-center" />
+        Netflix
+    </div>
+    <span class="status">
+        <span id="circle_22" class="status-circle gray"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh netflix.com__-Default.desktop brave');" class="urlNative disabled" id="link_22">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://netflix.com/
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="notion.so__-Default.desktop" id="webapp_23" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-notion.svg" height="25" width="25" class="svg-center" />
+        Notion
+    </div>
+    <span class="status">
+        <span id="circle_23" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh notion.so__-Default.desktop brave');" class="urlNative " id="link_23">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://notion.so
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="odysee.com__-Default.desktop" id="webapp_24" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-odysee.svg" height="25" width="25" class="svg-center" />
+        Odysee
+    </div>
+    <span class="status">
+        <span id="circle_24" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh odysee.com__-Default.desktop brave');" class="urlNative " id="link_24">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://odysee.com/
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="office.com__-Default.desktop" id="webapp_25" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-office365.svg" height="25" width="25" class="svg-center" />
+        Office 365
+    </div>
+    <span class="status">
+        <span id="circle_25" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh office.com__-Default.desktop brave');" class="urlNative " id="link_25">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://office.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="onlinedoctranslator.com__translationform-Default.desktop" id="webapp_26" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-doctranslator.svg" height="25" width="25" class="svg-center" />
+        Docs Translator
+    </div>
+    <span class="status">
+        <span id="circle_26" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh onlinedoctranslator.com__translationform-Default.desktop brave');" class="urlNative " id="link_26">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://onlinedoctranslator.com/translationform
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="open.spotify.com__browse_featured-Default.desktop" id="webapp_27" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-spotifywebapp.svg" height="25" width="25" class="svg-center" />
+        Spotify
+    </div>
+    <span class="status">
+        <span id="circle_27" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh open.spotify.com__browse_featured-Default.desktop brave');" class="urlNative " id="link_27">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://open.spotify.com/browse/featured
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="openstreetmap.org__-Default.desktop" id="webapp_28" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-openstreetmap.svg" height="25" width="25" class="svg-center" />
+        OpenStreetMap
+    </div>
+    <span class="status">
+        <span id="circle_28" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh openstreetmap.org__-Default.desktop brave');" class="urlNative " id="link_28">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://openstreetmap.org
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="outlook.live.com__-Default.desktop" id="webapp_29" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-outlook.svg" height="25" width="25" class="svg-center" />
+        Outlook
+    </div>
+    <span class="status">
+        <span id="circle_29" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh outlook.live.com__-Default.desktop brave');" class="urlNative " id="link_29">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://outlook.live.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="pdfwordconvert.com__convertform-Default.desktop" id="webapp_30" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-pdfconvert.svg" height="25" width="25" class="svg-center" />
+        PDF Converter
+    </div>
+    <span class="status">
+        <span id="circle_30" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh pdfwordconvert.com__convertform-Default.desktop brave');" class="urlNative " id="link_30">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://pdfwordconvert.com/convertform
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="photopea.com__-Default.desktop" id="webapp_31" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-photopea.svg" height="25" width="25" class="svg-center" />
+        Photopea
+    </div>
+    <span class="status">
+        <span id="circle_31" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh photopea.com__-Default.desktop brave');" class="urlNative " id="link_31">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://photopea.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="photos.google.com__-Default.desktop" id="webapp_32" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-g-photos.svg" height="25" width="25" class="svg-center" />
+        Photos
+    </div>
+    <span class="status">
+        <span id="circle_32" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh photos.google.com__-Default.desktop brave');" class="urlNative " id="link_32">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://photos.google.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="primevideo.com__-Default.desktop" id="webapp_33" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-primevideo.svg" height="25" width="25" class="svg-center" />
+        Prime Video
+    </div>
+    <span class="status">
+        <span id="circle_33" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh primevideo.com__-Default.desktop brave');" class="urlNative " id="link_33">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://primevideo.com/
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="snapdrop.net__-Default.desktop" id="webapp_34" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-snapdrop.svg" height="25" width="25" class="svg-center" />
+        Snapdrop
+    </div>
+    <span class="status">
+        <span id="circle_34" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh snapdrop.net__-Default.desktop brave');" class="urlNative " id="link_34">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://snapdrop.net
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="tiktok.com__-Default.desktop" id="webapp_35" type="checkbox" class="switch" style="margin-right:10px;"  />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-tiktok.svg" height="25" width="25" class="svg-center" />
+        TikTok
+    </div>
+    <span class="status">
+        <span id="circle_35" class="status-circle gray"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh tiktok.com__-Default.desktop brave');" class="urlNative disabled" id="link_35">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://tiktok.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="translate.google.com__-Default.desktop" id="webapp_36" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-g-translate.svg" height="25" width="25" class="svg-center" />
+        Translator
+    </div>
+    <span class="status">
+        <span id="circle_36" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh translate.google.com__-Default.desktop brave');" class="urlNative " id="link_36">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://translate.google.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="tunein.com__radio_home-Default.desktop" id="webapp_37" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-tunein.svg" height="25" width="25" class="svg-center" />
+        TuneIn Radio
+    </div>
+    <span class="status">
+        <span id="circle_37" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh tunein.com__radio_home-Default.desktop brave');" class="urlNative " id="link_37">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://tunein.com/radio/home
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="twitch.tv__-Default.desktop" id="webapp_38" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-twitch.svg" height="25" width="25" class="svg-center" />
+        Twitch
+    </div>
+    <span class="status">
+        <span id="circle_38" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh twitch.tv__-Default.desktop brave');" class="urlNative " id="link_38">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://twitch.tv
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="twitter.com__-Default.desktop" id="webapp_39" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-twitter.svg" height="25" width="25" class="svg-center" />
+        Twitter
+    </div>
+    <span class="status">
+        <span id="circle_39" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh twitter.com__-Default.desktop brave');" class="urlNative " id="link_39">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://twitter.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="waze.com__livemap-Default.desktop" id="webapp_40" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-g-waze.svg" height="25" width="25" class="svg-center" />
+        Waze
+    </div>
+    <span class="status">
+        <span id="circle_40" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh waze.com__livemap-Default.desktop brave');" class="urlNative " id="link_40">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://waze.com/livemap
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="web.skype.com__-Default.desktop" id="webapp_41" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-skype.svg" height="25" width="25" class="svg-center" />
+        Skype
+    </div>
+    <span class="status">
+        <span id="circle_41" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh web.skype.com__-Default.desktop brave');" class="urlNative " id="link_41">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://web.skype.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="web.telegram.org__-Default.desktop" id="webapp_42" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-telegram-webapp.svg" height="25" width="25" class="svg-center" />
+        Telegram
+    </div>
+    <span class="status">
+        <span id="circle_42" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh web.telegram.org__-Default.desktop brave');" class="urlNative " id="link_42">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://web.telegram.org
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="web.whatsapp.com__-Default.desktop" id="webapp_43" type="checkbox" class="switch" style="margin-right:10px;"  />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-whatsapp.svg" height="25" width="25" class="svg-center" />
+        WhatsApp
+    </div>
+    <span class="status">
+        <span id="circle_43" class="status-circle gray"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh web.whatsapp.com__-Default.desktop brave');" class="urlNative disabled" id="link_43">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://web.whatsapp.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+<li class="product">
+    <input value="youtube.com__-Default.desktop" id="webapp_44" type="checkbox" class="switch" style="margin-right:10px;" checked />
+    <div class="products">
+        <img src="/usr/share/icons/hicolor/scalable/apps/webapp-g-youtube.svg" height="25" width="25" class="svg-center" />
+        Youtube
+    </div>
+    <span class="status">
+        <span id="circle_44" class="status-circle green"></span>
+        <div class="truncate">
+            <a href="#!" onclick="_run('./webapp-launch.sh youtube.com__-Default.desktop brave');" class="urlNative " id="link_44">
+                <svg viewBox="0 0 448 512" style="width:16px;border-radius:0px;margin:0px 0px -3px 0px;display:none;">
+                    <path fill="currentcolor" d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/>
+                </svg>
+                https://youtube.com
+            </a>
+        </div>
+    </span>
+    <img src="icons/brave.svg" height="16" width="16" class="iconBrowser" />
+</li>
+</ul>
+</div><br/>
+</div>
+<!-- FIM TABS CONTENT WEBAPPBIG -->
+
+<!-- INSERT -->
+<!-- INICIO TABS CONTENT ABOUT -->
+<div id="about-tab-content" class="fc-card">
+<div class="content-section" style="margin-top:0px;">
+<ul style="margin-top:-10px;">
+<li>Ambiente:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Desktop : GNOME
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Sessão : wayland
+<li>Aplicativo:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Nome : biglinux-webapps</span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Htm versão : 1.0.0-20240619 - 04:54
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Lib versão : 1.0.0-20240619 - 09:00
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Atualizado em : 19/06/2024 - 09:00
+<li>Desenvolvedores:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;2023-2024, Vilmar Catafesta, vcatafesta@gmail.com
+<br>&nbsp;&nbsp;&nbsp;&nbsp;2023-2023, Bruno Gonçalves, www.biglinux.com.br
+<br>&nbsp;&nbsp;&nbsp;&nbsp;2023-2023, Rafael Ruscher, rruscher@gmail.com
+<br>&nbsp;&nbsp;&nbsp;&nbsp;2020-2023, eltonff, www.biglinux.com.br
+<li>Colaboradores:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;-2024, Thales, @talesam
+<br>&nbsp;&nbsp;&nbsp;&nbsp;-2024, Narayan, @narayansilva
+<br>&nbsp;&nbsp;&nbsp;&nbsp;-2024, Thiago, @thiago_brgs
+<br>&nbsp;&nbsp;&nbsp;&nbsp;-2024, Marcelo, @elppans
+</li>
+</ul>
+</div>
+</div>
+<!-- FIM TABS CONTENT ABOUT -->
+<!-- INSERT -->
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- INSERT -->
+<!-- INSERT -->
+<!-- scripts -->
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
