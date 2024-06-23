@@ -21,7 +21,6 @@
         padding: 10px;
         background-color: rgba(0, 0, 0, 0.8);
         color: white;
-        width: auto;
         border-radius: 7px;
         margin-bottom: 24px;
         margin-right: 28px;
@@ -62,36 +61,16 @@
       </div>
     </dialog>
 
-    <!-- Info about connecting from iOS Device -->
-    <dialog class="dialog min-width-60em no-padding no-margin" id="dialog-ios-usb">
-      <h6 class="surface-bgcolor no-round large-padding center-align drag-area" small stonejs>Using Your iOS Device's Internet on Linux via USB</h6>
-      <div class="large medium-padding medium-margin medium-line left-align">
-        <p stonejs>To share your iOS smartphone's internet connection with a Linux computer using a USB cable, follow these steps:</p>
-        <ul>
-          <li stonejs>Connect your iOS device to the Linux computer using a USB cable.</li>
-          <li stonejs>On your iOS device, go to 'Settings', then select 'Personal Hotspot'.</li>
-          <li stonejs>Enable 'Allow Others to Join'. This may automatically enable 'USB Tethering' if a USB connection is detected.</li>
-        </ul>
-        <p stonejs>This will automatically establish the internet connection on your Linux computer without requiring any additional configuration.</p>
-        <img class="tiny" src="warning.svg"><span stonejs>If your iOS device is not connected to Wi-Fi and is using cellular data, this tethering will consume data from your cellular plan. To avoid data charges, ensure that your iOS device is connected to a Wi-Fi network before enabling tethering.</span></p>
-        <nav class="right-align">
-          <button data-ui="#dialog-ios-usb" stonejs>Close</button>
-        </nav>
-      </div>
-    </dialog>
-
-    <!-- Right side showing real content -->
+    <!-- showing content -->
     <div id="main" class="drag-area page-content-without-left-bar system-background-color">
-          <template x-for="program in filteredPrograms" :key="program.app_id">
-            <button @click="_run(program.app_exec);ui(program.app_exec)"
-              @mouseenter="showDescription(program.app_description)" @mouseleave="clearDescription()"
+          <template x-for="program in filteredPrograms" :key="program.app_file">
+            <button @click="_run(program.app_file);ui(program.app_file)"
+              @mouseenter="showDescription(program.app_url)" @mouseleave="clearDescription()"
               class="vertical border no-border space-between box-items">
-              <img :src="program.app_icon" class="responsive icon-medium no-round" />
+              <img :src="program.app_icon_url" class="responsive icon-medium no-round" />
               <span x-text="program.app_name" class="min-height-fill"></span>
             </button>
           </template>
-        <!-- Description Container at the bottom of the screen -->
-        <div x-show="descriptionToShow" x-transition:enter.duration.400ms class="description-container" x-text="descriptionToShow"></div>
       </div>
     </div>
 </body>
@@ -102,31 +81,15 @@
       programs: [],
       filteredPrograms: [],
       filterText: "",
-      currentCategory: "",
       descriptionToShow: "",
       placeholderText: "",
-      categories: [
-        { name: 'Star', icon: 'apps', label: _('Main') },
-        { name: 'Network', icon: 'network_wifi', label: _('Network and Internet') },
-        { name: 'Phone', icon: 'smartphone', label: _('Phone') },
-        { name: 'Personalization', icon: 'palette', label: _('Customize') },
-        { name: 'Language', icon: 'globe', label: _('Region and Language') },
-        { name: 'Multimedia', icon: 'music_note', label: _('Multimedia') },
-        { name: 'Account', icon: 'group', label: _('Accounts') },
-        { name: 'Hardware', icon: 'memory', label: _('Devices') },
-        { name: 'System', icon: 'monitor', label: _('System') },
-        { name: 'About', icon: 'info', label: _('About') },
-        { name: 'Other', icon: 'settings_applications', label: _('Other') }
-      ],
 
       fetchData() {
         fetch("get_json.sh")
           .then(response => response.json())
           .then(data => {
             this.programs = data;
-            this.filterPrograms();
-            this.currentCategory = 'Star'; // Set the initial category as 'Star'
-            this.filterCategory('Star'); // Initially applies the filter for the 'Star' category
+            this.filteredPrograms = data; // Initialize filteredPrograms with all programs
           });
         this.placeholderText = _('Search...');
       },
@@ -148,30 +111,21 @@
         }
       },
 
-      filterCategory(category) {
-        this.currentCategory = category;
-        this.filterText = ""; // Clears the text filter
-        this.filterPrograms();
-      },
-
       filterPrograms() {
-        // First, we apply text filtering to all programs
-        let filteredBySearch = this.programs.filter(program => {
-          const name = this.normalizeText(program.app_name);
-          const description = this.normalizeText(program.app_description);
-          const id = this.normalizeText(program.app_id);
-          return name.includes(this.normalizeText(this.filterText)) ||
-            description.includes(this.normalizeText(this.filterText)) ||
-            id.includes(this.normalizeText(this.filterText));
-        });
-
-        // Then, we apply the category filter if a category is selected and there is no filter text
-        if (this.currentCategory && !this.filterText) {
-          this.filteredPrograms = filteredBySearch.filter(program => program.app_categories.includes(this.currentCategory));
+        if (this.filterText === "") {
+          // If the filter text is empty, show all programs
+          this.filteredPrograms = this.programs;
         } else {
-          this.filteredPrograms = filteredBySearch;
+          // Otherwise, filter based on the text
+          this.filteredPrograms = this.programs.filter(program => {
+            const name = this.normalizeText(program.app_name);
+            const description = this.normalizeText(program.app_url);
+            const id = this.normalizeText(program.app_file);
+            return name.includes(this.normalizeText(this.filterText)) ||
+              description.includes(this.normalizeText(this.filterText)) ||
+              id.includes(this.normalizeText(this.filterText));
+          });
         }
-
         // Alphabetical sorting
         this.filteredPrograms.sort((a, b) => a.app_name.localeCompare(b.app_name));
       },

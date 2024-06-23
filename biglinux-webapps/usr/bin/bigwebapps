@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+cd /usr/share/bigbashview/apps/webapps/
+
+# If not exit folder, create
+if [[ ! -e ~/.cache ]]; then
+    mkdir -p ~/.cache
+fi
+
+# File to verify if cache not completed
+> ~/.cache/pre-cache-bigwebapps.json
+
+# Start caching json
+./get_json.sh cache &
+
+bigbashview -s 1000x580 -n bigwebapps -p bigwebapps -c transparent -w frameless index.html

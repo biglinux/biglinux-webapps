@@ -8,12 +8,11 @@ display_help() {
     echo ""
     echo "Commands:"
     echo "  create     - Creates a new WebApp .desktop file"
-    echo "  edit       - Edits an existing WebApp .desktop file"
     echo "  remove     - Removes an existing WebApp .desktop file"
     echo "  json       - Show all WebApps in JSON format"
     echo "  json file  - Change file to filename to show in JSON format"
     echo ""
-    echo "Arguments, the order is important:"
+    echo "Arguments for create, the order is important:"
     echo "  <browser>  - The browser to use (e.g., google-chrome-stable, brave-browser)"
     echo "  <name>     - The display name of the WebApp"
     echo "  <url>      - The URL of the WebApp"
@@ -23,20 +22,16 @@ display_help() {
     echo ""
     echo "Examples:"
     echo "  Create a WebApp:"
-    echo "    $0 create google-chrome-stable \"BigLinux\" \"https://www.biglinux.com.br\" \"big-logo\" \"Webapps\" \"Default\""
-    echo ""
-    echo "  Verify if exist webapp with desktop name to use icon in wayland:"
-    echo "  Not is possible to use different icon in wayland for addresses with same site"
-    echo "    $0 verify google-chrome-stable \"BigLinux\" \"https://www.biglinux.com.br\" \"new-icon\" \"Webapps\" \"Default\""
+    echo "    $0 create brave \"BigLinux\" \"https://www.biglinux.com.br\" \"big-logo\" \"Webapps\" \"Default\""
     echo ""
     echo "  Remove an existing WebApp:"
-    echo "    $0 remove google-chrome-stable \"https://www.biglinux.com.br\" \"Default\""
+    echo "    $0 remove brave \"https://www.biglinux.com.br\" \"Default\""
 }
 
 # Check for minimum arguments
 if [ "$#" -lt 1 ]; then
     display_help
-    exit 1
+    exit
 fi
 
 # Main command
@@ -60,8 +55,8 @@ if [[ ! -d ~/.local/share/applications ]]; then
     mkdir -p ~/.local/share/applications
 fi
 
-# Change to the applications folder
-cd ~/.local/share/applications
+# Change to the applications folder, if it fails, exit
+cd ~/.local/share/applications || { echo "Failed to change directory to ~/.local/share/applications"; exit 1; }
 
 # Adjust the browser name for the filename and class
 short_browser=$(sed 's/.*[Cc]hrom.*/chrome/
@@ -189,7 +184,7 @@ elif [ "$command" = "json" ]; then
                     categories=${line#*Categories=}
                     ;;
             esac
-        done <<<$(grep -m4 -e '^Name=' -e '^Exec=' -e '^Icon=' -e '^Categories=' $file)
+        done <<<$(grep -ve 'Name=Software Render' -ve 'Exec=SoftwareRender ' $file | grep -m4 -e '^Name=' -e '^Exec=' -e '^Icon=' -e '^Categories=')
 
         # Print the JSON separator
         if [[ $num -gt 0 ]]; then
