@@ -96,6 +96,16 @@ function wrapper_browser(name_exec) {
       $("#browser").attr("src", "icons/falkon.svg");
       break;
 
+    case "opera":
+      $("#perfilAdd").removeClass('disabled');
+      $("#browser").attr("src", "icons/opera.svg");
+      break;
+
+    case "palemoon":
+      $("#perfilAdd").removeClass('disabled');
+      $("#browser").attr("src", "icons/palemoon.svg");
+      break;
+
     default:
       break;
   }
