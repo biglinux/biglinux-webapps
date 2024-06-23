@@ -7,11 +7,13 @@ display_help() {
     echo "  $0 {create|edit|remove} <browser> <name> <url> <icon> <category> <profile>"
     echo ""
     echo "Commands:"
-    echo "  create   - Creates a new WebApp .desktop file"
-    echo "  edit     - Edits an existing WebApp .desktop file"
-    echo "  remove   - Removes an existing WebApp .desktop file"
+    echo "  create     - Creates a new WebApp .desktop file"
+    echo "  edit       - Edits an existing WebApp .desktop file"
+    echo "  remove     - Removes an existing WebApp .desktop file"
+    echo "  json       - Show all WebApps in JSON format"
+    echo "  json file  - Change file to filename to show in JSON format"
     echo ""
-    echo "Arguments:"
+    echo "Arguments, the order is important:"
     echo "  <browser>  - The browser to use (e.g., google-chrome-stable, brave-browser)"
     echo "  <name>     - The display name of the WebApp"
     echo "  <url>      - The URL of the WebApp"
@@ -41,29 +43,40 @@ fi
 command="$1"
 shift
 
-# Set global variables
-browser="$1"
-name="$2"
-url="$3"
-icon="$4"
-category="$5"
-profile="$6"
+if [[ $command == "json" ]]; then
+    one_file="$1"
+else
+    # Set global variables
+    browser="$1"
+    name="$2"
+    url="$3"
+    icon="$4"
+    category="$5"
+    profile="$6"
+fi
+
+# Check if the folder exists and create it if it doesn't
+if [[ ! -d ~/.local/share/applications ]]; then
+    mkdir -p ~/.local/share/applications
+fi
+
+# Change to the applications folder
+cd ~/.local/share/applications
 
 # Adjust the browser name for the filename and class
-short_browser=$(echo "$browser" |
-    sed 's/.*[Cc]hrom.*/chrome/
-        s/.*[Bb]rave.*/brave/
-        s/.*[Ee]dge.*/msedge/
-        s/.*[Vv]ivaldi.*/vivaldi/')
+short_browser=$(sed 's/.*[Cc]hrom.*/chrome/
+                    s/.*[Bb]rave.*/brave/
+                    s/.*[Ee]dge.*/msedge/
+                    s/.*[Vv]ivaldi.*/vivaldi/' <<< "$browser")
 
 # Adjust the class by replacing "/" with "__" and removing https
-class=$(echo "$url" | sed 's|https://||;s|http://||g;s|/|__|g')
+class=$(sed 's|https://||;s|http://||g;s|/|__|g' <<< "$url")
 
 # Define the filename in Wayland compatible format
-filename="$short_browser-$(echo $url | sed 's|https://||;s|http://||;s|?.*||g;s|/|__|g')__-$profile.desktop"
+filename="$short_browser-$(sed 's|https://||;s|http://||;s|?.*||g;s|/|__|g' <<< $url)__-$profile.desktop"
 
 # Ensure filename doesn't end with more than two underscores and replace final __-profile with -profile
-filename=$(echo "$filename" | sed -E "s/(__.*)__-$profile/\1-$profile/g")
+filename=$(sed -E "s/(__.*)__-$profile/\1-$profile/g" <<< "$filename")
 
 # Verify if the WebApp already exists
 if [[ -e ~/.local/share/applications/$filename ]]; then
@@ -100,7 +113,7 @@ Categories=$category
 StartupNotify=false
 EOF
 
-echo "$ShowText" > "$HOME/.local/share/applications/$filename"
+echo "$ShowText" > "$filename"
 
 echo "WebApp $name successfully created as $filename"
 
@@ -111,7 +124,7 @@ elif [ "$command" = "verify" ]; then
         exit 1
     fi
 
-    if [ -f ~/.local/share/applications/$filename_orig ]; then
+    if [ -f $filename_orig ]; then
         echo "true"
         exit 1
     else
@@ -126,12 +139,79 @@ elif [ "$command" = "remove" ]; then
         exit 1
     fi
 
-    if [ -f ~/.local/share/applications/$filename ]; then
-        rm ~/.local/share/applications/$filename
+    if [ -f $filename ]; then
+        rm $filename
         echo "WebApp successfully removed!"
     else
         echo "WebApp not found!"
     fi
+
+# List
+elif [ "$command" = "json" ]; then
+
+    declare -i num=0
+
+    # Print the JSON array start
+    echo "["
+    # Set IFS to newline to handle spaces in filenames
+    IFS=$'\n'
+    # Get if not passed the files, show all files with big-webapps-exec
+    if [[ -z $one_file ]]; then
+        files=$(grep -Rl 'big-webapps-exec')
+    else
+        files=$one_file
+    fi
+
+    # Loop through all files
+    for file in $files; do
+
+        # Clean info before verify next file
+        unset browser name url icon categories profile
+
+        # Read any file and get the name, url, icon and categories
+        while IFS= read -r line; do
+            case $line in
+                "Name="*)
+                    name=${line#*Name=}
+                    ;;
+                "Exec="*)
+                    url=${line//*--app=\"}
+                    url=${url//\"}
+                    browser=${line//*big-webapps-exec }
+                    browser=${browser// *}
+                    profile=${line//*--profile-directory=}
+                    profile=${profile// *}
+                    ;;
+                "Icon="*)
+                    icon=${line#*Icon=}
+                    ;;
+                "Categories="*)
+                    categories=${line#*Categories=}
+                    ;;
+            esac
+        done <<<$(grep -m4 -e '^Name=' -e '^Exec=' -e '^Icon=' -e '^Categories=' $file)
+
+        # Print the JSON separator
+        if [[ $num -gt 0 ]]; then
+            echo ,
+        fi
+
+        # Print the JSON object with escaped quotes
+        read -d $'' ShowText <<EOF
+            {
+                "browser": "$browser",
+                "app_file": "${file//\"/\\\\\"}",
+                "app_name": "${name//\"/\\\\\"}",
+                "app_url": "${url//\"/\\\\\"}",
+                "app_icon": "$icon",
+                "app_categories": "$categories"
+            }
+EOF
+        echo "$ShowText"
+        num+=1
+    done
+    # Print the JSON array end
+    echo "]"
 
 else
     echo "Invalid command: $command"
