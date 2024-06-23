@@ -48,7 +48,7 @@ function sh_biglinux_webapp_main {
 	local paramApp="$3"
 	local paramBrowser="$4"
 	local cache_dir="$USER_DATA_DIR"
-	local link="$(cut -d "=" -f2 <<<"$paramApp")"
+	local url="${paramApp/--app=/}"
 	local _session
 	local browser_default
 	local FOLDER
@@ -81,6 +81,14 @@ function sh_biglinux_webapp_main {
 	fi
 
 	_session="$(sh_get_desktop_session)"
+#	FOLDER="$HOME_FOLDER_PROFILE/$paramClass"
+	FOLDER="$HOME_FOLDER_PROFILE/$browser_default/$paramClass"
+	CLASS="$paramClass"
+	if [[ ! -d "$FOLDER" ]]; then
+		mkdir -p "$FOLDER/chrome"
+		cp -av "$WEBAPPS_PATH"/profile/userChrome.css "$FOLDER/chrome"
+		cp -av "$WEBAPPS_PATH"/profile/user.js "$FOLDER"
+	fi
 
 	case "$browser_default" in
 	firefox|org.mozilla.firefox|librewolf|io.gitlab.librewolf-community)
@@ -88,14 +96,6 @@ function sh_biglinux_webapp_main {
 #		exec /var/lib/flatpak/exports/bin/io.gitlab.librewolf-community
 #		FOLDER=~/.var/app/org.mozilla.firefox/data/netflix-webapp-biglinux-org.mozilla.firefox
 #		exec /var/lib/flatpak/exports/bin/org.mozilla.firefox
-		FOLDER="$HOME_FOLDER/$paramClass"
-		CLASS="$paramClass"
-
-		if [[ ! -d "$FOLDER" ]]; then
-			mkdir -p "$FOLDER/chrome"
-			cp -a "$WEBAPPS_PATH"/profile/userChrome.css "$FOLDER/chrome"
-			cp -a "$WEBAPPS_PATH"/profile/user.js "$FOLDER"
-		fi
 		case "${_session^^}" in
 			WAYLAND)
 				MOZ_ENABLE_WAYLAND=1 \
@@ -114,6 +114,96 @@ function sh_biglinux_webapp_main {
 			--no-remote \
 			--new-instance "${paramApp/--app=/}"
 		;;
+
+	falkon)
+		case "${_session^^}" in
+			X11)
+				MOZ_APP_REMOTINGNAME="$CLASS" \
+				MOZ_DISABLE_CONTENT_SANDBOX=1 \
+				MOZ_DISABLE_GMP_SANDBOX=1 \
+				PATH="/usr/local/bin:/usr/bin" \
+					exec $browser_default \
+						--portable \
+						--no-remote \
+						--profile "$FOLDER" \
+						--user-data-dir="$cache_dir" \
+						--wmclass=$CLASS \
+						--private-browsing $url
+				;;
+			WAYLAND)
+				MOZ_ENABLE_WAYLAND=1	\
+				MOZ_APP_REMOTINGNAME="$CLASS" \
+				MOZ_DISABLE_CONTENT_SANDBOX=1 \
+				MOZ_DISABLE_GMP_SANDBOX=1 \
+				PATH="/usr/local/bin:/usr/bin" \
+				exec $browser_default \
+					--portable \
+					--no-remote \
+					--user-data-dir="$cache_dir" \
+					--profile "$FOLDER" \
+					--wmclass=$CLASS \
+					--private-browsing $url
+				;;
+		esac
+		;;
+
+	opera)
+		case "${_session^^}" in
+			X11)
+				MOZ_APP_REMOTINGNAME="$CLASS" \
+				MOZ_DISABLE_CONTENT_SANDBOX=1 \
+				MOZ_DISABLE_GMP_SANDBOX=1 \
+				PATH="/usr/local/bin:/usr/bin" \
+					exec $browser_default \
+						--portable \
+						--no-remote \
+						--profile-directory=Default \
+						--wmclass=$CLASS \
+						--private-browsing $url
+				;;
+			WAYLAND)
+				MOZ_ENABLE_WAYLAND=1	\
+				MOZ_APP_REMOTINGNAME="$CLASS" \
+				MOZ_DISABLE_CONTENT_SANDBOX=1 \
+				MOZ_DISABLE_GMP_SANDBOX=1 \
+				PATH="/usr/local/bin:/usr/bin" \
+				exec $browser_default \
+					--portable \
+					--no-remote \
+					--profile-directory=Default \
+					--wmclass=$CLASS \
+					--private-browsing $url
+				;;
+		esac
+		;;
+	palemoon)
+		cp -av "$WEBAPPS_PATH"/profile/xulstore.json "$FOLDER"
+		cp -av "$WEBAPPS_PATH"/profile/prefs.js "$FOLDER"
+		case "${_session^^}" in
+			X11)
+				MOZ_APP_REMOTINGNAME="$CLASS" \
+				MOZ_DISABLE_CONTENT_SANDBOX=1 \
+				MOZ_DISABLE_GMP_SANDBOX=1 \
+				PATH="/usr/local/bin:/usr/bin" \
+					exec $browser_default \
+						--no-remote \
+						--profile "$FOLDER" \
+						--new-instance \
+						--user-data-dir=$cache_dir \
+						--new-tab $url
+				;;
+			WAYLAND)
+				MOZ_ENABLE_WAYLAND=1	\
+				PATH="/usr/local/bin:/usr/bin" \
+				exec $browser_default \
+					--no-remote \
+					--profile "$FOLDER" \
+					--new-instance \
+					--user-data-dir=$cache_dir \
+					--new-tab $url
+				;;
+		esac
+		;;
 	*)
 		line_exec=" --user-data-dir=$cache_dir $parameters"
 		case "${_session^^}" in
@@ -124,12 +214,7 @@ function sh_biglinux_webapp_main {
 				:
 			;;
 		esac
-
-		if [[ "$browser_default" = "falkon" ]]; then
-			PATH="/usr/local/bin:/usr/bin" exec $browser_default --portable --no-remote $link
-		else
-			PATH="/usr/local/bin:/usr/bin" exec $browser_default $line_exec
-		fi
+		PATH="/usr/local/bin:/usr/bin" exec $browser_default $line_exec
 		;;
 	esac
 }
