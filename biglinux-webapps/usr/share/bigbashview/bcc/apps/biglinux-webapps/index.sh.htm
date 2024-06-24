@@ -37,11 +37,10 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 APP="${0##*/}"
-_DATE_ALTERED_="19/06/2024"
-_TIME_ALTERED_="04:54"
-_VERSION_="1.0.0-20240619"
-LOCAL_VERSION="${_VERSION_} - ${_TIME_ALTERED_}"
-_UPDATED_="${_DATE_ALTERED_} - ${_TIME_ALTERED_}"
+_DATE_ALTERED_='23/06/2024 - 21:55'
+_VERSION_="1.0.0-20240623"
+_HTML_VERSION_="${_VERSION_} - ${_DATE_ALTERED_}"
+_UPDATED_="${_DATE_ALTERED_}"
 
 LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 [[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
@@ -146,28 +145,13 @@ function sh_index_sh_main() {
 			<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
 			 "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
 			<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-			 width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
-			 preserveAspectRatio="xMidYMid meet">
-			<g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-			fill="#FFFFFF" stroke="none">
-			<path d="M2325 4874 c-342 -49 -526 -102 -780 -224 -238 -115 -428 -252 -626
-			-449 -355 -355 -567 -767 -656 -1276 -25 -143 -25 -587 0 -730 89 -509 301
-			-921 656 -1276 356 -356 775 -571 1279 -656 153 -26 571 -26 724 0 504 85 923
-			300 1279 656 356 356 571 775 656 1279 26 153 26 571 0 724 -85 504 -300 923
-			-656 1279 -354 353 -770 568 -1271 655 -91 16 -529 29 -605 18z m595 -915 c67
-			-31 140 -102 172 -166 19 -40 23 -64 23 -138 0 -81 -3 -95 -29 -143 -35 -63
-			-86 -111 -158 -149 -48 -25 -63 -28 -158 -28 -93 0 -112 3 -162 27 -69 32
-			-136 97 -169 163 -20 41 -24 65 -24 135 0 72 4 93 27 135 26 51 103 131 149
-			155 88 48 236 52 329 9z m-331 -950 c70 -15 145 -56 193 -105 88 -89 113 -181
-			97 -359 -8 -83 -29 -171 -95 -408 -105 -371 -125 -460 -127 -562 -2 -94 16
-			-135 73 -162 53 -25 177 -23 269 5 40 13 75 21 78 18 3 -2 -3 -39 -13 -80
-			l-18 -76 -50 -19 c-312 -117 -328 -121 -476 -121 -168 -1 -265 29 -352 108
-			-90 82 -124 176 -114 320 9 123 21 178 110 494 96 338 116 429 116 524 0 138
-			-41 178 -185 178 -55 0 -103 -7 -154 -22 -40 -13 -75 -22 -77 -20 -5 6 34 150
-			43 158 12 12 189 76 289 105 148 44 266 51 393 24z"/>
-			</g>
+				 width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
+			 	preserveAspectRatio="xMidYMid meet">
+				<g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+					fill="#FFFFFF" stroke="none">
+					<path d="M2325 4874 c-342 -49 -526 -102 -780 -224 -238 -115 -428 -252 -626 -449 -355 -355 -567 -767 -656 -1276 -25 -143 -25 -587 0 -730 89 -509 301 -921 656 -1276 356 -356 775 -571 1279 -656 153 -26 571 -26 724 0 504 85 923 300 1279 656 356 356 571 775 656 1279 26 153 26 571 0 724 -85 504 -300 923 -656 1279 -354 353 -770 568 -1271 655 -91 16 -529 29 -605 18z m595 -915 c67 -31 140 -102 172 -166 19 -40 23 -64 23 -138 0 -81 -3 -95 -29 -143 -35 -63 -86 -111 -158 -149 -48 -25 -63 -28 -158 -28 -93 0 -112 3 -162 27 -69 32 -136 97 -169 163 -20 41 -24 65 -24 135 0 72 4 93 27 135 26 51 103 131 149 155 88 48 236 52 329 9z m-331 -950 c70 -15 145 -56 193 -105 88 -89 113 -181 97 -359 -8 -83 -29 -171 -95 -408 -105 -371 -125 -460 -127 -562 -2 -94 16 -135 73 -162 53 -25 177 -23 269 5 40 13 75 21 78 18 3 -2 -3 -39 -13 -80 l-18 -76 -50 -19 c-312 -117 -328 -121 -476 -121 -168 -1 -265 29 -352 108 -90 82 -124 176 -114 320 9 123 21 178 110 494 96 338 116 429 116 524 0 138 -41 178 -185 178 -55 0 -103 -7 -154 -22 -40 -13 -75 -22 -77 -20 -5 6 34 150 43 158 12 12 189 76 289 105 148 44 266 51 393 24z"/>
+				</g>
 			</svg>
-
 		</svg>
 		<span>
 			$Sobre
@@ -293,30 +277,6 @@ function sh_index_sh_main() {
 		</div>
 		</li>
 
-		<script>
-		// Variável que você deseja ler
-		var myVariable = true; // Aqui você pode definir o valor da variável conforme necessário
-
-		// Função para marcar ou desmarcar o checkbox com base no valor da variável
-		function updateCheckbox() {
-		  var checkbox = document.getElementById("shortcut");
-		  checkbox.checked = myVariable;
-		}
-
-		// Chama a função para atualizar o estado do checkbox
-		updateCheckbox();
-		</script>
-
-		<script>
-		function checkIfChecked() {
-		  var checkbox = document.getElementById("shortcut");
-		  if (checkbox.checked) {
-		    alert("O checkbox está marcado!");
-		  } else {
-		    alert("O checkbox não está marcado.");
-		  }
-		}
-		</script>
 	EOF
 
 	cat <<-EOF
@@ -585,9 +545,8 @@ function sh_index_sh_main() {
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;$(gettext "Sessão") : $XDG_SESSION_TYPE
 		<li>$(gettext "Aplicativo"):
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;$(gettext "Nome") : $TEXTDOMAIN</span>
-		<br>&nbsp;&nbsp;&nbsp;&nbsp;$(gettext "Htm versão") : $LOCAL_VERSION
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;$(gettext "Htm versão") : $_HTML_VERSION_
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;$(gettext "Lib versão") : $_WEBLIB_VERSION_
-		<br>&nbsp;&nbsp;&nbsp;&nbsp;$(gettext "Atualizado em") : $_UPDATED_
 		<li>$(gettext "Desenvolvedores"):
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;2023-2024, Vilmar Catafesta, vcatafesta@gmail.com
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;2023-2023, Bruno Gonçalves, www.biglinux.com.br

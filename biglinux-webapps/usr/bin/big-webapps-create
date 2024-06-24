@@ -1,0 +1,216 @@
+#!/usr/bin/env bash
+
+display_help() {
+    echo "This script manages WebApps by creating, editing, or removing .desktop files for specified browsers and URLs."
+    echo ""
+    echo "Usage:"
+    echo "  $0 {create|edit|remove} <browser> <name> <url> <icon> <category> <profile>"
+    echo ""
+    echo "Commands:"
+    echo "  create     - Creates a new WebApp .desktop file"
+    echo "  remove     - Removes an existing WebApp .desktop file"
+    echo "  json       - Show all WebApps in JSON format"
+    echo "  json file  - Change file to filename to show in JSON format"
+    echo ""
+    echo "Arguments for create, the order is important:"
+    echo "  <browser>  - The browser to use (e.g., google-chrome-stable, brave-browser)"
+    echo "  <name>     - The display name of the WebApp"
+    echo "  <url>      - The URL of the WebApp"
+    echo "  <icon>     - The icon for the WebApp"
+    echo "  <category> - The category for the WebApp"
+    echo "  <profile>  - The profile directory to use"
+    echo ""
+    echo "Examples:"
+    echo "  Create a WebApp:"
+    echo "    $0 create brave \"BigLinux\" \"https://www.biglinux.com.br\" \"big-logo\" \"Webapps\" \"Default\""
+    echo ""
+    echo "  Remove an existing WebApp:"
+    echo "    $0 remove brave \"https://www.biglinux.com.br\" \"Default\""
+}
+
+
+local_path=~/.local/share/applications
+
+# Check for minimum arguments
+if [ "$#" -lt 1 ]; then
+    display_help
+    exit 1
+fi
+
+# Main command
+command="$1"
+shift
+
+if [[ $command == "json" ]]; then
+    one_file="$1"
+else
+    # Set global variables
+    browser="$1"
+    name="$2"
+    url="$3"
+    icon="$4"
+    category="$5"
+    profile="$6"
+fi
+
+# Check if the folder exists and create it if it doesn't
+[[ ! -d $local_path ]] && mkdir -p $local_path
+
+# Change to the applications folder
+cd $local_path || return 1
+
+# Adjust the browser name for the filename and class
+short_browser=$(sed 's/.*[Cc]hrom.*/chrome/
+                    s/.*[Bb]rave.*/brave/
+                    s/.*[Ee]dge.*/msedge/
+                    s/.*[Vv]ivaldi.*/vivaldi/' <<< "$browser")
+
+# Adjust the class by replacing "/" with "__" and removing https
+class=$(sed 's|https://||;s|http://||g;s|/|__|g' <<< "$url")
+
+# Define the filename in Wayland compatible format
+filename="$short_browser-$(sed 's|https://||;s|http://||;s|?.*||g;s|/|__|g' <<< $url)__-$profile.desktop"
+
+# Ensure filename doesn't end with more than two underscores and replace final __-profile with -profile
+filename=$(sed -E "s/(__.*)__-$profile/\1-$profile/g" <<< "$filename")
+
+# Verify if the WebApp already exists
+if [[ -e $local_path/$filename ]]; then
+
+    # If the WebApp already exists, add BigWebApp1 or first available number
+    i=1
+    filename_orig=$filename
+    while [[ -e $local_path/$filename ]]; do
+        filename="${filename_orig/.desktop/}-BigWebApp$i.desktop"
+        ((++i))
+    done
+
+fi
+
+# Create
+if [ "$command" = "create" ]; then
+    if [ "$#" -ne 6 ]; then
+        display_help
+        exit 1
+    fi
+
+    # Create the .desktop file
+    read -d $'' ShowText <<EOF
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=$name
+Exec=filename="$filename" big-webapps-exec $browser --class="$class" --profile-directory=$profile --app="$url"
+Icon=$icon
+StartupWMClass=$class
+Categories=$category
+StartupNotify=false
+EOF
+
+echo "$ShowText" > "$filename"
+
+echo "WebApp $name successfully created as $filename"
+
+# Verify
+elif [ "$command" = "verify" ]; then
+    if [ "$#" -ne 6 ]; then
+        display_help
+        exit 1
+    fi
+
+    if [ -f $filename_orig ]; then
+        echo "true"
+        exit 1
+    else
+        echo "false"
+        exit 0
+    fi
+
+# Remove
+elif [ "$command" = "remove" ]; then
+    if [ "$#" -ne 3 ]; then
+        display_help
+        exit 1
+    fi
+
+    if [ -f $filename ]; then
+        rm $filename
+        echo "WebApp successfully removed!"
+    else
+        echo "WebApp not found!"
+    fi
+
+# List
+elif [ "$command" = "json" ]; then
+
+    declare -i num=0
+
+    # Print the JSON array start
+    echo "["
+    # Set IFS to newline to handle spaces in filenames
+    IFS=$'\n'
+    # Get if not passed the files, show all files with big-webapps-exec
+    if [[ -z $one_file ]]; then
+        files=$(grep -Rl 'big-webapps-exec')
+    else
+        files=$one_file
+    fi
+
+    # Loop through all files
+    for file in $files; do
+
+        # Clean info before verify next file
+        unset browser name url icon categories profile
+
+        # Read any file and get the name, url, icon and categories
+        while IFS= read -r line; do
+            case $line in
+                "Name="*)
+                    name=${line#*Name=}
+                    ;;
+                "Exec="*)
+                    url=${line//*--app=\"}
+                    url=${url//\"}
+                    browser=${line//*big-webapps-exec }
+                    browser=${browser// *}
+                    profile=${line//*--profile-directory=}
+                    profile=${profile// *}
+                    ;;
+                "Icon="*)
+                    icon=${line#*Icon=}
+                    ;;
+                "Categories="*)
+                    categories=${line#*Categories=}
+                    ;;
+            esac
+        done <<<$(grep -m4 -e '^Name=' -e '^Exec=' -e '^Icon=' -e '^Categories=' $file)
+
+        # Print the JSON separator
+        if [[ $num -gt 0 ]]; then
+            echo ,
+        fi
+
+        # Print the JSON object with escaped quotes
+        read -d $'' ShowText <<EOF
+            {
+                "browser": "$browser",
+                "app_file": "${file//\"/\\\\\"}",
+                "app_name": "${name//\"/\\\\\"}",
+                "app_url": "${url//\"/\\\\\"}",
+                "app_icon": "$icon",
+                "app_categories": "$categories"
+            }
+EOF
+        echo "$ShowText"
+        num+=1
+    done
+    # Print the JSON array end
+    echo "]"
+
+else
+    echo "Invalid command: $command"
+    display_help
+    exit 1
+fi
