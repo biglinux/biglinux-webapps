@@ -346,6 +346,7 @@ $(function () {
 
     let formUrl = $("#formAdd").attr("action");
     let formData = $("#formAdd").serialize();
+
     fetch(`/execute$./${formUrl}?${formData}`)
       .then(resp => resp.text())
       .then(() => {
@@ -354,7 +355,10 @@ $(function () {
         setTimeout(function () {
           $(".lds-ring").css("display", "none");
           $("#text-loading-add").hide();
-          $(".pop-up#installSuccess").addClass("visible");
+//        $(".pop-up#installSuccess").addClass("visible");
+// insert
+		    $("#installClose").click();
+// insert
         }, 3000);
         $("#installClose").click(function () {
           document.location.reload(true);

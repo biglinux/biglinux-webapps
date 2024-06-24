@@ -1,3 +1,7 @@
+* {
+	font-family: Ubuntu Condensed, Lato, Sans-serif;
+}
+
 :root {
   --body-bg-color: #3d4550;
   --theme-bg-color: rgba(16 18 27 / 40%);
@@ -91,11 +95,11 @@ a:hover {
 
 /* BODY */
 body {
+/*  font: 16px/31px Lato, Ubuntu Condensed;*/
   font-size: 16px;
   background: var(--body-bg-color);
   position: relative;
   color: var(--text-a-color);
-  font: 16px/31px lato, sans-serif;
   text-align: left;
   height: 100%;
   overflow: hidden;
@@ -448,7 +452,6 @@ a.button {
   padding: 0.8rem 1rem;
   font-size: 0.8rem;
   text-transform: uppercase;
-  font-family: lato, sans-serif;
   font-weight: 700;
   letter-spacing: 0;
   border-radius: 0;
@@ -994,7 +997,7 @@ ul#menu-desktop img {
 }
 
 input {
-  font: 12px/26px "Lato", sans-serif;
+/*  font: 12px/26px "Lato", "Ubuntu Condensed", sans-serif;*/
   border-color: transparent transparent var(--search-color) transparent;
 }
 
@@ -1066,7 +1069,6 @@ input {
   width: 100%;
   display: inline-block;
   background: transparent;
-  font-family: lato;
   font-size: 16px;
   color: var(--text-a-color);
   margin-right: 10px;
@@ -1476,7 +1478,6 @@ li img {
 
 .tabs .content section h2,
 .tabs ul li label {
-  font-family: lato;
   font-size: 18px;
   color: var(--text-a-color);
   user-select: none;
