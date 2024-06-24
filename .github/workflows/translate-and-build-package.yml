@@ -31,48 +31,48 @@ jobs:
             cancel
           fi
       
-      - name: Install Translator Dependencies
-        shell: bash
-        run: |
-          sudo apt-get update
-          sudo apt-get install \
-          git \
-          gettext \
-          npm
-          # Install attranslator
-          sudo npm install --location=global attranslate
-
-      ## Tmate ##
-      - name: Setup TMATE Session
-        uses: mxschmitt/action-tmate@v3
-        if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
-
-      - name: Translate Package
-        shell: bash #-O extglob {0}
-        env:
-          AZURE_KEY: ${{ secrets.AZURE_KEY }}
-          OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
-        run: |
-          cd ..
-          git clone https://github.com/biglinux/big-auto-translator.git
-          mv big-auto-translator/gettext_po_generator_github.sh .
-          sudo cp -f big-auto-translator/openai-translate.js /usr/local/lib/node_modules/attranslate/dist/services/openai-translate.js
-          gitfolder=$(echo ${{ github.repository }} | rev | cut -d "/" -f1 | rev)
-          # export OriginalLang=en-US
-          bash gettext_po_generator_github.sh $gitfolder
-
-      - name: Update github
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add --all
-          if [ -n "$(git commit -m "translate $(date +%y-%m-%d_%H:%M)" -a | grep "nothing to commit")" ];then exit 0; fi
-
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+      # - name: Install Translator Dependencies
+      #   shell: bash
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install \
+      #     git \
+      #     gettext \
+      #     npm
+      #     # Install attranslator
+      #     sudo npm install --location=global attranslate
+      #
+      # ## Tmate ##
+      # - name: Setup TMATE Session
+      #   uses: mxschmitt/action-tmate@v3
+      #   if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
+      #
+      # - name: Translate Package
+      #   shell: bash #-O extglob {0}
+      #   env:
+      #     AZURE_KEY: ${{ secrets.AZURE_KEY }}
+      #     OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
+      #   run: |
+      #     cd ..
+      #     git clone https://github.com/biglinux/big-auto-translator.git
+      #     mv big-auto-translator/gettext_po_generator_github.sh .
+      #     sudo cp -f big-auto-translator/openai-translate.js /usr/local/lib/node_modules/attranslate/dist/services/openai-translate.js
+      #     gitfolder=$(echo ${{ github.repository }} | rev | cut -d "/" -f1 | rev)
+      #     # export OriginalLang=en-US
+      #     bash gettext_po_generator_github.sh $gitfolder
+      #
+      # - name: Update github
+      #   run: |
+      #     git config --local user.email "github-actions[bot]@users.noreply.github.com"
+      #     git config --local user.name "github-actions[bot]"
+      #     git add --all
+      #     if [ -n "$(git commit -m "translate $(date +%y-%m-%d_%H:%M)" -a | grep "nothing to commit")" ];then exit 0; fi
+      #
+      # - name: Push changes
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     branch: ${{ github.ref }}
 
       - name: Send Hooks BigLinux Build Package
         shell: bash
