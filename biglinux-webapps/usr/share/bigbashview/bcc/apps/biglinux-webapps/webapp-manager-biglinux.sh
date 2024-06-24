@@ -6,7 +6,7 @@
 #  Description: WebApps installing programs for BigLinux
 #
 #  Created: 2020/01/11
-#  Altered: 2024/06/20
+#  Altered: 2024/06/24
 #
 #  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
 #                2022-2023, Bruno Gonçalves <www.biglinux.com.br>
@@ -35,7 +35,7 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 APP="${0##*/}"
-_VERSION_="1.0.0-20240620"
+_VERSION_="1.0.0-20240624"
 LIBRARY=${LIBRARY:-'/usr/share/bigbashview/bcc/shell'}
 [[ -f "${LIBRARY}/bcclib.sh" ]] && source "${LIBRARY}/bcclib.sh"
 [[ -f "${LIBRARY}/tinilib.sh" ]] && source "${LIBRARY}/tinilib.sh"
@@ -61,11 +61,6 @@ function sh_webapps_main {
 	local half_height
 	local _session
 
-	cd "$WEBAPPS_PATH" || {
-		notify-send --icon=webapp.svg --app-name "$0" "$TITLE" "${Amsg[error_access_dir]}\n$WEBAPP_PATH" --expire-time=2000
-		return 1
-	}
-
 	# Verifica se o arquivo .ini existe no HOME_FOLDER, senão executa um script de checagem dos navegadores
 	[[ -r "$INI_FILE_WEBAPPS" ]] || sh_webapp_check_browser
 	# Verifica se o arquivo .ini tem algum browser default, senão executa um script de checagem dos navegadores
@@ -75,6 +70,14 @@ function sh_webapps_main {
 		yadmsg "${Amsg[error_browser_config]}"
 		sh_webapp_check_browser
 	fi
+
+	# verifica que existem webapp antigos para converter para novo formato wayland
+	sh_webapp_convert
+
+	cd "$WEBAPPS_PATH" || {
+		notify-send --icon=webapp.svg --app-name "$0" "$TITLE" "${Amsg[error_access_dir]}\n$WEBAPP_PATH" --expire-time=2000
+		return 1
+	}
 
 	# Obtém a largura da tela primária usando xrandr
 	if width=$(xrandr | grep -oP 'primary \K[0-9]+(?=x)') && [[ -n "$width" ]]; then
