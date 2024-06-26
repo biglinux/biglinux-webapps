@@ -2,6 +2,9 @@
 
 cd /usr/share/bigbashview/apps/webapps/
 
+# Update files if needed
+/usr/share/bigbashview/apps/webapps/update_old_desktop_files.sh
+
 # If not exit folder, create
 if [[ ! -e ~/.cache ]]; then
     mkdir -p ~/.cache

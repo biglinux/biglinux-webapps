@@ -25,29 +25,13 @@ display_help() {
     echo "    $0 create brave \"BigLinux\" \"https://www.biglinux.com.br\" \"big-logo\" \"Webapps\" \"Default\""
     echo ""
     echo "  Remove an existing WebApp:"
-    echo "    $0 remove brave \"https://www.biglinux.com.br\" \"Default\""
+    echo "    $0 remove brave-www.biglinux.com.br__-Default.desktop"
 }
 
 # Check for minimum arguments
 if [ "$#" -lt 1 ]; then
     display_help
     exit
-fi
-
-# Main command
-command="$1"
-shift
-
-if [[ $command == "json" ]]; then
-    one_file="$1"
-else
-    # Set global variables
-    browser="$1"
-    name="$2"
-    url="$3"
-    icon="$4"
-    category="$5"
-    profile="$6"
 fi
 
 # Check if the folder exists and create it if it doesn't
@@ -57,6 +41,44 @@ fi
 
 # Change to the applications folder, if it fails, exit
 cd ~/.local/share/applications || { echo "Failed to change directory to ~/.local/share/applications"; exit 1; }
+
+# Main command
+command="$1"
+shift
+
+if [[ $command == "json" ]]; then
+    one_file="$1"
+
+# Remove
+elif [ $command == "remove" ]; then
+    if [ "$#" != "1" ]; then
+        display_help
+        exit 1
+    fi
+
+    filename="$1"
+
+    if [ -f $filename ]; then
+        rm $filename
+        echo "WebApp successfully removed!"
+        exit 0
+    else
+        echo "WebApp not found!"
+        exit 1
+    fi
+
+else
+    # Set global variables
+    browser="$1"
+    name="$2"
+    url="$3"
+    icon="$4"
+    icon=${icon//*\/}
+    icon=${icon//\.*}
+    category="$5"
+    profile="$6"
+fi
+
 
 # Adjust the browser name for the filename and class
 short_browser=$(sed 's/.*[Cc]hrom.*/chrome/
@@ -71,7 +93,7 @@ class=$(sed 's|https://||;s|http://||g;s|/|__|g' <<< "$url")
 filename="$short_browser-$(sed 's|https://||;s|http://||;s|?.*||g;s|/|__|g' <<< $url)__-$profile.desktop"
 
 # Ensure filename doesn't end with more than two underscores and replace final __-profile with -profile
-filename=$(sed -E "s/(__.*)__-$profile/\1-$profile/g" <<< "$filename")
+filename=$(sed -E "s/(__.*)__-$profile/\1-$profile/g;s|__\@-|_@-|g" <<< "$filename")
 
 # Verify if the WebApp already exists
 if [[ -e ~/.local/share/applications/$filename ]]; then
@@ -102,7 +124,7 @@ Terminal=false
 Type=Application
 Name=$name
 Exec=filename="$filename" big-webapps-exec $browser --class="$class" --profile-directory=$profile --app="$url"
-Icon=$icon
+Icon=${icon//*\/}
 StartupWMClass=$class
 Categories=$category
 StartupNotify=false
@@ -125,20 +147,6 @@ elif [ "$command" = "verify" ]; then
     else
         echo "false"
         exit 0
-    fi
-
-# Remove
-elif [ "$command" = "remove" ]; then
-    if [ "$#" -ne 3 ]; then
-        display_help
-        exit 1
-    fi
-
-    if [ -f $filename ]; then
-        rm $filename
-        echo "WebApp successfully removed!"
-    else
-        echo "WebApp not found!"
     fi
 
 # List
@@ -170,7 +178,7 @@ elif [ "$command" = "json" ]; then
                     name=${line#*Name=}
                     ;;
                 "Exec="*)
-                    url=${line//*--app=\"}
+                    url=${line//*--app=}
                     url=${url//\"}
                     browser=${line//*big-webapps-exec }
                     browser=${browser// *}
@@ -179,6 +187,13 @@ elif [ "$command" = "json" ]; then
                     ;;
                 "Icon="*)
                     icon=${line#*Icon=}
+                    # Copy the icon to the applications folder if it's not a system icon
+                    if [[ $icon =~ / ]]; then
+                        cp "$icon" ~/.local/share/icons/
+                        sed -Ei 's|^Icon=.*/(.*)\..*|Icon=\1|g' "$file"
+                    fi
+                    icon=${icon//*\/}
+                    icon=${icon//\.*}
                     ;;
                 "Categories="*)
                     categories=${line#*Categories=}
@@ -199,6 +214,7 @@ elif [ "$command" = "json" ]; then
                 "app_name": "${name//\"/\\\\\"}",
                 "app_url": "${url//\"/\\\\\"}",
                 "app_icon": "$icon",
+                "app_profile": "$profile",
                 "app_categories": "$categories"
             }
 EOF
