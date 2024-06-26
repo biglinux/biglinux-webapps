@@ -1234,6 +1234,11 @@ input {
   justify-content: space-evenly;
 }
 
+#menuNative {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 #menu a img {
   border: 1px solid #5a6374;
   color: var(--text-a-color);
@@ -1243,7 +1248,22 @@ input {
   box-shadow: 0 0 8px 2px #3a404f;
 }
 
+#menuNative a img {
+  border: 1px solid #5a6374;
+  color: var(--text-a-color);
+  text-decoration: none;
+  margin: 10px 0 0 0;
+  border-radius: 5px;
+  box-shadow: 0 0 8px 2px #3a404f;
+}
+
 #menu a:hover img:hover {
+  border: 1px solid #00ffff;
+  box-shadow: 0 0 8px 2px #1e59f1;
+  color: #1e59f1;
+}
+
+#menuNative a:hover img:hover {
   border: 1px solid #00ffff;
   box-shadow: 0 0 8px 2px #1e59f1;
   color: #1e59f1;
@@ -1831,6 +1851,14 @@ li img {
   left: 95%;
 }
 
+.menuNative {
+  fill: var(--text-a-color);
+  width: 15px;
+  height: 18px;
+  position: relative;
+  left: 95%;
+}
+
 @media screen and (max-width: 415px) {
   .hidemenu .menu {
     display: none;
@@ -2228,7 +2256,10 @@ hr {
   border-bottom: 2px solid var(--border-color);
 }
 
-
+#ativar-li,
+#desativar-li {
+  border-bottom: 2px solid var(--border-color);
+}
 
 #content {
   display: flex;
