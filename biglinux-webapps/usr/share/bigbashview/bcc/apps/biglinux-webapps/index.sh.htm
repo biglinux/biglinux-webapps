@@ -8,7 +8,7 @@
 #  Description: WebApps installing programs for BigLinux
 #
 #  Created: 2020/01/11
-#  Altered: 2024/06/19
+#  Altered: 2024/06/26
 #
 #  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
 #                2020-2023, Bruno Gonçalves <www.biglinux.com.br>
@@ -37,8 +37,8 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 APP="${0##*/}"
-_DATE_ALTERED_='23/06/2024 - 21:55'
-_VERSION_="1.0.0-20240623"
+_DATE_ALTERED_='26/06/2024 - 16:50'
+_VERSION_="1.0.0-20240626"
 _HTML_VERSION_="${_VERSION_} - ${_DATE_ALTERED_}"
 _UPDATED_="${_DATE_ALTERED_}"
 
@@ -70,6 +70,8 @@ function sh_index_sh_main() {
 		<span class="hide text-loading" id="text-loading-restore">$Importando_os_webapps</span>
 		<span class="hide text-loading" id="text-loading-del">$Removendo_o_webapp</span>
 		<span class="hide text-loading" id="text-loading-del-all">$Removendo_todos_os_webapps</span>
+		<span class="hide text-loading" id="text-loading-ativar">$Ativando_WebApps_Nativos</span>
+		<span class="hide text-loading" id="text-loading-desativar">$Desativando_WebApps_Nativos</span>
 		<div></div>
 		<div></div>
 		<div></div>
@@ -523,6 +525,7 @@ function sh_index_sh_main() {
 		<div class="content-section" style="margin-top:0">
 		<div class="content-section-title" style="text-align:left">
 		$WebApps_Nativos
+		$(sh_webapp_insert_menu)
 		</div>
 		<ul id="content-ul">'
 	EOF
@@ -530,10 +533,14 @@ function sh_index_sh_main() {
 	sh_add_native_desktop_files # source: /usr/share/bigbashview/bcc/shell/weblib.sh
 
 	cat <<-EOF
+
 		</ul>
 		</div><br/>
+
 		</div>
 		<!-- FIM TABS CONTENT WEBAPPBIG -->
+
+
 
 		<!-- INSERT -->
 		<!-- INICIO TABS CONTENT ABOUT -->
