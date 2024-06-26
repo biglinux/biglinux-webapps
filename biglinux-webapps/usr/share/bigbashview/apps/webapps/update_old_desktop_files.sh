@@ -4,7 +4,7 @@
 cd ~/.local/share/applications
 
 # Get the default browser
-defaultBrowser=$(/usr/share/bigbashview/apps/webapps/check-browser.sh)
+defaultBrowser=$(/usr/share/bigbashview/apps/webapps/check_browser.sh --default)
 
 # Iterate over all webapps
 for file in *webapp-biglinux*; do
