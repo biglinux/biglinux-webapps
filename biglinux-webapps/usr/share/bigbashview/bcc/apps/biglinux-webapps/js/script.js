@@ -183,7 +183,7 @@ $(function () {
     document.body.classList.toggle("light-mode");
     $("body").toggleClass("light-mode");
     _run(
-      'sh_setbgcolor "' + document.body.classList.contains("light-mode") + '"',
+      'sh_webapp_setbgcolor "' + document.body.classList.contains("light-mode") + '"',
     );
   });
   // Vilmar Catafesta, <vcatafesta@gmail.com> ter 04 jun 2024 07:27:38 -04
