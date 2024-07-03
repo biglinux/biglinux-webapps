@@ -3,7 +3,7 @@
 #  Description: JS Library for BigLinux WebApps
 #
 #  Created: 2024/05/31
-#  Altered: 2024/06/26
+#  Altered: 2024/07/03
 #
 #  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
 #                2020-2023, Bruno Gonçalves <www.biglinux.com.br>
@@ -75,68 +75,68 @@ function wrapper_browser(name_exec) {
   switch (name_exec) {
     case "brave":
     case "com.brave.Browser":
-      $("#perfilAdd").removeClass('disabled');
+      $("#perfilAdd").removeClass("disabled");
       $("#browser").attr("src", "icons/brave.svg");
       break;
 
     case "google-chrome-stable":
     case "com.google.Chrome":
-      $("#perfilAdd").removeClass('disabled');
+      $("#perfilAdd").removeClass("disabled");
       $("#browser").attr("src", "icons/chrome.svg");
       break;
 
     case "chromium":
     case "org.chromium.Chromium":
-      $("#perfilAdd").removeClass('disabled');
+      $("#perfilAdd").removeClass("disabled");
       $("#browser").attr("src", "icons/chromium.svg");
       break;
 
     case "com.github.Eloston.UngoogledChromium":
-      $("#perfilAdd").removeClass('disabled');
+      $("#perfilAdd").removeClass("disabled");
       $("#browser").attr("src", "icons/ungoogled.svg");
       break;
 
     case "microsoft-edge-stable":
     case "com.microsoft.Edge":
-      $("#perfilAdd").removeClass('disabled');
+      $("#perfilAdd").removeClass("disabled");
       $("#browser").attr("src", "icons/edge.svg");
       break;
 
     case "epiphany":
     case "org.gnome.Epiphany":
-      $("#perfilAdd").addClass('disabled');
+      $("#perfilAdd").addClass("disabled");
       $("#browser").attr("src", "icons/epiphany.svg");
       break;
 
     case "firefox":
     case "org.mozilla.firefox":
-      $("#perfilAdd").addClass('disabled');
+      $("#perfilAdd").addClass("disabled");
       $("#browser").attr("src", "icons/firefox.svg");
       break;
 
     case "librewolf":
     case "io.gitlab.librewolf-community":
-      $("#perfilAdd").addClass('disabled');
+      $("#perfilAdd").addClass("disabled");
       $("#browser").attr("src", "icons/librewolf.svg");
       break;
 
     case "vivaldi-stable":
-      $("#perfilAdd").removeClass('disabled');
+      $("#perfilAdd").removeClass("disabled");
       $("#browser").attr("src", "icons/vivaldi.svg");
       break;
 
     case "falkon":
-      $("#perfilAdd").removeClass('disabled');
+      $("#perfilAdd").removeClass("disabled");
       $("#browser").attr("src", "icons/falkon.svg");
       break;
 
     case "opera":
-      $("#perfilAdd").removeClass('disabled');
+      $("#perfilAdd").removeClass("disabled");
       $("#browser").attr("src", "icons/opera.svg");
       break;
 
     case "palemoon":
-      $("#perfilAdd").removeClass('disabled');
+      $("#perfilAdd").removeClass("disabled");
       $("#browser").attr("src", "icons/palemoon.svg");
       break;
 
@@ -161,7 +161,7 @@ $(function () {
     if (tab_content == "#list-tab-content") {
       $("#tab2").trigger("click");
     }
-    // insert    
+    // insert
     if (tab_content == "#webappsbig-tab-content") {
       $("#tab3").trigger("click");
     }
@@ -169,22 +169,22 @@ $(function () {
       $("#tab4").trigger("click");
     }
     // insert
-
   });
 
-  $(".dark-light").click(function (e) {
-    e.preventDefault();
-    $("body").toggleClass("light-mode");
-  });
+//  $(".dark-light").click(function (e) {
+//    e.preventDefault();
+//    $("body").toggleClass("light-mode");
+//  });
 
   // Vilmar Catafesta, <vcatafesta@gmail.com> ter 04 jun 2024 07:27:38 -04
   const toggleButton = document.querySelector(".dark-light");
   toggleButton.addEventListener("click", () => {
+    let state = document.body.classList.contains("light-mode");
+    _run("sh_webapp_setbgcolor " + state);
+    console.log("light-mode =:", state);
     document.body.classList.toggle("light-mode");
-    $("body").toggleClass("light-mode");
-    _run(
-      'sh_webapp_setbgcolor "' + document.body.classList.contains("light-mode") + '"',
-    );
+    state = document.body.classList.contains("light-mode");
+    console.log("light-mode =:", state);
   });
   // Vilmar Catafesta, <vcatafesta@gmail.com> ter 04 jun 2024 07:27:38 -04
 
@@ -206,7 +206,9 @@ $(function () {
   });
 
   $("#open-change-browsers").click(function () {
-    var curBin = $("#open-change-browsers").attr("data-bin").replace(/\./g, "\\.");
+    var curBin = $("#open-change-browsers")
+      .attr("data-bin")
+      .replace(/\./g, "\\.");
     console.log("Browser-Set-Native: " + curBin);
     $("button#" + curBin).addClass("highlight");
     $(".pop-up#change-browser").addClass("visible");
@@ -221,21 +223,23 @@ $(function () {
     var src = $(img).attr("src");
     var dataBin = $(img).attr("data-bin");
     var title = $(img).attr("title");
-    $(this).click(function () {
-      var currBin = $("#open-change-browsers").attr("data-bin");
-      if (currBin === dataBin) {
-        $(".pop-up#change-browser").removeClass("visible");
-      } else {
-        $(".pop-up#change-browser").removeClass("visible");
-        $(".iconBrowser").attr("src", src);
-        $("#open-change-browsers").attr("data-bin", dataBin);
-        $("#browserIcon").attr("title", title);
-        fetch(`/execute$./change_browser.sh ${currBin} ${dataBin}`);
-      }
-      console.log("Browser-Old: " + currBin, "Browser-New: " + dataBin);
-    }).mouseover(function () {
-      $("button.btn-img").removeClass("highlight");
-    });
+    $(this)
+      .click(function () {
+        var currBin = $("#open-change-browsers").attr("data-bin");
+        if (currBin === dataBin) {
+          $(".pop-up#change-browser").removeClass("visible");
+        } else {
+          $(".pop-up#change-browser").removeClass("visible");
+          $(".iconBrowser").attr("src", src);
+          $("#open-change-browsers").attr("data-bin", dataBin);
+          $("#browserIcon").attr("title", title);
+          fetch(`/execute$./change_browser.sh ${currBin} ${dataBin}`);
+        }
+        console.log("Browser-Old: " + currBin, "Browser-New: " + dataBin);
+      })
+      .mouseover(function () {
+        $("button.btn-img").removeClass("highlight");
+      });
   });
 
   var firstOption = $("#browserSelect option").first();
@@ -253,8 +257,8 @@ $(function () {
   $("#loadIcon").click(function (e) {
     e.preventDefault();
     fetch(`/execute$./change_icon.sh`)
-      .then(resp => resp.text())
-      .then(data => {
+      .then((resp) => resp.text())
+      .then((data) => {
         if (data) {
           $("#iconDesk").attr("src", data);
           $("#inputIconDesk").val(data);
@@ -285,7 +289,7 @@ $(function () {
     } else {
       $(this).css("border-bottom-color", "forestgreen");
     }
-  })
+  });
 
   $("#detectAll").click(function (e) {
     e.preventDefault();
@@ -300,8 +304,8 @@ $(function () {
     $("#text-loading-name").show();
 
     fetch(`/execute$./get_title.sh.py ${url}`)
-      .then(resp => resp.text())
-      .then(data => {
+      .then((resp) => resp.text())
+      .then((data) => {
         if (data) {
           $("#text-loading-name").hide();
           $("#text-loading-icon").show();
@@ -313,12 +317,12 @@ $(function () {
       });
 
     fetch(`/execute$./get_favicon.sh.py ${url}`)
-      .then(resp => resp.text())
-      .then(data => {
+      .then((resp) => resp.text())
+      .then((data) => {
         if (data) {
           if (/button/.test(data)) {
             console.log("Multiple-Favicon");
-            $(".pop-up#detectIcon #menu-icon").html(data)
+            $(".pop-up#detectIcon #menu-icon").html(data);
             $(".lds-ring").css("display", "none");
             $("#text-loading-icon").hide();
             $(".pop-up#detectIcon").addClass("visible");
@@ -327,8 +331,8 @@ $(function () {
                 e.preventDefault();
                 let srcFav = $("#btn-icon-" + index + " img").attr("src");
                 fetch(`/execute$./resize_favicon.sh.py ${srcFav}`)
-                  .then(resp => resp.text())
-                  .then(data => {
+                  .then((resp) => resp.text())
+                  .then((data) => {
                     $("#iconDesk").attr("src", data);
                     $("#inputIconDesk").val(data);
                     $(".pop-up#detectIcon").removeClass("visible");
@@ -357,16 +361,16 @@ $(function () {
     $.get(`/execute$echo -n "$PWD"`, function (cwd) {
       $("#inputIconDesk").val(cwd + "/icons/default-webapps.png");
     });
-    $('li label#' + $.escapeSelector('#list-tab-content')).click();
+    $("li label#" + $.escapeSelector("#list-tab-content")).click();
   });
 
   $("#add").click(() => {
-    $('li label#' + $.escapeSelector('#add-tab-content')).click();
+    $("li label#" + $.escapeSelector("#add-tab-content")).click();
   });
 
   // insert
   $("#add").click(() => {
-    $('li label#' + $.escapeSelector('#about-tab-content')).click();
+    $("li label#" + $.escapeSelector("#about-tab-content")).click();
   });
   // insert
 
@@ -382,17 +386,17 @@ $(function () {
     let formData = $("#formAdd").serialize();
 
     fetch(`/execute$./${formUrl}?${formData}`)
-      .then(resp => resp.text())
+      .then((resp) => resp.text())
       .then(() => {
         $(".lds-ring").css("display", "inline-flex");
         $("#text-loading-add").show();
         setTimeout(function () {
           $(".lds-ring").css("display", "none");
           $("#text-loading-add").hide();
-//        $(".pop-up#installSuccess").addClass("visible");
-// insert
-		    $("#installClose").click();
-// insert
+          //        $(".pop-up#installSuccess").addClass("visible");
+          // insert
+          $("#installClose").click();
+          // insert
         }, 3000);
         $("#installClose").click(function () {
           document.location.reload(true);
@@ -400,27 +404,31 @@ $(function () {
       });
   });
 
-  $(".urlNative, .urlCustom").mouseover(function () {
-    let svg = $(this).children()[0];
-    $(svg).css("display", "inline-flex");
-  }).mouseleave(function () {
-    let svg = $(this).children()[0];
-    $(svg).css("display", "none");
-  });
+  $(".urlNative, .urlCustom")
+    .mouseover(function () {
+      let svg = $(this).children()[0];
+      $(svg).css("display", "inline-flex");
+    })
+    .mouseleave(function () {
+      let svg = $(this).children()[0];
+      $(svg).css("display", "none");
+    });
 
   $("select#categorySelect").change(function () {
     $("#imgCategory").load("icons/" + this.value + ".svg");
-    console.log("Category: " + this.value)
+    console.log("Category: " + this.value);
   });
 
-  $(".iconDetect-display").mouseover(function () {
-    let srcIcon = $("#iconDesk").attr("src");
-    if (srcIcon !== "icons/default-webapp.svg") {
-      $(".iconDetect-remove").show();
-    }
-  }).mouseleave(function () {
-    $(".iconDetect-remove").hide();
-  });
+  $(".iconDetect-display")
+    .mouseover(function () {
+      let srcIcon = $("#iconDesk").attr("src");
+      if (srcIcon !== "icons/default-webapp.svg") {
+        $(".iconDetect-remove").show();
+      }
+    })
+    .mouseleave(function () {
+      $(".iconDetect-remove").hide();
+    });
 
   $(".iconDetect-remove").click(function (e) {
     e.preventDefault();
@@ -445,8 +453,8 @@ $(function () {
     $(".lds-ring").css("display", "inline-flex");
     $("#text-loading-edit").show();
     fetch(`/execute$./${formUrl}?${formData}`)
-      .then(resp => resp.json())
-      .then(js => {
+      .then((resp) => resp.json())
+      .then((js) => {
         if (js.return) {
           console.log(js.return);
           if (js.return == 0) {
@@ -460,7 +468,6 @@ $(function () {
             return;
           }
         } else {
-
           let browser = js.browser;
           let category = js.category;
           let filedesk = js.filedesk;
@@ -473,8 +480,10 @@ $(function () {
           console.log(js);
           fetch(`/execute$./webapp-remove.sh?filedesk=${filedesk}`);
           setTimeout(function () {
-            fetch(`/execute$./webapp-install.sh?browser=${browser}&category=${category}&icondesk=${icondesk}&namedesk=${namedesk}&newperfil=${newperfil}&shortcut=${shortcut}&urldesk=${urldesk}`)
-              .then(r => r.text())
+            fetch(
+              `/execute$./webapp-install.sh?browser=${browser}&category=${category}&icondesk=${icondesk}&namedesk=${namedesk}&newperfil=${newperfil}&shortcut=${shortcut}&urldesk=${urldesk}`
+            )
+              .then((r) => r.text())
               .then(() => {
                 setTimeout(function () {
                   $(".lds-ring").css("display", "none");
@@ -487,7 +496,7 @@ $(function () {
       });
   });
 
-// insert
+  // insert
   $("#ativar").click(function (e) {
     e.preventDefault();
     $(".lds-ring").css("display", "inline-flex");
@@ -495,7 +504,7 @@ $(function () {
 
     $.get("/execute$./ativar.sh", function (data) {
       $(".lds-ring").css("display", "none");
-		document.location.reload(true);
+      document.location.reload(true);
       $("#text-loading-ativar").hide();
     });
   });
@@ -511,7 +520,7 @@ $(function () {
       $("#text-loading-desativar").hide();
     });
   });
-// insert
+  // insert
 
   $("#backup").click(function (e) {
     e.preventDefault();
@@ -553,14 +562,13 @@ $(function () {
       $(".lds-ring").css("display", "inline-flex");
       $("#text-loading-del-all").show();
       fetch(`/execute$./webapp-remove-all.sh`)
-        .then(resp => resp.text())
-        .then(data => {
+        .then((resp) => resp.text())
+        .then((data) => {
           console.log(data);
           location.reload(true);
         });
     });
   });
-
 });
 
 function delOpen(id) {
@@ -570,8 +578,8 @@ function delOpen(id) {
 function editOpen(filedesk) {
   console.log("Edit: " + filedesk);
   fetch(`/execute$./webapp-info.sh?filedesk=${filedesk}`)
-    .then(resp => resp.text())
-    .then(data => {
+    .then((resp) => resp.text())
+    .then((data) => {
       $("#formEdit").html(data);
       $("#editModal").addClass("visible");
     });
@@ -583,7 +591,7 @@ function delDesk(filedesk) {
   $("#text-loading-del").show();
 
   fetch(`/execute$./webapp-remove.sh?filedesk=${filedesk}`)
-    .then(resp => resp.text())
+    .then((resp) => resp.text())
     .then(() => {
       setTimeout(function () {
         $(".lds-ring").css("display", "none");
