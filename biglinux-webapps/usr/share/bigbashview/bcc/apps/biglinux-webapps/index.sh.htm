@@ -8,7 +8,7 @@
 #  Description: WebApps installing programs for BigLinux
 #
 #  Created: 2020/01/11
-#  Altered: 2024/06/29
+#  Altered: 2024/07/08
 #
 #  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
 #                2020-2023, Bruno Gonçalves <www.biglinux.com.br>
@@ -37,8 +37,8 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 APP="${0##*/}"
-_DATE_ALTERED_='29-06-2024 - 12:03'
-_VERSION_="1.0.0-20240629"
+_DATE_ALTERED_='08-07-2024 - 13:48'
+_VERSION_="1.0.0-20240708"
 _HTML_VERSION_="${_VERSION_} - ${_DATE_ALTERED_}"
 _UPDATED_="${_DATE_ALTERED_}"
 
@@ -430,7 +430,7 @@ function sh_index_sh_main() {
 
 	cat <<-EOF
 		<div class="content-section-title" style="margin-bottom:0">
-		$Navegador_padrao<br>$dos WebApps:
+		$Navegador_Padrao<br>$dos WebApps:
 		</div>
 		<button class="btn-img-main status-button" id="open-change-browsers" data-bin=$BROWSER>
 		<img src="icons/$ICON.svg" width="38" height="38" class="iconBrowser" id="browserIcon" title=$title>
