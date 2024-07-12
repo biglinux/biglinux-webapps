@@ -522,7 +522,21 @@ function sh_index_sh_main() {
 	fi
 
 	cat <<-EOF
-		$(sh_webapp_insert_menu)
+    <!-- INSERT -->
+    <div class="content-section-menu" style="text-align:left">
+    <div class="menuNative">
+      <svg viewBox="0 0 448 512">"
+      <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+      </svg>
+      <button class="dropdownNative">
+        <ul>
+          <li id="ativar-li"><a id="ativar">${Ativar_todos_WebApps}</a></li>
+          <li id="desativar-li"><a id="desativar">${Desativar_todos_WebApps}</a></li>
+        </ul>
+      </button>
+    </div>
+    </div>
+		<!-- INSERT -->
 		<div class="content-section" style="margin-top:0">
 		<div class="content-section-title" style="text-align:left">
 		$WebApps_Nativos
@@ -556,14 +570,16 @@ function sh_index_sh_main() {
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;$(gettext "Lib versão") : $_WEBLIB_VERSION_
 		<li>$(gettext "Desenvolvedores"):
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;2023-2024, Vilmar Catafesta, vcatafesta@gmail.com
-		<br>&nbsp;&nbsp;&nbsp;&nbsp;2023-2023, Bruno Gonçalves, www.biglinux.com.br
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;2023-2023, Bruno Gonçalves, biglinux.com.br
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;2023-2023, Rafael Ruscher, rruscher@gmail.com
-		<br>&nbsp;&nbsp;&nbsp;&nbsp;2020-2023, eltonff, www.biglinux.com.br
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;2020-2023, eltonff, biglinux.com.br
+
 		<li>$(gettext "Colaboradores"):
-		<br>&nbsp;&nbsp;&nbsp;&nbsp;-2024, Thales, @talesam
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;-2024, Tales, @talesam
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;-2024, Narayan, @narayansilva
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;-2024, Thiago, @thiago_brgs
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;-2024, Marcelo, @elppans
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;-2024, Lucas, @luskaedivinsky
 		</li>
 		</ul>
 		</div>
