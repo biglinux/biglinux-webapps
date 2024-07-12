@@ -37,8 +37,8 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 APP="${0##*/}"
-_DATE_ALTERED_='08-07-2024 - 13:48'
-_VERSION_="1.0.0-20240708"
+_DATE_ALTERED_='11-07-2024 - 23:50'
+_VERSION_="1.0.0-20240711"
 _HTML_VERSION_="${_VERSION_} - ${_DATE_ALTERED_}"
 _UPDATED_="${_DATE_ALTERED_}"
 
@@ -522,10 +522,10 @@ function sh_index_sh_main() {
 	fi
 
 	cat <<-EOF
+		$(sh_webapp_insert_menu)
 		<div class="content-section" style="margin-top:0">
 		<div class="content-section-title" style="text-align:left">
 		$WebApps_Nativos
-		$(sh_webapp_insert_menu)
 		</div>
 		<ul id="content-ul">'
 	EOF
