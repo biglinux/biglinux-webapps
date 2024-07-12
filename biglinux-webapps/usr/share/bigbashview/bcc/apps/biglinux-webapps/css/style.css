@@ -2081,7 +2081,7 @@ li img {
   position: absolute;
   background: var(--dropdown-bg); /* Fundo do dropdown */
   height: 80px;
-  width: 230px;
+  width: 160px;
   pointer-events: none; /* Inicialmente desativa interações */
   opacity: 0; /* Inicialmente invisível */
   transform: translateY(10px);
