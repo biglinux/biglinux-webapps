@@ -1,37 +1,3 @@
-/*
-#  usr/share/bigbashview/bcc/apps/biglinux-webapps/js/script.js
-#  Description: JS Library for BigLinux WebApps
-#
-#  Created: 2024/05/31
-#  Altered: 2024/07/03
-#
-#  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
-#                2020-2023, Bruno Gonçalves <www.biglinux.com.br>
-#                2020-2023, Rafael Ruscher <rruscher@gmail.com>
-#                2020-2023, eltonff <www.biglinux.com.br>
-#  All rights reserved.
-#
-#  Redistribution and use in source and binary forms, with or without
-#  modification, are permitted provided that the following conditions
-#  are met:
-#  1. Redistributions of source code must retain the above copyright
-#     notice, this list of conditions and the following disclaimer.
-#  2. Redistributions in binary form must reproduce the above copyright
-#     notice, this list of conditions and the following disclaimer in the
-#     documentation and/or other materials provided with the distribution.
-#
-#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
-#  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
-#  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-#  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
-#  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
-#  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-#  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-#  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-#  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
-#  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-
 var divs = $("div.content-section-title[id]");
 if (divs.length) {
   var divsSorted = [];
@@ -171,10 +137,10 @@ $(function () {
     // insert
   });
 
-//  $(".dark-light").click(function (e) {
-//    e.preventDefault();
-//    $("body").toggleClass("light-mode");
-//  });
+  //  $(".dark-light").click(function (e) {
+  //    e.preventDefault();
+  //    $("body").toggleClass("light-mode");
+  //  });
 
   // Vilmar Catafesta, <vcatafesta@gmail.com> ter 04 jun 2024 07:27:38 -04
   const toggleButton = document.querySelector(".dark-light");
@@ -205,6 +171,7 @@ $(function () {
     console.log("Filedesk: " + this.value, "Browser cmd: " + browserBin);
   });
 
+	// Change Browser
   $("#open-change-browsers").click(function () {
     var curBin = $("#open-change-browsers")
       .attr("data-bin")
@@ -219,28 +186,39 @@ $(function () {
   });
 
   $(".btn-img").each(function () {
-    var img = $(this).children()[0];
-    var src = $(img).attr("src");
-    var dataBin = $(img).attr("data-bin");
-    var title = $(img).attr("title");
+    // Para cada elemento com a classe .btn-img
+    var img = $(this).children()[0];				// Seleciona o primeiro filho do elemento .btn-img
+    var src = $(img).attr("src");						// Obtém o atributo src da imagem
+    var dataBin = $(img).attr("data-bin");	// Obtém o atributo data-bin da imagem
+    var title = $(img).attr("title");				// Obtém o atributo title da imagem
+
+    // Ao clicar no elemento .btn-img
     $(this)
       .click(function () {
-        var currBin = $("#open-change-browsers").attr("data-bin");
+        var currBin = $("#open-change-browsers").attr("data-bin");			// Obtém o atributo data-bin de #open-change-browsers
         if (currBin === dataBin) {
-          $(".pop-up#change-browser").removeClass("visible");
+	        console.log("Nada mudou")
+          // Se o data-bin atual for igual ao data-bin da imagem clicada
+          $(".pop-up#change-browser").removeClass("visible");						// Remove a classe 'visible' da pop-up de mudança de navegador
         } else {
-          $(".pop-up#change-browser").removeClass("visible");
-          $(".iconBrowser").attr("src", src);
-          $("#open-change-browsers").attr("data-bin", dataBin);
-          $("#browserIcon").attr("title", title);
-          fetch(`/execute$./change_browser.sh ${currBin} ${dataBin}`);
+          // Caso contrário
+	        console.log("Alterando navegador")
+          $(".pop-up#change-browser").removeClass("visible");						// Remove a classe 'visible' da pop-up de mudança de navegador
+          $(".iconBrowser").attr("src", src);														// Atualiza o atributo src do elemento com a classe .iconBrowser
+          $("#open-change-browsers").attr("data-bin", dataBin);					// Atualiza o atributo data-bin de #open-change-browsers
+          $("#browserIcon").attr("title", title);												// Atualiza o atributo title de #browserIcon
+          fetch(`/execute$./change_browser.sh ${currBin} ${dataBin}`);	// Executa um fetch para mudar o navegador com os bins atuais e novos
         }
-        console.log("Browser-Old: " + currBin, "Browser-New: " + dataBin);
+        console.log(
+          "Navegador Antigo: " + currBin,
+          "Navegador Novo  : " + dataBin
+        );
       })
       .mouseover(function () {
-        $("button.btn-img").removeClass("highlight");
+        $("button.btn-img").removeClass("highlight");										// Ao passar o mouse sobre, remove a classe 'highlight' de todos os botões .btn-img
       });
   });
+	// Change Browser
 
   var firstOption = $("#browserSelect option").first();
   var firstValue = firstOption.val();

@@ -114,7 +114,7 @@ function sh_webapps_main {
 	esac
 
 	bigbashview index.sh.htm \
-		-s ${default_size} \
+		-s "${default_size}" \
 		-n "$TITLE" \
 		-p "$APP" \
 		-d "$WEBAPPS_PATH" \
