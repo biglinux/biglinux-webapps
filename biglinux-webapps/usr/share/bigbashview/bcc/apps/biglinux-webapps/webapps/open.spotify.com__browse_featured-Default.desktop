@@ -2,6 +2,7 @@
 MimeType=text/html
 Name=Spotify
 Type=Application
+MimeType=text/html;text/xml;application/xhtml_xml;
 Terminal=false
 Version=1.0
 Exec=biglinux-webapp --class="open.spotify.com__browse_featured,Chromium-browser" --profile-directory=Default --app=https://open.spotify.com/browse/featured

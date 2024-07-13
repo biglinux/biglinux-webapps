@@ -2,6 +2,7 @@
 Version=1.0
 Terminal=false
 Type=Application
+MimeType=text/html;text/xml;application/xhtml_xml;
 Name=TikTok
 Exec=/usr/bin/biglinux-webapp --class="tiktok.com,Chromium-browser" --profile-directory=Default --app=https://tiktok.com
 Icon=webapp-tiktok

@@ -3,6 +3,7 @@
 Version=1.0
 Terminal=false
 Type=Application
+MimeType=text/html;text/xml;application/xhtml_xml;
 Name=Twitch
 Exec=/usr/bin/biglinux-webapp --class="twitch.tv,Chromium-browser" --profile-directory=Default --app=https://twitch.tv
 Icon=webapp-twitch

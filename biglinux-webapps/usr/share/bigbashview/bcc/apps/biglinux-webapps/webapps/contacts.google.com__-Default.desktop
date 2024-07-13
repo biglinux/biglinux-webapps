@@ -3,6 +3,7 @@
 Version=1.0
 Terminal=false
 Type=Application
+MimeType=text/html;text/xml;application/xhtml_xml;
 Name=Contacts
 Name[pt]=Contatos
 Exec=/usr/bin/biglinux-webapp --class="contacts.google.com,Chromium-browser" --profile-directory=Default --app=https://contacts.google.com
