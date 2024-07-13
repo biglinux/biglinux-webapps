@@ -171,11 +171,11 @@ $(function () {
     console.log("Filedesk: " + this.value, "Browser cmd: " + browserBin);
   });
 
+	// ################################################################################################################################################
 	// Change Browser
+	// ################################################################################################################################################
   $("#open-change-browsers").click(function () {
-    var curBin = $("#open-change-browsers")
-      .attr("data-bin")
-      .replace(/\./g, "\\.");
+    var curBin = $("#open-change-browsers").attr("data-bin").replace(/\./g, "\\.");
     console.log("Browser-Set-Native: " + curBin);
     $("button#" + curBin).addClass("highlight");
     $(".pop-up#change-browser").addClass("visible");
@@ -196,6 +196,7 @@ $(function () {
     $(this)
       .click(function () {
         var currBin = $("#open-change-browsers").attr("data-bin");			// Obtém o atributo data-bin de #open-change-browsers
+
         if (currBin === dataBin) {
 	        console.log("Nada mudou")
           // Se o data-bin atual for igual ao data-bin da imagem clicada
@@ -204,15 +205,28 @@ $(function () {
           // Caso contrário
 	        console.log("Alterando navegador")
           $(".pop-up#change-browser").removeClass("visible");						// Remove a classe 'visible' da pop-up de mudança de navegador
-          $(".iconBrowser").attr("src", src);														// Atualiza o atributo src do elemento com a classe .iconBrowser
+
+//        $(".iconBrowser").attr("src", src);														// Atualiza o atributo src do elemento com a classe .iconBrowser
+					var countCheck = 0;
+					$(".switch").each(function() {
+		        countCheck++;
+		        var isChecked = $(this).is(":checked");
+		        var id = $(this).attr("id"); // Pega o id do switch
+		        if (isChecked) {
+		          console.log('Imagem já tem o src correto :', $("#imgsrc" + id).attr("src"));
+		        } else {
+		          $("#imgsrc" + id).attr("src", src);
+							console.log('Imagem atualizada para :', src);
+		        }
+		      });
+
           $("#open-change-browsers").attr("data-bin", dataBin);					// Atualiza o atributo data-bin de #open-change-browsers
+          $("#browserIcon").attr("src", src);
           $("#browserIcon").attr("title", title);												// Atualiza o atributo title de #browserIcon
           fetch(`/execute$./change_browser.sh ${currBin} ${dataBin}`);	// Executa um fetch para mudar o navegador com os bins atuais e novos
+	        console.log("Navegador Antigo: " + currBin);
+					console.log("Navegador Novo  : " + dataBin);
         }
-        console.log(
-          "Navegador Antigo: " + currBin,
-          "Navegador Novo  : " + dataBin
-        );
       })
       .mouseover(function () {
         $("button.btn-img").removeClass("highlight");										// Ao passar o mouse sobre, remove a classe 'highlight' de todos os botões .btn-img
