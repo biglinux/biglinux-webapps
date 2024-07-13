@@ -3,6 +3,7 @@
 Version=1.0
 Terminal=false
 Type=Application
+MimeType=text/html;text/xml;application/xhtml_xml;
 Name=WhatsApp
 Exec=/usr/bin/biglinux-webapp --class="web.whatsapp.com,Chromium-browser" --profile-directory=Default --app=https://web.whatsapp.com
 Icon=webapp-whatsapp

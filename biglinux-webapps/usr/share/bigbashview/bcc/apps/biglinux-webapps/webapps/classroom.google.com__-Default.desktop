@@ -3,6 +3,7 @@
 Version=1.0
 Terminal=false
 Type=Application
+MimeType=text/html;text/xml;application/xhtml_xml;
 Name=Classroom
 Exec=/usr/bin/biglinux-webapp --class="classroom.google.com,Chromium-browser" --profile-directory=Default --app=https://classroom.google.com
 Icon=webapp-g-classroom

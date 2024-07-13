@@ -2,6 +2,7 @@
 Version=1.0
 Terminal=false
 Type=Application
+MimeType=text/html;text/xml;application/xhtml_xml;
 Name=OpenStreetMap
 Exec=/usr/bin/biglinux-webapp --class="openstreetmap.org,Chromium-browser" --profile-directory=Default --app=https://openstreetmap.org
 Icon=webapp-openstreetmap

@@ -3,6 +3,7 @@
 Version=1.0
 Terminal=false
 Type=Application
+MimeType=text/html;text/xml;application/xhtml_xml;
 Name=Calendar
 Name[pt]=Agenda
 Exec=/usr/bin/biglinux-webapp --class="calendar.google.com,Chromium-browser" --profile-directory=Default --app=https://calendar.google.com

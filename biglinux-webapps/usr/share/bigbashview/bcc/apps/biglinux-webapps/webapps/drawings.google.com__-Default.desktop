@@ -3,6 +3,7 @@
 Version=1.0
 Terminal=false
 Type=Application
+MimeType=text/html;text/xml;application/xhtml_xml;
 Name=Drawings
 Exec=/usr/bin/biglinux-webapp --class="drawings.google.com,Chromium-browser" --profile-directory=Default --app=https://drawings.google.com
 Icon=webapp-g-drawings

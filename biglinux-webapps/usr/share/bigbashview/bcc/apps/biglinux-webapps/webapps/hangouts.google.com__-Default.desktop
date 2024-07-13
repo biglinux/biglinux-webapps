@@ -3,6 +3,7 @@
 Version=1.0
 Terminal=false
 Type=Application
+MimeType=text/html;text/xml;application/xhtml_xml;
 Name=Hangouts
 Exec=/usr/bin/biglinux-webapp --class="hangouts.google.com,Chromium-browser" --profile-directory=Default --app=https://hangouts.google.com
 Icon=webapp-g-hangouts

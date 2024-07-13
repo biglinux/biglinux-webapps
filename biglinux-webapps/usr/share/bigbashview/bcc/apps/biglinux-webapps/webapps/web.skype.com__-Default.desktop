@@ -3,6 +3,7 @@
 Version=1.0
 Terminal=false
 Type=Application
+MimeType=text/html;text/xml;application/xhtml_xml;
 Name=Skype
 Exec=/usr/bin/biglinux-webapp --class="web.skype.com,Chromium-browser" --profile-directory=Default --app=https://web.skype.com
 Icon=webapp-skype

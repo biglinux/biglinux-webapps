@@ -3,6 +3,7 @@
 Version=1.0
 Terminal=false
 Type=Application
+MimeType=text/html;text/xml;application/xhtml_xml;
 Name=Outlook
 Exec=/usr/bin/biglinux-webapp --class="outlook.live.com,Chromium-browser" --profile-directory=Default --app=https://outlook.live.com
 Icon=webapp-outlook

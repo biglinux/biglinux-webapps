@@ -2,6 +2,7 @@
 Version=1.0
 Terminal=false
 Type=Application
+MimeType=text/html;text/xml;application/xhtml_xml;
 Name=Photopea
 Exec=/usr/bin/biglinux-webapp --class=photopea.com,Chromium-browser --profile-directory=Default --app=https://photopea.com
 Icon=webapp-photopea

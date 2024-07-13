@@ -3,6 +3,7 @@
 Version=1.0
 Terminal=false
 Type=Application
+MimeType=text/html;text/xml;application/xhtml_xml;
 Name=Yahoo Mail
 Exec=/usr/bin/biglinux-webapp --class="mail.yahoo.com,Chromium-browser" --profile-directory=Default --app=https://mail.yahoo.com
 Icon=webapp-mailyahoo

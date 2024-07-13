@@ -3,6 +3,7 @@ MimeType=text/html
 Name=TuneIn Radio
 Name[pt]=TuneIn Rádios
 Type=Application
+MimeType=text/html;text/xml;application/xhtml_xml;
 Terminal=false
 Version=1.0
 Exec=/usr/bin/biglinux-webapp --class="tunein.com__radio_home,Chromium-browser" --profile-directory=Default --app=https://tunein.com/radio/home

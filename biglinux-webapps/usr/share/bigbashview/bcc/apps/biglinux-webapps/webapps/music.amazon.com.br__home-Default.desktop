@@ -2,6 +2,7 @@
 MimeType=text/html
 Name=Amazon Music
 Type=Application
+MimeType=text/html;text/xml;application/xhtml_xml;
 Terminal=false
 Version=1.0
 Exec=/usr/bin/biglinux-webapp --class="music.amazon.com.br__home,Chromium-browser" --profile-directory=Default --app=https://music.amazon.com.br/home

@@ -3,6 +3,7 @@
 Version=1.0
 Terminal=false
 Type=Application
+MimeType=text/html;text/xml;application/xhtml_xml;
 Name=CleverPDF
 Exec=/usr/bin/biglinux-webapp --class="cleverpdf.com,Chromium-browser" --profile-directory=Default --app=https://cleverpdf.com
 Icon=webapp-cleverpdf
