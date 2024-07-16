@@ -1,14 +1,14 @@
-# Maintainer: Bruno Goncalves <bigbruno@gmail.com>
+# Maintainer: Vilmar Catafesta <vcatafesta@gmail.com>
 
 pkgname=biglinux-webapps
 pkgver=$(date +%y.%m.%d)
 pkgrel=$(date +%H%M)
 arch=('any')
 license=('GPL')
-url="https://github.com/biglinux/biglinux-webapps"
+url="https://github.com/biglinux/$pkgname"
+source=("git+${url}.git")
 pkgdesc="Installs and removes BigLinux WebApps"
 depends=('bigbashview' 'python-bs4' 'python-requests' 'python-pillow' 'yad' 'gettext' 'bigcontrolcenter-base' 'ttf-lato')
-source=("git+${url}.git")
 md5sums=(SKIP)
 if [ -e "${pkgname}.install" ]; then
 	install=${pkgname}.install

@@ -232,7 +232,9 @@ $(function () {
         $("button.btn-img").removeClass("highlight");										// Ao passar o mouse sobre, remove a classe 'highlight' de todos os botões .btn-img
       });
   });
+	// ################################################################################################################################################
 	// Change Browser
+	// ################################################################################################################################################
 
   var firstOption = $("#browserSelect option").first();
   var firstValue = firstOption.val();
