@@ -1,6 +1,6 @@
 [Desktop Entry]
-Type=Application
-Name=Add and Remove WebApps
+Name=Big WebApps - Add and Remove WebApps
+Name[pt_BR]=BigWebApps - Adicionar e Remover WebApps
 Name[bg]=Добавяне и премахване на уеб приложения
 Name[cs]=Přidání a odebrání webových aplikací
 Name[da]=Tilføj og fjern webapps
@@ -28,9 +28,11 @@ Name[sv]=Lägga till och ta bort webbappar
 Name[tr]=Web Uygulamaları Ekleme ve Kaldırma
 Name[uk]=Додавання та видалення веб-програм
 Name[zh]=添加和删除 Web 应用
-Icon=webapp
-Exec=big-webapps
+Type=Application
+MimeType=text/html;text/xml;application/xhtml_xml;
 #StartupWMClass=BigBashView
-Categories=Webapps;
+Categories=Webapps;Biglinux;
 Terminal=false
 StartupNotify=true
+Exec=big-webapps
+Icon=webapp
