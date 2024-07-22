@@ -2498,3 +2498,25 @@ hr {
   overflow-y: auto;
   height: 100%;
 }
+
+.de-session {
+  color: red !important;
+}
+
+.light-mode .de-session {
+  color: white;
+  fill: black;
+}
+
+/*.content-section li {*/
+/*  color: red;*/
+/*}*/
+/**/
+
+.li-about {
+	color: red;
+}
+
+#div-about-color {
+  color: var(--theme-color);
+}
