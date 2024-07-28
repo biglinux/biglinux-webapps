@@ -8,7 +8,7 @@
 #  Description: WebApps installing programs for BigLinux
 #
 #  Created: 2020/01/11
-#  Altered: 2024/07/13
+#  Altered: 2024/07/22
 #
 #  Copyright (c) 2023-2024, Vilmar Catafesta <vcatafesta@gmail.com>
 #                2020-2023, Bruno Gonçalves <www.biglinux.com.br>
@@ -37,8 +37,8 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 APP="${0##*/}"
-_DATE_ALTERED_='13-07-2024 - 11:17'
-_VERSION_="1.0.0-20240713"
+_DATE_ALTERED_='22-07-2024 - 06:59'
+_VERSION_="1.0.0-20240722"
 _HTML_VERSION_="${_VERSION_} - ${_DATE_ALTERED_}"
 _UPDATED_="${_DATE_ALTERED_}"
 
@@ -56,8 +56,10 @@ function sh_index_sh_main() {
 		<html>
 		<head>
 		<link rel="stylesheet" href="css/style.css">
-		$(sh_get_de)
 		</head>
+		<div class="de-session">
+			$(sh_get_de)
+		</div>
 		$(sh_webapp_getbgcolor)
 
 		<!-- loading -->
@@ -554,26 +556,36 @@ function sh_index_sh_main() {
 		<div id="about-tab-content" class="fc-card">
 		<div class="content-section" style="margin-top:0px;">
 		<ul style="margin-top:-10px;">
-		<li>$(gettext "Ambiente"):
+
+		<li class="li-about">$(gettext "Ambiente"):
+		<div id="div-about-color">
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;$(gettext "Desktop") : $XDG_CURRENT_DESKTOP
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;$(gettext "Sessão") : $XDG_SESSION_TYPE
-		<li>$(gettext "Aplicativo"):
+		</div>
+
+		<li class="li-about">$(gettext "Aplicativo"):
+		<div id="div-about-color">
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;$(gettext "Nome") : $TEXTDOMAIN</span>
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;$(gettext "Htm versão") : $_HTML_VERSION_
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;$(gettext "Lib versão") : $_WEBLIB_VERSION_
-		<li>$(gettext "Desenvolvedores"):
+		</div>
+
+		<li class="li-about">$(gettext "Desenvolvedores"):
+		<div id="div-about-color">
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;2023-2024, Vilmar Catafesta, vcatafesta@gmail.com
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;2023-2023, Bruno Gonçalves, biglinux.com.br
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;2023-2023, Rafael Ruscher, rruscher@gmail.com
 		<br>&nbsp;&nbsp;&nbsp;&nbsp;2020-2023, eltonff, biglinux.com.br
+		</div>
 
-		<li>$(gettext "Colaboradores"):
-		<br>&nbsp;&nbsp;&nbsp;&nbsp;-2024, Tales, @talesam
-		<br>&nbsp;&nbsp;&nbsp;&nbsp;-2024, Narayan, @narayansilva
-		<br>&nbsp;&nbsp;&nbsp;&nbsp;-2024, Thiago, @thiago_brgs
-		<br>&nbsp;&nbsp;&nbsp;&nbsp;-2024, Marcelo, @elppans
-		<br>&nbsp;&nbsp;&nbsp;&nbsp;-2024, Lucas, @luskaedivinsky
-		</li>
+		<li class="li-about">$(gettext "Colaboradores"):
+		<div id="div-about-color">
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;Tales, @talesam
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;Narayan, @narayansilva
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;Thiago, @thiago_brgs
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;Marcelo, @elppans
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;Lucas, @luskaedivinsky
+		</div>
 		</ul>
 		</div>
 		</div>
