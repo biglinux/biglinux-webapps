@@ -73,8 +73,12 @@ else
     name="$2"
     url="$3"
     icon="$4"
+    # If icon not in the icon folder, copy to the icon folder
+    if [[ $icon =~ \/ ]]; then
+        cp "$icon" ~/.local/share/icons/
+    fi
     icon=${icon//*\/}
-    icon=${icon//\.*}
+    icon=${icon%.*}
     category="$5"
     profile="$6"
 fi
@@ -188,12 +192,12 @@ elif [ "$command" = "json" ]; then
                 "Icon="*)
                     icon=${line#*Icon=}
                     # Copy the icon to the applications folder if it's not a system icon
-                    if [[ $icon =~ / ]]; then
+                    if [[ $icon =~ \/ ]]; then
                         cp "$icon" ~/.local/share/icons/
                         sed -Ei 's|^Icon=.*/(.*)\..*|Icon=\1|g' "$file"
                     fi
                     icon=${icon//*\/}
-                    icon=${icon//\.*}
+                    # icon=${icon%.*}
                     ;;
                 "Categories="*)
                     categories=${line#*Categories=}

@@ -34,5 +34,5 @@ MimeType=text/html;text/xml;application/xhtml_xml;
 Categories=Webapps;Biglinux;
 Terminal=false
 StartupNotify=true
-Exec=big-webapps
+Exec=big-webapps-gui
 Icon=webapp
