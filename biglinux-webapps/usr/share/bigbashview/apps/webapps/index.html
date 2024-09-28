@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <!-- Name of JSON file with translation -->
     <script>const projectName = 'bigcontrolcenter';</script>
     
@@ -25,6 +28,8 @@
             display: flex;
             gap: 0.5rem;
             margin-top: 0.5rem;
+            flex-wrap: nowrap; /* Prevent line breaks */
+            overflow-x: auto; /* Allow horizontal scrolling if necessary */
         }
         .medium-favicon {
             width: 38px;
@@ -35,20 +40,20 @@
 </head>
 <body x-data="appData()" x-init="fetchData()" @keydown.window="handleGlobalKeypress($event)">
     
-    <!-- Using Client Side Decoration use body transparent to make shadow, and page work like real body -->
+    <!-- Using Client Side Decoration: make body transparent to add shadow, and page behaves like a real body -->
     <div id="page">
-        <!-- Any component with drag-area class is used to drag and move window -->
+        <!-- Any component with the 'drag-area' class can be used to drag and move the window -->
         <div id="title-bar" class="drag-area">
         
             <div id="title-auto-change-side" class="row drag-area">
-                <img class="circle mini drag-area" src="/usr/share/icons/hicolor/scalable/apps/webapps.svg">
+                <img class="circle mini drag-area" src="/usr/share/icons/hicolor/scalable/apps/webapps.svg" alt="WebApps Icon">
                 <h5 class="small drag-area" stonejs>WebApps</h5>
             </div>
         
             <div class="field prefix round input-search-center">
                 <i>search</i>
-                <!-- Using placeholderText to modify in javascript for translated text in stonejs -->
-                <input type="search" x-model="filterText" @input="filterPrograms()" :placeholder="placeholderText" id="searchInput" x-ref="searchInput">
+                <!-- Using placeholderText to modify in JavaScript for translated text in stonejs -->
+                <input type="search" x-model="filterText" @input="filterPrograms()" :placeholder="placeholderText" id="searchInput" x-ref="searchInput" aria-label="Search Programs">
             </div>
             <button @click="showAddModal()" class="tertiary small" stonejs>Add New</button>
         </div>
@@ -60,7 +65,7 @@
                     <template x-for="program in programs" :key="program.app_file">
                         <div class="row margin small-padding active-category small-round">
                             <div class="row">
-                                <img :src="program.app_icon_url" class="medium" />
+                                <img :src="program.app_icon_url" class="medium" alt="Program Icon" />
                             </div>
                             <div class="max">
                                 <span x-text="program.app_name"></span><br>
@@ -68,13 +73,13 @@
                             </div>
                             <div class="row">
                                 <div class="center-align">
-                                    <button @click="showBrowserModal(program)" class="surface-bgcolor small-round vertical small-padding">
-                                        <img :src="'icons/' + program.browser + '.svg'" class="medium" x-bind:id="'browser-icon-' + program.app_file" />
+                                    <button @click="showBrowserModal(program)" class="surface-bgcolor small-round vertical small-padding" aria-label="Select Browser">
+                                        <img :src="'icons/' + program.browser + '.svg'" class="medium" :id="'browser-icon-' + program.app_file" alt="Browser Icon" />
                                     </button>
-                                    <button @click="showEditModal(program)" class="surface-bgcolor small-round vertical small-padding">
+                                    <button @click="showEditModal(program)" class="surface-bgcolor small-round vertical small-padding" aria-label="Edit Program">
                                         <i class="trash-button">edit</i>
                                     </button>
-                                    <button @click="showDeleteModal(program)" class="surface-bgcolor small-round vertical small-padding">
+                                    <button @click="showDeleteModal(program)" class="surface-bgcolor small-round vertical small-padding" aria-label="Delete Program">
                                         <i class="trash-button">delete</i>
                                     </button>
                                 </div>
@@ -88,7 +93,7 @@
     
     <!-- Modal for deleting a program -->
     <dialog class="dialog center middle min-width-60em no-padding no-margin" id="delete-modal">
-        <h5 class="small no-round padding center-align drag-area" small stonejs>Confirm Deletion</h5>
+        <h5 class="small no-round padding center-align drag-area" stonejs>Confirm Deletion</h5>
         <div class="large medium-padding medium-margin medium-line center-align flex">
             <p stonejs>Are you sure you want to delete this program?</p>
             <template x-if="selectedProgram.app_profile !== 'Default'">
@@ -104,13 +109,13 @@
         </div>
     </dialog>
     
-    <!-- Modal for selecting a browser -->
+    <!-- Unified Modal for selecting a browser -->
     <dialog class="center middle min-width-full-less-6em no-padding no-margin" id="browser-modal">
         <h5 class="small no-round padding center-align drag-area" small stonejs>Select a Browser</h5>
         <div class="large medium-padding medium-margin medium-line center-align flex">
             <template x-for="browser in browsers" :key="browser.browser">
-                <button @click="selectBrowser(browser)" class="surface-bgcolor small-round vertical small-padding margin browser-button">
-                    <img :src="'icons/' + browser.browser + '.svg'" class="medium" x-bind:id="'browser-icon-' + browser.browser" />
+                <button @click="selectBrowser(browser)" class="surface-bgcolor small-round vertical small-padding margin browser-button" aria-label="Select Browser">
+                    <img :src="'icons/' + browser.browser + '.svg'" class="medium" :id="'browser-icon-' + browser.browser" alt="Browser Icon" />
                     <span x-text="getFriendlyBrowserName(browser.browser)"></span>
                 </button>
             </template>
@@ -133,8 +138,8 @@
                         <td class="min" stonejs>URL:</td>
                         <td>
                             <div class="field round fill small" style="display: flex; align-items: center;">
-                                <input type="text" id="app_url" x-model="selectedProgram.app_url">
-                                <button @click="fetchSiteInfo()" class=" no-margin" stonejs>Detect name and icon</button>
+                                <input type="text" id="app_url" x-model="selectedProgram.app_url" aria-label="Application URL">
+                                <button @click="fetchSiteInfo()" class="no-margin" stonejs>Detect name and icon</button>
                             </div>
                         </td>
                     </tr>
@@ -142,20 +147,22 @@
                         <td class="min" stonejs>Name:</td>
                         <td>
                             <div class="field round fill small">
-                                <input type="text" id="app_name" x-model="selectedProgram.app_name">
+                                <input type="text" id="app_name" x-model="selectedProgram.app_name" aria-label="Application Name">
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td class="min" stonejs>Icon:</td>
                         <td>
-                            <button @click="selectIcon()" class="surface-bgcolor small-round vertical small-padding">
-                                <img :src="selectedProgram.app_icon_url" class="medium" />
+                            <button @click="selectIcon()" class="surface-bgcolor small-round vertical small-padding" aria-label="Select Icon">
+                                <img :src="selectedProgram.app_icon_url" class="medium" alt="Application Icon" />
                             </button>
                             <template x-if="favicons.length > 0">
-                                <template x-for="favicon in favicons" :key="favicon">
-                                    <img :src="favicon" @click="selectFavicon(favicon)" class="medium-favicon margin" />
-                                </template>
+                                <div class="favicons">
+                                    <template x-for="favicon in favicons" :key="favicon">
+                                        <img :src="favicon" @click="selectFavicon(favicon)" class="medium-favicon margin" alt="Favicon" />
+                                    </template>
+                                </div>
                             </template>
                         </td>
                     </tr>
@@ -163,14 +170,14 @@
                         <td class="min" stonejs>Category:</td>
                         <td>
                             <div class="field suffix round fill small">
-                                <select id="app_categories" x-model="selectedProgram.mainCategory">
+                                <select id="app_categories" x-model="selectedProgram.mainCategory" aria-label="Select Category">
                                     <option value="Development" stonejs>Development</option>
                                     <option value="Office" stonejs>Office</option>
                                     <option value="Graphics" stonejs>Graphics</option>
                                     <option value="Network" stonejs>Network</option>
                                     <option value="Game" stonejs>Game</option>
                                     <option value="AudioVideo" stonejs>AudioVideo</option>
-                                    <option value="Webapp" stonejs>Webapp</option>
+                                    <option value="Webapps" stonejs>Webapp</option>
                                     <option value="Utility" stonejs>Utility</option>
                                     <option value="System" stonejs>System</option>
                                 </select>
@@ -178,8 +185,8 @@
                             </div>
                         </td>
                     </tr>
-                    <!-- Opção de Perfil Condicional -->
-                    <tr x-show="!isFirefox(selectedProgram.browser)">
+                    <!-- Conditional Profile Option -->
+                    <tr x-show="!isFirefoxOrLibreWolf(selectedProgram.browser)">
                         <td class="min" stonejs>Profile:</td>
                         <td>
                             <div class="field round fill small">
@@ -187,16 +194,16 @@
                                     <input type="checkbox" x-model="useSeparateProfile">
                                     <span stonejs>Use separate profile</span>
                                 </label>
-                                <input type="text" id="app_profile" x-model="selectedProgram.app_profile" :disabled="!useSeparateProfile" placeholder="Default">
+                                <input type="text" id="app_profile" x-model="selectedProgram.app_profile" :disabled="!useSeparateProfile" placeholder="Default" aria-label="Application Profile">
                             </div>
                         </td>
                     </tr>
-                    <!-- Fim da Opção de Perfil Condicional -->
+                    <!-- End of Conditional Profile Option -->
                     <tr>
                         <td class="min" stonejs>Browser:</td>
                         <td>
-                            <button @click="showBrowserModalForProgram()" class="surface-bgcolor small-round vertical small-padding small-margin browser-button">
-                                <img :src="selectedProgram.browser_icon_url || 'default-browser-icon.svg'" class="medium" />
+                            <button @click="showBrowserModal()" class="surface-bgcolor small-round vertical small-padding small-margin browser-button" aria-label="Select Browser">
+                                <img :src="selectedProgram.browser_icon_url || 'icons/default-browser-icon.svg'" class="medium" alt="Selected Browser Icon" />
                                 <span x-text="getFriendlyBrowserName(selectedProgram.browser)"></span>
                             </button>
                         </td>
@@ -210,23 +217,7 @@
         </div>
     </dialog>
     
-    <!-- Modal for selecting a browser for new program -->
-    <dialog class="center middle min-width-full-less-6em no-padding no-margin" id="browser-modal-new">
-        <h5 class="small no-round padding center-align drag-area" small stonejs>Select a Browser</h5>
-        <div class="large medium-padding medium-margin medium-line center-align flex">
-            <template x-for="browser in browsers" :key="browser.browser">
-                <button @click="selectBrowserForProgram(browser)" class="surface-bgcolor small-round vertical small-padding margin browser-button">
-                    <img :src="'icons/' + browser.browser + '.svg'" class="medium" />
-                    <span x-text="getFriendlyBrowserName(browser.browser)"></span>
-                </button>
-            </template>
-            <nav class="right-align">
-                <button @click="hideBrowserModalForProgram()" stonejs>Close</button>
-            </nav>
-        </div>
-    </dialog>
-    
-    <!-- Alert after change browser -->
+    <!-- Alert after changing browser -->
     <div class="tertiary small-round snackbar align-center" id="snackbar">
         <span class="center" stonejs>Changed browser</span>
     </div>
@@ -244,7 +235,7 @@
             isEditing: false,
             deleteFolder: false,
             favicons: [],
-            useSeparateProfile: false, // Novo: Controle da opção de perfil separado
+            useSeparateProfile: false, // Controls the separate profile option
             browserNameMap: {
                 "brave": "Brave",
                 "firefox": "Firefox",
@@ -268,12 +259,18 @@
                 "vivaldi-snapshot": "Vivaldi Snapshot"
             },
     
+            /**
+             * Fetches initial data for programs and browsers
+             */
             fetchData() {
                 fetch("get_json.sh")
                     .then(response => response.json())
                     .then(data => {
                         this.programs = data;
                         this.filterPrograms();
+                    })
+                    .catch(error => {
+                        console.error('Error fetching programs data:', error);
                     });
     
                 // Fetch the list of installed browsers
@@ -281,6 +278,9 @@
                     .then(response => response.json())
                     .then(data => {
                         this.browsers = data;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching browsers data:', error);
                     });
     
                 // Fetch the default browser
@@ -288,9 +288,15 @@
                     .then(response => response.text())
                     .then(data => {
                         this.defaultBrowser = data.trim();
+                    })
+                    .catch(error => {
+                        console.error('Error fetching default browser:', error);
                     });
             },
     
+            /**
+             * Handles global keypress events for search functionality
+             */
             handleGlobalKeypress(event) {
                 if (!['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
                     if (event.key === 'Backspace' && this.filterText.length > 0) {
@@ -306,17 +312,21 @@
                 }
             },
     
+            /**
+             * Filters programs based on the search text
+             */
             filterPrograms() {
                 if (this.filterText === "") {
                     this.filteredPrograms = this.programs;
                 } else {
+                    const normalizedFilter = this.normalizeText(this.filterText);
                     this.filteredPrograms = this.programs.filter(program => {
                         const name = this.normalizeText(program.app_name);
                         const url = this.normalizeText(program.app_url);
                         const file = this.normalizeText(program.app_file);
-                        return name.includes(this.normalizeText(this.filterText)) ||
-                            url.includes(this.normalizeText(this.filterText)) ||
-                            file.includes(this.normalizeText(this.filterText));
+                        return name.includes(normalizedFilter) ||
+                            url.includes(normalizedFilter) ||
+                            file.includes(normalizedFilter);
                     });
                 }
     
@@ -324,87 +334,105 @@
                 this.categorizePrograms();
             },
     
+            /**
+             * Categorizes programs based on their main category
+             */
             categorizePrograms() {
                 this.categorizedPrograms = this.filteredPrograms.reduce((acc, program) => {
-                    const categories = program.app_categories.split(';').filter(Boolean);
-                    categories.forEach(category => {
-                        if (!acc[category]) acc[category] = [];
-                        acc[category].push(program);
-                    });
+                    const category = program.app_categories; // Single category per webapp
+                    if (!acc[category]) acc[category] = [];
+                    acc[category].push(program);
                     return acc;
                 }, {});
             },
     
+            /**
+             * Normalizes text by removing diacritics and converting to lowercase
+             * @param {string} text - The text to normalize
+             * @returns {string} - Normalized text
+             */
             normalizeText(text) {
                 if (typeof text !== 'string') return "";
                 return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
             },
     
-            showBrowserModal(program) {
-                this.selectedProgram = program;
-                this.isEditing = false;
+            /**
+             * Shows the browser selection modal
+             */
+            showBrowserModal() {
+                this.isEditing = true; // Ensure that profile handling is based on current program
                 ui('#browser-modal');
             },
     
+            /**
+             * Hides the browser selection modal
+             */
             hideBrowserModal() {
                 ui('#browser-modal');
             },
     
+            /**
+             * Shows the edit modal for a given program
+             * @param {Object} program - The program to edit
+             */
             showEditModal(program) {
                 this.isEditing = true;
                 this.selectedProgram = { ...program }; // Clone the program to prevent direct mutations
-                this.previousIconUrl = program.app_icon_url; // Store the current icon
-                this.selectedProgram.mainCategory = program.app_categories.split(';')[0]; // Select the first category
+                // Set mainCategory from app_categories
+                this.selectedProgram.mainCategory = program.app_categories;
                 if (!this.selectedProgram.browser_icon_url) {
                     this.selectedProgram.browser_icon_url = 'icons/' + program.browser + '.svg';
                 }
-                // Configurar o estado do perfil separado
+                // Configure the separate profile option state
                 this.useSeparateProfile = this.selectedProgram.app_profile !== 'Default';
                 ui('#edit-modal');
             },
     
+            /**
+             * Shows the add new program modal
+             */
             showAddModal() {
                 this.isEditing = false;
                 this.selectedProgram = {
                     app_name: "",
                     app_url: "",
                     app_icon_url: "/usr/share/icons/hicolor/scalable/apps/applications-network.svg",
-                    app_categories: "Webapp",
+                    app_categories: "Webapps",
+                    mainCategory: "Webapps",
                     app_profile: "Default",
                     browser: this.defaultBrowser,
                     browser_icon_url: `icons/${this.defaultBrowser}.svg`
                 };
-                this.useSeparateProfile = false; // Perfil padrão
+                this.useSeparateProfile = false; // Default profile
                 ui('#edit-modal');
             },
     
+            /**
+             * Hides the edit modal and resets favicons
+             */
             hideEditModal() {
                 ui('#edit-modal');
                 this.favicons = [];
             },
     
-            showBrowserModalForProgram() {
-                ui('#browser-modal-new');
-            },
-    
-            hideBrowserModalForProgram() {
-                ui('#browser-modal-new');
-            },
-    
+            /**
+             * Saves the program details after editing or adding
+             */
             saveProgramDetails() {
                 const {
                     browser,
                     app_name,
                     app_url,
                     app_icon_url,
-                    app_categories,
-                    app_file
+                    mainCategory,
+                    app_file,
+                    app_profile
                 } = this.selectedProgram;
     
-                // Definir o perfil com base na opção de perfil separado
+                // Define the profile based on the separate profile option
                 if (this.useSeparateProfile) {
-                    // Verificar se o perfil está definido
-                    if (!this.selectedProgram.app_profile || this.selectedProgram.app_profile.trim() === "") {
+                    // Check if the profile is defined
+                    if (!app_profile || app_profile.trim() === "") {
                         alert("Please specify a profile name or uncheck 'Use separate profile'.");
                         return;
                     }
@@ -418,66 +446,67 @@
                     this.programs.push(this.selectedProgram);
                 }
     
-                // Verify if all variables are defined and not empty
+                // Verify if all required fields are defined and not empty
                 if (
                     browser !== undefined && browser.trim() !== '' &&
                     app_name !== undefined && app_name.trim() !== '' &&
                     app_url !== undefined && app_url.trim() !== '' &&
                     app_icon_url !== undefined && app_icon_url.trim() !== '' &&
-                    app_categories !== undefined && app_categories.trim() !== '' &&
+                    mainCategory !== undefined && mainCategory.trim() !== '' &&
                     this.selectedProgram.app_profile !== undefined && this.selectedProgram.app_profile.trim() !== ''
                 ) {
-                    // Remove and re-add the program to update the JSON
-                    const mainCategory = this.selectedProgram.mainCategory;
-                    const newCategories = [mainCategory, ...app_categories.split(';').filter(c => c !== mainCategory)].join(';');
-                    const encodedMessage = `${encodeURIComponent(browser)} '${encodeURIComponent(app_name)}' '${encodeURIComponent(app_url)}' '${encodeURIComponent(app_icon_url)}' '${encodeURIComponent(newCategories)}' '${encodeURIComponent(this.selectedProgram.app_profile)}'`;
-                    _run(`big-webapps remove '${encodeURIComponent(app_file)}'`);
+                    // Assign the selected category
+                    this.selectedProgram.app_categories = mainCategory;
+    
+                    // Encode the program details for the command
+                    const encodedMessage = `${encodeURIComponent(browser)} '${encodeURIComponent(app_name)}' '${encodeURIComponent(app_url)}' '${encodeURIComponent(app_icon_url)}' '${encodeURIComponent(this.selectedProgram.app_categories)}' '${encodeURIComponent(this.selectedProgram.app_profile)}'`;
+                    
+                    // Remove the existing program if editing
+                    if (this.isEditing) {
+                        _run(`big-webapps remove '${encodeURIComponent(app_file)}'`);
+                    }
+                    
+                    // Create the program
                     _run(`big-webapps create ${encodedMessage}`);
+                } else {
+                    alert("All fields are required.");
+                    return;
                 }
     
                 this.hideEditModal();
     
-                // Update the JSON
-                // Includes a 100 ms wait time before fetching
+                // Update the JSON after a short delay
                 setTimeout(() => {
-                    // Atualiza o JSON
                     fetch("get_json.sh")
                         .then(response => response.json())
                         .then(data => {
                             this.programs = data;
                             this.filterPrograms();
+                        })
+                        .catch(error => {
+                            console.error('Error updating programs data:', error);
                         });
                 }, 100);
             },
     
+            /**
+             * Selects a browser for the selected program
+             * @param {Object} browser - The selected browser
+             */
             selectBrowser(browser) {
-                if (this.isEditing) {
-                    this.selectedProgram.browser = browser.browser;
-                    this.selectedProgram.browser_icon_url = 'icons/' + browser.browser + '.svg';
-                    // Atualizar o estado do perfil separado baseado no novo navegador
-                    this.useSeparateProfile = this.selectedProgram.app_profile !== 'Default';
-                    if (this.isFirefox(browser.browser)) {
-                        this.selectedProgram.app_profile = 'Default';
-                    }
-                } else {
-                    this.selectedProgram.browser = browser.browser;
-                    this.selectedProgram.browser_icon_url = 'icons/' + browser.browser + '.svg';
-                    this.updateProgramBrowser(this.selectedProgram);
+                this.selectedProgram.browser = browser.browser;
+                this.selectedProgram.browser_icon_url = 'icons/' + browser.browser + '.svg';
+                // Update the separate profile option based on the new browser
+                this.useSeparateProfile = this.selectedProgram.app_profile !== 'Default';
+                if (this.isFirefoxOrLibreWolf(browser.browser)) {
+                    this.selectedProgram.app_profile = 'Default';
                 }
                 this.hideBrowserModal();
             },
     
-            selectBrowserForProgram(browser) {
-                this.selectedProgram.browser = browser.browser;
-                this.selectedProgram.browser_icon_url = 'icons/' + browser.browser + '.svg';
-                // Atualizar o estado do perfil separado baseado no novo navegador
-                this.useSeparateProfile = this.selectedProgram.app_profile !== 'Default';
-                if (this.isFirefox(browser.browser)) {
-                    this.selectedProgram.app_profile = 'Default';
-                }
-                this.hideBrowserModalForProgram();
-            },
-    
+            /**
+             * Selects an icon for the selected program
+             */
             selectIcon() {
                 ui('#overlay');
                 fetch("select_icon.sh")
@@ -500,10 +529,18 @@
                     });
             },
     
+            /**
+             * Gets the friendly name for a browser
+             * @param {string} browser - The browser identifier
+             * @returns {string} - The friendly browser name
+             */
             getFriendlyBrowserName(browser) {
                 return this.browserNameMap[browser] || browser;
             },
     
+            /**
+             * Deletes the selected program
+             */
             deleteProgram() {
                 if (this.deleteFolder) {
                     _run(`big-webapps remove-with-folder '${encodeURIComponent(this.selectedProgram.app_file)}'`);
@@ -517,19 +554,33 @@
                     .then(data => {
                         this.programs = data;
                         this.filterPrograms();
+                    })
+                    .catch(error => {
+                        console.error('Error updating programs data:', error);
                     });
             },
     
+            /**
+             * Shows the delete confirmation modal for a given program
+             * @param {Object} program - The program to delete
+             */
             showDeleteModal(program) {
                 this.selectedProgram = program;
                 this.deleteFolder = false;
                 ui('#delete-modal');
             },
     
+            /**
+             * Hides the delete confirmation modal
+             */
             hideDeleteModal() {
                 ui('#delete-modal');
             },
     
+            /**
+             * Updates the browser for a program
+             * @param {Object} program - The program to update
+             */
             updateProgramBrowser(program) {
                 const encodedMessage = `${encodeURIComponent(program.browser)} '${encodeURIComponent(program.app_name)}' '${encodeURIComponent(program.app_url)}' '${encodeURIComponent(program.app_icon_url)}' '${encodeURIComponent(program.app_categories)}' '${encodeURIComponent(program.app_profile)}'`;
                 _run(`big-webapps remove '${encodeURIComponent(program.app_file)}'`);
@@ -539,15 +590,25 @@
                     .then(data => {
                         this.programs = data;
                         this.filterPrograms();
+                    })
+                    .catch(error => {
+                        console.error('Error updating programs data:', error);
                     });
             },
     
+            /**
+             * Fetches site information such as title and favicons based on the URL
+             */
             fetchSiteInfo() {
                 const url = this.selectedProgram.app_url;
                 this.fetchTitle(url);
                 this.fetchFavicons(url);
             },
     
+            /**
+             * Fetches the title of a website
+             * @param {string} url - The URL of the website
+             */
             fetchTitle(url) {
                 fetch(`get_title.sh.py?${encodeURIComponent(url)}`)
                     .then(response => response.text())
@@ -559,6 +620,10 @@
                     });
             },
     
+            /**
+             * Fetches favicons from a website
+             * @param {string} url - The URL of the website
+             */
             fetchFavicons(url) {
                 fetch(`get_favicon.sh.py?${encodeURIComponent(url)}`)
                     .then(response => response.json())
@@ -570,13 +635,22 @@
                     });
             },
     
+            /**
+             * Selects a favicon for the selected program
+             * @param {string} favicon - The favicon URL to select
+             */
             selectFavicon(favicon) {
                 this.selectedProgram.app_icon_url = favicon;
             },
     
-            // Método para verificar se o navegador é Firefox
-            isFirefox(browser) {
-                return browser.toLowerCase().includes('firefox');
+            /**
+             * Determines if the browser is Firefox or Librewolf
+             * @param {string} browser - The browser identifier
+             * @returns {boolean} - True if Firefox or Librewolf, else false
+             */
+            isFirefoxOrLibreWolf(browser) {
+                const lowerBrowser = browser.toLowerCase();
+                return lowerBrowser.includes('firefox') || lowerBrowser.includes('librewolf');
             }
         };
     }

@@ -10,6 +10,11 @@ url="${4/--app=/}"
 icon=$(grep ^Icon= "$HOME/.local/share/applications/$filename")
 icon=${icon/Icon=/}
 
+# If not have http:, file: or https: add https://
+if ! [[ $url =~ http:|file:|https: ]]; then
+    url=https://$url
+fi
+
 if [[ $icon =~ / ]]; then
     cp "$icon" ~/.local/share/icons/
     sed -Ei 's|^Icon=.*/(.*)\..*|Icon=\1|g' "$HOME/.local/share/applications/$filename"
