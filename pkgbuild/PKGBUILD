@@ -8,7 +8,7 @@ license=('GPL')
 url="https://github.com/biglinux/$pkgname"
 source=("git+${url}.git")
 pkgdesc="Installs and removes BigLinux WebApps"
-depends=('bigbashview' 'python-bs4' 'python-requests' 'python-pillow' 'yad' 'gettext' 'bigcontrolcenter-base' 'ttf-lato' 'python-pycurl')
+depends=('bigbashview' 'bbv-framework' 'python-bs4' 'python-requests' 'python-pillow' 'yad' 'gettext' 'bigcontrolcenter-base' 'ttf-lato' 'python-pycurl')
 md5sums=(SKIP)
 if [ -e "${pkgname}.install" ]; then
 	install=${pkgname}.install
