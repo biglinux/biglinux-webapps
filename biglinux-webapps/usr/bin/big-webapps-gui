@@ -16,4 +16,4 @@ fi
 # Start caching json
 ./get_json.sh cache &
 
-bigbashview -s 1000x620 -n bigwebapps -p bigwebapps -c transparent -w frameless index.html
+bigbashview -s 1000x620 -n big-webapps-gui -p big-webapps-gui -c transparent -w frameless index.html
