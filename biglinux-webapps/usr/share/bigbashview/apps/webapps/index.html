@@ -156,7 +156,7 @@
 
     <!-- Modal for editing and adding program details -->
     <dialog class="dialog center middle min-width-60em no-padding no-margin" id="edit-modal" @click.away="handleClickAway">
-        <h5 class="small no-round small-padding center-align drag-area" small stonejs x-text="isEditing ? 'Edit Program Details' : 'Add New Item'"></h5>
+        <h5 class="small no-round small-padding center-align drag-area" small stonejs x-text="isEditing ? _('Edit Program Details') : _('Add New Item')"></h5>
         <div class="overlay-dialog overlay center-align middle-align" id="overlay">
             <progress class="circle"></progress>
         </div>
