@@ -3,10 +3,11 @@
 # If in the future we need to do something before starting the server, we can do it here
 
 # Set global variables
-browser="$1"
-class="${2/--class=/}"
-profile="${3/--profile-directory=/}"
-url="${4/--app=/}"
+filename="${1#*=}"
+browser="$2"
+class="${3/--class=/}"
+profile="${4/--profile-directory=/}"
+url="${5/--app=/}"
 icon=$(grep ^Icon= "$HOME/.local/share/applications/$filename")
 icon=${icon/Icon=/}
 

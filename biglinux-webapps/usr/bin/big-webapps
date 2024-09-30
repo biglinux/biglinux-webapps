@@ -127,7 +127,7 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=$name
-Exec=filename="$filename" big-webapps-exec $browser --class="$class" --profile-directory=$profile --app="$url"
+Exec=big-webapps-exec filename="$filename" $browser --class="$class" --profile-directory=$profile --app="$url"
 Icon=${icon//*\/}
 StartupWMClass=$class
 Categories=$category
