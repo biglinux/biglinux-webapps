@@ -1,0 +1,104 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the biglinux-webapps package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: biglinux-webapps\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+msgid "WebApps"
+msgstr "Verkkosovellukset"
+
+msgid "Add New"
+msgstr "Lisää uusi"
+
+msgid "Confirm Deletion"
+msgstr "Vahvista poisto"
+
+msgid "Are you sure you want to delete this program?"
+msgstr "Oletko varma, että haluat poistaa tämän ohjelman?"
+
+msgid "Also delete configuration folder"
+msgstr "Myös poista asetuskansio."
+
+msgid "Confirm"
+msgstr "Vahvista"
+
+msgid "Cancel"
+msgstr "Peruuta"
+
+msgid "Select a Browser"
+msgstr "Valitse selain"
+
+msgid "Close"
+msgstr "Sulje"
+
+msgid "Please wait, we are detecting the name and icon..."
+msgstr "Ole hyvä ja odota, etsimme nimeä ja kuvaketta..."
+
+msgid "URL:"
+msgstr "URL:"
+
+msgid "Detect name and icon"
+msgstr "Havaitse nimi ja kuvake"
+
+msgid "Name:"
+msgstr "Nimi:"
+
+msgid "Icon:"
+msgstr "Ikoni:"
+
+msgid "Category:"
+msgstr "Kategoria:"
+
+msgid "Development"
+msgstr "Kehitys"
+
+msgid "Office"
+msgstr "Toimisto"
+
+msgid "Graphics"
+msgstr "Grafiikka"
+
+msgid "Network"
+msgstr "Verkko"
+
+msgid "Game"
+msgstr "Peli"
+
+msgid "AudioVideo"
+msgstr "ÄäniVideo"
+
+msgid "Webapp"
+msgstr "Verkkosovellus"
+
+msgid "Utility"
+msgstr "Työkalu"
+
+msgid "System"
+msgstr "Järjestelmä"
+
+msgid "Profile:"
+msgstr "Profiili:"
+
+msgid "Use separate profile"
+msgstr "Käytä erillistä profiilia"
+
+msgid "Browser:"
+msgstr "Selaimen:"
+
+msgid "Save"
+msgstr "Tallenna"
+
+msgid "Changed browser"
+msgstr "Selainta vaihdettu"
