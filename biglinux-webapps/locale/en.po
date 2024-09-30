@@ -16,117 +16,175 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid "WebApps"
 msgstr "WebApps"
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid "Add New"
 msgstr "Add New"
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid "Confirm Deletion"
 msgstr "Confirm Deletion"
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid "Are you sure you want to delete this program?"
 msgstr "Are you sure you want to delete this program?"
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid "Also delete configuration folder"
 msgstr "Also delete configuration folder"
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid "Confirm"
 msgstr "Confirm"
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid "Cancel"
 msgstr "Cancel"
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid "Select a Browser"
 msgstr "Select a Browser"
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid "Close"
 msgstr "Close"
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid "Please wait, we are detecting the name and icon..."
 msgstr "Please wait, we are detecting the name and icon..."
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid "URL:"
 msgstr "URL:"
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid "Detect name and icon"
 msgstr "Detect name and icon"
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid "Name:"
 msgstr "Name:"
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid "Icon:"
 msgstr "Icon:"
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid "Category:"
 msgstr "Category:"
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid "Development"
 msgstr "Development"
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid "Office"
 msgstr "Office"
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid "Graphics"
 msgstr "Graphics"
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid "Network"
 msgstr "Network"
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid "Game"
 msgstr "Game"
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid "AudioVideo"
 msgstr "AudioVideo"
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid "Webapp"
 msgstr "Webapp"
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid "Utility"
 msgstr "Utility"
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid "System"
 msgstr "System"
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid "Profile:"
 msgstr "Profile:"
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid "Use separate profile"
 msgstr "Use separate profile"
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid "Browser:"
 msgstr "Browser:"
 
 #
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+#
 msgid "Save"
 msgstr "Save"
 
+#
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
 msgid "Changed browser"
 msgstr "Changed browser"
