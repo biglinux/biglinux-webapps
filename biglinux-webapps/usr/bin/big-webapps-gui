@@ -14,7 +14,7 @@ fi
 
 # If not exist icon folder, create
 if [[ ! -e ~/.local/share/icons ]]; then
-    ~/.local/share/icons
+    mkdir ~/.local/share/icons
 fi
 
 # File to verify if cache not completed
