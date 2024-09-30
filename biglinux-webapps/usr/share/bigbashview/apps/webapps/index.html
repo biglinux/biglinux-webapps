@@ -164,7 +164,7 @@
         <!-- Overlay de carregamento -->
         <div x-show="isLoading" class="overlay-dialog">
             <progress class="circle"></progress>
-            <p stonejs>Aguarde, estamos detectando o nome e ícone...</p>
+            <p stonejs>Please wait, we are detecting the name and icon...</p>
         </div>
         
         <div class="margin medium-line center-align flex">
@@ -268,7 +268,7 @@
             deleteFolder: false,
             favicons: [],
             useSeparateProfile: false,
-            isLoading: false, // Estado de carregamento
+            isLoading: false,
             
             browserNameMap: {
                 "brave": "Brave",
@@ -385,9 +385,9 @@
 
             showEditModal(program) {
                 this.isEditing = true;
-                this.selectedProgram = { ...program }; // Clone o programa para evitar mutações diretas
-                this.previousIconUrl = program.app_icon_url; // Armazenar o ícone atual
-                this.selectedProgram.mainCategory = program.app_categories.split(';')[0]; // Selecionar a primeira categoria
+                this.selectedProgram = { ...program };
+                this.previousIconUrl = program.app_icon_url;
+                this.selectedProgram.mainCategory = program.app_categories.split(';')[0];
                 if (!this.selectedProgram.browser_icon_url) {
                     this.selectedProgram.browser_icon_url = 'icons/' + program.browser + '.svg';
                 }
@@ -401,8 +401,8 @@
                     app_name: "",
                     app_url: "",
                     app_icon_url: "/usr/share/icons/hicolor/scalable/apps/webapp-generic.svg",
-                    app_categories: "Webapps", // Categoria padrão
-                    mainCategory: "Webapps", // Garantindo que Webapp seja selecionado
+                    app_categories: "Webapps",
+                    mainCategory: "Webapps",
                     app_profile: "Default",
                     browser: this.defaultBrowser,
                     browser_icon_url: `icons/${this.defaultBrowser}.svg`
@@ -562,7 +562,7 @@
 
                 const timeout = setTimeout(() => {
                     this.isLoading = false;
-                    alert('Não foi possível obter as informações. Tente novamente.');
+                    alert('Unable to retrieve the information. Please try again.');
                 }, 10000); // Timeout de 10 segundos
 
                 Promise.all([this.fetchTitle(url), this.fetchFavicons(url)])
@@ -579,7 +579,7 @@
                         this.selectedProgram.app_name = data;
                     })
                     .catch(error => {
-                        console.error('Erro ao buscar o título:', error);
+                        console.error('Error fetching the title:', error);
                     });
             },
 
@@ -590,7 +590,7 @@
                         this.favicons = data;
                     })
                     .catch(error => {
-                        console.error('Erro ao buscar favicons:', error);
+                        console.error('Error fetching favicons:', error);
                     });
             },
 
