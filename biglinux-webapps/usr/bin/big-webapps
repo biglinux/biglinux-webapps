@@ -184,7 +184,8 @@ elif [ "$command" = "json" ]; then
                 "Exec="*)
                     url=${line//*--app=}
                     url=${url//\"}
-                    browser=${line//*big-webapps-exec }
+                    browser=${line//*filename=\"}
+                    browser=${browser#*\" }
                     browser=${browser// *}
                     profile=${line//*--profile-directory=}
                     profile=${profile// *}
