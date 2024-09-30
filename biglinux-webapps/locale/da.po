@@ -1,0 +1,104 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the biglinux-webapps package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: biglinux-webapps\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+msgid "WebApps"
+msgstr "WebApps"
+
+msgid "Add New"
+msgstr "Tilføj ny"
+
+msgid "Confirm Deletion"
+msgstr "Bekræft sletning"
+
+msgid "Are you sure you want to delete this program?"
+msgstr "Er du sikker på, at du vil slette dette program?"
+
+msgid "Also delete configuration folder"
+msgstr "Slet også konfigurationsmappen."
+
+msgid "Confirm"
+msgstr "Bekræft"
+
+msgid "Cancel"
+msgstr "Annuller"
+
+msgid "Select a Browser"
+msgstr "Vælg en browser"
+
+msgid "Close"
+msgstr "Luk"
+
+msgid "Please wait, we are detecting the name and icon..."
+msgstr "Vent venligst, vi registrerer navnet og ikonet..."
+
+msgid "URL:"
+msgstr "URL:"
+
+msgid "Detect name and icon"
+msgstr "Registrer navn og ikon"
+
+msgid "Name:"
+msgstr "Navn:"
+
+msgid "Icon:"
+msgstr "Ikon:"
+
+msgid "Category:"
+msgstr "Kategori:"
+
+msgid "Development"
+msgstr "Udvikling"
+
+msgid "Office"
+msgstr "Kontor"
+
+msgid "Graphics"
+msgstr "Grafik"
+
+msgid "Network"
+msgstr "Netværk"
+
+msgid "Game"
+msgstr "Spil"
+
+msgid "AudioVideo"
+msgstr "LydVideo"
+
+msgid "Webapp"
+msgstr "Webapp"
+
+msgid "Utility"
+msgstr "Værktøj"
+
+msgid "System"
+msgstr "System"
+
+msgid "Profile:"
+msgstr "Profil:"
+
+msgid "Use separate profile"
+msgstr "Brug separat profil"
+
+msgid "Browser:"
+msgstr "Browser:"
+
+msgid "Save"
+msgstr "Gem"
+
+msgid "Changed browser"
+msgstr "Ændret browser"
