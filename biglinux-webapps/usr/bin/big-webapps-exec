@@ -24,25 +24,28 @@ fi
 # Flatpak name to flatpak file address
 case $browser in
     flatpak-brave)
-        browser_exec="/var/lib/flatpak/exports/bin/com.brave.Browser"
+        browser_exec="flatpak run com.brave.Browser"
         ;;
     flatpak-chrome)
-        browser_exec="/var/lib/flatpak/exports/bin/com.google.Chrome"
+        browser_exec="flatpak run com.google.Chrome"
+        ;;
+    flatpak-chrome-unstable)
+        browser_exec="flatpak run com.google.ChromeDev"
         ;;
     flatpak-chromium)
-        browser_exec="/var/lib/flatpak/exports/bin/org.chromium.Chromium"
+        browser_exec="flatpak run org.chromium.Chromium"
         ;;
     flatpak-edge)
-        browser_exec="/var/lib/flatpak/exports/bin/com.microsoft.Edge"
+        browser_exec="flatpak run com.microsoft.Edge"
         ;;
     flatpak-ungoogled-chromium)
-        browser_exec="/var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium"
+        browser_exec="flatpak run com.github.Eloston.UngoogledChromium"
         ;;
     flatpak-firefox)
         browser_exec="flatpak run org.mozilla.firefox"
         ;;
     flatpak-librewolf)
-        browser_exec="/var/lib/flatpak/exports/bin/io.gitlab.librewolf-community"
+        browser_exec="flatpak run io.gitlab.librewolf-community"
         ;;
     *)
         browser_exec=$browser
