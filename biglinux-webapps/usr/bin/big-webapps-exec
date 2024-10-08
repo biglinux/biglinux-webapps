@@ -39,7 +39,7 @@ case $browser in
         browser_exec="/var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium"
         ;;
     flatpak-firefox)
-        browser_exec="/var/lib/flatpak/exports/bin/org.mozilla.firefox"
+        browser_exec="flatpak run org.mozilla.firefox"
         ;;
     flatpak-librewolf)
         browser_exec="/var/lib/flatpak/exports/bin/io.gitlab.librewolf-community"
@@ -49,7 +49,15 @@ case $browser in
         ;;
 esac
 
-if [[ $browser =~ (firefox|librewolf) ]]; then
+
+mkdir -p ~/.bigwebapps/$browser
+
+# Permission for flatpak browser
+if [[ $browser =~ flatpak ]]; then
+    flatpak override --user --filesystem=$HOME/.bigwebapps/$browser ${browser_exec/flatpak run /}
+fi
+
+if [[ $browser =~ (firefox|librewolf|flatpak-firefox) ]]; then
 
     filename=${filename//.desktop}
     # Firefox and another browsers based on it need to have a profile to work changing the userChrome.css and user.js
@@ -58,6 +66,7 @@ if [[ $browser =~ (firefox|librewolf) ]]; then
         cp -a /usr/share/bigbashview/apps/webapps/profile/userChrome.css "$HOME/.bigwebapps/$browser/$filename/chrome/"
         cp -a /usr/share/bigbashview/apps/webapps/profile/user.js "$HOME/.bigwebapps/$browser/$filename/"
     fi
+
     # Execute the browser with the profile
     XAPP_FORCE_GTKWINDOW_ICON="${icon//*\/}" MOZ_APP_REMOTINGNAME="$class" exec $browser_exec --class="$class" --name="$filename" --profile "$HOME/.bigwebapps/$browser/$filename" --no-remote "$url"
 
@@ -81,7 +90,7 @@ if echo $filename | grep -q '\-BigWebApp' && [[ $XDG_SESSION_TYPE == 'wayland' ]
     cp "$filename" "$filename_orig"
     # Wait to system detect updated icon
     sleep 2
-    $browser_exec --class="$class" --profile-directory="$profile" --app="$url" &
+    eval $browser_exec --class="$class" --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
 
     sleep 2
     mv -f "$filename_orig_bkp" "$filename_orig"
@@ -93,6 +102,5 @@ else
     if [[ -e $filename_bkp ]]; then
         mv -f "$filename_bkp" "$filename"
     fi
-    exec $browser_exec --class="$class" --profile-directory="$profile" --app="$url"
+    exec $browser_exec --class="$class" --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url"
 fi
-
