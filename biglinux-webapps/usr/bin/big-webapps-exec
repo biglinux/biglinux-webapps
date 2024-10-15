@@ -62,6 +62,9 @@ fi
 
 if [[ $browser =~ (firefox|librewolf|flatpak-firefox) ]]; then
 
+    #Firefox based
+    extra_parameters='--no-first-run --no-default-browser-check'
+
     filename=${filename//.desktop}
     # Firefox and another browsers based on it need to have a profile to work changing the userChrome.css and user.js
     if [ ! -d "$HOME/.bigwebapps/$browser/$filename/chrome" ];then
@@ -72,7 +75,9 @@ if [[ $browser =~ (firefox|librewolf|flatpak-firefox) ]]; then
 
     # Execute the browser with the profile
     XAPP_FORCE_GTKWINDOW_ICON="${icon//*\/}" MOZ_APP_REMOTINGNAME="$class" exec $browser_exec --class="$class" --name="$filename" --profile "$HOME/.bigwebapps/$browser/$filename" --no-remote "$url"
-
+else
+    #Chromium based
+    extra_parameters='--no-default-browser-check --disable-first-run-ui --no-first-run --hide-crash-restore-bubble'
 fi
 
 # If the big-webapp-version is set and using wayland, we change desktop file temporarily
@@ -93,7 +98,7 @@ if echo $filename | grep -q '\-BigWebApp' && [[ $XDG_SESSION_TYPE == 'wayland' ]
     cp "$filename" "$filename_orig"
     # Wait to system detect updated icon
     sleep 2
-    eval $browser_exec --class="$class" --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
+    eval $browser_exec $extra_parameters --class="$class" --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
 
     sleep 2
     mv -f "$filename_orig_bkp" "$filename_orig"
@@ -105,5 +110,5 @@ else
     if [[ -e $filename_bkp ]]; then
         mv -f "$filename_bkp" "$filename"
     fi
-    exec $browser_exec --class="$class" --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url"
+    exec $browser_exec $extra_parameters --class="$class" --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url"
 fi
