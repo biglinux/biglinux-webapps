@@ -219,26 +219,31 @@
                             </div>
                         </td>
                     </tr>
-                    <tr x-show="!isFirefox(selectedProgram.browser)">
-                        <td class="min" stonejs>Profile:</td>
-                        <td>
-                            <div class="field round fill small">
-                                <label>
-                                    <input type="checkbox" x-model="useSeparateProfile">
-                                    <span stonejs>Use separate profile</span>
-                                </label>
-                                <input type="text" id="app_profile" x-model="selectedProgram.app_profile" :disabled="!useSeparateProfile" placeholder="Default">
-                            </div>
-                        </td>
-                    </tr>
                     <tr>
                         <td class="min" stonejs>Browser:</td>
-                        <td>
+                        <td class="min row no-margin">
                             <button @click="showBrowserModalForProgram()" class="surface-bgcolor small-round vertical small-padding small-margin browser-button">
                                 <img :src="selectedProgram.browser_icon_url || 'default-browser-icon.svg'" class="medium" />
                                 <span x-text="getFriendlyBrowserName(selectedProgram.browser)"></span>
                             </button>
-                        </td>
+                            <div x-show="!isFirefox(selectedProgram.browser)">
+                                <div class="surface-bgcolor small-round vertical small-padding small-margin browser-button">
+                                    <label class="switch margin">
+                                        <input id="separateProfile" type="checkbox" x-model="useSeparateProfile">
+                                        <span class="center"></span>
+                                        </label>
+                                        <label class="cursor-pointer center-align" for="separateProfile">Separate profile</label>
+                                </div>
+
+                                <!-- <label class="switch">
+                                    <input type="checkbox" x-model="useSeparateProfile">
+                                    <span>Separate profile</span>
+                                    <div class="field round fill small">
+                                        <input type="text" id="app_profile" x-model="selectedProgram.app_profile" :disabled="!useSeparateProfile" placeholder="Default">
+                                    </div>
+                                </label> -->
+                           </div>
+                        </td>                        
                     </tr>
                 </tbody>
             </table>
