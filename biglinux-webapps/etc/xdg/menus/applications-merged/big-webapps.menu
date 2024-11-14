@@ -7,7 +7,7 @@
     <!-- Webapps Menu -->
     <Menu>
         <Name>Webapps</Name>
-        <Directory>web-apps.directory</Directory>
+        <Directory>big-webapps.directory</Directory>
         <Include>
             <And>
                 <Category>Webapps</Category>
