@@ -4,12 +4,12 @@
 <!-- Include the generic header (CSS and JS) -->
 <?include html /usr/share/bigbashview/framework/html/genericHeader.html?>
 
-<!-- Include window control side decorator -->
+<!-- Include client-side decorator CSS and JS -->
 <link href="/usr/share/bigbashview/framework/css/client-side-decorator.css" rel="stylesheet">
 <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
 <script src="/usr/share/bigbashview/framework/js/client-side-decorator.js" defer></script>
 
-<!-- Includes the window control side shell script -->
+<!-- Include window control side shell script -->
 <?include bash /usr/share/bigbashview/framework/shell/windowControlSide.sh 2> /dev/null ?>
 
 <style>
@@ -50,13 +50,11 @@
     #browser-modal-new {
         z-index: 200;
     }
-    
-
 </style>
 
 <body x-data="appData()" x-init="fetchData()" @keydown.window="handleGlobalKeypress($event)">
 
-    <!-- Using Client Side Decoration use body transparent to make shadow, and page work like real body -->
+    <!-- Using Client Side Decoration: make body transparent for shadow and page to work like a real body -->
     <div id="page">
         <div id="title-bar" class="drag-area">
             <div id="title-auto-change-side" class="row drag-area">
@@ -87,7 +85,7 @@
                             <div class="row">
                                 <div class="center-align">
                                     <button @click="showBrowserModal(program)" class="surface-bgcolor small-round vertical small-padding">
-                                        <img :src="'icons/' + program.browser + '.svg'" class="medium" x-bind:id="'browser-icon-' + program.app_file" />
+                                        <img :src="'icons/' + program.browser + '.svg'" class="medium" :id="'browser-icon-' + program.app_file" />
                                     </button>
                                     <button @click="showEditModal(program)" class="surface-bgcolor small-round vertical small-padding">
                                         <i class="trash-button">edit</i>
@@ -128,7 +126,7 @@
         <div class="large medium-padding medium-margin medium-line center-align flex">
             <template x-for="browser in browsers" :key="browser.browser">
                 <button @click="selectBrowser(browser)" class="surface-bgcolor small-round vertical small-padding margin browser-button">
-                    <img :src="'icons/' + browser.browser + '.svg'" class="medium" x-bind:id="'browser-icon-' + browser.browser" />
+                    <img :src="'icons/' + browser.browser + '.svg'" class="medium" :id="'browser-icon-' + browser.browser" />
                     <span x-text="getFriendlyBrowserName(browser.browser)"></span>
                 </button>
             </template>
@@ -161,7 +159,7 @@
             <progress class="circle"></progress>
         </div>
         
-        <!-- Overlay de carregamento -->
+        <!-- Loading overlay -->
         <div x-show="isLoading" class="overlay-dialog">
             <progress class="circle"></progress>
             <p stonejs>Please wait, we are detecting the name and icon...</p>
@@ -219,31 +217,29 @@
                             </div>
                         </td>
                     </tr>
+                    <tr x-show="!isFirefox(selectedProgram.browser)">
+                        <td class="min" stonejs>Profile:</td>
+                        <td>
+                            <div class="middle-align">
+                                <label class="switch right-margin">
+                                    <input type="checkbox" x-model="useSeparateProfile">
+                                    <span stonejs>Use separate profile</span>
+                                </label>
+                                <template x-if="useSeparateProfile">
+                                    <!-- Bind the profile input to selectedProgram.app_profile for two-way data binding -->
+                                    <input type="text" class="round fill small-padding no-border" id="app_profile" placeholder="Enter profile name" x-model="selectedProgram.app_profile">
+                                </template>
+                            </div>
+                        </td>
+                    </tr>
                     <tr>
                         <td class="min" stonejs>Browser:</td>
-                        <td class="min row no-margin">
+                        <td>
                             <button @click="showBrowserModalForProgram()" class="surface-bgcolor small-round vertical small-padding small-margin browser-button">
                                 <img :src="selectedProgram.browser_icon_url || 'default-browser-icon.svg'" class="medium" />
                                 <span x-text="getFriendlyBrowserName(selectedProgram.browser)"></span>
                             </button>
-                            <div x-show="!isFirefox(selectedProgram.browser)">
-                                <div class="surface-bgcolor small-round vertical small-padding small-margin browser-button">
-                                    <label class="switch margin">
-                                        <input id="separateProfile" type="checkbox" x-model="useSeparateProfile">
-                                        <span class="center"></span>
-                                        </label>
-                                        <label class="cursor-pointer center-align" for="separateProfile">Separate profile</label>
-                                </div>
-
-                                <!-- <label class="switch">
-                                    <input type="checkbox" x-model="useSeparateProfile">
-                                    <span>Separate profile</span>
-                                    <div class="field round fill small">
-                                        <input type="text" id="app_profile" x-model="selectedProgram.app_profile" :disabled="!useSeparateProfile" placeholder="Default">
-                                    </div>
-                                </label> -->
-                           </div>
-                        </td>                        
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -254,7 +250,7 @@
         </div>
     </dialog>
 
-    <!-- Alert after change browser -->
+    <!-- Alert after changing browser -->
     <div class="tertiary small-round snackbar align-center" id="snackbar">
         <span class="center" stonejs>Changed browser</span>
     </div>
@@ -262,20 +258,20 @@
     <script>
     function appData() {
         return {
-            programs: [],
-            filteredPrograms: [],
-            filterText: "",
-            placeholderText: _('Search...'),
-            categorizedPrograms: {},
-            browsers: [],
-            selectedProgram: null,
-            isEditing: false,
-            deleteFolder: false,
-            favicons: [],
-            useSeparateProfile: false,
-            isLoading: false,
+            programs: [], // List of all programs
+            filteredPrograms: [], // List of programs after filtering
+            filterText: "", // Current text in the search input
+            placeholderText: _('Search...'), // Placeholder text for search
+            categorizedPrograms: {}, // Programs categorized by their categories
+            browsers: [], // List of available browsers
+            selectedProgram: null, // Currently selected program for editing or deletion
+            isEditing: false, // Flag to indicate if editing an existing program
+            deleteFolder: false, // Flag to indicate if the configuration folder should also be deleted
+            favicons: [], // List of fetched favicons for the selected URL
+            useSeparateProfile: false, // Flag to indicate if a separate profile is used
+            isLoading: false, // Flag to indicate if data is being loaded
             
-            browserNameMap: {
+            browserNameMap: { // Mapping of browser identifiers to friendly names
                 "brave": "Brave",
                 "firefox": "Firefox",
                 "chromium": "Chromium",
@@ -298,20 +294,47 @@
                 "vivaldi-snapshot": "Vivaldi Snapshot"
             },
 
+            /**
+             * Derive the profile name from the URL by extracting the hostname and removing dots.
+             * @param {string} url - The URL from which to derive the profile name.
+             * @returns {string} - The derived profile name or 'Default' if extraction fails.
+             */
+            deriveProfileName(url) {
+                try {
+                    const urlObj = new URL(url);
+                    const hostname = urlObj.hostname;
+                    // Remove dots from the hostname to create a profile name
+                    return hostname.replace(/\./g, '');
+                } catch (e) {
+                    // If URL constructor fails, attempt manual extraction using regex
+                    const match = url.match(/^(?:https?:\/\/)?([^\/]+)/i);
+                    if (match && match[1]) {
+                        return match[1].replace(/\./g, '');
+                    }
+                    return 'Default';
+                }
+            },
+
+            /**
+             * Fetch initial data for programs and browsers.
+             */
             fetchData() {
+                // Fetch the list of programs
                 fetch("get_json.sh")
                     .then(response => response.json())
                     .then(data => {
                         this.programs = data;
-                        this.filterPrograms();
+                        this.filterPrograms(); // Initialize filtering
                     });
 
+                // Fetch the list of available browsers
                 fetch("check_browser.sh?--list-json")
                     .then(response => response.json())
                     .then(data => {
                         this.browsers = data;
                     });
 
+                // Fetch the default browser
                 fetch("check_browser.sh?--default")
                     .then(response => response.text())
                     .then(data => {
@@ -319,25 +342,38 @@
                     });
             },
 
+            /**
+             * Handle global keypress events for search functionality.
+             * @param {KeyboardEvent} event - The keyboard event.
+             */
             handleGlobalKeypress(event) {
+                // Ignore keypresses when focused on input elements
                 if (!['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
                     if (event.key === 'Backspace' && this.filterText.length > 0) {
+                        // Remove the last character from filterText on Backspace
                         this.filterText = this.filterText.slice(0, -1);
                         this.filterPrograms();
                     } else if (event.key.length === 1) {
+                        // Append the pressed key to filterText
                         this.filterText += event.key;
                         this.filterPrograms();
                     }
+                    // Refocus the search input after updating filterText
                     this.$nextTick(() => {
                         this.$refs.searchInput.focus();
                     });
                 }
             },
 
+            /**
+             * Filter programs based on the current filterText.
+             */
             filterPrograms() {
                 if (this.filterText === "") {
+                    // If no filter text, show all programs
                     this.filteredPrograms = this.programs;
                 } else {
+                    // Filter programs where name, URL, or file includes the filter text
                     this.filteredPrograms = this.programs.filter(program => {
                         const name = this.normalizeText(program.app_name);
                         const url = this.normalizeText(program.app_url);
@@ -348,10 +384,14 @@
                     });
                 }
 
+                // Sort the filtered programs alphabetically by name
                 this.filteredPrograms.sort((a, b) => a.app_name.localeCompare(b.app_name));
-                this.categorizePrograms();
+                this.categorizePrograms(); // Re-categorize after filtering
             },
 
+            /**
+             * Categorize programs into their respective categories.
+             */
             categorizePrograms() {
                 this.categorizedPrograms = this.filteredPrograms.reduce((acc, program) => {
                     const categories = program.app_categories.split(';').filter(Boolean);
@@ -363,43 +403,69 @@
                 }, {});
             },
 
+            /**
+             * Normalize text by removing diacritics and converting to lowercase.
+             * @param {string} text - The text to normalize.
+             * @returns {string} - The normalized text.
+             */
             normalizeText(text) {
                 if (typeof text !== 'string') return "";
                 return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
             },
 
+            /**
+             * Show the browser selection modal for an existing program.
+             * @param {Object} program - The program for which to select a browser.
+             */
             showBrowserModal(program) {
                 this.selectedProgram = program;
                 this.isEditing = false;
-                ui('#browser-modal');
+                ui('#browser-modal'); // Open the browser modal
             },
 
+            /**
+             * Hide the browser selection modal.
+             */
             hideBrowserModal() {
-                ui('#browser-modal');
+                ui('#browser-modal'); // Close the browser modal
             },
 
+            /**
+             * Show the browser selection modal for a new program.
+             */
             showBrowserModalForProgram() {
-                ui('#browser-modal-new');
-                ui('#overlay');
+                ui('#browser-modal-new'); // Open the new browser modal
+                ui('#overlay'); // Show overlay
             },
 
+            /**
+             * Hide the browser selection modal for a new program.
+             */
             hideBrowserModalForProgram() {
-                ui('#browser-modal-new');
-                ui('#overlay');
+                ui('#browser-modal-new'); // Close the new browser modal
+                ui('#overlay'); // Hide overlay
             },
 
+            /**
+             * Show the edit modal with the selected program's details.
+             * @param {Object} program - The program to edit.
+             */
             showEditModal(program) {
                 this.isEditing = true;
-                this.selectedProgram = { ...program };
+                this.selectedProgram = { ...program }; // Clone the program object
                 this.previousIconUrl = program.app_icon_url;
                 this.selectedProgram.mainCategory = program.app_categories.split(';')[0];
                 if (!this.selectedProgram.browser_icon_url) {
                     this.selectedProgram.browser_icon_url = 'icons/' + program.browser + '.svg';
                 }
+                // Set useSeparateProfile based on the current app_profile
                 this.useSeparateProfile = this.selectedProgram.app_profile !== 'Default';
-                ui('#edit-modal');
+                ui('#edit-modal'); // Open the edit modal
             },
 
+            /**
+             * Show the add new program modal with default values.
+             */
             showAddModal() {
                 this.isEditing = false;
                 this.selectedProgram = {
@@ -412,15 +478,21 @@
                     browser: this.defaultBrowser,
                     browser_icon_url: `icons/${this.defaultBrowser}.svg`
                 };
-                this.useSeparateProfile = false;
-                ui('#edit-modal');
+                this.useSeparateProfile = false; // Ensure the checkbox is unchecked
+                ui('#edit-modal'); // Open the edit modal
             },
 
+            /**
+             * Hide the edit/add modal and reset favicons.
+             */
             hideEditModal() {
-                ui('#edit-modal');
-                this.favicons = [];
+                ui('#edit-modal'); // Close the edit modal
+                this.favicons = []; // Reset favicons
             },
 
+            /**
+             * Save the program details after creation or editing.
+             */
             saveProgramDetails() {
                 const {
                     browser,
@@ -431,20 +503,24 @@
                     app_file
                 } = this.selectedProgram;
 
+                // Validate profile if separate profile is used
                 if (this.useSeparateProfile) {
                     if (!this.selectedProgram.app_profile || this.selectedProgram.app_profile.trim() === "") {
                         alert("Please specify a profile name or uncheck 'Use separate profile'.");
                         return;
                     }
                 } else {
+                    // Set profile to 'Default' if not using a separate profile
                     this.selectedProgram.app_profile = 'Default';
                 }
 
                 if (!this.isEditing) {
+                    // Generate a unique app_file identifier for new programs
                     this.selectedProgram.app_file = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
                     this.programs.push(this.selectedProgram);
                 }
 
+                // Ensure all required fields are filled
                 if (
                     browser !== undefined && browser.trim() !== '' &&
                     app_name !== undefined && app_name.trim() !== '' &&
@@ -460,8 +536,10 @@
                     _run(`big-webapps create ${encodedMessage}`);
                 }
 
+                // Close the edit/add modal
                 this.hideEditModal();
 
+                // Refresh the programs list after a short delay
                 setTimeout(() => {
                     fetch("get_json.sh")
                         .then(response => response.json())
@@ -472,34 +550,47 @@
                 }, 100);
             },
 
+            /**
+             * Select a browser from the browser modal.
+             * @param {Object} browser - The selected browser object.
+             */
             selectBrowser(browser) {
                 if (this.isEditing) {
+                    // Update browser details for the selected program
                     this.selectedProgram.browser = browser.browser;
                     this.selectedProgram.browser_icon_url = 'icons/' + browser.browser + '.svg';
                     this.useSeparateProfile = this.selectedProgram.app_profile !== 'Default';
                     if (this.isFirefox(browser.browser)) {
-                        this.selectedProgram.app_profile = 'Default';
+                        this.selectedProgram.app_profile = 'Default'; // Reset profile if browser is Firefox
                     }
                 } else {
+                    // Update browser details for a new program
                     this.selectedProgram.browser = browser.browser;
                     this.selectedProgram.browser_icon_url = 'icons/' + browser.browser + '.svg';
                     this.updateProgramBrowser(this.selectedProgram);
                 }
-                this.hideBrowserModal();
+                this.hideBrowserModal(); // Close the browser modal
             },
 
+            /**
+             * Select a browser for a new program.
+             * @param {Object} browser - The selected browser object.
+             */
             selectBrowserForProgram(browser) {
                 this.selectedProgram.browser = browser.browser;
                 this.selectedProgram.browser_icon_url = 'icons/' + browser.browser + '.svg';
                 this.useSeparateProfile = this.selectedProgram.app_profile !== 'Default';
                 if (this.isFirefox(browser.browser)) {
-                    this.selectedProgram.app_profile = 'Default';
+                    this.selectedProgram.app_profile = 'Default'; // Reset profile if browser is Firefox
                 }
-                this.hideBrowserModalForProgram();
+                this.hideBrowserModalForProgram(); // Close the new browser modal
             },
 
+            /**
+             * Select an icon for the program.
+             */
             selectIcon() {
-                ui('#overlay');
+                ui('#overlay'); // Show overlay
                 fetch("select_icon.sh")
                     .then(response => {
                         if (!response.ok) {
@@ -509,27 +600,37 @@
                     })
                     .then(data => {
                         if (data.trim() !== '') {
-                            this.selectedProgram.app_icon_url = data.trim();
+                            this.selectedProgram.app_icon_url = data.trim(); // Update icon URL
                         }
-                        ui('#overlay');
+                        ui('#overlay'); // Hide overlay
                     })
                     .catch(error => {
                         console.error('Error fetching icon:', error);
-                        ui('#overlay');
+                        ui('#overlay'); // Hide overlay
                     });
             },
 
+            /**
+             * Get a friendly name for the browser.
+             * @param {string} browser - The browser identifier.
+             * @returns {string} - The friendly name of the browser.
+             */
             getFriendlyBrowserName(browser) {
                 return this.browserNameMap[browser] || browser;
             },
 
+            /**
+             * Delete the selected program, optionally removing its configuration folder.
+             */
             deleteProgram() {
                 if (this.deleteFolder) {
+                    // Remove program along with its configuration folder
                     _run(`big-webapps remove-with-folder '${encodeURIComponent(this.selectedProgram.app_file)}'`);
                 } else {
+                    // Remove only the program
                     _run(`big-webapps remove '${encodeURIComponent(this.selectedProgram.app_file)}'`);
                 }
-                this.hideDeleteModal();
+                this.hideDeleteModal(); // Close the delete modal
                 fetch("get_json.sh")
                     .then(response => response.json())
                     .then(data => {
@@ -538,16 +639,27 @@
                     });
             },
 
+            /**
+             * Show the delete confirmation modal for a specific program.
+             * @param {Object} program - The program to delete.
+             */
             showDeleteModal(program) {
                 this.selectedProgram = program;
-                this.deleteFolder = false;
-                ui('#delete-modal');
+                this.deleteFolder = false; // Reset the delete folder option
+                ui('#delete-modal'); // Open the delete modal
             },
 
+            /**
+             * Hide the delete confirmation modal.
+             */
             hideDeleteModal() {
-                ui('#delete-modal');
+                ui('#delete-modal'); // Close the delete modal
             },
 
+            /**
+             * Update the browser for the program.
+             * @param {Object} program - The program to update.
+             */
             updateProgramBrowser(program) {
                 const encodedMessage = `${encodeURIComponent(program.browser)} '${encodeURIComponent(program.app_name)}' '${encodeURIComponent(program.app_url)}' '${encodeURIComponent(program.app_icon_url)}' '${encodeURIComponent(program.app_categories)}' '${encodeURIComponent(program.app_profile)}'`;
                 _run(`big-webapps remove '${encodeURIComponent(program.app_file)}'`);
@@ -560,49 +672,80 @@
                     });
             },
 
+            /**
+             * Fetch site information: title and favicons.
+             */
             fetchSiteInfo() {
                 const url = this.selectedProgram.app_url.trim();
                 
-                this.isLoading = true;
+                this.isLoading = true; // Show loading overlay
 
+                // Set a timeout to handle cases where fetching information takes too long
                 const timeout = setTimeout(() => {
                     this.isLoading = false;
                     alert('Unable to retrieve the information. Please try again.');
-                }, 10000); // Timeout de 10 segundos
+                }, 10000); // 10-second timeout
 
+                // Fetch the title and favicons concurrently
                 Promise.all([this.fetchTitle(url), this.fetchFavicons(url)])
+                    .then(() => {
+                        // Derive the profile name based on the URL
+                        const derivedProfile = this.deriveProfileName(url);
+                        this.selectedProgram.app_profile = derivedProfile; // Set the derived profile name
+                        // Do not automatically check 'useSeparateProfile'; user must do it manually
+                        // The derived profile name is ready if the user decides to use a separate profile
+                    })
                     .finally(() => {
-                        clearTimeout(timeout);
-                        this.isLoading = false;
+                        clearTimeout(timeout); // Clear the timeout
+                        this.isLoading = false; // Hide loading overlay
                     });
             },
 
+            /**
+             * Fetch the title of the website.
+             * @param {string} url - The URL of the website.
+             * @returns {Promise<string>} - A promise that resolves to the title of the website.
+             */
             fetchTitle(url) {
                 return fetch(`get_title.sh.py?${encodeURIComponent(url)}`)
                     .then(response => response.text())
                     .then(data => {
-                        this.selectedProgram.app_name = data;
+                        this.selectedProgram.app_name = data; // Update the program name
                     })
                     .catch(error => {
                         console.error('Error fetching the title:', error);
                     });
             },
 
+            /**
+             * Fetch the favicons of the website.
+             * @param {string} url - The URL of the website.
+             * @returns {Promise<Array<string>>} - A promise that resolves to an array of favicon URLs.
+             */
             fetchFavicons(url) {
                 return fetch(`get_favicon.sh.py?${encodeURIComponent(url)}`)
                     .then(response => response.json())
                     .then(data => {
-                        this.favicons = data;
+                        this.favicons = data; // Update the favicons list
                     })
                     .catch(error => {
                         console.error('Error fetching favicons:', error);
                     });
             },
 
+            /**
+             * Select a favicon from the fetched favicons.
+             * @param {string} favicon - The URL of the selected favicon.
+             */
             selectFavicon(favicon) {
-                this.selectedProgram.app_icon_url = favicon;
+                this.selectedProgram.app_icon_url = favicon; // Update the program's icon URL
             },
 
+            /**
+             * Check if the selected browser is Firefox.
+             * @param {string} browser - The browser identifier.
+             * @returns {boolean} - True if the browser is Firefox, false otherwise.
+             */
             isFirefox(browser) {
                 return browser.toLowerCase().includes('firefox');
             }

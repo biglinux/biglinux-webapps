@@ -4,10 +4,11 @@ display_help() {
     echo "This script manages WebApps by creating, editing, or removing .desktop files for specified browsers and URLs."
     echo ""
     echo "Usage:"
-    echo "  $0 {create|edit|remove} <browser> <name> <url> <icon> <category> <profile>"
+    echo "  $0 {create|edit|remove|remove-with-folder} <browser> <name> <url> <icon> <category> <profile>"
     echo ""
     echo "Commands:"
     echo "  create     - Creates a new WebApp .desktop file"
+    echo "  remove-with-folder     - Removes an existing WebApp .desktop file"
     echo "  remove     - Removes an existing WebApp .desktop file"
     echo "  json       - Show all WebApps in JSON format"
     echo "  json file  - Change file to filename to show in JSON format"
@@ -66,6 +67,24 @@ elif [ $command == "remove" ]; then
         echo "WebApp not found!"
         exit 1
     fi
+    
+# Remove
+elif [ $command == "remove-with-folder" ]; then
+    if [ "$#" != "1" ]; then
+        display_help
+        exit 1
+    fi
+
+    filename="$1"
+
+    if [ -f $filename ]; then
+        rm $filename
+        echo "WebApp successfully removed!"
+        exit 0
+    else
+        echo "WebApp not found!"
+        exit 1
+    fi
 
 else
     # Set global variables
@@ -94,7 +113,7 @@ short_browser=$(sed 's/.*[Cc]hrom.*/chrome/
 class=$(sed 's|https://||;s|http://||g;s|/|__|g' <<< "$url")
 
 # Define the filename in Wayland compatible format
-filename="$short_browser-$(sed 's|https://||;s|http://||;s|?.*||g;s|/|__|g' <<< $url)__-$profile.desktop"
+filename="$short_browser-$(sed 's|https://||;s|http://||;s|?.*||g;s|/|__|g' <<< $url)__-Default.desktop"
 
 # Ensure filename doesn't end with more than two underscores and replace final __-profile with -profile
 filename=$(sed -E "s/(__.*)__-$profile/\1-$profile/g;s|__\@-|_@-|g" <<< "$filename")
