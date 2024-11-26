@@ -72,7 +72,7 @@
         <div id="main" class="drag-area page-content-without-left-bar">
             <template x-for="(programs, category) in categorizedPrograms" :key="category">
                 <div>
-                    <h2 x-text="category" class="category-title"></h2>
+                    <h5 x-text="category" class="left-align margin"></h5>
                     <template x-for="program in programs" :key="program.app_file">
                         <div class="row margin small-padding active-category small-round">
                             <div class="row">
@@ -107,10 +107,13 @@
         <h5 class="small no-round padding center-align drag-area" small stonejs>Confirm Deletion</h5>
         <div class="large medium-padding medium-margin medium-line center-align flex">
             <p stonejs>Are you sure you want to delete this program?</p>
-            <template x-if="selectedProgram.app_profile !== 'Default'">
+            <!-- Only show delete option if profile not Default and not have another webapp using same profile and browser -->
+            <template x-if="selectedProgram.app_profile !== 'Default' && !programs.some(p => p !== selectedProgram && p.app_profile === selectedProgram.app_profile && p.browser === selectedProgram.browser)">
                 <div>
-                    <input type="checkbox" id="delete-folder" x-model="deleteFolder">
-                    <label for="delete-folder" stonejs>Also delete configuration folder</label>
+                    <label class="switch right-margin">
+                        <input type="checkbox" id="delete-folder" x-model="deleteFolder">
+                        <span stonejs>Also delete configuration folder</span>
+                    </label>
                 </div>
             </template>
             <nav class="right-align">
@@ -221,13 +224,13 @@
                         <td class="min" stonejs>Profile:</td>
                         <td>
                             <div class="middle-align">
-                                <label class="switch right-margin">
+                                <label class="switch right-margin" :title="_('Using a separate profile for the webapp allows you to log in to different accounts than those logged into the main browser')">
                                     <input type="checkbox" x-model="useSeparateProfile">
                                     <span stonejs>Use separate profile</span>
                                 </label>
                                 <template x-if="useSeparateProfile">
                                     <!-- Bind the profile input to selectedProgram.app_profile for two-way data binding -->
-                                    <input type="text" class="round fill small-padding no-border" id="app_profile" placeholder="Enter profile name" x-model="selectedProgram.app_profile">
+                                    <input type="text" class="round fill small-padding no-border" id="app_profile" x-model="selectedProgram.app_profile">
                                 </template>
                             </div>
                         </td>
@@ -539,7 +542,7 @@
                 // Close the edit/add modal
                 this.hideEditModal();
 
-                // Refresh the programs list after a short delay
+                // Wait for the removal to complete before refreshing the list
                 setTimeout(() => {
                     fetch("get_json.sh")
                         .then(response => response.json())
@@ -547,7 +550,7 @@
                             this.programs = data;
                             this.filterPrograms();
                         });
-                }, 100);
+                }, 500); // 500ms delay
             },
 
             /**
@@ -625,18 +628,21 @@
             deleteProgram() {
                 if (this.deleteFolder) {
                     // Remove program along with its configuration folder
-                    _run(`big-webapps remove-with-folder '${encodeURIComponent(this.selectedProgram.app_file)}'`);
+                    _run(`big-webapps remove-with-folder '${encodeURIComponent(this.selectedProgram.app_file)}' '${encodeURIComponent(this.selectedProgram.browser)}' '${encodeURIComponent(this.selectedProgram.app_profile)}'`);
                 } else {
                     // Remove only the program
-                    _run(`big-webapps remove '${encodeURIComponent(this.selectedProgram.app_file)}'`);
+                    _run(`big-webapps remove '${encodeURIComponent(this.selectedProgram.app_file)}' '${encodeURIComponent(this.selectedProgram.browser)}' '${encodeURIComponent(this.selectedProgram.app_profile)}'`);
                 }
                 this.hideDeleteModal(); // Close the delete modal
-                fetch("get_json.sh")
-                    .then(response => response.json())
-                    .then(data => {
-                        this.programs = data;
-                        this.filterPrograms();
-                    });
+                // Wait for the removal to complete before refreshing the list
+                setTimeout(() => {
+                    fetch("get_json.sh")
+                        .then(response => response.json())
+                        .then(data => {
+                            this.programs = data;
+                            this.filterPrograms();
+                        });
+                }, 500); // 500ms delay
             },
 
             /**
@@ -664,12 +670,16 @@
                 const encodedMessage = `${encodeURIComponent(program.browser)} '${encodeURIComponent(program.app_name)}' '${encodeURIComponent(program.app_url)}' '${encodeURIComponent(program.app_icon_url)}' '${encodeURIComponent(program.app_categories)}' '${encodeURIComponent(program.app_profile)}'`;
                 _run(`big-webapps remove '${encodeURIComponent(program.app_file)}'`);
                 _run(`big-webapps create ${encodedMessage}`);
-                fetch("get_json.sh")
-                    .then(response => response.json())
-                    .then(data => {
-                        this.programs = data;
-                        this.filterPrograms();
-                    });
+
+                // Wait for the removal to complete before refreshing the list
+                setTimeout(() => {
+                    fetch("get_json.sh")
+                        .then(response => response.json())
+                        .then(data => {
+                            this.programs = data;
+                            this.filterPrograms();
+                        });
+                }, 500); // 500ms delay
             },
 
             /**

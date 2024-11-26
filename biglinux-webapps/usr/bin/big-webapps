@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 display_help() {
-    echo "This script manages WebApps by creating, editing, or removing .desktop files for specified browsers and URLs."
+    echo "This script manages WebApps by creating or removing .desktop files for specified browsers and URLs."
     echo ""
     echo "Usage:"
-    echo "  $0 {create|edit|remove|remove-with-folder} <browser> <name> <url> <icon> <category> <profile>"
+    echo "  $0 {create|remove|remove-with-folder} <browser> <name> <url> <icon> <category> <profile>"
     echo ""
     echo "Commands:"
     echo "  create     - Creates a new WebApp .desktop file"
@@ -52,15 +52,27 @@ if [[ $command == "json" ]]; then
 
 # Remove
 elif [ $command == "remove" ]; then
-    if [ "$#" != "1" ]; then
+    if [ "$#" = "0" ]; then
         display_help
         exit 1
     fi
 
     filename="$1"
+    browser="$2"
+    profile="$3"
 
     if [ -f $filename ]; then
         rm $filename
+
+        # Check if browser matches any of the specified browsers
+        if [[ "$browser" == "firefox" || "$browser" == "librewolf" || "$browser" == "flatpak-firefox" || "$browser" == "flatpak-librewolf" ]]; then
+            # Firefox and Librewolf always remove the profile folder
+            filename=${filename//.desktop}
+            if [[ -d "$HOME/.bigwebapps/$browser/$filename" ]]; then
+                rm -rf "$HOME/.bigwebapps/$browser/$filename"
+            fi
+        fi
+
         echo "WebApp successfully removed!"
         exit 0
     else
@@ -69,16 +81,23 @@ elif [ $command == "remove" ]; then
     fi
     
 # Remove
-elif [ $command == "remove-with-folder" ]; then
-    if [ "$#" != "1" ]; then
+elif [ $command = "remove-with-folder" ]; then
+    if [ "$#" = "0" ]; then
         display_help
         exit 1
     fi
 
     filename="$1"
+    browser="$2"
+    profile="$3"
 
     if [ -f $filename ]; then
         rm $filename
+        # Verify if $browser variable not null and $profile variable not null and folder $HOME/.bigwebapps/$browser/$profile exists
+        if [[ -n $browser ]] && [[ -n $profile ]] && [[ -d $HOME/.bigwebapps/$browser/$profile ]]; then
+            rm -rf $HOME/.bigwebapps/$browser/$profile
+        fi
+        
         echo "WebApp successfully removed!"
         exit 0
     else
