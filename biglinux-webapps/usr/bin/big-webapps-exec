@@ -94,9 +94,9 @@ if echo $filename | grep -q '\-BigWebApp' && [[ $XDG_SESSION_TYPE == 'wayland' ]
     # Wait to system detect updated icon
     sleep 2
     if [[ $profile = "Default" ]]; then
-        eval $browser_exec --no-default-browser-check --class="$class" --app="$url" &
+        $browser_exec --no-default-browser-check --class="$class" --app="$url" &
     else
-        eval $browser_exec --no-default-browser-check --class="$class" --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
+        $browser_exec --no-default-browser-check --class="$class" --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
     fi
 
     sleep 2
@@ -111,8 +111,8 @@ else
     fi
 
     if [[ $profile = "Default" ]]; then
-        eval $browser_exec --no-default-browser-check --class="$class" --app="$url" &
+        $browser_exec --no-default-browser-check --class="$class" --app="$url" &
     else
-        eval $browser_exec --no-default-browser-check --class="$class" --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
+        $browser_exec --no-default-browser-check --class="$class" --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
     fi
 fi
