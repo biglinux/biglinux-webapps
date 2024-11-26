@@ -108,7 +108,7 @@
         <div class="large medium-padding medium-margin medium-line center-align flex">
             <p stonejs>Are you sure you want to delete this program?</p>
             <!-- Only show delete option if profile not Default and not have another webapp using same profile and browser -->
-            <template x-if="selectedProgram.app_profile !== 'Default' && !programs.some(p => p !== selectedProgram && p.app_profile === selectedProgram.app_profile && p.browser === selectedProgram.browser)">
+            <template x-if="!programs.some(p => p !== selectedProgram && p.app_profile === selectedProgram.app_profile && p.browser === selectedProgram.browser)">
                 <div>
                     <label class="switch right-margin">
                         <input type="checkbox" id="delete-folder" x-model="deleteFolder">
