@@ -147,32 +147,6 @@ class CommandExecutor:
         # Check if the command was successful
         return output != ""
 
-    def fetch_website_title(self, url):
-        """
-        Fetch the title of a website
-
-        Parameters:
-            url (str): URL to fetch the title for
-
-        Returns:
-            str: Website title
-        """
-        command = f"./get_title.sh.py '{url}'"
-        return self.execute_command(command).strip()
-
-    def fetch_website_favicons(self, url):
-        """
-        Fetch the favicons of a website
-
-        Parameters:
-            url (str): URL to fetch favicons for
-
-        Returns:
-            list: List of favicon URLs
-        """
-        command = f"./get_favicon.sh.py '{url}'"
-        return self.execute_json_command(command)
-
     def select_icon(self):
         """
         Open the icon selector dialog

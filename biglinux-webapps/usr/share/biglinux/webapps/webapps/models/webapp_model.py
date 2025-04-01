@@ -2,7 +2,6 @@
 WebApp model module containing the WebApp and WebAppCollection classes
 """
 
-import json
 from gi.repository import GObject
 from urllib.parse import urlparse
 
@@ -50,24 +49,6 @@ class WebApp(GObject.GObject):
         self.app_profile = app_data.get("app_profile", "Default")
         self.app_categories = app_data.get("app_categories", "Webapps")
         self.app_icon_url = app_data.get("app_icon_url", "")
-
-    def to_dict(self):
-        """
-        Convert the WebApp to a dictionary
-
-        Returns:
-            dict: Dictionary representation of the WebApp
-        """
-        return {
-            "browser": self.browser,
-            "app_file": self.app_file,
-            "app_name": self.app_name,
-            "app_url": self.app_url,
-            "app_icon": self.app_icon,
-            "app_profile": self.app_profile,
-            "app_categories": self.app_categories,
-            "app_icon_url": self.app_icon_url,
-        }
 
     def get_main_category(self):
         """
@@ -222,18 +203,3 @@ class WebAppCollection:
             webapp (WebApp): WebApp object to remove
         """
         self.webapps = [app for app in self.webapps if app.app_file != webapp.app_file]
-
-    def get_by_file(self, app_file):
-        """
-        Get a webapp by its app_file
-
-        Parameters:
-            app_file (str): app_file to search for
-
-        Returns:
-            WebApp or None: WebApp object if found, None otherwise
-        """
-        for app in self.webapps:
-            if app.app_file == app_file:
-                return app
-        return None

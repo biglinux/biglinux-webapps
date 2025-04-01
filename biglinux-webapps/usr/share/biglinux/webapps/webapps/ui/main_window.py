@@ -135,12 +135,6 @@ class MainWindow(Adw.ApplicationWindow):
         self.filter_text = entry.get_text()
         self.refresh_ui()
 
-    def on_refresh_clicked(self, button):
-        """Handle refresh button click"""
-        self.app.load_data()
-        self.refresh_ui()
-        self.show_toast(_("WebApps refreshed"))
-
     def on_add_clicked(self, button):
         """Handle add button click"""
         # Create a new webapp with default values
@@ -251,9 +245,7 @@ class MainWindow(Adw.ApplicationWindow):
                         print(
                             f"Webapp not found by URL/name. Looking for file pattern similar to {original_file}"
                         )
-                        base_pattern = original_file.split("-")[
-                            0
-                        ]  # Get the browser part
+
                         for updated_webapp in self.app.webapp_collection.get_all():
                             # See if the new file follows a similar pattern but with different browser
                             if updated_webapp.app_url == original_url:

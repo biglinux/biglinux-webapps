@@ -30,7 +30,7 @@ class BrowserDialog(Adw.Window):
             modal=True,
             destroy_with_parent=True,
             width_request=400,
-            height_request=400,
+            height_request=500,
         )
 
         self.webapp = webapp
@@ -44,7 +44,7 @@ class BrowserDialog(Adw.Window):
         """Set up the UI components"""
         # Create content area
         content = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
-        content.set_margin_top(12)
+        content.set_margin_top(2)
         content.set_margin_bottom(12)
         content.set_margin_start(12)
         content.set_margin_end(12)
@@ -77,7 +77,7 @@ class BrowserDialog(Adw.Window):
         # Add the list box to a scrolled window
         scrolled = Gtk.ScrolledWindow()
         scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
-        scrolled.set_min_content_height(300)
+        scrolled.set_min_content_height(400)
         scrolled.set_child(list_box)
 
         content.append(scrolled)
@@ -126,7 +126,7 @@ class BrowserDialog(Adw.Window):
 
         # Browser icon
         icon = Gtk.Image()
-        set_image_from_browser_icon(icon, browser.browser_id, pixel_size=32)
+        set_image_from_browser_icon(icon, browser, pixel_size=32)
         box.append(icon)
 
         # Browser name

@@ -2,13 +2,13 @@
 WebAppRow module containing the row widget for displaying a webapp in a list
 """
 
+import os
 import gi
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, GObject, GdkPixbuf
 
-# Import shared browser icon utilities
 from webapps.utils.browser_icon_utils import set_image_from_browser_icon
 
 
@@ -80,7 +80,7 @@ class WebAppRow(Gtk.ListBoxRow):
         # Actions box - make it more compact and styled as a pill
         actions_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
         actions_box.set_halign(Gtk.Align.END)
-        actions_box.add_css_class("linked")  # Makes buttons connect as a pill
+        actions_box.add_css_class("linked")
 
         # Browser button
         browser = self.browser_collection.get_by_id(self.webapp.browser)
@@ -89,6 +89,7 @@ class WebAppRow(Gtk.ListBoxRow):
             f"Browser: {browser.get_friendly_name() if browser else self.webapp.browser}"
         )
         browser_icon = Gtk.Image()
+        # Pass browser ID string since that's what we need
         set_image_from_browser_icon(browser_icon, self.webapp.browser, pixel_size=27)
         browser_button.set_child(browser_icon)
         browser_button.connect("clicked", self.on_browser_clicked)
@@ -130,7 +131,7 @@ class WebAppRow(Gtk.ListBoxRow):
         Parameters:
             icon_path (str): Path to the icon file or icon name
         """
-        if not icon_path or icon_path == "/home/bruno/.local/share/icons/":
+        if not icon_path or icon_path == os.path.expanduser("~/.local/share/icons/"):
             self.icon.set_from_icon_name("webapp-generic")
             return
 
@@ -145,76 +146,6 @@ class WebAppRow(Gtk.ListBoxRow):
         except Exception as e:
             print(f"Error loading icon {icon_path}: {e}")
             self.icon.set_from_icon_name("webapp-generic")
-
-    def get_browser_icon_name(self, browser_id):
-        """
-        Get icon name for a browser
-
-        Parameters:
-            browser_id (str): Browser identifier
-
-        Returns:
-            str: Icon name for the browser
-        """
-        # Icon mapping directly to files in the icons subfolder
-        browser_icon_map = {
-            "brave": "brave.svg",
-            "brave-beta": "brave-beta.svg",
-            "brave-nightly": "brave-nightly.svg",
-            "firefox": "firefox.svg",
-            "firefox-developer-edition": "firefox-developer-edition.svg",
-            "firefox-nightly": "firefox-nightly.svg",
-            "chromium": "chromium.svg",
-            "chromium-dev": "chromium-dev.svg",
-            "google-chrome-stable": "google-chrome-stable.svg",
-            "google-chrome-beta": "google-chrome-beta.svg",
-            "google-chrome-unstable": "google-chrome-unstable.svg",
-            "vivaldi-stable": "vivaldi-stable.svg",
-            "vivaldi-beta": "vivaldi-beta.svg",
-            "vivaldi-snapshot": "vivaldi-snapshot.svg",
-            "microsoft-edge-stable": "microsoft-edge-stable.svg",
-            "microsoft-edge-beta": "microsoft-edge-beta.svg",
-            "microsoft-edge-dev": "microsoft-edge-dev.svg",
-            "librewolf": "librewolf.svg",
-            "ungoogled-chromium": "ungoogled-chromium.svg",
-            "flatpak-brave": "flatpak-brave.svg",
-            "flatpak-chrome": "flatpak-chrome.svg",
-            "flatpak-chromium": "flatpak-chromium.svg",
-            "flatpak-edge": "flatpak-edge.svg",
-            "flatpak-firefox": "flatpak-firefox.svg",
-            "flatpak-librewolf": "flatpak-librewolf.svg",
-            "flatpak-ungoogled-chromium": "flatpak-ungoogled-chromium.svg",
-        }
-
-        # Try to get the matching icon name
-        icon_name = browser_icon_map.get(browser_id)
-
-        # Default fallback
-        if not icon_name:
-            icon_name = "default-webapps.png"
-
-        return icon_name
-
-    def setup_compact_button(self, button):
-        """
-        Reduce padding and margins in a button to make it more compact
-
-        Parameters:
-            button (Gtk.Button): Button to make compact
-        """
-        # Set minimal padding
-        button.set_margin_start(2)
-        button.set_margin_end(2)
-        button.set_margin_top(1)
-        button.set_margin_bottom(1)
-
-        # Add CSS for compact buttons
-        button.add_css_class("flat")
-
-        # Set a smaller minimum width
-        button.set_size_request(28, 28)
-
-        return button
 
     def on_edit_clicked(self, button):
         """Handle edit button click"""

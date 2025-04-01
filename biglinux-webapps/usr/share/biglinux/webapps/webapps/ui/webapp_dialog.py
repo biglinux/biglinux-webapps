@@ -57,12 +57,9 @@ class WebAppDialog(Adw.Window):
         self.set_default_size(700, 650)
 
         self.webapp = webapp
-        self.original_webapp = webapp
         self.browser_collection = browser_collection
         self.command_executor = command_executor
         self.is_new = is_new
-        self.is_loading = False
-        self.favicons = []
 
         # Clone the webapp to avoid modifying the original
         self.webapp = self._clone_webapp(webapp)
@@ -108,7 +105,7 @@ class WebAppDialog(Adw.Window):
         header = Adw.HeaderBar()
         header.set_title_widget(Gtk.Label(label=title))
         header.add_css_class("flat")
-        header.set_show_end_title_buttons(False)  # Hide window controls on the right
+        header.set_show_end_title_buttons(True)  # Show window controls on the right
 
         # Apply custom CSS to reduce header padding
         css_provider = Gtk.CssProvider()
@@ -125,7 +122,12 @@ class WebAppDialog(Adw.Window):
 
         content.append(header)
 
-        # Create scrollable content area (for better handling of smaller screens)
+        # Create a central container for vertical centering
+        central_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
+        central_box.set_vexpand(True)  # Allow vertical expansion
+        central_box.set_valign(Gtk.Align.CENTER)  # Center vertically
+
+        # Create scrollable content area
         scrolled = Gtk.ScrolledWindow()
         scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
         scrolled.set_propagate_natural_height(True)
@@ -136,14 +138,12 @@ class WebAppDialog(Adw.Window):
         clamp.set_maximum_size(600)
         clamp.set_tightening_threshold(400)
 
-        # Form content - reduce top/bottom margins
-        form_box = Gtk.Box(
-            orientation=Gtk.Orientation.VERTICAL, spacing=12
-        )  # Reduced spacing
-        form_box.set_margin_top(12)  # Reduced from 24
-        form_box.set_margin_bottom(12)  # Reduced from 24
-        form_box.set_margin_start(12)
-        form_box.set_margin_end(12)
+        # Form content
+        form_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
+        form_box.set_margin_top(0)
+        form_box.set_margin_bottom(12)
+        form_box.set_margin_start(24)  # Increased for better horizontal spacing
+        form_box.set_margin_end(24)  # Increased for better horizontal spacing
 
         # Create single preferences group for form elements
         form_group = Adw.PreferencesGroup()
@@ -315,16 +315,17 @@ class WebAppDialog(Adw.Window):
         # Add button box to the form
         form_box.append(button_box)
 
-        # Complete the content hierarchy
+        # Complete the content hierarchy with the central container
         clamp.set_child(form_box)
         scrolled.set_child(clamp)
-        content.append(scrolled)
+        central_box.append(scrolled)
+        content.append(central_box)
 
         # Add a loading spinner overlay (initially hidden)
         overlay = Gtk.Overlay()
         overlay.set_child(content)
 
-        self.loading_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        self.loading_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
         self.loading_box.set_valign(Gtk.Align.CENTER)
         self.loading_box.set_halign(Gtk.Align.CENTER)
 
@@ -334,7 +335,7 @@ class WebAppDialog(Adw.Window):
         self.loading_box.append(spinner)
 
         loading_label = Gtk.Label(label=_("Loading..."))
-        loading_label.set_margin_top(8)
+        loading_label.set_halign(Gtk.Align.CENTER)  # Center the label horizontally
         self.loading_box.append(loading_label)
 
         # Set background color for loading overlay
@@ -344,12 +345,17 @@ class WebAppDialog(Adw.Window):
         css_provider = Gtk.CssProvider()
         css_provider.load_from_data(b"""
             box {
-                background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.5);
             }
             label {
-                color: white;
+            color: white;
             }
         """)
+
+        # Center the loading box inside the overlay
+        self.loading_box.set_hexpand(True)
+        self.loading_box.set_vexpand(True)
+        loading_overlay.append(self.loading_box)
 
         style_context = loading_overlay.get_style_context()
         Gtk.StyleContext.add_provider(
@@ -449,7 +455,6 @@ class WebAppDialog(Adw.Window):
             return
 
         # Show loading overlay
-        self.is_loading = True
         self.loading_overlay.set_visible(True)
 
         # Create a WebsiteInfoFetcher and fetch info
@@ -483,9 +488,6 @@ class WebAppDialog(Adw.Window):
         if self.profile_switch.get_active():
             self.webapp.app_profile = profile_name
             self.profile_entry_row.set_text(profile_name)
-
-        # Update favicons
-        self.favicons = icon_paths
 
         if len(icon_paths) > 0:
             # Create a flowbox for the icons if it doesn't exist
@@ -532,13 +534,6 @@ class WebAppDialog(Adw.Window):
 
         # Hide the loading overlay
         self.loading_overlay.set_visible(False)
-        self.is_loading = False
-
-    def on_fetch_complete(self):
-        """Handle completion of the fetch operation"""
-        self.loading_overlay.set_visible(False)
-        self.is_loading = False
-        return False
 
     def on_favicon_selected(self, flowbox, child):
         """Handle favicon selection"""

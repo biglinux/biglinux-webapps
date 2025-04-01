@@ -2,8 +2,8 @@
 Browser model module containing the Browser and BrowserCollection classes
 """
 
-import json
 from gi.repository import GObject
+from webapps.utils.browser_icon_utils import get_browser_icon_name
 
 
 class Browser(GObject.GObject):
@@ -38,15 +38,6 @@ class Browser(GObject.GObject):
         self.browser_id = browser_data.get("browser", "")
         self.is_default = browser_data.get("is_default", False)
 
-    def to_dict(self):
-        """
-        Convert the Browser to a dictionary
-
-        Returns:
-            dict: Dictionary representation of the Browser
-        """
-        return {"browser": self.browser_id, "is_default": self.is_default}
-
     def get_friendly_name(self):
         """
         Get a user-friendly name for the browser
@@ -78,6 +69,15 @@ class Browser(GObject.GObject):
         }
 
         return browser_name_map.get(self.browser_id, self.browser_id)
+
+    def get_browser_icon_name(self):
+        """
+        Get icon name for the browser
+
+        Returns:
+            str: Icon name for the browser
+        """
+        return get_browser_icon_name(self.browser_id)
 
     def is_firefox_based(self):
         """
