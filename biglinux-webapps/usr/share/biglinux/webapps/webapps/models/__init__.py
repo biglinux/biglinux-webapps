@@ -1,0 +1,3 @@
+"""
+WebApps Models package initialization
+"""

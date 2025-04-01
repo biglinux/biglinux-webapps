@@ -23,9 +23,4 @@ fi
 # Start caching json
 ./get_json.sh cache &
 
-# Gnome not support icon selection in wayland mode, force xcb for Xwayland
-if [[ "$XDG_SESSION_DESKTOP" == "gnome" ]]; then
-    export QT_QPA_PLATFORM=xcb
-fi
-
-bigbashview -s 1000x620 -n big-webapps-gui -p big-webapps-gui -c transparent -w frameless index.html
+python /usr/share/biglinux/webapps/main.py

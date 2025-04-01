@@ -30,6 +30,13 @@ Name[uk]=Додавання та видалення веб-програм
 Name[zh]=添加和删除 Web 应用
 Icon=big-webapps
 Exec=big-webapps-gui
+StartupWMClass=big-webapps-gui
 Categories=Webapps;
 Terminal=false
 StartupNotify=true
+
+Actions=SoftwareRender;
+
+[Desktop Action SoftwareRender]
+Name=Software Render
+Exec=SoftwareRender big-webapps-gui
