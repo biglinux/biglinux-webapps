@@ -5,7 +5,6 @@ WebAppDialog module containing the dialog for creating and editing webapps
 import gi
 import time
 import uuid
-import gettext
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
@@ -20,8 +19,8 @@ from webapps.utils.url_utils import WebsiteInfoFetcher
 # Import the browser icon utilities
 from webapps.utils.browser_icon_utils import set_image_from_browser_icon
 
-# Setup translation
-_ = gettext.gettext
+# Import the centralized translation function
+from webapps.utils.translation import _
 
 
 class WebAppDialog(Adw.Window):

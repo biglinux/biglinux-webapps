@@ -10,11 +10,7 @@ from gi.repository import Gtk, Adw, GObject
 
 # Import shared browser icon utilities
 from webapps.utils.browser_icon_utils import set_image_from_browser_icon
-
-# Setup translation
-import gettext
-
-_ = gettext.gettext
+from webapps.utils.translation import _
 
 
 class BrowserDialog(Adw.Window):

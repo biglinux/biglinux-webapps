@@ -4,6 +4,7 @@ MainWindow module containing the main application window
 
 import gi
 import time
+import os
 from datetime import datetime
 
 gi.require_version("Gtk", "4.0")
@@ -14,11 +15,7 @@ from webapps.ui.webapp_row import WebAppRow
 from webapps.ui.webapp_dialog import WebAppDialog
 from webapps.ui.browser_dialog import BrowserDialog
 from webapps.models.webapp_model import WebApp
-
-# Setup translation
-import gettext
-
-_ = gettext.gettext
+from webapps.utils.translation import _
 
 
 class MainWindow(Adw.ApplicationWindow):
@@ -58,10 +55,14 @@ class MainWindow(Adw.ApplicationWindow):
         menu_button = Gtk.MenuButton()
         menu_button.set_icon_name("open-menu-symbolic")
 
-        # Create menu model with Refresh option
+        # Create menu model with items
         menu = Gio.Menu()
-        menu.append(_("Refresh"), "app.refresh")
-        menu.append(_("About"), "app.about")
+        # Use string literals without translation for action labels
+        # These will be translated by Gtk when displayed
+        menu.append("Refresh", "app.refresh")
+        menu.append("Export WebApps", "app.export")
+        menu.append("Import WebApps", "app.import")
+        menu.append("About", "app.about")
 
         # Set the menu
         menu_button.set_menu_model(menu)

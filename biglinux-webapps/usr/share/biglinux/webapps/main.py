@@ -6,13 +6,15 @@ A GTK4 application for managing web applications in BigLinux.
 
 import sys
 import os
-import gettext
 import gi
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 
 from gi.repository import GLib
+
+# Import from our utility to ensure proper initialization
+from webapps.utils.translation import _
 from webapps.application import WebAppsApplication
 
 
@@ -26,20 +28,11 @@ def main():
     # Set program name for window manager class
     GLib.set_prgname("big-webapps-gui")
 
-    # If your WebAppsApplication inherits from Adw.Application or Gtk.Application,
-    # you can try this approach to set the icon:
     try:
         # For GTK4 applications
         app.set_icon_name("big-webapps")
     except (AttributeError, TypeError):
-        # If the above doesn't work, we'll just rely on the desktop file
-        # and the window manager to handle the icon
         pass
-
-    # Set up internationalization at the module level
-    locale_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "locale")
-    gettext.bindtextdomain("biglinux-webapps", locale_dir)
-    gettext.textdomain("biglinux-webapps")
 
     return app.run(sys.argv)
 

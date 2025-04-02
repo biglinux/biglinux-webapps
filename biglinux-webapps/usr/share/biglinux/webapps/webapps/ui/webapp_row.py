@@ -5,11 +5,13 @@ WebAppRow module containing the row widget for displaying a webapp in a list
 import os
 import gi
 
+
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, GObject, GdkPixbuf
 
 from webapps.utils.browser_icon_utils import set_image_from_browser_icon
+from webapps.utils.translation import _
 
 
 class WebAppRow(Gtk.ListBoxRow):
@@ -86,7 +88,9 @@ class WebAppRow(Gtk.ListBoxRow):
         browser = self.browser_collection.get_by_id(self.webapp.browser)
         browser_button = Gtk.Button()
         browser_button.set_tooltip_text(
-            f"Browser: {browser.get_friendly_name() if browser else self.webapp.browser}"
+            _("Browser: {0}").format(
+                browser.get_friendly_name() if browser else self.webapp.browser
+            )
         )
         browser_icon = Gtk.Image()
         # Pass browser ID string since that's what we need
@@ -97,7 +101,7 @@ class WebAppRow(Gtk.ListBoxRow):
 
         # Edit button
         edit_button = Gtk.Button()
-        edit_button.set_tooltip_text("Edit WebApp")
+        edit_button.set_tooltip_text(_("Edit WebApp"))
         edit_icon = Gtk.Image()
         edit_icon.set_from_icon_name("document-edit-symbolic")
         edit_icon.set_pixel_size(20)
@@ -107,7 +111,7 @@ class WebAppRow(Gtk.ListBoxRow):
 
         # Delete button
         delete_button = Gtk.Button()
-        delete_button.set_tooltip_text("Delete WebApp")
+        delete_button.set_tooltip_text(_("Delete WebApp"))
         delete_icon = Gtk.Image()
         delete_icon.set_from_icon_name("user-trash-symbolic")
         delete_icon.set_pixel_size(20)
