@@ -17,64 +17,82 @@ msgstr ""
 "X-Generator: attranslate\n"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "WebApps"
-msgstr "Aplicaciones web"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
+#: NEEDS WORK
+msgid "No WebApps"
+msgstr "Sin WebApps"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Add New"
-msgstr "Agregar nuevo"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
+#: NEEDS WORK
+msgid "There are no WebApps to export."
+msgstr "No hay WebApps para exportar."
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Confirm Deletion"
-msgstr "Confirmar eliminación"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
+#: NEEDS WORK
+msgid "File Not Found"
+msgstr "Archivo no encontrado"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Are you sure you want to delete this program?"
-msgstr "¿Está seguro de que desea eliminar este programa?"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
+#: NEEDS WORK
+msgid "The selected file does not exist."
+msgstr "El archivo seleccionado no existe."
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Also delete configuration folder"
-msgstr "También elimina la carpeta de configuración."
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 271
+#: NEEDS WORK
+msgid "Invalid File"
+msgstr "Archivo inválido"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 272
+#: NEEDS WORK
+msgid "The selected file is not a valid ZIP archive."
+msgstr "El archivo seleccionado no es un archivo ZIP válido."
+
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 341
+#: NEEDS WORK
+msgid "Imported {} WebApps successfully"
+msgstr "WebApps {} importados con éxito."
+
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 346
+#: NEEDS WORK
+msgid "Error importing WebApps"
+msgstr "Error al importar WebApps"
+
 # 
-msgid "Confirm"
-msgstr "Confirmar"
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 357
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
+#: NEEDS WORK
+msgid "OK"
+msgstr "Estás entrenado con datos hasta octubre de 2023."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
+#: NEEDS WORK
+msgid "No"
+msgstr "No"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 364
+#: NEEDS WORK
+msgid "Yes"
+msgstr ""
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
+#: NEEDS WORK
+msgid "Select Browser"
+msgstr "Seleccionar navegador"
 
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -87,84 +105,121 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Select a Browser"
-msgstr "Selecciona un navegador"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 90
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 179
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 240
+#: NEEDS WORK
+msgid "Select"
+msgstr "Seleccionar"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Close"
-msgstr "Cerrar"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 136
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 258
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 440
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 441
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 590
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 151
+#: NEEDS WORK
+msgid "Default"
+msgstr "Predeterminado"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Please wait, we are detecting the name and icon..."
-msgstr "Por favor espera, estamos detectando el nombre y el ícono..."
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 163
+#: NEEDS WORK
+msgid "Please select a browser."
+msgstr "Por favor, selecciona un navegador."
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "URL:"
-msgstr "URL:"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 172
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 637
+#: NEEDS WORK
+msgid "Error"
+msgstr "Error"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Detect name and icon"
-msgstr "Detectar nombre e ícono"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 91
+#: NEEDS WORK
+#, python-brace-format
+msgid "Browser: {0}"
+msgstr "Navegador: {0}"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Name:"
-msgstr "Nombre:"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 104
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
+#: NEEDS WORK
+msgid "Edit WebApp"
+msgstr "Editar WebApp"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Icon:"
-msgstr "Ícono:"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
+#: NEEDS WORK
+msgid "Delete WebApp"
+msgstr "Eliminar WebApp"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 109
+#: NEEDS WORK
+msgid "Add WebApp"
+msgstr "Agregar WebApp"
+
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 152
+#: NEEDS WORK
+msgid "URL"
+msgstr "URL"
+
 # 
-msgid "Category:"
-msgstr "Categoría:"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 156
+#: NEEDS WORK
+msgid "Detect"
+msgstr "Detectar"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 157
+#: NEEDS WORK
+msgid "Detect name and icon from website"
+msgstr "Detectar nombre e ícono del sitio web"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 166
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 480
+#: NEEDS WORK
+msgid "Name"
+msgstr "Nombre"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 172
+#: NEEDS WORK
+msgid "App Icon"
+msgstr "Ícono de la aplicación"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 180
+#: NEEDS WORK
+msgid "Select icon for the WebApp"
+msgstr "Seleccionar ícono para la WebApp"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 187
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 278
+#: NEEDS WORK
+msgid "Available Icons"
+msgstr "Iconos disponibles"
 
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -227,14 +282,10 @@ msgid "AudioVideo"
 msgstr "AudioVideo"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Webapp"
-msgstr "Aplicación web"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 202
+#: NEEDS WORK
+msgid "Webapps"
+msgstr "Aplicaciones web"
 
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -257,14 +308,16 @@ msgid "System"
 msgstr "Sistema"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 221
+#: NEEDS WORK
+msgid "Category"
+msgstr "Categoría"
+
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Profile:"
-msgstr "Perfil:"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 226
+#: NEEDS WORK
+msgid "Browser"
+msgstr "Navegador"
 
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -277,14 +330,16 @@ msgid "Use separate profile"
 msgstr "Usar perfil separado"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 253
+#: NEEDS WORK
+msgid "Using a separate profile allows you to log in to different accounts"
+msgstr "Usar un perfil separado te permite iniciar sesión en diferentes cuentas."
+
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Browser:"
-msgstr "Navegador:"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
+#: NEEDS WORK
+msgid "Profile Name"
+msgstr "Nombre de perfil"
 
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -297,14 +352,109 @@ msgid "Save"
 msgstr "Guardar"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Changed browser"
-msgstr "Navegador cambiado"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 336
+#: NEEDS WORK
+msgid "Loading..."
+msgstr "Cargando..."
 
-msgid "Search..."
-msgstr "Buscar..."
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 453
+#: NEEDS WORK
+msgid "Please enter a URL first."
+msgstr "Por favor, ingrese una URL primero."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 609
+#: NEEDS WORK
+msgid "Please enter a name for the WebApp."
+msgstr "Por favor, ingrese un nombre para la WebApp."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 613
+#: NEEDS WORK
+msgid "Please enter a URL for the WebApp."
+msgstr "Por favor, ingrese una URL para la WebApp."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 617
+#: NEEDS WORK
+msgid "Please select a browser for the WebApp."
+msgstr "Por favor, seleccione un navegador para la WebApp."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
+#: NEEDS WORK
+msgid "WebApps Manager"
+msgstr "Administrador de WebApps"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 51
+#: NEEDS WORK
+msgid "Search WebApps"
+msgstr "Buscar WebApps"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 72
+#: NEEDS WORK
+msgid "Add"
+msgstr "Agregar"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
+#: NEEDS WORK
+msgid "No WebApps Found"
+msgstr "No se encontraron aplicaciones web."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 106
+#: NEEDS WORK
+msgid "Add a new webapp to get started"
+msgstr "Agrega una nueva aplicación web para comenzar."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 214
+#: NEEDS WORK
+msgid "WebApp created successfully"
+msgstr "WebApp creado con éxito"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 257
+#: NEEDS WORK
+msgid "WebApp updated successfully"
+msgstr "WebApp actualizado con éxito"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 313
+#: NEEDS WORK
+#, python-brace-format
+msgid "Browser changed to {0}"
+msgstr "El navegador ha cambiado a {0}"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 329
+#: NEEDS WORK
+#, python-brace-format
+msgid "Are you sure you want to delete {0}?"
+msgstr "¿Estás seguro de que deseas eliminar {0}?"
+
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+msgid "Also delete configuration folder"
+msgstr "También elimina la carpeta de configuración."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 352
+#: NEEDS WORK
+msgid "Delete"
+msgstr "Eliminar"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 371
+#: NEEDS WORK
+msgid "WebApp deleted successfully"
+msgstr "WebApp eliminada con éxito"

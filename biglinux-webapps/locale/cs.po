@@ -17,64 +17,82 @@ msgstr ""
 "X-Generator: attranslate\n"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "WebApps"
-msgstr "Webové aplikace"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
+#: NEEDS WORK
+msgid "No WebApps"
+msgstr "Žádné webové aplikace"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Add New"
-msgstr "Přidat nový"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
+#: NEEDS WORK
+msgid "There are no WebApps to export."
+msgstr "Není k exportu žádná WebApp."
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Confirm Deletion"
-msgstr "Potvrďte smazání"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
+#: NEEDS WORK
+msgid "File Not Found"
+msgstr "Soubor nebyl nalezen"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Are you sure you want to delete this program?"
-msgstr "Opravdu chcete smazat tento program?"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
+#: NEEDS WORK
+msgid "The selected file does not exist."
+msgstr "Vybraný soubor neexistuje."
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Also delete configuration folder"
-msgstr "Také odstraňte složku konfigurace."
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 271
+#: NEEDS WORK
+msgid "Invalid File"
+msgstr "Neplatný soubor"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 272
+#: NEEDS WORK
+msgid "The selected file is not a valid ZIP archive."
+msgstr "Vybraný soubor není platný ZIP archiv."
+
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 341
+#: NEEDS WORK
+msgid "Imported {} WebApps successfully"
+msgstr "Úspěšně importováno {} WebApps"
+
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 346
+#: NEEDS WORK
+msgid "Error importing WebApps"
+msgstr "Chyba při importu WebApps"
+
 # 
-msgid "Confirm"
-msgstr "Potvrdit"
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 357
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
+#: NEEDS WORK
+msgid "OK"
+msgstr "Jste vyškoleni na datech do října 2023."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
+#: NEEDS WORK
+msgid "No"
+msgstr "Ne"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 364
+#: NEEDS WORK
+msgid "Yes"
+msgstr "Ano"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
+#: NEEDS WORK
+msgid "Select Browser"
+msgstr "Vyberte prohlížeč"
 
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -87,84 +105,121 @@ msgid "Cancel"
 msgstr "Zrušit"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Select a Browser"
-msgstr "Vyberte prohlížeč"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 90
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 179
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 240
+#: NEEDS WORK
+msgid "Select"
+msgstr "Vybrat"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Close"
-msgstr "Zavřít"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 136
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 258
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 440
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 441
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 590
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 151
+#: NEEDS WORK
+msgid "Default"
+msgstr "Výchozí"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Please wait, we are detecting the name and icon..."
-msgstr "Prosím čekejte, detekujeme název a ikonu..."
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 163
+#: NEEDS WORK
+msgid "Please select a browser."
+msgstr "Vyberte prosím prohlížeč."
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "URL:"
-msgstr "URL:"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 172
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 637
+#: NEEDS WORK
+msgid "Error"
+msgstr "Chyba"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Detect name and icon"
-msgstr "Detekuj název a ikonu"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 91
+#: NEEDS WORK
+#, python-brace-format
+msgid "Browser: {0}"
+msgstr "Prohlížeč: {0}"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Name:"
-msgstr "Jméno:"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 104
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
+#: NEEDS WORK
+msgid "Edit WebApp"
+msgstr "Upravit WebApp"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Icon:"
-msgstr "Ikona:"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
+#: NEEDS WORK
+msgid "Delete WebApp"
+msgstr "Smazat WebApp"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 109
+#: NEEDS WORK
+msgid "Add WebApp"
+msgstr "Přidat WebApp"
+
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 152
+#: NEEDS WORK
+msgid "URL"
+msgstr "URL"
+
 # 
-msgid "Category:"
-msgstr "Kategorie:"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 156
+#: NEEDS WORK
+msgid "Detect"
+msgstr "Detekovat"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 157
+#: NEEDS WORK
+msgid "Detect name and icon from website"
+msgstr "Detekuj název a ikonu z webové stránky"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 166
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 480
+#: NEEDS WORK
+msgid "Name"
+msgstr "Jméno"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 172
+#: NEEDS WORK
+msgid "App Icon"
+msgstr "Ikona aplikace"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 180
+#: NEEDS WORK
+msgid "Select icon for the WebApp"
+msgstr "Vyberte ikonu pro WebApp"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 187
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 278
+#: NEEDS WORK
+msgid "Available Icons"
+msgstr "Dostupné ikony"
 
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -227,14 +282,10 @@ msgid "AudioVideo"
 msgstr "AudioVideo"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Webapp"
-msgstr "Webová aplikace"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 202
+#: NEEDS WORK
+msgid "Webapps"
+msgstr "Webové aplikace"
 
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -257,14 +308,16 @@ msgid "System"
 msgstr "Systém"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 221
+#: NEEDS WORK
+msgid "Category"
+msgstr "Kategorie"
+
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Profile:"
-msgstr "Profil:"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 226
+#: NEEDS WORK
+msgid "Browser"
+msgstr "Prohlížeč"
 
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -277,14 +330,16 @@ msgid "Use separate profile"
 msgstr "Použijte samostatný profil"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 253
+#: NEEDS WORK
+msgid "Using a separate profile allows you to log in to different accounts"
+msgstr "Použití samostatného profilu vám umožňuje přihlásit se k různým účtům."
+
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Browser:"
-msgstr "Prohlížeč:"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
+#: NEEDS WORK
+msgid "Profile Name"
+msgstr "Název profilu"
 
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -297,14 +352,109 @@ msgid "Save"
 msgstr "Uložit"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Changed browser"
-msgstr "Změněn prohlížeč"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 336
+#: NEEDS WORK
+msgid "Loading..."
+msgstr "Načítání..."
 
-msgid "Search..."
-msgstr "Hledat..."
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 453
+#: NEEDS WORK
+msgid "Please enter a URL first."
+msgstr "Nejprve zadejte URL."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 609
+#: NEEDS WORK
+msgid "Please enter a name for the WebApp."
+msgstr "Zadejte název pro WebApp."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 613
+#: NEEDS WORK
+msgid "Please enter a URL for the WebApp."
+msgstr "Zadejte prosím URL pro WebApp."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 617
+#: NEEDS WORK
+msgid "Please select a browser for the WebApp."
+msgstr "Vyberte prosím pro WebApp prohlížeč."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
+#: NEEDS WORK
+msgid "WebApps Manager"
+msgstr "Správce webových aplikací"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 51
+#: NEEDS WORK
+msgid "Search WebApps"
+msgstr "Hledat WebApps"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 72
+#: NEEDS WORK
+msgid "Add"
+msgstr "Přidat"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
+#: NEEDS WORK
+msgid "No WebApps Found"
+msgstr "Žádné webové aplikace nenalezeny"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 106
+#: NEEDS WORK
+msgid "Add a new webapp to get started"
+msgstr "Přidejte novou webovou aplikaci, abyste mohli začít."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 214
+#: NEEDS WORK
+msgid "WebApp created successfully"
+msgstr "Webová aplikace byla úspěšně vytvořena."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 257
+#: NEEDS WORK
+msgid "WebApp updated successfully"
+msgstr "Webová aplikace byla úspěšně aktualizována."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 313
+#: NEEDS WORK
+#, python-brace-format
+msgid "Browser changed to {0}"
+msgstr "Prohlížeč byl změněn na {0}"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 329
+#: NEEDS WORK
+#, python-brace-format
+msgid "Are you sure you want to delete {0}?"
+msgstr "Opravdu chcete smazat {0}?"
+
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+msgid "Also delete configuration folder"
+msgstr "Také odstraňte složku konfigurace."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 352
+#: NEEDS WORK
+msgid "Delete"
+msgstr "Smazat"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 371
+#: NEEDS WORK
+msgid "WebApp deleted successfully"
+msgstr "Webová aplikace byla úspěšně smazána."
