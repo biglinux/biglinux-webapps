@@ -140,8 +140,6 @@ if ! grep -q '__' <<< "$filename"; then
     filename=$(sed "s/-Default/__-Default/g" <<< "$filename")
 fi
 
-kdialog --msgbox "$filename"
-
 # Verify if the WebApp already exists
 if [[ -e ~/.local/share/applications/$filename ]]; then
 
