@@ -4,7 +4,7 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=BigLinux Forum
-Exec=big-webapps-exec filename="brave-forum.biglinux.com.br__-Default.desktop" brave --class="forum.biglinux.com.br" --profile-directory=Default --app="https://forum.biglinux.com.br"
+Exec=big-webapps-exec filename="brave-forum.biglinux.com.br__-Default.desktop" brave --class="forum.biglinux.com.br" --profile-directory=Browser --app="https://forum.biglinux.com.br"
 Icon=webapp-biglinux-globo
 StartupWMClass=forum.biglinux.com.br
 Categories=Webapps;
@@ -14,4 +14,4 @@ Actions=SoftwareRender;
 
 [Desktop Action SoftwareRender]
 Name=Software Render
-Exec=SoftwareRender big-webapps-exec filename="brave-forum.biglinux.com.br__-Default.desktop" brave --class="forum.biglinux.com.br" --profile-directory=Default --app="https://forum.biglinux.com.br"
+Exec=SoftwareRender big-webapps-exec filename="brave-forum.biglinux.com.br__-Default.desktop" brave --class="forum.biglinux.com.br" --profile-directory=Browser --app="https://forum.biglinux.com.br"

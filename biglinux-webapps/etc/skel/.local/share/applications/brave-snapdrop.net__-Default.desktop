@@ -4,7 +4,7 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Snapdrop
-Exec=big-webapps-exec filename="brave-snapdrop.net__-Default.desktop" brave --class="snapdrop.net" --profile-directory=Default --app="https://snapdrop.net"
+Exec=big-webapps-exec filename="brave-snapdrop.net__-Default.desktop" brave --class="snapdrop.net" --profile-directory=Browser --app="https://snapdrop.net"
 Icon=webapp-snapdrop
 StartupWMClass=snapdrop.net
 Categories=Webapps;
@@ -14,4 +14,4 @@ Actions=SoftwareRender;
 
 [Desktop Action SoftwareRender]
 Name=Software Render
-Exec=SoftwareRender big-webapps-exec filename="brave-snapdrop.net__-Default.desktop" brave --class="snapdrop.net" --profile-directory=Default --app="https://snapdrop.net"
+Exec=SoftwareRender big-webapps-exec filename="brave-snapdrop.net__-Default.desktop" brave --class="snapdrop.net" --profile-directory=Browser --app="https://snapdrop.net"

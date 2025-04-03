@@ -1,0 +1,17 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Spotify
+Exec=big-webapps-exec filename="brave-open.spotify.com__browse_featured-Default.desktop" brave --class="open.spotify.com__browse__featured" --profile-directory=Browser --app="https://open.spotify.com/browse/featured"
+Icon=webapp-spotifywebapp
+StartupWMClass=open.spotify.com__browse__featured
+Categories=Webapps;
+StartupNotify=false
+
+Actions=SoftwareRender;
+
+[Desktop Action SoftwareRender]
+Name=Software Render
+Exec=SoftwareRender big-webapps-exec filename="brave-open.spotify.com__browse_featured-Default.desktop" brave --class="open.spotify.com__browse__featured" --profile-directory=Browser --app="https://open.spotify.com/browse/featured"

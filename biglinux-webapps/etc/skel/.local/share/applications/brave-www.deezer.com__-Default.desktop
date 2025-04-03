@@ -4,7 +4,7 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Deezer music
-Exec=big-webapps-exec filename="brave-www.deezer.com__-Default.desktop" brave --class="www.deezer.com" --profile-directory=Default --app="https://www.deezer.com"
+Exec=big-webapps-exec filename="brave-www.deezer.com__-Default.desktop" brave --class="www.deezer.com" --profile-directory=Browser --app="https://www.deezer.com"
 Icon=webapp-deezer
 StartupWMClass=www.deezer.com
 Categories=Webapps;
@@ -14,4 +14,4 @@ Actions=SoftwareRender;
 
 [Desktop Action SoftwareRender]
 Name=Software Render
-Exec=SoftwareRender big-webapps-exec filename="brave-www.deezer.com__-Default.desktop" brave --class="www.deezer.com" --profile-directory=Default --app="https://www.deezer.com"
+Exec=SoftwareRender big-webapps-exec filename="brave-www.deezer.com__-Default.desktop" brave --class="www.deezer.com" --profile-directory=Browser --app="https://www.deezer.com"
