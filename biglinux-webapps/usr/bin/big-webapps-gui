@@ -1,26 +1,5 @@
 #!/usr/bin/env bash
 
-cd /usr/share/bigbashview/apps/webapps/
+cd /usr/share/biglinux/webapps/
 
-# Update files if needed
-/usr/share/bigbashview/apps/webapps/update_old_desktop_files.sh
-
-
-
-# If not exist folder, create
-if [[ ! -e ~/.cache ]]; then
-    mkdir -p ~/.cache
-fi
-
-# If not exist icon folder, create
-if [[ ! -e ~/.local/share/icons ]]; then
-    mkdir ~/.local/share/icons
-fi
-
-# File to verify if cache not completed
-> ~/.cache/pre-cache-bigwebapps.json
-
-# Start caching json
-./get_json.sh cache &
-
-python /usr/share/biglinux/webapps/main.py
+python main.py
