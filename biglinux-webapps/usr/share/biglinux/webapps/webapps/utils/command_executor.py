@@ -140,7 +140,7 @@ class CommandExecutor:
         if delete_folder:
             command = f"big-webapps remove-with-folder '{webapp.app_file}' '{webapp.browser}' '{webapp.app_profile}'"
         else:
-            command = f"big-webapps remove '{webapp.app_file}'"
+            command = f"big-webapps remove  '{webapp.app_file}' '{webapp.browser}' '{webapp.app_profile}'"
 
         output = self.execute_command(command)
 

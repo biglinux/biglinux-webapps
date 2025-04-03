@@ -64,15 +64,6 @@ elif [ $command == "remove" ]; then
     if [ -f $filename ]; then
         rm $filename
 
-        # Check if browser matches any of the specified browsers
-        if [[ "$browser" == "firefox" || "$browser" == "librewolf" || "$browser" == "flatpak-firefox" || "$browser" == "flatpak-librewolf" ]]; then
-            # Firefox and Librewolf always remove the profile folder
-            filename=${filename//.desktop}
-            if [[ -d "$HOME/.bigwebapps/$browser/$filename" ]]; then
-                rm -rf "$HOME/.bigwebapps/$browser/$filename"
-            fi
-        fi
-
         echo "WebApp successfully removed!"
         exit 0
     else
@@ -96,6 +87,14 @@ elif [ $command = "remove-with-folder" ]; then
         # Verify if $browser variable not null and $profile variable not null and folder $HOME/.bigwebapps/$browser/$profile exists
         if [[ -n $browser ]] && [[ -n $profile ]] && [[ -d $HOME/.bigwebapps/$browser/$profile ]]; then
             rm -rf $HOME/.bigwebapps/$browser/$profile
+        else
+            if [[ "$browser" == "firefox" || "$browser" == "librewolf" || "$browser" == "flatpak-firefox" || "$browser" == "flatpak-librewolf" ]]; then
+                # Firefox and Librewolf always remove the profile folder
+                filename=${filename//.desktop}
+                if [[ -d "$HOME/.bigwebapps/$browser/$filename" ]]; then
+                    rm -rf "$HOME/.bigwebapps/$browser/$filename"
+                fi
+            fi
         fi
         
         echo "WebApp successfully removed!"
