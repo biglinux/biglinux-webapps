@@ -3,7 +3,6 @@
 # This file is distributed under the same license as the biglinux-webapps package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
@@ -16,73 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 185
-msgid "No WebApps"
-msgstr "No WebApps"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 185
-msgid "There are no WebApps to export."
-msgstr "There are no WebApps to export."
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 304
-msgid "File Not Found"
-msgstr "File Not Found"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 304
-msgid "The selected file does not exist."
-msgstr "The selected file does not exist."
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 311
-msgid "Invalid File"
-msgstr "Invalid File"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 312
-msgid "The selected file is not a valid ZIP archive."
-msgstr "The selected file is not a valid ZIP archive."
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 403
-msgid "Imported {} WebApps successfully ({} duplicates skipped)"
-msgstr "Imported {} WebApps successfully ({} duplicates skipped)"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 408
-msgid "Imported {} WebApps successfully"
-msgstr "Imported {} WebApps successfully"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 413
-msgid "Error importing WebApps"
-msgstr "Error importing WebApps"
-
-#
-# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
-#
-# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 424
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 213
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 714
-msgid "OK"
-msgstr "OK"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 430
-msgid "No"
-msgstr "No"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 431
-msgid "Yes"
-msgstr "Yes"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 57
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 57
 msgid "Select Browser"
 msgstr "Select Browser"
 
@@ -91,267 +24,167 @@ msgstr "Select Browser"
 #
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 116
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 349
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 359
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 396
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 116
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 359
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 396
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 349
 msgid "Cancel"
 msgstr "Cancel"
 
 #
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 119
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 216
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 280
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 119
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 216
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 280
 msgid "Select"
 msgstr "Select"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 170
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 170
 msgid "System Default"
 msgstr "System Default"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 176
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 176
 msgid "Default"
 msgstr "Default"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 203
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 203
 msgid "Please select a browser."
 msgstr "Please select a browser."
 
 #
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 212
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 713
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 212
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 713
 msgid "Error"
 msgstr "Error"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 91
-#, python-brace-format
-msgid "Browser: {0}"
-msgstr "Browser: {0}"
-
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 #
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 104
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 138
-msgid "Edit WebApp"
-msgstr "Edit WebApp"
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 213
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 714
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 424
+msgid "OK"
+msgstr "OK"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
-msgid "Delete WebApp"
-msgstr "Delete WebApp"
-
-#
-# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 138
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 113
-msgid "Add WebApp"
-msgstr "Add WebApp"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 189
-msgid "URL"
-msgstr "URL"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 193
-msgid "Detect"
-msgstr "Detect"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 194
-msgid "Detect name and icon from website"
-msgstr "Detect name and icon from website"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 203
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 556
-msgid "Name"
-msgstr "Name"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 209
-msgid "App Icon"
-msgstr "App Icon"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 217
-msgid "Select icon for the WebApp"
-msgstr "Select icon for the WebApp"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 224
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 325
-msgid "Available Icons"
-msgstr "Available Icons"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 261
-msgid "Category"
-msgstr "Category"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 266
-msgid "Browser"
-msgstr "Browser"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 291
-msgid "Use separate profile"
-msgstr "Use separate profile"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 293
-msgid "Using a separate profile allows you to log in to different accounts"
-msgstr "Using a separate profile allows you to log in to different accounts"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 311
-msgid "Profile Name"
-msgstr "Profile Name"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 353
-msgid "Save"
-msgstr "Save"
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 383
-msgid "Loading..."
-msgstr "Loading..."
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 529
-msgid "Please enter a URL first."
-msgstr "Please enter a URL first."
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 685
-msgid "Please enter a name for the WebApp."
-msgstr "Please enter a name for the WebApp."
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 689
-msgid "Please enter a URL for the WebApp."
-msgstr "Please enter a URL for the WebApp."
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 693
-msgid "Please select a browser for the WebApp."
-msgstr "Please select a browser for the WebApp."
-
-#
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 26
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 26
 msgid "WebApps Manager"
 msgstr "WebApps Manager"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 50
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 50
 msgid "Search WebApps"
 msgstr "Search WebApps"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 60
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 60
 msgid "Refresh"
 msgstr "Refresh"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 61
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 61
 msgid "Export WebApps"
 msgstr "Export WebApps"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 62
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 62
 msgid "Import WebApps"
 msgstr "Import WebApps"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 65
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 65
 msgid "Browse Applications Folder"
 msgstr "Browse Applications Folder"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 66
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 66
 msgid "Browse Profiles Folder"
 msgstr "Browse Profiles Folder"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
 msgid "Remove All WebApps"
 msgstr "Remove All WebApps"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
 msgid "About"
 msgstr "About"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 76
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 76
 msgid "Add"
 msgstr "Add"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 109
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 109
 msgid "No WebApps Found"
 msgstr "No WebApps Found"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 110
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 110
 msgid "Add a new webapp to get started"
 msgstr "Add a new webapp to get started"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 218
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 113
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 138
+msgid "Add WebApp"
+msgstr "Add WebApp"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 218
 msgid "WebApp created successfully"
 msgstr "WebApp created successfully"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 261
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 261
 msgid "WebApp updated successfully"
 msgstr "WebApp updated successfully"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 321
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 321
 #, python-brace-format
 msgid "Browser changed to {0}"
 msgstr "Browser changed to {0}"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 337
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 337
 #, python-brace-format
 msgid "Are you sure you want to delete {0}?"
 msgstr "Are you sure you want to delete {0}?"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
 msgid "Also delete configuration folder"
 msgstr "Also delete configuration folder"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 360
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 360
 msgid "Delete"
 msgstr "Delete"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 379
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 379
 msgid "WebApp deleted successfully"
 msgstr "WebApp deleted successfully"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 391
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 391
 msgid ""
+msgstr ""
 "Are you sure you want to remove all your WebApps? This action cannot be "
 "undone."
 msgstr ""
@@ -359,36 +192,203 @@ msgstr ""
 "undone."
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 397
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 397
 msgid "Continue"
 msgstr "Continue"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 412
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 412
 msgid "Final Confirmation"
 msgstr "Final Confirmation"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 413
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 413
 msgid "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
 msgstr "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 417
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 417
 msgid "No, Cancel"
 msgstr "No, Cancel"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 418
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 418
 msgid "Yes, Remove All"
 msgstr "Yes, Remove All"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
 msgid "All WebApps have been removed"
 msgstr "All WebApps have been removed"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 445
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 445
 msgid "Failed to remove all WebApps"
 msgstr "Failed to remove all WebApps"
+
+#
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 138
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 104
+msgid "Edit WebApp"
+msgstr "Edit WebApp"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 189
+msgid "URL"
+msgstr "URL"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 193
+msgid "Detect"
+msgstr "Detect"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 194
+msgid "Detect name and icon from website"
+msgstr "Detect name and icon from website"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 203
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 556
+msgid "Name"
+msgstr "Name"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 209
+msgid "App Icon"
+msgstr "App Icon"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 217
+msgid "Select icon for the WebApp"
+msgstr "Select icon for the WebApp"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 224
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 325
+msgid "Available Icons"
+msgstr "Available Icons"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 261
+msgid "Category"
+msgstr "Category"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 266
+msgid "Browser"
+msgstr "Browser"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 291
+msgid "Use separate profile"
+msgstr "Use separate profile"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 293
+msgid "Using a separate profile allows you to log in to different accounts"
+msgstr "Using a separate profile allows you to log in to different accounts"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 311
+msgid "Profile Name"
+msgstr "Profile Name"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 353
+msgid "Save"
+msgstr "Save"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 383
+msgid "Loading..."
+msgstr "Loading..."
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 529
+msgid "Please enter a URL first."
+msgstr "Please enter a URL first."
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 685
+msgid "Please enter a name for the WebApp."
+msgstr "Please enter a name for the WebApp."
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 689
+msgid "Please enter a URL for the WebApp."
+msgstr "Please enter a URL for the WebApp."
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 693
+msgid "Please select a browser for the WebApp."
+msgstr "Please select a browser for the WebApp."
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 91
+#, python-brace-format
+msgid "Browser: {0}"
+msgstr "Browser: {0}"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
+msgid "Delete WebApp"
+msgstr "Delete WebApp"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 185
+msgid "No WebApps"
+msgstr "No WebApps"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 185
+msgid "There are no WebApps to export."
+msgstr "There are no WebApps to export."
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 304
+msgid "File Not Found"
+msgstr "File Not Found"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 304
+msgid "The selected file does not exist."
+msgstr "The selected file does not exist."
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 311
+msgid "Invalid File"
+msgstr "Invalid File"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 312
+msgid "The selected file is not a valid ZIP archive."
+msgstr "The selected file is not a valid ZIP archive."
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 403
+msgid "Imported {} WebApps successfully ({} duplicates skipped)"
+msgstr "Imported {} WebApps successfully ({} duplicates skipped)"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 408
+msgid "Imported {} WebApps successfully"
+msgstr "Imported {} WebApps successfully"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 413
+msgid "Error importing WebApps"
+msgstr "Error importing WebApps"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 430
+msgid "No"
+msgstr "No"
+
+#
+# File: biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 431
+msgid "Yes"
+msgstr "Yes"
