@@ -111,7 +111,7 @@ else
     fi
 
     if [[ "$profile" == "Browser" ]]; then
-        $browser_exec --no-default-browser-check  --app="$url" &
+        $browser_exec --no-default-browser-check --class="$class" --app="$url" &
     else
         $browser_exec --no-default-browser-check --class="$class" --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
     fi
