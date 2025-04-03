@@ -4,7 +4,6 @@ MainWindow module containing the main application window
 
 import gi
 import time
-import os
 from datetime import datetime
 
 gi.require_version("Gtk", "4.0")

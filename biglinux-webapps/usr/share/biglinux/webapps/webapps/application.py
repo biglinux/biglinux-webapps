@@ -10,17 +10,16 @@ import tempfile
 import zipfile
 import time
 import subprocess
-from pathlib import Path
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw, Gio, GLib
+from gi.repository import Gtk, Adw, Gio, Gdk
 
 from webapps.models.webapp_model import WebAppCollection
 from webapps.models.browser_model import BrowserCollection
 from webapps.ui.main_window import MainWindow
 from webapps.utils.command_executor import CommandExecutor
-from webapps.utils.translation import _  # Import the centralized translation function
+from webapps.utils.translation import _
 
 
 class WebAppsApplication(Adw.Application):

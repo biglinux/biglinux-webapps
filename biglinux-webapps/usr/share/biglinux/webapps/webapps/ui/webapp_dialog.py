@@ -748,36 +748,3 @@ class WebAppDialog(Adw.Window):
                 child = child.get_next_sibling()
 
         return result
-
-    def get_system_menu_categories(self):
-        """
-        Get application categories from system menu
-
-        Returns:
-            list: A focused list of categories actually shown in most menus
-        """
-        # Focus only on categories commonly shown in application menus
-        menu_categories = [
-            "Webapps",  # Our custom category - always first
-            "Network",  # Common in most DEs
-            "Office",  # Common in most DEs
-            "Development",  # Common in most DEs
-            "Graphics",  # Common in most DEs
-            "AudioVideo",  # Common name in some DEs
-            "Game",  # Common in most DEs
-            "Utility",  # Common in GNOME
-            "System",  # Common in most DEs
-        ]
-
-        # Translate all categories
-        translated_categories = [_(category) for category in menu_categories]
-
-        # Ensure no duplicates in case translation results in identical text
-        unique_categories = []
-        seen = set()
-        for category in translated_categories:
-            if category not in seen:
-                unique_categories.append(category)
-                seen.add(category)
-
-        return unique_categories
