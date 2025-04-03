@@ -6,7 +6,7 @@ import gi
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw, GObject
+from gi.repository import Gtk, Adw, GObject, Gdk
 
 # Import shared browser icon utilities
 from webapps.utils.browser_icon_utils import set_image_from_browser_icon
@@ -51,6 +51,11 @@ class BrowserDialog(Adw.Window):
         content.set_margin_bottom(12)
         content.set_margin_start(12)
         content.set_margin_end(12)
+
+        # Add key event controller to handle ESC key to close dialog
+        key_controller = Gtk.EventControllerKey.new()
+        key_controller.connect("key-pressed", self.on_key_pressed)
+        self.add_controller(key_controller)
 
         # Header
         header = Adw.HeaderBar()
@@ -221,3 +226,11 @@ class BrowserDialog(Adw.Window):
             Browser: Selected browser
         """
         return self.selected_browser
+
+    def on_key_pressed(self, controller, keyval, keycode, state):
+        """Handle key press events"""
+        if keyval == Gdk.KEY_Escape:
+            self.close()
+            self.emit("response", Gtk.ResponseType.CANCEL)
+            return True
+        return False

@@ -170,20 +170,60 @@ class CommandExecutor:
             if result.strip():
                 browser_desktop = result.strip()
                 # Convert .desktop filename to browser ID
-                if "chrome" in browser_desktop.lower():
-                    return "google-chrome-stable"
-                elif "chromium" in browser_desktop.lower():
-                    return "chromium"
-                elif "brave" in browser_desktop.lower():
-                    return "brave-browser"
+                if "brave" in browser_desktop.lower():
+                    return "brave"
+                elif "brave-beta" in browser_desktop.lower():
+                    return "brave-beta"
+                elif "brave-nightly" in browser_desktop.lower():
+                    return "brave-nightly"
                 elif "firefox" in browser_desktop.lower():
                     return "firefox"
-                elif "librewolf" in browser_desktop.lower():
-                    return "librewolf"
+                elif "chromium" in browser_desktop.lower():
+                    return "chromium"
+                elif (
+                    "chrome" in browser_desktop.lower()
+                    and "beta" in browser_desktop.lower()
+                ):
+                    return "google-chrome-beta"
+                elif (
+                    "chrome" in browser_desktop.lower()
+                    and "unstable" in browser_desktop.lower()
+                ):
+                    return "google-chrome-unstable"
+                elif "chrome" in browser_desktop.lower():
+                    return "google-chrome-stable"
                 elif "edge" in browser_desktop.lower():
                     return "microsoft-edge-stable"
+                elif (
+                    "vivaldi" in browser_desktop.lower()
+                    and "beta" in browser_desktop.lower()
+                ):
+                    return "vivaldi-beta"
+                elif (
+                    "vivaldi" in browser_desktop.lower()
+                    and "snapshot" in browser_desktop.lower()
+                ):
+                    return "vivaldi-snapshot"
                 elif "vivaldi" in browser_desktop.lower():
                     return "vivaldi-stable"
+                elif "librewolf" in browser_desktop.lower():
+                    return "librewolf"
+                elif "org.mozilla.firefox" in browser_desktop.lower():
+                    return "flatpak-firefox"
+                elif "org.chromium.Chromium" in browser_desktop.lower():
+                    return "flatpak-chromium"
+                elif "com.google.Chrome" in browser_desktop.lower():
+                    return "flatpak-chrome"
+                elif "com.google.ChromeDev" in browser_desktop.lower():
+                    return "flatpak-chrome-unstable"
+                elif "com.brave.Browser" in browser_desktop.lower():
+                    return "flatpak-brave"
+                elif "com.microsoft.Edge" in browser_desktop.lower():
+                    return "flatpak-edge"
+                elif "com.github.Eloston.UngoogledChromium" in browser_desktop.lower():
+                    return "flatpak-ungoogled-chromium"
+                elif "io.gitlab.librewolf" in browser_desktop.lower():
+                    return "flatpak-librewolf"
 
             # Try xdg-mime as fallback
             result = self.execute_command(
@@ -192,20 +232,60 @@ class CommandExecutor:
             if result.strip():
                 browser_desktop = result.strip()
                 # Convert .desktop filename to browser ID
-                if "chrome" in browser_desktop.lower():
-                    return "google-chrome-stable"
-                elif "chromium" in browser_desktop.lower():
-                    return "chromium"
-                elif "brave" in browser_desktop.lower():
-                    return "brave-browser"
+                if "brave" in browser_desktop.lower():
+                    return "brave"
+                elif "brave-beta" in browser_desktop.lower():
+                    return "brave-beta"
+                elif "brave-nightly" in browser_desktop.lower():
+                    return "brave-nightly"
                 elif "firefox" in browser_desktop.lower():
                     return "firefox"
-                elif "librewolf" in browser_desktop.lower():
-                    return "librewolf"
+                elif "chromium" in browser_desktop.lower():
+                    return "chromium"
+                elif (
+                    "chrome" in browser_desktop.lower()
+                    and "beta" in browser_desktop.lower()
+                ):
+                    return "google-chrome-beta"
+                elif (
+                    "chrome" in browser_desktop.lower()
+                    and "unstable" in browser_desktop.lower()
+                ):
+                    return "google-chrome-unstable"
+                elif "chrome" in browser_desktop.lower():
+                    return "google-chrome-stable"
                 elif "edge" in browser_desktop.lower():
                     return "microsoft-edge-stable"
+                elif (
+                    "vivaldi" in browser_desktop.lower()
+                    and "beta" in browser_desktop.lower()
+                ):
+                    return "vivaldi-beta"
+                elif (
+                    "vivaldi" in browser_desktop.lower()
+                    and "snapshot" in browser_desktop.lower()
+                ):
+                    return "vivaldi-snapshot"
                 elif "vivaldi" in browser_desktop.lower():
                     return "vivaldi-stable"
+                elif "librewolf" in browser_desktop.lower():
+                    return "librewolf"
+                elif "org.mozilla.firefox" in browser_desktop.lower():
+                    return "flatpak-firefox"
+                elif "org.chromium.Chromium" in browser_desktop.lower():
+                    return "flatpak-chromium"
+                elif "com.google.Chrome" in browser_desktop.lower():
+                    return "flatpak-chrome"
+                elif "com.google.ChromeDev" in browser_desktop.lower():
+                    return "flatpak-chrome-unstable"
+                elif "com.brave.Browser" in browser_desktop.lower():
+                    return "flatpak-brave"
+                elif "com.microsoft.Edge" in browser_desktop.lower():
+                    return "flatpak-edge"
+                elif "com.github.Eloston.UngoogledChromium" in browser_desktop.lower():
+                    return "flatpak-ungoogled-chromium"
+                elif "io.gitlab.librewolf" in browser_desktop.lower():
+                    return "flatpak-librewolf"
         except Exception as e:
             print(f"Error detecting system default browser: {e}")
 

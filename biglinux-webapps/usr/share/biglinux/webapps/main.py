@@ -5,7 +5,6 @@ A GTK4 application for managing web applications in BigLinux.
 """
 
 import sys
-import os
 import gi
 
 gi.require_version("Gtk", "4.0")
@@ -14,7 +13,6 @@ gi.require_version("Adw", "1")
 from gi.repository import GLib
 
 # Import from our utility to ensure proper initialization
-from webapps.utils.translation import _
 from webapps.application import WebAppsApplication
 
 

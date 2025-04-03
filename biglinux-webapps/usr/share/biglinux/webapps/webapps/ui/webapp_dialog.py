@@ -8,7 +8,7 @@ import uuid
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw, GObject, GdkPixbuf
+from gi.repository import Gtk, Adw, GObject, GdkPixbuf, Gdk
 
 # Import BrowserDialog
 from webapps.ui.browser_dialog import BrowserDialog
@@ -133,6 +133,11 @@ class WebAppDialog(Adw.Window):
         """Set up the UI components"""
         # Create main layout with content area
         content = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
+
+        # Add key event controller to handle ESC key to close dialog
+        key_controller = Gtk.EventControllerKey.new()
+        key_controller.connect("key-pressed", self.on_key_pressed)
+        self.add_controller(key_controller)
 
         # Define the window title based on whether we're adding or editing
         title = self.is_new and _("Add WebApp") or _("Edit WebApp")
@@ -417,6 +422,14 @@ class WebAppDialog(Adw.Window):
 
         # Use set_content() instead of set_child() for Adw.Window
         self.set_content(overlay)
+
+    def on_key_pressed(self, controller, keyval, keycode, state):
+        """Handle key press events"""
+        if keyval == Gdk.KEY_Escape:
+            self.close()
+            self.emit("response", Gtk.ResponseType.CANCEL)
+            return True
+        return False
 
     def set_icon_from_path(self, icon_path):
         """

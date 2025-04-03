@@ -53,6 +53,7 @@ class Browser(GObject.GObject):
             "vivaldi-stable": "Vivaldi",
             "flatpak-brave": "Brave (Flatpak)",
             "flatpak-chrome": "Chrome (Flatpak)",
+            "flatpak-chrome-unstable": "Chrome Unstable (Flatpak)",
             "flatpak-chromium": "Chromium (Flatpak)",
             "flatpak-edge": "Edge (Flatpak)",
             "microsoft-edge-stable": "Edge",

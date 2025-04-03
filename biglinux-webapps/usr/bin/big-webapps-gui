@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+mkdir -p ~/.local/share/icons
+
 cd /usr/share/biglinux/webapps/
 
-python main.py
+exec python main.py
