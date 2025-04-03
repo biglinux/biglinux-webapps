@@ -308,6 +308,53 @@ msgid "Please select a browser for the WebApp."
 msgstr "웹앱을 위한 브라우저를 선택하세요."
 
 # 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
+#: NEEDS WORK
+msgid "Welcome to WebApps Manager"
+msgstr "웹앱 관리자에 오신 것을 환영합니다."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
+#: NEEDS WORK
+msgid ""
+"<b>What are WebApps?</b>\n"
+"\n"
+"WebApps are web applications that run in a dedicated browser window, providing a more app-like "
+"experience for your favorite websites.\n"
+"\n"
+"<b>Benefits of using WebApps:</b>\n"
+"\n"
+"• <b>Focus</b>: Work without the distractions of other browser tabs\n"
+"• <b>Desktop Integration</b>: Quick access from your application menu and task switcher\n"
+"• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
+"• <b>Convenience</b>: Launch directly like regular applications\n"
+"\n"
+msgstr ""
+"<b>웹앱이란?</b>\n"
+"\n"
+"웹앱은 전용 브라우저 창에서 실행되는 웹 애플리케이션으로, 좋아하는 웹사이트에 대해 더 앱 같은 경험을 제공합니다.\n"
+"\n"
+"<b>웹앱 사용의 장점:</b>\n"
+"\n"
+"• <b>집중</b>: 다른 브라우저 탭의 방해 없이 작업\n"
+"• <b>데스크탑 통합</b>: 애플리케이션 메뉴와 작업 전환기에서 빠른 접근\n"
+"• <b>격리된 프로필</b>: 선택적으로 각 웹앱은 자체 쿠키와 설정을 가질 수 있음\n"
+"• <b>편리함</b>: 일반 애플리케이션처럼 직접 실행"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 135
+#: NEEDS WORK
+msgid "Don't show this dialog on startup"
+msgstr "시작 시 이 대화 상자를 표시하지 않음"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
+#: NEEDS WORK
+msgid "Let's Start"
+msgstr "시작하겠습니다."
+
+# 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
 #: NEEDS WORK
 msgid "WebApps Manager"
@@ -348,6 +395,12 @@ msgstr "응용 프로그램 폴더 탐색"
 #: NEEDS WORK
 msgid "Browse Profiles Folder"
 msgstr "프로필 폴더 탐색"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 87
+#: NEEDS WORK
+msgid "Show Welcome Screen"
+msgstr "환영 화면 표시"
 
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
@@ -439,6 +492,7 @@ msgstr "모든 웹앱을 제거하시겠습니까? 이 작업은 취소할 수 �
 #: NEEDS WORK
 msgid "Continue"
 msgstr ""
+
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 413
 #: NEEDS WORK

@@ -308,6 +308,55 @@ msgid "Please select a browser for the WebApp."
 msgstr "Valitse selain WebAppia varten."
 
 # 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
+#: NEEDS WORK
+msgid "Welcome to WebApps Manager"
+msgstr "Tervetuloa WebApps Manageriin"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
+#: NEEDS WORK
+msgid ""
+"<b>What are WebApps?</b>\n"
+"\n"
+"WebApps are web applications that run in a dedicated browser window, providing a more app-like "
+"experience for your favorite websites.\n"
+"\n"
+"<b>Benefits of using WebApps:</b>\n"
+"\n"
+"• <b>Focus</b>: Work without the distractions of other browser tabs\n"
+"• <b>Desktop Integration</b>: Quick access from your application menu and task switcher\n"
+"• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
+"• <b>Convenience</b>: Launch directly like regular applications\n"
+"\n"
+msgstr ""
+"<b>Mitkä ovat WebAppit?</b>\n"
+"\n"
+"WebAppit ovat verkkosovelluksia, jotka toimivat omassa selainikkunassaan, tarjoten sovelluksen "
+"kaltaisen kokemuksen suosikkisivustoillesi.\n"
+"\n"
+"<b>WebAppien käytön edut:</b>\n"
+"\n"
+"• <b>Keskittyminen</b>: Työskentele ilman muiden selainvälilehtien häiriöitä\n"
+"• <b>Työpöytäintegraatio</b>: Nopea pääsy sovellusvalikostasi ja tehtävävaihtajasta\n"
+"• <b>Eristetyt profiilit</b>: Valinnaisesti jokaisella webappilla voi olla omat evästeensä ja "
+"asetuksensa\n"
+"• <b>Mukavuus</b>: Käynnistä suoraan kuten tavalliset sovellukset"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 135
+#: NEEDS WORK
+msgid "Don't show this dialog on startup"
+msgstr "Älä näytä tätä dialogia käynnistyksen yhteydessä."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
+#: NEEDS WORK
+msgid "Let's Start"
+msgstr "Aloitetaan"
+
+# 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
 #: NEEDS WORK
 msgid "WebApps Manager"
@@ -348,6 +397,12 @@ msgstr "Selaa sovelluskansiota"
 #: NEEDS WORK
 msgid "Browse Profiles Folder"
 msgstr "Selaa profiilikansiota"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 87
+#: NEEDS WORK
+msgid "Show Welcome Screen"
+msgstr "Näytä tervetulonäyttö"
 
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68

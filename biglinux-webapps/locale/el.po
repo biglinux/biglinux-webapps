@@ -308,6 +308,56 @@ msgid "Please select a browser for the WebApp."
 msgstr "Παρακαλώ επιλέξτε έναν περιηγητή για την Εφαρμογή Ιστού."
 
 # 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
+#: NEEDS WORK
+msgid "Welcome to WebApps Manager"
+msgstr "Καλώς ήρθατε στον Διαχειριστή WebApps"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
+#: NEEDS WORK
+msgid ""
+"<b>What are WebApps?</b>\n"
+"\n"
+"WebApps are web applications that run in a dedicated browser window, providing a more app-like "
+"experience for your favorite websites.\n"
+"\n"
+"<b>Benefits of using WebApps:</b>\n"
+"\n"
+"• <b>Focus</b>: Work without the distractions of other browser tabs\n"
+"• <b>Desktop Integration</b>: Quick access from your application menu and task switcher\n"
+"• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
+"• <b>Convenience</b>: Launch directly like regular applications\n"
+"\n"
+msgstr ""
+"<b>Τι είναι οι WebApps;</b>\n"
+"\n"
+"Οι WebApps είναι διαδικτυακές εφαρμογές που εκτελούνται σε ένα ειδικό παράθυρο προγράμματος "
+"περιήγησης, παρέχοντας μια πιο εφαρμογή-όμοια εμπειρία για τις αγαπημένες σας ιστοσελίδες.\n"
+"\n"
+"<b>Οφέλη από τη χρήση WebApps:</b>\n"
+"\n"
+"• <b>Εστίαση</b>: Εργαστείτε χωρίς τις αποσπάσεις από άλλες καρτέλες του προγράμματος περιήγησης\n"
+"• <b>Ενοποίηση Επιφάνειας Εργασίας</b>: Γρήγορη πρόσβαση από το μενού εφαρμογών σας και τον "
+"εναλλάκτη εργασιών\n"
+"• <b>Απομονωμένα Προφίλ</b>: Προαιρετικά, κάθε webapp μπορεί να έχει τα δικά της cookies και "
+"ρυθμίσεις\n"
+"• <b>Ευκολία</b>: Εκκίνηση απευθείας όπως οι κανονικές εφαρμογές"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 135
+#: NEEDS WORK
+msgid "Don't show this dialog on startup"
+msgstr "Μη δείξετε αυτό το παράθυρο διαλόγου κατά την εκκίνηση"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
+#: NEEDS WORK
+msgid "Let's Start"
+msgstr "Ας ξεκινήσουμε"
+
+# 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
 #: NEEDS WORK
 msgid "WebApps Manager"
@@ -348,6 +398,12 @@ msgstr "Περιήγηση στο Φάκελο Εφαρμογών"
 #: NEEDS WORK
 msgid "Browse Profiles Folder"
 msgstr "Προβολή φακέλου προφίλ"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 87
+#: NEEDS WORK
+msgid "Show Welcome Screen"
+msgstr "Εμφάνιση Οθόνης Καλωσορίσματος"
 
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68

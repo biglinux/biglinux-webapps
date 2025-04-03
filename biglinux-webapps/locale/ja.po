@@ -308,6 +308,53 @@ msgid "Please select a browser for the WebApp."
 msgstr "WebAppのためのブラウザを選択してください。"
 
 # 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
+#: NEEDS WORK
+msgid "Welcome to WebApps Manager"
+msgstr "WebAppsマネージャーへようこそ"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
+#: NEEDS WORK
+msgid ""
+"<b>What are WebApps?</b>\n"
+"\n"
+"WebApps are web applications that run in a dedicated browser window, providing a more app-like "
+"experience for your favorite websites.\n"
+"\n"
+"<b>Benefits of using WebApps:</b>\n"
+"\n"
+"• <b>Focus</b>: Work without the distractions of other browser tabs\n"
+"• <b>Desktop Integration</b>: Quick access from your application menu and task switcher\n"
+"• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
+"• <b>Convenience</b>: Launch directly like regular applications\n"
+"\n"
+msgstr ""
+"<b>Webアプリとは何ですか？</b>\n"
+"\n"
+"Webアプリは、専用のブラウザウィンドウで実行されるウェブアプリケーションで、お気に入りのウェブサイトに対してよりアプリのような体験を提供します。\n"
+"\n"
+"<b>Webアプリを使用する利点：</b>\n"
+"\n"
+"• <b>集中</b>: 他のブラウザタブの気を散らすことなく作業できます\n"
+"• <b>デスクトップ統合</b>: アプリケーションメニューやタスクスイッチャーからの迅速なアクセス\n"
+"• <b>隔離されたプロファイル</b>: オプションで、各Webアプリは独自のクッキーと設定を持つことができます\n"
+"• <b>便利さ</b>: 通常のアプリケーションのように直接起動できます"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 135
+#: NEEDS WORK
+msgid "Don't show this dialog on startup"
+msgstr "起動時にこのダイアログを表示しない"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
+#: NEEDS WORK
+msgid "Let's Start"
+msgstr "始めましょう"
+
+# 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
 #: NEEDS WORK
 msgid "WebApps Manager"
@@ -348,6 +395,12 @@ msgstr "アプリケーションフォルダーをブラウズ"
 #: NEEDS WORK
 msgid "Browse Profiles Folder"
 msgstr "プロファイルフォルダーを参照"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 87
+#: NEEDS WORK
+msgid "Show Welcome Screen"
+msgstr "ウェルカムスクリーンを表示"
 
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68

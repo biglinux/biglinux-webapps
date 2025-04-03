@@ -308,6 +308,55 @@ msgid "Please select a browser for the WebApp."
 msgstr "Molimo odaberite preglednik za WebApp."
 
 # 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
+#: NEEDS WORK
+msgid "Welcome to WebApps Manager"
+msgstr "Dobrodošli u WebApps Manager"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
+#: NEEDS WORK
+msgid ""
+"<b>What are WebApps?</b>\n"
+"\n"
+"WebApps are web applications that run in a dedicated browser window, providing a more app-like "
+"experience for your favorite websites.\n"
+"\n"
+"<b>Benefits of using WebApps:</b>\n"
+"\n"
+"• <b>Focus</b>: Work without the distractions of other browser tabs\n"
+"• <b>Desktop Integration</b>: Quick access from your application menu and task switcher\n"
+"• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
+"• <b>Convenience</b>: Launch directly like regular applications\n"
+"\n"
+msgstr ""
+"<b>Što su WebAplikacije?</b>\n"
+"\n"
+"WebAplikacije su web aplikacije koje se pokreću u posebnom prozoru preglednika, pružajući iskustvo "
+"slično aplikaciji za vaše omiljene web stranice.\n"
+"\n"
+"<b>Prednosti korištenja WebAplikacija:</b>\n"
+"\n"
+"• <b>Fokus</b>: Rad bez ometanja drugih kartica preglednika\n"
+"• <b>Integracija s radnom površinom</b>: Brzi pristup iz izbornika aplikacija i prebacivača "
+"zadataka\n"
+"• <b>Izolirani profili</b>: Opcionalno, svaka webaplikacija može imati svoje kolačiće i postavke\n"
+"• <b>Praktičnost</b>: Pokretanje izravno poput običnih aplikacija"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 135
+#: NEEDS WORK
+msgid "Don't show this dialog on startup"
+msgstr "Ne prikazuj ovaj dijalog pri pokretanju"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
+#: NEEDS WORK
+msgid "Let's Start"
+msgstr "Započnimo"
+
+# 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
 #: NEEDS WORK
 msgid "WebApps Manager"
@@ -348,6 +397,12 @@ msgstr "Pregledaj mapu aplikacija"
 #: NEEDS WORK
 msgid "Browse Profiles Folder"
 msgstr "Pregledaj mapu profila"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 87
+#: NEEDS WORK
+msgid "Show Welcome Screen"
+msgstr "Prikaži ekran dobrodošlice"
 
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
@@ -439,6 +494,7 @@ msgstr "Jeste li sigurni da želite ukloniti sve svoje WebAplikacije? Ova radnja
 #: NEEDS WORK
 msgid "Continue"
 msgstr ""
+
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 413
 #: NEEDS WORK

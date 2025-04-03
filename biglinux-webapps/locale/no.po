@@ -308,6 +308,55 @@ msgid "Please select a browser for the WebApp."
 msgstr "Vennligst velg en nettleser for WebApp."
 
 # 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
+#: NEEDS WORK
+msgid "Welcome to WebApps Manager"
+msgstr "Velkommen til WebApps Manager"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
+#: NEEDS WORK
+msgid ""
+"<b>What are WebApps?</b>\n"
+"\n"
+"WebApps are web applications that run in a dedicated browser window, providing a more app-like "
+"experience for your favorite websites.\n"
+"\n"
+"<b>Benefits of using WebApps:</b>\n"
+"\n"
+"• <b>Focus</b>: Work without the distractions of other browser tabs\n"
+"• <b>Desktop Integration</b>: Quick access from your application menu and task switcher\n"
+"• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
+"• <b>Convenience</b>: Launch directly like regular applications\n"
+"\n"
+msgstr ""
+"<b>Hva er WebApps?</b>\n"
+"\n"
+"WebApps er nettapplikasjoner som kjører i et dedikert nettleservindu, og gir en mer app-lignende "
+"opplevelse for dine favorittnettsteder.\n"
+"\n"
+"<b>Fordeler med å bruke WebApps:</b>\n"
+"\n"
+"• <b>Fokus</b>: Arbeid uten distraksjoner fra andre nettleserfaner\n"
+"• <b>Desktop-integrasjon</b>: Rask tilgang fra applikasjonsmenyen og oppgaveveksleren\n"
+"• <b>Isolerte profiler</b>: Valgfritt kan hver webapp ha sine egne informasjonskapsler og "
+"innstillinger\n"
+"• <b>Praktisk</b>: Start direkte som vanlige applikasjoner"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 135
+#: NEEDS WORK
+msgid "Don't show this dialog on startup"
+msgstr "Ikke vis denne dialogen ved oppstart"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
+#: NEEDS WORK
+msgid "Let's Start"
+msgstr "La oss begynne"
+
+# 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
 #: NEEDS WORK
 msgid "WebApps Manager"
@@ -348,6 +397,12 @@ msgstr "Bla gjennom applikasjonsmappen"
 #: NEEDS WORK
 msgid "Browse Profiles Folder"
 msgstr "Bla gjennom profiler-mappen"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 87
+#: NEEDS WORK
+msgid "Show Welcome Screen"
+msgstr "Vis visningsskjerm"
 
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68

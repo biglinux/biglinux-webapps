@@ -308,6 +308,55 @@ msgid "Please select a browser for the WebApp."
 msgstr "Seleziona un browser per il WebApp."
 
 # 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
+#: NEEDS WORK
+msgid "Welcome to WebApps Manager"
+msgstr "Benvenuto in WebApps Manager"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
+#: NEEDS WORK
+msgid ""
+"<b>What are WebApps?</b>\n"
+"\n"
+"WebApps are web applications that run in a dedicated browser window, providing a more app-like "
+"experience for your favorite websites.\n"
+"\n"
+"<b>Benefits of using WebApps:</b>\n"
+"\n"
+"• <b>Focus</b>: Work without the distractions of other browser tabs\n"
+"• <b>Desktop Integration</b>: Quick access from your application menu and task switcher\n"
+"• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
+"• <b>Convenience</b>: Launch directly like regular applications\n"
+"\n"
+msgstr ""
+"<b>Cosa sono le WebApp?</b>\n"
+"\n"
+"Le WebApp sono applicazioni web che vengono eseguite in una finestra del browser dedicata, offrendo "
+"un'esperienza più simile a quella delle app per i tuoi siti web preferiti.\n"
+"\n"
+"<b>Vantaggi dell'utilizzo delle WebApp:</b>\n"
+"\n"
+"• <b>Concentrazione</b>: Lavora senza le distrazioni di altre schede del browser\n"
+"• <b>Integrazione con il desktop</b>: Accesso rapido dal menu delle applicazioni e dal selettore "
+"delle attività\n"
+"• <b>Profili isolati</b>: Facoltativamente, ogni webapp può avere i propri cookie e impostazioni\n"
+"• <b>Comodità</b>: Avvio diretto come applicazioni normali"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 135
+#: NEEDS WORK
+msgid "Don't show this dialog on startup"
+msgstr "Non mostrare questo dialogo all'avvio"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
+#: NEEDS WORK
+msgid "Let's Start"
+msgstr "Iniziamo"
+
+# 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
 #: NEEDS WORK
 msgid "WebApps Manager"
@@ -348,6 +397,12 @@ msgstr "Sfoglia la cartella Applicazioni"
 #: NEEDS WORK
 msgid "Browse Profiles Folder"
 msgstr "Sfoglia la cartella Profili"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 87
+#: NEEDS WORK
+msgid "Show Welcome Screen"
+msgstr "Mostra Schermata di Benvenuto"
 
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68

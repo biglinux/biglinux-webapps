@@ -308,6 +308,53 @@ msgid "Please select a browser for the WebApp."
 msgstr "请选择一个浏览器用于WebApp。"
 
 # 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
+#: NEEDS WORK
+msgid "Welcome to WebApps Manager"
+msgstr "欢迎使用 WebApps 管理器"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
+#: NEEDS WORK
+msgid ""
+"<b>What are WebApps?</b>\n"
+"\n"
+"WebApps are web applications that run in a dedicated browser window, providing a more app-like "
+"experience for your favorite websites.\n"
+"\n"
+"<b>Benefits of using WebApps:</b>\n"
+"\n"
+"• <b>Focus</b>: Work without the distractions of other browser tabs\n"
+"• <b>Desktop Integration</b>: Quick access from your application menu and task switcher\n"
+"• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
+"• <b>Convenience</b>: Launch directly like regular applications\n"
+"\n"
+msgstr ""
+"<b>什么是WebApps？</b>\n"
+"\n"
+"WebApps是运行在专用浏览器窗口中的网络应用程序，为您最喜欢的网站提供更像应用程序的体验。\n"
+"\n"
+"<b>使用WebApps的好处：</b>\n"
+"\n"
+"• <b>专注</b>：在没有其他浏览器标签干扰的情况下工作\n"
+"• <b>桌面集成</b>：可以从应用程序菜单和任务切换器快速访问\n"
+"• <b>隔离的配置文件</b>：可选地，每个WebApp可以拥有自己的Cookie和设置\n"
+"• <b>便利性</b>：像常规应用程序一样直接启动"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 135
+#: NEEDS WORK
+msgid "Don't show this dialog on startup"
+msgstr "在启动时不显示此对话框"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
+#: NEEDS WORK
+msgid "Let's Start"
+msgstr "让我们开始"
+
+# 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
 #: NEEDS WORK
 msgid "WebApps Manager"
@@ -348,6 +395,12 @@ msgstr "浏览应用程序文件夹"
 #: NEEDS WORK
 msgid "Browse Profiles Folder"
 msgstr "浏览配置文件文件夹"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 87
+#: NEEDS WORK
+msgid "Show Welcome Screen"
+msgstr "显示欢迎屏幕"
 
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68

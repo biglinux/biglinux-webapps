@@ -308,6 +308,54 @@ msgid "Please select a browser for the WebApp."
 msgstr "Palun valige veebirakenduse jaoks brauser."
 
 # 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
+#: NEEDS WORK
+msgid "Welcome to WebApps Manager"
+msgstr "Tere tulemast WebApps Managerisse"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
+#: NEEDS WORK
+msgid ""
+"<b>What are WebApps?</b>\n"
+"\n"
+"WebApps are web applications that run in a dedicated browser window, providing a more app-like "
+"experience for your favorite websites.\n"
+"\n"
+"<b>Benefits of using WebApps:</b>\n"
+"\n"
+"• <b>Focus</b>: Work without the distractions of other browser tabs\n"
+"• <b>Desktop Integration</b>: Quick access from your application menu and task switcher\n"
+"• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
+"• <b>Convenience</b>: Launch directly like regular applications\n"
+"\n"
+msgstr ""
+"<b>Mis on WebAppid?</b>\n"
+"\n"
+"WebAppid on veebirakendused, mis töötavad spetsiaalses brauseriaknas, pakkudes teie "
+"lemmikveebisaitide jaoks rohkem rakenduse sarnast kogemust.\n"
+"\n"
+"<b>WebAppide kasutamise eelised:</b>\n"
+"\n"
+"• <b>Fookus</b>: Töö ilma teiste brauseri vahekaartide häirivate teguriteta\n"
+"• <b>Desktopi integreerimine</b>: Kiire juurdepääs teie rakenduste menüüst ja ülesannete vahetajast\n"
+"• <b>Isoleeritud profiilid</b>: Valikuliselt võib igal webappil olla oma küpsised ja seaded\n"
+"• <b>Mugavus</b>: Käivitage otse nagu tavalised rakendused"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 135
+#: NEEDS WORK
+msgid "Don't show this dialog on startup"
+msgstr "Ära näita seda dialooge käivitamisel"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
+#: NEEDS WORK
+msgid "Let's Start"
+msgstr "Alustame"
+
+# 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
 #: NEEDS WORK
 msgid "WebApps Manager"
@@ -348,6 +396,12 @@ msgstr "Sirvi rakenduste kausta"
 #: NEEDS WORK
 msgid "Browse Profiles Folder"
 msgstr "Sirvi profiilide kausta"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 87
+#: NEEDS WORK
+msgid "Show Welcome Screen"
+msgstr "Kuva Tere tulemast ekraanile"
 
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
