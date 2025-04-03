@@ -113,7 +113,6 @@ class WelcomeDialog(Adw.Window):
                 "• <b>Focus</b>: Work without the distractions of other browser tabs\n"
                 "• <b>Desktop Integration</b>: Quick access from your application menu and task switcher\n"
                 "• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
-                "• <b>Convenience</b>: Launch directly like regular applications\n\n"
             )
         )
         explanation.set_halign(Gtk.Align.START)
