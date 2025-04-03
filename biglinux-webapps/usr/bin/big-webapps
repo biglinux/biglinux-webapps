@@ -131,15 +131,16 @@ short_browser=$(sed 's/.*[Cc]hrom.*/chrome/
 class=$(sed 's|https://||;s|http://||g;s|/|__|g' <<< "$url")
 
 # Define the filename in Wayland compatible format
-filename="$short_browser-$(sed 's|https://||;s|http://||;s|?.*||g;s|/|__|g' <<< $url)__-Default.desktop"
+filename="$short_browser-$(sed 's|https://||;s|http://||;s|?.*||g;s|/|__|g' <<< $url)-Default.desktop"
 
-# Ensure filename doesn't end with more than two underscores and replace final __-profile with -profile
-filename=$(sed -E "s/(__.*)__-$profile/\1-$profile/g;s|__\@-|_@-|g" <<< "$filename")
+# Keep first occurrence of __ and replace all others with _
+filename=$(sed 's/__/\n/g;s/\n/__/;s/\n/_/g' <<< "$filename")
 
-if [[ $(grep -o '__' <<< "$filename" | wc -l) -gt 1 ]]; then
-    filename=$(sed "s/__-Default/-Default/g" <<< "$filename")
+if ! grep -q '__' <<< "$filename"; then
+    filename=$(sed "s/-Default/__-Default/g" <<< "$filename")
 fi
 
+kdialog --msgbox "$filename"
 
 # Verify if the WebApp already exists
 if [[ -e ~/.local/share/applications/$filename ]]; then
