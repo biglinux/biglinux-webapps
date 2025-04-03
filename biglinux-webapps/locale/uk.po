@@ -328,8 +328,6 @@ msgid ""
 "• <b>Focus</b>: Work without the distractions of other browser tabs\n"
 "• <b>Desktop Integration</b>: Quick access from your application menu and task switcher\n"
 "• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
-"• <b>Convenience</b>: Launch directly like regular applications\n"
-"\n"
 msgstr ""
 "<b>Що таке WebApps?</b>\n"
 "\n"
@@ -341,8 +339,7 @@ msgstr ""
 "• <b>Зосередженість</b>: Працюйте без відволікань від інших вкладок браузера\n"
 "• <b>Інтеграція з робочим столом</b>: Швидкий доступ з меню додатків та перемикача завдань\n"
 "• <b>Ізольовані профілі</b>: За бажанням, кожен веб-додаток може мати свої власні куки та "
-"налаштування\n"
-"• <b>Зручність</b>: Запускайте безпосередньо, як звичайні додатки"
+"налаштування"
 
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 135

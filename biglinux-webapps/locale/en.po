@@ -272,8 +272,6 @@ msgid ""
 "task switcher\n"
 "• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies "
 "and settings\n"
-"• <b>Convenience</b>: Launch directly like regular applications\n"
-"\n"
 msgstr ""
 "<b>What are WebApps?</b>\n"
 "\n"
@@ -287,16 +285,14 @@ msgstr ""
 "task switcher\n"
 "• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies "
 "and settings\n"
-"• <b>Convenience</b>: Launch directly like regular applications\n"
-"\n"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 135
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 134
 msgid "Don't show this dialog on startup"
 msgstr "Don't show this dialog on startup"
 
 #
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 151
 msgid "Let's Start"
 msgstr "Let's Start"
 

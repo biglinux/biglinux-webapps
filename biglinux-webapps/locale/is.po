@@ -328,8 +328,6 @@ msgid ""
 "• <b>Focus</b>: Work without the distractions of other browser tabs\n"
 "• <b>Desktop Integration</b>: Quick access from your application menu and task switcher\n"
 "• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
-"• <b>Convenience</b>: Launch directly like regular applications\n"
-"\n"
 msgstr ""
 "<b>Hvað eru Vefforrit?</b>\n"
 "\n"
@@ -340,8 +338,7 @@ msgstr ""
 "\n"
 "• <b>Fókus</b>: Vinna án truflana frá öðrum vafratöflum\n"
 "• <b>Vinnustöðva samþætting</b>: Fljótleg aðgangur frá forritavalmyndinni þinni og verkefnaskiptara\n"
-"• <b>Einangruð prófíl</b>: Valfrjálst, hvert vefforrit getur haft sín eigin kökur og stillingar\n"
-"• <b>Þægindi</b>: Ræsa beint eins og venjuleg forrit"
+"• <b>Einangruð prófíl</b>: Valfrjálst, hvert vefforrit getur haft sín eigin kökur og stillingar"
 
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 135

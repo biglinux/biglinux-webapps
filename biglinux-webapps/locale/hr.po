@@ -328,8 +328,6 @@ msgid ""
 "• <b>Focus</b>: Work without the distractions of other browser tabs\n"
 "• <b>Desktop Integration</b>: Quick access from your application menu and task switcher\n"
 "• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
-"• <b>Convenience</b>: Launch directly like regular applications\n"
-"\n"
 msgstr ""
 "<b>Što su WebAplikacije?</b>\n"
 "\n"
@@ -341,8 +339,7 @@ msgstr ""
 "• <b>Fokus</b>: Rad bez ometanja drugih kartica preglednika\n"
 "• <b>Integracija s radnom površinom</b>: Brzi pristup iz izbornika aplikacija i prebacivača "
 "zadataka\n"
-"• <b>Izolirani profili</b>: Opcionalno, svaka webaplikacija može imati svoje kolačiće i postavke\n"
-"• <b>Praktičnost</b>: Pokretanje izravno poput običnih aplikacija"
+"• <b>Izolirani profili</b>: Opcionalno, svaka webaplikacija može imati svoje kolačiće i postavke"
 
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 135

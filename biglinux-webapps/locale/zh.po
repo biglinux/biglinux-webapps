@@ -328,8 +328,6 @@ msgid ""
 "• <b>Focus</b>: Work without the distractions of other browser tabs\n"
 "• <b>Desktop Integration</b>: Quick access from your application menu and task switcher\n"
 "• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
-"• <b>Convenience</b>: Launch directly like regular applications\n"
-"\n"
 msgstr ""
 "<b>什么是WebApps？</b>\n"
 "\n"
@@ -339,8 +337,7 @@ msgstr ""
 "\n"
 "• <b>专注</b>：在没有其他浏览器标签干扰的情况下工作\n"
 "• <b>桌面集成</b>：可以从应用程序菜单和任务切换器快速访问\n"
-"• <b>隔离的配置文件</b>：可选地，每个WebApp可以拥有自己的Cookie和设置\n"
-"• <b>便利性</b>：像常规应用程序一样直接启动"
+"• <b>隔离的配置文件</b>：可选地，每个WebApp可以拥有自己的Cookie和设置"
 
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 135
