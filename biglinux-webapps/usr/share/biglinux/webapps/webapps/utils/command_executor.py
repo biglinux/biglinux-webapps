@@ -156,3 +156,57 @@ class CommandExecutor:
         """
         command = "./select_icon.sh"
         return self.execute_command(command).strip()
+
+    def get_system_default_browser(self):
+        """
+        Detect the system's default browser
+
+        Returns:
+            str: The browser ID or None if detection failed
+        """
+        try:
+            # Try using xdg-settings first
+            result = self.execute_command("xdg-settings get default-web-browser")
+            if result.strip():
+                browser_desktop = result.strip()
+                # Convert .desktop filename to browser ID
+                if "chrome" in browser_desktop.lower():
+                    return "google-chrome-stable"
+                elif "chromium" in browser_desktop.lower():
+                    return "chromium"
+                elif "brave" in browser_desktop.lower():
+                    return "brave-browser"
+                elif "firefox" in browser_desktop.lower():
+                    return "firefox"
+                elif "librewolf" in browser_desktop.lower():
+                    return "librewolf"
+                elif "edge" in browser_desktop.lower():
+                    return "microsoft-edge-stable"
+                elif "vivaldi" in browser_desktop.lower():
+                    return "vivaldi-stable"
+
+            # Try xdg-mime as fallback
+            result = self.execute_command(
+                "xdg-mime query default x-scheme-handler/http"
+            )
+            if result.strip():
+                browser_desktop = result.strip()
+                # Convert .desktop filename to browser ID
+                if "chrome" in browser_desktop.lower():
+                    return "google-chrome-stable"
+                elif "chromium" in browser_desktop.lower():
+                    return "chromium"
+                elif "brave" in browser_desktop.lower():
+                    return "brave-browser"
+                elif "firefox" in browser_desktop.lower():
+                    return "firefox"
+                elif "librewolf" in browser_desktop.lower():
+                    return "librewolf"
+                elif "edge" in browser_desktop.lower():
+                    return "microsoft-edge-stable"
+                elif "vivaldi" in browser_desktop.lower():
+                    return "vivaldi-stable"
+        except Exception as e:
+            print(f"Error detecting system default browser: {e}")
+
+        return None

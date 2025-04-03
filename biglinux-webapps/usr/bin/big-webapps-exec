@@ -93,7 +93,11 @@ if echo $filename | grep -q '\-BigWebApp' && [[ $XDG_SESSION_TYPE == 'wayland' ]
     cp "$filename" "$filename_orig"
     # Wait to system detect updated icon
     sleep 2
-    $browser_exec --no-default-browser-check --class="$class" --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
+    if [[ "$profile" == "Browser" ]]; then
+        $browser_exec --no-default-browser-check --class="$class" --app="$url" &
+    else
+        $browser_exec --no-default-browser-check --class="$class" --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
+    fi
  
     sleep 2
     mv -f "$filename_orig_bkp" "$filename_orig"
@@ -106,5 +110,9 @@ else
         mv -f "$filename_bkp" "$filename"
     fi
 
-    $browser_exec --no-default-browser-check --class="$class" --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
+    if [[ "$profile" == "Browser" ]]; then
+        $browser_exec --no-default-browser-check  --app="$url" &
+    else
+        $browser_exec --no-default-browser-check --class="$class" --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
+    fi
 fi

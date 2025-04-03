@@ -137,6 +137,11 @@ filename="$short_browser-$(sed 's|https://||;s|http://||;s|?.*||g;s|/|__|g' <<< 
 # Ensure filename doesn't end with more than two underscores and replace final __-profile with -profile
 filename=$(sed -E "s/(__.*)__-$profile/\1-$profile/g;s|__\@-|_@-|g" <<< "$filename")
 
+if [[ $(grep -o '__' <<< "$filename" | wc -l) -gt 1 ]]; then
+    filename=$(sed "s/__-Default/-Default/g" <<< "$filename")
+fi
+
+
 # Verify if the WebApp already exists
 if [[ -e ~/.local/share/applications/$filename ]]; then
 

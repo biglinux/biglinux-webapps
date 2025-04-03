@@ -57,12 +57,17 @@ class MainWindow(Adw.ApplicationWindow):
 
         # Create menu model with items
         menu = Gio.Menu()
-        # Use string literals without translation for action labels
-        # These will be translated by Gtk when displayed
-        menu.append("Refresh", "app.refresh")
-        menu.append("Export WebApps", "app.export")
-        menu.append("Import WebApps", "app.import")
-        menu.append("About", "app.about")
+        # Use translation function for menu items
+        menu.append(_("Refresh"), "app.refresh")
+        menu.append(_("Export WebApps"), "app.export")
+        menu.append(_("Import WebApps"), "app.import")
+
+        # Add new menu items for browsing folders
+        menu.append(_("Browse Applications Folder"), "app.browse-apps")
+        menu.append(_("Browse Profiles Folder"), "app.browse-profiles")
+
+        menu.append(_("Remove All WebApps"), "app.remove-all")
+        menu.append(_("About"), "app.about")
 
         # Set the menu
         menu_button.set_menu_model(menu)
@@ -148,7 +153,7 @@ class MainWindow(Adw.ApplicationWindow):
             "app_name": "",
             "app_url": "",
             "app_icon": "",
-            "app_profile": _("Default"),
+            "app_profile": "Browser",
             "app_categories": "Webapps",
             "app_icon_url": "/usr/share/icons/hicolor/scalable/apps/webapp-generic.svg",
         })
@@ -262,6 +267,10 @@ class MainWindow(Adw.ApplicationWindow):
     def on_browser_selected(self, row, webapp):
         """Handle browser selection button click"""
         self.current_webapp = webapp
+
+        # Make sure command_executor is accessible
+        self.command_executor = self.app.command_executor
+
         dialog = BrowserDialog(
             self,
             webapp,
@@ -332,8 +341,8 @@ class MainWindow(Adw.ApplicationWindow):
         # Add checkbox for deleting the profile folder too
         check_button = None
 
-        # Only show delete folder option if profile is not Default and no other webapp uses it
-        show_delete_folder = webapp.app_profile != "Default" and not any(
+        # Only show delete folder option if profile is not Browser and no other webapp uses it
+        show_delete_folder = webapp.app_profile != "Browser" and not any(
             w.app_profile == webapp.app_profile and w.browser == webapp.browser
             for w in self.app.webapp_collection.get_all()
             if w.app_file != webapp.app_file
@@ -372,6 +381,72 @@ class MainWindow(Adw.ApplicationWindow):
 
                 # Refresh the UI
                 self.refresh_ui()
+
+    def on_remove_all_clicked(self):
+        """Handle remove all webapps action with double confirmation"""
+        # First confirmation dialog
+        first_dialog = Adw.MessageDialog(
+            transient_for=self,
+            heading=_("Remove All WebApps"),
+            body=_(
+                "Are you sure you want to remove all your WebApps? This action cannot be undone."
+            ),
+        )
+
+        # Add buttons
+        first_dialog.add_response("cancel", _("Cancel"))
+        first_dialog.add_response("continue", _("Continue"))
+        first_dialog.set_response_appearance(
+            "continue", Adw.ResponseAppearance.DESTRUCTIVE
+        )
+        first_dialog.set_default_response("cancel")
+
+        first_dialog.connect("response", self.on_first_remove_all_response)
+        first_dialog.present()
+
+    def on_first_remove_all_response(self, dialog, response):
+        """Handle first confirmation dialog response"""
+        if response == "continue":
+            # Second confirmation dialog
+            second_dialog = Adw.MessageDialog(
+                transient_for=self,
+                heading=_("Final Confirmation"),
+                body=_("Are you ABSOLUTELY sure you want to remove ALL your WebApps?"),
+            )
+
+            # Add buttons
+            second_dialog.add_response("cancel", _("No, Cancel"))
+            second_dialog.add_response("confirm", _("Yes, Remove All"))
+            second_dialog.set_response_appearance(
+                "confirm", Adw.ResponseAppearance.DESTRUCTIVE
+            )
+            second_dialog.set_default_response("cancel")
+
+            second_dialog.connect("response", self.on_second_remove_all_response)
+            second_dialog.present()
+
+    def on_second_remove_all_response(self, dialog, response):
+        """Handle second confirmation dialog response"""
+        if response == "confirm":
+            # Get all webapps
+            webapps = self.app.webapp_collection.get_all()
+
+            # Remove each webapp
+            success = True
+            for webapp in webapps:
+                # Delete the webapp without deleting profile folders
+                if not self.app.command_executor.remove_webapp(webapp, False):
+                    success = False
+
+            if success:
+                # Instead of calling clear(), reload the data to get a fresh state
+                self.app.load_data()
+                self.show_toast(_("All WebApps have been removed"))
+            else:
+                self.show_toast(_("Failed to remove all WebApps"))
+
+            # Refresh the UI
+            self.refresh_ui()
 
     def show_toast(self, message):
         """Show a toast notification"""

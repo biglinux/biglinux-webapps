@@ -9,6 +9,7 @@ import shutil
 import tempfile
 import zipfile
 import time
+import subprocess
 from pathlib import Path
 
 gi.require_version("Gtk", "4.0")
@@ -45,17 +46,57 @@ class WebAppsApplication(Adw.Application):
         # Command executor for shell commands
         self.command_executor = CommandExecutor()
 
-        # Build UI on startup
-        self.connect("activate", self.on_activate)
+        # Register actions
+        # (assuming actions like refresh, export, import are registered here)
 
-    def on_activate(self, app):
-        """Create the main window when the application is activated"""
+        # Add the remove-all action
+        remove_all_action = Gio.SimpleAction.new("remove-all", None)
+        remove_all_action.connect("activate", self.on_remove_all)
+        self.add_action(remove_all_action)
+
+    def do_activate(self):
+        """Called when the application is activated"""
         # Load data first
         self.load_data()
 
         # Create and show the main window
         win = MainWindow(application=self)
         win.present()
+
+        # Add folder browsing actions
+        browse_apps_action = Gio.SimpleAction.new("browse-apps", None)
+        browse_apps_action.connect("activate", self.on_browse_apps_activated)
+        self.add_action(browse_apps_action)
+
+        browse_profiles_action = Gio.SimpleAction.new("browse-profiles", None)
+        browse_profiles_action.connect("activate", self.on_browse_profiles_activated)
+        self.add_action(browse_profiles_action)
+
+    def on_browse_apps_activated(self, action, parameter):
+        """Open applications folder in the default file manager"""
+        applications_path = os.path.expanduser("~/.local/share/applications")
+        self._open_folder(applications_path)
+
+    def on_browse_profiles_activated(self, action, parameter):
+        """Open profiles folder in the default file manager"""
+        profiles_path = os.path.expanduser("~/.bigwebapps")
+        self._open_folder(profiles_path)
+
+    def _open_folder(self, folder_path):
+        """Open a folder in the default file manager"""
+        if os.path.exists(folder_path):
+            try:
+                # Use Gtk.show_uri to open the folder in the default file manager
+                Gtk.show_uri(None, f"file://{folder_path}", Gdk.CURRENT_TIME)
+            except Exception as e:
+                print(f"Error opening folder: {e}")
+                # Fallback to xdg-open if Gtk.show_uri fails
+                subprocess.Popen(["xdg-open", folder_path])
+        else:
+            print(f"Folder does not exist: {folder_path}")
+            # Create the folder if it doesn't exist and then open it
+            os.makedirs(folder_path, exist_ok=True)
+            self._open_folder(folder_path)
 
     def create_action(self, name, callback, shortcuts=None):
         """Create a new application action with optional keyboard shortcuts"""
@@ -73,7 +114,7 @@ class WebAppsApplication(Adw.Application):
             application_name="WebApps Manager",
             application_icon="webapps",
             developer_name="BigLinux Team",
-            version="1.0.0",
+            version="3.0.0",
             developers=["BigLinux Team"],
             copyright="© 2023 BigLinux Team",
             license_type=Gtk.License.GPL_3_0,
@@ -293,8 +334,28 @@ class WebAppsApplication(Adw.Application):
                     local_icons_dir = os.path.expanduser("~/.local/share/icons")
                     os.makedirs(local_icons_dir, exist_ok=True)
 
+                    # Get existing webapps for duplicate checking
+                    existing_webapps = self.webapp_collection.get_all()
+
+                    # Create sets of (name, url) tuples for faster lookup
+                    existing_webapp_keys = {
+                        (webapp.app_name, webapp.app_url) for webapp in existing_webapps
+                    }
+
                     import_count = 0
+                    duplicate_count = 0
+
                     for webapp_dict in webapps_data:
+                        # Check if this webapp already exists (same name and URL)
+                        webapp_key = (
+                            webapp_dict.get("app_name", ""),
+                            webapp_dict.get("app_url", ""),
+                        )
+
+                        if webapp_key in existing_webapp_keys:
+                            duplicate_count += 1
+                            continue  # Skip this webapp
+
                         # Handle icon if it was included in the export
                         if webapp_dict.get("app_icon_url", "").startswith("icons/"):
                             icon_filename = os.path.basename(
@@ -336,10 +397,17 @@ class WebAppsApplication(Adw.Application):
                     if active_window and hasattr(active_window, "refresh_ui"):
                         active_window.refresh_ui()
 
-                    # Show success message
-                    self._show_notification(
-                        _("Imported {} WebApps successfully").format(import_count)
-                    )
+                    # Show success message with information about duplicates
+                    if duplicate_count > 0:
+                        self._show_notification(
+                            _(
+                                "Imported {} WebApps successfully ({} duplicates skipped)"
+                            ).format(import_count, duplicate_count)
+                        )
+                    else:
+                        self._show_notification(
+                            _("Imported {} WebApps successfully").format(import_count)
+                        )
 
             except Exception as e:
                 print(f"Error importing webapps: {e}")
@@ -371,3 +439,10 @@ class WebAppsApplication(Adw.Application):
     def quit(self, widget, _):
         """Quit the application"""
         self.quit()
+
+    def on_remove_all(self, action, param):
+        """Remove all webapps after confirmation"""
+        # Access the active window instead of using self.win
+        active_window = self.props.active_window
+        if active_window and hasattr(active_window, "on_remove_all_clicked"):
+            active_window.on_remove_all_clicked()
