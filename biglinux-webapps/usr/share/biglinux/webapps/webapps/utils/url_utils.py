@@ -8,8 +8,10 @@ import threading
 import re
 import tempfile
 import os
+import io
 from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup
+from PIL import Image  # Add Pillow import
 
 gi.require_version("Gtk", "4.0")
 from gi.repository import GLib
@@ -183,7 +185,7 @@ class WebsiteInfoFetcher:
 
     def _download_icon(self, icon_url, session):
         """
-        Download an icon to a temporary file
+        Download an icon to a temporary file and convert non-PNG/SVG to PNG
 
         Parameters:
             icon_url (str): Icon URL
@@ -196,12 +198,43 @@ class WebsiteInfoFetcher:
             response = session.get(icon_url, timeout=10)
             response.raise_for_status()
 
-            # Create a temporary file
-            fd, path = tempfile.mkstemp(prefix="webapp_icon_", suffix=".png")
-            with os.fdopen(fd, "wb") as f:
-                f.write(response.content)
+            # Check content type to determine if conversion is needed
+            content_type = response.headers.get("Content-Type", "").lower()
 
-            return path
+            # If it's already PNG or SVG, save directly
+            if "image/png" in content_type or "image/svg+xml" in content_type:
+                fd, path = tempfile.mkstemp(
+                    prefix="webapp_icon_",
+                    suffix=".png" if "image/png" in content_type else ".svg",
+                )
+                with os.fdopen(fd, "wb") as f:
+                    f.write(response.content)
+                return path
+
+            # For other formats, convert to PNG for better compatibility
+            try:
+                # Create a temporary file with the original content
+                img = Image.open(io.BytesIO(response.content))
+
+                # Convert to RGB if needed (handles RGBA, CMYK, etc.)
+                if img.mode != "RGB":
+                    img = img.convert("RGB")
+
+                # Create a temporary file for the PNG
+                fd, path = tempfile.mkstemp(prefix="webapp_icon_", suffix=".png")
+
+                # Save as PNG
+                img.save(os.fdopen(fd, "wb"), format="PNG")
+                return path
+
+            except Exception as e:
+                print(f"Error converting image: {e}")
+                # Fallback: save original format if conversion fails
+                fd, path = tempfile.mkstemp(prefix="webapp_icon_", suffix=".png")
+                with os.fdopen(fd, "wb") as f:
+                    f.write(response.content)
+                return path
+
         except Exception as e:
             print(f"Error downloading icon {icon_url}: {e}")
             return None
