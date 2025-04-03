@@ -23,7 +23,7 @@ class WelcomeDialog(Adw.Window):
             transient_for=parent_window,
             modal=True,
             destroy_with_parent=True,
-            width_request=620,
+            width_request=640,
             height_request=400,
         )
 
@@ -101,7 +101,7 @@ class WelcomeDialog(Adw.Window):
         # Explanation text
         explanation = Gtk.Label()
         explanation.set_wrap(True)
-        explanation.set_max_width_chars(70)
+        explanation.set_max_width_chars(60)
         explanation.set_margin_top(12)
         explanation.set_margin_bottom(12)
         explanation.set_markup(
@@ -111,7 +111,7 @@ class WelcomeDialog(Adw.Window):
                 "providing a more app-like experience for your favorite websites.\n\n"
                 "<b>Benefits of using WebApps:</b>\n\n"
                 "• <b>Focus</b>: Work without the distractions of other browser tabs\n"
-                "• <b>Desktop Integration</b>: Quick access from your application menu and task switcher\n"
+                "• <b>Desktop Integration</b>: Quick access from your application menu\n"
                 "• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
             )
         )
