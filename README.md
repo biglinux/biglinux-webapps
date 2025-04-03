@@ -21,13 +21,13 @@ A modern GTK4 tool to create and manage webapps, supporting multiple browsers wh
 
 ## Screenshots
 
-![webapps01](https://github.com/user-attachments/assets/e976037d-228d-4217-be25-4ef3926f916b)
+![webapps07](https://github.com/user-attachments/assets/58e75c37-e93a-4b5f-a696-7990bf005286)
 
-![webapps02](https://github.com/user-attachments/assets/37d66ea6-aca7-4a92-a0e2-8122bca4dcd7)
+![webapps08](https://github.com/user-attachments/assets/00aff0ad-7b3c-49ff-a363-9ef76f3ef233)
 
-![webapps03](https://github.com/user-attachments/assets/874e8265-1154-441c-9a61-06fd188ef7f3)
+![webapps05](https://github.com/user-attachments/assets/b2a23dfe-e761-43d3-87cf-78d3aeea939a)
 
-![webapps04](https://github.com/user-attachments/assets/e49e0bf9-38cc-479d-ad58-0e2f143c2d1f)
+![webapps06](https://github.com/user-attachments/assets/7c6759c9-3abd-465a-92b3-53bb71450f36)
 
 
 ## Installation
