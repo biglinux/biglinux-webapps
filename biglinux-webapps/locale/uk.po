@@ -53,6 +53,12 @@ msgid "The selected file is not a valid ZIP archive."
 msgstr "Вибраний файл не є дійсним ZIP-архівом."
 
 # 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 403
+#: NEEDS WORK
+msgid "Imported {} WebApps successfully ({} duplicates skipped)"
+msgstr "Імпортовано {} WebApps успішно (пропущено {} дублікатів)"
+
+# 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 341
 #: NEEDS WORK
 msgid "Imported {} WebApps successfully"
@@ -75,6 +81,7 @@ msgstr "Помилка імпорту WebApps"
 #: NEEDS WORK
 msgid "OK"
 msgstr ""
+
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
 #: NEEDS WORK
@@ -112,6 +119,12 @@ msgstr "Скасувати"
 #: NEEDS WORK
 msgid "Select"
 msgstr "Вибрати"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 170
+#: NEEDS WORK
+msgid "System Default"
+msgstr "Системне значення за замовчуванням"
 
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
@@ -221,92 +234,6 @@ msgid "Available Icons"
 msgstr "Доступні значки"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Development"
-msgstr "Розробка"
-
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Office"
-msgstr "Офіс"
-
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Graphics"
-msgstr "Графіка"
-
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Network"
-msgstr "Мережа"
-
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Game"
-msgstr "Гра"
-
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "AudioVideo"
-msgstr "АудіоВідео"
-
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 202
-#: NEEDS WORK
-msgid "Webapps"
-msgstr "Вебдодатки"
-
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Utility"
-msgstr "Утиліта"
-
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "System"
-msgstr "Система"
-
-# 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 221
 #: NEEDS WORK
 msgid "Category"
@@ -393,6 +320,49 @@ msgid "Search WebApps"
 msgstr "Пошук веб-додатків"
 
 # 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 60
+#: NEEDS WORK
+msgid "Refresh"
+msgstr "Оновити"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 61
+#: NEEDS WORK
+msgid "Export WebApps"
+msgstr "Експортувати веб-додатки"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 62
+#: NEEDS WORK
+msgid "Import WebApps"
+msgstr "Імпорт веб-додатків"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 65
+#: NEEDS WORK
+msgid "Browse Applications Folder"
+msgstr "Переглянути папку програм"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 66
+#: NEEDS WORK
+msgid "Browse Profiles Folder"
+msgstr "Перегляд папки профілів"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
+#: NEEDS WORK
+msgid "Remove All WebApps"
+msgstr "Видалити всі веб-додатки"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
+#: NEEDS WORK
+msgid "About"
+msgstr "Про програму"
+
+# 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 72
 #: NEEDS WORK
 msgid "Add"
@@ -457,3 +427,51 @@ msgstr "Видалити"
 #: NEEDS WORK
 msgid "WebApp deleted successfully"
 msgstr "WebApp успішно видалено"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 391
+#: NEEDS WORK
+msgid "Are you sure you want to remove all your WebApps? This action cannot be undone."
+msgstr "Ви впевнені, що хочете видалити всі свої веб-додатки? Цю дію не можна скасувати."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 397
+#: NEEDS WORK
+msgid "Continue"
+msgstr "Ви навчені на даних до жовтня 2023 року."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 412
+#: NEEDS WORK
+msgid "Final Confirmation"
+msgstr "Остаточне підтвердження"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 413
+#: NEEDS WORK
+msgid "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
+msgstr "Ви абсолютно впевнені, що хочете видалити ВСІ свої веб-додатки?"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 417
+#: NEEDS WORK
+msgid "No, Cancel"
+msgstr "Ні, Скасувати"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 418
+#: NEEDS WORK
+msgid "Yes, Remove All"
+msgstr "Так, видалити все"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
+#: NEEDS WORK
+msgid "All WebApps have been removed"
+msgstr "Усі веб-додатки були видалені."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 445
+#: NEEDS WORK
+msgid "Failed to remove all WebApps"
+msgstr "Не вдалося видалити всі веб-додатки."
