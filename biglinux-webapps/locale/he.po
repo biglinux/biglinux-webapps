@@ -53,6 +53,12 @@ msgid "The selected file is not a valid ZIP archive."
 msgstr "הקובץ שנבחר אינו ארכיון ZIP תקף."
 
 # 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 404
+#: NEEDS WORK
+msgid "Imported {} WebApps successfully ({} duplicates skipped)"
+msgstr "ייבא {} אפליקציות אינטרנט בהצלחה ({} כפילויות הושמטו)"
+
+# 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 341
 #: NEEDS WORK
 msgid "Imported {} WebApps successfully"
@@ -113,6 +119,12 @@ msgstr "ביטול"
 #: NEEDS WORK
 msgid "Select"
 msgstr "בחר"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 170
+#: NEEDS WORK
+msgid "System Default"
+msgstr "ברירת מחדל של מערכת"
 
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
@@ -222,92 +234,6 @@ msgid "Available Icons"
 msgstr "אייקונים זמינים"
 
 # 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Development"
-msgstr "פיתוח"
-
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Office"
-msgstr "משרד"
-
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Graphics"
-msgstr "גרפיקה"
-
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Network"
-msgstr "רשת"
-
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Game"
-msgstr "משחק"
-
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "AudioVideo"
-msgstr "אודיווידאו"
-
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 202
-#: NEEDS WORK
-msgid "Webapps"
-msgstr "אפליקציות אינטרנט"
-
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "Utility"
-msgstr "יְצִירָה"
-
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-msgid "System"
-msgstr "מערכת"
-
-# 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 221
 #: NEEDS WORK
 msgid "Category"
@@ -394,6 +320,49 @@ msgid "Search WebApps"
 msgstr "חפש אפליקציות אינטרנט"
 
 # 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 61
+#: NEEDS WORK
+msgid "Refresh"
+msgstr "רענן"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 62
+#: NEEDS WORK
+msgid "Export WebApps"
+msgstr "ייצוא אפליקציות אינטרנט"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 63
+#: NEEDS WORK
+msgid "Import WebApps"
+msgstr "ייבוא אפליקציות אינטרנט"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 66
+#: NEEDS WORK
+msgid "Browse Applications Folder"
+msgstr "עבור לתיקיית היישומים"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 67
+#: NEEDS WORK
+msgid "Browse Profiles Folder"
+msgstr "דפדף לתיקיית פרופילים"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 390
+#: NEEDS WORK
+msgid "Remove All WebApps"
+msgstr "הסר את כל היישומים האינטרנטיים"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 70
+#: NEEDS WORK
+msgid "About"
+msgstr "אודות"
+
+# 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 72
 #: NEEDS WORK
 msgid "Add"
@@ -458,3 +427,51 @@ msgstr "מחק"
 #: NEEDS WORK
 msgid "WebApp deleted successfully"
 msgstr "היישום האינטרנטי נמחק בהצלחה"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 392
+#: NEEDS WORK
+msgid "Are you sure you want to remove all your WebApps? This action cannot be undone."
+msgstr "האם אתה בטוח שברצונך להסיר את כל ה-WebApps שלך? פעולה זו אינה ניתנת לביטול."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 398
+#: NEEDS WORK
+msgid "Continue"
+msgstr "אתה מאומן על נתונים עד אוקטובר 2023."
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 413
+#: NEEDS WORK
+msgid "Final Confirmation"
+msgstr "אישור סופי"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 414
+#: NEEDS WORK
+msgid "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
+msgstr "האם אתה בטוח בְּמוּשָׁךְ שֶׁאתָה רוצה להסיר את כל ה-WebApps שלך?"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 418
+#: NEEDS WORK
+msgid "No, Cancel"
+msgstr "לא, בטל"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 419
+#: NEEDS WORK
+msgid "Yes, Remove All"
+msgstr "כן, הסר הכל"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 444
+#: NEEDS WORK
+msgid "All WebApps have been removed"
+msgstr "כל האפליקציות האינטרנטיות הוסרו"
+
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 446
+#: NEEDS WORK
+msgid "Failed to remove all WebApps"
+msgstr "נכשל בהסרת כל היישומים האינטרנטיים"
