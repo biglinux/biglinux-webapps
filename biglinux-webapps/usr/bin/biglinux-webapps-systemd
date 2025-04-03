@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Update to bigbashview after 2024
-/usr/share/bigbashview/apps/webapps/update_old_desktop_files.sh
+/usr/share/biglinux/webapps/update_old_desktop_files.sh
 
 # After this line run old verifications:
 

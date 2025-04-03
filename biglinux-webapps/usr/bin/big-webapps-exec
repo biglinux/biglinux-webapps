@@ -66,8 +66,8 @@ if [[ $browser =~ (firefox|librewolf|flatpak-firefox) ]]; then
     # Firefox and another browsers based on it need to have a profile to work changing the userChrome.css and user.js
     if [ ! -d "$HOME/.bigwebapps/$browser/$filename/chrome" ];then
         mkdir -p "$HOME/.bigwebapps/$browser/$filename/chrome"
-        cp -a /usr/share/bigbashview/apps/webapps/profile/userChrome.css "$HOME/.bigwebapps/$browser/$filename/chrome/"
-        cp -a /usr/share/bigbashview/apps/webapps/profile/user.js "$HOME/.bigwebapps/$browser/$filename/"
+        cp -a /usr/share/biglinux/webapps/profile/userChrome.css "$HOME/.bigwebapps/$browser/$filename/chrome/"
+        cp -a /usr/share/biglinux/webapps/profile/user.js "$HOME/.bigwebapps/$browser/$filename/"
     fi
 
     # Execute the browser with the profile
