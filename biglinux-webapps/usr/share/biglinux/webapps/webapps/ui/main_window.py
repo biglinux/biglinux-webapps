@@ -13,6 +13,7 @@ from gi.repository import Gtk, Adw, Gio
 from webapps.ui.webapp_row import WebAppRow
 from webapps.ui.webapp_dialog import WebAppDialog
 from webapps.ui.browser_dialog import BrowserDialog
+from webapps.ui.welcome_dialog import WelcomeDialog
 from webapps.models.webapp_model import WebApp
 from webapps.utils.translation import _
 
@@ -30,6 +31,22 @@ class MainWindow(Adw.ApplicationWindow):
         self.filter_text = ""
         self.current_webapp = None
         self.setup_ui()
+
+        # Create action to show welcome dialog
+        show_welcome_action = Gio.SimpleAction.new("show-welcome", None)
+        show_welcome_action.connect(
+            "activate", lambda *args: self.show_welcome_dialog()
+        )
+        self.app.add_action(show_welcome_action)
+
+        # Show welcome dialog if it should be shown
+        if WelcomeDialog.should_show_welcome():
+            self.show_welcome_dialog()
+
+    def show_welcome_dialog(self):
+        """Show the welcome dialog"""
+        welcome = WelcomeDialog(self)
+        welcome.present()
 
     def setup_ui(self):
         """Set up the UI components"""
@@ -65,8 +82,12 @@ class MainWindow(Adw.ApplicationWindow):
         menu.append(_("Browse Applications Folder"), "app.browse-apps")
         menu.append(_("Browse Profiles Folder"), "app.browse-profiles")
 
-        menu.append(_("Remove All WebApps"), "app.remove-all")
-        menu.append(_("About"), "app.about")
+        # Add a separator before help-related items
+        menu_section = Gio.Menu()
+        menu_section.append(_("Show Welcome Screen"), "app.show-welcome")
+        menu_section.append(_("Remove All WebApps"), "app.remove-all")
+        menu_section.append(_("About"), "app.about")
+        menu.append_section(None, menu_section)
 
         # Set the menu
         menu_button.set_menu_model(menu)
@@ -98,8 +119,8 @@ class MainWindow(Adw.ApplicationWindow):
 
         # Create box for categorized webapps
         self.content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
-        self.content_box.set_margin_start(12)
-        self.content_box.set_margin_end(12)
+        self.content_box.set_margin_start(40)
+        self.content_box.set_margin_end(40)
         self.content_box.set_margin_top(12)
         self.content_box.set_margin_bottom(12)
 
