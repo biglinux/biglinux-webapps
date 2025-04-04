@@ -131,7 +131,7 @@ class WelcomeDialog(Adw.Window):
         self.dont_show_switch.set_active(False)
         self.dont_show_switch.set_valign(Gtk.Align.CENTER)
 
-        switch_label = Gtk.Label(label=_("Don't show this dialog on startup"))
+        switch_label = Gtk.Label(label=_("Show dialog on startup"))
         switch_label.set_xalign(0)
         switch_label.set_hexpand(True)
 
@@ -212,7 +212,7 @@ class WelcomeDialog(Adw.Window):
                     with open(self.config_file, "r+") as f:
                         try:
                             preferences = json.load(f)
-                            preferences["show_welcome"] = True
+                            preferences["show_welcome"] = False
                             f.seek(0)
                             f.truncate()
                             json.dump(preferences, f)
@@ -220,7 +220,7 @@ class WelcomeDialog(Adw.Window):
                             # If file is corrupted, recreate it
                             f.seek(0)
                             f.truncate()
-                            json.dump({"show_welcome": True}, f)
+                            json.dump({"show_welcome": False}, f)
                 except Exception as e:
                     print(f"Error updating welcome dialog preference: {e}")
 
