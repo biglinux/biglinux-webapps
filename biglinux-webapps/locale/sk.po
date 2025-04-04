@@ -15,61 +15,51 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
 #: NEEDS WORK
 msgid "No WebApps"
 msgstr "Žiadne webové aplikácie"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
 #: NEEDS WORK
 msgid "There are no WebApps to export."
 msgstr "Nie sú žiadne webové aplikácie na export."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
 #: NEEDS WORK
 msgid "File Not Found"
 msgstr "Súbor nenájdený"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
 #: NEEDS WORK
 msgid "The selected file does not exist."
 msgstr "Vybraný súbor neexistuje."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 271
 #: NEEDS WORK
 msgid "Invalid File"
 msgstr "Neplatný súbor"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 272
 #: NEEDS WORK
 msgid "The selected file is not a valid ZIP archive."
 msgstr "Vybraný súbor nie je platný ZIP archív."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 403
 #: NEEDS WORK
 msgid "Imported {} WebApps successfully ({} duplicates skipped)"
 msgstr "Úspešne importované {} WebApps ({} duplikáty preskočené)"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 341
 #: NEEDS WORK
 msgid "Imported {} WebApps successfully"
 msgstr "Úspešne importované {} WebApps"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 346
 #: NEEDS WORK
 msgid "Error importing WebApps"
 msgstr "Chyba pri importe WebApps"
-
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -81,25 +71,21 @@ msgstr "Chyba pri importe WebApps"
 #: NEEDS WORK
 msgid "OK"
 msgstr ""
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
 #: NEEDS WORK
 msgid "No"
 msgstr "Nie"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 364
 #: NEEDS WORK
 msgid "Yes"
 msgstr "Áno"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
 #: NEEDS WORK
 msgid "Select Browser"
 msgstr "Vyberte prehliadač"
-
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -109,7 +95,6 @@ msgstr "Vyberte prehliadač"
 # 
 msgid "Cancel"
 msgstr "Zrušiť"
-
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -119,13 +104,11 @@ msgstr "Zrušiť"
 #: NEEDS WORK
 msgid "Select"
 msgstr "Vybrať"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 170
 #: NEEDS WORK
 msgid "System Default"
 msgstr "Predvolené nastavenie systému"
-
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -140,13 +123,11 @@ msgstr "Predvolené nastavenie systému"
 #: NEEDS WORK
 msgid "Default"
 msgstr "Predvolené"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 163
 #: NEEDS WORK
 msgid "Please select a browser."
 msgstr "Vyberte prehliadač."
-
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -155,14 +136,12 @@ msgstr "Vyberte prehliadač."
 #: NEEDS WORK
 msgid "Error"
 msgstr "Chyba"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 91
 #: NEEDS WORK
 #, python-brace-format
 msgid "Browser: {0}"
 msgstr "Prehliadač: {0}"
-
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -172,13 +151,11 @@ msgstr "Prehliadač: {0}"
 #: NEEDS WORK
 msgid "Edit WebApp"
 msgstr "Upraviť WebApp"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
 #: NEEDS WORK
 msgid "Delete WebApp"
 msgstr "Odstrániť WebApp"
-
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -188,63 +165,53 @@ msgstr "Odstrániť WebApp"
 #: NEEDS WORK
 msgid "Add WebApp"
 msgstr "Pridať WebApp"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 152
 #: NEEDS WORK
 msgid "URL"
 msgstr "URL"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 156
 #: NEEDS WORK
 msgid "Detect"
 msgstr "Detekovať"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 157
 #: NEEDS WORK
 msgid "Detect name and icon from website"
 msgstr "Detekovať názov a ikonu z webovej stránky"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 166
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 480
 #: NEEDS WORK
 msgid "Name"
 msgstr "Názov"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 172
 #: NEEDS WORK
 msgid "App Icon"
 msgstr "Ikona aplikácie"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 180
 #: NEEDS WORK
 msgid "Select icon for the WebApp"
 msgstr "Vyberte ikonu pre WebApp"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 187
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 278
 #: NEEDS WORK
 msgid "Available Icons"
 msgstr "Dostupné ikony"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 221
 #: NEEDS WORK
 msgid "Category"
 msgstr "Kategória"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 226
 #: NEEDS WORK
 msgid "Browser"
 msgstr "Prehliadač"
-
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -254,19 +221,16 @@ msgstr "Prehliadač"
 # 
 msgid "Use separate profile"
 msgstr "Použite samostatný profil"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 253
 #: NEEDS WORK
 msgid "Using a separate profile allows you to log in to different accounts"
 msgstr "Použitie samostatného profilu vám umožňuje prihlásiť sa do rôznych účtov."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
 #: NEEDS WORK
 msgid "Profile Name"
 msgstr "Názov profilu"
-
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -276,44 +240,37 @@ msgstr "Názov profilu"
 # 
 msgid "Save"
 msgstr "Uložiť"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 336
 #: NEEDS WORK
 msgid "Loading..."
 msgstr "Načítanie..."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 453
 #: NEEDS WORK
 msgid "Please enter a URL first."
 msgstr "Najprv zadajte URL."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 609
 #: NEEDS WORK
 msgid "Please enter a name for the WebApp."
 msgstr "Zadajte názov pre WebApp."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 613
 #: NEEDS WORK
 msgid "Please enter a URL for the WebApp."
 msgstr "Zadajte URL adresu pre WebApp."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 617
 #: NEEDS WORK
 msgid "Please select a browser for the WebApp."
 msgstr "Vyberte pre WebApp prehliadač."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
 #: NEEDS WORK
 msgid "Welcome to WebApps Manager"
 msgstr "Vitajte v správcovi webových aplikácií"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
 #: NEEDS WORK
@@ -340,124 +297,104 @@ msgstr ""
 "• <b>Integrácia s desktopom</b>: Rýchly prístup z ponuky aplikácií\n"
 "• <b>Izolované profily</b>: Voliteľne, každá webová aplikácia môže mať svoje vlastné cookies a "
 "nastavenia"
-
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 135
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 134
 #: NEEDS WORK
-msgid "Don't show this dialog on startup"
-msgstr "Neskrývajte túto dialógovú okno pri spustení."
-
+msgid "Show dialog on startup"
+msgstr "Zobraziť dialóg pri spustení"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
 #: NEEDS WORK
 msgid "Let's Start"
 msgstr "Začnime"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
 #: NEEDS WORK
 msgid "WebApps Manager"
 msgstr "Správca webových aplikácií"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 51
 #: NEEDS WORK
 msgid "Search WebApps"
 msgstr "Hľadať WebApps"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 60
 #: NEEDS WORK
 msgid "Refresh"
 msgstr "Obnoviť"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 61
 #: NEEDS WORK
 msgid "Export WebApps"
 msgstr "Exportovať webové aplikácie"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 62
 #: NEEDS WORK
 msgid "Import WebApps"
 msgstr "Importovať webové aplikácie"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 65
 #: NEEDS WORK
 msgid "Browse Applications Folder"
 msgstr "Prehľadávať priečinok aplikácií"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 66
 #: NEEDS WORK
 msgid "Browse Profiles Folder"
 msgstr "Prehľadávať priečinok profilov"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 87
 #: NEEDS WORK
 msgid "Show Welcome Screen"
 msgstr "Zobraziť uvítaciu obrazovku"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
 #: NEEDS WORK
 msgid "Remove All WebApps"
 msgstr "Odstrániť všetky webové aplikácie"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
 #: NEEDS WORK
 msgid "About"
 msgstr "O aplikácii"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 72
 #: NEEDS WORK
 msgid "Add"
 msgstr "Pridať"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
 #: NEEDS WORK
 msgid "No WebApps Found"
 msgstr "Nenašli sa žiadne webové aplikácie"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 106
 #: NEEDS WORK
 msgid "Add a new webapp to get started"
 msgstr "Pridajte novú webovú aplikáciu, aby ste mohli začať."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 214
 #: NEEDS WORK
 msgid "WebApp created successfully"
 msgstr "Webová aplikácia bola úspešne vytvorená."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 257
 #: NEEDS WORK
 msgid "WebApp updated successfully"
 msgstr "Webová aplikácia bola úspešne aktualizovaná."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 313
 #: NEEDS WORK
 #, python-brace-format
 msgid "Browser changed to {0}"
 msgstr "Prehliadač bol zmenený na {0}"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 329
 #: NEEDS WORK
 #, python-brace-format
 msgid "Are you sure you want to delete {0}?"
 msgstr "Ste naozaj istí, že chcete odstrániť {0}?"
-
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -467,61 +404,51 @@ msgstr "Ste naozaj istí, že chcete odstrániť {0}?"
 # 
 msgid "Also delete configuration folder"
 msgstr "Taktiež odstráňte konfiguračný priečinok."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 352
 #: NEEDS WORK
 msgid "Delete"
 msgstr "Vymazať"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 371
 #: NEEDS WORK
 msgid "WebApp deleted successfully"
 msgstr "Webová aplikácia bola úspešne odstránená."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 391
 #: NEEDS WORK
 msgid "Are you sure you want to remove all your WebApps? This action cannot be undone."
 msgstr "Ste naozaj istí, že chcete odstrániť všetky svoje WebApps? Túto akciu nie je možné zvrátiť."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 397
 #: NEEDS WORK
 msgid "Continue"
 msgstr ""
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 412
 #: NEEDS WORK
 msgid "Final Confirmation"
 msgstr "Konečné potvrdenie"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 413
 #: NEEDS WORK
 msgid "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
 msgstr "Ste ste si ABSOLÚTNE istí, že chcete odstrániť VŠETKY svoje WebApps?"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 417
 #: NEEDS WORK
 msgid "No, Cancel"
 msgstr "Nie, Zrušiť"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 418
 #: NEEDS WORK
 msgid "Yes, Remove All"
 msgstr "Áno, odstrániť všetko"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
 #: NEEDS WORK
 msgid "All WebApps have been removed"
 msgstr "Všetky webové aplikácie boli odstránené."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 445
 #: NEEDS WORK

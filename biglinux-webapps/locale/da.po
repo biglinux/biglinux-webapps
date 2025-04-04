@@ -15,61 +15,51 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
 #: NEEDS WORK
 msgid "No WebApps"
 msgstr "Ingen WebApps"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
 #: NEEDS WORK
 msgid "There are no WebApps to export."
 msgstr "Der er ingen WebApps at eksportere."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
 #: NEEDS WORK
 msgid "File Not Found"
 msgstr "Fil ikke fundet"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
 #: NEEDS WORK
 msgid "The selected file does not exist."
 msgstr "Den valgte fil findes ikke."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 271
 #: NEEDS WORK
 msgid "Invalid File"
 msgstr "Ugyldig fil"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 272
 #: NEEDS WORK
 msgid "The selected file is not a valid ZIP archive."
 msgstr "Den valgte fil er ikke et gyldigt ZIP-arkiv."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 403
 #: NEEDS WORK
 msgid "Imported {} WebApps successfully ({} duplicates skipped)"
 msgstr "Importerede {} WebApps med succes ({} dubletter sprunget over)"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 341
 #: NEEDS WORK
 msgid "Imported {} WebApps successfully"
 msgstr "Importerede {} WebApps med succes"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 346
 #: NEEDS WORK
 msgid "Error importing WebApps"
 msgstr "Fejl ved import af WebApps"
-
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -81,25 +71,21 @@ msgstr "Fejl ved import af WebApps"
 #: NEEDS WORK
 msgid "OK"
 msgstr ""
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
 #: NEEDS WORK
 msgid "No"
 msgstr "Ne"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 364
 #: NEEDS WORK
 msgid "Yes"
 msgstr "Ja"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
 #: NEEDS WORK
 msgid "Select Browser"
 msgstr "Vælg browser"
-
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -109,7 +95,6 @@ msgstr "Vælg browser"
 # 
 msgid "Cancel"
 msgstr "Annuller"
-
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -119,13 +104,11 @@ msgstr "Annuller"
 #: NEEDS WORK
 msgid "Select"
 msgstr "Vælg"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 170
 #: NEEDS WORK
 msgid "System Default"
 msgstr "Systemstandard"
-
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -140,13 +123,11 @@ msgstr "Systemstandard"
 #: NEEDS WORK
 msgid "Default"
 msgstr "Standard"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 163
 #: NEEDS WORK
 msgid "Please select a browser."
 msgstr "Vælg venligst en browser."
-
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -155,14 +136,12 @@ msgstr "Vælg venligst en browser."
 #: NEEDS WORK
 msgid "Error"
 msgstr "Fejl"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 91
 #: NEEDS WORK
 #, python-brace-format
 msgid "Browser: {0}"
 msgstr "Browser: {0}"
-
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -172,13 +151,11 @@ msgstr "Browser: {0}"
 #: NEEDS WORK
 msgid "Edit WebApp"
 msgstr "Rediger WebApp"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
 #: NEEDS WORK
 msgid "Delete WebApp"
 msgstr "Slet WebApp"
-
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -188,63 +165,53 @@ msgstr "Slet WebApp"
 #: NEEDS WORK
 msgid "Add WebApp"
 msgstr "Tilføj WebApp"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 152
 #: NEEDS WORK
 msgid "URL"
 msgstr "URL"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 156
 #: NEEDS WORK
 msgid "Detect"
 msgstr "Registrer"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 157
 #: NEEDS WORK
 msgid "Detect name and icon from website"
 msgstr "Registrer navn og ikon fra hjemmeside"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 166
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 480
 #: NEEDS WORK
 msgid "Name"
 msgstr "Navn"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 172
 #: NEEDS WORK
 msgid "App Icon"
 msgstr "App-ikon"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 180
 #: NEEDS WORK
 msgid "Select icon for the WebApp"
 msgstr "Vælg ikon til WebApp"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 187
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 278
 #: NEEDS WORK
 msgid "Available Icons"
 msgstr "Tilgængelige ikoner"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 221
 #: NEEDS WORK
 msgid "Category"
 msgstr "Kategori"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 226
 #: NEEDS WORK
 msgid "Browser"
 msgstr "Browser"
-
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -254,19 +221,16 @@ msgstr "Browser"
 # 
 msgid "Use separate profile"
 msgstr "Brug separat profil"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 253
 #: NEEDS WORK
 msgid "Using a separate profile allows you to log in to different accounts"
 msgstr "At bruge en separat profil giver dig mulighed for at logge ind på forskellige konti."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
 #: NEEDS WORK
 msgid "Profile Name"
 msgstr "Profilnavn"
-
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -276,44 +240,37 @@ msgstr "Profilnavn"
 # 
 msgid "Save"
 msgstr "Gem"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 336
 #: NEEDS WORK
 msgid "Loading..."
 msgstr "Indlæser..."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 453
 #: NEEDS WORK
 msgid "Please enter a URL first."
 msgstr "Indtast venligst en URL først."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 609
 #: NEEDS WORK
 msgid "Please enter a name for the WebApp."
 msgstr "Indtast venligst et navn til WebApp'en."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 613
 #: NEEDS WORK
 msgid "Please enter a URL for the WebApp."
 msgstr "Indtast venligst en URL til WebApp'en."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 617
 #: NEEDS WORK
 msgid "Please select a browser for the WebApp."
 msgstr "Vælg en browser til WebApp'en."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
 #: NEEDS WORK
 msgid "Welcome to WebApps Manager"
 msgstr "Velkommen til WebApps Manager"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
 #: NEEDS WORK
@@ -339,124 +296,104 @@ msgstr ""
 "• <b>Fokus</b>: Arbejd uden distraktioner fra andre browsertabs\n"
 "• <b>Desktopintegration</b>: Hurtig adgang fra din applikationsmenu\n"
 "• <b>Isolerede profiler</b>: Valgfrit kan hver webapp have sine egne cookies og indstillinger"
-
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 135
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 134
 #: NEEDS WORK
-msgid "Don't show this dialog on startup"
-msgstr "Vis ikke denne dialog ved opstart"
-
+msgid "Show dialog on startup"
+msgstr "Vis dialog ved opstart"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
 #: NEEDS WORK
 msgid "Let's Start"
 msgstr "Lad os starte"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
 #: NEEDS WORK
 msgid "WebApps Manager"
 msgstr "WebApps Manager"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 51
 #: NEEDS WORK
 msgid "Search WebApps"
 msgstr "Søg WebApps"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 60
 #: NEEDS WORK
 msgid "Refresh"
 msgstr "Opdater"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 61
 #: NEEDS WORK
 msgid "Export WebApps"
 msgstr "Eksporter WebApps"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 62
 #: NEEDS WORK
 msgid "Import WebApps"
 msgstr "Importer WebApps"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 65
 #: NEEDS WORK
 msgid "Browse Applications Folder"
 msgstr "Gennemse applikationsmappe"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 66
 #: NEEDS WORK
 msgid "Browse Profiles Folder"
 msgstr "Gennemse profiler-mappe"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 87
 #: NEEDS WORK
 msgid "Show Welcome Screen"
 msgstr "Vis visningsskærm"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
 #: NEEDS WORK
 msgid "Remove All WebApps"
 msgstr "Fjern alle webapps"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
 #: NEEDS WORK
 msgid "About"
 msgstr "Om"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 72
 #: NEEDS WORK
 msgid "Add"
 msgstr "Tilføj"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
 #: NEEDS WORK
 msgid "No WebApps Found"
 msgstr "Ingen WebApps fundet"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 106
 #: NEEDS WORK
 msgid "Add a new webapp to get started"
 msgstr "Tilføj en ny webapp for at komme i gang"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 214
 #: NEEDS WORK
 msgid "WebApp created successfully"
 msgstr "WebApp oprettet med succes"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 257
 #: NEEDS WORK
 msgid "WebApp updated successfully"
 msgstr "WebApp opdateret med succes"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 313
 #: NEEDS WORK
 #, python-brace-format
 msgid "Browser changed to {0}"
 msgstr "Browser ændret til {0}"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 329
 #: NEEDS WORK
 #, python-brace-format
 msgid "Are you sure you want to delete {0}?"
 msgstr "Er du sikker på, at du vil slette {0}?"
-
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -466,61 +403,51 @@ msgstr "Er du sikker på, at du vil slette {0}?"
 # 
 msgid "Also delete configuration folder"
 msgstr "Slet også konfigurationsmappen."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 352
 #: NEEDS WORK
 msgid "Delete"
 msgstr "Slet"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 371
 #: NEEDS WORK
 msgid "WebApp deleted successfully"
 msgstr "WebApp slettet med succes"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 391
 #: NEEDS WORK
 msgid "Are you sure you want to remove all your WebApps? This action cannot be undone."
 msgstr "Er du sikker på, at du vil fjerne alle dine WebApps? Denne handling kan ikke fortrydes."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 397
 #: NEEDS WORK
 msgid "Continue"
 msgstr ""
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 412
 #: NEEDS WORK
 msgid "Final Confirmation"
 msgstr "Endelig bekræftelse"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 413
 #: NEEDS WORK
 msgid "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
 msgstr "Er du ABSOLUTT sikker på, at du vil fjerne ALLE dine WebApps?"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 417
 #: NEEDS WORK
 msgid "No, Cancel"
 msgstr "Nej, Annuller"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 418
 #: NEEDS WORK
 msgid "Yes, Remove All"
 msgstr "Ja, fjern alt"
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
 #: NEEDS WORK
 msgid "All WebApps have been removed"
 msgstr "Alle WebApps er blevet fjernet."
-
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 445
 #: NEEDS WORK
