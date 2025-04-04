@@ -127,19 +127,19 @@ class WelcomeDialog(Adw.Window):
         switch_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
         switch_box.set_margin_top(12)
 
-        self.dont_show_switch = Gtk.Switch()
-        self.dont_show_switch.set_active(False)
-        self.dont_show_switch.set_valign(Gtk.Align.CENTER)
+        self.show_switch = Gtk.Switch()
+        self.show_switch.set_active(False)
+        self.show_switch.set_valign(Gtk.Align.CENTER)
 
         switch_label = Gtk.Label(label=_("Show dialog on startup"))
         switch_label.set_xalign(0)
         switch_label.set_hexpand(True)
 
         switch_box.append(switch_label)
-        switch_box.append(self.dont_show_switch)
+        switch_box.append(self.show_switch)
 
         # Set initial state based on saved preference
-        self.dont_show_switch.set_active(not self.get_show_preference())
+        self.show_switch.set_active(self.get_show_preference())
 
         content_box.append(switch_box)
 
@@ -163,8 +163,8 @@ class WelcomeDialog(Adw.Window):
 
     def on_close(self, button):
         """Handle close button click"""
-        # Save or remove preference based on switch state
-        self.save_preference(dont_show=self.dont_show_switch.get_active())
+        # Save preference based on switch state
+        self.save_preference(show=self.show_switch.get_active())
 
         # Close the dialog
         self.destroy()
@@ -179,50 +179,29 @@ class WelcomeDialog(Adw.Window):
         try:
             with open(self.config_file, "r") as f:
                 preferences = json.load(f)
-                # Return True if we should show the dialog (inverted from saved setting)
+                # Return whether we should show the dialog (direct from saved setting)
                 return preferences.get("show_welcome", True)
         except Exception:
             # If there's an error reading the file, default to showing the dialog
             return True
 
-    def save_preference(self, dont_show=False):
+    def save_preference(self, show=True):
         """
         Save the preference for showing the welcome dialog
 
         Parameters:
-            dont_show (bool): If True, don't show the dialog; if False, show it
+            show (bool): If True, show the dialog; if False, don't show it
         """
         # Make sure the directory exists
         os.makedirs(os.path.dirname(self.config_file), exist_ok=True)
 
-        if dont_show:
-            # Save preference to not show the dialog
-            preferences = {"show_welcome": False}
-            try:
-                with open(self.config_file, "w") as f:
-                    json.dump(preferences, f)
-            except Exception as e:
-                print(f"Error saving welcome dialog preference: {e}")
-        else:
-            # Ensure the dialog will be shown next time by removing the file
-            # or updating the preference
-            if os.path.exists(self.config_file):
-                try:
-                    # Option 1: Update the file to show dialog
-                    with open(self.config_file, "r+") as f:
-                        try:
-                            preferences = json.load(f)
-                            preferences["show_welcome"] = False
-                            f.seek(0)
-                            f.truncate()
-                            json.dump(preferences, f)
-                        except json.JSONDecodeError:
-                            # If file is corrupted, recreate it
-                            f.seek(0)
-                            f.truncate()
-                            json.dump({"show_welcome": False}, f)
-                except Exception as e:
-                    print(f"Error updating welcome dialog preference: {e}")
+        # Save preference directly
+        preferences = {"show_welcome": show}
+        try:
+            with open(self.config_file, "w") as f:
+                json.dump(preferences, f)
+        except Exception as e:
+            print(f"Error saving welcome dialog preference: {e}")
 
     @staticmethod
     def should_show_welcome():
