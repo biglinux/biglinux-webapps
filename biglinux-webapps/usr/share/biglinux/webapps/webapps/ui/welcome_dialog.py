@@ -145,7 +145,7 @@ class WelcomeDialog(Adw.Window):
 
         # Close button
         button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-        button_box.set_halign(Gtk.Align.END)
+        button_box.set_halign(Gtk.Align.CENTER)
         button_box.set_margin_top(24)
 
         close_button = Gtk.Button(label=_("Let's Start"))

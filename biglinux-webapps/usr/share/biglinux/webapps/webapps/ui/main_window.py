@@ -126,7 +126,7 @@ class MainWindow(Adw.ApplicationWindow):
 
         # Add an empty state for when there are no webapps
         self.empty_state = Adw.StatusPage()
-        self.empty_state.set_icon_name("webapps")
+        self.empty_state.set_icon_name("big-webapps")
         self.empty_state.set_title(_("No WebApps Found"))
         self.empty_state.set_description(_("Add a new webapp to get started"))
 

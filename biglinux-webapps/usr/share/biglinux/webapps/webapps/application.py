@@ -111,7 +111,7 @@ class WebAppsApplication(Adw.Application):
         about = Adw.AboutWindow(
             transient_for=self.props.active_window,
             application_name="WebApps Manager",
-            application_icon="webapps",
+            application_icon="big-webapps",
             developer_name="BigLinux Team",
             version="3.0.0",
             developers=["BigLinux Team"],
