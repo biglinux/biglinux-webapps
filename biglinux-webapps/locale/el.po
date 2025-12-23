@@ -3,7 +3,6 @@
 # This file is distributed under the same license as the biglinux-webapps package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
@@ -17,47 +16,38 @@ msgstr ""
 "X-Generator: attranslate\n"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
-#: NEEDS WORK
 msgid "No WebApps"
 msgstr "Όχι WebApps"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
-#: NEEDS WORK
 msgid "There are no WebApps to export."
 msgstr "Δεν υπάρχουν WebApps προς εξαγωγή."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
-#: NEEDS WORK
 msgid "File Not Found"
 msgstr "Το αρχείο δεν βρέθηκε"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
-#: NEEDS WORK
 msgid "The selected file does not exist."
 msgstr "Το επιλεγμένο αρχείο δεν υπάρχει."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 271
-#: NEEDS WORK
 msgid "Invalid File"
 msgstr "Μη έγκυρο αρχείο"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 272
-#: NEEDS WORK
 msgid "The selected file is not a valid ZIP archive."
 msgstr "Το επιλεγμένο αρχείο δεν είναι έγκυρο ZIP αρχείο."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 403
-#: NEEDS WORK
 msgid "Imported {} WebApps successfully ({} duplicates skipped)"
 msgstr "Εισήχθησαν {} WebApps με επιτυχία ({} διπλότυπα παραλείφθηκαν)"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 341
-#: NEEDS WORK
 msgid "Imported {} WebApps successfully"
 msgstr "Εισήχθησαν {} WebApps με επιτυχία"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 346
-#: NEEDS WORK
 msgid "Error importing WebApps"
 msgstr "Σφάλμα κατά την εισαγωγή WebApps"
 # 
@@ -68,22 +58,18 @@ msgstr "Σφάλμα κατά την εισαγωγή WebApps"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 357
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
-#: NEEDS WORK
 msgid "OK"
 msgstr ""
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
-#: NEEDS WORK
 msgid "No"
 msgstr "Όχι"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 364
-#: NEEDS WORK
 msgid "Yes"
 msgstr "Ναι"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
-#: NEEDS WORK
 msgid "Select Browser"
 msgstr "Επιλέξτε πρόγραμμα περιήγησης"
 # 
@@ -101,12 +87,10 @@ msgstr "Ακύρωση"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 90
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 179
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 240
-#: NEEDS WORK
 msgid "Select"
 msgstr "Επιλέξτε"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 170
-#: NEEDS WORK
 msgid "System Default"
 msgstr "Προεπιλογή Συστήματος"
 # 
@@ -120,12 +104,10 @@ msgstr "Προεπιλογή Συστήματος"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 441
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 590
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 151
-#: NEEDS WORK
 msgid "Default"
 msgstr "Προεπιλογή"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 163
-#: NEEDS WORK
 msgid "Please select a browser."
 msgstr "Παρακαλώ επιλέξτε έναν περιηγητή."
 # 
@@ -133,12 +115,10 @@ msgstr "Παρακαλώ επιλέξτε έναν περιηγητή."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 172
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 637
-#: NEEDS WORK
 msgid "Error"
 msgstr "Σφάλμα"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 91
-#: NEEDS WORK
 #, python-brace-format
 msgid "Browser: {0}"
 msgstr "Πλοηγός: {0}"
@@ -148,12 +128,10 @@ msgstr "Πλοηγός: {0}"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 104
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
-#: NEEDS WORK
 msgid "Edit WebApp"
 msgstr "Επεξεργασία WebApp"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
-#: NEEDS WORK
 msgid "Delete WebApp"
 msgstr "Διαγραφή WebApp"
 # 
@@ -162,54 +140,44 @@ msgstr "Διαγραφή WebApp"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 109
-#: NEEDS WORK
 msgid "Add WebApp"
 msgstr "Προσθήκη WebApp"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 152
-#: NEEDS WORK
 msgid "URL"
 msgstr "Διεύθυνση URL"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 156
-#: NEEDS WORK
 msgid "Detect"
 msgstr "Ανίχνευση"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 157
-#: NEEDS WORK
 msgid "Detect name and icon from website"
 msgstr "Ανίχνευση ονόματος και εικονιδίου από τον ιστότοπο"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 166
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 480
-#: NEEDS WORK
 msgid "Name"
 msgstr "Όνομα"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 172
-#: NEEDS WORK
 msgid "App Icon"
 msgstr "Εικονίδιο εφαρμογής"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 180
-#: NEEDS WORK
 msgid "Select icon for the WebApp"
 msgstr "Επιλέξτε εικονίδιο για την Εφαρμογή Ιστού"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 187
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 278
-#: NEEDS WORK
 msgid "Available Icons"
 msgstr "Διαθέσιμα Εικονίδια"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 221
-#: NEEDS WORK
 msgid "Category"
 msgstr "Κατηγορία"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 226
-#: NEEDS WORK
 msgid "Browser"
 msgstr "Πλοηγός"
 # 
@@ -223,12 +191,10 @@ msgid "Use separate profile"
 msgstr "Χρησιμοποιήστε ξεχωριστό προφίλ"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 253
-#: NEEDS WORK
 msgid "Using a separate profile allows you to log in to different accounts"
 msgstr "Η χρήση ενός ξεχωριστού προφίλ σας επιτρέπει να συνδεθείτε σε διαφορετικούς λογαριασμούς."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
-#: NEEDS WORK
 msgid "Profile Name"
 msgstr "Όνομα προφίλ"
 # 
@@ -242,38 +208,31 @@ msgid "Save"
 msgstr "Αποθήκευση"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 336
-#: NEEDS WORK
 msgid "Loading..."
 msgstr "Φόρτωση..."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 453
-#: NEEDS WORK
 msgid "Please enter a URL first."
 msgstr "Παρακαλώ εισάγετε πρώτα μια διεύθυνση URL."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 609
-#: NEEDS WORK
 msgid "Please enter a name for the WebApp."
 msgstr "Παρακαλώ εισάγετε ένα όνομα για την Εφαρμογή Ιστού."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 613
-#: NEEDS WORK
 msgid "Please enter a URL for the WebApp."
 msgstr "Παρακαλώ εισάγετε μια διεύθυνση URL για την εφαρμογή ιστού."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 617
-#: NEEDS WORK
 msgid "Please select a browser for the WebApp."
 msgstr "Παρακαλώ επιλέξτε έναν περιηγητή για την Εφαρμογή Ιστού."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
-#: NEEDS WORK
 msgid "Welcome to WebApps Manager"
 msgstr "Καλώς ήρθατε στον Διαχειριστή WebApps"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
-#: NEEDS WORK
 msgid ""
 "<b>What are WebApps?</b>\n"
 "\n"
@@ -299,99 +258,80 @@ msgstr ""
 "ρυθμίσεις"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 134
-#: NEEDS WORK
 msgid "Show dialog on startup"
 msgstr "Εμφάνιση διαλόγου κατά την εκκίνηση"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
-#: NEEDS WORK
 msgid "Let's Start"
 msgstr "Ας ξεκινήσουμε"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
-#: NEEDS WORK
 msgid "WebApps Manager"
 msgstr "Διαχειριστής WebApps"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 51
-#: NEEDS WORK
 msgid "Search WebApps"
 msgstr "Αναζήτηση WebApps"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 60
-#: NEEDS WORK
 msgid "Refresh"
 msgstr "Ανανέωση"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 61
-#: NEEDS WORK
 msgid "Export WebApps"
 msgstr "Εξαγωγή WebApps"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 62
-#: NEEDS WORK
 msgid "Import WebApps"
 msgstr "Εισαγωγή WebApps"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 65
-#: NEEDS WORK
 msgid "Browse Applications Folder"
 msgstr "Περιήγηση στο Φάκελο Εφαρμογών"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 66
-#: NEEDS WORK
 msgid "Browse Profiles Folder"
 msgstr "Προβολή φακέλου προφίλ"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 87
-#: NEEDS WORK
 msgid "Show Welcome Screen"
 msgstr "Εμφάνιση Οθόνης Καλωσορίσματος"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
-#: NEEDS WORK
 msgid "Remove All WebApps"
 msgstr "Αφαίρεση όλων των WebApps"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
-#: NEEDS WORK
 msgid "About"
 msgstr "Σχετικά"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 72
-#: NEEDS WORK
 msgid "Add"
 msgstr "Προσθήκη"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
-#: NEEDS WORK
 msgid "No WebApps Found"
 msgstr "Δεν βρέθηκαν WebApps"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 106
-#: NEEDS WORK
 msgid "Add a new webapp to get started"
 msgstr "Προσθέστε μια νέα διαδικτυακή εφαρμογή για να ξεκινήσετε"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 214
-#: NEEDS WORK
 msgid "WebApp created successfully"
 msgstr "Η εφαρμογή Web δημιουργήθηκε με επιτυχία"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 257
-#: NEEDS WORK
 msgid "WebApp updated successfully"
 msgstr "Η εφαρμογή Web ενημερώθηκε με επιτυχία"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 313
-#: NEEDS WORK
 #, python-brace-format
 msgid "Browser changed to {0}"
 msgstr "Ο περιηγητής άλλαξε σε {0}"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 329
-#: NEEDS WORK
 #, python-brace-format
 msgid "Are you sure you want to delete {0}?"
 msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε {0};"
@@ -406,53 +346,43 @@ msgid "Also delete configuration folder"
 msgstr "Επίσης, διαγράψτε τον φάκελο διαμόρφωσης."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 352
-#: NEEDS WORK
 msgid "Delete"
 msgstr "Διαγραφή"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 371
-#: NEEDS WORK
 msgid "WebApp deleted successfully"
 msgstr "Η εφαρμογή Web διαγράφηκε με επιτυχία."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 391
-#: NEEDS WORK
 msgid "Are you sure you want to remove all your WebApps? This action cannot be undone."
 msgstr ""
 "Είστε σίγουροι ότι θέλετε να αφαιρέσετε όλες τις WebApps σας; Αυτή η ενέργεια δεν μπορεί να "
 "αναιρεθεί."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 397
-#: NEEDS WORK
 msgid "Continue"
 msgstr ""
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 412
-#: NEEDS WORK
 msgid "Final Confirmation"
 msgstr "Τελική Επιβεβαίωση"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 413
-#: NEEDS WORK
 msgid "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
 msgstr "Είστε ΑΠΟΛΥΤΑ σίγουροι ότι θέλετε να αφαιρέσετε ΟΛΕΣ τις εφαρμογές ιστού σας;"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 417
-#: NEEDS WORK
 msgid "No, Cancel"
 msgstr "Όχι, Ακύρωση"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 418
-#: NEEDS WORK
 msgid "Yes, Remove All"
 msgstr "Ναι, Αφαίρεση Όλων"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
-#: NEEDS WORK
 msgid "All WebApps have been removed"
 msgstr "Όλες οι WebApps έχουν αφαιρεθεί."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 445
-#: NEEDS WORK
 msgid "Failed to remove all WebApps"
 msgstr "Αποτυχία κατά την αφαίρεση όλων των WebApps"

@@ -3,7 +3,6 @@
 # This file is distributed under the same license as the biglinux-webapps package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
@@ -17,47 +16,38 @@ msgstr ""
 "X-Generator: attranslate\n"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
-#: NEEDS WORK
 msgid "No WebApps"
 msgstr "Engin ekki vefforrit."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
-#: NEEDS WORK
 msgid "There are no WebApps to export."
 msgstr "Engin ekki vefforrit til að flytja út."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
-#: NEEDS WORK
 msgid "File Not Found"
 msgstr "Skjal fannst ekki"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
-#: NEEDS WORK
 msgid "The selected file does not exist."
 msgstr "Valda valin skráin er ekki til."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 271
-#: NEEDS WORK
 msgid "Invalid File"
 msgstr "skjal ógilt"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 272
-#: NEEDS WORK
 msgid "The selected file is not a valid ZIP archive."
 msgstr "Valda skráin er ekki gilt ZIP skjal."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 403
-#: NEEDS WORK
 msgid "Imported {} WebApps successfully ({} duplicates skipped)"
 msgstr "Innflutt {} WebApps með góðum árangri ({} afrit sleppt)"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 341
-#: NEEDS WORK
 msgid "Imported {} WebApps successfully"
 msgstr "Innflutt {} WebApps með góðum árangri"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 346
-#: NEEDS WORK
 msgid "Error importing WebApps"
 msgstr "Villa við að flytja inn WebApps"
 # 
@@ -68,22 +58,18 @@ msgstr "Villa við að flytja inn WebApps"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 357
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
-#: NEEDS WORK
 msgid "OK"
 msgstr ""
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
-#: NEEDS WORK
 msgid "No"
 msgstr "Nei"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 364
-#: NEEDS WORK
 msgid "Yes"
 msgstr ""
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
-#: NEEDS WORK
 msgid "Select Browser"
 msgstr "Veldu vafra"
 # 
@@ -101,12 +87,10 @@ msgstr "Hætta við"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 90
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 179
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 240
-#: NEEDS WORK
 msgid "Select"
 msgstr "Veldu"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 170
-#: NEEDS WORK
 msgid "System Default"
 msgstr "ברירת מחדל של מערכת"
 # 
@@ -120,12 +104,10 @@ msgstr "ברירת מחדל של מערכת"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 441
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 590
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 151
-#: NEEDS WORK
 msgid "Default"
 msgstr "ברירת מחדל"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 163
-#: NEEDS WORK
 msgid "Please select a browser."
 msgstr "Vinsamlegast veldu vafra."
 # 
@@ -133,12 +115,10 @@ msgstr "Vinsamlegast veldu vafra."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 172
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 637
-#: NEEDS WORK
 msgid "Error"
 msgstr "Villa"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 91
-#: NEEDS WORK
 #, python-brace-format
 msgid "Browser: {0}"
 msgstr "Vafri: {0}"
@@ -148,12 +128,10 @@ msgstr "Vafri: {0}"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 104
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
-#: NEEDS WORK
 msgid "Edit WebApp"
 msgstr "Breyta Vefforrit"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
-#: NEEDS WORK
 msgid "Delete WebApp"
 msgstr "Eyða vefforriti"
 # 
@@ -162,54 +140,44 @@ msgstr "Eyða vefforriti"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 109
-#: NEEDS WORK
 msgid "Add WebApp"
 msgstr "Bæta við Vefforriti"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 152
-#: NEEDS WORK
 msgid "URL"
 msgstr "Vefslóð"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 156
-#: NEEDS WORK
 msgid "Detect"
 msgstr "Greina"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 157
-#: NEEDS WORK
 msgid "Detect name and icon from website"
 msgstr "Greina nafn og tákn frá vefsíðu"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 166
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 480
-#: NEEDS WORK
 msgid "Name"
 msgstr "Nafn"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 172
-#: NEEDS WORK
 msgid "App Icon"
 msgstr "App tákn"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 180
-#: NEEDS WORK
 msgid "Select icon for the WebApp"
 msgstr "Veldu tákn fyrir vefforritið"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 187
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 278
-#: NEEDS WORK
 msgid "Available Icons"
 msgstr "tákn í boði"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 221
-#: NEEDS WORK
 msgid "Category"
 msgstr "Flokkur"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 226
-#: NEEDS WORK
 msgid "Browser"
 msgstr "Vafri"
 # 
@@ -223,12 +191,10 @@ msgid "Use separate profile"
 msgstr "Notaðu aðskilda prófíl"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 253
-#: NEEDS WORK
 msgid "Using a separate profile allows you to log in to different accounts"
 msgstr "Að nota aðskilda prófíl gerir þér kleift að skrá þig inn á mismunandi reikninga."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
-#: NEEDS WORK
 msgid "Profile Name"
 msgstr "Nafn prófíls"
 # 
@@ -242,38 +208,31 @@ msgid "Save"
 msgstr "Vista"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 336
-#: NEEDS WORK
 msgid "Loading..."
 msgstr "Hlaða..."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 453
-#: NEEDS WORK
 msgid "Please enter a URL first."
 msgstr "Vinsamlegast sláðu inn URL fyrst."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 609
-#: NEEDS WORK
 msgid "Please enter a name for the WebApp."
 msgstr "Vinsamlegast sláðu inn nafn fyrir vefforritið."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 613
-#: NEEDS WORK
 msgid "Please enter a URL for the WebApp."
 msgstr "Vinsamlegast sláðu inn vefslóð fyrir vefforritið."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 617
-#: NEEDS WORK
 msgid "Please select a browser for the WebApp."
 msgstr "Vinsamlegast veldu vafra fyrir WebApp."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
-#: NEEDS WORK
 msgid "Welcome to WebApps Manager"
 msgstr "Velkomin í WebApps Stjóra"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
-#: NEEDS WORK
 msgid ""
 "<b>What are WebApps?</b>\n"
 "\n"
@@ -298,99 +257,80 @@ msgstr ""
 "• <b>Einangruð prófíl</b>: Valfrjálst, hvert vefforrit getur haft sín eigin kökur og stillingar"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 134
-#: NEEDS WORK
 msgid "Show dialog on startup"
 msgstr "Sýna samskipti við upphaf"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
-#: NEEDS WORK
 msgid "Let's Start"
 msgstr "לְבַשֵּׁל"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
-#: NEEDS WORK
 msgid "WebApps Manager"
 msgstr "Vefforritastjóri"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 51
-#: NEEDS WORK
 msgid "Search WebApps"
 msgstr "Leitaðu að Vefforritum"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 60
-#: NEEDS WORK
 msgid "Refresh"
 msgstr "Ferskaðuðu"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 61
-#: NEEDS WORK
 msgid "Export WebApps"
 msgstr "Flytja út vefforrit"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 62
-#: NEEDS WORK
 msgid "Import WebApps"
 msgstr "Flytja vefforrit"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 65
-#: NEEDS WORK
 msgid "Browse Applications Folder"
 msgstr "Skoða forritaskrá"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 66
-#: NEEDS WORK
 msgid "Browse Profiles Folder"
 msgstr "Skoða möppu prófíla"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 87
-#: NEEDS WORK
 msgid "Show Welcome Screen"
 msgstr "sýna velkomin skjár"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
-#: NEEDS WORK
 msgid "Remove All WebApps"
 msgstr "Fjarlægja allar vefforrit."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
-#: NEEDS WORK
 msgid "About"
 msgstr "Um umfjöllun"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 72
-#: NEEDS WORK
 msgid "Add"
 msgstr "Bæta við"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
-#: NEEDS WORK
 msgid "No WebApps Found"
 msgstr "Engin vefumsóknir fundust ekki"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 106
-#: NEEDS WORK
 msgid "Add a new webapp to get started"
 msgstr "Bættu við nýrri vefumsókn til að byrja."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 214
-#: NEEDS WORK
 msgid "WebApp created successfully"
 msgstr "Vefforrit búið til með góðum árangri"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 257
-#: NEEDS WORK
 msgid "WebApp updated successfully"
 msgstr "Vefforrit uppfært með góðum árangri"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 313
-#: NEEDS WORK
 #, python-brace-format
 msgid "Browser changed to {0}"
 msgstr "Vafri breytist í {0}"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 329
-#: NEEDS WORK
 #, python-brace-format
 msgid "Are you sure you want to delete {0}?"
 msgstr "Ertu viss um að þú viljir eyða {0}?"
@@ -405,51 +345,41 @@ msgid "Also delete configuration folder"
 msgstr "Einnig eyða stillingaskránni."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 352
-#: NEEDS WORK
 msgid "Delete"
 msgstr "Eyða"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 371
-#: NEEDS WORK
 msgid "WebApp deleted successfully"
 msgstr "Vefumsókn eytt með góðum árangri"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 391
-#: NEEDS WORK
 msgid "Are you sure you want to remove all your WebApps? This action cannot be undone."
 msgstr "Ertu viss um að þú viljir fjarlægja allar vefsíður þínar? Þessi aðgerð er ekki hægt að afturkalla."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 397
-#: NEEDS WORK
 msgid "Continue"
 msgstr ""
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 412
-#: NEEDS WORK
 msgid "Final Confirmation"
 msgstr "Loka staðfesting"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 413
-#: NEEDS WORK
 msgid "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
 msgstr "Ertu ALDREI viss um að þú viljir fjarlægja ALLAR vefforritin þín?"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 417
-#: NEEDS WORK
 msgid "No, Cancel"
 msgstr "Nei, Hætta við"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 418
-#: NEEDS WORK
 msgid "Yes, Remove All"
 msgstr "Já, fjarlægja allt"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
-#: NEEDS WORK
 msgid "All WebApps have been removed"
 msgstr "Öll vefforrit hafa verið fjarlægð."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 445
-#: NEEDS WORK
 msgid "Failed to remove all WebApps"
 msgstr "Ekki tókst að fjarlægja allar vefforrit."
