@@ -50,7 +50,7 @@ sudo pacman -S biglinux-webapps
 
 ## License
 
-GPL-3.0
+Distributed under the **GPL-3.0 License**. See [LICENSE](LICENSE) for more information.
 
 ## Dependencies
 
