@@ -10,11 +10,87 @@ import tempfile
 import os
 import io
 from urllib.parse import urlparse, urljoin
-from bs4 import BeautifulSoup
+from html.parser import HTMLParser
 from PIL import Image  # Add Pillow import
 
 gi.require_version("Gtk", "4.0")
 from gi.repository import GLib
+
+
+class WebsiteMetadataParser(HTMLParser):
+    """Parser for extracting title and icons from HTML"""
+
+    def __init__(self):
+        super().__init__()
+        self.title = None
+        self.icons = []
+        self.og_title = None
+        self.twitter_title = None
+        self.og_image = None
+        self.twitter_image = None
+        self._in_title = False
+
+    def handle_starttag(self, tag, attrs):
+        attrs_dict = dict(attrs)
+
+        if tag == "title":
+            self._in_title = True
+
+        elif tag == "meta":
+            # Handle Open Graph and Twitter metadata
+            property_attr = attrs_dict.get("property", "")
+            name_attr = attrs_dict.get("name", "")
+            content = attrs_dict.get("content")
+
+            if content:
+                if property_attr == "og:title":
+                    self.og_title = content
+                elif name_attr == "twitter:title":
+                    self.twitter_title = content
+                elif property_attr == "og:image":
+                    self.og_image = content
+                elif name_attr == "twitter:image":
+                    self.twitter_image = content
+
+        elif tag == "link":
+            rel = attrs_dict.get("rel", "").lower()
+            href = attrs_dict.get("href")
+
+            if href:
+                # Match common icon rel types
+                if any(
+                    x in rel
+                    for x in ["icon", "shortcut icon", "apple-touch-icon", "mask-icon"]
+                ):
+                    self.icons.append(href)
+
+    def handle_endtag(self, tag):
+        if tag == "title":
+            self._in_title = False
+
+    def handle_data(self, data):
+        if self._in_title:
+            if self.title is None:
+                self.title = data
+            else:
+                self.title += data
+
+    def get_best_title(self):
+        if self.title:
+            return self.title.strip()
+        if self.og_title:
+            return self.og_title.strip()
+        if self.twitter_title:
+            return self.twitter_title.strip()
+        return None
+
+    def get_all_icons(self):
+        all_icons = self.icons.copy()
+        if self.og_image:
+            all_icons.append(self.og_image)
+        if self.twitter_image:
+            all_icons.append(self.twitter_image)
+        return all_icons
 
 
 class WebsiteInfoFetcher:
@@ -56,14 +132,48 @@ class WebsiteInfoFetcher:
             response = session.get(url, timeout=10)
             response.raise_for_status()
 
-            # Parse the HTML
-            soup = BeautifulSoup(response.text, "html.parser")
+            # Parse the HTML with our custom parser
+            parser = WebsiteMetadataParser()
+            parser.feed(response.text)
 
             # Get the title
-            title = self._extract_title(soup, url)
+            title = parser.get_best_title()
+            if title:
+                # Clean up the title
+                title = re.sub(r"\s+", " ", title)
+            else:
+                # Fallback: Use domain name
+                domain = urlparse(url).netloc.replace("www.", "")
+                title = domain.capitalize()
 
             # Get favicons
-            icons = self._extract_favicons(soup, url, session)
+            raw_icons = parser.get_all_icons()
+            icons = []
+
+            # Normalize icon URLs
+            base_url = url
+            for icon_href in raw_icons:
+                if icon_href:
+                    if not icon_href.startswith(("http://", "https://")):
+                        icon_href = urljoin(base_url, icon_href)
+                    if icon_href not in icons:
+                        icons.append(icon_href)
+
+            # Look for favicon in common locations (root)
+            parsed_url = urlparse(url)
+            domain_url = f"{parsed_url.scheme}://{parsed_url.netloc}"
+            favicon_url = urljoin(domain_url, "/favicon.ico")
+
+            # Check if we already have this specific favicon
+            if favicon_url not in icons:
+                try:
+                    head_response = session.head(favicon_url, timeout=5)
+                    if head_response.status_code == 200:
+                        icons.insert(
+                            0, favicon_url
+                        )  # Prioritize default favicon if found
+                except Exception:
+                    pass
 
             # Save icons to temporary files
             icon_paths = []
@@ -81,107 +191,6 @@ class WebsiteInfoFetcher:
         except Exception as e:
             print(f"Error fetching website info: {e}")
             GLib.idle_add(callback, "", [])
-
-    def _extract_title(self, soup, url):
-        """
-        Extract title from HTML
-
-        Parameters:
-            soup (BeautifulSoup): Parsed HTML
-            url (str): Website URL
-
-        Returns:
-            str: Website title
-        """
-        # Try to get the title tag
-        title_tag = soup.find("title")
-        if title_tag and title_tag.text:
-            # Clean up the title
-            title = title_tag.text.strip()
-            title = re.sub(r"\s+", " ", title)
-            return title
-
-        # Alternative: Try Open Graph title
-        og_title = soup.find("meta", property="og:title")
-        if og_title and og_title.get("content"):
-            return og_title.get("content").strip()
-
-        # Alternative: Try Twitter title
-        twitter_title = soup.find("meta", attrs={"name": "twitter:title"})
-        if twitter_title and twitter_title.get("content"):
-            return twitter_title.get("content").strip()
-
-        # Fallback: Use domain name
-        domain = urlparse(url).netloc.replace("www.", "")
-        return domain.capitalize()
-
-    def _extract_favicons(self, soup, url, session):
-        """
-        Extract favicon URLs from HTML
-
-        Parameters:
-            soup (BeautifulSoup): Parsed HTML
-            url (str): Website URL
-            session (requests.Session): Requests session
-
-        Returns:
-            list: List of favicon URLs
-        """
-        base_url = url
-        parsed_url = urlparse(url)
-        domain = f"{parsed_url.scheme}://{parsed_url.netloc}"
-
-        icons = []
-
-        # Look for favicon in common locations first
-        favicon_url = urljoin(domain, "/favicon.ico")
-        try:
-            response = session.head(favicon_url, timeout=5)
-            if response.status_code == 200:
-                icons.append(favicon_url)
-        except Exception:
-            pass
-
-        # Find link rel="icon" and rel="shortcut icon" tags
-        icon_links = soup.find_all(
-            "link",
-            rel=re.compile(r"(shortcut icon|icon|apple-touch-icon|mask-icon)", re.I),
-        )
-
-        for link in icon_links:
-            href = link.get("href")
-            if href:
-                # Make sure the URL is absolute
-                if not href.startswith(("http://", "https://")):
-                    href = urljoin(base_url, href)
-                icons.append(href)
-
-        # Find Apple touch icons
-        apple_icons = soup.find_all("link", rel=re.compile(r"apple-touch-icon", re.I))
-        for link in apple_icons:
-            href = link.get("href")
-            if href:
-                if not href.startswith(("http://", "https://")):
-                    href = urljoin(base_url, href)
-                icons.append(href)
-
-        # Find Open Graph images
-        og_image = soup.find("meta", property="og:image")
-        if og_image and og_image.get("content"):
-            icons.append(og_image.get("content"))
-
-        # Find Twitter images
-        twitter_image = soup.find("meta", attrs={"name": "twitter:image"})
-        if twitter_image and twitter_image.get("content"):
-            icons.append(twitter_image.get("content"))
-
-        # Remove duplicates while maintaining order
-        unique_icons = []
-        for icon in icons:
-            if icon not in unique_icons:
-                unique_icons.append(icon)
-
-        return unique_icons
 
     def _download_icon(self, icon_url, session):
         """
