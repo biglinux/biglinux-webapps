@@ -4,6 +4,8 @@ Command executor module for running shell commands
 
 import logging
 import json
+import re
+import shutil
 import subprocess
 from pathlib import Path
 
@@ -174,7 +176,27 @@ class CommandExecutor:
                 webapp.app_profile,
             ]
         output = self.execute_command(argv)
+        # cleanup viewer config/data if this was an app-mode webapp
+        if webapp.app_mode == "app":
+            self._cleanup_viewer_data(webapp.app_url)
         return output != ""
+
+    def _cleanup_viewer_data(self, url: str) -> None:
+        """Remove viewer config and persistent data for a given URL."""
+        app_id = re.sub(r"https?://", "", url)
+        app_id = app_id.replace("/", "_")
+        app_id = re.sub(r"[^a-zA-Z0-9_-]", "", app_id)
+        if not app_id:
+            return
+        home = Path.home()
+        config_json = home / ".config" / "biglinux-webapps" / f"{app_id}.json"
+        data_dir = home / ".local" / "share" / "biglinux-webapps" / app_id
+        if config_json.exists():
+            config_json.unlink()
+            logger.debug("Removed viewer config: %s", config_json)
+        if data_dir.exists():
+            shutil.rmtree(data_dir, ignore_errors=True)
+            logger.debug("Removed viewer data: %s", data_dir)
 
     def select_icon(self) -> str:
         """

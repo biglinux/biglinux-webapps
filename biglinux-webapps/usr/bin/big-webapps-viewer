@@ -3,7 +3,7 @@
 CSD headerbar replicating GTK4/Adwaita style. Fullscreen auto-hide overlay.
 """
 
-APP_VERSION = "3.3.1"
+APP_VERSION = "3.4.0"
 
 import argparse
 import json
@@ -28,7 +28,11 @@ from PySide6.QtGui import (
     QRegion,
 )
 from PySide6.QtSvg import QSvgRenderer
-from PySide6.QtWebEngineCore import QWebEngineProfile, QWebEngineSettings
+from PySide6.QtWebEngineCore import (
+    QWebEngineProfile,
+    QWebEngineScript,
+    QWebEngineSettings,
+)
 from PySide6.QtWebEngineWidgets import QWebEngineView
 from PySide6.QtWidgets import (
     QApplication,
@@ -347,6 +351,18 @@ class NavOverlay(QWidget):
         return btn
 
 
+class _ResizeGrip(QSizeGrip):
+    """SizeGrip that unlocks window resize during user drag."""
+
+    def mousePressEvent(self, e):
+        self.parentWidget()._unlock_size()
+        super().mousePressEvent(e)
+
+    def mouseReleaseEvent(self, e):
+        super().mouseReleaseEvent(e)
+        self.parentWidget()._lock_size()
+
+
 class WebAppWindow(QMainWindow):
     """CSD window + Chromium WebEngine. Adwaita-style headerbar."""
 
@@ -357,15 +373,34 @@ class WebAppWindow(QMainWindow):
         self.setWindowFlags(Qt.FramelessWindowHint | Qt.Window)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground, True)
 
+        # resize lock: only user-initiated resize (grip drag) is allowed
+        self._resize_locked = False
+
         self._setup_profile(app_id)
         self._setup_ui(url, title, icon)
         self._setup_shortcuts()
         self._load_geometry()
 
+        # lock window size hard via min/max constraints
+        self._lock_size()
+
         # fullscreen hover detection
         self._hover_timer = QTimer(self)
         self._hover_timer.timeout.connect(self._check_hover)
         self._hover_timer.start(150)
+
+    def _lock_size(self) -> None:
+        """Lock current size by setting min=max=current."""
+        self._resize_locked = True
+        s = self.size()
+        self.setMinimumSize(s)
+        self.setMaximumSize(s)
+
+    def _unlock_size(self) -> None:
+        """Unlock resize constraints."""
+        self._resize_locked = False
+        self.setMinimumSize(0, 0)
+        self.setMaximumSize(16777215, 16777215)
 
     def _setup_profile(self, app_id: str) -> None:
         storage = str(DATA_BASE / app_id)
@@ -405,13 +440,38 @@ class WebAppWindow(QMainWindow):
             QWebEngineSettings.WebAttribute.JavascriptEnabled,
             QWebEngineSettings.WebAttribute.LocalStorageEnabled,
             QWebEngineSettings.WebAttribute.ScrollAnimatorEnabled,
-            QWebEngineSettings.WebAttribute.PluginsEnabled,
             QWebEngineSettings.WebAttribute.JavascriptCanAccessClipboard,
         ):
             s.setAttribute(attr, True)
         s.setAttribute(
             QWebEngineSettings.WebAttribute.PlaybackRequiresUserGesture, False
         )
+        s.setAttribute(
+            QWebEngineSettings.WebAttribute.FullScreenSupportEnabled, True
+        )
+        # disable non-essential features → reduce RAM
+        for off_attr in (
+            QWebEngineSettings.WebAttribute.WebGLEnabled,
+            QWebEngineSettings.WebAttribute.AutoLoadIconsForPage,
+            QWebEngineSettings.WebAttribute.TouchIconsEnabled,
+        ):
+            s.setAttribute(off_attr, False)
+
+        # inject JS to neutralize window resize/move from web content
+        _no_resize_js = QWebEngineScript()
+        _no_resize_js.setName("no-resize")
+        _no_resize_js.setSourceCode(
+            "window.resizeTo=function(){};"
+            "window.resizeBy=function(){};"
+            "window.moveTo=function(){};"
+            "window.moveBy=function(){};"
+        )
+        _no_resize_js.setInjectionPoint(
+            QWebEngineScript.InjectionPoint.DocumentCreation
+        )
+        _no_resize_js.setWorldId(QWebEngineScript.ScriptWorldId.MainWorld)
+        _no_resize_js.setRunsOnSubFrames(True)
+        self.webview.page().scripts().insert(_no_resize_js)
 
         self.webview.setUrl(QUrl(url))
         vbox.addWidget(self.webview)
@@ -441,9 +501,11 @@ class WebAppWindow(QMainWindow):
         # webview signals
         self.webview.titleChanged.connect(self._on_title)
         self.webview.urlChanged.connect(self._on_nav)
+        self.webview.page().fullScreenRequested.connect(self._on_fullscreen_req)
+        self.webview.page().newWindowRequested.connect(self._on_new_window)
 
         # resize grip — bottom-right
-        self._grip = QSizeGrip(self)
+        self._grip = _ResizeGrip(self)
         self._grip.setFixedSize(16, 16)
 
     def _setup_shortcuts(self) -> None:
@@ -476,6 +538,7 @@ class WebAppWindow(QMainWindow):
             self.nav.raise_()
 
     def _toggle_fullscreen(self) -> None:
+        self._unlock_size()
         if self.isFullScreen():
             self._exit_fullscreen()
         else:
@@ -487,12 +550,15 @@ class WebAppWindow(QMainWindow):
     def _exit_fullscreen(self) -> None:
         if not self.isFullScreen():
             return
+        self._unlock_size()
         self.header.setVisible(True)
         self._grip.setVisible(True)
         self.showNormal()
         self._apply_mask()
+        self._lock_size()
 
     def _toggle_maximize(self) -> None:
+        self._unlock_size()
         fg = _get_theme_colors()["fg"]
         if self.isMaximized():
             self.showNormal()
@@ -501,6 +567,9 @@ class WebAppWindow(QMainWindow):
             self.showMaximized()
             self.header.max_btn.setIcon(_make_adw_icon("restore", size=20, fg_hex=fg))
         self._apply_mask()
+        # re-lock at new size (but not when maximized — WM controls it)
+        if not self.isMaximized():
+            self._lock_size()
 
     def _on_title(self, title: str) -> None:
         if title:
@@ -514,6 +583,18 @@ class WebAppWindow(QMainWindow):
         self.header.fwd_btn.setEnabled(can_fwd)
         self.nav.back_btn.setEnabled(can_back)
         self.nav.fwd_btn.setEnabled(can_fwd)
+
+    def _on_fullscreen_req(self, request) -> None:
+        """Handle JS fullscreen requests (e.g. video players)."""
+        request.accept()
+        if request.toggleOn():
+            self._toggle_fullscreen()
+        else:
+            self._exit_fullscreen()
+
+    def _on_new_window(self, request) -> None:
+        """Handle JS popups — open in same window instead of spawning new ones."""
+        self.webview.setUrl(request.requestedUrl())
 
     # --- geometry ---
 
@@ -537,13 +618,28 @@ class WebAppWindow(QMainWindow):
         self.setMask(QRegion(path.toFillPolygon().toPolygon()))
 
     def _load_geometry(self) -> None:
+        screen = QApplication.primaryScreen()
+        sg = screen.availableGeometry() if screen else None
+
         try:
             d = json.loads(self.config_path.read_text())
-            self.resize(d.get("width", 1024), d.get("height", 768))
+            w = d.get("width", 1024)
+            h = d.get("height", 720)
+            self.resize(w, h)
             if d.get("maximized"):
+                self._resize_locked = False
                 self.showMaximized()
+                self._resize_locked = True
+            elif sg:
+                x = sg.x() + (sg.width() - w) // 2
+                y = sg.y() + (sg.height() - h) // 2
+                self.move(x, y)
         except (FileNotFoundError, json.JSONDecodeError, OSError):
-            self.resize(1024, 768)
+            self.resize(1024, 720)
+            if sg:
+                x = sg.x() + (sg.width() - 1024) // 2
+                y = sg.y() + (sg.height() - 720) // 2
+                self.move(x, y)
 
     def _save_geometry(self) -> None:
         if self.isFullScreen():
@@ -578,6 +674,14 @@ def main() -> int:
     url = args.url
     if not url.startswith(("http://", "https://", "file://")):
         url = "https://" + url
+
+    # strip non-essential Chromium features → reduce RAM w/o breaking sites
+    os.environ["QTWEBENGINE_CHROMIUM_FLAGS"] = " ".join([
+        "--disable-sync",
+        "--disable-translate",
+        "--disable-background-networking",
+        "--renderer-process-limit=1",
+    ])
 
     app = QApplication(sys.argv[:1])
     # restore default SIGINT behavior → Ctrl+C terminates cleanly
