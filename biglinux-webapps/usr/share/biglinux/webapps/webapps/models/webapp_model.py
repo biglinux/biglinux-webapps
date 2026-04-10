@@ -29,6 +29,7 @@ class WebApp(GObject.GObject):
         self.app_profile = "Default"
         self.app_categories = "Webapps"
         self.app_icon_url = ""
+        self.app_mode = "browser"  # "browser" or "app"
 
         # Load data if provided
         if app_data:
@@ -43,7 +44,8 @@ class WebApp(GObject.GObject):
         self.app_icon = app_data.get("app_icon", "")
         self.app_profile = app_data.get("app_profile", "Default")
         self.app_categories = app_data.get("app_categories", "Webapps")
-        self.app_icon_url = app_data.get("app_icon_url", "")
+        self.app_icon_url = app_data.get("app_icon_url", "") or self.app_icon
+        self.app_mode = app_data.get("app_mode", "browser")
 
     def get_main_category(self) -> str:
         """

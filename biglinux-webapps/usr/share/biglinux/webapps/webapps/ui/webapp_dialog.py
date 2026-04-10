@@ -144,6 +144,7 @@ class WebAppDialog(Adw.Window):
             "app_profile": webapp.app_profile,
             "app_categories": webapp.app_categories,
             "app_icon_url": webapp.app_icon_url,
+            "app_mode": webapp.app_mode,
         }
 
         return WebApp(webapp_dict)
@@ -285,8 +286,20 @@ class WebAppDialog(Adw.Window):
         category_row.add_suffix(self.category_dropdown)
         form_group.add(category_row)
 
+        # App mode toggle — opens in Qt6 viewer instead of browser
+        self.app_mode_row = Adw.ActionRow(title=_("Application Mode"))
+        self.app_mode_row.set_subtitle(
+            _("Opens as a native window without browser interface")
+        )
+        self.app_mode_switch = Gtk.Switch()
+        self.app_mode_switch.set_valign(Gtk.Align.CENTER)
+        self.app_mode_switch.set_active(self.webapp.app_mode == "app")
+        self.app_mode_switch.connect("notify::active", self.on_app_mode_switch_changed)
+        self.app_mode_row.add_suffix(self.app_mode_switch)
+        form_group.add(self.app_mode_row)
+
         # Browser selection
-        browser_row = Adw.ActionRow(title=_("Browser"))
+        self.browser_row = Adw.ActionRow(title=_("Browser"))
 
         browser_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         self.browser_icon = Gtk.Image()
@@ -298,13 +311,13 @@ class WebAppDialog(Adw.Window):
         self.set_browser_label(self.webapp.browser)
         browser_box.append(self.browser_label)
 
-        browser_row.add_prefix(browser_box)
+        self.browser_row.add_prefix(browser_box)
 
         select_browser_button = Gtk.Button(label=_("Select"))
         select_browser_button.connect("clicked", self.on_select_browser_clicked)
         select_browser_button.set_valign(Gtk.Align.CENTER)
-        browser_row.add_suffix(select_browser_button)
-        form_group.add(browser_row)
+        self.browser_row.add_suffix(select_browser_button)
+        form_group.add(self.browser_row)
 
         # Profile settings
         browser = self.browser_collection.get_by_id(self.webapp.browser)
@@ -340,6 +353,12 @@ class WebAppDialog(Adw.Window):
         if not is_firefox:
             form_group.add(self.profile_row)
             form_group.add(self.profile_entry_row)
+
+        # Hide browser/profile rows when app mode is active
+        if self.webapp.app_mode == "app":
+            self.browser_row.set_visible(False)
+            self.profile_row.set_visible(False)
+            self.profile_entry_row.set_visible(False)
 
         # Add form group to the layout
         form_box.append(form_group)
@@ -523,6 +542,18 @@ class WebAppDialog(Adw.Window):
             display_category = model.get_string(selected)
             self.webapp.set_main_category(display_category)
             logger.warning("Fallback: using display category: %s", display_category)
+
+    def on_app_mode_switch_changed(
+        self, switch: Gtk.Switch, _param: GObject.ParamSpec
+    ) -> None:
+        """Toggle between browser mode and application mode."""
+        is_app = switch.get_active()
+        self.webapp.app_mode = "app" if is_app else "browser"
+        self.browser_row.set_visible(not is_app)
+        self.profile_row.set_visible(not is_app)
+        self.profile_entry_row.set_visible(
+            not is_app and self.profile_switch.get_active()
+        )
 
     def on_profile_switch_changed(
         self, switch: Gtk.Switch, _param: GObject.ParamSpec

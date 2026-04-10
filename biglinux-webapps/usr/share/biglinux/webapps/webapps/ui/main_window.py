@@ -61,11 +61,6 @@ class MainWindow(Adw.ApplicationWindow):
         # Header bar
         header = Adw.HeaderBar()
 
-        # App icon on the left
-        app_icon = Gtk.Image.new_from_icon_name("big-webapps")
-        app_icon.set_pixel_size(24)
-        header.pack_start(app_icon)
-
         # Search button on the left
         search_button = Gtk.ToggleButton(icon_name="system-search-symbolic")
         search_button.connect("toggled", self.on_search_toggled)

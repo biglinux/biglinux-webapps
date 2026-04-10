@@ -110,22 +110,27 @@ else
     name="$2"
     url="$3"
     icon="$4"
-    # If icon not in the icon folder, copy to the icon folder
+    # If icon has a path, copy to proper icon theme dir and use absolute path
     if [[ $icon =~ \/ ]]; then
-        cp "$icon" ~/.local/share/icons/
+        mkdir -p ~/.local/share/icons/hicolor/scalable/apps
+        icon_basename="${icon##*/}"
+        cp "$icon" ~/.local/share/icons/hicolor/scalable/apps/
+        icon="$HOME/.local/share/icons/hicolor/scalable/apps/$icon_basename"
     fi
-    icon=${icon//*\/}
-    icon=${icon%.*}
     category="$5"
     profile="$6"
 fi
 
 
 # Adjust the browser name for the filename and class
-short_browser=$(sed 's/.*[Cc]hrom.*/chrome/
-                    s/.*[Bb]rave.*/brave/
-                    s/.*[Ee]dge.*/msedge/
-                    s/.*[Vv]ivaldi.*/vivaldi/' <<< "$browser")
+if [[ "$browser" == "__viewer__" ]]; then
+    short_browser="viewer"
+else
+    short_browser=$(sed 's/.*[Cc]hrom.*/chrome/
+                        s/.*[Bb]rave.*/brave/
+                        s/.*[Ee]dge.*/msedge/
+                        s/.*[Vv]ivaldi.*/vivaldi/' <<< "$browser")
+fi
 
 # Adjust the class by replacing "/" with "__" and removing https
 class=$(sed 's|https://||;s|http://||g;s|/|__|g' <<< "$url")
@@ -160,8 +165,25 @@ if [ "$command" = "create" ]; then
         exit 1
     fi
 
-    # Create the .desktop file
-    read -d $'' ShowText <<EOF
+    if [[ "$browser" == "__viewer__" ]]; then
+        # App mode — Qt6 viewer without browser chrome
+        app_id=$(sed 's|https://||;s|http://||;s|/|_|g;s|[^a-zA-Z0-9_-]||g' <<< "$url")
+        read -d $'' ShowText <<EOF
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=$name
+Exec=big-webapps-viewer --url="$url" --name="$name" --icon="${icon}" --app-id="$app_id"
+Icon=$icon
+StartupWMClass=br.com.biglinux.webapp.$app_id
+Categories=$category
+StartupNotify=false
+EOF
+    else
+        # Browser mode — standard webapp
+        read -d $'' ShowText <<EOF
 #!/usr/bin/env xdg-open
 [Desktop Entry]
 Version=1.0
@@ -169,11 +191,12 @@ Terminal=false
 Type=Application
 Name=$name
 Exec=big-webapps-exec filename="$filename" $browser --class="$class" --profile-directory=$profile --app="$url"
-Icon=${icon//*\/}
+Icon=$icon
 StartupWMClass=$class
 Categories=$category
 StartupNotify=false
 EOF
+    fi
 
 echo "$ShowText" > "$filename"
 
@@ -205,7 +228,7 @@ elif [ "$command" = "json" ]; then
     IFS=$'\n'
     # Get if not passed the files, show all files with big-webapps-exec
     if [[ -z $one_file ]]; then
-        files=$(grep -Rl 'big-webapps-exec')
+        files=$(grep -Rl 'big-webapps-exec\|big-webapps-viewer')
     else
         files=$one_file
     fi
@@ -223,23 +246,25 @@ elif [ "$command" = "json" ]; then
                     name=${line#*Name=}
                     ;;
                 "Exec="*)
-                    url=${line//*--app=}
-                    url=${url//\"}
-                    browser=${line//*filename=\"}
-                    browser=${browser#*\" }
-                    browser=${browser// *}
-                    profile=${line//*--profile-directory=}
-                    profile=${profile// *}
+                    if [[ "$line" == *"big-webapps-viewer"* ]]; then
+                        # App mode — Qt6 viewer
+                        url=${line//*--url=\"}
+                        url=${url//\"*}
+                        browser="__viewer__"
+                        profile="Default"
+                    else
+                        # Browser mode
+                        url=${line//*--app=}
+                        url=${url//\"}
+                        browser=${line//*filename=\"}
+                        browser=${browser#*\" }
+                        browser=${browser// *}
+                        profile=${line//*--profile-directory=}
+                        profile=${profile// *}
+                    fi
                     ;;
                 "Icon="*)
                     icon=${line#*Icon=}
-                    # Copy the icon to the applications folder if it's not a system icon
-                    if [[ $icon =~ \/ ]]; then
-                        cp "$icon" ~/.local/share/icons/
-                        sed -Ei 's|^Icon=.*/(.*)\..*|Icon=\1|g' "$file"
-                    fi
-                    icon=${icon//*\/}
-                    # icon=${icon%.*}
                     ;;
                 "Categories="*)
                     categories=${line#*Categories=}
@@ -252,6 +277,13 @@ elif [ "$command" = "json" ]; then
             echo ,
         fi
 
+        # Determine app_mode from browser
+        if [[ "$browser" == "__viewer__" ]]; then
+            app_mode="app"
+        else
+            app_mode="browser"
+        fi
+
         # Print the JSON object with escaped quotes
         read -d $'' ShowText <<EOF
             {
@@ -261,7 +293,8 @@ elif [ "$command" = "json" ]; then
                 "app_url": "${url//\"/\\\\\"}",
                 "app_icon": "$icon",
                 "app_profile": "$profile",
-                "app_categories": "$categories"
+                "app_categories": "$categories",
+                "app_mode": "$app_mode"
             }
 EOF
         echo "$ShowText"

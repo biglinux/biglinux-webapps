@@ -115,16 +115,26 @@ class CommandExecutor:
         Returns:
             True if successful
         """
+        browser = "__viewer__" if webapp.app_mode == "app" else webapp.browser
         argv = [
             "big-webapps",
             "create",
-            webapp.browser,
+            browser,
             webapp.app_name,
             webapp.app_url,
             webapp.app_icon_url,
             webapp.app_categories,
             webapp.app_profile,
         ]
+        logger.debug("create_webapp argv: %s", argv)
+        logger.debug(
+            "create_webapp icon_url=%r icon=%r", webapp.app_icon_url, webapp.app_icon
+        )
+        print(
+            f"[DEBUG] create_webapp icon_url={webapp.app_icon_url!r} icon={webapp.app_icon!r}",
+            flush=True,
+        )
+        print(f"[DEBUG] create_webapp argv={argv}", flush=True)
         output = self.execute_command(argv)
         return output != ""
 
@@ -178,7 +188,9 @@ class CommandExecutor:
         Returns:
             Path to the selected icon
         """
-        return self.execute_command(["./select_icon.sh"]).strip()
+        result = self.execute_command(["./select_icon.sh"]).strip()
+        print(f"[DEBUG] select_icon result={result!r}", flush=True)
+        return result
 
     def get_system_default_browser(self) -> str | None:
         """
