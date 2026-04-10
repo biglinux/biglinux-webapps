@@ -59,7 +59,7 @@ msgstr ""
 "\n"
 "• <b>Fókusz</b>: Dolgozz zavaró böngészőfülek nélkül\n"
 "• <b>Asztali integráció</b>: Gyors hozzáférés az alkalmazásmenüből\n"
-"• <b>Izolált profilok</b>: Opcionálisan, minden webappnak lehet saját sütije és beállításai"
+"• <b>Izolált profilok</b>: Opcionálisan, minden webappnak lehet saját sütije és beállításai\n"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 134
 msgid "Show dialog on startup"
@@ -330,7 +330,7 @@ msgstr "Biztos benne, hogy el akarja távolítani az összes WebApp-ját? Ez a m
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 398
 msgid "Continue"
-msgstr ""
+msgstr "Folytatás"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 413
 msgid "Final Confirmation"

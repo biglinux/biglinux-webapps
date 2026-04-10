@@ -60,7 +60,7 @@ msgstr ""
 "• <b>Odaklanma</b>: Diğer tarayıcı sekmelerinin dikkat dağıtıcı etkisi olmadan çalışma\n"
 "• <b> masaüstü entegrasyonu</b>: Uygulama menünüzden hızlı erişim\n"
 "• <b>İzolasyonlu Profiller</b>: İsteğe bağlı olarak, her web uygulaması kendi çerezlerine ve "
-"ayarlarına sahip olabilir"
+"ayarlarına sahip olabilir\n"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 134
 msgid "Show dialog on startup"
@@ -127,7 +127,7 @@ msgstr "Hata"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
 msgid "OK"
-msgstr ""
+msgstr "Tamam"
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -331,7 +331,7 @@ msgstr "Tüm Web Uygulamalarınızı kaldırmak istediğinizden emin misiniz? Bu
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 397
 msgid "Continue"
-msgstr ""
+msgstr "Devam"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 412
 msgid "Final Confirmation"

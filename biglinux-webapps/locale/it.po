@@ -59,7 +59,7 @@ msgstr ""
 "\n"
 "• <b>Focus</b>: Lavora senza le distrazioni di altre schede del browser\n"
 "• <b>Integrazione Desktop</b>: Accesso rapido dal menu delle applicazioni\n"
-"• <b>Profili Isolati</b>: Facoltativamente, ogni webapp può avere i propri cookie e impostazioni"
+"• <b>Profili Isolati</b>: Facoltativamente, ogni webapp può avere i propri cookie e impostazioni\n"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 134
 msgid "Show dialog on startup"
@@ -126,7 +126,7 @@ msgstr "Errore"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
 msgid "OK"
-msgstr ""
+msgstr "OK"
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -330,7 +330,7 @@ msgstr "Sei sicuro di voler rimuovere tutte le tue WebApp? Questa azione non pu�
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 397
 msgid "Continue"
-msgstr ""
+msgstr "Continua"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 412
 msgid "Final Confirmation"

@@ -130,11 +130,6 @@ class CommandExecutor:
         logger.debug(
             "create_webapp icon_url=%r icon=%r", webapp.app_icon_url, webapp.app_icon
         )
-        print(
-            f"[DEBUG] create_webapp icon_url={webapp.app_icon_url!r} icon={webapp.app_icon!r}",
-            flush=True,
-        )
-        print(f"[DEBUG] create_webapp argv={argv}", flush=True)
         output = self.execute_command(argv)
         return output != ""
 
@@ -189,7 +184,6 @@ class CommandExecutor:
             Path to the selected icon
         """
         result = self.execute_command(["./select_icon.sh"]).strip()
-        print(f"[DEBUG] select_icon result={result!r}", flush=True)
         return result
 
     def get_system_default_browser(self) -> str | None:

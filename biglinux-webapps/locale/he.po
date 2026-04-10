@@ -59,7 +59,7 @@ msgstr ""
 "\n"
 "• <b>מיקוד</b>: עבודה ללא הסחות דעת מכרטיסיות דפדפן אחרות\n"
 "• <b>אינטגרציה עם שולחן העבודה</b>: גישה מהירה מתפריט היישומים שלך\n"
-"• <b>פרופילים מבודדים</b>: אופציונלית, לכל אפליקציית רשת יכולות להיות עוגיות והגדרות משלה"
+"• <b>פרופילים מבודדים</b>: אופציונלית, לכל אפליקציית רשת יכולות להיות עוגיות והגדרות משלה\n"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 134
 msgid "Show dialog on startup"
@@ -330,7 +330,7 @@ msgstr "האם אתה בטוח שברצונך להסיר את כל ה-WebApps ש
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 398
 msgid "Continue"
-msgstr ""
+msgstr "המשך"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 413
 msgid "Final Confirmation"

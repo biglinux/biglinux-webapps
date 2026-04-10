@@ -60,7 +60,7 @@ msgstr ""
 "• <b>Fokus</b>: Arbeid uten distraksjoner fra andre nettleserfaner\n"
 "• <b>Desktop-integrasjon</b>: Rask tilgang fra applikasjonsmenyen din\n"
 "• <b>Isolerte profiler</b>: Valgfritt kan hver webapp ha sine egne informasjonskapsler og "
-"innstillinger"
+"innstillinger\n"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 134
 msgid "Show dialog on startup"
@@ -127,7 +127,7 @@ msgstr "Feil"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
 msgid "OK"
-msgstr ""
+msgstr "OK"
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -331,7 +331,7 @@ msgstr "Er du sikker på at du vil fjerne alle WebAppene dine? Denne handlingen 
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 397
 msgid "Continue"
-msgstr ""
+msgstr "Fortsett"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 412
 msgid "Final Confirmation"
@@ -395,7 +395,7 @@ msgstr "Feil ved import av WebApps"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
 msgid "No"
-msgstr ""
+msgstr "Nei"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 364
 msgid "Yes"

@@ -59,7 +59,7 @@ msgstr ""
 "\n"
 "• <b>Soustředění</b>: Pracujte bez rozptýlení od ostatních karet prohlížeče\n"
 "• <b>Integrace na ploše</b>: Rychlý přístup z nabídky aplikací\n"
-"• <b>Izolované profily</b>: Volitelně může mít každá webová aplikace své vlastní cookies a nastavení"
+"• <b>Izolované profily</b>: Volitelně může mít každá webová aplikace své vlastní cookies a nastavení\n"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 134
 msgid "Show dialog on startup"
@@ -126,7 +126,7 @@ msgstr "Chyba"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
 msgid "OK"
-msgstr ""
+msgstr "OK"
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -330,7 +330,7 @@ msgstr "Opravdu chcete odstranit všechny své WebAppy? Tuto akci nelze vrátit 
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 397
 msgid "Continue"
-msgstr ""
+msgstr "Pokračovat"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 412
 msgid "Final Confirmation"

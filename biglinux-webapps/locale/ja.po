@@ -58,7 +58,7 @@ msgstr ""
 "\n"
 "• <b>集中</b>: 他のブラウザタブの気を散らすことなく作業できます\n"
 "• <b>デスクトップ統合</b>: アプリケーションメニューからの迅速なアクセス\n"
-"• <b>隔離されたプロファイル</b>: オプションで、各Webアプリは独自のクッキーと設定を持つことができます"
+"• <b>隔離されたプロファイル</b>: オプションで、各Webアプリは独自のクッキーと設定を持つことができます\n"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 134
 msgid "Show dialog on startup"
@@ -125,7 +125,7 @@ msgstr "エラー"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
 msgid "OK"
-msgstr ""
+msgstr "OK"
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -329,7 +329,7 @@ msgstr "すべてのWebアプリを削除してもよろしいですか？この
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 397
 msgid "Continue"
-msgstr ""
+msgstr "続行"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 412
 msgid "Final Confirmation"
@@ -393,7 +393,7 @@ msgstr "WebAppsのインポート中にエラーが発生しました"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
 msgid "No"
-msgstr ""
+msgstr "いいえ"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 364
 msgid "Yes"

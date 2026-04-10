@@ -59,7 +59,7 @@ msgstr ""
 "\n"
 "• <b>Fookus</b>: Töö ilma teiste brauseri vahekaartide häirivate teguriteta\n"
 "• <b>Desktopi integreerimine</b>: Kiire juurdepääs teie rakenduse menüüst\n"
-"• <b>Isoleeritud profiilid</b>: Valikuliselt võib igal veebirakendusel olla oma küpsised ja seaded"
+"• <b>Isoleeritud profiilid</b>: Valikuliselt võib igal veebirakendusel olla oma küpsised ja seaded\n"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 134
 msgid "Show dialog on startup"
@@ -126,7 +126,7 @@ msgstr "Viga"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
 msgid "OK"
-msgstr ""
+msgstr "OK"
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -330,7 +330,7 @@ msgstr "Kas olete kindel, et soovite eemaldada kõik oma veebirakendused? Seda t
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 397
 msgid "Continue"
-msgstr ""
+msgstr "Jätka"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 412
 msgid "Final Confirmation"

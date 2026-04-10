@@ -59,7 +59,7 @@ msgstr ""
 "\n"
 "• <b>Concentrare</b>: Lucrează fără distragerile altor tab-uri de browser\n"
 "• <b>Integrare pe desktop</b>: Acces rapid din meniul aplicației tale\n"
-"• <b>Profiluri izolate</b>: Opțional, fiecare webapp poate avea propriile sale cookie-uri și setări"
+"• <b>Profiluri izolate</b>: Opțional, fiecare webapp poate avea propriile sale cookie-uri și setări\n"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 134
 msgid "Show dialog on startup"
@@ -126,7 +126,7 @@ msgstr "Eroare"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
 msgid "OK"
-msgstr ""
+msgstr "OK"
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -330,7 +330,7 @@ msgstr "Ești sigur că vrei să elimini toate aplicațiile tale web? Această a
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 397
 msgid "Continue"
-msgstr ""
+msgstr "Continuă"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 412
 msgid "Final Confirmation"
@@ -398,4 +398,4 @@ msgstr "Nu"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 364
 msgid "Yes"
-msgstr ""
+msgstr "Da"

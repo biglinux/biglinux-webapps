@@ -59,7 +59,7 @@ msgstr ""
 "\n"
 "• <b>Focus</b>: Werken zonder de afleiding van andere browsertabs\n"
 "• <b>Bureaubladintegratie</b>: Snelle toegang vanuit je applicatiemenu\n"
-"• <b>Geïsoleerde Profielen</b>: Optioneel kan elke webapp zijn eigen cookies en instellingen hebben"
+"• <b>Geïsoleerde Profielen</b>: Optioneel kan elke webapp zijn eigen cookies en instellingen hebben\n"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 134
 msgid "Show dialog on startup"
@@ -126,7 +126,7 @@ msgstr "Fout"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
 msgid "OK"
-msgstr ""
+msgstr "OK"
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -330,7 +330,7 @@ msgstr "Weet u zeker dat u al uw WebApps wilt verwijderen? Deze actie kan niet o
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 397
 msgid "Continue"
-msgstr ""
+msgstr "Doorgaan"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 412
 msgid "Final Confirmation"
