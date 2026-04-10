@@ -15,59 +15,60 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
-msgid "No WebApps"
-msgstr "Web Uygulamaları Yok"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
-msgid "There are no WebApps to export."
-msgstr "Dışa aktarılacak Web Uygulamaları yok."
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
-msgid "File Not Found"
-msgstr "Dosya Bulunamadı"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
-msgid "The selected file does not exist."
-msgstr "Seçilen dosya mevcut değil."
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 271
-msgid "Invalid File"
-msgstr "Geçersiz Dosya"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 272
-msgid "The selected file is not a valid ZIP archive."
-msgstr "Seçilen dosya geçerli bir ZIP arşivi değil."
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 403
-msgid "Imported {} WebApps successfully ({} duplicates skipped)"
-msgstr "{} WebApps başarıyla içe aktarıldı ({} kopyalar atlandı)"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 341
-msgid "Imported {} WebApps successfully"
-msgstr "{} WebApps başarıyla içe aktarıldı."
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 346
-msgid "Error importing WebApps"
-msgstr "Web Uygulamaları içe aktarım hatası"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 91
+#, python-brace-format
+msgid "Browser: {0}"
+msgstr "Tarayıcı: {0}"
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
-# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 104
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
+msgid "Edit WebApp"
+msgstr "Web Uygulamasını Düzenle"
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 357
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
-msgid "OK"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
+msgid "Delete WebApp"
+msgstr "WebApp'i Sil"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
+msgid "Welcome to WebApps Manager"
+msgstr "Web Uygulamaları Yöneticisi'ne Hoş Geldiniz"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
+msgid ""
+"<b>What are WebApps?</b>\n"
+"\n"
+"WebApps are web applications that run in a dedicated browser window, providing a more app-like "
+"experience for your favorite websites.\n"
+"\n"
+"<b>Benefits of using WebApps:</b>\n"
+"\n"
+"• <b>Focus</b>: Work without the distractions of other browser tabs\n"
+"• <b>Desktop Integration</b>: Quick access from your application menu\n"
+"• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
 msgstr ""
+"<b>Web Uygulamaları nedir?</b>\n"
+"\n"
+"Web Uygulamaları, özel bir tarayıcı penceresinde çalışan web uygulamalarıdır ve favori web "
+"siteleriniz için daha uygulama benzeri bir deneyim sunar.\n"
+"\n"
+"<b>Web Uygulamaları kullanmanın avantajları:</b>\n"
+"\n"
+"• <b>Odaklanma</b>: Diğer tarayıcı sekmelerinin dikkat dağıtıcı etkisi olmadan çalışma\n"
+"• <b> masaüstü entegrasyonu</b>: Uygulama menünüzden hızlı erişim\n"
+"• <b>İzolasyonlu Profiller</b>: İsteğe bağlı olarak, her web uygulaması kendi çerezlerine ve "
+"ayarlarına sahip olabilir"
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
-msgid "No"
-msgstr "Hayır"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 134
+msgid "Show dialog on startup"
+msgstr "Başlangıçta iletişim kutusunu göster"
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 364
-msgid "Yes"
-msgstr "Evet"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
+msgid "Let's Start"
+msgstr "Başlayalım"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
 msgid "Select Browser"
@@ -118,22 +119,15 @@ msgstr "Lütfen bir tarayıcı seçin."
 msgid "Error"
 msgstr "Hata"
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 91
-#, python-brace-format
-msgid "Browser: {0}"
-msgstr "Tarayıcı: {0}"
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 104
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
-msgid "Edit WebApp"
-msgstr "Web Uygulamasını Düzenle"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
-msgid "Delete WebApp"
-msgstr "WebApp'i Sil"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 357
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
+msgid "OK"
+msgstr ""
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -227,44 +221,6 @@ msgstr "Lütfen WebApp için bir URL girin."
 msgid "Please select a browser for the WebApp."
 msgstr "Lütfen WebApp için bir tarayıcı seçin."
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
-msgid "Welcome to WebApps Manager"
-msgstr "Web Uygulamaları Yöneticisi'ne Hoş Geldiniz"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
-msgid ""
-"<b>What are WebApps?</b>\n"
-"\n"
-"WebApps are web applications that run in a dedicated browser window, providing a more app-like "
-"experience for your favorite websites.\n"
-"\n"
-"<b>Benefits of using WebApps:</b>\n"
-"\n"
-"• <b>Focus</b>: Work without the distractions of other browser tabs\n"
-"• <b>Desktop Integration</b>: Quick access from your application menu\n"
-"• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
-msgstr ""
-"<b>Web Uygulamaları nedir?</b>\n"
-"\n"
-"Web Uygulamaları, özel bir tarayıcı penceresinde çalışan web uygulamalarıdır ve favori web "
-"siteleriniz için daha uygulama benzeri bir deneyim sunar.\n"
-"\n"
-"<b>Web Uygulamaları kullanmanın avantajları:</b>\n"
-"\n"
-"• <b>Odaklanma</b>: Diğer tarayıcı sekmelerinin dikkat dağıtıcı etkisi olmadan çalışma\n"
-"• <b> masaüstü entegrasyonu</b>: Uygulama menünüzden hızlı erişim\n"
-"• <b>İzolasyonlu Profiller</b>: İsteğe bağlı olarak, her web uygulaması kendi çerezlerine ve "
-"ayarlarına sahip olabilir"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 134
-msgid "Show dialog on startup"
-msgstr "Başlangıçta iletişim kutusunu göster"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
-msgid "Let's Start"
-msgstr "Başlayalım"
-# 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
 msgid "WebApps Manager"
 msgstr "Web Uygulamaları Yöneticisi"
@@ -331,10 +287,18 @@ msgstr "WebApp başarıyla güncellendi."
 msgid "Browser changed to {0}"
 msgstr "Tarayıcı {0} olarak değiştirildi."
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 329
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 372
 #, python-brace-format
-msgid "Are you sure you want to delete {0}?"
-msgstr "{0}'yı silmek istediğinizden emin misiniz?"
+msgid ""
+"Are you sure you want to delete {0}?\n"
+"\n"
+"URL: {1}\n"
+"Browser: {2}"
+msgstr ""
+"{0}'ı silmek istediğinizden emin misiniz?\n"
+"\n"
+"URL: {1}\n"
+"Tarayıcı: {2}"
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -384,3 +348,47 @@ msgstr "Tüm Web Uygulamaları kaldırıldı."
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 445
 msgid "Failed to remove all WebApps"
 msgstr "Tüm Web Uygulamaları kaldırma işlemi başarısız oldu."
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
+msgid "No WebApps"
+msgstr "Web Uygulamaları Yok"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
+msgid "There are no WebApps to export."
+msgstr "Dışa aktarılacak Web Uygulamaları yok."
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
+msgid "File Not Found"
+msgstr "Dosya Bulunamadı"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
+msgid "The selected file does not exist."
+msgstr "Seçilen dosya mevcut değil."
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 271
+msgid "Invalid File"
+msgstr "Geçersiz Dosya"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 272
+msgid "The selected file is not a valid ZIP archive."
+msgstr "Seçilen dosya geçerli bir ZIP arşivi değil."
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 403
+msgid "Imported {} WebApps successfully ({} duplicates skipped)"
+msgstr "{} WebApps başarıyla içe aktarıldı ({} kopyalar atlandı)"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 341
+msgid "Imported {} WebApps successfully"
+msgstr "{} WebApps başarıyla içe aktarıldı."
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 346
+msgid "Error importing WebApps"
+msgstr "Web Uygulamaları içe aktarım hatası"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
+msgid "No"
+msgstr "Hayır"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 364
+msgid "Yes"
+msgstr "Evet"

@@ -15,59 +15,58 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
-msgid "No WebApps"
-msgstr "웹앱 없음"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
-msgid "There are no WebApps to export."
-msgstr "내보낼 웹앱이 없습니다."
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
-msgid "File Not Found"
-msgstr "파일을 찾을 수 없습니다."
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
-msgid "The selected file does not exist."
-msgstr "선택한 파일이 존재하지 않습니다."
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 271
-msgid "Invalid File"
-msgstr "잘못된 파일"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 272
-msgid "The selected file is not a valid ZIP archive."
-msgstr "선택한 파일은 유효한 ZIP 아카이브가 아닙니다."
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 404
-msgid "Imported {} WebApps successfully ({} duplicates skipped)"
-msgstr "{} 웹앱이 성공적으로 가져와졌습니다 ({} 중복 항목 건너뜀)"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 341
-msgid "Imported {} WebApps successfully"
-msgstr "{} 웹앱이 성공적으로 가져와졌습니다."
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 346
-msgid "Error importing WebApps"
-msgstr "웹앱 가져오기 오류"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 91
+#, python-brace-format
+msgid "Browser: {0}"
+msgstr "브라우저: {0}"
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
-# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 104
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
+msgid "Edit WebApp"
+msgstr "웹앱 편집"
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 357
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
-msgid "OK"
-msgstr "알겠습니다."
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
+msgid "Delete WebApp"
+msgstr "웹앱 삭제"
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
-msgid "No"
-msgstr "No"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
+msgid "Welcome to WebApps Manager"
+msgstr "웹앱 관리자에 오신 것을 환영합니다."
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 364
-msgid "Yes"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
+msgid ""
+"<b>What are WebApps?</b>\n"
+"\n"
+"WebApps are web applications that run in a dedicated browser window, providing a more app-like "
+"experience for your favorite websites.\n"
+"\n"
+"<b>Benefits of using WebApps:</b>\n"
+"\n"
+"• <b>Focus</b>: Work without the distractions of other browser tabs\n"
+"• <b>Desktop Integration</b>: Quick access from your application menu\n"
+"• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
 msgstr ""
+"<b>웹앱이란?</b>\n"
+"\n"
+"웹앱은 전용 브라우저 창에서 실행되는 웹 애플리케이션으로, 좋아하는 웹사이트에 대해 더 앱 같은 경험을 제공합니다.\n"
+"\n"
+"<b>웹앱 사용의 이점:</b>\n"
+"\n"
+"• <b>집중</b>: 다른 브라우저 탭의 방해 없이 작업\n"
+"• <b>데스크탑 통합</b>: 애플리케이션 메뉴에서 빠른 접근\n"
+"• <b>격리된 프로필</b>: 선택적으로 각 웹앱은 자체 쿠키와 설정을 가질 수 있음"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 134
+msgid "Show dialog on startup"
+msgstr "시작 시 대화 상자 표시"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
+msgid "Let's Start"
+msgstr "시작하겠습니다."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
 msgid "Select Browser"
@@ -118,22 +117,15 @@ msgstr "브라우저를 선택하세요."
 msgid "Error"
 msgstr "오류"
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 91
-#, python-brace-format
-msgid "Browser: {0}"
-msgstr "브라우저: {0}"
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 104
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
-msgid "Edit WebApp"
-msgstr "웹앱 편집"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
-msgid "Delete WebApp"
-msgstr "웹앱 삭제"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 357
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
+msgid "OK"
+msgstr "알겠습니다."
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -227,42 +219,6 @@ msgstr "웹앱의 URL을 입력하세요."
 msgid "Please select a browser for the WebApp."
 msgstr "웹앱을 위한 브라우저를 선택하세요."
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
-msgid "Welcome to WebApps Manager"
-msgstr "웹앱 관리자에 오신 것을 환영합니다."
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
-msgid ""
-"<b>What are WebApps?</b>\n"
-"\n"
-"WebApps are web applications that run in a dedicated browser window, providing a more app-like "
-"experience for your favorite websites.\n"
-"\n"
-"<b>Benefits of using WebApps:</b>\n"
-"\n"
-"• <b>Focus</b>: Work without the distractions of other browser tabs\n"
-"• <b>Desktop Integration</b>: Quick access from your application menu\n"
-"• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
-msgstr ""
-"<b>웹앱이란?</b>\n"
-"\n"
-"웹앱은 전용 브라우저 창에서 실행되는 웹 애플리케이션으로, 좋아하는 웹사이트에 대해 더 앱 같은 경험을 제공합니다.\n"
-"\n"
-"<b>웹앱 사용의 이점:</b>\n"
-"\n"
-"• <b>집중</b>: 다른 브라우저 탭의 방해 없이 작업\n"
-"• <b>데스크탑 통합</b>: 애플리케이션 메뉴에서 빠른 접근\n"
-"• <b>격리된 프로필</b>: 선택적으로 각 웹앱은 자체 쿠키와 설정을 가질 수 있음"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 134
-msgid "Show dialog on startup"
-msgstr "시작 시 대화 상자 표시"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
-msgid "Let's Start"
-msgstr "시작하겠습니다."
-# 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
 msgid "WebApps Manager"
 msgstr "웹앱 관리자"
@@ -329,10 +285,18 @@ msgstr "웹앱이 성공적으로 업데이트되었습니다."
 msgid "Browser changed to {0}"
 msgstr "브라우저가 {0}로 변경되었습니다."
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 329
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 372
 #, python-brace-format
-msgid "Are you sure you want to delete {0}?"
-msgstr "정말로 {0}을(를) 삭제하시겠습니까?"
+msgid ""
+"Are you sure you want to delete {0}?\n"
+"\n"
+"URL: {1}\n"
+"Browser: {2}"
+msgstr ""
+"{0}를 삭제하시겠습니까?\n"
+"\n"
+"URL: {1}\n"
+"브라우저: {2}"
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
@@ -382,3 +346,47 @@ msgstr "모든 웹앱이 제거되었습니다."
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 446
 msgid "Failed to remove all WebApps"
 msgstr "모든 웹앱을 제거하지 못했습니다."
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
+msgid "No WebApps"
+msgstr "웹앱 없음"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
+msgid "There are no WebApps to export."
+msgstr "내보낼 웹앱이 없습니다."
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
+msgid "File Not Found"
+msgstr "파일을 찾을 수 없습니다."
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
+msgid "The selected file does not exist."
+msgstr "선택한 파일이 존재하지 않습니다."
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 271
+msgid "Invalid File"
+msgstr "잘못된 파일"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 272
+msgid "The selected file is not a valid ZIP archive."
+msgstr "선택한 파일은 유효한 ZIP 아카이브가 아닙니다."
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 404
+msgid "Imported {} WebApps successfully ({} duplicates skipped)"
+msgstr "{} 웹앱이 성공적으로 가져와졌습니다 ({} 중복 항목 건너뜀)"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 341
+msgid "Imported {} WebApps successfully"
+msgstr "{} 웹앱이 성공적으로 가져와졌습니다."
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 346
+msgid "Error importing WebApps"
+msgstr "웹앱 가져오기 오류"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
+msgid "No"
+msgstr "No"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 364
+msgid "Yes"
+msgstr ""
