@@ -10,25 +10,33 @@ import tempfile
 import zipfile
 import time
 import subprocess
+from collections.abc import Callable
+
+from webapps import APP_VERSION
+from webapps.utils.translation import _
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw, Gio, Gdk
+from gi.repository import Gtk, Adw, Gio, Gdk, GLib  # noqa: E402
 
-from webapps.models.webapp_model import WebAppCollection
-from webapps.models.browser_model import BrowserCollection
-from webapps.ui.main_window import MainWindow
-from webapps.utils.command_executor import CommandExecutor
-from webapps.utils.translation import _
+from webapps.models.webapp_model import WebAppCollection  # noqa: E402
+from webapps.models.browser_model import BrowserCollection  # noqa: E402
+from webapps.ui.main_window import MainWindow  # noqa: E402
+from webapps.utils.command_executor import CommandExecutor  # noqa: E402
+
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class WebAppsApplication(Adw.Application):
     """Main application class for WebApps Manager"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize the application"""
         super().__init__(
-            application_id="org.biglinux.webapps", flags=Gio.ApplicationFlags.FLAGS_NONE
+            application_id="br.com.biglinux.webapps",
+            flags=Gio.ApplicationFlags.FLAGS_NONE,
         )
 
         # Set up application
@@ -53,7 +61,7 @@ class WebAppsApplication(Adw.Application):
         remove_all_action.connect("activate", self.on_remove_all)
         self.add_action(remove_all_action)
 
-    def do_activate(self):
+    def do_activate(self) -> None:
         """Called when the application is activated"""
         # Load data first
         self.load_data()
@@ -71,33 +79,31 @@ class WebAppsApplication(Adw.Application):
         browse_profiles_action.connect("activate", self.on_browse_profiles_activated)
         self.add_action(browse_profiles_action)
 
-    def on_browse_apps_activated(self, action, parameter):
+    def on_browse_apps_activated(
+        self, _action: Gio.SimpleAction, _parameter: GLib.Variant | None
+    ) -> None:
         """Open applications folder in the default file manager"""
         applications_path = os.path.expanduser("~/.local/share/applications")
         self._open_folder(applications_path)
 
-    def on_browse_profiles_activated(self, action, parameter):
+    def on_browse_profiles_activated(
+        self, _action: Gio.SimpleAction, _parameter: GLib.Variant | None
+    ) -> None:
         """Open profiles folder in the default file manager"""
         profiles_path = os.path.expanduser("~/.bigwebapps")
         self._open_folder(profiles_path)
 
-    def _open_folder(self, folder_path):
-        """Open a folder in the default file manager"""
-        if os.path.exists(folder_path):
-            try:
-                # Use Gtk.show_uri to open the folder in the default file manager
-                Gtk.show_uri(None, f"file://{folder_path}", Gdk.CURRENT_TIME)
-            except Exception as e:
-                print(f"Error opening folder: {e}")
-                # Fallback to xdg-open if Gtk.show_uri fails
-                subprocess.Popen(["xdg-open", folder_path])
-        else:
-            print(f"Folder does not exist: {folder_path}")
-            # Create the folder if it doesn't exist and then open it
-            os.makedirs(folder_path, exist_ok=True)
-            self._open_folder(folder_path)
+    def _open_folder(self, folder_path: str) -> None:
+        """Open a folder in the default file manager, creating it if needed."""
+        os.makedirs(folder_path, exist_ok=True)
+        try:
+            Gtk.show_uri(None, f"file://{folder_path}", Gdk.CURRENT_TIME)
+        except Exception:
+            subprocess.Popen(["xdg-open", folder_path])
 
-    def create_action(self, name, callback, shortcuts=None):
+    def create_action(
+        self, name: str, callback: Callable, shortcuts: list[str] | None = None
+    ) -> None:
         """Create a new application action with optional keyboard shortcuts"""
         action = Gio.SimpleAction.new(name, None)
         action.connect("activate", callback)
@@ -106,23 +112,26 @@ class WebAppsApplication(Adw.Application):
         if shortcuts:
             self.set_accels_for_action(f"app.{name}", shortcuts)
 
-    def on_about_action(self, widget, _):
+    def on_about_action(
+        self, _widget: Gio.SimpleAction, _param: GLib.Variant | None
+    ) -> None:
         """Show the about dialog"""
-        about = Adw.AboutWindow(
-            transient_for=self.props.active_window,
+        about = Adw.AboutDialog(
             application_name="WebApps Manager",
             application_icon="big-webapps",
             developer_name="BigLinux Team",
-            version="3.0.0",
+            version=APP_VERSION,
             developers=["BigLinux Team"],
             copyright="© 2023 BigLinux Team",
             license_type=Gtk.License.GPL_3_0,
             website="https://www.biglinux.com.br",
             issue_url="https://github.com/biglinux/biglinux-webapps/issues",
         )
-        about.present()
+        about.present(self.props.active_window)
 
-    def on_refresh_action(self, widget, _):
+    def on_refresh_action(
+        self, _widget: Gio.SimpleAction, _param: GLib.Variant | None
+    ) -> None:
         """Refresh the data"""
         self.load_data()
 
@@ -131,25 +140,29 @@ class WebAppsApplication(Adw.Application):
         if active_window and hasattr(active_window, "refresh_ui"):
             active_window.refresh_ui()
 
-    def load_data(self):
+    def load_data(self) -> None:
         """Load webapp and browser data from the system"""
         # Load webapp data
-        webapps_data = self.command_executor.execute_json_command("./get_json.sh")
+        webapps_data = self.command_executor.execute_json_command(["./get_json.sh"])
         self.webapp_collection.load_from_json(webapps_data)
 
         # Load browser data
-        browsers_data = self.command_executor.execute_json_command(
-            "./check_browser.sh --list-json"
-        )
+        browsers_data = self.command_executor.execute_json_command([
+            "./check_browser.sh",
+            "--list-json",
+        ])
         self.browser_collection.load_from_json(browsers_data)
 
         # Get default browser
-        default_browser = self.command_executor.execute_command(
-            "./check_browser.sh --default"
-        ).strip()
+        default_browser = self.command_executor.execute_command([
+            "./check_browser.sh",
+            "--default",
+        ]).strip()
         self.browser_collection.set_default(default_browser)
 
-    def on_export_action(self, widget, param):
+    def on_export_action(
+        self, _widget: Gio.SimpleAction, _param: GLib.Variant | None
+    ) -> None:
         """Export webapps to a file"""
         # Use direct strings to avoid translation issues with file chooser
         dialog = Gtk.FileChooserNative.new(
@@ -171,7 +184,9 @@ class WebAppsApplication(Adw.Application):
         dialog.connect("response", self._handle_export_response)
         dialog.show()
 
-    def _handle_export_response(self, dialog, response):
+    def _handle_export_response(
+        self, dialog: Gtk.FileChooserNative, response: int
+    ) -> None:
         """Handle export file chooser response"""
         if response == Gtk.ResponseType.ACCEPT:
             file_path = dialog.get_file().get_path()
@@ -219,7 +234,9 @@ class WebAppsApplication(Adw.Application):
                                 # Store relative path to icon
                                 webapp_dict["app_icon_url"] = f"icons/{icon_filename}"
                             except (IOError, PermissionError) as e:
-                                print(f"Failed to copy icon {webapp.app_icon_url}: {e}")
+                                logger.error(
+                                    "Failed to copy icon %s: %s", webapp.app_icon_url, e
+                                )
                                 webapp_dict["app_icon_url"] = ""
                         else:
                             # Just store the original URL if not in home folder
@@ -241,8 +258,10 @@ class WebAppsApplication(Adw.Application):
                                     shutil.copy2(theme_file, theme_dest)
                                     # No need to store this reference as it's implied by the icon name
                                 except (IOError, PermissionError) as e:
-                                    print(
-                                        f"Failed to copy theme file {theme_file}: {e}"
+                                    logger.error(
+                                        "Failed to copy theme file %s: %s",
+                                        theme_file,
+                                        e,
                                     )
 
                         webapps_data.append(webapp_dict)
@@ -253,7 +272,7 @@ class WebAppsApplication(Adw.Application):
 
                     # Create ZIP archive
                     with zipfile.ZipFile(file_path, "w", zipfile.ZIP_DEFLATED) as zipf:
-                        for root, _, files in os.walk(temp_dir):
+                        for root, _dirs, files in os.walk(temp_dir):
                             for file in files:
                                 file_path_full = os.path.join(root, file)
                                 zipf.write(
@@ -265,13 +284,15 @@ class WebAppsApplication(Adw.Application):
                 self._show_notification("WebApps exported successfully")
 
             except Exception as e:
-                print(f"Error exporting webapps: {e}")
+                logger.error("Error exporting webapps: %s", e)
                 # Use direct strings to avoid translation issues
                 self._show_error_dialog(
                     "Export Failed", f"Failed to export WebApps: {str(e)}"
                 )
 
-    def on_import_action(self, widget, param):
+    def on_import_action(
+        self, _widget: Gio.SimpleAction, _param: GLib.Variant | None
+    ) -> None:
         """Import webapps from a file"""
         # Use direct strings to avoid translation issues with file chooser
         dialog = Gtk.FileChooserNative.new(
@@ -292,7 +313,9 @@ class WebAppsApplication(Adw.Application):
         dialog.connect("response", self._handle_import_response)
         dialog.show()
 
-    def _handle_import_response(self, dialog, response):
+    def _handle_import_response(
+        self, dialog: Gtk.FileChooserNative, response: int
+    ) -> None:
         """Handle import file chooser response"""
         if response == Gtk.ResponseType.ACCEPT:
             file_path = dialog.get_file().get_path()
@@ -315,8 +338,16 @@ class WebAppsApplication(Adw.Application):
 
                 # Create temporary directory for import
                 with tempfile.TemporaryDirectory() as temp_dir:
-                    # Extract ZIP archive
+                    # Extract ZIP archive with path traversal protection
                     with zipfile.ZipFile(file_path, "r") as zipf:
+                        for member in zipf.namelist():
+                            member_path = os.path.realpath(
+                                os.path.join(temp_dir, member)
+                            )
+                            if not member_path.startswith(
+                                os.path.realpath(temp_dir) + os.sep
+                            ):
+                                raise ValueError(f"Unsafe path in ZIP: {member}")
                         zipf.extractall(temp_dir)
 
                     # Read webapps data from JSON file
@@ -374,7 +405,9 @@ class WebAppsApplication(Adw.Application):
                                     # Update icon URL to point to local copy
                                     webapp_dict["app_icon_url"] = local_icon_path
                             except (IOError, PermissionError) as e:
-                                print(f"Failed to copy icon {export_icon_path}: {e}")
+                                logger.error(
+                                    "Failed to copy icon %s: %s", export_icon_path, e
+                                )
                                 webapp_dict["app_icon_url"] = ""
 
                         # Generate a unique app_file name
@@ -409,22 +442,24 @@ class WebAppsApplication(Adw.Application):
                         )
 
             except Exception as e:
-                print(f"Error importing webapps: {e}")
+                logger.error("Error importing webapps: %s", e)
                 self._show_error_dialog(_("Error importing WebApps"), str(e))
 
-    def _show_notification(self, message):
+    def _show_notification(self, message: str) -> None:
         """Show a notification message"""
         active_window = self.props.active_window
         if active_window and hasattr(active_window, "show_toast"):
             active_window.show_toast(message)
 
-    def _show_error_dialog(self, title, message):
+    def _show_error_dialog(self, title: str, message: str) -> None:
         """Show an error dialog"""
         dialog = Adw.MessageDialog.new(self.props.active_window, title, message)
         dialog.add_response("ok", _("OK"))
         dialog.present()
 
-    def _show_confirmation_dialog(self, title, message, callback):
+    def _show_confirmation_dialog(
+        self, title: str, message: str, callback: Callable[[bool], None]
+    ) -> None:
         """Show a confirmation dialog with Yes/No buttons"""
         dialog = Adw.MessageDialog.new(self.props.active_window, title, message)
         dialog.add_response("no", _("No"))
@@ -432,14 +467,16 @@ class WebAppsApplication(Adw.Application):
         dialog.set_default_response("no")
         dialog.set_response_appearance("yes", Adw.ResponseAppearance.SUGGESTED)
 
-        dialog.connect("response", lambda d, response: callback(response == "yes"))
+        dialog.connect("response", lambda _d, response: callback(response == "yes"))
         dialog.present()
 
-    def quit(self, widget, _):
+    def quit(self, _widget: Gio.SimpleAction, _param: GLib.Variant | None) -> None:
         """Quit the application"""
         self.quit()
 
-    def on_remove_all(self, action, param):
+    def on_remove_all(
+        self, _action: Gio.SimpleAction, _param: GLib.Variant | None
+    ) -> None:
         """Remove all webapps after confirmation"""
         # Access the active window instead of using self.win
         active_window = self.props.active_window

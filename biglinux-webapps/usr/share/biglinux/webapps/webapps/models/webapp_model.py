@@ -11,7 +11,7 @@ class WebApp(GObject.GObject):
 
     __gtype_name__ = "WebApp"
 
-    def __init__(self, app_data=None):
+    def __init__(self, app_data: dict | None = None) -> None:
         """
         Initialize a WebApp instance
 
@@ -34,13 +34,8 @@ class WebApp(GObject.GObject):
         if app_data:
             self.load_from_dict(app_data)
 
-    def load_from_dict(self, app_data):
-        """
-        Load data from a dictionary
-
-        Parameters:
-            app_data (dict): Dictionary containing webapp data
-        """
+    def load_from_dict(self, app_data: dict) -> None:
+        """Load webapp data from a dictionary."""
         self.browser = app_data.get("browser", "")
         self.app_file = app_data.get("app_file", "")
         self.app_name = app_data.get("app_name", "")
@@ -50,7 +45,7 @@ class WebApp(GObject.GObject):
         self.app_categories = app_data.get("app_categories", "Webapps")
         self.app_icon_url = app_data.get("app_icon_url", "")
 
-    def get_main_category(self):
+    def get_main_category(self) -> str:
         """
         Get the main category of the webapp
 
@@ -63,7 +58,7 @@ class WebApp(GObject.GObject):
         categories = self.app_categories.split(";")
         return categories[0] if categories else "Webapps"
 
-    def set_main_category(self, category):
+    def set_main_category(self, category: str) -> None:
         """
         Set the main category of the webapp
 
@@ -81,7 +76,7 @@ class WebApp(GObject.GObject):
         other_categories = [c for c in categories[1:] if c and c != category]
         self.app_categories = ";".join([category] + other_categories)
 
-    def derive_profile_name(self):
+    def derive_profile_name(self) -> str:
         """
         Derive a profile name from the URL
 
@@ -106,36 +101,23 @@ class WebApp(GObject.GObject):
 class WebAppCollection:
     """Collection of WebApp objects with filtering and categorization capabilities"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize an empty WebApp collection"""
         self.webapps = []
 
-    def load_from_json(self, json_data):
-        """
-        Load webapps from JSON data
-
-        Parameters:
-            json_data (list): List of webapp dictionaries
-        """
+    def load_from_json(self, json_data: list[dict] | None) -> None:
+        """Load webapps from JSON data."""
         self.webapps = []
+        if json_data:
+            for app_data in json_data:
+                webapp = WebApp(app_data)
+                self.webapps.append(webapp)
 
-        if not json_data:
-            return
-
-        for app_data in json_data:
-            webapp = WebApp(app_data)
-            self.webapps.append(webapp)
-
-    def get_all(self):
-        """
-        Get all webapps
-
-        Returns:
-            list: List of all WebApp objects
-        """
+    def get_all(self) -> list["WebApp"]:
+        """Return all webapps."""
         return self.webapps
 
-    def filter_by_text(self, filter_text):
+    def filter_by_text(self, filter_text: str) -> list["WebApp"]:
         """
         Filter webapps by text
 
@@ -160,7 +142,9 @@ class WebAppCollection:
             )
         ]
 
-    def get_categorized(self, filter_text=None):
+    def get_categorized(
+        self, filter_text: str | None = None
+    ) -> dict[str, list["WebApp"]]:
         """
         Get webapps categorized by their categories
 
@@ -186,18 +170,13 @@ class WebAppCollection:
 
         return categorized
 
-    def add(self, webapp):
-        """
-        Add a webapp to the collection
-
-        Parameters:
-            webapp (WebApp): WebApp object to add
-        """
+    def add(self, webapp: "WebApp") -> None:
+        """Add a webapp to the collection."""
         self.webapps.append(webapp)
 
-    def remove(self, webapp):
+    def remove(self, webapp: "WebApp") -> None:
         """
-        Remove a webapp from the collection
+        Remove a webapp from the collection.
 
         Parameters:
             webapp (WebApp): WebApp object to remove

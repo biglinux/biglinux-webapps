@@ -21,6 +21,13 @@ from webapps.utils.browser_icon_utils import set_image_from_browser_icon
 
 # Import the centralized translation function
 from webapps.utils.translation import _
+from webapps.models.webapp_model import WebApp
+from webapps.models.browser_model import BrowserCollection
+from webapps.utils.command_executor import CommandExecutor
+
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class WebAppDialog(Adw.Window):
@@ -30,8 +37,13 @@ class WebAppDialog(Adw.Window):
     __gsignals__ = {"response": (GObject.SignalFlags.RUN_FIRST, None, (int,))}
 
     def __init__(
-        self, parent, webapp, browser_collection, command_executor, is_new=False
-    ):
+        self,
+        parent: Gtk.Window,
+        webapp: WebApp,
+        browser_collection: BrowserCollection,
+        command_executor: CommandExecutor,
+        is_new: bool = False,
+    ) -> None:
         """
         Initialize the WebAppDialog
 
@@ -69,7 +81,9 @@ class WebAppDialog(Adw.Window):
             self.system_default_browser_id = (
                 self.command_executor.get_system_default_browser()
             )
-            print(f"System default browser detected: {self.system_default_browser_id}")
+            logger.debug(
+                "System default browser detected: %s", self.system_default_browser_id
+            )
 
         # For new webapps, always use the system default browser if available
         if self.is_new and self.system_default_browser_id:
@@ -81,8 +95,10 @@ class WebAppDialog(Adw.Window):
                 # Override any previously selected browser with the system default
                 original_browser = self.webapp.browser
                 self.webapp.browser = self.system_default_browser_id
-                print(
-                    f"Overriding browser selection: {original_browser} → {self.system_default_browser_id}"
+                logger.debug(
+                    "Overriding browser selection: %s → %s",
+                    original_browser,
+                    self.system_default_browser_id,
                 )
             else:
                 # Fallback to the app's default browser if the system browser isn't supported
@@ -90,20 +106,23 @@ class WebAppDialog(Adw.Window):
                     default_browser = self.browser_collection.get_default()
                     if default_browser:
                         self.webapp.browser = default_browser.browser_id
-                        print(
-                            f"System browser not supported, using app default: {default_browser.browser_id}"
+                        logger.warning(
+                            "System browser not supported, using app default: %s",
+                            default_browser.browser_id,
                         )
         # If no browser is set at all and system detection failed, use the app's default browser
         elif self.is_new and not self.webapp.browser:
             default_browser = self.browser_collection.get_default()
             if default_browser:
                 self.webapp.browser = default_browser.browser_id
-                print(f"Using app default browser: {default_browser.browser_id}")
+                logger.debug(
+                    "Using app default browser: %s", default_browser.browser_id
+                )
 
         # Create UI
         self.setup_ui()
 
-    def _clone_webapp(self, webapp):
+    def _clone_webapp(self, webapp: WebApp) -> WebApp:
         """
         Create a copy of a webapp
 
@@ -129,9 +148,8 @@ class WebAppDialog(Adw.Window):
 
         return WebApp(webapp_dict)
 
-    def setup_ui(self):
-        """Set up the UI components"""
-        # Create main layout with content area
+    def setup_ui(self) -> None:
+        """Set up the UI components."""
         content = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
 
         # Add key event controller to handle ESC key to close dialog
@@ -413,8 +431,6 @@ class WebAppDialog(Adw.Window):
             style_context, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         )
 
-        loading_overlay.append(self.loading_box)
-
         self.loading_overlay = loading_overlay
         self.loading_overlay.set_visible(False)
 
@@ -423,7 +439,13 @@ class WebAppDialog(Adw.Window):
         # Use set_content() instead of set_child() for Adw.Window
         self.set_content(overlay)
 
-    def on_key_pressed(self, controller, keyval, keycode, state):
+    def on_key_pressed(
+        self,
+        _controller: Gtk.EventControllerKey,
+        keyval: int,
+        _keycode: int,
+        _state: Gdk.ModifierType,
+    ) -> bool:
         """Handle key press events"""
         if keyval == Gdk.KEY_Escape:
             self.close()
@@ -431,16 +453,7 @@ class WebAppDialog(Adw.Window):
             return True
         return False
 
-    def set_icon_from_path(self, icon_path):
-        """
-        Set the icon from a file path or icon name
-
-        Parameters:
-            icon_path (str): Path to the icon file or icon name
-        """
-        if not icon_path:
-            self.icon_image.set_from_icon_name("webapp-generic")
-            return
+    def set_icon_from_path(self, icon_path: str) -> None:
 
         try:
             if icon_path.startswith("/"):
@@ -451,19 +464,14 @@ class WebAppDialog(Adw.Window):
                 # Try to load as icon name
                 self.icon_image.set_from_icon_name(icon_path)
         except Exception as e:
-            print(f"Error loading icon {icon_path}: {e}")
+            logger.error("Error loading icon %s: %s", icon_path, e)
             self.icon_image.set_from_icon_name("webapp-generic")
 
-    def set_browser_icon(self, browser_id):
-        """
-        Set the browser icon
-
-        Parameters:
-            browser_id (str): Browser identifier
-        """
+    def set_browser_icon(self, browser_id: str) -> None:
+        """Set the browser icon for the given browser ID."""
         set_image_from_browser_icon(self.browser_icon, browser_id, pixel_size=24)
 
-    def set_browser_label(self, browser_id):
+    def set_browser_label(self, browser_id: str) -> None:
         """
         Set the browser label text
 
@@ -477,21 +485,23 @@ class WebAppDialog(Adw.Window):
         else:
             self.browser_label.set_text(browser_id)
 
-    def on_url_changed(self, entry):
+    def on_url_changed(self, entry: Adw.EntryRow) -> None:
         """Handle URL entry changes"""
         self.webapp.app_url = entry.get_text()
 
-    def on_name_changed(self, entry):
+    def on_name_changed(self, entry: Adw.EntryRow) -> None:
         """Handle name entry changes"""
         self.webapp.app_name = entry.get_text()
 
-    def on_category_changed(self, dropdown, param):
+    def on_category_changed(
+        self, dropdown: Gtk.DropDown, _param: GObject.ParamSpec
+    ) -> None:
         """Handle category dropdown changes"""
         selected = dropdown.get_selected()
 
         # Debug selected index and available categories
-        print(f"Selected category index: {selected}")
-        print(f"System categories: {self.system_categories}")
+        logger.debug("Selected category index: %s", selected)
+        logger.debug("System categories: %s", self.system_categories)
 
         # Use the system categories list to get the untranslated category name
         if hasattr(self, "system_categories") and 0 <= selected < len(
@@ -506,15 +516,17 @@ class WebAppDialog(Adw.Window):
                 system_category = "Development"
 
             self.webapp.set_main_category(system_category)
-            print(f"Category set to: {system_category} (system name)")
+            logger.debug("Category set to: %s (system name)", system_category)
         else:
             # Fallback to the display name if something goes wrong
             model = dropdown.get_model()
             display_category = model.get_string(selected)
             self.webapp.set_main_category(display_category)
-            print(f"Fallback: using display category: {display_category}")
+            logger.warning("Fallback: using display category: %s", display_category)
 
-    def on_profile_switch_changed(self, switch, param):
+    def on_profile_switch_changed(
+        self, switch: Gtk.Switch, _param: GObject.ParamSpec
+    ) -> None:
         """Handle profile switch changes"""
         active = switch.get_active()
         self.profile_entry_row.set_visible(active)
@@ -529,12 +541,12 @@ class WebAppDialog(Adw.Window):
                 self.webapp.app_profile = "Default"
                 self.profile_entry_row.set_text("Default")
 
-    def on_profile_entry_changed(self, entry):
+    def on_profile_entry_changed(self, entry: Adw.EntryRow) -> None:
         """Handle profile entry changes"""
         if self.profile_switch.get_active():
             self.webapp.app_profile = entry.get_text()
 
-    def on_detect_clicked(self, button):
+    def on_detect_clicked(self, button: Gtk.Button) -> None:
         """Handle detect button click"""
         url = self.webapp.app_url
 
@@ -549,7 +561,7 @@ class WebAppDialog(Adw.Window):
         fetcher = WebsiteInfoFetcher()
         fetcher.fetch_info(url, self.on_website_info_fetched)
 
-    def on_website_info_fetched(self, title, icon_paths):
+    def on_website_info_fetched(self, title: str, icon_paths: list[str]) -> None:
         """
         Handle fetched website information
 
@@ -558,7 +570,7 @@ class WebAppDialog(Adw.Window):
             icon_paths (list): List of paths to downloaded icons
         """
         # Debug output to verify we're getting a title
-        print(f"Website title detected: {title}")
+        logger.debug("Website title detected: %s", title)
 
         # Update name if title was found
         if title:
@@ -567,7 +579,7 @@ class WebAppDialog(Adw.Window):
             # Find all entry rows in the dialog content and update the one with title "Name"
             for row in self.find_all_widget_types(self.get_content(), Adw.EntryRow):
                 if row.get_title() == _("Name"):
-                    print(f"Found Name entry, setting text to: {title}")
+                    logger.debug("Found Name entry, setting text to: %s", title)
                     row.set_text(title)
                     break
 
@@ -605,7 +617,7 @@ class WebAppDialog(Adw.Window):
                     pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(icon_path, 48, 48)
                     image.set_from_pixbuf(pixbuf)
                 except Exception as e:
-                    print(f"Error loading favicon {icon_path}: {e}")
+                    logger.error("Error loading favicon %s: %s", icon_path, e)
                     image.set_from_icon_name("image-missing")
 
                 container.append(image)
@@ -623,7 +635,9 @@ class WebAppDialog(Adw.Window):
         # Hide the loading overlay
         self.loading_overlay.set_visible(False)
 
-    def on_favicon_selected(self, flowbox, child):
+    def on_favicon_selected(
+        self, _flowbox: Gtk.FlowBox, child: Gtk.FlowBoxChild
+    ) -> None:
         """Handle favicon selection"""
         # Get the container box
         container = child.get_child()
@@ -635,7 +649,7 @@ class WebAppDialog(Adw.Window):
             self.webapp.app_icon_url = favicon_url
             self.set_icon_from_path(favicon_url)
 
-    def on_select_icon_clicked(self, button):
+    def on_select_icon_clicked(self, button: Gtk.Button) -> None:
         """Handle select icon button click"""
         icon_path = self.command_executor.select_icon()
 
@@ -643,9 +657,8 @@ class WebAppDialog(Adw.Window):
             self.webapp.app_icon_url = icon_path
             self.set_icon_from_path(icon_path)
 
-    def on_select_browser_clicked(self, button):
-        """Handle select browser button click"""
-        # Create the browser dialog with the same approach used in MainWindow
+    def on_select_browser_clicked(self, button: Gtk.Button) -> None:
+        """Handle browser selection button click."""
         dialog = BrowserDialog(
             self,  # Use self (WebAppDialog) as the parent
             self.webapp,
@@ -656,42 +669,43 @@ class WebAppDialog(Adw.Window):
         # Show the dialog
         dialog.present()
 
-    def on_browser_dialog_response(self, dialog, response):
-        """Handle browser dialog response"""
+    def on_browser_dialog_response(self, dialog: BrowserDialog, response: int) -> None:
+        """Handle browser dialog response."""
         if response == Gtk.ResponseType.OK:
-            # Get the selected browser
             browser = dialog.get_selected_browser()
+            if browser:
+                # Store original properties before update (for debugging)
+                original_browser = self.webapp.browser
 
-            # Store original properties before update (for debugging)
-            original_browser = self.webapp.browser
+                # Update only the local webapp browser property (don't save to disk yet)
+                self.webapp.browser = browser.browser_id
 
-            # Update only the local webapp browser property (don't save to disk yet)
-            self.webapp.browser = browser.browser_id
+                # Update the UI to show the new browser immediately
+                self.set_browser_icon(browser.browser_id)
+                self.set_browser_label(browser.browser_id)
 
-            # Update the UI to show the new browser immediately
-            self.set_browser_icon(browser.browser_id)
-            self.set_browser_label(browser.browser_id)
+                # Handle profile settings for Firefox-based browsers
+                if browser.is_firefox_based():
+                    self.profile_row.set_visible(False)
+                    self.profile_entry_row.set_visible(False)
+                    self.webapp.app_profile = "Default"
+                else:
+                    self.profile_row.set_visible(True)
+                    self.profile_entry_row.set_visible(self.profile_switch.get_active())
 
-            # Handle profile settings for Firefox-based browsers
-            if browser.is_firefox_based():
-                self.profile_row.set_visible(False)
-                self.profile_entry_row.set_visible(False)
-                self.webapp.app_profile = "Default"
-            else:
-                self.profile_row.set_visible(True)
-                self.profile_entry_row.set_visible(self.profile_switch.get_active())
+                # Don't update the webapp file yet - this will be done in on_save_clicked
+                logger.debug(
+                    "Browser selected: %s → %s (will be saved when clicking Save)",
+                    original_browser,
+                    self.webapp.browser,
+                )
 
-            # Don't update the webapp file yet - this will be done in on_save_clicked
-            print(
-                f"Browser selected: {original_browser} → {self.webapp.browser} (will be saved when clicking Save)"
-            )
-
-    def on_cancel_clicked(self, button):
-        """Handle cancel button click"""
+    def on_cancel_clicked(self, button: Gtk.Button) -> None:
+        """Handle cancel button click."""
         self.close()
         self.emit("response", Gtk.ResponseType.CANCEL)
 
-    def on_save_clicked(self, button):
+    def on_save_clicked(self, button: Gtk.Button) -> None:
         """Handle save button click"""
         # Validate required fields
         if not self.webapp.app_name:
@@ -716,7 +730,7 @@ class WebAppDialog(Adw.Window):
         self.close()
         self.emit("response", Gtk.ResponseType.OK)
 
-    def show_error_dialog(self, message):
+    def show_error_dialog(self, message: str) -> None:
         """
         Show an error dialog
 
@@ -727,7 +741,7 @@ class WebAppDialog(Adw.Window):
         dialog.add_response("ok", _("OK"))
         dialog.present()
 
-    def get_webapp(self):
+    def get_webapp(self) -> WebApp:
         """
         Get the edited webapp
 
@@ -736,7 +750,9 @@ class WebAppDialog(Adw.Window):
         """
         return self.webapp
 
-    def find_all_widget_types(self, widget, widget_type):
+    def find_all_widget_types(
+        self, widget: Gtk.Widget, widget_type: type
+    ) -> list[Gtk.Widget]:
         """
         Recursively find all widgets of a specific type
 

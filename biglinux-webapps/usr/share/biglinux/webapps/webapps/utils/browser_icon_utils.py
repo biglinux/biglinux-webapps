@@ -2,14 +2,15 @@
 Utility functions for handling browser icons
 """
 
-from gi.repository import GLib
+from gi.repository import GLib, Gtk
 import os
+from pathlib import Path
 
-# Folder with browser icons
-BROWSER_ICONS_PATH = "icons"
+# absolute path → icons dir relative to package root
+BROWSER_ICONS_PATH = str(Path(__file__).resolve().parent.parent.parent / "icons")
 
 
-def get_browser_icon_name(browser_id):
+def get_browser_icon_name(browser_id: str) -> str:
     """
     Get the icon name for a browser
 
@@ -27,7 +28,9 @@ def get_browser_icon_name(browser_id):
     return f"{browser_id}.svg" if browser_id else "default-webapps.png"
 
 
-def set_image_from_browser_icon(image, browser_id, pixel_size=48):
+def set_image_from_browser_icon(
+    image: Gtk.Image, browser_id: str, pixel_size: int = 48
+) -> None:
     """
     Set a Gtk.Image from a browser icon
 

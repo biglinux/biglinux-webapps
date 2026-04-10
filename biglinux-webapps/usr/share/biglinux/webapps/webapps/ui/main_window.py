@@ -4,7 +4,9 @@ MainWindow module containing the main application window
 
 import gi
 import time
-from datetime import datetime
+import uuid
+
+from typing import Any
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
@@ -17,11 +19,15 @@ from webapps.ui.welcome_dialog import WelcomeDialog
 from webapps.models.webapp_model import WebApp
 from webapps.utils.translation import _
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 class MainWindow(Adw.ApplicationWindow):
     """Main application window for WebApps Manager"""
 
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Any) -> None:
         """Initialize the main window"""
         super().__init__(
             title=_("WebApps Manager"), default_width=800, default_height=650, **kwargs
@@ -35,7 +41,7 @@ class MainWindow(Adw.ApplicationWindow):
         # Create action to show welcome dialog
         show_welcome_action = Gio.SimpleAction.new("show-welcome", None)
         show_welcome_action.connect(
-            "activate", lambda *args: self.show_welcome_dialog()
+            "activate", lambda *_args: self.show_welcome_dialog()
         )
         self.app.add_action(show_welcome_action)
 
@@ -43,14 +49,13 @@ class MainWindow(Adw.ApplicationWindow):
         if WelcomeDialog.should_show_welcome():
             self.show_welcome_dialog()
 
-    def show_welcome_dialog(self):
+    def show_welcome_dialog(self) -> None:
         """Show the welcome dialog"""
         welcome = WelcomeDialog(self)
         welcome.present()
 
-    def setup_ui(self):
-        """Set up the UI components"""
-        # Main box
+    def setup_ui(self) -> None:
+        """Set up the UI components."""
         main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
 
         # Header bar
@@ -152,16 +157,16 @@ class MainWindow(Adw.ApplicationWindow):
         # Load webapps
         self.refresh_ui()
 
-    def on_search_toggled(self, button):
+    def on_search_toggled(self, button: Gtk.ToggleButton) -> None:
         """Handle search button toggle"""
         self.search_bar.set_search_mode(button.get_active())
 
-    def on_search_changed(self, entry):
+    def on_search_changed(self, entry: Gtk.SearchEntry) -> None:
         """Handle search text changes"""
         self.filter_text = entry.get_text()
         self.refresh_ui()
 
-    def on_add_clicked(self, button):
+    def on_add_clicked(self, button: Gtk.Button) -> None:
         """Handle add button click"""
         # Create a new webapp with default values
         default_browser = self.app.browser_collection.get_default()
@@ -169,7 +174,7 @@ class MainWindow(Adw.ApplicationWindow):
 
         new_webapp = WebApp({
             "browser": browser_id,
-            "app_file": f"{int(time.time())}-{hash(datetime.now()) % 10000}",
+            "app_file": f"{int(time.time())}-{uuid.uuid4().hex[:8]}",
             "app_name": "",
             "app_url": "",
             "app_icon": "",
@@ -188,7 +193,7 @@ class MainWindow(Adw.ApplicationWindow):
         dialog.connect("response", self.on_webapp_dialog_response)
         dialog.present()
 
-    def on_webapp_clicked(self, row, webapp):
+    def on_webapp_clicked(self, row: WebAppRow, webapp: WebApp) -> None:
         """Handle webapp row click"""
         self.current_webapp = webapp
         dialog = WebAppDialog(
@@ -201,7 +206,7 @@ class MainWindow(Adw.ApplicationWindow):
         dialog.connect("response", self.on_webapp_dialog_response)
         dialog.present()
 
-    def on_webapp_dialog_response(self, dialog, response):
+    def on_webapp_dialog_response(self, dialog: WebAppDialog, response: int) -> None:
         """Handle webapp dialog response"""
         if response == Gtk.ResponseType.OK:
             # Get the updated webapp from the dialog
@@ -229,7 +234,9 @@ class MainWindow(Adw.ApplicationWindow):
                             webapp = new_webapp
                             self.current_webapp = new_webapp
                             found = True
-                            print(f"Updated new webapp reference: {webapp.app_file}")
+                            logger.debug(
+                                "Updated new webapp reference: %s", webapp.app_file
+                            )
                             break
 
                     # Add it to the collection if not already found
@@ -259,8 +266,9 @@ class MainWindow(Adw.ApplicationWindow):
                             # Update the current webapp reference too
                             if self.current_webapp:
                                 self.current_webapp = updated_webapp
-                                print(
-                                    f"Updated current_webapp reference to: {self.current_webapp.app_file}"
+                                logger.debug(
+                                    "Updated current_webapp reference to: %s",
+                                    self.current_webapp.app_file,
                                 )
                             found = True
                             break
@@ -268,15 +276,18 @@ class MainWindow(Adw.ApplicationWindow):
                     if not found and self.current_webapp:
                         # If we couldn't find the updated webapp, do a manual search
                         # based on the original file name pattern
-                        print(
-                            f"Webapp not found by URL/name. Looking for file pattern similar to {original_file}"
+                        logger.debug(
+                            "Webapp not found by URL/name. Looking for file pattern similar to %s",
+                            original_file,
                         )
 
                         for updated_webapp in self.app.webapp_collection.get_all():
                             # See if the new file follows a similar pattern but with different browser
                             if updated_webapp.app_url == original_url:
                                 self.current_webapp = updated_webapp
-                                print(f"Found by URL: {self.current_webapp.app_file}")
+                                logger.debug(
+                                    "Found by URL: %s", self.current_webapp.app_file
+                                )
                                 break
 
                     self.show_toast(_("WebApp updated successfully"))
@@ -284,7 +295,7 @@ class MainWindow(Adw.ApplicationWindow):
             # Refresh the UI
             self.refresh_ui()
 
-    def on_browser_selected(self, row, webapp):
+    def on_browser_selected(self, row: WebAppRow, webapp: WebApp) -> None:
         """Handle browser selection button click"""
         self.current_webapp = webapp
 
@@ -299,7 +310,7 @@ class MainWindow(Adw.ApplicationWindow):
         dialog.connect("response", self.on_browser_dialog_response)
         dialog.present()
 
-    def on_browser_dialog_response(self, dialog, response):
+    def on_browser_dialog_response(self, dialog: BrowserDialog, response: int) -> None:
         """Handle browser dialog response"""
         if response == Gtk.ResponseType.OK:
             # Get the selected browser from the dialog
@@ -334,8 +345,10 @@ class MainWindow(Adw.ApplicationWindow):
                     self.current_webapp = found_webapp
 
                     # Debug information
-                    print(
-                        f"Original file: {original_file}, New file: {self.current_webapp.app_file}"
+                    logger.debug(
+                        "Original file: %s, New file: %s",
+                        original_file,
+                        self.current_webapp.app_file,
                     )
 
                 self.show_toast(
@@ -345,17 +358,19 @@ class MainWindow(Adw.ApplicationWindow):
                 # Refresh the UI
                 self.refresh_ui()
 
-    def on_delete_clicked(self, row, webapp):
+    def on_delete_clicked(self, row: WebAppRow, webapp: WebApp) -> None:
         """Handle delete button click"""
         # Make sure we use the webapp from the row (most up-to-date)
         # rather than potentially stale current_webapp
         self.current_webapp = webapp
-        print(f"Delete clicked on webapp file: {webapp.app_file}")
+        logger.debug("Delete clicked on webapp file: %s", webapp.app_file)
 
         # Create a delete confirmation dialog
         dialog = Adw.MessageDialog(
             transient_for=self,
-            body=_("Are you sure you want to delete {0}?").format(webapp.app_name),
+            body=_(
+                "Are you sure you want to delete {0}?\n\nURL: {1}\nBrowser: {2}"
+            ).format(webapp.app_name, webapp.app_url, webapp.browser),
         )
 
         # Add checkbox for deleting the profile folder too
@@ -385,7 +400,12 @@ class MainWindow(Adw.ApplicationWindow):
         dialog.connect("response", self.on_delete_dialog_response, check_button)
         dialog.present()
 
-    def on_delete_dialog_response(self, dialog, response, check_button):
+    def on_delete_dialog_response(
+        self,
+        dialog: Adw.MessageDialog,
+        response: str,
+        check_button: Gtk.CheckButton | None,
+    ) -> None:
         """Handle delete dialog response"""
         if response == "delete":
             # Get delete folder option if available
@@ -402,7 +422,7 @@ class MainWindow(Adw.ApplicationWindow):
                 # Refresh the UI
                 self.refresh_ui()
 
-    def on_remove_all_clicked(self):
+    def on_remove_all_clicked(self) -> None:
         """Handle remove all webapps action with double confirmation"""
         # First confirmation dialog
         first_dialog = Adw.MessageDialog(
@@ -424,7 +444,9 @@ class MainWindow(Adw.ApplicationWindow):
         first_dialog.connect("response", self.on_first_remove_all_response)
         first_dialog.present()
 
-    def on_first_remove_all_response(self, dialog, response):
+    def on_first_remove_all_response(
+        self, dialog: Adw.MessageDialog, response: str
+    ) -> None:
         """Handle first confirmation dialog response"""
         if response == "continue":
             # Second confirmation dialog
@@ -445,7 +467,9 @@ class MainWindow(Adw.ApplicationWindow):
             second_dialog.connect("response", self.on_second_remove_all_response)
             second_dialog.present()
 
-    def on_second_remove_all_response(self, dialog, response):
+    def on_second_remove_all_response(
+        self, dialog: Adw.MessageDialog, response: str
+    ) -> None:
         """Handle second confirmation dialog response"""
         if response == "confirm":
             # Get all webapps
@@ -468,13 +492,13 @@ class MainWindow(Adw.ApplicationWindow):
             # Refresh the UI
             self.refresh_ui()
 
-    def show_toast(self, message):
+    def show_toast(self, message: str) -> None:
         """Show a toast notification"""
         toast = Adw.Toast.new(message)
         toast.set_timeout(3)
         self.toast_overlay.add_toast(toast)
 
-    def refresh_ui(self):
+    def refresh_ui(self) -> None:
         """Refresh the UI with current webapps"""
         # Clear the content box
         while self.content_box.get_first_child():

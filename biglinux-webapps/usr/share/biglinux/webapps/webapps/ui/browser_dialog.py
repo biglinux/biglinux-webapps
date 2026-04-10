@@ -11,6 +11,12 @@ from gi.repository import Gtk, Adw, GObject, Gdk
 # Import shared browser icon utilities
 from webapps.utils.browser_icon_utils import set_image_from_browser_icon
 from webapps.utils.translation import _
+from webapps.models.webapp_model import WebApp
+from webapps.models.browser_model import Browser, BrowserCollection
+
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class BrowserDialog(Adw.Window):
@@ -19,7 +25,9 @@ class BrowserDialog(Adw.Window):
     # Define custom signals
     __gsignals__ = {"response": (GObject.SignalFlags.RUN_FIRST, None, (int,))}
 
-    def __init__(self, parent, webapp, browser_collection):
+    def __init__(
+        self, parent: Gtk.Window, webapp: WebApp, browser_collection: BrowserCollection
+    ) -> None:
         """Initialize the BrowserDialog"""
         super().__init__(
             transient_for=parent,
@@ -43,9 +51,8 @@ class BrowserDialog(Adw.Window):
         # Create UI
         self.setup_ui()
 
-    def setup_ui(self):
-        """Set up the UI components"""
-        # Create content area
+    def setup_ui(self) -> None:
+        """Set up the UI components."""
         content = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
         content.set_margin_top(2)
         content.set_margin_bottom(12)
@@ -80,7 +87,9 @@ class BrowserDialog(Adw.Window):
             self.system_default_browser_id = (
                 self.command_executor.get_system_default_browser()
             )
-            print(f"System default browser detected: {self.system_default_browser_id}")
+            logger.debug(
+                "System default browser detected: %s", self.system_default_browser_id
+            )
 
         # Add browser options to the list box
         for browser in browsers:
@@ -93,7 +102,7 @@ class BrowserDialog(Adw.Window):
             if browser.browser_id == self.webapp.browser:
                 list_box.select_row(row)
                 self.selected_browser = browser
-                print(f"Selected existing browser: {browser.browser_id}")
+                logger.debug("Selected existing browser: %s", browser.browser_id)
             elif (
                 not self.webapp.browser
                 and not self.selected_browser
@@ -102,7 +111,7 @@ class BrowserDialog(Adw.Window):
             ):
                 list_box.select_row(row)
                 self.selected_browser = browser
-                print(f"Selected system default browser: {browser.browser_id}")
+                logger.debug("Selected system default browser: %s", browser.browser_id)
 
         # Add the list box to a scrolled window
         scrolled = Gtk.ScrolledWindow()
@@ -132,7 +141,7 @@ class BrowserDialog(Adw.Window):
         # Use set_content() instead of set_child() for Adw.Window
         self.set_content(content)
 
-    def _create_browser_row(self, browser):
+    def _create_browser_row(self, browser: Browser) -> Gtk.ListBoxRow:
         """
         Create a row for a browser
 
@@ -187,18 +196,20 @@ class BrowserDialog(Adw.Window):
 
         return row
 
-    def on_browser_selected(self, list_box, row):
+    def on_browser_selected(
+        self, list_box: Gtk.ListBox, row: Gtk.ListBoxRow | None
+    ) -> None:
         """Handle browser selection"""
         if row:
             self.selected_browser = row.browser
 
-    def on_cancel_clicked(self, button):
+    def on_cancel_clicked(self, button: Gtk.Button) -> None:
         """Handle cancel button click"""
         self.close()
         # Emit our custom response signal
         self.emit("response", Gtk.ResponseType.CANCEL)
 
-    def on_select_clicked(self, button):
+    def on_select_clicked(self, button: Gtk.Button) -> None:
         """Handle select button click"""
         if self.selected_browser:
             self.close()
@@ -207,7 +218,7 @@ class BrowserDialog(Adw.Window):
         else:
             self.show_error_dialog(_("Please select a browser."))
 
-    def show_error_dialog(self, message):
+    def show_error_dialog(self, message: str) -> None:
         """
         Show an error dialog
 
@@ -218,7 +229,7 @@ class BrowserDialog(Adw.Window):
         dialog.add_response("ok", _("OK"))
         dialog.present()
 
-    def get_selected_browser(self):
+    def get_selected_browser(self) -> Browser | None:
         """
         Get the selected browser
 
@@ -227,7 +238,13 @@ class BrowserDialog(Adw.Window):
         """
         return self.selected_browser
 
-    def on_key_pressed(self, controller, keyval, keycode, state):
+    def on_key_pressed(
+        self,
+        _controller: Gtk.EventControllerKey,
+        keyval: int,
+        _keycode: int,
+        _state: Gdk.ModifierType,
+    ) -> bool:
         """Handle key press events"""
         if keyval == Gdk.KEY_Escape:
             self.close()

@@ -15,6 +15,18 @@ def get_icon_path(icon_name, icon_theme):
     if icon_name.startswith("/"):
         return icon_name  # Returns the absolute path if specified
 
+    # Check user-local icons first (big-webapps copies custom icons here)
+    local_icon_dir = os.path.expanduser("~/.local/share/icons/")
+    local_icon_path = local_icon_dir + icon_name
+    if os.path.exists(local_icon_path):
+        return local_icon_path
+    # big-webapps strips extension on create → try common extensions
+    for ext in (".svg", ".png", ".webp", ".xpm", ".ico"):
+        path_with_ext = local_icon_path + ext
+        if os.path.exists(path_with_ext):
+            return path_with_ext
+
+    # Fall back to icon theme lookup
     parts = icon_name.split("-")
     for end in range(len(parts), 0, -1):
         modified_icon_name = "-".join(parts[:end])
@@ -24,11 +36,6 @@ def get_icon_path(icon_name, icon_theme):
             )
             if icon_info:
                 return icon_info.get_filename()
-
-    # Check in $HOME/.local/share/icons directly
-    local_icon_path = os.path.expanduser(f"~/.local/share/icons/{icon_name}")
-    if os.path.exists(local_icon_path):
-        return local_icon_path
 
     return "Icon not found"
 

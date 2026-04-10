@@ -2,10 +2,48 @@
 Command executor module for running shell commands
 """
 
-import os
+import logging
 import json
 import subprocess
 from pathlib import Path
+
+logger = logging.getLogger(__name__)
+
+# desktop file pattern → browser ID, ordered most-specific first
+_BROWSER_DESKTOP_MAP = [
+    ("brave-beta", "brave-beta"),
+    ("brave-nightly", "brave-nightly"),
+    ("brave", "brave"),
+    ("firefox", "firefox"),
+    ("chromium", "chromium"),
+    ("chrome.*beta", "google-chrome-beta"),
+    ("chrome.*unstable", "google-chrome-unstable"),
+    ("chrome", "google-chrome-stable"),
+    ("edge", "microsoft-edge-stable"),
+    ("vivaldi.*beta", "vivaldi-beta"),
+    ("vivaldi.*snapshot", "vivaldi-snapshot"),
+    ("vivaldi", "vivaldi-stable"),
+    ("librewolf", "librewolf"),
+    ("org.mozilla.firefox", "flatpak-firefox"),
+    ("org.chromium.chromium", "flatpak-chromium"),
+    ("com.google.chromedev", "flatpak-chrome-unstable"),
+    ("com.google.chrome", "flatpak-chrome"),
+    ("com.brave.browser", "flatpak-brave"),
+    ("com.microsoft.edge", "flatpak-edge"),
+    ("com.github.eloston.ungoogledchromium", "flatpak-ungoogled-chromium"),
+    ("io.gitlab.librewolf", "flatpak-librewolf"),
+]
+
+
+def _match_browser_desktop(desktop_name: str) -> str | None:
+    """Match desktop file name to browser ID using _BROWSER_DESKTOP_MAP."""
+    import re
+
+    lower = desktop_name.lower()
+    for pattern, browser_id in _BROWSER_DESKTOP_MAP:
+        if re.search(pattern, lower):
+            return browser_id
+    return None
 
 
 class CommandExecutor:
@@ -13,64 +51,50 @@ class CommandExecutor:
 
     def __init__(self):
         """Initialize the CommandExecutor"""
-        # Store the base directory to run commands from
-        self.base_dir = Path(os.path.dirname(os.path.realpath(__file__))).parent.parent
+        # scripts (get_json.sh, check_browser.sh) live one level above the Python package
+        self.base_dir = Path(__file__).resolve().parent.parent.parent
 
-    def execute_command(self, command, input_data=None):
+    def execute_command(self, argv: list[str], input_data: str | None = None) -> str:
         """
-        Execute a shell command and return its output
+        Execute a command as an argument list (no shell).
 
         Parameters:
-            command (str): Command to execute
-            input_data (str, optional): Input data to pass to the command
+            argv: Command and arguments as a list
+            input_data: Optional stdin data
 
         Returns:
-            str: Command output
+            Command stdout
         """
         try:
-            # Change to the base directory
-            original_dir = os.getcwd()
-            os.chdir(self.base_dir)
-
-            # Execute the command
-            process = subprocess.Popen(
-                command,
-                shell=True,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                stdin=subprocess.PIPE if input_data else None,
+            result = subprocess.run(
+                argv,
+                cwd=self.base_dir,
+                capture_output=True,
                 text=True,
+                input=input_data,
             )
-
-            # Provide input if needed
-            stdout, stderr = process.communicate(input=input_data)
-
-            # Change back to the original directory
-            os.chdir(original_dir)
-
-            # Check for errors
-            if process.returncode != 0:
-                print(f"Command failed: {command}")
-                print(f"Error: {stderr}")
+            if result.returncode != 0:
+                logger.error("Command failed: %s\n%s", argv, result.stderr)
                 return ""
-
-            return stdout
+            return result.stdout
         except Exception as e:
-            print(f"Error executing command: {e}")
+            logger.error("Error executing command %s: %s", argv, e)
             return ""
 
-    def execute_json_command(self, command, input_data=None):
+    def execute_json_command(
+        self, argv: list[str], input_data: str | None = None
+    ) -> list | dict:
         """
-        Execute a shell command and parse its output as JSON
+        Execute a command and parse its output as JSON.
 
         Parameters:
-            command (str): Command to execute
-            input_data (str, optional): Input data to pass to the command
+            argv: Command and arguments as a list
+            input_data: Optional stdin data
 
         Returns:
-            dict or list: Parsed JSON data
+            Parsed JSON data
         """
-        output = self.execute_command(command, input_data)
+        output = self.execute_command(argv, input_data)
 
         if not output:
             return []
@@ -78,215 +102,115 @@ class CommandExecutor:
         try:
             return json.loads(output)
         except json.JSONDecodeError as e:
-            print(f"Error parsing JSON: {e}")
-            print(f"Output: {output}")
+            logger.error("Error parsing JSON: %s\nOutput: %s", e, output)
             return []
 
-    def create_webapp(self, webapp):
+    def create_webapp(self, webapp) -> bool:
         """
-        Create a new webapp
+        Create a new webapp.
 
         Parameters:
-            webapp (WebApp): WebApp object to create
+            webapp: WebApp object to create
 
         Returns:
-            bool: True if successful, False otherwise
+            True if successful
         """
-        # Encode parameters properly
-        browser = webapp.browser
-        app_name = webapp.app_name
-        app_url = webapp.app_url
-        app_icon_url = webapp.app_icon_url
-        app_categories = webapp.app_categories
-        app_profile = webapp.app_profile
-
-        # Build the command
-        command = f"big-webapps create '{browser}' '{app_name}' '{app_url}' '{app_icon_url}' '{app_categories}' '{app_profile}'"
-
-        # Execute the command
-        output = self.execute_command(command)
-
-        # Check if the command was successful
+        argv = [
+            "big-webapps",
+            "create",
+            webapp.browser,
+            webapp.app_name,
+            webapp.app_url,
+            webapp.app_icon_url,
+            webapp.app_categories,
+            webapp.app_profile,
+        ]
+        output = self.execute_command(argv)
         return output != ""
 
-    def update_webapp(self, webapp):
+    def update_webapp(self, webapp) -> bool:
         """
-        Update an existing webapp
+        Update an existing webapp (remove then create).
 
         Parameters:
-            webapp (WebApp): WebApp object to update
+            webapp: WebApp object to update
 
         Returns:
-            bool: True if successful, False otherwise
+            True if successful
         """
-        # First remove the existing webapp
-        remove_command = f"big-webapps remove '{webapp.app_file}'"
-        self.execute_command(remove_command)
-
-        # Then create a new one
+        self.execute_command(["big-webapps", "remove", webapp.app_file])
         return self.create_webapp(webapp)
 
-    def remove_webapp(self, webapp, delete_folder=False):
+    def remove_webapp(self, webapp, delete_folder: bool = False) -> bool:
         """
-        Remove a webapp
+        Remove a webapp.
 
         Parameters:
-            webapp (WebApp): WebApp object to remove
-            delete_folder (bool): Whether to delete the configuration folder
+            webapp: WebApp object to remove
+            delete_folder: Whether to delete the configuration folder
 
         Returns:
-            bool: True if successful, False otherwise
+            True if successful
         """
         if delete_folder:
-            command = f"big-webapps remove-with-folder '{webapp.app_file}' '{webapp.browser}' '{webapp.app_profile}'"
+            argv = [
+                "big-webapps",
+                "remove-with-folder",
+                webapp.app_file,
+                webapp.browser,
+                webapp.app_profile,
+            ]
         else:
-            command = f"big-webapps remove  '{webapp.app_file}' '{webapp.browser}' '{webapp.app_profile}'"
-
-        output = self.execute_command(command)
-
-        # Check if the command was successful
+            argv = [
+                "big-webapps",
+                "remove",
+                webapp.app_file,
+                webapp.browser,
+                webapp.app_profile,
+            ]
+        output = self.execute_command(argv)
         return output != ""
 
-    def select_icon(self):
+    def select_icon(self) -> str:
         """
-        Open the icon selector dialog
+        Open the icon selector dialog.
 
         Returns:
-            str: Path to the selected icon
+            Path to the selected icon
         """
-        command = "./select_icon.sh"
-        return self.execute_command(command).strip()
+        return self.execute_command(["./select_icon.sh"]).strip()
 
-    def get_system_default_browser(self):
+    def get_system_default_browser(self) -> str | None:
         """
-        Detect the system's default browser
+        Detect the system's default browser.
 
         Returns:
-            str: The browser ID or None if detection failed
+            Browser ID or None if detection failed
         """
         try:
-            # Try using xdg-settings first
-            result = self.execute_command("xdg-settings get default-web-browser")
+            # xdg-settings first
+            result = self.execute_command([
+                "xdg-settings",
+                "get",
+                "default-web-browser",
+            ])
             if result.strip():
-                browser_desktop = result.strip()
-                # Convert .desktop filename to browser ID
-                if "brave" in browser_desktop.lower():
-                    return "brave"
-                elif "brave-beta" in browser_desktop.lower():
-                    return "brave-beta"
-                elif "brave-nightly" in browser_desktop.lower():
-                    return "brave-nightly"
-                elif "firefox" in browser_desktop.lower():
-                    return "firefox"
-                elif "chromium" in browser_desktop.lower():
-                    return "chromium"
-                elif (
-                    "chrome" in browser_desktop.lower()
-                    and "beta" in browser_desktop.lower()
-                ):
-                    return "google-chrome-beta"
-                elif (
-                    "chrome" in browser_desktop.lower()
-                    and "unstable" in browser_desktop.lower()
-                ):
-                    return "google-chrome-unstable"
-                elif "chrome" in browser_desktop.lower():
-                    return "google-chrome-stable"
-                elif "edge" in browser_desktop.lower():
-                    return "microsoft-edge-stable"
-                elif (
-                    "vivaldi" in browser_desktop.lower()
-                    and "beta" in browser_desktop.lower()
-                ):
-                    return "vivaldi-beta"
-                elif (
-                    "vivaldi" in browser_desktop.lower()
-                    and "snapshot" in browser_desktop.lower()
-                ):
-                    return "vivaldi-snapshot"
-                elif "vivaldi" in browser_desktop.lower():
-                    return "vivaldi-stable"
-                elif "librewolf" in browser_desktop.lower():
-                    return "librewolf"
-                elif "org.mozilla.firefox" in browser_desktop.lower():
-                    return "flatpak-firefox"
-                elif "org.chromium.Chromium" in browser_desktop.lower():
-                    return "flatpak-chromium"
-                elif "com.google.Chrome" in browser_desktop.lower():
-                    return "flatpak-chrome"
-                elif "com.google.ChromeDev" in browser_desktop.lower():
-                    return "flatpak-chrome-unstable"
-                elif "com.brave.Browser" in browser_desktop.lower():
-                    return "flatpak-brave"
-                elif "com.microsoft.Edge" in browser_desktop.lower():
-                    return "flatpak-edge"
-                elif "com.github.Eloston.UngoogledChromium" in browser_desktop.lower():
-                    return "flatpak-ungoogled-chromium"
-                elif "io.gitlab.librewolf" in browser_desktop.lower():
-                    return "flatpak-librewolf"
+                match = _match_browser_desktop(result.strip())
+                if match:
+                    return match
 
-            # Try xdg-mime as fallback
-            result = self.execute_command(
-                "xdg-mime query default x-scheme-handler/http"
-            )
+            # xdg-mime fallback
+            result = self.execute_command([
+                "xdg-mime",
+                "query",
+                "default",
+                "x-scheme-handler/http",
+            ])
             if result.strip():
-                browser_desktop = result.strip()
-                # Convert .desktop filename to browser ID
-                if "brave" in browser_desktop.lower():
-                    return "brave"
-                elif "brave-beta" in browser_desktop.lower():
-                    return "brave-beta"
-                elif "brave-nightly" in browser_desktop.lower():
-                    return "brave-nightly"
-                elif "firefox" in browser_desktop.lower():
-                    return "firefox"
-                elif "chromium" in browser_desktop.lower():
-                    return "chromium"
-                elif (
-                    "chrome" in browser_desktop.lower()
-                    and "beta" in browser_desktop.lower()
-                ):
-                    return "google-chrome-beta"
-                elif (
-                    "chrome" in browser_desktop.lower()
-                    and "unstable" in browser_desktop.lower()
-                ):
-                    return "google-chrome-unstable"
-                elif "chrome" in browser_desktop.lower():
-                    return "google-chrome-stable"
-                elif "edge" in browser_desktop.lower():
-                    return "microsoft-edge-stable"
-                elif (
-                    "vivaldi" in browser_desktop.lower()
-                    and "beta" in browser_desktop.lower()
-                ):
-                    return "vivaldi-beta"
-                elif (
-                    "vivaldi" in browser_desktop.lower()
-                    and "snapshot" in browser_desktop.lower()
-                ):
-                    return "vivaldi-snapshot"
-                elif "vivaldi" in browser_desktop.lower():
-                    return "vivaldi-stable"
-                elif "librewolf" in browser_desktop.lower():
-                    return "librewolf"
-                elif "org.mozilla.firefox" in browser_desktop.lower():
-                    return "flatpak-firefox"
-                elif "org.chromium.Chromium" in browser_desktop.lower():
-                    return "flatpak-chromium"
-                elif "com.google.Chrome" in browser_desktop.lower():
-                    return "flatpak-chrome"
-                elif "com.google.ChromeDev" in browser_desktop.lower():
-                    return "flatpak-chrome-unstable"
-                elif "com.brave.Browser" in browser_desktop.lower():
-                    return "flatpak-brave"
-                elif "com.microsoft.Edge" in browser_desktop.lower():
-                    return "flatpak-edge"
-                elif "com.github.Eloston.UngoogledChromium" in browser_desktop.lower():
-                    return "flatpak-ungoogled-chromium"
-                elif "io.gitlab.librewolf" in browser_desktop.lower():
-                    return "flatpak-librewolf"
+                match = _match_browser_desktop(result.strip())
+                if match:
+                    return match
         except Exception as e:
-            print(f"Error detecting system default browser: {e}")
+            logger.error("Error detecting system default browser: %s", e)
 
         return None
