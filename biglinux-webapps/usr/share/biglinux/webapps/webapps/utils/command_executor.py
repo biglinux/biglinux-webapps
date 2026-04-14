@@ -22,17 +22,29 @@ class CommandExecutor:
         # scripts (get_json.sh, check_browser.sh) live one level above the Python package
         self.base_dir = Path(__file__).resolve().parent.parent.parent
 
-    def execute_command(self, argv: list[str], input_data: str | None = None) -> str:
+    def execute_command(
+        self,
+        argv: list[str],
+        input_data: str | None = None,
+        extra_env: dict[str, str] | None = None,
+    ) -> str:
         """
         Execute a command as an argument list (no shell).
 
         Parameters:
             argv: Command and arguments as a list
             input_data: Optional stdin data
+            extra_env: Additional environment variables merged with os.environ
 
         Returns:
             Command stdout
         """
+        import os
+
+        env = None
+        if extra_env:
+            env = {**os.environ, **extra_env}
+
         try:
             result = subprocess.run(
                 argv,
@@ -40,6 +52,7 @@ class CommandExecutor:
                 capture_output=True,
                 text=True,
                 input=input_data,
+                env=env,
             )
             if result.returncode != 0:
                 logger.error("Command failed: %s\n%s", argv, result.stderr)
@@ -94,11 +107,27 @@ class CommandExecutor:
             webapp.app_categories,
             webapp.app_profile,
         ]
+
+        # pass template metadata as env vars (big-webapps reads them)
+        extra_env: dict[str, str] = {}
+        if hasattr(webapp, "mime_types") and webapp.mime_types:
+            extra_env["WEBAPP_MIME_TYPES"] = webapp.mime_types
+        if hasattr(webapp, "comment") and webapp.comment:
+            extra_env["WEBAPP_COMMENT"] = webapp.comment
+        if hasattr(webapp, "generic_name") and webapp.generic_name:
+            extra_env["WEBAPP_GENERIC_NAME"] = webapp.generic_name
+        if hasattr(webapp, "keywords") and webapp.keywords:
+            extra_env["WEBAPP_KEYWORDS"] = webapp.keywords
+        if hasattr(webapp, "template_id") and webapp.template_id:
+            extra_env["WEBAPP_TEMPLATE_ID"] = webapp.template_id
+        if hasattr(webapp, "url_schemes") and webapp.url_schemes:
+            extra_env["WEBAPP_URL_SCHEMES"] = webapp.url_schemes
+
         logger.debug("create_webapp argv: %s", argv)
         logger.debug(
             "create_webapp icon_url=%r icon=%r", webapp.app_icon_url, webapp.app_icon
         )
-        output = self.execute_command(argv)
+        output = self.execute_command(argv, extra_env=extra_env or None)
         return output != ""
 
     def update_webapp(self, webapp) -> bool:

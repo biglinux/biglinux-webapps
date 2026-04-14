@@ -168,9 +168,42 @@ if [ "$command" = "create" ]; then
         exit 1
     fi
 
+    # optional metadata via env vars (backward compatible)
+    : "${WEBAPP_MIME_TYPES:=}"
+    : "${WEBAPP_COMMENT:=}"
+    : "${WEBAPP_GENERIC_NAME:=}"
+    : "${WEBAPP_KEYWORDS:=}"
+    : "${WEBAPP_TEMPLATE_ID:=}"
+    : "${WEBAPP_URL_SCHEMES:=}"
+
+    # merge url_schemes into mime_types as x-scheme-handler/*
+    if [[ -n "$WEBAPP_URL_SCHEMES" ]]; then
+        IFS=';' read -ra schemes <<< "$WEBAPP_URL_SCHEMES"
+        for scheme in "${schemes[@]}"; do
+            [[ -z "$scheme" ]] && continue
+            WEBAPP_MIME_TYPES+="x-scheme-handler/$scheme;"
+        done
+    fi
+
+    # build optional .desktop fields
+    extra_fields=""
+    [[ -n "$WEBAPP_MIME_TYPES" ]] && extra_fields+="MimeType=$WEBAPP_MIME_TYPES
+"
+    [[ -n "$WEBAPP_COMMENT" ]] && extra_fields+="Comment=$WEBAPP_COMMENT
+"
+    [[ -n "$WEBAPP_GENERIC_NAME" ]] && extra_fields+="GenericName=$WEBAPP_GENERIC_NAME
+"
+    [[ -n "$WEBAPP_KEYWORDS" ]] && extra_fields+="Keywords=$WEBAPP_KEYWORDS
+"
+    [[ -n "$WEBAPP_TEMPLATE_ID" ]] && extra_fields+="X-BigWebApp-Template=$WEBAPP_TEMPLATE_ID
+"
+
     if [[ "$browser" == "__viewer__" ]]; then
         # App mode — Qt6 viewer without browser chrome
         app_id=$(sed 's|https://||;s|http://||;s|/|_|g;s|[^a-zA-Z0-9_-]||g' <<< "$url")
+        # support file args (%f) when mime types registered
+        exec_line="big-webapps-viewer --url=\"$url\" --name=\"$name\" --icon=\"${icon}\" --app-id=\"$app_id\""
+        [[ -n "$WEBAPP_MIME_TYPES" ]] && exec_line+=" %f"
         read -d $'' ShowText <<EOF
 #!/usr/bin/env xdg-open
 [Desktop Entry]
@@ -178,14 +211,16 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=$name
-Exec=big-webapps-viewer --url="$url" --name="$name" --icon="${icon}" --app-id="$app_id"
+Exec=$exec_line
 Icon=$icon
 StartupWMClass=br.com.biglinux.webapp.$app_id
 Categories=$category
-StartupNotify=false
+${extra_fields}StartupNotify=false
 EOF
     else
         # Browser mode — standard webapp
+        exec_line="big-webapps-exec filename=\"$filename\" $browser --class=\"$class\" --profile-directory=$profile --app=\"$url\""
+        [[ -n "$WEBAPP_MIME_TYPES" ]] && exec_line+=" %f"
         read -d $'' ShowText <<EOF
 #!/usr/bin/env xdg-open
 [Desktop Entry]
@@ -193,11 +228,11 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=$name
-Exec=big-webapps-exec filename="$filename" $browser --class="$class" --profile-directory=$profile --app="$url"
+Exec=$exec_line
 Icon=$icon
 StartupWMClass=$class
 Categories=$category
-StartupNotify=false
+${extra_fields}StartupNotify=false
 EOF
     fi
 

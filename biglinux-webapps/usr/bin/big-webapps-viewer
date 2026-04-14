@@ -3,7 +3,7 @@
 CSD headerbar replicating GTK4/Adwaita style. Fullscreen auto-hide overlay.
 """
 
-APP_VERSION = "3.4.2"
+APP_VERSION = "3.5.0"
 
 import argparse
 import json
@@ -13,6 +13,23 @@ import signal
 import sys
 from functools import lru_cache
 from pathlib import Path
+
+# optional MPRIS integration for media webapps
+try:
+    # resolve import path relative to the script
+    _mpris_dir = Path(__file__).resolve().parent.parent / "share/biglinux/webapps"
+    sys.path.insert(0, str(_mpris_dir))
+    from webapps.utils.mpris import (
+        MPRIS_AVAILABLE,
+        MprisService,
+        MEDIA_SESSION_JS,
+        start_glib_loop,
+    )
+
+    sys.path.pop(0)
+except ImportError:
+    MPRIS_AVAILABLE = False
+    MEDIA_SESSION_JS = ""
 
 from PySide6.QtCore import QRectF, QSize, QTimer, Qt, QUrl
 from PySide6.QtGui import (
@@ -29,6 +46,8 @@ from PySide6.QtGui import (
 )
 from PySide6.QtSvg import QSvgRenderer
 from PySide6.QtWebEngineCore import (
+    QWebEngineDownloadRequest,
+    QWebEnginePage,
     QWebEngineProfile,
     QWebEngineScript,
     QWebEngineSettings,
@@ -36,6 +55,7 @@ from PySide6.QtWebEngineCore import (
 from PySide6.QtWebEngineWidgets import QWebEngineView
 from PySide6.QtWidgets import (
     QApplication,
+    QFileDialog,
     QHBoxLayout,
     QLabel,
     QMainWindow,
@@ -351,12 +371,48 @@ class NavOverlay(QWidget):
         return btn
 
 
+class FileAwarePage(QWebEnginePage):
+    """WebEngine page that auto-selects a pending file on the first file dialog."""
+
+    def __init__(self, profile, parent=None):
+        super().__init__(profile, parent)
+        self._pending_file: Path | None = None
+
+    def chooseFiles(self, mode, old_files, accepted_mime):
+        """Intercept file chooser → inject pending file if available."""
+        if self._pending_file and self._pending_file.is_file():
+            f = str(self._pending_file)
+            self._pending_file = None  # one-shot
+            return [f]
+        return super().chooseFiles(mode, old_files, accepted_mime)
+
+    def featurePermissionRequested(self, url, feature):
+        """Auto-grant notification, camera, microphone permissions for webapp."""
+        grant_features = {
+            QWebEnginePage.Feature.Notifications,
+            QWebEnginePage.Feature.MediaAudioCapture,
+            QWebEnginePage.Feature.MediaVideoCapture,
+            QWebEnginePage.Feature.MediaAudioVideoCapture,
+            QWebEnginePage.Feature.DesktopVideoCapture,
+            QWebEnginePage.Feature.DesktopAudioVideoCapture,
+        }
+        if feature in grant_features:
+            self.setFeaturePermission(
+                url,
+                feature,
+                QWebEnginePage.PermissionPolicy.PermissionGrantedByUser,
+            )
+        else:
+            super().featurePermissionRequested(url, feature)
+
+
 class WebAppWindow(QMainWindow):
     """CSD window + Chromium WebEngine. Adwaita-style headerbar."""
 
     def __init__(self, url: str, title: str, icon: str, app_id: str) -> None:
         super().__init__()
         self.app_id = app_id
+        self._pending_file: Path | None = None
         self.config_path = CONFIG_BASE / f"{app_id}.json"
         self.setWindowFlags(Qt.FramelessWindowHint | Qt.Window)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground, True)
@@ -365,6 +421,7 @@ class WebAppWindow(QMainWindow):
         self._setup_ui(url, title, icon)
         self._setup_shortcuts()
         self._load_geometry()
+        self._enforce_screen_limits()
 
         # fullscreen hover detection
         self._hover_timer = QTimer(self)
@@ -380,6 +437,9 @@ class WebAppWindow(QMainWindow):
         self.profile.setPersistentCookiesPolicy(
             QWebEngineProfile.PersistentCookiesPolicy.ForcePersistentCookies
         )
+        self.profile.downloadRequested.connect(self._on_download)
+        # bridge web Notifications → native desktop notifications
+        self.profile.setNotificationPresenter(self._present_notification)
 
     def _setup_ui(self, url: str, title: str, icon: str) -> None:
         if icon:
@@ -402,8 +462,10 @@ class WebAppWindow(QMainWindow):
         self.header.title_label.setText(title)
         vbox.addWidget(self.header)
 
-        # webview
-        self.webview = QWebEngineView(self.profile, self)
+        # webview with file-aware page for %f file handling
+        self._page = FileAwarePage(self.profile, self)
+        self.webview = QWebEngineView(self)
+        self.webview.setPage(self._page)
         s = self.profile.settings()
         for attr in (
             QWebEngineSettings.WebAttribute.JavascriptEnabled,
@@ -472,6 +534,13 @@ class WebAppWindow(QMainWindow):
         self.webview.urlChanged.connect(self._on_nav)
         self.webview.page().fullScreenRequested.connect(self._on_fullscreen_req)
         self.webview.page().newWindowRequested.connect(self._on_new_window)
+        self.webview.loadStarted.connect(self._on_load_started)
+        self.webview.loadFinished.connect(self._on_load_finished)
+
+        # optional MPRIS integration for media keys
+        self._mpris = None
+        if MPRIS_AVAILABLE and MEDIA_SESSION_JS:
+            self._setup_mpris(title)
 
         # resize grip — bottom-right
         self._grip = QSizeGrip(self)
@@ -492,6 +561,34 @@ class WebAppWindow(QMainWindow):
             a.triggered.connect(slot)
             self.addAction(a)
 
+    def _setup_mpris(self, title: str) -> None:
+        """Set up MPRIS2 D-Bus service + JS media session bridge."""
+        try:
+            self._mpris = MprisService(self.app_id, title)
+            start_glib_loop()
+
+            # media key D-Bus commands → JS in webview
+            def _js_cmd(cmd: str):
+                self.webview.page().runJavaScript(
+                    f"navigator.mediaSession && navigator.mediaSession.{cmd}"
+                )
+
+            self._mpris.set_callbacks(
+                play=lambda: _js_cmd("playbackState='playing'"),
+                pause=lambda: _js_cmd("playbackState='paused'"),
+            )
+
+            # inject media session polling JS after each page load
+            media_js = QWebEngineScript()
+            media_js.setName("mpris-bridge")
+            media_js.setSourceCode(MEDIA_SESSION_JS)
+            media_js.setInjectionPoint(QWebEngineScript.InjectionPoint.DocumentReady)
+            media_js.setWorldId(QWebEngineScript.ScriptWorldId.MainWorld)
+            media_js.setRunsOnSubFrames(False)
+            self.webview.page().scripts().insert(media_js)
+        except Exception:
+            self._mpris = None
+
     def _check_hover(self) -> None:
         """Show fullscreen overlay when cursor near top of webview."""
         if not self.isFullScreen():
@@ -506,10 +603,19 @@ class WebAppWindow(QMainWindow):
         if self.nav.isVisible():
             self.nav.raise_()
 
+    def _enforce_screen_limits(self) -> None:
+        """Set maximum window size to screen bounds → block external resize."""
+        screen = QApplication.primaryScreen()
+        if screen:
+            sg = screen.availableGeometry()
+            self.setMaximumSize(sg.width(), sg.height())
+
     def _toggle_fullscreen(self) -> None:
         if self.isFullScreen():
             self._exit_fullscreen()
         else:
+            # lift max-size limit so fullscreen can use entire display
+            self.setMaximumSize(16777215, 16777215)
             self.header.setVisible(False)
             self._grip.setVisible(False)
             self.showFullScreen()
@@ -521,6 +627,7 @@ class WebAppWindow(QMainWindow):
         self.header.setVisible(True)
         self._grip.setVisible(True)
         self.showNormal()
+        self._enforce_screen_limits()
         self._apply_mask()
 
     def _toggle_maximize(self) -> None:
@@ -555,8 +662,86 @@ class WebAppWindow(QMainWindow):
             self._exit_fullscreen()
 
     def _on_new_window(self, request) -> None:
-        """Handle JS popups — open in same window instead of spawning new ones."""
-        self.webview.setUrl(request.requestedUrl())
+        """Handle JS popups — open in same page instead of spawning new ones."""
+        request.openIn(self._page)
+
+    def _on_load_started(self) -> None:
+        """Lock window size during navigation → prevent Wayland compositor
+        from resizing frameless windows on cross-origin navigations."""
+        if not self.isMaximized() and not self.isFullScreen():
+            self._pre_nav_size = self.size()
+            self.setFixedSize(self._pre_nav_size)
+
+    def _on_load_finished(self, ok: bool) -> None:
+        """Unlock window size + transfer pending file."""
+        # restore resizability
+        if hasattr(self, "_pre_nav_size"):
+            self.setMinimumSize(0, 0)
+            self._enforce_screen_limits()
+            del self._pre_nav_size
+        if ok and self._pending_file and self._pending_file.is_file():
+            self._page._pending_file = self._pending_file
+            self._pending_file = None
+            # show info bar so user knows a file is ready for upload
+            self._show_file_info_bar(self._page._pending_file)
+
+    def _show_file_info_bar(self, filepath: Path) -> None:
+        """Show a non-intrusive bar indicating a file is queued for upload."""
+        # inject a dismissible banner at top of page via JS
+        name = filepath.name.replace("'", "\\'")
+        js = f"""
+        (function() {{
+            if (document.getElementById('bigwebapp-file-bar')) return;
+            var bar = document.createElement('div');
+            bar.id = 'bigwebapp-file-bar';
+            bar.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:999999;'
+                + 'background:#1a73e8;color:#fff;padding:8px 16px;font:14px sans-serif;'
+                + 'display:flex;align-items:center;justify-content:space-between;';
+            bar.innerHTML = '<span>📄 {name} — click any upload/import button to use this file</span>'
+                + '<button onclick="this.parentElement.remove()" '
+                + 'style="background:none;border:none;color:#fff;font-size:18px;cursor:pointer">'
+                + '✕</button>';
+            document.body.prepend(bar);
+        }})();
+        """
+        self.webview.page().runJavaScript(js)
+
+    def _on_download(self, download: QWebEngineDownloadRequest) -> None:
+        """Handle file downloads — use xdg-desktop-portal via QFileDialog."""
+        suggested = download.downloadFileName()
+        dest, _ = QFileDialog.getSaveFileName(
+            self, "Save File", str(Path.home() / "Downloads" / suggested)
+        )
+        if dest:
+            download.setDownloadDirectory(str(Path(dest).parent))
+            download.setDownloadFileName(Path(dest).name)
+            download.accept()
+
+    def _present_notification(self, notification) -> None:
+        """Bridge QWebEngineNotification → native desktop notification."""
+        import subprocess as _sp
+
+        title = notification.title() or self.windowTitle()
+        body = notification.message() or ""
+        icon = notification.icon()
+        icon_arg = "dialog-information"
+
+        # save notification icon to temp file if available
+        if icon and not icon.isNull():
+            tmp = Path("/tmp") / f"bigwebapp-notify-{self.app_id}.png"
+            icon.save(str(tmp))
+            icon_arg = str(tmp)
+
+        try:
+            _sp.Popen(
+                ["notify-send", "-a", self.windowTitle(), "-i", icon_arg, title, body],
+                stdout=_sp.DEVNULL,
+                stderr=_sp.DEVNULL,
+            )
+        except FileNotFoundError:
+            pass  # notify-send not installed → degrade silently
+
+        notification.show()
 
     # --- geometry ---
 
@@ -587,6 +772,10 @@ class WebAppWindow(QMainWindow):
             d = json.loads(self.config_path.read_text())
             w = d.get("width", 1024)
             h = d.get("height", 720)
+            # clamp to 90% of screen → prevent saved full-screen widths
+            if sg:
+                w = min(w, int(sg.width() * 0.9))
+                h = min(h, int(sg.height() * 0.9))
             self.resize(w, h)
             if d.get("maximized"):
                 self.showMaximized()
@@ -629,6 +818,7 @@ def main() -> int:
     parser.add_argument("--name", default="WebApp")
     parser.add_argument("--icon", default="")
     parser.add_argument("--app-id", required=True)
+    parser.add_argument("files", nargs="*", help="Files to open via upload")
     args = parser.parse_args()
 
     url = args.url
@@ -655,6 +845,11 @@ def main() -> int:
     app.setDesktopFileName(f"br.com.biglinux.webapp.{args.app_id}")
 
     win = WebAppWindow(url, args.name, args.icon, args.app_id)
+
+    # stash pending file for upload after page loads
+    if args.files:
+        win._pending_file = Path(args.files[0]).resolve()
+
     win.show()
     return app.exec()
 

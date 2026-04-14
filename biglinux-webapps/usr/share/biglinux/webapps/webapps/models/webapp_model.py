@@ -31,6 +31,14 @@ class WebApp(GObject.GObject):
         self.app_icon_url = ""
         self.app_mode = "browser"  # "browser" or "app"
 
+        # template metadata (optional, for desktop integration)
+        self.template_id = ""
+        self.mime_types = ""
+        self.comment = ""
+        self.generic_name = ""
+        self.keywords = ""
+        self.url_schemes = ""
+
         # Load data if provided
         if app_data:
             self.load_from_dict(app_data)
@@ -98,6 +106,33 @@ class WebApp(GObject.GObject):
             if match and match.group(1):
                 return match.group(1).replace(".", "")
             return "Default"
+
+    def apply_template(self, template) -> None:
+        """
+        Apply a WebAppTemplate to pre-fill fields.
+
+        Parameters:
+            template: WebAppTemplate instance
+        """
+        self.template_id = template.template_id
+        self.app_name = template.name
+        self.app_url = template.url
+        self.app_icon = template.icon
+        self.app_icon_url = template.icon
+        self.app_categories = template.category
+
+        if template.mime_types:
+            self.mime_types = ";".join(template.mime_types) + ";"
+        if template.comment:
+            self.comment = template.comment
+        if template.generic_name:
+            self.generic_name = template.generic_name
+        if template.keywords:
+            self.keywords = ";".join(template.keywords) + ";"
+        if template.url_schemes:
+            self.url_schemes = ";".join(template.url_schemes) + ";"
+        if template.profile:
+            self.app_profile = template.profile
 
 
 class WebAppCollection:

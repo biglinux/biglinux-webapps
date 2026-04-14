@@ -26,6 +26,8 @@ from webapps.utils.translation import _
 from webapps.models.webapp_model import WebApp
 from webapps.models.browser_model import BrowserCollection
 from webapps.utils.command_executor import CommandExecutor
+from webapps.ui.template_gallery import TemplateGallery
+from webapps.templates.registry import build_default_registry
 
 import logging
 
@@ -152,6 +154,19 @@ class WebAppDialog(Adw.Window):
         header.set_title_widget(Gtk.Label(label=title))
         header.add_css_class("flat")
         header.set_show_end_title_buttons(True)
+
+        # template gallery button (new webapps only)
+        if self.is_new:
+            template_btn = Gtk.Button()
+            tpl_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+            tpl_icon = Gtk.Image.new_from_icon_name("view-grid-symbolic")
+            tpl_label = Gtk.Label(label=_("Templates"))
+            tpl_box.append(tpl_icon)
+            tpl_box.append(tpl_label)
+            template_btn.set_child(tpl_box)
+            template_btn.set_tooltip_text(_("Choose from templates"))
+            template_btn.connect("clicked", self._on_template_btn_clicked)
+            header.pack_start(template_btn)
 
         # Apply custom CSS to reduce header padding
         css_provider = Gtk.CssProvider()
@@ -438,6 +453,40 @@ class WebAppDialog(Adw.Window):
         self.loading_overlay.set_visible(False)
         overlay.add_overlay(self.loading_overlay)
         return overlay
+
+    # ── Template integration ────────────────────────────────────────
+
+    def _on_template_btn_clicked(self, _btn: Gtk.Button) -> None:
+        gallery = TemplateGallery(self)
+        gallery.connect("template-selected", self._on_template_selected)
+        gallery.present()
+
+    def _on_template_selected(self, _gallery, template_id: str) -> None:
+        registry = build_default_registry()
+        tmpl = registry.get(template_id)
+        if not tmpl:
+            return
+
+        self.webapp.apply_template(tmpl)
+        # sync UI fields
+        self.url_row.set_text(tmpl.url)
+        self.name_row.set_text(tmpl.name)
+        self.set_icon_from_path(tmpl.icon or "webapp-generic")
+        self.webapp.app_icon_url = tmpl.icon or ""
+
+        # sync category dropdown
+        for i, cat in enumerate(self.system_categories):
+            if cat == tmpl.category:
+                self.category_dropdown.set_selected(i)
+                break
+
+        # set app mode based on profile presence
+        if tmpl.profile:
+            self.app_mode_switch.set_active(True)
+
+        self._validate_url(tmpl.url)
+
+    # ── Key handlers ────────────────────────────────────────────────
 
     def on_key_pressed(
         self,
