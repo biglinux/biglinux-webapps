@@ -28,9 +28,19 @@ msgstr "Böngésző: {0}"
 msgid "Edit WebApp"
 msgstr "Webalkalmazás szerkesztése"
 # 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 113
+#, python-brace-format
+msgid "Edit {0}"
+msgstr "Szerkesztés {0}"
+# 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
 msgid "Delete WebApp"
 msgstr "Webalkalmazás törlése"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 127
+#, python-brace-format
+msgid "Delete {0}"
+msgstr "Törölje {0}"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
@@ -61,9 +71,9 @@ msgstr ""
 "• <b>Asztali integráció</b>: Gyors hozzáférés az alkalmazásmenüből\n"
 "• <b>Izolált profilok</b>: Opcionálisan, minden webappnak lehet saját sütije és beállításai\n"
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 134
-msgid "Show dialog on startup"
-msgstr "Indítsa el a párbeszédpanelt indításkor."
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
+msgid "Don't show this again"
+msgstr "Ne mutasd ezt újra"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
 msgid "Let's Start"
@@ -182,6 +192,14 @@ msgstr "Böngészői felület nélküli natív ablakban nyílik meg."
 msgid "Browser"
 msgstr "Böngésző"
 # 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 339
+msgid "Profile Settings"
+msgstr "Profilbeállítások"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 341
+msgid "Configure a separate browser profile for this webapp"
+msgstr "Állítson be egy külön böngészőprofilt ehhez a webalkalmazáshoz."
+# 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -191,9 +209,9 @@ msgstr "Böngésző"
 msgid "Use separate profile"
 msgstr "Használj külön profilt"
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 253
-msgid "Using a separate profile allows you to log in to different accounts"
-msgstr "A külön profil használata lehetővé teszi, hogy különböző fiókokba jelentkezz be."
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 345
+msgid "Allows independent cookies and sessions"
+msgstr "Független sütik és munkamenetek engedélyezése"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
 msgid "Profile Name"
@@ -211,6 +229,10 @@ msgstr "Mentés"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 336
 msgid "Loading..."
 msgstr "Betöltés..."
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 414
+msgid "Detecting website information, please wait"
+msgstr "Weboldal-információk észlelése, kérem várjon"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 453
 msgid "Please enter a URL first."
@@ -235,6 +257,10 @@ msgstr "Webalkalmazások kezelője"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 51
 msgid "Search WebApps"
 msgstr "Webalkalmazások keresése"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 79
+msgid "Main Menu"
+msgstr "Főmenü"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 61
 msgid "Refresh"
@@ -324,29 +350,24 @@ msgstr "Törlés"
 msgid "WebApp deleted successfully"
 msgstr "A WebApp sikeresen törölve."
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 392
-msgid "Are you sure you want to remove all your WebApps? This action cannot be undone."
-msgstr "Biztos benne, hogy el akarja távolítani az összes WebApp-ját? Ez a művelet nem vonható vissza."
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 341
+msgid "REMOVE ALL"
+msgstr "MINDEN ELTÁVOLÍTÁSA"
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 398
-msgid "Continue"
-msgstr "Folytatás"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 346
+#, python-brace-format
+msgid ""
+"Are you sure you want to remove all your WebApps? This action cannot be undone.\n"
+"\n"
+"Type \"{0}\" to confirm."
+msgstr ""
+"Biztos benne, hogy el akarja távolítani az összes WebApp-ját? Ez a művelet nem vonható vissza.\n"
+"\n"
+"Írja be a \"{0}\" megerősítéshez."
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 413
-msgid "Final Confirmation"
-msgstr "Végső megerősítés"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 414
-msgid "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
-msgstr "Biztos, hogy TELJESEN biztos abban, hogy el akarja távolítani az összes WebApp-ját?"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 418
-msgid "No, Cancel"
-msgstr "Nem, Mégse"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 419
-msgid "Yes, Remove All"
-msgstr "Igen, Minden eltávolítása"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
+msgid "Remove All"
+msgstr "Összes eltávolítása"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 444
 msgid "All WebApps have been removed"
@@ -355,6 +376,15 @@ msgstr "Minden WebApp eltávolításra került."
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 446
 msgid "Failed to remove all WebApps"
 msgstr "Nem sikerült eltávolítani az összes WebAppot."
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/favicon_picker.py, line: 63
+#, python-brace-format
+msgid "Icon {0} of {1}"
+msgstr "Ikon {0} a {1}-ben"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 166
+msgid "WebApps exported successfully"
+msgstr "A WebAppok sikeresen exportálva lettek."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
 msgid "No WebApps"
@@ -365,20 +395,16 @@ msgid "There are no WebApps to export."
 msgstr "Nincsenek exportálható WebAppok."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
-msgid "File Not Found"
-msgstr "Fájl nem található"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
 msgid "The selected file does not exist."
 msgstr "A kiválasztott fájl nem létezik."
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 271
-msgid "Invalid File"
-msgstr "Érvénytelen fájl"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 272
 msgid "The selected file is not a valid ZIP archive."
 msgstr "A kiválasztott fájl nem érvényes ZIP archívum."
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 346
+msgid "Error importing WebApps"
+msgstr "Hiba a WebApps importálásakor"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 404
 msgid "Imported {} WebApps successfully ({} duplicates skipped)"
@@ -387,10 +413,6 @@ msgstr "Sikeresen importált {} WebAppot ({} duplikált kihagyva)"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 341
 msgid "Imported {} WebApps successfully"
 msgstr "Sikeresen importált {} WebAppokat"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 346
-msgid "Error importing WebApps"
-msgstr "Hiba a WebApps importálásakor"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
 msgid "No"

@@ -28,9 +28,19 @@ msgstr "דפדפן: {0}"
 msgid "Edit WebApp"
 msgstr "ערוך אפליקציית אינטרנט"
 # 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 113
+#, python-brace-format
+msgid "Edit {0}"
+msgstr "ערוך {0}"
+# 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
 msgid "Delete WebApp"
 msgstr "מחק את היישום האינטרנטי"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 127
+#, python-brace-format
+msgid "Delete {0}"
+msgstr "מחק {0}"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
@@ -61,9 +71,9 @@ msgstr ""
 "• <b>אינטגרציה עם שולחן העבודה</b>: גישה מהירה מתפריט היישומים שלך\n"
 "• <b>פרופילים מבודדים</b>: אופציונלית, לכל אפליקציית רשת יכולות להיות עוגיות והגדרות משלה\n"
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 134
-msgid "Show dialog on startup"
-msgstr "הצג דיאלוג בהפעלה"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
+msgid "Don't show this again"
+msgstr "אל תראה זאת שוב"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
 msgid "Let's Start"
@@ -182,6 +192,14 @@ msgstr "נפתח כחלון מקורי ללא ממשק דפדפן"
 msgid "Browser"
 msgstr "דפדפן"
 # 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 339
+msgid "Profile Settings"
+msgstr "הגדרות פרופיל"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 341
+msgid "Configure a separate browser profile for this webapp"
+msgstr "הגדר פרופיל דפדפן נפרד עבור אפליקציה זו"
+# 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -191,9 +209,9 @@ msgstr "דפדפן"
 msgid "Use separate profile"
 msgstr "השתמש בפרופיל נפרד"
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 253
-msgid "Using a separate profile allows you to log in to different accounts"
-msgstr "שימוש בפרופיל נפרד מאפשר לך להתחבר לחשבונות שונים"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 345
+msgid "Allows independent cookies and sessions"
+msgstr "מאפשר עוגיות וסשנים עצמאיים"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
 msgid "Profile Name"
@@ -211,6 +229,10 @@ msgstr "שמור"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 336
 msgid "Loading..."
 msgstr "טוען..."
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 414
+msgid "Detecting website information, please wait"
+msgstr "מאתר מידע על האתר, אנא המתן"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 453
 msgid "Please enter a URL first."
@@ -235,6 +257,10 @@ msgstr "מנהל אפליקציות אינטרנט"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 51
 msgid "Search WebApps"
 msgstr "חפש אפליקציות אינטרנט"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 79
+msgid "Main Menu"
+msgstr "תפריט ראשי"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 61
 msgid "Refresh"
@@ -324,29 +350,24 @@ msgstr "מחק"
 msgid "WebApp deleted successfully"
 msgstr "היישום האינטרנטי נמחק בהצלחה"
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 392
-msgid "Are you sure you want to remove all your WebApps? This action cannot be undone."
-msgstr "האם אתה בטוח שברצונך להסיר את כל ה-WebApps שלך? פעולה זו אינה ניתנת לביטול."
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 341
+msgid "REMOVE ALL"
+msgstr "הסר הכל"
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 398
-msgid "Continue"
-msgstr "המשך"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 346
+#, python-brace-format
+msgid ""
+"Are you sure you want to remove all your WebApps? This action cannot be undone.\n"
+"\n"
+"Type \"{0}\" to confirm."
+msgstr ""
+"האם אתה בטוח שברצונך להסיר את כל ה-WebApps שלך? פעולה זו אינה ניתנת לביטול.\n"
+"\n"
+"הקלד \"{0}\" כדי לאשר."
 # 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 413
-msgid "Final Confirmation"
-msgstr "אישור סופי"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 414
-msgid "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
-msgstr "האם אתה בטוח בְּמוּשָׁךְ שֶׁאתָה רוצה להסיר את כל ה-WebApps שלך?"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 418
-msgid "No, Cancel"
-msgstr "לא, בטל"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 419
-msgid "Yes, Remove All"
-msgstr "כן, הסר הכל"
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
+msgid "Remove All"
+msgstr "הסר הכל"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 444
 msgid "All WebApps have been removed"
@@ -355,6 +376,15 @@ msgstr "כל האפליקציות האינטרנטיות הוסרו"
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 446
 msgid "Failed to remove all WebApps"
 msgstr "נכשל בהסרת כל היישומים האינטרנטיים"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/ui/favicon_picker.py, line: 63
+#, python-brace-format
+msgid "Icon {0} of {1}"
+msgstr "אייקון {0} של {1}"
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 166
+msgid "WebApps exported successfully"
+msgstr "היישומים המובנים ייצאו בהצלחה"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
 msgid "No WebApps"
@@ -365,20 +395,16 @@ msgid "There are no WebApps to export."
 msgstr "אין אפליקציות אינטרנט לייצוא."
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
-msgid "File Not Found"
-msgstr "הקובץ לא נמצא"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
 msgid "The selected file does not exist."
 msgstr "הקובץ שנבחר אינו קיים."
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 271
-msgid "Invalid File"
-msgstr "קובץ לא חוקי"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 272
 msgid "The selected file is not a valid ZIP archive."
 msgstr "הקובץ שנבחר אינו ארכיון ZIP תקף."
+# 
+# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 346
+msgid "Error importing WebApps"
+msgstr "שגיאה בייבוא WebApps"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 404
 msgid "Imported {} WebApps successfully ({} duplicates skipped)"
@@ -387,10 +413,6 @@ msgstr "ייבא {} אפליקציות אינטרנט בהצלחה ({} כפיל�
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 341
 msgid "Imported {} WebApps successfully"
 msgstr "ייבא {} WebApps בהצלחה"
-# 
-# File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 346
-msgid "Error importing WebApps"
-msgstr "שגיאה בייבוא WebApps"
 # 
 # File: biglinux-webapps/biglinux-webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
 msgid "No"
