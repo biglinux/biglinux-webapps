@@ -4,6 +4,7 @@ Browser model module containing the Browser and BrowserCollection classes
 
 from gi.repository import GObject
 from webapps.utils.browser_icon_utils import get_browser_icon_name
+from webapps.utils.browser_registry import get_display_name
 
 
 class Browser(GObject.GObject):
@@ -39,31 +40,7 @@ class Browser(GObject.GObject):
         Returns:
             str: User-friendly browser name
         """
-        browser_name_map = {
-            "brave": "Brave",
-            "firefox": "Firefox",
-            "chromium": "Chromium",
-            "google-chrome-stable": "Chrome",
-            "vivaldi-stable": "Vivaldi",
-            "flatpak-brave": "Brave (Flatpak)",
-            "flatpak-chrome": "Chrome (Flatpak)",
-            "flatpak-chrome-unstable": "Chrome Unstable (Flatpak)",
-            "flatpak-chromium": "Chromium (Flatpak)",
-            "flatpak-edge": "Edge (Flatpak)",
-            "microsoft-edge-stable": "Edge",
-            "librewolf": "Librewolf",
-            "flatpak-ungoogled-chromium": "Chromium (Flatpak)",
-            "flatpak-firefox": "Firefox (Flatpak)",
-            "flatpak-librewolf": "Librewolf (Flatpak)",
-            "brave-beta": "Brave Beta",
-            "brave-nightly": "Brave Nightly",
-            "google-chrome-beta": "Chrome Beta",
-            "google-chrome-unstable": "Chrome Unstable",
-            "vivaldi-beta": "Vivaldi Beta",
-            "vivaldi-snapshot": "Vivaldi Snapshot",
-        }
-
-        return browser_name_map.get(self.browser_id, self.browser_id)
+        return get_display_name(self.browser_id)
 
     def get_browser_icon_name(self) -> str:
         """Get the icon filename for this browser."""

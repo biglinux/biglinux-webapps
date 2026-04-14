@@ -136,18 +136,17 @@ class WelcomeDialog(Adw.Window):
         switch_box.set_margin_top(12)
 
         self.show_switch = Gtk.Switch()
-        self.show_switch.set_active(False)
         self.show_switch.set_valign(Gtk.Align.CENTER)
 
-        switch_label = Gtk.Label(label=_("Show dialog on startup"))
+        switch_label = Gtk.Label(label=_("Don't show this again"))
         switch_label.set_xalign(0)
         switch_label.set_hexpand(True)
 
         switch_box.append(switch_label)
         switch_box.append(self.show_switch)
 
-        # Set initial state based on saved preference
-        self.show_switch.set_active(self.get_show_preference())
+        # switch ON = "don't show" = suppress; inverted from stored preference
+        self.show_switch.set_active(not self.get_show_preference())
 
         content_box.append(switch_box)
 
@@ -171,10 +170,8 @@ class WelcomeDialog(Adw.Window):
 
     def on_close(self, button: Gtk.Button) -> None:
         """Handle close button click"""
-        # Save preference based on switch state
-        self.save_preference(show=self.show_switch.get_active())
-
-        # Close the dialog
+        # switch ON = "don't show" → save show=False
+        self.save_preference(show=not self.show_switch.get_active())
         self.destroy()
 
     def get_show_preference(self) -> bool:

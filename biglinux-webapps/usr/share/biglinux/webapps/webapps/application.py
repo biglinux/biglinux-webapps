@@ -3,12 +3,7 @@ Application module containing the main WebAppsApplication class
 """
 
 import gi
-import json
 import os
-import shutil
-import tempfile
-import zipfile
-import time
 import subprocess
 from collections.abc import Callable
 
@@ -19,10 +14,8 @@ gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw, Gio, Gdk, GLib  # noqa: E402
 
-from webapps.models.webapp_model import WebAppCollection  # noqa: E402
-from webapps.models.browser_model import BrowserCollection  # noqa: E402
 from webapps.ui.main_window import MainWindow  # noqa: E402
-from webapps.utils.command_executor import CommandExecutor  # noqa: E402
+from webapps.utils.webapp_service import WebAppService  # noqa: E402
 
 import logging
 
@@ -46,15 +39,13 @@ class WebAppsApplication(Adw.Application):
         self.create_action("export", self.on_export_action, ["<primary>e"])
         self.create_action("import", self.on_import_action, ["<primary>i"])
 
-        # Initialize collections
-        self.webapp_collection = WebAppCollection()
-        self.browser_collection = BrowserCollection()
+        # centralized business logic
+        self.service = WebAppService()
 
-        # Command executor for shell commands
-        self.command_executor = CommandExecutor()
-
-        # Register actions
-        # (assuming actions like refresh, export, import are registered here)
+        # convenience aliases for UI code that reads collections
+        self.webapp_collection = self.service.webapp_collection
+        self.browser_collection = self.service.browser_collection
+        self.command_executor = self.service.command_executor
 
         # Add the remove-all action
         remove_all_action = Gio.SimpleAction.new("remove-all", None)
@@ -63,8 +54,7 @@ class WebAppsApplication(Adw.Application):
 
     def do_activate(self) -> None:
         """Called when the application is activated"""
-        # Load data first
-        self.load_data()
+        self.service.load_data()
 
         # Create and show the main window
         win = MainWindow(application=self)
@@ -133,32 +123,12 @@ class WebAppsApplication(Adw.Application):
         self, _widget: Gio.SimpleAction, _param: GLib.Variant | None
     ) -> None:
         """Refresh the data"""
-        self.load_data()
+        self.service.load_data()
 
         # Notify the main window to update UI
         active_window = self.props.active_window
         if active_window and hasattr(active_window, "refresh_ui"):
             active_window.refresh_ui()
-
-    def load_data(self) -> None:
-        """Load webapp and browser data from the system"""
-        # Load webapp data
-        webapps_data = self.command_executor.execute_json_command(["./get_json.sh"])
-        self.webapp_collection.load_from_json(webapps_data)
-
-        # Load browser data
-        browsers_data = self.command_executor.execute_json_command([
-            "./check_browser.sh",
-            "--list-json",
-        ])
-        self.browser_collection.load_from_json(browsers_data)
-
-        # Get default browser
-        default_browser = self.command_executor.execute_command([
-            "./check_browser.sh",
-            "--default",
-        ]).strip()
-        self.browser_collection.set_default(default_browser)
 
     def on_export_action(
         self, _widget: Gio.SimpleAction, _param: GLib.Variant | None
@@ -188,107 +158,18 @@ class WebAppsApplication(Adw.Application):
         self, dialog: Gtk.FileChooserNative, response: int
     ) -> None:
         """Handle export file chooser response"""
-        if response == Gtk.ResponseType.ACCEPT:
-            file_path = dialog.get_file().get_path()
-
-            try:
-                # Get all webapps
-                webapps = self.webapp_collection.get_all()
-
-                if not webapps:
-                    self._show_error_dialog(
-                        _("No WebApps"), _("There are no WebApps to export.")
-                    )
-                    return
-
-                # Create temporary directory for export
-                with tempfile.TemporaryDirectory() as temp_dir:
-                    # Create webapps.json file
-                    webapps_data = []
-                    icons_dir = os.path.join(temp_dir, "icons")
-                    themes_dir = os.path.join(temp_dir, "themes")
-                    os.makedirs(icons_dir, exist_ok=True)
-                    os.makedirs(themes_dir, exist_ok=True)
-
-                    # Process each webapp
-                    for webapp in webapps:
-                        webapp_dict = {
-                            "browser": webapp.browser,
-                            "app_name": webapp.app_name,
-                            "app_url": webapp.app_url,
-                            "app_icon": webapp.app_icon,
-                            "app_profile": webapp.app_profile,
-                            "app_categories": webapp.app_categories,
-                        }
-
-                        # Handle icon if it's in home folder
-                        if webapp.app_icon_url and webapp.app_icon_url.startswith(
-                            os.path.expanduser("~")
-                        ):
-                            # Extract icon filename
-                            icon_filename = os.path.basename(webapp.app_icon_url)
-                            # Copy icon to temp directory
-                            icon_dest = os.path.join(icons_dir, icon_filename)
-                            try:
-                                shutil.copy2(webapp.app_icon_url, icon_dest)
-                                # Store relative path to icon
-                                webapp_dict["app_icon_url"] = f"icons/{icon_filename}"
-                            except (IOError, PermissionError) as e:
-                                logger.error(
-                                    "Failed to copy icon %s: %s", webapp.app_icon_url, e
-                                )
-                                webapp_dict["app_icon_url"] = ""
-                        else:
-                            # Just store the original URL if not in home folder
-                            webapp_dict["app_icon_url"] = webapp.app_icon_url
-
-                        # Also handle any custom theme icons (.theme files)
-                        if webapp.app_icon and not webapp.app_icon.startswith((
-                            "/",
-                            "~",
-                        )):
-                            # Check if there might be a theme file associated with this icon
-                            theme_file = os.path.expanduser(
-                                f"~/.local/share/icons/{webapp.app_icon}.theme"
-                            )
-                            if os.path.exists(theme_file):
-                                theme_name = f"{webapp.app_icon}.theme"
-                                theme_dest = os.path.join(themes_dir, theme_name)
-                                try:
-                                    shutil.copy2(theme_file, theme_dest)
-                                    # No need to store this reference as it's implied by the icon name
-                                except (IOError, PermissionError) as e:
-                                    logger.error(
-                                        "Failed to copy theme file %s: %s",
-                                        theme_file,
-                                        e,
-                                    )
-
-                        webapps_data.append(webapp_dict)
-
-                    # Write webapps data to JSON file
-                    with open(os.path.join(temp_dir, "webapps.json"), "w") as f:
-                        json.dump(webapps_data, f, indent=2)
-
-                    # Create ZIP archive
-                    with zipfile.ZipFile(file_path, "w", zipfile.ZIP_DEFLATED) as zipf:
-                        for root, _dirs, files in os.walk(temp_dir):
-                            for file in files:
-                                file_path_full = os.path.join(root, file)
-                                zipf.write(
-                                    file_path_full,
-                                    os.path.relpath(file_path_full, temp_dir),
-                                )
-
-                # Show success message using string directly
-                self._show_notification("WebApps exported successfully")
-
-            except Exception as e:
-                logger.error("Error exporting webapps: %s", e)
-                # Use direct strings to avoid translation issues
-                self._show_error_dialog(
-                    "Export Failed", f"Failed to export WebApps: {str(e)}"
-                )
+        if response != Gtk.ResponseType.ACCEPT:
+            return
+        file_path = dialog.get_file().get_path()
+        ok, msg = self.service.export_webapps(file_path)
+        if ok:
+            self._show_notification(_("WebApps exported successfully"))
+        elif msg == "no_webapps":
+            self._show_error_dialog(
+                _("No WebApps"), _("There are no WebApps to export.")
+            )
+        else:
+            self._show_error_dialog("Export Failed", f"Failed to export WebApps: {msg}")
 
     def on_import_action(
         self, _widget: Gio.SimpleAction, _param: GLib.Variant | None
@@ -317,133 +198,37 @@ class WebAppsApplication(Adw.Application):
         self, dialog: Gtk.FileChooserNative, response: int
     ) -> None:
         """Handle import file chooser response"""
-        if response == Gtk.ResponseType.ACCEPT:
-            file_path = dialog.get_file().get_path()
+        if response != Gtk.ResponseType.ACCEPT:
+            return
+        file_path = dialog.get_file().get_path()
+        imported, duplicates, err = self.service.import_webapps(file_path)
 
-            try:
-                # Validate the file exists
-                if not os.path.exists(file_path):
-                    self._show_error_dialog(
-                        _("File Not Found"), _("The selected file does not exist.")
-                    )
-                    return
+        if err:
+            msg_map = {
+                "file_not_found": _("The selected file does not exist."),
+                "invalid_zip": _("The selected file is not a valid ZIP archive."),
+                "missing_webapps_json": "Invalid export file: missing webapps.json",
+            }
+            self._show_error_dialog(
+                _("Error importing WebApps"),
+                msg_map.get(err, err),
+            )
+            return
 
-                # Validate it's a zip file
-                if not zipfile.is_zipfile(file_path):
-                    self._show_error_dialog(
-                        _("Invalid File"),
-                        _("The selected file is not a valid ZIP archive."),
-                    )
-                    return
+        active_window = self.props.active_window
+        if active_window and hasattr(active_window, "refresh_ui"):
+            active_window.refresh_ui()
 
-                # Create temporary directory for import
-                with tempfile.TemporaryDirectory() as temp_dir:
-                    # Extract ZIP archive with path traversal protection
-                    with zipfile.ZipFile(file_path, "r") as zipf:
-                        for member in zipf.namelist():
-                            member_path = os.path.realpath(
-                                os.path.join(temp_dir, member)
-                            )
-                            if not member_path.startswith(
-                                os.path.realpath(temp_dir) + os.sep
-                            ):
-                                raise ValueError(f"Unsafe path in ZIP: {member}")
-                        zipf.extractall(temp_dir)
-
-                    # Read webapps data from JSON file
-                    webapps_file = os.path.join(temp_dir, "webapps.json")
-                    if not os.path.exists(webapps_file):
-                        raise FileNotFoundError(
-                            "Invalid export file: missing webapps.json"
-                        )
-
-                    with open(webapps_file, "r") as f:
-                        webapps_data = json.load(f)
-
-                    # Create local icons directory if it doesn't exist
-                    local_icons_dir = os.path.expanduser("~/.local/share/icons")
-                    os.makedirs(local_icons_dir, exist_ok=True)
-
-                    # Get existing webapps for duplicate checking
-                    existing_webapps = self.webapp_collection.get_all()
-
-                    # Create sets of (name, url) tuples for faster lookup
-                    existing_webapp_keys = {
-                        (webapp.app_name, webapp.app_url) for webapp in existing_webapps
-                    }
-
-                    import_count = 0
-                    duplicate_count = 0
-
-                    for webapp_dict in webapps_data:
-                        # Check if this webapp already exists (same name and URL)
-                        webapp_key = (
-                            webapp_dict.get("app_name", ""),
-                            webapp_dict.get("app_url", ""),
-                        )
-
-                        if webapp_key in existing_webapp_keys:
-                            duplicate_count += 1
-                            continue  # Skip this webapp
-
-                        # Handle icon if it was included in the export
-                        if webapp_dict.get("app_icon_url", "").startswith("icons/"):
-                            icon_filename = os.path.basename(
-                                webapp_dict["app_icon_url"]
-                            )
-                            export_icon_path = os.path.join(
-                                temp_dir, webapp_dict["app_icon_url"]
-                            )
-                            local_icon_path = os.path.join(
-                                local_icons_dir, icon_filename
-                            )
-
-                            try:
-                                if os.path.exists(export_icon_path):
-                                    # Copy icon to local icons directory
-                                    shutil.copy2(export_icon_path, local_icon_path)
-                                    # Update icon URL to point to local copy
-                                    webapp_dict["app_icon_url"] = local_icon_path
-                            except (IOError, PermissionError) as e:
-                                logger.error(
-                                    "Failed to copy icon %s: %s", export_icon_path, e
-                                )
-                                webapp_dict["app_icon_url"] = ""
-
-                        # Generate a unique app_file name
-                        import_timestamp = int(time.time()) + import_count
-                        webapp_dict["app_file"] = f"{import_timestamp}-import"
-                        import_count += 1
-
-                        # Create the webapp
-                        from webapps.models.webapp_model import WebApp
-
-                        webapp = WebApp(webapp_dict)
-                        self.command_executor.create_webapp(webapp)
-
-                    # Reload data
-                    self.load_data()
-
-                    # Update UI
-                    active_window = self.props.active_window
-                    if active_window and hasattr(active_window, "refresh_ui"):
-                        active_window.refresh_ui()
-
-                    # Show success message with information about duplicates
-                    if duplicate_count > 0:
-                        self._show_notification(
-                            _(
-                                "Imported {} WebApps successfully ({} duplicates skipped)"
-                            ).format(import_count, duplicate_count)
-                        )
-                    else:
-                        self._show_notification(
-                            _("Imported {} WebApps successfully").format(import_count)
-                        )
-
-            except Exception as e:
-                logger.error("Error importing webapps: %s", e)
-                self._show_error_dialog(_("Error importing WebApps"), str(e))
+        if duplicates > 0:
+            self._show_notification(
+                _("Imported {} WebApps successfully ({} duplicates skipped)").format(
+                    imported, duplicates
+                )
+            )
+        else:
+            self._show_notification(
+                _("Imported {} WebApps successfully").format(imported)
+            )
 
     def _show_notification(self, message: str) -> None:
         """Show a notification message"""

@@ -120,6 +120,37 @@ class WebsiteInfoFetcher:
         thread.daemon = True
         thread.start()
 
+    def _resolve_title(self, parser: WebsiteMetadataParser, url: str) -> str:
+        """Pick best title from parsed metadata, fallback to domain."""
+        title = parser.get_best_title()
+        if title:
+            return re.sub(r"\s+", " ", title)
+        domain = urlparse(url).netloc.replace("www.", "")
+        return domain.capitalize()
+
+    def _collect_icon_urls(
+        self, raw_icons: list[str], url: str, session: requests.Session
+    ) -> list[str]:
+        """Normalize raw icon hrefs → absolute URLs, append favicon.ico if found."""
+        icons: list[str] = []
+        for href in raw_icons:
+            if href:
+                if not href.startswith(("http://", "https://")):
+                    href = urljoin(url, href)
+                if href not in icons:
+                    icons.append(href)
+
+        parsed = urlparse(url)
+        favicon_url = f"{parsed.scheme}://{parsed.netloc}/favicon.ico"
+        if favicon_url not in icons:
+            try:
+                head = session.head(favicon_url, timeout=5)
+                if head.status_code == 200:
+                    icons.insert(0, favicon_url)
+            except Exception:
+                pass
+        return icons
+
     def _fetch_info_thread(
         self, url: str, callback: Callable[[str, list[str]], None]
     ) -> None:
@@ -131,58 +162,18 @@ class WebsiteInfoFetcher:
             callback (callable): Callback function to call with the results
         """
         try:
-            # Create a session with our user agent
             session = requests.Session()
             session.headers.update({"User-Agent": self.user_agent})
 
-            # Fetch the page
             response = session.get(url, timeout=10)
             response.raise_for_status()
 
-            # Parse the HTML with our custom parser
             parser = WebsiteMetadataParser()
             parser.feed(response.text)
 
-            # Get the title
-            title = parser.get_best_title()
-            if title:
-                # Clean up the title
-                title = re.sub(r"\s+", " ", title)
-            else:
-                # Fallback: Use domain name
-                domain = urlparse(url).netloc.replace("www.", "")
-                title = domain.capitalize()
+            title = self._resolve_title(parser, url)
+            icons = self._collect_icon_urls(parser.get_all_icons(), url, session)
 
-            # Get favicons
-            raw_icons = parser.get_all_icons()
-            icons = []
-
-            # Normalize icon URLs
-            base_url = url
-            for icon_href in raw_icons:
-                if icon_href:
-                    if not icon_href.startswith(("http://", "https://")):
-                        icon_href = urljoin(base_url, icon_href)
-                    if icon_href not in icons:
-                        icons.append(icon_href)
-
-            # Look for favicon in common locations (root)
-            parsed_url = urlparse(url)
-            domain_url = f"{parsed_url.scheme}://{parsed_url.netloc}"
-            favicon_url = urljoin(domain_url, "/favicon.ico")
-
-            # Check if we already have this specific favicon
-            if favicon_url not in icons:
-                try:
-                    head_response = session.head(favicon_url, timeout=5)
-                    if head_response.status_code == 200:
-                        icons.insert(
-                            0, favicon_url
-                        )  # Prioritize default favicon if found
-                except Exception:
-                    pass
-
-            # Save icons to temporary files
             icon_paths = []
             for icon_url in icons:
                 try:
@@ -192,7 +183,6 @@ class WebsiteInfoFetcher:
                 except Exception as e:
                     logger.error("Error downloading icon %s: %s", icon_url, e)
 
-            # Call the callback in the main thread
             GLib.idle_add(callback, title, icon_paths)
 
         except Exception as e:

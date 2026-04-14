@@ -17,47 +17,51 @@ if ! [[ $url =~ http:|file:|https: ]]; then
 fi
 
 if [[ $icon =~ / ]]; then
-    cp "$icon" ~/.local/share/icons/
-    sed -Ei 's|^Icon=.*/(.*)\..*|Icon=\1|g' "$HOME/.local/share/applications/$filename"
+    # copy icon only if not already present
+    icon_dest="$HOME/.local/share/icons/${icon##*/}"
+    if [[ ! -f "$icon_dest" ]] || ! cmp -s "$icon" "$icon_dest"; then
+        cp "$icon" "$icon_dest"
+        sed -Ei 's|^Icon=.*/(.*)\..*/|Icon=\1|g' "$HOME/.local/share/applications/$filename"
+    fi
 fi
 
-# Flatpak name to flatpak file address
+# Flatpak name to flatpak file address — use arrays for safe word splitting
 case $browser in
     flatpak-brave)
-        browser_exec="flatpak run com.brave.Browser"
+        browser_exec=(flatpak run com.brave.Browser)
         ;;
     flatpak-chrome)
-        browser_exec="flatpak run com.google.Chrome"
+        browser_exec=(flatpak run com.google.Chrome)
         ;;
     flatpak-chrome-unstable)
-        browser_exec="flatpak run com.google.ChromeDev"
+        browser_exec=(flatpak run com.google.ChromeDev)
         ;;
     flatpak-chromium)
-        browser_exec="flatpak run org.chromium.Chromium"
+        browser_exec=(flatpak run org.chromium.Chromium)
         ;;
     flatpak-edge)
-        browser_exec="flatpak run com.microsoft.Edge"
+        browser_exec=(flatpak run com.microsoft.Edge)
         ;;
     flatpak-ungoogled-chromium)
-        browser_exec="flatpak run com.github.Eloston.UngoogledChromium"
+        browser_exec=(flatpak run com.github.Eloston.UngoogledChromium)
         ;;
     flatpak-firefox)
-        browser_exec="flatpak run org.mozilla.firefox"
+        browser_exec=(flatpak run org.mozilla.firefox)
         ;;
     flatpak-librewolf)
-        browser_exec="flatpak run io.gitlab.librewolf-community"
+        browser_exec=(flatpak run io.gitlab.librewolf-community)
         ;;
     *)
-        browser_exec=$browser
+        browser_exec=("$browser")
         ;;
 esac
 
 
-mkdir -p ~/.bigwebapps/$browser
+mkdir -p "$HOME/.bigwebapps/$browser"
 
 # Permission for flatpak browser
 if [[ $browser =~ flatpak ]]; then
-    flatpak override --user --filesystem=$HOME/.bigwebapps/$browser ${browser_exec/flatpak run /}
+    flatpak override --user --filesystem="$HOME/.bigwebapps/$browser" "${browser_exec[2]}"
 fi
 
 if [[ $browser =~ (firefox|librewolf|flatpak-firefox) ]]; then
@@ -71,13 +75,13 @@ if [[ $browser =~ (firefox|librewolf|flatpak-firefox) ]]; then
     fi
 
     # Execute the browser with the profile
-    XAPP_FORCE_GTKWINDOW_ICON="${icon//*\/}" MOZ_APP_REMOTINGNAME="$class" exec $browser_exec --class="$class" --name="$filename" --profile "$HOME/.bigwebapps/$browser/$filename" --no-remote "$url"
+    XAPP_FORCE_GTKWINDOW_ICON="${icon//*\/}" MOZ_APP_REMOTINGNAME="$class" exec "${browser_exec[@]}" --class="$class" --name="$filename" --profile "$HOME/.bigwebapps/$browser/$filename" --no-remote "$url"
 
 fi
 
 # If the big-webapp-version is set and using wayland, we change desktop file temporarily
-if echo $filename | grep -q '\-BigWebApp' && [[ $XDG_SESSION_TYPE == 'wayland' ]]; then
-    filename_orig="$HOME/.local/share/applications/$(echo $filename | sed 's/-BigWebApp[0-9]*//g')"
+if grep -q '\-BigWebApp' <<< "$filename" && [[ $XDG_SESSION_TYPE == 'wayland' ]]; then
+    filename_orig="$HOME/.local/share/applications/${filename//-BigWebApp[0-9]*/}.desktop"
     filename_orig_bkp="${filename_orig//.desktop/-bkp.desktop}-bkp"
     # Add folder path to filename
     filename="$HOME/.local/share/applications/$filename"
@@ -89,18 +93,32 @@ if echo $filename | grep -q '\-BigWebApp' && [[ $XDG_SESSION_TYPE == 'wayland' ]
 
     # In wayland, we don't have option to set two different icons for same site
     # Because of that, we change the desktop file temporarily
-    mv -f "$filename_orig" "$filename_orig_bkp"
-    cp "$filename" "$filename_orig"
-    # Wait to system detect updated icon
-    sleep 2
-    if [[ "$profile" == "Browser" ]]; then
-        $browser_exec --no-default-browser-check --app="$url" &
+    # lock → prevent race if two instances open simultaneously
+    lockfile="${filename_orig}.lock"
+    exec 9>"$lockfile"
+    if flock -n 9; then
+        mv -f "$filename_orig" "$filename_orig_bkp"
+        cp "$filename" "$filename_orig"
+        # Wait to system detect updated icon
+        sleep 2
+        if [[ "$profile" == "Browser" ]]; then
+            "${browser_exec[@]}" --no-default-browser-check --app="$url" &
+        else
+            "${browser_exec[@]}" --no-default-browser-check --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
+        fi
+     
+        sleep 2
+        mv -f "$filename_orig_bkp" "$filename_orig"
+        flock -u 9
     else
-        $browser_exec --no-default-browser-check --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
+        # another instance holds lock → just launch without icon swap
+        if [[ "$profile" == "Browser" ]]; then
+            "${browser_exec[@]}" --no-default-browser-check --app="$url" &
+        else
+            "${browser_exec[@]}" --no-default-browser-check --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
+        fi
     fi
- 
-    sleep 2
-    mv -f "$filename_orig_bkp" "$filename_orig"
+    rm -f "$lockfile"
 else
 
     # If have problem with the original file, we restore it
@@ -111,8 +129,8 @@ else
     fi
 
     if [[ "$profile" == "Browser" ]]; then
-        $browser_exec --no-default-browser-check --app="$url" &
+        "${browser_exec[@]}" --no-default-browser-check --app="$url" &
     else
-        $browser_exec --no-default-browser-check --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
+        "${browser_exec[@]}" --no-default-browser-check --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
     fi
 fi

@@ -51,7 +51,7 @@ if [[ $command == "json" ]]; then
     one_file="$1"
 
 # Remove
-elif [ $command == "remove" ]; then
+elif [ "$command" == "remove" ]; then
     if [ "$#" = "0" ]; then
         display_help
         exit 1
@@ -61,8 +61,8 @@ elif [ $command == "remove" ]; then
     browser="$2"
     profile="$3"
 
-    if [ -f $filename ]; then
-        rm $filename
+    if [ -f "$filename" ]; then
+        rm "$filename"
 
         echo "WebApp successfully removed!"
         exit 0
@@ -72,7 +72,7 @@ elif [ $command == "remove" ]; then
     fi
     
 # Remove
-elif [ $command = "remove-with-folder" ]; then
+elif [ "$command" = "remove-with-folder" ]; then
     if [ "$#" = "0" ]; then
         display_help
         exit 1
@@ -82,11 +82,11 @@ elif [ $command = "remove-with-folder" ]; then
     browser="$2"
     profile="$3"
 
-    if [ -f $filename ]; then
-        rm $filename
+    if [ -f "$filename" ]; then
+        rm "$filename"
         # Verify if $browser variable not null and $profile variable not null and folder $HOME/.bigwebapps/$browser/$profile exists
-        if [[ -n $browser ]] && [[ -n $profile ]] && [[ -d $HOME/.bigwebapps/$browser/$profile ]]; then
-            rm -rf $HOME/.bigwebapps/$browser/$profile
+        if [[ -n "$browser" ]] && [[ -n "$profile" ]] && [[ -d "$HOME/.bigwebapps/$browser/$profile" ]]; then
+            rm -rf "$HOME/.bigwebapps/$browser/$profile"
         else
             if [[ "$browser" == "firefox" || "$browser" == "librewolf" || "$browser" == "flatpak-firefox" || "$browser" == "flatpak-librewolf" ]]; then
                 # Firefox and Librewolf always remove the profile folder
@@ -126,17 +126,20 @@ fi
 if [[ "$browser" == "__viewer__" ]]; then
     short_browser="viewer"
 else
-    short_browser=$(sed 's/.*[Cc]hrom.*/chrome/
-                        s/.*[Bb]rave.*/brave/
-                        s/.*[Ee]dge.*/msedge/
-                        s/.*[Vv]ivaldi.*/vivaldi/' <<< "$browser")
+    case "$browser" in
+        *[Cc]hrom*)  short_browser="chrome"  ;;
+        *[Bb]rave*)  short_browser="brave"   ;;
+        *[Ee]dge*)   short_browser="msedge"  ;;
+        *[Vv]ivaldi*) short_browser="vivaldi" ;;
+        *)           short_browser="$browser" ;;
+    esac
 fi
 
 # Adjust the class by replacing "/" with "__" and removing https
 class=$(sed 's|https://||;s|http://||g;s|/|__|g' <<< "$url")
 
 # Define the filename in Wayland compatible format
-filename="$short_browser-$(sed 's|https://||;s|http://||;s|?.*||g;s|/|__|g' <<< $url)-Default.desktop"
+filename="$short_browser-$(sed 's|https://||;s|http://||;s|?.*||g;s|/|__|g' <<< "$url")-Default.desktop"
 
 # Keep first occurrence of __ and replace all others with _
 filename=$(sed 's/__/\n/g;s/\n/__/;s/\n/_/g' <<< "$filename")
@@ -209,7 +212,7 @@ elif [ "$command" = "verify" ]; then
         exit 1
     fi
 
-    if [ -f $filename_orig ]; then
+    if [ -f "$filename_orig" ]; then
         echo "true"
         exit 1
     else
@@ -270,11 +273,11 @@ elif [ "$command" = "json" ]; then
                     categories=${line#*Categories=}
                     ;;
             esac
-        done <<<$(grep -ve 'Name=Software Render' -ve 'Exec=SoftwareRender ' $file | grep -m4 -e '^Name=' -e '^Exec=' -e '^Icon=' -e '^Categories=')
+        done <<<"$(grep -ve 'Name=Software Render' -ve 'Exec=SoftwareRender ' "$file" | grep -m4 -e '^Name=' -e '^Exec=' -e '^Icon=' -e '^Categories=')"
 
         # Print the JSON separator
         if [[ $num -gt 0 ]]; then
-            echo ,
+            printf ',\n'
         fi
 
         # Determine app_mode from browser
@@ -284,20 +287,20 @@ elif [ "$command" = "json" ]; then
             app_mode="browser"
         fi
 
-        # Print the JSON object with escaped quotes
-        read -d $'' ShowText <<EOF
-            {
-                "browser": "$browser",
-                "app_file": "${file//\"/\\\\\"}",
-                "app_name": "${name//\"/\\\\\"}",
-                "app_url": "${url//\"/\\\\\"}",
-                "app_icon": "$icon",
-                "app_profile": "$profile",
-                "app_categories": "$categories",
-                "app_mode": "$app_mode"
-            }
-EOF
-        echo "$ShowText"
+        # JSON-escape values: handle backslash, double-quote, control chars
+        _json_escape() { printf '%s' "$1" | sed 's/\\/\\\\/g;s/"/\\"/g;s/\t/\\t/g'; }
+
+        # Print the JSON object
+        printf '            {\n'
+        printf '                "browser": "%s",\n' "$(_json_escape "$browser")"
+        printf '                "app_file": "%s",\n' "$(_json_escape "$file")"
+        printf '                "app_name": "%s",\n' "$(_json_escape "$name")"
+        printf '                "app_url": "%s",\n' "$(_json_escape "$url")"
+        printf '                "app_icon": "%s",\n' "$(_json_escape "$icon")"
+        printf '                "app_profile": "%s",\n' "$(_json_escape "$profile")"
+        printf '                "app_categories": "%s",\n' "$(_json_escape "$categories")"
+        printf '                "app_mode": "%s"\n' "$app_mode"
+        printf '            }'
         num+=1
     done
     # Print the JSON array end

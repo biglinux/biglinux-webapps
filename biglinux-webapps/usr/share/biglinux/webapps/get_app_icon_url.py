@@ -3,8 +3,9 @@ import sys
 import os
 import json
 
-gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk
+gi.require_version("Gtk", "4.0")
+gi.require_version("Gdk", "4.0")
+from gi.repository import Gtk, Gdk
 
 
 def get_icon_path(icon_name, icon_theme):
@@ -26,16 +27,25 @@ def get_icon_path(icon_name, icon_theme):
         if os.path.exists(path_with_ext):
             return path_with_ext
 
-    # Fall back to icon theme lookup
+    # Fall back to icon theme lookup (GTK4 API)
     parts = icon_name.split("-")
     for end in range(len(parts), 0, -1):
         modified_icon_name = "-".join(parts[:end])
         for size in [64, 48, 128, 32, 256, 512, 24, 22, 16]:
-            icon_info = icon_theme.lookup_icon(
-                modified_icon_name, size, Gtk.IconLookupFlags.USE_BUILTIN
+            paintable = icon_theme.lookup_icon(
+                modified_icon_name,
+                None,
+                size,
+                1,
+                Gtk.TextDirection.NONE,
+                Gtk.IconLookupFlags(0),
             )
-            if icon_info:
-                return icon_info.get_filename()
+            if paintable:
+                gfile = paintable.get_file()
+                if gfile:
+                    path = gfile.get_path()
+                    if path:
+                        return path
 
     return "Icon not found"
 
@@ -44,7 +54,10 @@ def get_app_info_from_json(json_file):
     with open(json_file, "r") as file:
         apps_data = json.load(file)
 
-    icon_theme = Gtk.IconTheme.get_default()
+    # GTK4 requires init + display for icon theme
+    Gtk.init()
+    display = Gdk.Display.get_default()
+    icon_theme = Gtk.IconTheme.get_for_display(display)
     for app in apps_data:
         icon_name = app.get("app_icon", "")
         icon_path = get_icon_path(icon_name, icon_theme)

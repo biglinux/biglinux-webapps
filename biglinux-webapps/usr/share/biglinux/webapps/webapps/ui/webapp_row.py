@@ -92,10 +92,11 @@ class WebAppRow(Gtk.ListBoxRow):
         # Browser button
         browser = self.browser_collection.get_by_id(self.webapp.browser)
         browser_button = Gtk.Button()
-        browser_button.set_tooltip_text(
-            _("Browser: {0}").format(
-                browser.get_friendly_name() if browser else self.webapp.browser
-            )
+        browser_name = browser.get_friendly_name() if browser else self.webapp.browser
+        browser_button.set_tooltip_text(_("Browser: {0}").format(browser_name))
+        browser_button.update_property(
+            [Gtk.AccessibleProperty.LABEL],
+            [_("Browser: {0}").format(browser_name)],
         )
         browser_icon = Gtk.Image()
         # Pass browser ID string since that's what we need
@@ -107,6 +108,10 @@ class WebAppRow(Gtk.ListBoxRow):
         # Edit button
         edit_button = Gtk.Button()
         edit_button.set_tooltip_text(_("Edit WebApp"))
+        edit_button.update_property(
+            [Gtk.AccessibleProperty.LABEL],
+            [_("Edit {0}").format(self.webapp.app_name)],
+        )
         edit_icon = Gtk.Image()
         edit_icon.set_from_icon_name("document-edit-symbolic")
         edit_icon.set_pixel_size(20)
@@ -114,18 +119,19 @@ class WebAppRow(Gtk.ListBoxRow):
         edit_button.connect("clicked", self.on_edit_clicked)
         actions_box.append(edit_button)
 
-        # Delete button
+        # Delete button — trash icon = shape indicator; destructive-action = color indicator
         delete_button = Gtk.Button()
         delete_button.set_tooltip_text(_("Delete WebApp"))
+        delete_button.update_property(
+            [Gtk.AccessibleProperty.LABEL],
+            [_("Delete {0}").format(self.webapp.app_name)],
+        )
         delete_icon = Gtk.Image()
         delete_icon.set_from_icon_name("user-trash-symbolic")
         delete_icon.set_pixel_size(20)
         delete_button.set_child(delete_icon)
         delete_button.connect("clicked", self.on_delete_clicked)
-
-        # Only add the destructive style to the icon, not the whole button
-        # to maintain the unified pill appearance
-        delete_icon.add_css_class("error")
+        delete_button.add_css_class("destructive-action")
 
         actions_box.append(delete_button)
 

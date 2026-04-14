@@ -10,7 +10,7 @@ from typing import Any
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw, Gio
+from gi.repository import Gtk, Adw, Gio, GObject
 
 from webapps.ui.webapp_row import WebAppRow
 from webapps.ui.webapp_dialog import WebAppDialog
@@ -65,11 +65,19 @@ class MainWindow(Adw.ApplicationWindow):
         search_button = Gtk.ToggleButton(icon_name="system-search-symbolic")
         search_button.connect("toggled", self.on_search_toggled)
         search_button.set_tooltip_text(_("Search WebApps"))
+        search_button.update_property(
+            [Gtk.AccessibleProperty.LABEL],
+            [_("Search WebApps")],
+        )
         header.pack_start(search_button)
 
         # Add menu first so it appears to the right of the Add button
         menu_button = Gtk.MenuButton()
         menu_button.set_icon_name("open-menu-symbolic")
+        menu_button.update_property(
+            [Gtk.AccessibleProperty.LABEL],
+            [_("Main Menu")],
+        )
 
         # Create menu model with items
         menu = Gio.Menu()
@@ -107,6 +115,10 @@ class MainWindow(Adw.ApplicationWindow):
 
         search_entry = Gtk.SearchEntry()
         search_entry.set_hexpand(True)
+        search_entry.update_property(
+            [Gtk.AccessibleProperty.LABEL],
+            [_("Search WebApps")],
+        )
         search_entry.connect("search-changed", self.on_search_changed)
         self.search_bar.set_child(search_entry)
 
@@ -129,6 +141,7 @@ class MainWindow(Adw.ApplicationWindow):
         self.empty_state.set_icon_name("big-webapps")
         self.empty_state.set_title(_("No WebApps Found"))
         self.empty_state.set_description(_("Add a new webapp to get started"))
+        self.empty_state.set_focusable(True)
 
         # Add button in empty state
         empty_add_button = Gtk.Button(label=_("Add WebApp"))
@@ -201,101 +214,39 @@ class MainWindow(Adw.ApplicationWindow):
         dialog.connect("response", self.on_webapp_dialog_response)
         dialog.present()
 
+    def _find_webapp_after_reload(
+        self, url: str, name: str, app_file: str = ""
+    ) -> WebApp | None:
+        """Find webapp after data reload — prefers app_file (stable ID)."""
+        return self.app.service.find_webapp(url, name, app_file=app_file)
+
     def on_webapp_dialog_response(self, dialog: WebAppDialog, response: int) -> None:
-        """Handle webapp dialog response"""
+        """Handle webapp dialog response — save already executed by dialog."""
         if response == Gtk.ResponseType.OK:
-            # Get the updated webapp from the dialog
             webapp = dialog.get_webapp()
 
-            # Make a copy of the original URL and name for reference
-            original_url = webapp.app_url
-            original_name = webapp.app_name
+            # reload collections (command already ran in dialog thread)
+            self.app.service.load_data()
 
-            if dialog.is_new:
-                # Create a new webapp
-                success = self.app.command_executor.create_webapp(webapp)
-                if success:
-                    # Force a reload of all data to get the latest state
-                    self.app.load_data()
+            found = self._find_webapp_after_reload(
+                webapp.app_url, webapp.app_name, app_file=webapp.app_file
+            )
+            if found:
+                self.current_webapp = found
+            elif dialog.is_new:
+                self.app.webapp_collection.add(webapp)
 
-                    # Find the newly created webapp
-                    found = False
-                    for new_webapp in self.app.webapp_collection.get_all():
-                        if (
-                            new_webapp.app_url == original_url
-                            and new_webapp.app_name == original_name
-                        ):
-                            # Update our local reference with the one from the collection
-                            webapp = new_webapp
-                            self.current_webapp = new_webapp
-                            found = True
-                            logger.debug(
-                                "Updated new webapp reference: %s", webapp.app_file
-                            )
-                            break
-
-                    # Add it to the collection if not already found
-                    if not found:
-                        self.app.webapp_collection.add(webapp)
-
-                    self.show_toast(_("WebApp created successfully"))
-            else:
-                # Update an existing webapp
-                # Store the original file name before update
-                original_file = webapp.app_file
-
-                success = self.app.command_executor.update_webapp(webapp)
-                if success:
-                    # Force a full data reload to get the fresh data
-                    self.app.load_data()
-
-                    # Look for the updated webapp with the potentially new filename
-                    found = False
-                    for updated_webapp in self.app.webapp_collection.get_all():
-                        if (
-                            updated_webapp.app_url == original_url
-                            and updated_webapp.app_name == original_name
-                        ):
-                            # Use the updated webapp
-                            webapp = updated_webapp
-                            # Update the current webapp reference too
-                            if self.current_webapp:
-                                self.current_webapp = updated_webapp
-                                logger.debug(
-                                    "Updated current_webapp reference to: %s",
-                                    self.current_webapp.app_file,
-                                )
-                            found = True
-                            break
-
-                    if not found and self.current_webapp:
-                        # If we couldn't find the updated webapp, do a manual search
-                        # based on the original file name pattern
-                        logger.debug(
-                            "Webapp not found by URL/name. Looking for file pattern similar to %s",
-                            original_file,
-                        )
-
-                        for updated_webapp in self.app.webapp_collection.get_all():
-                            # See if the new file follows a similar pattern but with different browser
-                            if updated_webapp.app_url == original_url:
-                                self.current_webapp = updated_webapp
-                                logger.debug(
-                                    "Found by URL: %s", self.current_webapp.app_file
-                                )
-                                break
-
-                    self.show_toast(_("WebApp updated successfully"))
-
-            # Refresh the UI
+            msg = (
+                _("WebApp created successfully")
+                if dialog.is_new
+                else _("WebApp updated successfully")
+            )
+            self.show_toast(msg)
             self.refresh_ui()
 
     def on_browser_selected(self, row: WebAppRow, webapp: WebApp) -> None:
         """Handle browser selection button click"""
         self.current_webapp = webapp
-
-        # Make sure command_executor is accessible
-        self.command_executor = self.app.command_executor
 
         dialog = BrowserDialog(
             self,
@@ -308,49 +259,23 @@ class MainWindow(Adw.ApplicationWindow):
     def on_browser_dialog_response(self, dialog: BrowserDialog, response: int) -> None:
         """Handle browser dialog response"""
         if response == Gtk.ResponseType.OK:
-            # Get the selected browser from the dialog
             browser = dialog.get_selected_browser()
-
-            # Make a copy of the original webapp's properties before modifications
             original_url = self.current_webapp.app_url
             original_name = self.current_webapp.app_name
             original_file = self.current_webapp.app_file
-
-            # Update the webapp browser
             self.current_webapp.browser = browser.browser_id
 
-            # Update the webapp
-            success = self.app.command_executor.update_webapp(self.current_webapp)
+            success = self.app.service.update_webapp(self.current_webapp)
             if success:
-                # Force a reload of all data to get the latest webapp information
-                self.app.load_data()
-
-                # After reload, find the updated webapp by URL and name
-                found_webapp = None
-                for webapp in self.app.webapp_collection.get_all():
-                    if (
-                        webapp.app_url == original_url
-                        and webapp.app_name == original_name
-                    ):
-                        found_webapp = webapp
-                        break
-
-                # If found, update our reference
-                if found_webapp:
-                    self.current_webapp = found_webapp
-
-                    # Debug information
-                    logger.debug(
-                        "Original file: %s, New file: %s",
-                        original_file,
-                        self.current_webapp.app_file,
-                    )
+                found = self._find_webapp_after_reload(
+                    original_url, original_name, app_file=original_file
+                )
+                if found:
+                    self.current_webapp = found
 
                 self.show_toast(
                     _("Browser changed to {0}").format(browser.get_friendly_name())
                 )
-
-                # Refresh the UI
                 self.refresh_ui()
 
     def on_delete_clicked(self, row: WebAppRow, webapp: WebApp) -> None:
@@ -403,94 +328,66 @@ class MainWindow(Adw.ApplicationWindow):
     ) -> None:
         """Handle delete dialog response"""
         if response == "delete":
-            # Get delete folder option if available
             delete_folder = check_button.get_active() if check_button else False
-
-            # Delete the webapp
-            success = self.app.command_executor.remove_webapp(
-                self.current_webapp, delete_folder
-            )
+            success = self.app.service.delete_webapp(self.current_webapp, delete_folder)
             if success:
-                self.app.webapp_collection.remove(self.current_webapp)
-                self.show_toast(_("WebApp deleted successfully"))
-
-                # Refresh the UI
+                self.show_toast(
+                    _("WebApp deleted successfully"), Adw.ToastPriority.HIGH
+                )
                 self.refresh_ui()
 
     def on_remove_all_clicked(self) -> None:
-        """Handle remove all webapps action with double confirmation"""
-        # First confirmation dialog
-        first_dialog = Adw.MessageDialog(
+        """Handle remove all webapps action with text confirmation"""
+        confirm_phrase = _("REMOVE ALL")
+        dialog = Adw.MessageDialog(
             transient_for=self,
             heading=_("Remove All WebApps"),
             body=_(
-                "Are you sure you want to remove all your WebApps? This action cannot be undone."
+                "Are you sure you want to remove all your WebApps? "
+                "This action cannot be undone.\n\n"
+                'Type "{0}" to confirm.'
+            ).format(confirm_phrase),
+        )
+
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("confirm", _("Remove All"))
+        dialog.set_response_appearance("confirm", Adw.ResponseAppearance.DESTRUCTIVE)
+        dialog.set_default_response("cancel")
+        dialog.set_response_enabled("confirm", False)
+
+        entry = Gtk.Entry()
+        entry.set_placeholder_text(confirm_phrase)
+        entry.connect(
+            "changed",
+            lambda e: dialog.set_response_enabled(
+                "confirm", e.get_text().strip() == confirm_phrase
             ),
         )
+        dialog.set_extra_child(entry)
+        dialog.connect("response", self._on_remove_all_confirmed)
+        dialog.present()
 
-        # Add buttons
-        first_dialog.add_response("cancel", _("Cancel"))
-        first_dialog.add_response("continue", _("Continue"))
-        first_dialog.set_response_appearance(
-            "continue", Adw.ResponseAppearance.DESTRUCTIVE
-        )
-        first_dialog.set_default_response("cancel")
-
-        first_dialog.connect("response", self.on_first_remove_all_response)
-        first_dialog.present()
-
-    def on_first_remove_all_response(
+    def _on_remove_all_confirmed(
         self, dialog: Adw.MessageDialog, response: str
     ) -> None:
-        """Handle first confirmation dialog response"""
-        if response == "continue":
-            # Second confirmation dialog
-            second_dialog = Adw.MessageDialog(
-                transient_for=self,
-                heading=_("Final Confirmation"),
-                body=_("Are you ABSOLUTELY sure you want to remove ALL your WebApps?"),
-            )
+        """Execute remove-all after confirmed."""
+        if response != "confirm":
+            return
 
-            # Add buttons
-            second_dialog.add_response("cancel", _("No, Cancel"))
-            second_dialog.add_response("confirm", _("Yes, Remove All"))
-            second_dialog.set_response_appearance(
-                "confirm", Adw.ResponseAppearance.DESTRUCTIVE
-            )
-            second_dialog.set_default_response("cancel")
+        success = self.app.service.delete_all_webapps()
+        if success:
+            self.show_toast(_("All WebApps have been removed"), Adw.ToastPriority.HIGH)
+        else:
+            self.show_toast(_("Failed to remove all WebApps"), Adw.ToastPriority.HIGH)
+        self.refresh_ui()
 
-            second_dialog.connect("response", self.on_second_remove_all_response)
-            second_dialog.present()
-
-    def on_second_remove_all_response(
-        self, dialog: Adw.MessageDialog, response: str
+    def show_toast(
+        self, message: str, priority: Adw.ToastPriority = Adw.ToastPriority.NORMAL
     ) -> None:
-        """Handle second confirmation dialog response"""
-        if response == "confirm":
-            # Get all webapps
-            webapps = self.app.webapp_collection.get_all()
-
-            # Remove each webapp
-            success = True
-            for webapp in webapps:
-                # Delete the webapp without deleting profile folders
-                if not self.app.command_executor.remove_webapp(webapp, False):
-                    success = False
-
-            if success:
-                # Instead of calling clear(), reload the data to get a fresh state
-                self.app.load_data()
-                self.show_toast(_("All WebApps have been removed"))
-            else:
-                self.show_toast(_("Failed to remove all WebApps"))
-
-            # Refresh the UI
-            self.refresh_ui()
-
-    def show_toast(self, message: str) -> None:
-        """Show a toast notification"""
+        """Show a toast notification. Use HIGH priority for errors/destructive actions."""
         toast = Adw.Toast.new(message)
         toast.set_timeout(3)
+        toast.set_priority(priority)
         self.toast_overlay.add_toast(toast)
 
     def refresh_ui(self) -> None:
@@ -505,6 +402,7 @@ class MainWindow(Adw.ApplicationWindow):
         if not categorized:
             # Show empty state if no webapps
             self.content_box.append(self.empty_state)
+            self.empty_state.grab_focus()
             return
 
         # Sort categories alphabetically
@@ -512,12 +410,17 @@ class MainWindow(Adw.ApplicationWindow):
 
         # Add webapps by category
         for category in categories:
-            # Create a category header
-            header = Gtk.Label()
-            header.set_markup(f"<b>{category}</b>")
+            # heading for Orca "h" key navigation
+            header = GObject.new(
+                Gtk.Label,
+                accessible_role=Gtk.AccessibleRole.HEADING,
+                label=f"<b>{category}</b>",
+                use_markup=True,
+            )
             header.set_halign(Gtk.Align.START)
             header.set_margin_top(12)
             header.set_margin_bottom(6)
+            header.set_focusable(True)
             self.content_box.append(header)
 
             # Create a list box for the category

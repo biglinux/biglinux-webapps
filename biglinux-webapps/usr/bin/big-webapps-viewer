@@ -3,7 +3,7 @@
 CSD headerbar replicating GTK4/Adwaita style. Fullscreen auto-hide overlay.
 """
 
-APP_VERSION = "3.4.1"
+APP_VERSION = "3.4.2"
 
 import argparse
 import json

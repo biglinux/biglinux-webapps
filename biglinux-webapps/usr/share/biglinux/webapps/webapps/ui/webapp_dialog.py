@@ -3,15 +3,17 @@ WebAppDialog module containing the dialog for creating and editing webapps
 """
 
 import gi
+import threading
 import time
 import uuid
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw, GObject, GdkPixbuf, Gdk
+from gi.repository import Gtk, Adw, GObject, GdkPixbuf, Gdk, GLib
 
 # Import BrowserDialog
 from webapps.ui.browser_dialog import BrowserDialog
+from webapps.ui.favicon_picker import FaviconPicker
 
 # Import our new WebsiteInfoFetcher
 from webapps.utils.url_utils import WebsiteInfoFetcher
@@ -75,7 +77,7 @@ class WebAppDialog(Adw.Window):
         # Clone the webapp to avoid modifying the original
         self.webapp = self._clone_webapp(webapp)
 
-        # Try to detect the system default browser
+        # Detect system default browser + assign for new webapps
         self.system_default_browser_id = None
         if self.command_executor:
             self.system_default_browser_id = (
@@ -85,42 +87,26 @@ class WebAppDialog(Adw.Window):
                 "System default browser detected: %s", self.system_default_browser_id
             )
 
-        # For new webapps, always use the system default browser if available
-        if self.is_new and self.system_default_browser_id:
-            # Check if this browser exists in our collection
+        if self.is_new:
+            self._assign_default_browser()
+
+        # Create UI
+        self.setup_ui()
+
+    def _assign_default_browser(self) -> None:
+        """Assign browser for a new webapp: system default → app default → noop."""
+        if self.system_default_browser_id:
             system_browser = self.browser_collection.get_by_id(
                 self.system_default_browser_id
             )
             if system_browser:
-                # Override any previously selected browser with the system default
-                original_browser = self.webapp.browser
                 self.webapp.browser = self.system_default_browser_id
-                logger.debug(
-                    "Overriding browser selection: %s → %s",
-                    original_browser,
-                    self.system_default_browser_id,
-                )
-            else:
-                # Fallback to the app's default browser if the system browser isn't supported
-                if not self.webapp.browser:  # Only if no browser is already selected
-                    default_browser = self.browser_collection.get_default()
-                    if default_browser:
-                        self.webapp.browser = default_browser.browser_id
-                        logger.warning(
-                            "System browser not supported, using app default: %s",
-                            default_browser.browser_id,
-                        )
-        # If no browser is set at all and system detection failed, use the app's default browser
-        elif self.is_new and not self.webapp.browser:
+                return
+        # fallback to app default if no browser set
+        if not self.webapp.browser:
             default_browser = self.browser_collection.get_default()
             if default_browser:
                 self.webapp.browser = default_browser.browser_id
-                logger.debug(
-                    "Using app default browser: %s", default_browser.browser_id
-                )
-
-        # Create UI
-        self.setup_ui()
 
     def _clone_webapp(self, webapp: WebApp) -> WebApp:
         """
@@ -165,7 +151,7 @@ class WebAppDialog(Adw.Window):
         header = Adw.HeaderBar()
         header.set_title_widget(Gtk.Label(label=title))
         header.add_css_class("flat")
-        header.set_show_end_title_buttons(True)  # Show window controls on the right
+        header.set_show_end_title_buttons(True)
 
         # Apply custom CSS to reduce header padding
         css_provider = Gtk.CssProvider()
@@ -182,56 +168,72 @@ class WebAppDialog(Adw.Window):
 
         content.append(header)
 
-        # Create a central container for vertical centering
+        # Scrollable form area
         central_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
-        central_box.set_vexpand(True)  # Allow vertical expansion
-        central_box.set_valign(Gtk.Align.CENTER)  # Center vertically
+        central_box.set_vexpand(True)
+        central_box.set_valign(Gtk.Align.CENTER)
 
-        # Create scrollable content area
         scrolled = Gtk.ScrolledWindow()
         scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
         scrolled.set_propagate_natural_height(True)
         scrolled.set_min_content_height(300)
 
-        # Main content using Adw.Clamp for proper width constraints
         clamp = Adw.Clamp()
         clamp.set_maximum_size(600)
         clamp.set_tightening_threshold(400)
 
-        # Form content
         form_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
         form_box.set_margin_top(0)
         form_box.set_margin_bottom(12)
-        form_box.set_margin_start(24)  # Increased for better horizontal spacing
-        form_box.set_margin_end(24)  # Increased for better horizontal spacing
+        form_box.set_margin_start(24)
+        form_box.set_margin_end(24)
 
-        # Create single preferences group for form elements
-        form_group = Adw.PreferencesGroup()
+        form_box.append(self._build_form_group())
+        form_box.append(self._build_buttons())
 
-        # URL entry with detect button
-        url_row = Adw.EntryRow()
-        url_row.set_title(_("URL"))
-        url_row.set_text(self.webapp.app_url)
+        clamp.set_child(form_box)
+        scrolled.set_child(clamp)
+        central_box.append(scrolled)
+        content.append(central_box)
 
-        # Add detect button with consistent spacing
+        self.set_content(self._build_loading_overlay(content))
+
+        # focus: URL for new webapps (need to type URL first);
+        # name for editing (URL already filled, name is more actionable)
+        target = self.url_row if self.is_new else self.name_row
+        self.connect("map", lambda *_: target.grab_focus())
+
+    def _build_form_group(self) -> Adw.PreferencesGroup:
+        """Build all form rows: URL, Name, Icon, Category, Mode, Browser, Profile."""
+        group = Adw.PreferencesGroup()
+
+        # URL entry with detect button + real-time validation
+        self.url_row = Adw.EntryRow()
+        self.url_row.set_title(_("URL"))
+        self.url_row.set_text(self.webapp.app_url)
+
+        self.url_valid_icon = Gtk.Image()
+        self.url_valid_icon.set_pixel_size(16)
+        self.url_valid_icon.set_visible(False)
+        self.url_row.add_suffix(self.url_valid_icon)
+
         detect_button = Gtk.Button(label=_("Detect"))
         detect_button.set_tooltip_text(_("Detect name and icon from website"))
         detect_button.set_valign(Gtk.Align.CENTER)
         detect_button.connect("clicked", self.on_detect_clicked)
-        url_row.add_suffix(detect_button)
-        url_row.connect("changed", self.on_url_changed)
-        form_group.add(url_row)
+        self.url_row.add_suffix(detect_button)
+        self.url_row.connect("changed", self.on_url_changed)
+        group.add(self.url_row)
 
         # Name entry
-        name_row = Adw.EntryRow()
-        name_row.set_title(_("Name"))
-        name_row.set_text(self.webapp.app_name)
-        name_row.connect("changed", self.on_name_changed)
-        form_group.add(name_row)
+        self.name_row = Adw.EntryRow()
+        self.name_row.set_title(_("Name"))
+        self.name_row.set_text(self.webapp.app_name)
+        self.name_row.connect("changed", self.on_name_changed)
+        group.add(self.name_row)
 
         # Icon selection
         icon_row = Adw.ActionRow(title=_("App Icon"))
-
         self.icon_image = Gtk.Image()
         self.icon_image.set_pixel_size(48)
         self.set_icon_from_path(self.webapp.app_icon_url)
@@ -242,51 +244,61 @@ class WebAppDialog(Adw.Window):
         select_icon_button.set_valign(Gtk.Align.CENTER)
         select_icon_button.connect("clicked", self.on_select_icon_clicked)
         icon_row.add_suffix(select_icon_button)
-        form_group.add(icon_row)
+        group.add(icon_row)
 
-        # Icons row that will appear after icon selection when icons are available
+        # Row for favicon picker (shown after website detection)
         self.icon_selection_row = Adw.ActionRow(title=_("Available Icons"))
         self.icon_selection_row.set_visible(False)
-        form_group.add(self.icon_selection_row)
+        group.add(self.icon_selection_row)
 
-        # Category selection
+        # Category
+        self._build_category_row(group)
+
+        # App mode + Browser + Profile
+        self._build_mode_browser_profile(group)
+
+        return group
+
+    def _build_category_row(self, group: Adw.PreferencesGroup) -> None:
+        """Add category dropdown to *group*."""
         main_category = self.webapp.get_main_category()
         self.category_dropdown = Gtk.DropDown()
         category_model = Gtk.StringList()
 
-        # Store both system and display names for categories
         self.system_categories = [
-            "Webapps",  # Our custom category - always first
-            "Network",  # Common in most DEs
-            "Office",  # Common in most DEs
-            "Development",  # Common in most DEs
-            "Graphics",  # Common in most DEs
-            "AudioVideo",  # Common name in some DEs
-            "Game",  # Common in most DEs
-            "Utility",  # Common in GNOME
-            "System",  # Common in most DEs
+            "Webapps",
+            "Network",
+            "Office",
+            "Development",
+            "Graphics",
+            "AudioVideo",
+            "Game",
+            "Utility",
+            "System",
         ]
-
-        # Display translated category names in UI
         for category in self.system_categories:
             category_model.append(_(category))
 
         self.category_dropdown.set_model(category_model)
         self.category_dropdown.set_valign(Gtk.Align.CENTER)
+        self.category_dropdown.update_property(
+            [Gtk.AccessibleProperty.LABEL],
+            [_("Category")],
+        )
 
-        # Set the current category - find the untranslated one that matches our current category
         for i, category in enumerate(self.system_categories):
             if category == main_category:
                 self.category_dropdown.set_selected(i)
                 break
 
         self.category_dropdown.connect("notify::selected", self.on_category_changed)
-
         category_row = Adw.ActionRow(title=_("Category"))
         category_row.add_suffix(self.category_dropdown)
-        form_group.add(category_row)
+        group.add(category_row)
 
-        # App mode toggle — opens in Qt6 viewer instead of browser
+    def _build_mode_browser_profile(self, group: Adw.PreferencesGroup) -> None:
+        """Add app-mode switch, browser selector & profile rows to *group*."""
+        # App mode toggle
         self.app_mode_row = Adw.ActionRow(title=_("Application Mode"))
         self.app_mode_row.set_subtitle(
             _("Opens as a native window without browser interface")
@@ -294,99 +306,79 @@ class WebAppDialog(Adw.Window):
         self.app_mode_switch = Gtk.Switch()
         self.app_mode_switch.set_valign(Gtk.Align.CENTER)
         self.app_mode_switch.set_active(self.webapp.app_mode == "app")
+        self.app_mode_switch.update_property(
+            [Gtk.AccessibleProperty.LABEL],
+            [_("Application Mode")],
+        )
         self.app_mode_switch.connect("notify::active", self.on_app_mode_switch_changed)
         self.app_mode_row.add_suffix(self.app_mode_switch)
-        form_group.add(self.app_mode_row)
+        group.add(self.app_mode_row)
 
         # Browser selection
         self.browser_row = Adw.ActionRow(title=_("Browser"))
-
         browser_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         self.browser_icon = Gtk.Image()
         self.browser_icon.set_pixel_size(24)
         self.set_browser_icon(self.webapp.browser)
         browser_box.append(self.browser_icon)
-
         self.browser_label = Gtk.Label()
         self.set_browser_label(self.webapp.browser)
         browser_box.append(self.browser_label)
-
         self.browser_row.add_prefix(browser_box)
 
         select_browser_button = Gtk.Button(label=_("Select"))
         select_browser_button.connect("clicked", self.on_select_browser_clicked)
         select_browser_button.set_valign(Gtk.Align.CENTER)
         self.browser_row.add_suffix(select_browser_button)
-        form_group.add(self.browser_row)
+        group.add(self.browser_row)
 
-        # Profile settings
+        # Profile settings — progressive disclosure via expander
         browser = self.browser_collection.get_by_id(self.webapp.browser)
         is_firefox = browser and browser.is_firefox_based()
 
-        # Profile switch (only for non-Firefox browsers)
-        self.profile_row = Adw.ActionRow(title=_("Use separate profile"))
-        self.profile_row.set_subtitle(
-            _("Using a separate profile allows you to log in to different accounts")
+        self.profile_expander = Adw.ExpanderRow(title=_("Profile Settings"))
+        self.profile_expander.set_subtitle(
+            _("Configure a separate browser profile for this webapp")
         )
 
+        profile_switch_row = Adw.ActionRow(title=_("Use separate profile"))
+        profile_switch_row.set_subtitle(_("Allows independent cookies and sessions"))
         self.profile_switch = Gtk.Switch()
         self.profile_switch.set_valign(Gtk.Align.CENTER)
-
-        # For new webapps, always set the switch to inactive by default
-        # For existing webapps, set based on profile name
+        self.profile_switch.update_property(
+            [Gtk.AccessibleProperty.LABEL],
+            [_("Use separate profile")],
+        )
         if self.is_new:
             self.profile_switch.set_active(False)
         else:
             self.profile_switch.set_active(self.webapp.app_profile != "Browser")
-
         self.profile_switch.connect("notify::active", self.on_profile_switch_changed)
-        self.profile_row.add_suffix(self.profile_switch)
+        profile_switch_row.add_suffix(self.profile_switch)
+        self.profile_expander.add_row(profile_switch_row)
 
-        # Profile entry (only visible when switch is on)
         self.profile_entry_row = Adw.EntryRow()
         self.profile_entry_row.set_title(_("Profile Name"))
         self.profile_entry_row.set_text(self.webapp.app_profile)
         self.profile_entry_row.connect("changed", self.on_profile_entry_changed)
         self.profile_entry_row.set_visible(self.profile_switch.get_active())
+        self.profile_expander.add_row(self.profile_entry_row)
 
-        # Hide profile options for Firefox-based browsers
         if not is_firefox:
-            form_group.add(self.profile_row)
-            form_group.add(self.profile_entry_row)
+            group.add(self.profile_expander)
 
-        # Hide browser/profile rows when app mode is active
+        # hide browser/profile in app mode
         if self.webapp.app_mode == "app":
             self.browser_row.set_visible(False)
-            self.profile_row.set_visible(False)
-            self.profile_entry_row.set_visible(False)
+            self.profile_expander.set_visible(False)
 
-        # Add form group to the layout
-        form_box.append(form_group)
-
-        # Favicons section (initially hidden)
-        self.favicons_group = Adw.PreferencesGroup(title=_("Available Icons"))
-        self.favicons_box = Gtk.FlowBox()
-        self.favicons_box.set_selection_mode(Gtk.SelectionMode.SINGLE)
-        self.favicons_box.set_max_children_per_line(5)
-        self.favicons_box.set_homogeneous(True)
-        self.favicons_box.connect("child-activated", self.on_favicon_selected)
-
-        favicons_scroll = Gtk.ScrolledWindow()
-        favicons_scroll.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
-        favicons_scroll.set_min_content_height(100)
-        favicons_scroll.set_max_content_height(200)
-        favicons_scroll.set_child(self.favicons_box)
-
-        self.favicons_group.add(favicons_scroll)
-        self.favicons_group.set_visible(False)
-        form_box.append(self.favicons_group)
-
-        # Add bottom button bar with cancel and save buttons - reduce margins
-        button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
-        button_box.set_margin_top(12)  # Reduced from 24
-        button_box.set_margin_bottom(6)  # Reduced from 12
-        button_box.set_halign(Gtk.Align.END)
-        button_box.set_valign(Gtk.Align.CENTER)  # Ensure vertical centering
+    def _build_buttons(self) -> Gtk.Box:
+        """Build Cancel / Save button bar."""
+        box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
+        box.set_margin_top(12)
+        box.set_margin_bottom(6)
+        box.set_halign(Gtk.Align.END)
+        box.set_valign(Gtk.Align.CENTER)
 
         cancel_button = Gtk.Button(label=_("Cancel"))
         cancel_button.set_valign(Gtk.Align.CENTER)
@@ -397,19 +389,12 @@ class WebAppDialog(Adw.Window):
         save_button.add_css_class("suggested-action")
         save_button.connect("clicked", self.on_save_clicked)
 
-        button_box.append(cancel_button)
-        button_box.append(save_button)
+        box.append(cancel_button)
+        box.append(save_button)
+        return box
 
-        # Add button box to the form
-        form_box.append(button_box)
-
-        # Complete the content hierarchy with the central container
-        clamp.set_child(form_box)
-        scrolled.set_child(clamp)
-        central_box.append(scrolled)
-        content.append(central_box)
-
-        # Add a loading spinner overlay (initially hidden)
+    def _build_loading_overlay(self, content: Gtk.Widget) -> Gtk.Overlay:
+        """Wrap *content* in an overlay with a loading spinner."""
         overlay = Gtk.Overlay()
         overlay.set_child(content)
 
@@ -423,40 +408,36 @@ class WebAppDialog(Adw.Window):
         self.loading_box.append(spinner)
 
         loading_label = Gtk.Label(label=_("Loading..."))
-        loading_label.set_halign(Gtk.Align.CENTER)  # Center the label horizontally
+        loading_label.set_halign(Gtk.Align.CENTER)
+        loading_label.update_property(
+            [Gtk.AccessibleProperty.LABEL],
+            [_("Detecting website information, please wait")],
+        )
         self.loading_box.append(loading_label)
 
-        # Set background color for loading overlay
-        loading_overlay = Gtk.Box()
-        loading_overlay.set_hexpand(True)
-        loading_overlay.set_vexpand(True)
+        # semi-transparent backdrop
+        loading_box_wrapper = Gtk.Box()
+        loading_box_wrapper.set_hexpand(True)
+        loading_box_wrapper.set_vexpand(True)
         css_provider = Gtk.CssProvider()
         css_provider.load_from_data(b"""
-            box {
-            background: rgba(0, 0, 0, 0.5);
-            }
-            label {
-            color: white;
-            }
+            box { background: rgba(0, 0, 0, 0.5); }
+            label { color: white; }
         """)
 
-        # Center the loading box inside the overlay
         self.loading_box.set_hexpand(True)
         self.loading_box.set_vexpand(True)
-        loading_overlay.append(self.loading_box)
+        loading_box_wrapper.append(self.loading_box)
 
-        style_context = loading_overlay.get_style_context()
+        style_context = loading_box_wrapper.get_style_context()
         Gtk.StyleContext.add_provider(
             style_context, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         )
 
-        self.loading_overlay = loading_overlay
+        self.loading_overlay = loading_box_wrapper
         self.loading_overlay.set_visible(False)
-
         overlay.add_overlay(self.loading_overlay)
-
-        # Use set_content() instead of set_child() for Adw.Window
-        self.set_content(overlay)
+        return overlay
 
     def on_key_pressed(
         self,
@@ -505,8 +486,32 @@ class WebAppDialog(Adw.Window):
             self.browser_label.set_text(browser_id)
 
     def on_url_changed(self, entry: Adw.EntryRow) -> None:
-        """Handle URL entry changes"""
-        self.webapp.app_url = entry.get_text()
+        """Handle URL entry changes with real-time validation."""
+        url = entry.get_text()
+        self.webapp.app_url = url
+        self._validate_url(url)
+
+    def _validate_url(self, url: str) -> None:
+        """Update URL row visual feedback based on format validity."""
+        from urllib.parse import urlparse
+
+        self.url_row.remove_css_class("error")
+        self.url_row.remove_css_class("success")
+
+        if not url:
+            self.url_valid_icon.set_visible(False)
+            return
+
+        parsed = urlparse(url)
+        valid = parsed.scheme in ("http", "https") and bool(parsed.netloc)
+
+        if valid:
+            self.url_row.add_css_class("success")
+            self.url_valid_icon.set_from_icon_name("emblem-ok-symbolic")
+        else:
+            self.url_row.add_css_class("error")
+            self.url_valid_icon.set_from_icon_name("dialog-warning-symbolic")
+        self.url_valid_icon.set_visible(True)
 
     def on_name_changed(self, entry: Adw.EntryRow) -> None:
         """Handle name entry changes"""
@@ -550,10 +555,7 @@ class WebAppDialog(Adw.Window):
         is_app = switch.get_active()
         self.webapp.app_mode = "app" if is_app else "browser"
         self.browser_row.set_visible(not is_app)
-        self.profile_row.set_visible(not is_app)
-        self.profile_entry_row.set_visible(
-            not is_app and self.profile_switch.get_active()
-        )
+        self.profile_expander.set_visible(not is_app)
 
     def on_profile_switch_changed(
         self, switch: Gtk.Switch, _param: GObject.ParamSpec
@@ -606,13 +608,7 @@ class WebAppDialog(Adw.Window):
         # Update name if title was found
         if title:
             self.webapp.app_name = title
-
-            # Find all entry rows in the dialog content and update the one with title "Name"
-            for row in self.find_all_widget_types(self.get_content(), Adw.EntryRow):
-                if row.get_title() == _("Name"):
-                    logger.debug("Found Name entry, setting text to: %s", title)
-                    row.set_text(title)
-                    break
+            self.name_row.set_text(title)
 
         # Derive profile name from URL
         profile_name = self.webapp.derive_profile_name()
@@ -621,44 +617,16 @@ class WebAppDialog(Adw.Window):
             self.profile_entry_row.set_text(profile_name)
 
         if len(icon_paths) > 0:
-            # Create a flowbox for the icons if it doesn't exist
-            if not hasattr(self, "icons_flowbox"):
-                self.icons_flowbox = Gtk.FlowBox()
-                self.icons_flowbox.set_selection_mode(Gtk.SelectionMode.SINGLE)
-                self.icons_flowbox.set_max_children_per_line(5)
-                self.icons_flowbox.set_homogeneous(True)
-                self.icons_flowbox.connect("child-activated", self.on_favicon_selected)
-                self.icons_flowbox.set_margin_top(8)
-                self.icons_flowbox.set_margin_bottom(8)
-                self.icon_selection_row.set_child(self.icons_flowbox)
-            else:
-                # Clear existing icons
-                while self.icons_flowbox.get_first_child():
-                    self.icons_flowbox.remove(self.icons_flowbox.get_first_child())
+            # Create FaviconPicker if it doesn't exist
+            if not hasattr(self, "favicon_picker"):
+                self.favicon_picker = FaviconPicker()
+                self.favicon_picker.connect("icon-selected", self._on_icon_selected)
+                self.icon_selection_row.set_child(self.favicon_picker)
 
-            # Add icons to the flowbox in the row
-            for icon_path in icon_paths:
-                container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-                container.favicon_url = icon_path
-
-                image = Gtk.Image()
-                image.set_pixel_size(48)
-
-                try:
-                    pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(icon_path, 48, 48)
-                    image.set_from_pixbuf(pixbuf)
-                except Exception as e:
-                    logger.error("Error loading favicon %s: %s", icon_path, e)
-                    image.set_from_icon_name("image-missing")
-
-                container.append(image)
-                self.icons_flowbox.append(container)
+            self.favicon_picker.load_icons(icon_paths)
 
             # Show the icon selection row
             self.icon_selection_row.set_visible(True)
-
-            # Hide the old favicons group since we're now using the row
-            self.favicons_group.set_visible(False)
         else:
             # Hide the icon selection row if no icons
             self.icon_selection_row.set_visible(False)
@@ -666,19 +634,13 @@ class WebAppDialog(Adw.Window):
         # Hide the loading overlay
         self.loading_overlay.set_visible(False)
 
-    def on_favicon_selected(
-        self, _flowbox: Gtk.FlowBox, child: Gtk.FlowBoxChild
-    ) -> None:
-        """Handle favicon selection"""
-        # Get the container box
-        container = child.get_child()
+        # move focus to name entry → screen reader announces result
+        self.name_row.grab_focus()
 
-        # Get the favicon URL from the container property
-        favicon_url = getattr(container, "favicon_url", None)
-
-        if favicon_url:
-            self.webapp.app_icon_url = favicon_url
-            self.set_icon_from_path(favicon_url)
+    def _on_icon_selected(self, _picker: FaviconPicker, icon_path: str) -> None:
+        """Handle icon selection from FaviconPicker."""
+        self.webapp.app_icon_url = icon_path
+        self.set_icon_from_path(icon_path)
 
     def on_select_icon_clicked(self, button: Gtk.Button) -> None:
         """Handle select icon button click"""
@@ -717,12 +679,10 @@ class WebAppDialog(Adw.Window):
 
                 # Handle profile settings for Firefox-based browsers
                 if browser.is_firefox_based():
-                    self.profile_row.set_visible(False)
-                    self.profile_entry_row.set_visible(False)
+                    self.profile_expander.set_visible(False)
                     self.webapp.app_profile = "Default"
                 else:
-                    self.profile_row.set_visible(True)
-                    self.profile_entry_row.set_visible(self.profile_switch.get_active())
+                    self.profile_expander.set_visible(True)
 
                 # Don't update the webapp file yet - this will be done in on_save_clicked
                 logger.debug(
@@ -747,7 +707,7 @@ class WebAppDialog(Adw.Window):
             self.show_error_dialog(_("Please enter a URL for the WebApp."))
             return
 
-        if not self.webapp.browser:
+        if not self.webapp.browser and self.webapp.app_mode != "app":
             self.show_error_dialog(_("Please select a browser for the WebApp."))
             return
 
@@ -757,9 +717,25 @@ class WebAppDialog(Adw.Window):
             random_suffix = uuid.uuid4().hex[:8]
             self.webapp.app_file = f"{timestamp}-{random_suffix}"
 
-        # Everything is valid, close and emit response
+        # show saving indicator
+        self.loading_overlay.set_visible(True)
+
+        def _do_save() -> None:
+            if self.is_new:
+                ok = self.command_executor.create_webapp(self.webapp)
+            else:
+                ok = self.command_executor.update_webapp(self.webapp)
+            GLib.idle_add(self._on_save_finished, ok)
+
+        threading.Thread(target=_do_save, daemon=True).start()
+
+    def _on_save_finished(self, success: bool) -> None:
+        """Called on main thread after save completes."""
+        self.loading_overlay.set_visible(False)
         self.close()
-        self.emit("response", Gtk.ResponseType.OK)
+        self.emit(
+            "response", Gtk.ResponseType.OK if success else Gtk.ResponseType.CANCEL
+        )
 
     def show_error_dialog(self, message: str) -> None:
         """
@@ -780,31 +756,3 @@ class WebAppDialog(Adw.Window):
             WebApp: The edited WebApp object
         """
         return self.webapp
-
-    def find_all_widget_types(
-        self, widget: Gtk.Widget, widget_type: type
-    ) -> list[Gtk.Widget]:
-        """
-        Recursively find all widgets of a specific type
-
-        Parameters:
-            widget (Gtk.Widget): Widget to search in
-            widget_type (type): Type of widgets to find
-
-        Returns:
-            list: List of widgets of the specified type
-        """
-        result = []
-
-        # If this widget is of the target type, add it
-        if isinstance(widget, widget_type):
-            result.append(widget)
-
-        # If it's a container with children, search its children
-        if hasattr(widget, "get_first_child"):
-            child = widget.get_first_child()
-            while child:
-                result.extend(self.find_all_widget_types(child, widget_type))
-                child = child.get_next_sibling()
-
-        return result

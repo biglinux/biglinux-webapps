@@ -9,43 +9,9 @@ import shutil
 import subprocess
 from pathlib import Path
 
+from webapps.utils.browser_registry import match_desktop_to_browser
+
 logger = logging.getLogger(__name__)
-
-# desktop file pattern → browser ID, ordered most-specific first
-_BROWSER_DESKTOP_MAP = [
-    ("brave-beta", "brave-beta"),
-    ("brave-nightly", "brave-nightly"),
-    ("brave", "brave"),
-    ("firefox", "firefox"),
-    ("chromium", "chromium"),
-    ("chrome.*beta", "google-chrome-beta"),
-    ("chrome.*unstable", "google-chrome-unstable"),
-    ("chrome", "google-chrome-stable"),
-    ("edge", "microsoft-edge-stable"),
-    ("vivaldi.*beta", "vivaldi-beta"),
-    ("vivaldi.*snapshot", "vivaldi-snapshot"),
-    ("vivaldi", "vivaldi-stable"),
-    ("librewolf", "librewolf"),
-    ("org.mozilla.firefox", "flatpak-firefox"),
-    ("org.chromium.chromium", "flatpak-chromium"),
-    ("com.google.chromedev", "flatpak-chrome-unstable"),
-    ("com.google.chrome", "flatpak-chrome"),
-    ("com.brave.browser", "flatpak-brave"),
-    ("com.microsoft.edge", "flatpak-edge"),
-    ("com.github.eloston.ungoogledchromium", "flatpak-ungoogled-chromium"),
-    ("io.gitlab.librewolf", "flatpak-librewolf"),
-]
-
-
-def _match_browser_desktop(desktop_name: str) -> str | None:
-    """Match desktop file name to browser ID using _BROWSER_DESKTOP_MAP."""
-    import re
-
-    lower = desktop_name.lower()
-    for pattern, browser_id in _BROWSER_DESKTOP_MAP:
-        if re.search(pattern, lower):
-            return browser_id
-    return None
 
 
 class CommandExecutor:
@@ -223,7 +189,7 @@ class CommandExecutor:
                 "default-web-browser",
             ])
             if result.strip():
-                match = _match_browser_desktop(result.strip())
+                match = match_desktop_to_browser(result.strip())
                 if match:
                     return match
 
@@ -235,7 +201,7 @@ class CommandExecutor:
                 "x-scheme-handler/http",
             ])
             if result.strip():
-                match = _match_browser_desktop(result.strip())
+                match = match_desktop_to_browser(result.strip())
                 if match:
                     return match
         except Exception as e:
