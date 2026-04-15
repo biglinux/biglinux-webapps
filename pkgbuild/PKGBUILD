@@ -50,3 +50,4 @@ package() {
                 "${pkgdir}/usr/bin/big-webapps-gui"
         install -Dm755 "${srcdir}/${pkgname}/target/release/big-webapps-viewer" \
                 "${pkgdir}/usr/bin/big-webapps-viewer"
+}
