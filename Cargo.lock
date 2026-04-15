@@ -2548,6 +2548,7 @@ dependencies = [
  "anyhow",
  "dirs",
  "env_logger",
+ "gdk-pixbuf",
  "gdk4",
  "gettext-rs",
  "gio",

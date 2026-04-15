@@ -568,20 +568,20 @@ pub fn resolve_icon_path(icon: &str) -> String {
             return candidate.to_string_lossy().to_string();
         }
     }
-    // user-local hicolor
+    // user-local hicolor — return icon name so GTK theme renders SVG at correct size
     let hicolor_user = local_icons.join("hicolor/scalable/apps");
     for ext in &["svg", "png"] {
         let candidate = hicolor_user.join(format!("{icon}.{ext}"));
         if candidate.exists() {
-            return candidate.to_string_lossy().to_string();
+            return icon.to_string();
         }
     }
-    // system hicolor
+    // system hicolor — return icon name for GTK theme lookup
     let hicolor_sys = PathBuf::from("/usr/share/icons/hicolor/scalable/apps");
     for ext in &["svg", "png"] {
         let candidate = hicolor_sys.join(format!("{icon}.{ext}"));
         if candidate.exists() {
-            return candidate.to_string_lossy().to_string();
+            return icon.to_string();
         }
     }
     // system icons dir (biglinux-specific)

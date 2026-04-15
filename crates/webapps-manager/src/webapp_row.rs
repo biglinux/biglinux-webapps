@@ -4,7 +4,7 @@ use libadwaita as adw;
 
 use adw::prelude::*;
 use gettextrs::gettext;
-use webapps_core::models::WebApp;
+use webapps_core::models::{AppMode, WebApp};
 
 use crate::service;
 
@@ -23,18 +23,20 @@ pub fn build_row(webapp: &WebApp, callbacks: &std::rc::Rc<RowCallbacks>) -> gtk:
     hbox.set_margin_start(12);
     hbox.set_margin_end(12);
 
-    // icon
+    // icon — prefer icon name for theme lookup (crisp SVG at any size)
     let icon = gtk::Image::new();
-    icon.set_pixel_size(64);
+    icon.set_pixel_size(48);
     let icon_path = service::resolve_icon_path(&webapp.app_icon);
     let p = std::path::Path::new(&icon_path);
     if p.is_absolute() && p.exists() {
-        // load from file — use paintable for SVGs to get crisp rendering
         if icon_path.ends_with(".svg") {
-            if let Ok(tex) = gdk4::Texture::from_filename(p) {
-                icon.set_paintable(Some(&tex));
-            } else {
-                icon.set_from_file(Some(p));
+            // rasterize SVG at 2x target → crisp on HiDPI
+            match gdk_pixbuf::Pixbuf::from_file_at_size(p, 192, 192) {
+                Ok(pixbuf) => {
+                    let tex = gdk4::Texture::for_pixbuf(&pixbuf);
+                    icon.set_paintable(Some(&tex));
+                }
+                Err(_) => icon.set_from_file(Some(p)),
             }
         } else {
             icon.set_from_file(Some(p));
@@ -69,13 +71,22 @@ pub fn build_row(webapp: &WebApp, callbacks: &std::rc::Rc<RowCallbacks>) -> gtk:
     actions.add_css_class("linked");
     actions.set_valign(gtk::Align::Center);
 
-    // browser indicator button
-    let browser_icon_name = webapps_core::models::Browser {
-        browser_id: webapp.browser.clone(),
-        is_default: false,
-    }.icon_name();
+    // browser indicator — show app icon for App mode, browser icon otherwise
+    let browser_icon_name = if webapp.app_mode == AppMode::App {
+        "application-x-executable-symbolic".to_string()
+    } else {
+        webapps_core::models::Browser {
+            browser_id: webapp.browser.clone(),
+            is_default: false,
+        }.icon_name()
+    };
     let browser_btn = gtk::Button::from_icon_name(&browser_icon_name);
-    browser_btn.set_tooltip_text(Some(&gettext("Change browser")));
+    let browser_tooltip = if webapp.app_mode == AppMode::App {
+        gettext("App mode")
+    } else {
+        gettext("Change browser")
+    };
+    browser_btn.set_tooltip_text(Some(&browser_tooltip));
     browser_btn.add_css_class("flat");
     {
         let cb = callbacks.clone();

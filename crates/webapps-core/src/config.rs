@@ -1,7 +1,7 @@
 use std::path::PathBuf;
 
 pub const APP_VERSION: &str = "4.0.0";
-pub const APP_ID: &str = "com.biglinux.WebApps";
+pub const APP_ID: &str = "br.com.biglinux.webapps";
 
 /// Config dir: ~/.config/biglinux-webapps/
 pub fn config_dir() -> PathBuf {
