@@ -4,6 +4,7 @@ Browser model module containing the Browser and BrowserCollection classes
 
 from gi.repository import GObject
 from webapps.utils.browser_icon_utils import get_browser_icon_name
+from webapps.utils.browser_registry import get_display_name
 
 
 class Browser(GObject.GObject):
@@ -11,13 +12,7 @@ class Browser(GObject.GObject):
 
     __gtype_name__ = "Browser"
 
-    def __init__(self, browser_data=None):
-        """
-        Initialize a Browser instance
-
-        Parameters:
-            browser_data (dict): Dictionary containing browser data
-        """
+    def __init__(self, browser_data: dict | None = None) -> None:
         super().__init__()
 
         # Default values
@@ -28,7 +23,7 @@ class Browser(GObject.GObject):
         if browser_data:
             self.load_from_dict(browser_data)
 
-    def load_from_dict(self, browser_data):
+    def load_from_dict(self, browser_data: dict) -> None:
         """
         Load data from a dictionary
 
@@ -38,49 +33,20 @@ class Browser(GObject.GObject):
         self.browser_id = browser_data.get("browser", "")
         self.is_default = browser_data.get("is_default", False)
 
-    def get_friendly_name(self):
+    def get_friendly_name(self) -> str:
         """
         Get a user-friendly name for the browser
 
         Returns:
             str: User-friendly browser name
         """
-        browser_name_map = {
-            "brave": "Brave",
-            "firefox": "Firefox",
-            "chromium": "Chromium",
-            "google-chrome-stable": "Chrome",
-            "vivaldi-stable": "Vivaldi",
-            "flatpak-brave": "Brave (Flatpak)",
-            "flatpak-chrome": "Chrome (Flatpak)",
-            "flatpak-chrome-unstable": "Chrome Unstable (Flatpak)",
-            "flatpak-chromium": "Chromium (Flatpak)",
-            "flatpak-edge": "Edge (Flatpak)",
-            "microsoft-edge-stable": "Edge",
-            "librewolf": "Librewolf",
-            "flatpak-ungoogled-chromium": "Chromium (Flatpak)",
-            "flatpak-firefox": "Firefox (Flatpak)",
-            "flatpak-librewolf": "Librewolf (Flatpak)",
-            "brave-beta": "Brave Beta",
-            "brave-nightly": "Brave Nightly",
-            "google-chrome-beta": "Chrome Beta",
-            "google-chrome-unstable": "Chrome Unstable",
-            "vivaldi-beta": "Vivaldi Beta",
-            "vivaldi-snapshot": "Vivaldi Snapshot",
-        }
+        return get_display_name(self.browser_id)
 
-        return browser_name_map.get(self.browser_id, self.browser_id)
-
-    def get_browser_icon_name(self):
-        """
-        Get icon name for the browser
-
-        Returns:
-            str: Icon name for the browser
-        """
+    def get_browser_icon_name(self) -> str:
+        """Get the icon filename for this browser."""
         return get_browser_icon_name(self.browser_id)
 
-    def is_firefox_based(self):
+    def is_firefox_based(self) -> bool:
         """
         Check if the browser is Firefox-based
 
@@ -96,37 +62,24 @@ class Browser(GObject.GObject):
 class BrowserCollection:
     """Collection of Browser objects"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize an empty Browser collection"""
         self.browsers = []
         self.default_browser_id = None
 
-    def load_from_json(self, json_data):
-        """
-        Load browsers from JSON data
-
-        Parameters:
-            json_data (list): List of browser dictionaries
-        """
+    def load_from_json(self, json_data: list[dict] | None) -> None:
+        """Load browsers from JSON data."""
         self.browsers = []
+        if json_data:
+            for browser_data in json_data:
+                browser = Browser(browser_data)
+                self.browsers.append(browser)
 
-        if not json_data:
-            return
-
-        for browser_data in json_data:
-            browser = Browser(browser_data)
-            self.browsers.append(browser)
-
-    def get_all(self):
-        """
-        Get all browsers
-
-        Returns:
-            list: List of all Browser objects
-        """
+    def get_all(self) -> list["Browser"]:
+        """Return all browsers."""
         return self.browsers
 
-    def set_default(self, browser_id):
+    def set_default(self, browser_id: str) -> None:
         """
         Set the default browser
 
@@ -138,7 +91,7 @@ class BrowserCollection:
         for browser in self.browsers:
             browser.is_default = browser.browser_id == browser_id
 
-    def get_default(self):
+    def get_default(self) -> "Browser | None":
         """
         Get the default browser
 
@@ -152,7 +105,7 @@ class BrowserCollection:
         # If no default is set but we have browsers, return the first one
         return self.browsers[0] if self.browsers else None
 
-    def get_by_id(self, browser_id):
+    def get_by_id(self, browser_id: str) -> "Browser | None":
         """
         Get a browser by its ID
 

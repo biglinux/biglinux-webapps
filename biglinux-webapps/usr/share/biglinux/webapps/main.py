@@ -16,12 +16,9 @@ from gi.repository import GLib
 from webapps.application import WebAppsApplication
 
 
-def main():
+def main() -> int:
     """Main function to start the application."""
     app = WebAppsApplication()
-
-    # Set application ID for proper desktop integration
-    app.set_application_id("br.com.biglinux.webapps")
 
     # Set program name for window manager class
     GLib.set_prgname("big-webapps-gui")

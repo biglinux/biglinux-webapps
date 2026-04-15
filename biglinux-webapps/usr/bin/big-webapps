@@ -51,7 +51,7 @@ if [[ $command == "json" ]]; then
     one_file="$1"
 
 # Remove
-elif [ $command == "remove" ]; then
+elif [ "$command" == "remove" ]; then
     if [ "$#" = "0" ]; then
         display_help
         exit 1
@@ -61,8 +61,8 @@ elif [ $command == "remove" ]; then
     browser="$2"
     profile="$3"
 
-    if [ -f $filename ]; then
-        rm $filename
+    if [ -f "$filename" ]; then
+        rm "$filename"
 
         echo "WebApp successfully removed!"
         exit 0
@@ -72,7 +72,7 @@ elif [ $command == "remove" ]; then
     fi
     
 # Remove
-elif [ $command = "remove-with-folder" ]; then
+elif [ "$command" = "remove-with-folder" ]; then
     if [ "$#" = "0" ]; then
         display_help
         exit 1
@@ -82,11 +82,11 @@ elif [ $command = "remove-with-folder" ]; then
     browser="$2"
     profile="$3"
 
-    if [ -f $filename ]; then
-        rm $filename
+    if [ -f "$filename" ]; then
+        rm "$filename"
         # Verify if $browser variable not null and $profile variable not null and folder $HOME/.bigwebapps/$browser/$profile exists
-        if [[ -n $browser ]] && [[ -n $profile ]] && [[ -d $HOME/.bigwebapps/$browser/$profile ]]; then
-            rm -rf $HOME/.bigwebapps/$browser/$profile
+        if [[ -n "$browser" ]] && [[ -n "$profile" ]] && [[ -d "$HOME/.bigwebapps/$browser/$profile" ]]; then
+            rm -rf "$HOME/.bigwebapps/$browser/$profile"
         else
             if [[ "$browser" == "firefox" || "$browser" == "librewolf" || "$browser" == "flatpak-firefox" || "$browser" == "flatpak-librewolf" ]]; then
                 # Firefox and Librewolf always remove the profile folder
@@ -110,28 +110,36 @@ else
     name="$2"
     url="$3"
     icon="$4"
-    # If icon not in the icon folder, copy to the icon folder
+    # If icon has a path, copy to proper icon theme dir and use absolute path
     if [[ $icon =~ \/ ]]; then
-        cp "$icon" ~/.local/share/icons/
+        mkdir -p ~/.local/share/icons/hicolor/scalable/apps
+        icon_basename="${icon##*/}"
+        cp "$icon" ~/.local/share/icons/hicolor/scalable/apps/
+        icon="$HOME/.local/share/icons/hicolor/scalable/apps/$icon_basename"
     fi
-    icon=${icon//*\/}
-    icon=${icon%.*}
     category="$5"
     profile="$6"
 fi
 
 
 # Adjust the browser name for the filename and class
-short_browser=$(sed 's/.*[Cc]hrom.*/chrome/
-                    s/.*[Bb]rave.*/brave/
-                    s/.*[Ee]dge.*/msedge/
-                    s/.*[Vv]ivaldi.*/vivaldi/' <<< "$browser")
+if [[ "$browser" == "__viewer__" ]]; then
+    short_browser="viewer"
+else
+    case "$browser" in
+        *[Cc]hrom*)  short_browser="chrome"  ;;
+        *[Bb]rave*)  short_browser="brave"   ;;
+        *[Ee]dge*)   short_browser="msedge"  ;;
+        *[Vv]ivaldi*) short_browser="vivaldi" ;;
+        *)           short_browser="$browser" ;;
+    esac
+fi
 
 # Adjust the class by replacing "/" with "__" and removing https
 class=$(sed 's|https://||;s|http://||g;s|/|__|g' <<< "$url")
 
 # Define the filename in Wayland compatible format
-filename="$short_browser-$(sed 's|https://||;s|http://||;s|?.*||g;s|/|__|g' <<< $url)-Default.desktop"
+filename="$short_browser-$(sed 's|https://||;s|http://||;s|?.*||g;s|/|__|g' <<< "$url")-Default.desktop"
 
 # Keep first occurrence of __ and replace all others with _
 filename=$(sed 's/__/\n/g;s/\n/__/;s/\n/_/g' <<< "$filename")
@@ -160,20 +168,73 @@ if [ "$command" = "create" ]; then
         exit 1
     fi
 
-    # Create the .desktop file
-    read -d $'' ShowText <<EOF
+    # optional metadata via env vars (backward compatible)
+    : "${WEBAPP_MIME_TYPES:=}"
+    : "${WEBAPP_COMMENT:=}"
+    : "${WEBAPP_GENERIC_NAME:=}"
+    : "${WEBAPP_KEYWORDS:=}"
+    : "${WEBAPP_TEMPLATE_ID:=}"
+    : "${WEBAPP_URL_SCHEMES:=}"
+
+    # merge url_schemes into mime_types as x-scheme-handler/*
+    if [[ -n "$WEBAPP_URL_SCHEMES" ]]; then
+        IFS=';' read -ra schemes <<< "$WEBAPP_URL_SCHEMES"
+        for scheme in "${schemes[@]}"; do
+            [[ -z "$scheme" ]] && continue
+            WEBAPP_MIME_TYPES+="x-scheme-handler/$scheme;"
+        done
+    fi
+
+    # build optional .desktop fields
+    extra_fields=""
+    [[ -n "$WEBAPP_MIME_TYPES" ]] && extra_fields+="MimeType=$WEBAPP_MIME_TYPES
+"
+    [[ -n "$WEBAPP_COMMENT" ]] && extra_fields+="Comment=$WEBAPP_COMMENT
+"
+    [[ -n "$WEBAPP_GENERIC_NAME" ]] && extra_fields+="GenericName=$WEBAPP_GENERIC_NAME
+"
+    [[ -n "$WEBAPP_KEYWORDS" ]] && extra_fields+="Keywords=$WEBAPP_KEYWORDS
+"
+    [[ -n "$WEBAPP_TEMPLATE_ID" ]] && extra_fields+="X-BigWebApp-Template=$WEBAPP_TEMPLATE_ID
+"
+
+    if [[ "$browser" == "__viewer__" ]]; then
+        # App mode — Qt6 viewer without browser chrome
+        app_id=$(sed 's|https://||;s|http://||;s|/|_|g;s|[^a-zA-Z0-9_-]||g' <<< "$url")
+        # support file args (%f) when mime types registered
+        exec_line="big-webapps-viewer --url=\"$url\" --name=\"$name\" --icon=\"${icon}\" --app-id=\"$app_id\""
+        [[ -n "$WEBAPP_MIME_TYPES" ]] && exec_line+=" %f"
+        read -d $'' ShowText <<EOF
 #!/usr/bin/env xdg-open
 [Desktop Entry]
 Version=1.0
 Terminal=false
 Type=Application
 Name=$name
-Exec=big-webapps-exec filename="$filename" $browser --class="$class" --profile-directory=$profile --app="$url"
-Icon=${icon//*\/}
+Exec=$exec_line
+Icon=$icon
+StartupWMClass=br.com.biglinux.webapp.$app_id
+Categories=$category
+${extra_fields}StartupNotify=false
+EOF
+    else
+        # Browser mode — standard webapp
+        exec_line="big-webapps-exec filename=\"$filename\" $browser --class=\"$class\" --profile-directory=$profile --app=\"$url\""
+        [[ -n "$WEBAPP_MIME_TYPES" ]] && exec_line+=" %f"
+        read -d $'' ShowText <<EOF
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=$name
+Exec=$exec_line
+Icon=$icon
 StartupWMClass=$class
 Categories=$category
-StartupNotify=false
+${extra_fields}StartupNotify=false
 EOF
+    fi
 
 echo "$ShowText" > "$filename"
 
@@ -186,7 +247,7 @@ elif [ "$command" = "verify" ]; then
         exit 1
     fi
 
-    if [ -f $filename_orig ]; then
+    if [ -f "$filename_orig" ]; then
         echo "true"
         exit 1
     else
@@ -205,7 +266,7 @@ elif [ "$command" = "json" ]; then
     IFS=$'\n'
     # Get if not passed the files, show all files with big-webapps-exec
     if [[ -z $one_file ]]; then
-        files=$(grep -Rl 'big-webapps-exec')
+        files=$(grep -Rl 'big-webapps-exec\|big-webapps-viewer')
     else
         files=$one_file
     fi
@@ -223,48 +284,58 @@ elif [ "$command" = "json" ]; then
                     name=${line#*Name=}
                     ;;
                 "Exec="*)
-                    url=${line//*--app=}
-                    url=${url//\"}
-                    browser=${line//*filename=\"}
-                    browser=${browser#*\" }
-                    browser=${browser// *}
-                    profile=${line//*--profile-directory=}
-                    profile=${profile// *}
+                    if [[ "$line" == *"big-webapps-viewer"* ]]; then
+                        # App mode — Qt6 viewer
+                        url=${line//*--url=\"}
+                        url=${url//\"*}
+                        browser="__viewer__"
+                        profile="Default"
+                    else
+                        # Browser mode
+                        url=${line//*--app=}
+                        url=${url//\"}
+                        browser=${line//*filename=\"}
+                        browser=${browser#*\" }
+                        browser=${browser// *}
+                        profile=${line//*--profile-directory=}
+                        profile=${profile// *}
+                    fi
                     ;;
                 "Icon="*)
                     icon=${line#*Icon=}
-                    # Copy the icon to the applications folder if it's not a system icon
-                    if [[ $icon =~ \/ ]]; then
-                        cp "$icon" ~/.local/share/icons/
-                        sed -Ei 's|^Icon=.*/(.*)\..*|Icon=\1|g' "$file"
-                    fi
-                    icon=${icon//*\/}
-                    # icon=${icon%.*}
                     ;;
                 "Categories="*)
                     categories=${line#*Categories=}
                     ;;
             esac
-        done <<<$(grep -ve 'Name=Software Render' -ve 'Exec=SoftwareRender ' $file | grep -m4 -e '^Name=' -e '^Exec=' -e '^Icon=' -e '^Categories=')
+        done <<<"$(grep -ve 'Name=Software Render' -ve 'Exec=SoftwareRender ' "$file" | grep -m4 -e '^Name=' -e '^Exec=' -e '^Icon=' -e '^Categories=')"
 
         # Print the JSON separator
         if [[ $num -gt 0 ]]; then
-            echo ,
+            printf ',\n'
         fi
 
-        # Print the JSON object with escaped quotes
-        read -d $'' ShowText <<EOF
-            {
-                "browser": "$browser",
-                "app_file": "${file//\"/\\\\\"}",
-                "app_name": "${name//\"/\\\\\"}",
-                "app_url": "${url//\"/\\\\\"}",
-                "app_icon": "$icon",
-                "app_profile": "$profile",
-                "app_categories": "$categories"
-            }
-EOF
-        echo "$ShowText"
+        # Determine app_mode from browser
+        if [[ "$browser" == "__viewer__" ]]; then
+            app_mode="app"
+        else
+            app_mode="browser"
+        fi
+
+        # JSON-escape values: handle backslash, double-quote, control chars
+        _json_escape() { printf '%s' "$1" | sed 's/\\/\\\\/g;s/"/\\"/g;s/\t/\\t/g'; }
+
+        # Print the JSON object
+        printf '            {\n'
+        printf '                "browser": "%s",\n' "$(_json_escape "$browser")"
+        printf '                "app_file": "%s",\n' "$(_json_escape "$file")"
+        printf '                "app_name": "%s",\n' "$(_json_escape "$name")"
+        printf '                "app_url": "%s",\n' "$(_json_escape "$url")"
+        printf '                "app_icon": "%s",\n' "$(_json_escape "$icon")"
+        printf '                "app_profile": "%s",\n' "$(_json_escape "$profile")"
+        printf '                "app_categories": "%s",\n' "$(_json_escape "$categories")"
+        printf '                "app_mode": "%s"\n' "$app_mode"
+        printf '            }'
         num+=1
     done
     # Print the JSON array end

@@ -12,11 +12,15 @@ from gi.repository import Gtk, Adw, Gdk
 
 from webapps.utils.translation import _
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 class WelcomeDialog(Adw.Window):
     """Welcome dialog explaining what webapps are and their benefits"""
 
-    def __init__(self, parent_window):
+    def __init__(self, parent_window: Adw.ApplicationWindow) -> None:
         """Initialize the welcome dialog"""
         super().__init__(
             title=_("Welcome to WebApps Manager"),
@@ -39,7 +43,13 @@ class WelcomeDialog(Adw.Window):
 
         self.setup_ui()
 
-    def on_key_pressed(self, controller, keyval, keycode, state):
+    def on_key_pressed(
+        self,
+        _controller: Gtk.EventControllerKey,
+        keyval: int,
+        _keycode: int,
+        _state: Gdk.ModifierType,
+    ) -> bool:
         """Handle key press events"""
         # Check if ESC key was pressed
         if keyval == Gdk.KEY_Escape:
@@ -47,9 +57,8 @@ class WelcomeDialog(Adw.Window):
             return True
         return False
 
-    def setup_ui(self):
-        """Set up the UI components"""
-        # Main container - similar to browser_dialog.py approach
+    def setup_ui(self) -> None:
+        """Set up the UI components."""
         main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
 
         # Add a headerbar for window movement with custom styling
@@ -57,7 +66,7 @@ class WelcomeDialog(Adw.Window):
         headerbar.set_show_title(False)  # No title for cleaner look
         headerbar.add_css_class("flat")  # Make it less prominent
 
-        # Apply custom CSS to reduce header padding
+        # Apply custom CSS to reduce header padding (widget-scoped, not global)
         css_provider = Gtk.CssProvider()
         css_provider.load_from_data(b"""
             headerbar {
@@ -65,8 +74,7 @@ class WelcomeDialog(Adw.Window):
                 padding: 2px 6px;
             }
         """)
-        Gtk.StyleContext.add_provider_for_display(
-            Gdk.Display.get_default(),
+        headerbar.get_style_context().add_provider(
             css_provider,
             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
         )
@@ -128,18 +136,17 @@ class WelcomeDialog(Adw.Window):
         switch_box.set_margin_top(12)
 
         self.show_switch = Gtk.Switch()
-        self.show_switch.set_active(False)
         self.show_switch.set_valign(Gtk.Align.CENTER)
 
-        switch_label = Gtk.Label(label=_("Show dialog on startup"))
+        switch_label = Gtk.Label(label=_("Don't show this again"))
         switch_label.set_xalign(0)
         switch_label.set_hexpand(True)
 
         switch_box.append(switch_label)
         switch_box.append(self.show_switch)
 
-        # Set initial state based on saved preference
-        self.show_switch.set_active(self.get_show_preference())
+        # switch ON = "don't show" = suppress; inverted from stored preference
+        self.show_switch.set_active(not self.get_show_preference())
 
         content_box.append(switch_box)
 
@@ -161,15 +168,13 @@ class WelcomeDialog(Adw.Window):
         # Set the content
         self.set_content(main_box)
 
-    def on_close(self, button):
+    def on_close(self, button: Gtk.Button) -> None:
         """Handle close button click"""
-        # Save preference based on switch state
-        self.save_preference(show=self.show_switch.get_active())
-
-        # Close the dialog
+        # switch ON = "don't show" → save show=False
+        self.save_preference(show=not self.show_switch.get_active())
         self.destroy()
 
-    def get_show_preference(self):
+    def get_show_preference(self) -> bool:
         """Get the current preference for showing the dialog at startup"""
         # If the file doesn't exist, default is to show the dialog
         if not os.path.exists(self.config_file):
@@ -185,7 +190,7 @@ class WelcomeDialog(Adw.Window):
             # If there's an error reading the file, default to showing the dialog
             return True
 
-    def save_preference(self, show=True):
+    def save_preference(self, show: bool = True) -> None:
         """
         Save the preference for showing the welcome dialog
 
@@ -201,10 +206,10 @@ class WelcomeDialog(Adw.Window):
             with open(self.config_file, "w") as f:
                 json.dump(preferences, f)
         except Exception as e:
-            print(f"Error saving welcome dialog preference: {e}")
+            logger.error("Error saving welcome dialog preference: %s", e)
 
     @staticmethod
-    def should_show_welcome():
+    def should_show_welcome() -> bool:
         """Check if the welcome dialog should be shown"""
         config_file = os.path.expanduser(
             "~/.config/biglinux-webapps/welcome_shown.json"

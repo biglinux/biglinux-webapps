@@ -4,7 +4,7 @@
 cd ~/.local/share/applications
 
 # Get the default browser
-defaultBrowser=$(/usr/share/bigbashview/apps/webapps/check_browser.sh --default)
+defaultBrowser=$(xdg-settings get default-web-browser 2>/dev/null | sed 's/\.desktop$//' || echo "brave-browser")
 
 # Iterate over all webapps
 for file in *webapp-biglinux*; do

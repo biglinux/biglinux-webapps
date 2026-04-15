@@ -8,10 +8,16 @@ import gi
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, GObject, GdkPixbuf
+from gi.repository import Gtk, GObject, GdkPixbuf, Pango
 
 from webapps.utils.browser_icon_utils import set_image_from_browser_icon
 from webapps.utils.translation import _
+from webapps.models.webapp_model import WebApp
+from webapps.models.browser_model import BrowserCollection
+
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class WebAppRow(Gtk.ListBoxRow):
@@ -31,16 +37,15 @@ class WebAppRow(Gtk.ListBoxRow):
         ),
     }
 
-    def __init__(self, webapp, browser_collection):
+    def __init__(self, webapp: WebApp, browser_collection: BrowserCollection) -> None:
         """Initialize the WebAppRow"""
         super().__init__()
         self.webapp = webapp
         self.browser_collection = browser_collection
         self.setup_ui()
 
-    def setup_ui(self):
-        """Set up the UI components"""
-        # Main box
+    def setup_ui(self) -> None:
+        """Set up the UI components."""
         box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
         box.set_margin_top(8)
         box.set_margin_bottom(8)
@@ -62,7 +67,7 @@ class WebAppRow(Gtk.ListBoxRow):
         name_label.set_halign(Gtk.Align.START)
         name_label.set_wrap(True)
         name_label.set_wrap_mode(Gtk.WrapMode.WORD_CHAR)
-        name_label.set_ellipsize(True)  # Enable ellipsis for long text
+        name_label.set_ellipsize(Pango.EllipsizeMode.END)
         name_label.set_max_width_chars(25)  # Limit max width
         name_label.add_css_class("heading")
         info_box.append(name_label)
@@ -72,7 +77,7 @@ class WebAppRow(Gtk.ListBoxRow):
         url_label.set_halign(Gtk.Align.START)
         url_label.set_wrap(True)
         url_label.set_wrap_mode(Gtk.WrapMode.WORD_CHAR)
-        url_label.set_ellipsize(True)  # Enable ellipsis for long text
+        url_label.set_ellipsize(Pango.EllipsizeMode.END)
         url_label.set_max_width_chars(30)  # Limit max width
         url_label.add_css_class("caption")
         url_label.add_css_class("dim-label")
@@ -87,10 +92,11 @@ class WebAppRow(Gtk.ListBoxRow):
         # Browser button
         browser = self.browser_collection.get_by_id(self.webapp.browser)
         browser_button = Gtk.Button()
-        browser_button.set_tooltip_text(
-            _("Browser: {0}").format(
-                browser.get_friendly_name() if browser else self.webapp.browser
-            )
+        browser_name = browser.get_friendly_name() if browser else self.webapp.browser
+        browser_button.set_tooltip_text(_("Browser: {0}").format(browser_name))
+        browser_button.update_property(
+            [Gtk.AccessibleProperty.LABEL],
+            [_("Browser: {0}").format(browser_name)],
         )
         browser_icon = Gtk.Image()
         # Pass browser ID string since that's what we need
@@ -102,6 +108,10 @@ class WebAppRow(Gtk.ListBoxRow):
         # Edit button
         edit_button = Gtk.Button()
         edit_button.set_tooltip_text(_("Edit WebApp"))
+        edit_button.update_property(
+            [Gtk.AccessibleProperty.LABEL],
+            [_("Edit {0}").format(self.webapp.app_name)],
+        )
         edit_icon = Gtk.Image()
         edit_icon.set_from_icon_name("document-edit-symbolic")
         edit_icon.set_pixel_size(20)
@@ -109,18 +119,19 @@ class WebAppRow(Gtk.ListBoxRow):
         edit_button.connect("clicked", self.on_edit_clicked)
         actions_box.append(edit_button)
 
-        # Delete button
+        # Delete button — trash icon = shape indicator; destructive-action = color indicator
         delete_button = Gtk.Button()
         delete_button.set_tooltip_text(_("Delete WebApp"))
+        delete_button.update_property(
+            [Gtk.AccessibleProperty.LABEL],
+            [_("Delete {0}").format(self.webapp.app_name)],
+        )
         delete_icon = Gtk.Image()
         delete_icon.set_from_icon_name("user-trash-symbolic")
         delete_icon.set_pixel_size(20)
         delete_button.set_child(delete_icon)
         delete_button.connect("clicked", self.on_delete_clicked)
-
-        # Only add the destructive style to the icon, not the whole button
-        # to maintain the unified pill appearance
-        delete_icon.add_css_class("error")
+        delete_button.add_css_class("destructive-action")
 
         actions_box.append(delete_button)
 
@@ -128,7 +139,7 @@ class WebAppRow(Gtk.ListBoxRow):
 
         self.set_child(box)
 
-    def set_icon_from_path(self, icon_path):
+    def set_icon_from_path(self, icon_path: str) -> None:
         """
         Set the icon from a file path or icon name
 
@@ -148,17 +159,17 @@ class WebAppRow(Gtk.ListBoxRow):
                 # Try to load as icon name
                 self.icon.set_from_icon_name(icon_path)
         except Exception as e:
-            print(f"Error loading icon {icon_path}: {e}")
+            logger.error("Error loading icon %s: %s", icon_path, e)
             self.icon.set_from_icon_name("webapp-generic")
 
-    def on_edit_clicked(self, button):
+    def on_edit_clicked(self, button: Gtk.Button) -> None:
         """Handle edit button click"""
         self.emit("edit-clicked", self.webapp)
 
-    def on_browser_clicked(self, button):
+    def on_browser_clicked(self, button: Gtk.Button) -> None:
         """Handle browser button click"""
         self.emit("browser-clicked", self.webapp)
 
-    def on_delete_clicked(self, button):
+    def on_delete_clicked(self, button: Gtk.Button) -> None:
         """Handle delete button click"""
         self.emit("delete-clicked", self.webapp)

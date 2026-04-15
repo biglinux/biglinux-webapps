@@ -12,25 +12,30 @@ import io
 from urllib.parse import urlparse, urljoin
 from html.parser import HTMLParser
 from PIL import Image  # Add Pillow import
+from collections.abc import Callable
 
 gi.require_version("Gtk", "4.0")
 from gi.repository import GLib
+
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class WebsiteMetadataParser(HTMLParser):
     """Parser for extracting title and icons from HTML"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
-        self.title = None
-        self.icons = []
-        self.og_title = None
-        self.twitter_title = None
-        self.og_image = None
-        self.twitter_image = None
-        self._in_title = False
+        self.title: str | None = None
+        self.icons: list[str] = []
+        self.og_title: str | None = None
+        self.twitter_title: str | None = None
+        self.og_image: str | None = None
+        self.twitter_image: str | None = None
+        self._in_title: bool = False
 
-    def handle_starttag(self, tag, attrs):
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         attrs_dict = dict(attrs)
 
         if tag == "title":
@@ -64,18 +69,18 @@ class WebsiteMetadataParser(HTMLParser):
                 ):
                     self.icons.append(href)
 
-    def handle_endtag(self, tag):
+    def handle_endtag(self, tag: str) -> None:
         if tag == "title":
             self._in_title = False
 
-    def handle_data(self, data):
+    def handle_data(self, data: str) -> None:
         if self._in_title:
             if self.title is None:
                 self.title = data
             else:
                 self.title += data
 
-    def get_best_title(self):
+    def get_best_title(self) -> str | None:
         if self.title:
             return self.title.strip()
         if self.og_title:
@@ -84,7 +89,7 @@ class WebsiteMetadataParser(HTMLParser):
             return self.twitter_title.strip()
         return None
 
-    def get_all_icons(self):
+    def get_all_icons(self) -> list[str]:
         all_icons = self.icons.copy()
         if self.og_image:
             all_icons.append(self.og_image)
@@ -96,11 +101,11 @@ class WebsiteMetadataParser(HTMLParser):
 class WebsiteInfoFetcher:
     """Class for fetching website information like title and favicons"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize the fetcher"""
         self.user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36"
 
-    def fetch_info(self, url, callback):
+    def fetch_info(self, url: str, callback: Callable[[str, list[str]], None]) -> None:
         """
         Fetch website information (title and icons) in a background thread
 
@@ -115,7 +120,40 @@ class WebsiteInfoFetcher:
         thread.daemon = True
         thread.start()
 
-    def _fetch_info_thread(self, url, callback):
+    def _resolve_title(self, parser: WebsiteMetadataParser, url: str) -> str:
+        """Pick best title from parsed metadata, fallback to domain."""
+        title = parser.get_best_title()
+        if title:
+            return re.sub(r"\s+", " ", title)
+        domain = urlparse(url).netloc.replace("www.", "")
+        return domain.capitalize()
+
+    def _collect_icon_urls(
+        self, raw_icons: list[str], url: str, session: requests.Session
+    ) -> list[str]:
+        """Normalize raw icon hrefs → absolute URLs, append favicon.ico if found."""
+        icons: list[str] = []
+        for href in raw_icons:
+            if href:
+                if not href.startswith(("http://", "https://")):
+                    href = urljoin(url, href)
+                if href not in icons:
+                    icons.append(href)
+
+        parsed = urlparse(url)
+        favicon_url = f"{parsed.scheme}://{parsed.netloc}/favicon.ico"
+        if favicon_url not in icons:
+            try:
+                head = session.head(favicon_url, timeout=5)
+                if head.status_code == 200:
+                    icons.insert(0, favicon_url)
+            except Exception:
+                pass
+        return icons
+
+    def _fetch_info_thread(
+        self, url: str, callback: Callable[[str, list[str]], None]
+    ) -> None:
         """
         Fetch website information in a background thread
 
@@ -124,58 +162,18 @@ class WebsiteInfoFetcher:
             callback (callable): Callback function to call with the results
         """
         try:
-            # Create a session with our user agent
             session = requests.Session()
             session.headers.update({"User-Agent": self.user_agent})
 
-            # Fetch the page
             response = session.get(url, timeout=10)
             response.raise_for_status()
 
-            # Parse the HTML with our custom parser
             parser = WebsiteMetadataParser()
             parser.feed(response.text)
 
-            # Get the title
-            title = parser.get_best_title()
-            if title:
-                # Clean up the title
-                title = re.sub(r"\s+", " ", title)
-            else:
-                # Fallback: Use domain name
-                domain = urlparse(url).netloc.replace("www.", "")
-                title = domain.capitalize()
+            title = self._resolve_title(parser, url)
+            icons = self._collect_icon_urls(parser.get_all_icons(), url, session)
 
-            # Get favicons
-            raw_icons = parser.get_all_icons()
-            icons = []
-
-            # Normalize icon URLs
-            base_url = url
-            for icon_href in raw_icons:
-                if icon_href:
-                    if not icon_href.startswith(("http://", "https://")):
-                        icon_href = urljoin(base_url, icon_href)
-                    if icon_href not in icons:
-                        icons.append(icon_href)
-
-            # Look for favicon in common locations (root)
-            parsed_url = urlparse(url)
-            domain_url = f"{parsed_url.scheme}://{parsed_url.netloc}"
-            favicon_url = urljoin(domain_url, "/favicon.ico")
-
-            # Check if we already have this specific favicon
-            if favicon_url not in icons:
-                try:
-                    head_response = session.head(favicon_url, timeout=5)
-                    if head_response.status_code == 200:
-                        icons.insert(
-                            0, favicon_url
-                        )  # Prioritize default favicon if found
-                except Exception:
-                    pass
-
-            # Save icons to temporary files
             icon_paths = []
             for icon_url in icons:
                 try:
@@ -183,16 +181,15 @@ class WebsiteInfoFetcher:
                     if icon_path:
                         icon_paths.append(icon_path)
                 except Exception as e:
-                    print(f"Error downloading icon {icon_url}: {e}")
+                    logger.error("Error downloading icon %s: %s", icon_url, e)
 
-            # Call the callback in the main thread
             GLib.idle_add(callback, title, icon_paths)
 
         except Exception as e:
-            print(f"Error fetching website info: {e}")
+            logger.error("Error fetching website info: %s", e)
             GLib.idle_add(callback, "", [])
 
-    def _download_icon(self, icon_url, session):
+    def _download_icon(self, icon_url: str, session: requests.Session) -> str | None:
         """
         Download an icon to a temporary file and convert non-PNG/SVG to PNG
 
@@ -237,7 +234,7 @@ class WebsiteInfoFetcher:
                 return path
 
             except Exception as e:
-                print(f"Error converting image: {e}")
+                logger.error("Error converting image: %s", e)
                 # Fallback: save original format if conversion fails
                 fd, path = tempfile.mkstemp(prefix="webapp_icon_", suffix=".png")
                 with os.fdopen(fd, "wb") as f:
@@ -245,5 +242,5 @@ class WebsiteInfoFetcher:
                 return path
 
         except Exception as e:
-            print(f"Error downloading icon {icon_url}: {e}")
+            logger.error("Error downloading icon %s: %s", icon_url, e)
             return None

@@ -1,0 +1,923 @@
+#!/usr/bin/env python3
+"""BigLinux WebApp Viewer — Qt6/PySide6 + Chromium WebEngine.
+CSD headerbar replicating GTK4/Adwaita style. Fullscreen auto-hide overlay.
+"""
+
+APP_VERSION = "3.5.1"
+
+import argparse
+import json
+import os
+import re
+import signal
+import sys
+from functools import lru_cache
+from pathlib import Path
+
+# optional MPRIS integration for media webapps
+try:
+    # resolve import path relative to the script
+    _mpris_dir = Path(__file__).resolve().parent.parent / "share/biglinux/webapps"
+    sys.path.insert(0, str(_mpris_dir))
+    from webapps.utils.mpris import (
+        MPRIS_AVAILABLE,
+        MprisService,
+        MEDIA_SESSION_JS,
+        start_glib_loop,
+    )
+
+    sys.path.pop(0)
+except ImportError:
+    MPRIS_AVAILABLE = False
+    MEDIA_SESSION_JS = ""
+
+from PySide6.QtCore import QRectF, QSize, QTimer, Qt, QUrl
+from PySide6.QtGui import (
+    QAction,
+    QColor,
+    QCursor,
+    QIcon,
+    QKeySequence,
+    QPainter,
+    QPainterPath,
+    QPalette,
+    QPixmap,
+    QRegion,
+)
+from PySide6.QtSvg import QSvgRenderer
+from PySide6.QtWebEngineCore import (
+    QWebEngineDownloadRequest,
+    QWebEnginePage,
+    QWebEngineProfile,
+    QWebEngineScript,
+    QWebEngineSettings,
+)
+from PySide6.QtWebEngineWidgets import QWebEngineView
+from PySide6.QtWidgets import (
+    QApplication,
+    QFileDialog,
+    QHBoxLayout,
+    QLabel,
+    QMainWindow,
+    QSizeGrip,
+    QToolButton,
+    QVBoxLayout,
+    QWidget,
+)
+
+DATA_BASE = Path.home() / ".local" / "share" / "biglinux-webapps"
+CONFIG_BASE = Path.home() / ".config" / "biglinux-webapps"
+HOVER_ZONE = 60
+RESIZE_MARGIN = 8  # px from edge to trigger border resize
+
+
+def _is_dark_theme() -> bool:
+    """Check if system theme is dark based on window background luminance."""
+    bg = QApplication.palette().color(QPalette.ColorRole.Window)
+    lum = 0.299 * bg.redF() + 0.587 * bg.greenF() + 0.114 * bg.blueF()
+    return lum < 0.5
+
+
+def _get_theme_colors() -> dict[str, str]:
+    """Derive headerbar colors from system palette."""
+    pal = QApplication.palette()
+    bg = pal.color(QPalette.ColorRole.Window)
+    fg = pal.color(QPalette.ColorRole.WindowText)
+
+    dark = _is_dark_theme()
+
+    # KDE/Kvantum sometimes returns wrong fg for palette — enforce contrast
+    fg_lum = 0.299 * fg.redF() + 0.587 * fg.greenF() + 0.114 * fg.blueF()
+    if dark and fg_lum < 0.5:
+        fg = QColor("#ffffff")
+    elif not dark and fg_lum > 0.5:
+        fg = QColor("#2e3436")
+
+    # headerbar bg: slightly adjusted from window bg
+    h, s, l, _ = bg.getHslF()
+    if dark:
+        hdr_bg = QColor.fromHslF(h, s, max(0.0, l - 0.03))
+        hdr_border = QColor.fromHslF(h, s, max(0.0, l - 0.08))
+    else:
+        hdr_bg = QColor.fromHslF(h, s, max(0.0, l - 0.05))
+        hdr_border = QColor.fromHslF(h, s, max(0.0, l - 0.12))
+
+    r, g, b = fg.red(), fg.green(), fg.blue()
+    result = {
+        "bg": hdr_bg.name(),
+        "border": hdr_border.name(),
+        "fg": fg.name(),
+        "hover": f"rgba({r},{g},{b},0.12)",
+        "press": f"rgba({r},{g},{b},0.18)",
+        "disabled": f"rgba({r},{g},{b},0.3)",
+        "wctrl_bg": f"rgba({r},{g},{b},0.10)",
+        "wctrl_hover": f"rgba({r},{g},{b},0.20)",
+        "wctrl_press": f"rgba({r},{g},{b},0.28)",
+    }
+    return result
+
+
+# Symbolic icon name mapping
+_ICON_NAMES: dict[str, str] = {
+    "go-previous": "go-previous-symbolic",
+    "go-next": "go-next-symbolic",
+    "view-refresh": "view-refresh-symbolic",
+    "view-fullscreen": "view-fullscreen-symbolic",
+    "minimize": "window-minimize-symbolic",
+    "maximize": "window-maximize-symbolic",
+    "restore": "window-restore-symbolic",
+    "close": "window-close-symbolic",
+}
+
+
+@lru_cache(maxsize=32)
+def _find_icon_svg(svg_name: str) -> Path | None:
+    """Search icon themes for SVG: active → base (strip -dark/-light) → fallback → Adwaita."""
+    themes: list[str] = []
+    for tn in (QIcon.themeName(), QIcon.fallbackThemeName()):
+        if tn and tn not in themes:
+            themes.append(tn)
+            # also check base theme (strip -dark / -light suffix)
+            base = re.sub(r"-(dark|light)$", "", tn)
+            if base != tn and base not in themes:
+                themes.append(base)
+    if "Adwaita" not in themes:
+        themes.append("Adwaita")
+
+    target = svg_name if svg_name.endswith(".svg") else f"{svg_name}.svg"
+    for theme in themes:
+        for base in QIcon.themeSearchPaths():
+            if base.startswith(":"):
+                continue
+            theme_dir = Path(base) / theme
+            if not theme_dir.is_dir():
+                continue
+            for hit in theme_dir.rglob(target):
+                return hit
+    return None
+
+
+def _make_adw_icon(name: str, size: int = 16, fg_hex: str = "#ffffff") -> QIcon:
+    """Load symbolic SVG from system icon theme, recolored to fg_hex."""
+    svg_name = _ICON_NAMES.get(name, f"{name}-symbolic")
+    svg_path = _find_icon_svg(svg_name)
+
+    px = QPixmap(size, size)
+    px.fill(Qt.transparent)
+
+    if svg_path and svg_path.exists():
+        svg_text = svg_path.read_text()
+        # Recolor: Adwaita fill="#2e3436", currentColor-based themes, inline fill
+        svg_text = re.sub(r'fill=["\']#[0-9A-Fa-f]{6}["\']', f'fill="{fg_hex}"', svg_text)
+        svg_text = re.sub(r"fill:#[0-9A-Fa-f]{6}", f"fill:{fg_hex}", svg_text)
+        svg_text = svg_text.replace("currentColor", fg_hex)
+        svg_text = re.sub(r"color:#[0-9A-Fa-f]{6}", f"color:{fg_hex}", svg_text)
+        renderer = QSvgRenderer(svg_text.encode())
+        p = QPainter(px)
+        renderer.render(p)
+        p.end()
+    else:
+        return QIcon.fromTheme(name)
+
+    return QIcon(px)
+
+
+CORNER_RADIUS = 14
+
+
+class HeaderBar(QWidget):
+    """CSD headerbar: ← → ⟳ | title | ⛶ − □/⊞ ✕"""
+
+    def __init__(self, parent: QWidget) -> None:
+        super().__init__(parent)
+        self.setFixedHeight(46)
+        self.setObjectName("HeaderBar")
+        self._apply_theme()
+
+        lay = QHBoxLayout(self)
+        lay.setContentsMargins(8, 0, 8, 0)
+        lay.setSpacing(2)
+
+        # nav left
+        tc = _get_theme_colors()
+        fg = tc["fg"]
+        self.back_btn = self._btn("go-previous", fg)
+        self.fwd_btn = self._btn("go-next", fg)
+        self.reload_btn = self._btn("view-refresh", fg)
+        self.back_btn.setEnabled(False)
+        self.fwd_btn.setEnabled(False)
+        lay.addWidget(self.back_btn)
+        lay.addWidget(self.fwd_btn)
+        lay.addSpacing(4)
+        lay.addWidget(self.reload_btn)
+
+        # title center
+        lay.addStretch()
+        self.title_label = QLabel()
+        self.title_label.setObjectName("titleLabel")
+        lay.addWidget(self.title_label)
+        lay.addStretch()
+
+        # window controls right — circular Adwaita style
+        self.fullscreen_btn = self._btn("view-fullscreen", fg)
+        self.min_btn = self._wctrl("minimize", "minBtn", fg)
+        self.max_btn = self._wctrl("maximize", "maxBtn", fg)
+        self.close_btn = self._wctrl("close", "closeBtn", fg)
+        lay.addWidget(self.fullscreen_btn)
+        lay.addSpacing(10)
+        lay.addWidget(self.min_btn)
+        lay.addSpacing(12)
+        lay.addWidget(self.max_btn)
+        lay.addSpacing(12)
+        lay.addWidget(self.close_btn)
+
+    def _apply_theme(self) -> None:
+        """Set stylesheet from system palette."""
+        tc = _get_theme_colors()
+        self.setStyleSheet(f"""
+            #HeaderBar {{
+                background: {tc['bg']};
+                border-bottom: 1px solid {tc['border']};
+                border-top-left-radius: {CORNER_RADIUS}px;
+                border-top-right-radius: {CORNER_RADIUS}px;
+            }}
+            #HeaderBar QToolButton {{
+                border: none;
+                border-radius: 6px;
+                padding: 4px;
+                color: {tc['fg']};
+                background: transparent;
+            }}
+            #HeaderBar QToolButton:hover {{
+                background: {tc['hover']};
+            }}
+            #HeaderBar QToolButton:pressed {{
+                background: {tc['press']};
+            }}
+            #HeaderBar QToolButton:disabled {{
+                color: {tc['disabled']};
+            }}
+            #HeaderBar #minBtn,
+            #HeaderBar #maxBtn,
+            #HeaderBar #closeBtn {{
+                border-radius: 12px;
+                min-width: 24px;
+                max-width: 24px;
+                min-height: 24px;
+                max-height: 24px;
+                padding: 0px;
+                background: {tc['wctrl_bg']};
+            }}
+            #HeaderBar #minBtn:hover,
+            #HeaderBar #maxBtn:hover,
+            #HeaderBar #closeBtn:hover {{
+                background: {tc['wctrl_hover']};
+            }}
+            #HeaderBar #minBtn:pressed,
+            #HeaderBar #maxBtn:pressed,
+            #HeaderBar #closeBtn:pressed {{
+                background: {tc['wctrl_press']};
+            }}
+            #HeaderBar #titleLabel {{
+                color: {tc['fg']};
+                font-weight: 600;
+                font-size: 13px;
+            }}
+        """)
+
+    @staticmethod
+    def _btn(icon_name: str, fg_hex: str) -> QToolButton:
+        btn = QToolButton()
+        btn.setIcon(_make_adw_icon(icon_name, size=20, fg_hex=fg_hex))
+        btn.setIconSize(QSize(20, 20))
+        btn.setFixedSize(34, 34)
+        btn.setAutoRaise(True)
+        return btn
+
+    @staticmethod
+    def _wctrl(kind: str, obj_name: str, fg_hex: str = "#ffffff") -> QToolButton:
+        """Window control button — circular with system theme icon."""
+        btn = QToolButton()
+        btn.setIcon(_make_adw_icon(kind, size=20, fg_hex=fg_hex))
+        btn.setIconSize(QSize(20, 20))
+        btn.setObjectName(obj_name)
+        btn.setFixedSize(24, 24)
+        btn.setAutoRaise(True)
+        return btn
+
+    def mousePressEvent(self, event) -> None:
+        if event.button() == Qt.LeftButton:
+            wh = self.window().windowHandle()
+            if wh:
+                wh.startSystemMove()
+
+    def mouseDoubleClickEvent(self, event) -> None:
+        if event.button() == Qt.LeftButton:
+            w = self.window()
+            if w.isMaximized():
+                w.showNormal()
+            else:
+                w.showMaximized()
+
+
+class _ResizeHandle(QWidget):
+    """Transparent edge widget that initiates system resize on drag."""
+
+    def __init__(self, edges: Qt.Edges, cursor_shape, parent=None):
+        super().__init__(parent)
+        self.edges = edges
+        self.setCursor(cursor_shape)
+        self.setMouseTracking(True)
+        self.setAttribute(Qt.WidgetAttribute.WA_TransparentForMouseEvents, False)
+        self.setStyleSheet("background: transparent;")
+        self.raise_()
+
+    def mousePressEvent(self, event) -> None:
+        if event.button() == Qt.LeftButton:
+            wh = self.window().windowHandle()
+            if wh:
+                wh.startSystemResize(self.edges)
+
+
+class NavOverlay(QWidget):
+    """Fullscreen-only auto-hide nav: ← → ⟳ ⊞"""
+
+    def __init__(self, parent: QWidget) -> None:
+        super().__init__(parent)
+        self.setVisible(False)
+        self.setObjectName("NavOverlay")
+        # fullscreen overlay always uses dark style for contrast
+        self.setStyleSheet("""
+            #NavOverlay {
+                background: rgba(30,30,30,0.85);
+                border-radius: 8px;
+                border: 1px solid rgba(255,255,255,0.1);
+            }
+            #NavOverlay QToolButton {
+                border: none;
+                border-radius: 4px;
+                padding: 4px;
+                color: #ffffff;
+            }
+            #NavOverlay QToolButton:hover {
+                background: rgba(255,255,255,0.12);
+            }
+        """)
+        lay = QHBoxLayout(self)
+        lay.setContentsMargins(6, 4, 6, 4)
+        lay.setSpacing(4)
+
+        # NavOverlay always uses white icons on dark backdrop
+        self.back_btn = self._btn("go-previous")
+        self.fwd_btn = self._btn("go-next")
+        self.reload_btn = self._btn("view-refresh")
+        self.exit_fs_btn = self._btn("view-fullscreen")
+        self.back_btn.setEnabled(False)
+        self.fwd_btn.setEnabled(False)
+
+        lay.addWidget(self.back_btn)
+        lay.addWidget(self.fwd_btn)
+        lay.addWidget(self.reload_btn)
+        lay.addWidget(self.exit_fs_btn)
+        self.adjustSize()
+
+    @staticmethod
+    def _btn(icon_name: str) -> QToolButton:
+        btn = QToolButton()
+        btn.setIcon(_make_adw_icon(icon_name, size=20, fg_hex="#ffffff"))
+        btn.setIconSize(QSize(20, 20))
+        btn.setFixedSize(30, 30)
+        btn.setAutoRaise(True)
+        return btn
+
+
+class FileAwarePage(QWebEnginePage):
+    """WebEngine page that auto-selects a pending file on the first file dialog."""
+
+    def __init__(self, profile, parent=None):
+        super().__init__(profile, parent)
+        self._pending_file: Path | None = None
+
+    def chooseFiles(self, mode, old_files, accepted_mime):
+        """Intercept file chooser → inject pending file if available."""
+        if self._pending_file and self._pending_file.is_file():
+            f = str(self._pending_file)
+            self._pending_file = None  # one-shot
+            return [f]
+        return super().chooseFiles(mode, old_files, accepted_mime)
+
+    def featurePermissionRequested(self, url, feature):
+        """Auto-grant notification, camera, microphone permissions for webapp."""
+        grant_features = {
+            QWebEnginePage.Feature.Notifications,
+            QWebEnginePage.Feature.MediaAudioCapture,
+            QWebEnginePage.Feature.MediaVideoCapture,
+            QWebEnginePage.Feature.MediaAudioVideoCapture,
+            QWebEnginePage.Feature.DesktopVideoCapture,
+            QWebEnginePage.Feature.DesktopAudioVideoCapture,
+        }
+        if feature in grant_features:
+            self.setFeaturePermission(
+                url,
+                feature,
+                QWebEnginePage.PermissionPolicy.PermissionGrantedByUser,
+            )
+        else:
+            super().featurePermissionRequested(url, feature)
+
+
+class WebAppWindow(QMainWindow):
+    """CSD window + Chromium WebEngine. Adwaita-style headerbar."""
+
+    def __init__(self, url: str, title: str, icon: str, app_id: str) -> None:
+        super().__init__()
+        self.app_id = app_id
+        self._pending_file: Path | None = None
+        self.config_path = CONFIG_BASE / f"{app_id}.json"
+        self.setWindowFlags(Qt.FramelessWindowHint | Qt.Window)
+        self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground, True)
+
+        self._setup_profile(app_id)
+        self._setup_ui(url, title, icon)
+        self._setup_shortcuts()
+        self._load_geometry()
+        self._enforce_screen_limits()
+
+        # fullscreen hover detection
+        self._hover_timer = QTimer(self)
+        self._hover_timer.timeout.connect(self._check_hover)
+        self._hover_timer.start(150)
+
+    def _setup_profile(self, app_id: str) -> None:
+        storage = str(DATA_BASE / app_id)
+        Path(storage).mkdir(parents=True, exist_ok=True)
+        self.profile = QWebEngineProfile(app_id, self)
+        self.profile.setPersistentStoragePath(storage)
+        self.profile.setCachePath(str(DATA_BASE / app_id / "cache"))
+        self.profile.setPersistentCookiesPolicy(
+            QWebEngineProfile.PersistentCookiesPolicy.ForcePersistentCookies
+        )
+        self.profile.downloadRequested.connect(self._on_download)
+        # bridge web Notifications → native desktop notifications
+        self.profile.setNotificationPresenter(self._present_notification)
+
+    def _setup_ui(self, url: str, title: str, icon: str) -> None:
+        if icon:
+            self.setWindowIcon(
+                QIcon(icon) if os.path.isfile(icon) else QIcon.fromTheme(icon)
+            )
+
+        tc = _get_theme_colors()
+        central = QWidget()
+        central.setObjectName("central")
+        central.setStyleSheet(
+            f"#central {{ background: {tc['bg']}; border-radius: {CORNER_RADIUS}px; }}"
+        )
+        vbox = QVBoxLayout(central)
+        vbox.setContentsMargins(0, 0, 0, 0)
+        vbox.setSpacing(0)
+
+        # CSD headerbar
+        self.header = HeaderBar(self)
+        self.header.title_label.setText(title)
+        vbox.addWidget(self.header)
+
+        # webview with file-aware page for %f file handling
+        self._page = FileAwarePage(self.profile, self)
+        self.webview = QWebEngineView(self)
+        self.webview.setPage(self._page)
+        s = self.profile.settings()
+        for attr in (
+            QWebEngineSettings.WebAttribute.JavascriptEnabled,
+            QWebEngineSettings.WebAttribute.LocalStorageEnabled,
+            QWebEngineSettings.WebAttribute.ScrollAnimatorEnabled,
+            QWebEngineSettings.WebAttribute.PluginsEnabled,
+            QWebEngineSettings.WebAttribute.JavascriptCanAccessClipboard,
+        ):
+            s.setAttribute(attr, True)
+        s.setAttribute(
+            QWebEngineSettings.WebAttribute.PlaybackRequiresUserGesture, False
+        )
+        s.setAttribute(
+            QWebEngineSettings.WebAttribute.FullScreenSupportEnabled, True
+        )
+        # disable non-essential features → reduce RAM
+        for off_attr in (
+            QWebEngineSettings.WebAttribute.AutoLoadIconsForPage,
+            QWebEngineSettings.WebAttribute.TouchIconsEnabled,
+        ):
+            s.setAttribute(off_attr, False)
+
+        # inject JS to neutralize window resize/move from web content
+        _no_resize_js = QWebEngineScript()
+        _no_resize_js.setName("no-resize")
+        _no_resize_js.setSourceCode(
+            "window.resizeTo=function(){};"
+            "window.resizeBy=function(){};"
+            "window.moveTo=function(){};"
+            "window.moveBy=function(){};"
+        )
+        _no_resize_js.setInjectionPoint(
+            QWebEngineScript.InjectionPoint.DocumentCreation
+        )
+        _no_resize_js.setWorldId(QWebEngineScript.ScriptWorldId.MainWorld)
+        _no_resize_js.setRunsOnSubFrames(True)
+        self.webview.page().scripts().insert(_no_resize_js)
+
+        self.webview.setUrl(QUrl(url))
+        vbox.addWidget(self.webview)
+
+        self.setCentralWidget(central)
+        self.setWindowTitle(title)
+
+        # fullscreen nav overlay — parented to webview, hidden by default
+        self.nav = NavOverlay(self.webview)
+        self.nav.move(8, 8)
+
+        # headerbar connections
+        self.header.back_btn.clicked.connect(self.webview.back)
+        self.header.fwd_btn.clicked.connect(self.webview.forward)
+        self.header.reload_btn.clicked.connect(self.webview.reload)
+        self.header.fullscreen_btn.clicked.connect(self._toggle_fullscreen)
+        self.header.min_btn.clicked.connect(self.showMinimized)
+        self.header.max_btn.clicked.connect(self._toggle_maximize)
+        self.header.close_btn.clicked.connect(self.close)
+
+        # fullscreen overlay connections
+        self.nav.back_btn.clicked.connect(self.webview.back)
+        self.nav.fwd_btn.clicked.connect(self.webview.forward)
+        self.nav.reload_btn.clicked.connect(self.webview.reload)
+        self.nav.exit_fs_btn.clicked.connect(self._toggle_fullscreen)
+
+        # webview signals
+        self.webview.titleChanged.connect(self._on_title)
+        self.webview.urlChanged.connect(self._on_nav)
+        self.webview.page().fullScreenRequested.connect(self._on_fullscreen_req)
+        self.webview.page().newWindowRequested.connect(self._on_new_window)
+        self.webview.loadStarted.connect(self._on_load_started)
+        self.webview.loadFinished.connect(self._on_load_finished)
+
+        # optional MPRIS integration for media keys
+        self._mpris = None
+        if MPRIS_AVAILABLE and MEDIA_SESSION_JS:
+            self._setup_mpris(title)
+
+        # resize grip — bottom-right
+        self._grip = QSizeGrip(self)
+        self._grip.setFixedSize(16, 16)
+
+        # edge resize handles (left/right/bottom/corners)
+        self._setup_resize_handles()
+
+    def _setup_shortcuts(self) -> None:
+        for key, slot in (
+            (QKeySequence("F5"), lambda: self.webview.reload()),
+            (QKeySequence("Ctrl+R"), lambda: self.webview.reload()),
+            (QKeySequence("Ctrl+Q"), self.close),
+            (QKeySequence("Alt+Left"), lambda: self.webview.back()),
+            (QKeySequence("Alt+Right"), lambda: self.webview.forward()),
+            (QKeySequence("F11"), self._toggle_fullscreen),
+            (QKeySequence("Escape"), self._exit_fullscreen),
+        ):
+            a = QAction(self)
+            a.setShortcut(key)
+            a.triggered.connect(slot)
+            self.addAction(a)
+
+    def _setup_mpris(self, title: str) -> None:
+        """Set up MPRIS2 D-Bus service + JS media session bridge."""
+        try:
+            self._mpris = MprisService(self.app_id, title)
+            start_glib_loop()
+
+            # media key D-Bus commands → JS in webview
+            def _js_cmd(cmd: str):
+                self.webview.page().runJavaScript(
+                    f"navigator.mediaSession && navigator.mediaSession.{cmd}"
+                )
+
+            self._mpris.set_callbacks(
+                play=lambda: _js_cmd("playbackState='playing'"),
+                pause=lambda: _js_cmd("playbackState='paused'"),
+            )
+
+            # inject media session polling JS after each page load
+            media_js = QWebEngineScript()
+            media_js.setName("mpris-bridge")
+            media_js.setSourceCode(MEDIA_SESSION_JS)
+            media_js.setInjectionPoint(QWebEngineScript.InjectionPoint.DocumentReady)
+            media_js.setWorldId(QWebEngineScript.ScriptWorldId.MainWorld)
+            media_js.setRunsOnSubFrames(False)
+            self.webview.page().scripts().insert(media_js)
+        except Exception:
+            self._mpris = None
+
+    def _check_hover(self) -> None:
+        """Show fullscreen overlay when cursor near top of webview."""
+        if not self.isFullScreen():
+            self.nav.setVisible(False)
+            return
+        pos = QCursor.pos()
+        local = self.webview.mapFromGlobal(pos)
+        in_zone = 0 <= local.x() <= self.webview.width() and 0 <= local.y() <= HOVER_ZONE
+        nav_local = self.nav.mapFromGlobal(pos)
+        over_nav = self.nav.rect().contains(nav_local)
+        self.nav.setVisible(in_zone or over_nav)
+        if self.nav.isVisible():
+            self.nav.raise_()
+
+    def _enforce_screen_limits(self) -> None:
+        """Set maximum window size to screen bounds → block external resize."""
+        screen = QApplication.primaryScreen()
+        if screen:
+            sg = screen.availableGeometry()
+            self.setMaximumSize(sg.width(), sg.height())
+
+    def _toggle_fullscreen(self) -> None:
+        if self.isFullScreen():
+            self._exit_fullscreen()
+        else:
+            # lift max-size limit so fullscreen can use entire display
+            self.setMaximumSize(16777215, 16777215)
+            self.header.setVisible(False)
+            self._grip.setVisible(False)
+            self.showFullScreen()
+            self._apply_mask()
+
+    def _exit_fullscreen(self) -> None:
+        if not self.isFullScreen():
+            return
+        self.header.setVisible(True)
+        self._grip.setVisible(True)
+        self.showNormal()
+        self._enforce_screen_limits()
+        self._apply_mask()
+
+    def _toggle_maximize(self) -> None:
+        fg = _get_theme_colors()["fg"]
+        if self.isMaximized():
+            self.showNormal()
+            self.header.max_btn.setIcon(_make_adw_icon("maximize", size=20, fg_hex=fg))
+        else:
+            self.showMaximized()
+            self.header.max_btn.setIcon(_make_adw_icon("restore", size=20, fg_hex=fg))
+        self._apply_mask()
+
+    def _on_title(self, title: str) -> None:
+        if title:
+            self.setWindowTitle(title)
+            self.header.title_label.setText(title)
+
+    def _on_nav(self) -> None:
+        can_back = self.webview.history().canGoBack()
+        can_fwd = self.webview.history().canGoForward()
+        self.header.back_btn.setEnabled(can_back)
+        self.header.fwd_btn.setEnabled(can_fwd)
+        self.nav.back_btn.setEnabled(can_back)
+        self.nav.fwd_btn.setEnabled(can_fwd)
+
+    def _on_fullscreen_req(self, request) -> None:
+        """Handle JS fullscreen requests (e.g. video players)."""
+        request.accept()
+        if request.toggleOn():
+            self._toggle_fullscreen()
+        else:
+            self._exit_fullscreen()
+
+    def _on_new_window(self, request) -> None:
+        """Handle JS popups — open in same page instead of spawning new ones."""
+        request.openIn(self._page)
+
+    def _on_load_started(self) -> None:
+        """Lock window size during navigation → prevent Wayland compositor
+        from resizing frameless windows on cross-origin navigations."""
+        if not self.isMaximized() and not self.isFullScreen():
+            self._pre_nav_size = self.size()
+            self.setFixedSize(self._pre_nav_size)
+
+    def _on_load_finished(self, ok: bool) -> None:
+        """Unlock window size + transfer pending file."""
+        # restore resizability + trigger page reflow after size lock
+        if hasattr(self, "_pre_nav_size"):
+            self.setMinimumSize(0, 0)
+            self._enforce_screen_limits()
+            del self._pre_nav_size
+            # force page layout recalculation after unlock
+            self.webview.page().runJavaScript(
+                "window.dispatchEvent(new Event('resize'));"
+            )
+        if ok and self._pending_file and self._pending_file.is_file():
+            self._page._pending_file = self._pending_file
+            self._pending_file = None
+            # show info bar so user knows a file is ready for upload
+            self._show_file_info_bar(self._page._pending_file)
+
+    def _show_file_info_bar(self, filepath: Path) -> None:
+        """Show a non-intrusive bar indicating a file is queued for upload."""
+        # inject a dismissible banner at top of page via JS
+        name = filepath.name.replace("'", "\\'")
+        js = f"""
+        (function() {{
+            if (document.getElementById('bigwebapp-file-bar')) return;
+            var bar = document.createElement('div');
+            bar.id = 'bigwebapp-file-bar';
+            bar.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:999999;'
+                + 'background:#1a73e8;color:#fff;padding:8px 16px;font:14px sans-serif;'
+                + 'display:flex;align-items:center;justify-content:space-between;';
+            bar.innerHTML = '<span>📄 {name} — click any upload/import button to use this file</span>'
+                + '<button onclick="this.parentElement.remove()" '
+                + 'style="background:none;border:none;color:#fff;font-size:18px;cursor:pointer">'
+                + '✕</button>';
+            document.body.prepend(bar);
+        }})();
+        """
+        self.webview.page().runJavaScript(js)
+
+    def _on_download(self, download: QWebEngineDownloadRequest) -> None:
+        """Handle file downloads — use xdg-desktop-portal via QFileDialog."""
+        suggested = download.downloadFileName()
+        dest, _ = QFileDialog.getSaveFileName(
+            self, "Save File", str(Path.home() / "Downloads" / suggested)
+        )
+        if dest:
+            download.setDownloadDirectory(str(Path(dest).parent))
+            download.setDownloadFileName(Path(dest).name)
+            download.accept()
+
+    def _present_notification(self, notification) -> None:
+        """Bridge QWebEngineNotification → native desktop notification."""
+        import subprocess as _sp
+
+        title = notification.title() or self.windowTitle()
+        body = notification.message() or ""
+        icon = notification.icon()
+        icon_arg = "dialog-information"
+
+        # save notification icon to temp file if available
+        if icon and not icon.isNull():
+            tmp = Path("/tmp") / f"bigwebapp-notify-{self.app_id}.png"
+            icon.save(str(tmp))
+            icon_arg = str(tmp)
+
+        try:
+            _sp.Popen(
+                ["notify-send", "-a", self.windowTitle(), "-i", icon_arg, title, body],
+                stdout=_sp.DEVNULL,
+                stderr=_sp.DEVNULL,
+            )
+        except FileNotFoundError:
+            pass  # notify-send not installed → degrade silently
+
+        notification.show()
+
+    # --- geometry ---
+
+    def _setup_resize_handles(self) -> None:
+        """Create transparent edge widgets for resize (left/right/bottom/corners)."""
+        m = RESIZE_MARGIN
+        self._resize_handles = []
+
+        specs = [
+            # (edges, cursor, x, y, w, h) — geometry set in resizeEvent
+            (Qt.LeftEdge, Qt.SizeHorCursor),
+            (Qt.RightEdge, Qt.SizeHorCursor),
+            (Qt.BottomEdge, Qt.SizeVerCursor),
+            (Qt.LeftEdge | Qt.BottomEdge, Qt.SizeBDiagCursor),
+            (Qt.RightEdge | Qt.BottomEdge, Qt.SizeFDiagCursor),
+        ]
+        for edges, cursor_shape in specs:
+            h = _ResizeHandle(edges, cursor_shape, self)
+            self._resize_handles.append(h)
+
+    def _position_resize_handles(self) -> None:
+        m = RESIZE_MARGIN
+        w, h = self.width(), self.height()
+        hdr_h = self.header.height() if self.header.isVisible() else 0
+        for handle in self._resize_handles:
+            e = handle.edges
+            if e == Qt.LeftEdge:
+                handle.setGeometry(0, hdr_h, m, h - hdr_h - m)
+            elif e == Qt.RightEdge:
+                handle.setGeometry(w - m, hdr_h, m, h - hdr_h - m)
+            elif e == Qt.BottomEdge:
+                handle.setGeometry(m, h - m, w - 2 * m, m)
+            elif e == (Qt.LeftEdge | Qt.BottomEdge):
+                handle.setGeometry(0, h - m, m, m)
+            elif e == (Qt.RightEdge | Qt.BottomEdge):
+                handle.setGeometry(w - m, h - m, m, m)
+            vis = not (self.isMaximized() or self.isFullScreen())
+            handle.setVisible(vis)
+
+    def resizeEvent(self, event) -> None:
+        super().resizeEvent(event)
+        self._grip.move(
+            self.width() - self._grip.width(),
+            self.height() - self._grip.height(),
+        )
+        self._position_resize_handles()
+        self._apply_mask()
+
+    def _apply_mask(self) -> None:
+        """Round window corners except when maximized/fullscreen."""
+        if self.isMaximized() or self.isFullScreen():
+            self.clearMask()
+            return
+        path = QPainterPath()
+        path.addRoundedRect(
+            QRectF(self.rect()), CORNER_RADIUS, CORNER_RADIUS
+        )
+        self.setMask(QRegion(path.toFillPolygon().toPolygon()))
+
+    def _load_geometry(self) -> None:
+        screen = QApplication.primaryScreen()
+        sg = screen.availableGeometry() if screen else None
+
+        try:
+            d = json.loads(self.config_path.read_text())
+            w = d.get("width", 1024)
+            h = d.get("height", 720)
+            # clamp to 90% of screen → prevent saved full-screen widths
+            if sg:
+                w = min(w, int(sg.width() * 0.9))
+                h = min(h, int(sg.height() * 0.9))
+            self.resize(w, h)
+            if d.get("maximized"):
+                self.showMaximized()
+            elif sg:
+                x = sg.x() + (sg.width() - w) // 2
+                y = sg.y() + (sg.height() - h) // 2
+                self.move(x, y)
+        except (FileNotFoundError, json.JSONDecodeError, OSError):
+            self.resize(1024, 720)
+            if sg:
+                x = sg.x() + (sg.width() - 1024) // 2
+                y = sg.y() + (sg.height() - 720) // 2
+                self.move(x, y)
+
+    def _save_geometry(self) -> None:
+        if self.isFullScreen():
+            return
+        CONFIG_BASE.mkdir(parents=True, exist_ok=True)
+        try:
+            self.config_path.write_text(
+                json.dumps(
+                    {
+                        "width": self.width(),
+                        "height": self.height(),
+                        "maximized": self.isMaximized(),
+                    }
+                )
+            )
+        except OSError:
+            pass
+
+    def closeEvent(self, event) -> None:
+        self._save_geometry()
+        event.accept()
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="BigLinux WebApp Viewer")
+    parser.add_argument("--url", required=True)
+    parser.add_argument("--name", default="WebApp")
+    parser.add_argument("--icon", default="")
+    parser.add_argument("--app-id", required=True)
+    parser.add_argument("files", nargs="*", help="Files to open via upload")
+    args = parser.parse_args()
+
+    url = args.url
+    if not url.startswith(("http://", "https://", "file://")):
+        url = "https://" + url
+
+    # strip non-essential Chromium features → reduce RAM w/o breaking sites
+    os.environ["QTWEBENGINE_CHROMIUM_FLAGS"] = " ".join([
+        "--disable-sync",
+        "--disable-translate",
+        "--disable-background-networking",
+        "--renderer-process-limit=1",
+    ])
+
+    app = QApplication(sys.argv[:1])
+    # restore default SIGINT behavior → Ctrl+C terminates cleanly
+    signal.signal(signal.SIGINT, signal.SIG_DFL)
+    # Fusion style → reliable CSS/palette rendering regardless of kvantum/breeze
+    # Inherit system palette so light/dark adapts correctly
+    sys_palette = app.palette()
+    app.setStyle("Fusion")
+    app.setPalette(sys_palette)
+    app.setApplicationName(args.name)
+    app.setDesktopFileName(f"br.com.biglinux.webapp.{args.app_id}")
+
+    win = WebAppWindow(url, args.name, args.icon, args.app_id)
+
+    # stash pending file for upload after page loads
+    if args.files:
+        win._pending_file = Path(args.files[0]).resolve()
+
+    win.show()
+    return app.exec()
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+
