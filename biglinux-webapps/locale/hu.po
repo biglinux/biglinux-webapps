@@ -14,7 +14,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
-
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # File: biglinux-webapps/biglinux-
@@ -24,31 +23,26 @@ msgstr ""
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:60
 msgid "Templates"
 msgstr "Sablonok"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 50
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:17
 msgid "Choose a Template"
 msgstr "Válasszon egy sablont"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 56
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:29
 msgid "Search templates..."
 msgstr "Keresés sablonok..."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 94
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:129
 msgid "Search Results"
 msgstr "Keresési eredmények"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 96
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:123
 msgid "No templates found"
 msgstr "Nincsenek sablonok."
-
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # File: biglinux-webapps/biglinux-
@@ -60,13 +54,11 @@ msgstr "Nincsenek sablonok."
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:45
 msgid "Edit WebApp"
 msgstr "Webalkalmazás szerkesztése"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:507
 msgid "Delete WebApp"
 msgstr "Webalkalmazás törlése"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
 # File: biglinux-webapps/biglinux-
@@ -75,25 +67,21 @@ msgstr "Webalkalmazás törlése"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:70
 msgid "Welcome to WebApps Manager"
 msgstr "Üdvözöljük a WebApps Managerben"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:112
 msgid "Don't show this again"
 msgstr "Ne mutasd ezt újra"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:127
 msgid "Let's Start"
 msgstr "Kezdjük el"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/browser_dialog.rs:19
 msgid "Select Browser"
 msgstr "Böngésző kiválasztása"
-
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -106,7 +94,6 @@ msgstr "Böngésző kiválasztása"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:510
 msgid "Cancel"
 msgstr "Mégse"
-
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # File: biglinux-webapps/biglinux-
@@ -119,7 +106,6 @@ msgstr "Mégse"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:189
 msgid "Select"
 msgstr "Kiválasztás"
-
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
@@ -133,7 +119,6 @@ msgstr "Kiválasztás"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/browser_dialog.rs:100
 msgid "OK"
 msgstr "Rendben"
-
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # File: biglinux-webapps/biglinux-
@@ -145,19 +130,16 @@ msgstr "Rendben"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:58
 msgid "Add WebApp"
 msgstr "Webalkalmazás hozzáadása"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 152
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:111
 msgid "URL"
 msgstr "URL"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 157
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:115
 msgid "Detect name and icon from website"
 msgstr "Nevezze meg és ikont észlel a weboldalról"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 166
 # File: biglinux-webapps/biglinux-
@@ -165,38 +147,32 @@ msgstr "Nevezze meg és ikont észlel a weboldalról"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:122
 msgid "Name"
 msgstr "Név"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 221
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:161
 msgid "Category"
 msgstr "Kategória"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 292
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:172
 msgid "Opens as a native window without browser interface"
 msgstr "Böngészői felület nélküli natív ablakban nyílik meg."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 226
 #. -- Browser row (hidden in app mode) --
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:179
 msgid "Browser"
 msgstr "Böngésző"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 345
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:203
 msgid "Allows independent cookies and sessions"
 msgstr "Független sütik és munkamenetek engedélyezése"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:208
 msgid "Profile Name"
 msgstr "Profil név"
-
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -206,52 +182,44 @@ msgstr "Profil név"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:226
 msgid "Save"
 msgstr "Mentés"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 336
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:88
 msgid "Loading..."
 msgstr "Betöltés..."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:37
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:173
 msgid "WebApps Manager"
 msgstr "Webalkalmazások kezelője"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 51
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:53
 msgid "Search WebApps"
 msgstr "Webalkalmazások keresése"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 62
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:64
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:236
 msgid "Export WebApps"
 msgstr "Webalkalmazások exportálása"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 63
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:63
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:195
 msgid "Import WebApps"
 msgstr "Webalkalmazások importálása"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 66
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:65
 msgid "Browse Applications Folder"
 msgstr "Böngéssze az Alkalmazások mappát"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 67
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:66
 msgid "Browse Profiles Folder"
 msgstr "Profilok mappa böngészése"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
 # File: biglinux-webapps/biglinux-
@@ -260,31 +228,26 @@ msgstr "Profilok mappa böngészése"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:288
 msgid "Remove All WebApps"
 msgstr "Minden WebApp eltávolítása"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 70
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:73
 msgid "About"
 msgstr "Névjegy"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 106
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:394
 msgid "Add a new webapp to get started"
 msgstr "Adj hozzá egy új webalkalmazást a kezdéshez."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 214
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:159
 msgid "WebApp created successfully"
 msgstr "A WebApp sikeresen létrejött"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 257
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:461
 msgid "WebApp updated successfully"
 msgstr "A WebApp sikeresen frissítve lett."
-
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -294,116 +257,93 @@ msgstr "A WebApp sikeresen frissítve lett."
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:524
 msgid "Also delete configuration folder"
 msgstr "A konfigurációs mappa törlése is."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 352
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_row.rs:100
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:511
 msgid "Delete"
 msgstr "Törlés"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 371
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:547
 msgid "WebApp deleted successfully"
 msgstr "A WebApp sikeresen törölve."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:292
 msgid "Remove All"
 msgstr "Összes eltávolítása"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 444
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:307
 msgid "All WebApps have been removed"
 msgstr "Minden WebApp eltávolításra került."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 446
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:303
 msgid "Failed to remove all WebApps"
 msgstr "Nem sikerült eltávolítani az összes WebAppot."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 166
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:248
 msgid "WebApps exported successfully"
 msgstr "A WebAppok sikeresen exportálva lettek."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:246
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:393
 msgid "No WebApps"
 msgstr "Nincsenek Webalkalmazások"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_row.rs:78
 msgid "Change browser"
 msgstr "Böngésző váltása"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_row.rs:89
 msgid "Edit"
 msgstr "Szerkesztés"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:45
 msgid "New WebApp"
 msgstr "Új WebApp"
-
 #. -- Icon row --
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:128
 msgid "Icon"
 msgstr "Ikon"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:171
 msgid "App Mode"
 msgstr "Alkalmazás mód"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:202
 msgid "Separate Profile"
 msgstr "Külön profil"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:427
 msgid "Select Icon"
 msgstr "Ikon kiválasztása"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:432
 msgid "Images"
 msgstr "Képek"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:198
 msgid "ZIP files"
 msgstr "ZIP fájlok"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:215
 #, rust-format
 msgid "Imported {imported}, skipped {dups} duplicates"
 msgstr "Importálva {imported}, kihagyva {dups} duplikátum"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:219
 msgid "Import failed"
 msgstr "Importálás sikertelen"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:252
 msgid "Export failed"
 msgstr "Exportálás sikertelen"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:289
 msgid ""
 "This will delete all webapps and their desktop entries. This cannot be "
 "undone."
 msgstr ""
 "Ez töröl minden webappot és azok asztali bejegyzéseit. Ez nem visszavonható."
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:493
 msgid "Browser changed"
 msgstr "Böngésző megváltoztatva"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:83
 msgid "What are WebApps?"
 msgstr "Mik azok a WebAppok?"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:84
 msgid ""
 "WebApps are web applications that run in a dedicated browser window, "
@@ -411,110 +351,85 @@ msgid ""
 msgstr ""
 "A WebApps olyan webalkalmazások, amelyek egy dedikált böngészőablakban "
 "futnak, így app-szerű élményt nyújtanak kedvenc weboldalaid számára."
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:85
 msgid "Benefits of using WebApps:"
 msgstr "A WebApps használatának előnyei:"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:86
 msgid "Focus"
 msgstr "Fókusz"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:86
 msgid "Work without the distractions of other browser tabs"
 msgstr "Dolgozz anélkül, hogy más böngészőfülek zavarnának"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:87
 msgid "Desktop Integration"
 msgstr "Asztali integráció"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:87
 msgid "Quick access from your application menu"
 msgstr "Gyors hozzáférés az alkalmazásmenüből"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:88
 msgid "Isolated Profiles"
 msgstr "Elkülönített profilok"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:88
 msgid "Each webapp can have its own cookies and settings"
 msgstr "Minden webappnak lehet saját sütije és beállítása"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:53
 msgid "Back"
 msgstr "Vissza"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:57
 msgid "Forward"
 msgstr "Előre"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:60
 msgid "Reload"
 msgstr "Újratöltés"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:63
 msgid "Fullscreen"
 msgstr "Teljes képernyő"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:78
 msgid "Enter URL…"
 msgstr "Írd be az URL-t…"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:338
 msgid "Zoom In"
 msgstr "Nagyítás"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:339
 msgid "Zoom Out"
 msgstr "Kicsinyítés"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:340
 msgid "Reset Zoom"
 msgstr "Nagyítás visszaállítása"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:341
 msgid "Developer Tools"
 msgstr "Fejlesztői eszközök"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:346
 msgid "Menu"
 msgstr "Menü"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:371
 msgid "Open Link in Browser"
 msgstr "Hivatkozás megnyitása böngészőben"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:397
 msgid "Download Complete"
 msgstr "Letöltés befejezve"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:406
 msgid "Save File"
 msgstr "Fájl mentése"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 63
 #~ msgid "Search templates"
 #~ msgstr "Keresési sablonok"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 91
 #, python-brace-format
 #~ msgid "Browser: {0}"
 #~ msgstr "Böngésző: {0}"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 113
 #, python-brace-format
 #~ msgid "Edit {0}"
 #~ msgstr "Szerkesztés {0}"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 127
 #, python-brace-format
 #~ msgid "Delete {0}"
 #~ msgstr "Törölje {0}"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
 #~ msgid ""
@@ -537,12 +452,10 @@ msgstr "Fájl mentése"
 #~ "• <b>Fókusz</b>: Dolgozz zavaró böngészőfülek nélkül\n"
 #~ "• <b>Asztali integráció</b>: Gyors hozzáférés az alkalmazásmenüből\n"
 #~ "• <b>Izolált profilok</b>: Opcionálisan, minden webappnak lehet saját sütije és beállításai\n"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 170
 #~ msgid "System Default"
 #~ msgstr "Rendszer alapértelmezett"
-
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
@@ -561,12 +474,10 @@ msgstr "Fájl mentése"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 151
 #~ msgid "Default"
 #~ msgstr "Alapértelmezett"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 163
 #~ msgid "Please select a browser."
 #~ msgstr "Kérjük, válasszon egy böngészőt."
-
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # File: biglinux-webapps/biglinux-
@@ -575,49 +486,40 @@ msgstr "Fájl mentése"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 637
 #~ msgid "Error"
 #~ msgstr "Hiba"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 167
 #~ msgid "Choose from templates"
 #~ msgstr "Válasszon a sablonok közül"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 156
 #~ msgid "Detect"
 #~ msgstr "Észlelés"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 172
 #~ msgid "App Icon"
 #~ msgstr "Alkalmazás ikon"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 180
 #~ msgid "Select icon for the WebApp"
 #~ msgstr "Válassza ki az ikont a WebApp-hoz"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 187
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 278
 #~ msgid "Available Icons"
 #~ msgstr "Elérhető ikonok"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 290
 #~ msgid "Application Mode"
 #~ msgstr "Alkalmazás mód"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 339
 #~ msgid "Profile Settings"
 #~ msgstr "Profilbeállítások"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 341
 #~ msgid "Configure a separate browser profile for this webapp"
 #~ msgstr "Állítson be egy külön böngészőprofilt ehhez a webalkalmazáshoz."
-
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -626,63 +528,51 @@ msgstr "Fájl mentése"
 # 
 #~ msgid "Use separate profile"
 #~ msgstr "Használj külön profilt"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 414
 #~ msgid "Detecting website information, please wait"
 #~ msgstr "Weboldal-információk észlelése, kérem várjon"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 453
 #~ msgid "Please enter a URL first."
 #~ msgstr "Kérjük, először adjon meg egy URL-t."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 609
 #~ msgid "Please enter a name for the WebApp."
 #~ msgstr "Kérjük, adjon meg egy nevet a WebApp számára."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 613
 #~ msgid "Please enter a URL for the WebApp."
 #~ msgstr "Kérjük, adjon meg egy URL-t a WebApp számára."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 617
 #~ msgid "Please select a browser for the WebApp."
 #~ msgstr "Kérjük, válasszon egy böngészőt a WebApp-hoz."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 79
 #~ msgid "Main Menu"
 #~ msgstr "Főmenü"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 61
 #~ msgid "Refresh"
 #~ msgstr "Frissítés"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 87
 #~ msgid "Show Welcome Screen"
 #~ msgstr "Üdvözlő képernyő megjelenítése"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 72
 #~ msgid "Add"
 #~ msgstr "Hozzáadás"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
 #~ msgid "No WebApps Found"
 #~ msgstr "Nincs WebApp található"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 313
 #, python-brace-format
 #~ msgid "Browser changed to {0}"
 #~ msgstr "A böngésző megváltozott {0}-ra."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 372
 #, python-brace-format
@@ -696,12 +586,10 @@ msgstr "Fájl mentése"
 #~ "\n"
 #~ "URL: {1}\n"
 #~ "Böngésző: {2}"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 341
 #~ msgid "REMOVE ALL"
 #~ msgstr "MINDEN ELTÁVOLÍTÁSA"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 346
 #, python-brace-format
@@ -713,48 +601,39 @@ msgstr "Fájl mentése"
 #~ "Biztos benne, hogy el akarja távolítani az összes WebApp-ját? Ez a művelet nem vonható vissza.\n"
 #~ "\n"
 #~ "Írja be a \"{0}\" megerősítéshez."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/favicon_picker.py, line: 63
 #, python-brace-format
 #~ msgid "Icon {0} of {1}"
 #~ msgstr "Ikon {0} a {1}-ben"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
 #~ msgid "There are no WebApps to export."
 #~ msgstr "Nincsenek exportálható WebAppok."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
 #~ msgid "The selected file does not exist."
 #~ msgstr "A kiválasztott fájl nem létezik."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 272
 #~ msgid "The selected file is not a valid ZIP archive."
 #~ msgstr "A kiválasztott fájl nem érvényes ZIP archívum."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 346
 #~ msgid "Error importing WebApps"
 #~ msgstr "Hiba a WebApps importálásakor"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 404
 #~ msgid "Imported {} WebApps successfully ({} duplicates skipped)"
 #~ msgstr "Sikeresen importált {} WebAppot ({} duplikált kihagyva)"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 341
 #~ msgid "Imported {} WebApps successfully"
 #~ msgstr "Sikeresen importált {} WebAppokat"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
 #~ msgid "No"
 #~ msgstr "Nem"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 364
 #~ msgid "Yes"

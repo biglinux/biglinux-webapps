@@ -14,7 +14,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
-
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # File: biglinux-webapps/biglinux-
@@ -24,31 +23,26 @@ msgstr ""
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:60
 msgid "Templates"
 msgstr "模板"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 50
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:17
 msgid "Choose a Template"
 msgstr "选择模板"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 56
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:29
 msgid "Search templates..."
 msgstr "搜索模板..."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 94
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:129
 msgid "Search Results"
 msgstr "搜索结果"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 96
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:123
 msgid "No templates found"
 msgstr "未找到模板"
-
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # File: biglinux-webapps/biglinux-
@@ -60,13 +54,11 @@ msgstr "未找到模板"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:45
 msgid "Edit WebApp"
 msgstr "编辑Web应用程序"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:507
 msgid "Delete WebApp"
 msgstr "删除Web应用程序"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
 # File: biglinux-webapps/biglinux-
@@ -75,25 +67,21 @@ msgstr "删除Web应用程序"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:70
 msgid "Welcome to WebApps Manager"
 msgstr "欢迎使用 WebApps 管理器"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:112
 msgid "Don't show this again"
 msgstr "不要再显示此信息"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:127
 msgid "Let's Start"
 msgstr "让我们开始"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/browser_dialog.rs:19
 msgid "Select Browser"
 msgstr "选择浏览器"
-
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -106,7 +94,6 @@ msgstr "选择浏览器"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:510
 msgid "Cancel"
 msgstr "取消"
-
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # File: biglinux-webapps/biglinux-
@@ -119,7 +106,6 @@ msgstr "取消"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:189
 msgid "Select"
 msgstr "选择"
-
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
@@ -133,7 +119,6 @@ msgstr "选择"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/browser_dialog.rs:100
 msgid "OK"
 msgstr "确定"
-
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # File: biglinux-webapps/biglinux-
@@ -145,19 +130,16 @@ msgstr "确定"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:58
 msgid "Add WebApp"
 msgstr "添加Web应用程序"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 152
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:111
 msgid "URL"
 msgstr "网址"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 157
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:115
 msgid "Detect name and icon from website"
 msgstr "从网站检测名称和图标"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 166
 # File: biglinux-webapps/biglinux-
@@ -165,38 +147,32 @@ msgstr "从网站检测名称和图标"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:122
 msgid "Name"
 msgstr "名称"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 221
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:161
 msgid "Category"
 msgstr "类别"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 292
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:172
 msgid "Opens as a native window without browser interface"
 msgstr "以原生窗口打开，无浏览器界面"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 226
 #. -- Browser row (hidden in app mode) --
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:179
 msgid "Browser"
 msgstr "浏览器"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 345
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:203
 msgid "Allows independent cookies and sessions"
 msgstr "允许独立的 cookies 和会话"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:208
 msgid "Profile Name"
 msgstr "个人资料名称"
-
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -206,52 +182,44 @@ msgstr "个人资料名称"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:226
 msgid "Save"
 msgstr "保存"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 336
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:88
 msgid "Loading..."
 msgstr "加载中..."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:37
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:173
 msgid "WebApps Manager"
 msgstr "WebApps 管理器"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 51
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:53
 msgid "Search WebApps"
 msgstr "搜索网络应用程序"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 61
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:64
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:236
 msgid "Export WebApps"
 msgstr "导出Web应用程序"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 62
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:63
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:195
 msgid "Import WebApps"
 msgstr "导入Web应用程序"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 65
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:65
 msgid "Browse Applications Folder"
 msgstr "浏览应用程序文件夹"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 66
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:66
 msgid "Browse Profiles Folder"
 msgstr "浏览配置文件文件夹"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
 # File: biglinux-webapps/biglinux-
@@ -260,31 +228,26 @@ msgstr "浏览配置文件文件夹"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:288
 msgid "Remove All WebApps"
 msgstr "删除所有Web应用程序"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:73
 msgid "About"
 msgstr "关于"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 106
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:394
 msgid "Add a new webapp to get started"
 msgstr "添加一个新的网站应用程序以开始使用"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 214
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:159
 msgid "WebApp created successfully"
 msgstr "WebApp 创建成功"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 257
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:461
 msgid "WebApp updated successfully"
 msgstr "WebApp 更新成功"
-
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -294,224 +257,176 @@ msgstr "WebApp 更新成功"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:524
 msgid "Also delete configuration folder"
 msgstr "还删除配置文件夹"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 352
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_row.rs:100
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:511
 msgid "Delete"
 msgstr "删除"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 371
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:547
 msgid "WebApp deleted successfully"
 msgstr "WebApp 删除成功"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:292
 msgid "Remove All"
 msgstr "全部删除"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:307
 msgid "All WebApps have been removed"
 msgstr "所有Web应用程序已被移除"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 445
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:303
 msgid "Failed to remove all WebApps"
 msgstr "无法删除所有Web应用程序"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 166
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:248
 msgid "WebApps exported successfully"
 msgstr "WebApps 导出成功"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:246
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:393
 msgid "No WebApps"
 msgstr "没有Web应用程序"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_row.rs:78
 msgid "Change browser"
 msgstr "更改浏览器"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_row.rs:89
 msgid "Edit"
 msgstr "编辑"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:45
 msgid "New WebApp"
 msgstr "新建 WebApp"
-
 #. -- Icon row --
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:128
 msgid "Icon"
 msgstr "图标"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:171
 msgid "App Mode"
 msgstr "应用模式"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:202
 msgid "Separate Profile"
 msgstr "独立配置文件"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:427
 msgid "Select Icon"
 msgstr "选择图标"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:432
 msgid "Images"
 msgstr "图片"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:198
 msgid "ZIP files"
 msgstr "ZIP 文件"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:215
 #, rust-format
 msgid "Imported {imported}, skipped {dups} duplicates"
 msgstr "已导入 {imported}，跳过 {dups} 个重复项"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:219
 msgid "Import failed"
 msgstr "导入失败"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:252
 msgid "Export failed"
 msgstr "导出失败"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:289
 msgid ""
 "This will delete all webapps and their desktop entries. This cannot be "
 "undone."
 msgstr "这将删除所有 webapps 及其桌面条目。此操作不可撤销。"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:493
 msgid "Browser changed"
 msgstr "浏览器已更改"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:83
 msgid "What are WebApps?"
 msgstr "什么是 WebApps？"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:84
 msgid ""
 "WebApps are web applications that run in a dedicated browser window, "
 "providing a more app-like experience for your favorite websites."
 msgstr "WebApps 是在专用浏览器窗口中运行的网络应用，为您喜爱的网站提供更像应用程序的体验。"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:85
 msgid "Benefits of using WebApps:"
 msgstr "使用 WebApps 的好处："
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:86
 msgid "Focus"
 msgstr "专注"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:86
 msgid "Work without the distractions of other browser tabs"
 msgstr "无需分心于其他浏览器标签页"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:87
 msgid "Desktop Integration"
 msgstr "桌面集成"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:87
 msgid "Quick access from your application menu"
 msgstr "可从应用菜单快速访问"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:88
 msgid "Isolated Profiles"
 msgstr "独立配置文件"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:88
 msgid "Each webapp can have its own cookies and settings"
 msgstr "每个 WebApp 都可以拥有自己的 Cookie 和设置"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:53
 msgid "Back"
 msgstr "后退"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:57
 msgid "Forward"
 msgstr "前进"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:60
 msgid "Reload"
 msgstr "重新加载"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:63
 msgid "Fullscreen"
 msgstr "全屏"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:78
 msgid "Enter URL…"
 msgstr "输入 URL…"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:338
 msgid "Zoom In"
 msgstr "放大"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:339
 msgid "Zoom Out"
 msgstr "缩小"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:340
 msgid "Reset Zoom"
 msgstr "重置缩放"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:341
 msgid "Developer Tools"
 msgstr "开发者工具"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:346
 msgid "Menu"
 msgstr "菜单"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:371
 msgid "Open Link in Browser"
 msgstr "在浏览器中打开链接"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:397
 msgid "Download Complete"
 msgstr "下载完成"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:406
 msgid "Save File"
 msgstr "保存文件"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 63
 #~ msgid "Search templates"
 #~ msgstr "搜索模板"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 91
 #, python-brace-format
 #~ msgid "Browser: {0}"
 #~ msgstr "浏览器: {0}"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 113
 #, python-brace-format
 #~ msgid "Edit {0}"
 #~ msgstr "编辑 {0}"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 127
 #, python-brace-format
 #~ msgid "Delete {0}"
 #~ msgstr "删除 {0}"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
 #~ msgid ""
@@ -534,12 +449,10 @@ msgstr "保存文件"
 #~ "• <b>专注</b>：在没有其他浏览器标签干扰的情况下工作\n"
 #~ "• <b>桌面集成</b>：可以从应用程序菜单快速访问\n"
 #~ "• <b>隔离的配置文件</b>：可选地，每个WebApp可以拥有自己的Cookie和设置\n"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 170
 #~ msgid "System Default"
 #~ msgstr "系统默认"
-
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
@@ -558,12 +471,10 @@ msgstr "保存文件"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 151
 #~ msgid "Default"
 #~ msgstr "默认"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 163
 #~ msgid "Please select a browser."
 #~ msgstr "请选择一个浏览器。"
-
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # File: biglinux-webapps/biglinux-
@@ -572,49 +483,40 @@ msgstr "保存文件"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 637
 #~ msgid "Error"
 #~ msgstr "错误"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 167
 #~ msgid "Choose from templates"
 #~ msgstr "从模板中选择"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 156
 #~ msgid "Detect"
 #~ msgstr "检测"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 172
 #~ msgid "App Icon"
 #~ msgstr "应用程序图标"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 180
 #~ msgid "Select icon for the WebApp"
 #~ msgstr "为WebApp选择图标"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 187
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 278
 #~ msgid "Available Icons"
 #~ msgstr "可用图标"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 290
 #~ msgid "Application Mode"
 #~ msgstr "应用模式"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 339
 #~ msgid "Profile Settings"
 #~ msgstr "个人资料设置"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 341
 #~ msgid "Configure a separate browser profile for this webapp"
 #~ msgstr "为此网络应用配置一个单独的浏览器配置文件"
-
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -623,63 +525,51 @@ msgstr "保存文件"
 # 
 #~ msgid "Use separate profile"
 #~ msgstr "使用单独的配置文件"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 414
 #~ msgid "Detecting website information, please wait"
 #~ msgstr "正在检测网站信息，请稍候"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 453
 #~ msgid "Please enter a URL first."
 #~ msgstr "请先输入一个网址。"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 609
 #~ msgid "Please enter a name for the WebApp."
 #~ msgstr "请输入WebApp的名称。"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 613
 #~ msgid "Please enter a URL for the WebApp."
 #~ msgstr "请输入WebApp的URL。"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 617
 #~ msgid "Please select a browser for the WebApp."
 #~ msgstr "请选择一个浏览器用于WebApp。"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 79
 #~ msgid "Main Menu"
 #~ msgstr "主菜单"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 60
 #~ msgid "Refresh"
 #~ msgstr "刷新"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 87
 #~ msgid "Show Welcome Screen"
 #~ msgstr "显示欢迎屏幕"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 72
 #~ msgid "Add"
 #~ msgstr "添加"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
 #~ msgid "No WebApps Found"
 #~ msgstr "未找到Web应用程序"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 313
 #, python-brace-format
 #~ msgid "Browser changed to {0}"
 #~ msgstr "浏览器已更改为 {0}"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 372
 #, python-brace-format
@@ -693,12 +583,10 @@ msgstr "保存文件"
 #~ "\n"
 #~ "网址： {1}  \n"
 #~ "浏览器： {2}"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 341
 #~ msgid "REMOVE ALL"
 #~ msgstr "删除所有"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 346
 #, python-brace-format
@@ -710,48 +598,39 @@ msgstr "保存文件"
 #~ "您确定要删除所有的 Web 应用吗？此操作无法撤销。\n"
 #~ "\n"
 #~ "输入“{0}”以确认。"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/favicon_picker.py, line: 63
 #, python-brace-format
 #~ msgid "Icon {0} of {1}"
 #~ msgstr "图标 {0} 的 {1}"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
 #~ msgid "There are no WebApps to export."
 #~ msgstr "没有可导出的Web应用程序。"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
 #~ msgid "The selected file does not exist."
 #~ msgstr "所选文件不存在。"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 272
 #~ msgid "The selected file is not a valid ZIP archive."
 #~ msgstr "所选文件不是有效的 ZIP 压缩文件。"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 346
 #~ msgid "Error importing WebApps"
 #~ msgstr "导入WebApps时出错"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 403
 #~ msgid "Imported {} WebApps successfully ({} duplicates skipped)"
 #~ msgstr "成功导入 {} 个 WebApps（跳过 {} 个重复项）"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 341
 #~ msgid "Imported {} WebApps successfully"
 #~ msgstr "成功导入 {} WebApps"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
 #~ msgid "No"
 #~ msgstr "不"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 364
 #~ msgid "Yes"

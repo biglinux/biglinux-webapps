@@ -14,7 +14,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: attranslate\n"
-
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # File: biglinux-webapps/biglinux-
@@ -24,31 +23,26 @@ msgstr ""
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:60
 msgid "Templates"
 msgstr "Шаблони"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 50
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:17
 msgid "Choose a Template"
 msgstr "Виберіть шаблон"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 56
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:29
 msgid "Search templates..."
 msgstr "Шукати шаблони..."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 94
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:129
 msgid "Search Results"
 msgstr "Результати пошуку"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 96
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:123
 msgid "No templates found"
 msgstr "Шаблони не знайдено"
-
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # File: biglinux-webapps/biglinux-
@@ -60,13 +54,11 @@ msgstr "Шаблони не знайдено"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:45
 msgid "Edit WebApp"
 msgstr "Редагувати веб-додаток"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:507
 msgid "Delete WebApp"
 msgstr "Видалити веб-додаток"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
 # File: biglinux-webapps/biglinux-
@@ -75,25 +67,21 @@ msgstr "Видалити веб-додаток"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:70
 msgid "Welcome to WebApps Manager"
 msgstr "Ласкаво просимо до Менеджера веб-додатків"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:112
 msgid "Don't show this again"
 msgstr "Не показувати це знову"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:127
 msgid "Let's Start"
 msgstr "Давайте почнемо"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/browser_dialog.rs:19
 msgid "Select Browser"
 msgstr "Виберіть браузер"
-
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -106,7 +94,6 @@ msgstr "Виберіть браузер"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:510
 msgid "Cancel"
 msgstr "Скасувати"
-
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # File: biglinux-webapps/biglinux-
@@ -119,7 +106,6 @@ msgstr "Скасувати"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:189
 msgid "Select"
 msgstr "Вибрати"
-
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
@@ -133,7 +119,6 @@ msgstr "Вибрати"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/browser_dialog.rs:100
 msgid "OK"
 msgstr "OK"
-
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # File: biglinux-webapps/biglinux-
@@ -145,19 +130,16 @@ msgstr "OK"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:58
 msgid "Add WebApp"
 msgstr "Додати веб-додаток"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 152
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:111
 msgid "URL"
 msgstr "URL"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 157
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:115
 msgid "Detect name and icon from website"
 msgstr "Визначити назву та значок з вебсайту"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 166
 # File: biglinux-webapps/biglinux-
@@ -165,38 +147,32 @@ msgstr "Визначити назву та значок з вебсайту"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:122
 msgid "Name"
 msgstr "Ім'я"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 221
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:161
 msgid "Category"
 msgstr "Категорія"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 292
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:172
 msgid "Opens as a native window without browser interface"
 msgstr "Відкривається як рідне вікно без інтерфейсу браузера"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 226
 #. -- Browser row (hidden in app mode) --
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:179
 msgid "Browser"
 msgstr "Браузер"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 345
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:203
 msgid "Allows independent cookies and sessions"
 msgstr "Дозволяє незалежні куки та сесії"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:208
 msgid "Profile Name"
 msgstr "Ім'я профілю"
-
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -206,52 +182,44 @@ msgstr "Ім'я профілю"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:226
 msgid "Save"
 msgstr "Зберегти"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 336
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:88
 msgid "Loading..."
 msgstr "Завантаження..."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:37
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:173
 msgid "WebApps Manager"
 msgstr "Менеджер веб-додатків"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 51
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:53
 msgid "Search WebApps"
 msgstr "Пошук веб-додатків"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 61
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:64
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:236
 msgid "Export WebApps"
 msgstr "Експортувати веб-додатки"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 62
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:63
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:195
 msgid "Import WebApps"
 msgstr "Імпорт веб-додатків"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 65
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:65
 msgid "Browse Applications Folder"
 msgstr "Переглянути папку програм"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 66
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:66
 msgid "Browse Profiles Folder"
 msgstr "Перегляд папки профілів"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
 # File: biglinux-webapps/biglinux-
@@ -260,31 +228,26 @@ msgstr "Перегляд папки профілів"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:288
 msgid "Remove All WebApps"
 msgstr "Видалити всі веб-додатки"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:73
 msgid "About"
 msgstr "Про програму"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 106
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:394
 msgid "Add a new webapp to get started"
 msgstr "Додайте новий веб-додаток, щоб почати."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 214
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:159
 msgid "WebApp created successfully"
 msgstr "Веб-додаток успішно створено"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 257
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:461
 msgid "WebApp updated successfully"
 msgstr "Веб-додаток успішно оновлено"
-
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -294,101 +257,81 @@ msgstr "Веб-додаток успішно оновлено"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:524
 msgid "Also delete configuration folder"
 msgstr "Також видаліть папку конфігурації."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 352
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_row.rs:100
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:511
 msgid "Delete"
 msgstr "Видалити"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 371
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:547
 msgid "WebApp deleted successfully"
 msgstr "WebApp успішно видалено"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:292
 msgid "Remove All"
 msgstr "Видалити все"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:307
 msgid "All WebApps have been removed"
 msgstr "Усі веб-додатки були видалені."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 445
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:303
 msgid "Failed to remove all WebApps"
 msgstr "Не вдалося видалити всі веб-додатки."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 166
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:248
 msgid "WebApps exported successfully"
 msgstr "WebApps успішно експортовано"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:246
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:393
 msgid "No WebApps"
 msgstr "Немає веб-додатків"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_row.rs:78
 msgid "Change browser"
 msgstr "Змінити браузер"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_row.rs:89
 msgid "Edit"
 msgstr "Редагувати"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:45
 msgid "New WebApp"
 msgstr "Новий WebApp"
-
 #. -- Icon row --
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:128
 msgid "Icon"
 msgstr "Іконка"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:171
 msgid "App Mode"
 msgstr "Режим додатку"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:202
 msgid "Separate Profile"
 msgstr "Окремий профіль"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:427
 msgid "Select Icon"
 msgstr "Вибрати іконку"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:432
 msgid "Images"
 msgstr "Зображення"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:198
 msgid "ZIP files"
 msgstr "ZIP-файли"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:215
 #, rust-format
 msgid "Imported {imported}, skipped {dups} duplicates"
 msgstr "Імпортовано {imported}, пропущено {dups} дублікатів"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:219
 msgid "Import failed"
 msgstr "Не вдалося імпортувати"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:252
 msgid "Export failed"
 msgstr "Не вдалося експортувати"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:289
 msgid ""
 "This will delete all webapps and their desktop entries. This cannot be "
@@ -396,15 +339,12 @@ msgid ""
 msgstr ""
 "Це видалить усі webapps та їхні записи на робочому столі. Цю дію неможливо "
 "скасувати."
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:493
 msgid "Browser changed"
 msgstr "Браузер змінено"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:83
 msgid "What are WebApps?"
 msgstr "Що таке WebApps?"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:84
 msgid ""
 "WebApps are web applications that run in a dedicated browser window, "
@@ -412,110 +352,85 @@ msgid ""
 msgstr ""
 "WebApps — це веб-додатки, які працюють у спеціальному вікні браузера, "
 "забезпечуючи більш додаткоподібний досвід для ваших улюблених сайтів."
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:85
 msgid "Benefits of using WebApps:"
 msgstr "Переваги використання WebApps:"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:86
 msgid "Focus"
 msgstr "Фокус"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:86
 msgid "Work without the distractions of other browser tabs"
 msgstr "Працюйте без відволікань від інших вкладок браузера"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:87
 msgid "Desktop Integration"
 msgstr "Інтеграція з робочим столом"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:87
 msgid "Quick access from your application menu"
 msgstr "Швидкий доступ із меню додатків"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:88
 msgid "Isolated Profiles"
 msgstr "Ізольовані профілі"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:88
 msgid "Each webapp can have its own cookies and settings"
 msgstr "Кожен webapp може мати власні куки та налаштування"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:53
 msgid "Back"
 msgstr "Назад"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:57
 msgid "Forward"
 msgstr "Вперед"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:60
 msgid "Reload"
 msgstr "Оновити"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:63
 msgid "Fullscreen"
 msgstr "Повноекранний режим"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:78
 msgid "Enter URL…"
 msgstr "Введіть URL…"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:338
 msgid "Zoom In"
 msgstr "Збільшити масштаб"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:339
 msgid "Zoom Out"
 msgstr "Зменшити масштаб"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:340
 msgid "Reset Zoom"
 msgstr "Скинути масштаб"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:341
 msgid "Developer Tools"
 msgstr "Інструменти розробника"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:346
 msgid "Menu"
 msgstr "Меню"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:371
 msgid "Open Link in Browser"
 msgstr "Відкрити посилання в браузері"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:397
 msgid "Download Complete"
 msgstr "Завантаження завершено"
-
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:406
 msgid "Save File"
 msgstr "Зберегти файл"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 63
 #~ msgid "Search templates"
 #~ msgstr "Шаблони пошуку"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 91
 #, python-brace-format
 #~ msgid "Browser: {0}"
 #~ msgstr "Браузер: {0}"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 113
 #, python-brace-format
 #~ msgid "Edit {0}"
 #~ msgstr "Редагувати {0}"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 127
 #, python-brace-format
 #~ msgid "Delete {0}"
 #~ msgstr "Видалити {0}"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
 #~ msgid ""
@@ -538,12 +453,10 @@ msgstr "Зберегти файл"
 #~ "• <b>Зосередженість</b>: Працюйте без відволікань від інших вкладок браузера\n"
 #~ "• <b>Інтеграція з робочим столом</b>: Швидкий доступ з меню додатків\n"
 #~ "• <b>Ізольовані профілі</b>: За бажанням, кожен веб-додаток може мати свої власні куки та налаштування\n"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 170
 #~ msgid "System Default"
 #~ msgstr "Системне значення за замовчуванням"
-
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
@@ -562,12 +475,10 @@ msgstr "Зберегти файл"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 151
 #~ msgid "Default"
 #~ msgstr "За замовчуванням"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 163
 #~ msgid "Please select a browser."
 #~ msgstr "Будь ласка, виберіть браузер."
-
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # File: biglinux-webapps/biglinux-
@@ -576,49 +487,40 @@ msgstr "Зберегти файл"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 637
 #~ msgid "Error"
 #~ msgstr "Помилка"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 167
 #~ msgid "Choose from templates"
 #~ msgstr "Виберіть з шаблонів"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 156
 #~ msgid "Detect"
 #~ msgstr "Виявити"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 172
 #~ msgid "App Icon"
 #~ msgstr "Іконка програми"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 180
 #~ msgid "Select icon for the WebApp"
 #~ msgstr "Виберіть значок для веб-додатку"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 187
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 278
 #~ msgid "Available Icons"
 #~ msgstr "Доступні значки"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 290
 #~ msgid "Application Mode"
 #~ msgstr "Режим застосунку"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 339
 #~ msgid "Profile Settings"
 #~ msgstr "Налаштування профілю"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 341
 #~ msgid "Configure a separate browser profile for this webapp"
 #~ msgstr "Налаштуйте окремий профіль браузера для цього вебдодатку."
-
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 # 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -627,63 +529,51 @@ msgstr "Зберегти файл"
 # 
 #~ msgid "Use separate profile"
 #~ msgstr "Використовуйте окремий профіль"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 414
 #~ msgid "Detecting website information, please wait"
 #~ msgstr "Виявлення інформації про вебсайт, будь ласка, зачекайте"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 453
 #~ msgid "Please enter a URL first."
 #~ msgstr "Будь ласка, спочатку введіть URL."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 609
 #~ msgid "Please enter a name for the WebApp."
 #~ msgstr "Будь ласка, введіть назву для WebApp."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 613
 #~ msgid "Please enter a URL for the WebApp."
 #~ msgstr "Будь ласка, введіть URL для WebApp."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 617
 #~ msgid "Please select a browser for the WebApp."
 #~ msgstr "Будь ласка, виберіть браузер для WebApp."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 79
 #~ msgid "Main Menu"
 #~ msgstr "Головне меню"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 60
 #~ msgid "Refresh"
 #~ msgstr "Оновити"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 87
 #~ msgid "Show Welcome Screen"
 #~ msgstr "Показати екран вітання"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 72
 #~ msgid "Add"
 #~ msgstr "Додати"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
 #~ msgid "No WebApps Found"
 #~ msgstr "Не знайдено веб-додатків"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 313
 #, python-brace-format
 #~ msgid "Browser changed to {0}"
 #~ msgstr "Браузер змінено на {0}"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 372
 #, python-brace-format
@@ -697,12 +587,10 @@ msgstr "Зберегти файл"
 #~ "\n"
 #~ "URL: {1}\n"
 #~ "Браузер: {2}"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 341
 #~ msgid "REMOVE ALL"
 #~ msgstr "ВИДАЛИТИ ВСЕ"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 346
 #, python-brace-format
@@ -714,48 +602,39 @@ msgstr "Зберегти файл"
 #~ "Ви впевнені, що хочете видалити всі свої веб-додатки? Цю дію не можна скасувати.\n"
 #~ "\n"
 #~ "Введіть \"{0}\", щоб підтвердити."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/favicon_picker.py, line: 63
 #, python-brace-format
 #~ msgid "Icon {0} of {1}"
 #~ msgstr "Іконка {0} з {1}"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
 #~ msgid "There are no WebApps to export."
 #~ msgstr "Немає веб-додатків для експорту."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
 #~ msgid "The selected file does not exist."
 #~ msgstr "Вибраний файл не існує."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 272
 #~ msgid "The selected file is not a valid ZIP archive."
 #~ msgstr "Вибраний файл не є дійсним ZIP-архівом."
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 346
 #~ msgid "Error importing WebApps"
 #~ msgstr "Помилка імпорту WebApps"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 403
 #~ msgid "Imported {} WebApps successfully ({} duplicates skipped)"
 #~ msgstr "Імпортовано {} WebApps успішно (пропущено {} дублікатів)"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 341
 #~ msgid "Imported {} WebApps successfully"
 #~ msgstr "Імпортовано {} WebApps успішно"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
 #~ msgid "No"
 #~ msgstr "Ні"
-
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 364
 #~ msgid "Yes"
