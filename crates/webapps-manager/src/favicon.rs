@@ -11,17 +11,24 @@ pub struct SiteInfo {
 
 /// Fetch title + icons from URL (blocking — call from thread)
 pub fn fetch_site_info(url: &str) -> Result<SiteInfo> {
+    // normalize: prepend https:// if no scheme
+    let url = if !url.contains("://") {
+        format!("https://{url}")
+    } else {
+        url.to_string()
+    };
+
     let client = reqwest::blocking::Client::builder()
         .user_agent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120.0.0.0")
         .timeout(std::time::Duration::from_secs(10))
         .build()?;
 
-    let resp = client.get(url).send()?;
+    let resp = client.get(&url).send()?;
     let html_text = resp.text()?;
     let doc = Html::parse_document(&html_text);
 
     let title = extract_title(&doc).unwrap_or_default();
-    let icon_urls = extract_icon_urls(&doc, url);
+    let icon_urls = extract_icon_urls(&doc, &url);
 
     // download icons to cache
     let cache = config::cache_dir().join("favicons");
@@ -37,7 +44,7 @@ pub fn fetch_site_info(url: &str) -> Result<SiteInfo> {
 
     // try /favicon.ico fallback
     if icon_paths.is_empty() {
-        if let Ok(base) = url::Url::parse(url) {
+        if let Ok(base) = url::Url::parse(&url) {
             let favicon_url = format!("{}://{}/favicon.ico", base.scheme(), base.host_str().unwrap_or(""));
             if let Ok(path) = download_icon(&client, &favicon_url, &cache, 99) {
                 icon_paths.push(path);

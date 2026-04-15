@@ -4,14 +4,13 @@ use libadwaita as adw;
 use adw::prelude::*;
 use gettextrs::gettext;
 use gtk::glib;
-use std::cell::RefCell;
 use std::rc::Rc;
 use webapps_core::templates::{build_default_registry, TemplateRegistry, WebAppTemplate};
 
-/// Show template gallery. Returns selected template_id via callback.
+/// Show template gallery. Fires callback immediately on selection.
 pub fn show(parent: &impl IsA<gtk::Window>, on_selected: impl Fn(String) + 'static) {
     let registry = build_default_registry();
-    let selected_id: Rc<RefCell<Option<String>>> = Rc::new(RefCell::new(None));
+    let callback: Rc<dyn Fn(String)> = Rc::new(on_selected);
 
     let win = adw::Window::builder()
         .title(&gettext("Choose a Template"))
@@ -46,31 +45,21 @@ pub fn show(parent: &impl IsA<gtk::Window>, on_selected: impl Fn(String) + 'stat
     content.append(&scroll);
 
     // initial populate
-    populate_all(&main_box, &registry, &selected_id, &win);
+    populate_all(&main_box, &registry, &callback, &win);
 
     // search handler
     {
         let mb = main_box.clone();
         let reg = registry;
-        let sel = selected_id.clone();
+        let cb = callback.clone();
         let w = win.clone();
         search_entry.connect_search_changed(move |entry| {
             let query = entry.text().to_string();
             clear_box(&mb);
             if query.is_empty() {
-                populate_all(&mb, &reg, &sel, &w);
+                populate_all(&mb, &reg, &cb, &w);
             } else {
-                populate_search(&mb, &reg, &query, &sel, &w);
-            }
-        });
-    }
-
-    // on close: fire callback if template was selected
-    {
-        let sel = selected_id.clone();
-        win.connect_destroy(move |_| {
-            if let Some(id) = sel.borrow_mut().take() {
-                on_selected(id);
+                populate_search(&mb, &reg, &query, &cb, &w);
             }
         });
     }
@@ -97,7 +86,7 @@ pub fn show(parent: &impl IsA<gtk::Window>, on_selected: impl Fn(String) + 'stat
 fn populate_all(
     container: &gtk::Box,
     registry: &TemplateRegistry,
-    selected: &Rc<RefCell<Option<String>>>,
+    callback: &Rc<dyn Fn(String)>,
     win: &adw::Window,
 ) {
     let mut categories = registry.categories();
@@ -107,7 +96,7 @@ fn populate_all(
         if templates.is_empty() {
             continue;
         }
-        add_category_section(container, cat, &templates, selected, win);
+        add_category_section(container, cat, &templates, callback, win);
     }
 }
 
@@ -115,7 +104,7 @@ fn populate_search(
     container: &gtk::Box,
     registry: &TemplateRegistry,
     query: &str,
-    selected: &Rc<RefCell<Option<String>>>,
+    callback: &Rc<dyn Fn(String)>,
     win: &adw::Window,
 ) {
     let results = registry.search(query);
@@ -126,24 +115,22 @@ fn populate_search(
         container.append(&label);
         return;
     }
-    add_category_section(container, &gettext("Search Results"), &results, selected, win);
+    add_category_section(container, &gettext("Search Results"), &results, callback, win);
 }
 
 fn add_category_section(
     container: &gtk::Box,
     category: &str,
     templates: &[&WebAppTemplate],
-    selected: &Rc<RefCell<Option<String>>>,
+    callback: &Rc<dyn Fn(String)>,
     win: &adw::Window,
 ) {
-    // category header
     let header = gtk::Label::new(Some(category));
     header.set_halign(gtk::Align::Start);
     header.add_css_class("title-4");
     header.set_margin_top(8);
     container.append(&header);
 
-    // use a ListBox with ActionRows instead of FlowBox for simplicity
     let listbox = gtk::ListBox::new();
     listbox.add_css_class("boxed-list");
     listbox.set_selection_mode(gtk::SelectionMode::None);
@@ -154,15 +141,17 @@ fn add_category_section(
             .subtitle(&tpl.url)
             .activatable(true)
             .build();
-        let icon = gtk::Image::from_icon_name(&tpl.icon);
+        let icon = gtk::Image::new();
         icon.set_pixel_size(32);
+        crate::webapp_row::load_icon(&icon, &tpl.icon);
         row.add_prefix(&icon);
 
-        let sel = selected.clone();
+        // fire callback immediately, then close gallery
+        let cb = callback.clone();
         let tid = tpl.template_id.clone();
         let w = win.clone();
         row.connect_activated(move |_| {
-            *sel.borrow_mut() = Some(tid.clone());
+            cb(tid.clone());
             w.close();
         });
 

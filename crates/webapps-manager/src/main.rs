@@ -1,6 +1,7 @@
 mod browser_dialog;
 mod favicon;
 mod service;
+mod style;
 mod template_gallery;
 mod webapp_dialog;
 mod webapp_row;
@@ -19,6 +20,10 @@ fn main() {
     let app = adw::Application::builder()
         .application_id(config::APP_ID)
         .build();
+
+    app.connect_startup(|_| {
+        style::load_css();
+    });
 
     app.connect_activate(|app| {
         window::build(app);

@@ -54,8 +54,9 @@ pub fn show(
             .build();
 
         // browser icon
-        let icon = gtk::Image::from_icon_name(&browser.icon_name());
+        let icon = gtk::Image::new();
         icon.set_pixel_size(32);
+        crate::webapp_row::load_icon(&icon, &browser.icon_name());
         row.add_prefix(&icon);
 
         // radio check button

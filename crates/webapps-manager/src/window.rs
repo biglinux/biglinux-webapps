@@ -96,12 +96,17 @@ pub fn build(app: &adw::Application) {
     scroll.set_vexpand(true);
     scroll.set_hscrollbar_policy(gtk::PolicyType::Never);
 
+    let clamp = adw::Clamp::new();
+    clamp.set_maximum_size(900);
+    clamp.set_tightening_threshold(700);
+
     let content_box = gtk::Box::new(gtk::Orientation::Vertical, 0);
-    content_box.set_margin_start(12);
-    content_box.set_margin_end(12);
+    content_box.set_margin_start(16);
+    content_box.set_margin_end(16);
     content_box.set_margin_top(8);
-    content_box.set_margin_bottom(8);
-    scroll.set_child(Some(&content_box));
+    content_box.set_margin_bottom(16);
+    clamp.set_child(Some(&content_box));
+    scroll.set_child(Some(&clamp));
 
     main_box.append(&scroll);
 
@@ -391,8 +396,10 @@ fn populate_list(
         let status = adw::StatusPage::builder()
             .icon_name("big-webapps")
             .title(&gettext("No WebApps"))
-            .description(&gettext("Add a new webapp to get started"))
+            .description(&gettext("Press + to create your first webapp"))
+            .vexpand(true)
             .build();
+        status.add_css_class("empty-state-icon");
         content.append(&status);
         return;
     }
@@ -410,8 +417,7 @@ fn populate_list(
         let header = gtk::Label::new(Some(cat));
         header.set_halign(gtk::Align::Start);
         header.add_css_class("title-4");
-        header.set_margin_top(12);
-        header.set_margin_bottom(4);
+        header.add_css_class("category-header");
         content.append(&header);
 
         // listbox

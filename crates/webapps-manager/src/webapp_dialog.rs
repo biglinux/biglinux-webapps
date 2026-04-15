@@ -55,23 +55,15 @@ pub fn show(
 
     // headerbar
     let header = adw::HeaderBar::new();
-    if is_new {
-        let tmpl_btn = gtk::Button::from_icon_name("view-grid-symbolic");
-        tmpl_btn.set_tooltip_text(Some(&gettext("Templates")));
-        let wc = webapp_cell.clone();
-        let w = win.clone();
-        tmpl_btn.connect_clicked(move |_| {
-            let wc2 = wc.clone();
-            template_gallery::show(&w, move |template_id| {
-                let reg = build_default_registry();
-                if let Some(tpl) = reg.get(&template_id) {
-                    wc2.borrow_mut().apply_template(tpl);
-                }
-                // UI sync happens via rebuilding; simplified approach
-            });
-        });
-        header.pack_start(&tmpl_btn);
-    }
+    // placeholder for template button — will be wired after widgets exist
+    let tmpl_btn = if is_new {
+        let btn = gtk::Button::from_icon_name("view-grid-symbolic");
+        btn.set_tooltip_text(Some(&gettext("Templates")));
+        header.pack_start(&btn);
+        Some(btn)
+    } else {
+        None
+    };
     outer.append(&header);
 
     // overlay for loading spinner
@@ -111,9 +103,13 @@ pub fn show(
         .title(&gettext("URL"))
         .text(&webapp_cell.borrow().app_url)
         .build();
-    let detect_btn = gtk::Button::from_icon_name("emblem-web-symbolic");
+    let detect_img = gtk::Image::from_icon_name("emblem-web-symbolic");
+    detect_img.set_pixel_size(24);
+    let detect_btn = gtk::Button::new();
+    detect_btn.set_child(Some(&detect_img));
     detect_btn.set_tooltip_text(Some(&gettext("Detect name and icon from website")));
     detect_btn.set_valign(gtk::Align::Center);
+    detect_btn.add_css_class("flat");
     url_row.add_suffix(&detect_btn);
     group.add(&url_row);
 
@@ -128,15 +124,7 @@ pub fn show(
     let icon_row = adw::ActionRow::builder().title(&gettext("Icon")).build();
     let icon_preview = gtk::Image::new();
     icon_preview.set_pixel_size(32);
-    {
-        let icon_path = service::resolve_icon_path(&webapp_cell.borrow().app_icon);
-        let p = std::path::Path::new(&icon_path);
-        if p.is_absolute() && p.exists() {
-            icon_preview.set_from_file(Some(p));
-        } else {
-            icon_preview.set_icon_name(Some(&icon_path));
-        }
-    }
+    crate::webapp_row::load_icon(&icon_preview, &webapp_cell.borrow().app_icon);
     icon_row.add_prefix(&icon_preview);
     let icon_btn = gtk::Button::with_label(&gettext("Select"));
     icon_btn.set_valign(gtk::Align::Center);
@@ -237,6 +225,47 @@ pub fn show(
     win.set_content(Some(&outer));
 
     // -- wire up signals --
+
+    // Template button → populate URL, name, icon, category after selection
+    if let Some(ref tb) = tmpl_btn {
+        let wc = webapp_cell.clone();
+        let w = win.clone();
+        let ur = url_row.clone();
+        let nr = name_row.clone();
+        let ip = icon_preview.clone();
+        let cd = cat_dropdown.clone();
+        tb.connect_clicked(move |_| {
+            let wc2 = wc.clone();
+            let ur2 = ur.clone();
+            let nr2 = nr.clone();
+            let ip2 = ip.clone();
+            let cd2 = cd.clone();
+            template_gallery::show(&w, move |template_id| {
+                log::info!("Template callback received: {}", &template_id);
+                let reg = build_default_registry();
+                if let Some(tpl) = reg.get(&template_id) {
+                    log::info!("Template found: {} url={}", &tpl.name, &tpl.url);
+                    wc2.borrow_mut().apply_template(tpl);
+                    // clone data before dropping borrow — set_text triggers connect_changed
+                    let (url, name, icon, cat) = {
+                        let data = wc2.borrow();
+                        (
+                            data.app_url.clone(),
+                            data.app_name.clone(),
+                            data.app_icon.clone(),
+                            data.main_category().to_string(),
+                        )
+                    };
+                    ur2.set_text(&url);
+                    nr2.set_text(&name);
+                    crate::webapp_row::load_icon(&ip2, &icon);
+                    if let Some(pos) = CATEGORIES.iter().position(|c| *c == cat) {
+                        cd2.set_selected(pos as u32);
+                    }
+                }
+            });
+        });
+    }
 
     // URL changed
     {
@@ -368,7 +397,7 @@ pub fn show(
                 match rx.try_recv() {
                     Ok(info) => {
                         sbr.set_visible(false);
-                        if !info.title.is_empty() && nrr.text().is_empty() {
+                        if !info.title.is_empty() {
                             nrr.set_text(&info.title);
                             wcr.borrow_mut().app_name = info.title.clone();
                         }

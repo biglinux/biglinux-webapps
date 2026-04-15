@@ -8,6 +8,29 @@ use webapps_core::models::{AppMode, WebApp};
 
 use crate::service;
 
+/// Load icon into GtkImage — resolves via theme or file path with crisp SVG
+pub fn load_icon(image: &gtk::Image, icon_ref: &str) {
+    let resolved = service::resolve_icon_path(icon_ref);
+    let p = std::path::Path::new(&resolved);
+    if p.is_absolute() && p.exists() {
+        if resolved.ends_with(".svg") {
+            // rasterize SVG at 4x requested pixel_size → crisp on HiDPI
+            let target = image.pixel_size().max(32) * 4;
+            match gdk_pixbuf::Pixbuf::from_file_at_size(p, target, target) {
+                Ok(pixbuf) => {
+                    let tex = gdk4::Texture::for_pixbuf(&pixbuf);
+                    image.set_paintable(Some(&tex));
+                }
+                Err(_) => image.set_from_file(Some(p)),
+            }
+        } else {
+            image.set_from_file(Some(p));
+        }
+    } else {
+        image.set_icon_name(Some(&resolved));
+    }
+}
+
 /// Callbacks from webapp row actions
 pub struct RowCallbacks {
     pub on_edit: Box<dyn Fn(&WebApp)>,
@@ -18,32 +41,13 @@ pub struct RowCallbacks {
 /// Build a row widget for a webapp in the list
 pub fn build_row(webapp: &WebApp, callbacks: &std::rc::Rc<RowCallbacks>) -> gtk::ListBoxRow {
     let hbox = gtk::Box::new(gtk::Orientation::Horizontal, 12);
-    hbox.set_margin_top(8);
-    hbox.set_margin_bottom(8);
-    hbox.set_margin_start(12);
-    hbox.set_margin_end(12);
+    hbox.add_css_class("webapp-row");
 
-    // icon — prefer icon name for theme lookup (crisp SVG at any size)
+    // webapp icon
     let icon = gtk::Image::new();
     icon.set_pixel_size(48);
-    let icon_path = service::resolve_icon_path(&webapp.app_icon);
-    let p = std::path::Path::new(&icon_path);
-    if p.is_absolute() && p.exists() {
-        if icon_path.ends_with(".svg") {
-            // rasterize SVG at 2x target → crisp on HiDPI
-            match gdk_pixbuf::Pixbuf::from_file_at_size(p, 192, 192) {
-                Ok(pixbuf) => {
-                    let tex = gdk4::Texture::for_pixbuf(&pixbuf);
-                    icon.set_paintable(Some(&tex));
-                }
-                Err(_) => icon.set_from_file(Some(p)),
-            }
-        } else {
-            icon.set_from_file(Some(p));
-        }
-    } else {
-        icon.set_icon_name(Some(&icon_path));
-    }
+    icon.add_css_class("webapp-icon");
+    load_icon(&icon, &webapp.app_icon);
     hbox.append(&icon);
 
     // info column
@@ -66,28 +70,28 @@ pub fn build_row(webapp: &WebApp, callbacks: &std::rc::Rc<RowCallbacks>) -> gtk:
 
     hbox.append(&info);
 
-    // action buttons — linked group
-    let actions = gtk::Box::new(gtk::Orientation::Horizontal, 0);
-    actions.add_css_class("linked");
+    // action buttons
+    let actions = gtk::Box::new(gtk::Orientation::Horizontal, 4);
     actions.set_valign(gtk::Align::Center);
 
-    // browser indicator — show app icon for App mode, browser icon otherwise
-    let browser_icon_name = if webapp.app_mode == AppMode::App {
-        "application-x-executable-symbolic".to_string()
+    // browser indicator — resolve through same icon pipeline
+    let browser_btn = gtk::Button::new();
+    let browser_img = gtk::Image::new();
+    browser_img.set_pixel_size(24);
+    if webapp.app_mode == AppMode::App {
+        browser_img.set_icon_name(Some("application-x-executable-symbolic"));
+        browser_btn.set_tooltip_text(Some(&gettext("App mode")));
     } else {
-        webapps_core::models::Browser {
+        let browser_icon = webapps_core::models::Browser {
             browser_id: webapp.browser.clone(),
             is_default: false,
-        }.icon_name()
-    };
-    let browser_btn = gtk::Button::from_icon_name(&browser_icon_name);
-    let browser_tooltip = if webapp.app_mode == AppMode::App {
-        gettext("App mode")
-    } else {
-        gettext("Change browser")
-    };
-    browser_btn.set_tooltip_text(Some(&browser_tooltip));
+        }.icon_name();
+        load_icon(&browser_img, &browser_icon);
+        browser_btn.set_tooltip_text(Some(&gettext("Change browser")));
+    }
+    browser_btn.set_child(Some(&browser_img));
     browser_btn.add_css_class("flat");
+    browser_btn.add_css_class("action-btn");
     {
         let cb = callbacks.clone();
         let app = webapp.clone();
@@ -99,6 +103,7 @@ pub fn build_row(webapp: &WebApp, callbacks: &std::rc::Rc<RowCallbacks>) -> gtk:
     let edit_btn = gtk::Button::from_icon_name("document-edit-symbolic");
     edit_btn.set_tooltip_text(Some(&gettext("Edit")));
     edit_btn.add_css_class("flat");
+    edit_btn.add_css_class("action-btn");
     {
         let cb = callbacks.clone();
         let app = webapp.clone();
@@ -110,6 +115,7 @@ pub fn build_row(webapp: &WebApp, callbacks: &std::rc::Rc<RowCallbacks>) -> gtk:
     let del_btn = gtk::Button::from_icon_name("user-trash-symbolic");
     del_btn.set_tooltip_text(Some(&gettext("Delete")));
     del_btn.add_css_class("flat");
+    del_btn.add_css_class("action-btn");
     del_btn.add_css_class("error");
     {
         let cb = callbacks.clone();
