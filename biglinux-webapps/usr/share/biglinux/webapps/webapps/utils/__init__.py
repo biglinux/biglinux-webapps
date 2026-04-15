@@ -1,3 +1,0 @@
-"""
-WebApps Utils package initialization
-"""

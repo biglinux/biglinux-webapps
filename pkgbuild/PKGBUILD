@@ -3,35 +3,50 @@
 pkgname=biglinux-webapps
 pkgver=$(date +%y.%m.%d)
 pkgrel=$(date +%H%M)
-arch=('any')
+arch=('x86_64')
 license=('GPL')
 url="https://github.com/biglinux/$pkgname"
 source=("git+${url}.git")
 pkgdesc="Installs and removes BigLinux WebApps"
-depends=('python-requests' 'gettext' 'python-pillow' 'python-gobject')
+depends=('gtk4' 'libadwaita' 'webkitgtk-6.0' 'openssl' 'gettext')
+makedepends=('rust' 'cargo')
 md5sums=(SKIP)
 if [ -e "${pkgname}.install" ]; then
-	install=${pkgname}.install
+        install=${pkgname}.install
 fi
 
-package() {
-	# Verify default folder
-	if [ -d "${srcdir}/${pkgname}/${pkgname}" ]; then
-		InternalDir="${srcdir}/${pkgname}/${pkgname}"
-	else
-		InternalDir="${srcdir}/${pkgname}"
-	fi
+build() {
+        # Verify default folder
+        if [ -d "${srcdir}/${pkgname}/${pkgname}" ]; then
+                InternalDir="${srcdir}/${pkgname}/${pkgname}"
+        else
+                InternalDir="${srcdir}/${pkgname}"
+        fi
 
-	# Copy files
-	if [ -d "${InternalDir}/usr" ]; then
-		cp -r "${InternalDir}/usr" "${pkgdir}/"
-	fi
-
-	if [ -d "${InternalDir}/etc" ]; then
-		cp -r "${InternalDir}/etc" "${pkgdir}/"
-	fi
-
-	if [ -d "${InternalDir}/opt" ]; then
-		cp -r "${InternalDir}/opt" "${pkgdir}/"
-	fi
+        # Build Rust binaries
+        cd "${srcdir}/${pkgname}"
+        cargo build --release --workspace
 }
+
+package() {
+        # Verify default folder
+        if [ -d "${srcdir}/${pkgname}/${pkgname}" ]; then
+                InternalDir="${srcdir}/${pkgname}/${pkgname}"
+        else
+                InternalDir="${srcdir}/${pkgname}"
+        fi
+
+        # Copy package tree (icons, profiles, skel, .desktop, systemd, menus)
+        if [ -d "${InternalDir}/usr" ]; then
+                cp -r "${InternalDir}/usr" "${pkgdir}/"
+        fi
+
+        if [ -d "${InternalDir}/etc" ]; then
+                cp -r "${InternalDir}/etc" "${pkgdir}/"
+        fi
+
+        # Install Rust binaries
+        install -Dm755 "${srcdir}/${pkgname}/target/release/big-webapps-gui" \
+                "${pkgdir}/usr/bin/big-webapps-gui"
+        install -Dm755 "${srcdir}/${pkgname}/target/release/big-webapps-viewer" \
+                "${pkgdir}/usr/bin/big-webapps-viewer"

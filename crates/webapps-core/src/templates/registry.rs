@@ -1,0 +1,139 @@
+use std::collections::HashMap;
+
+/// File-handling strategy for webapp template
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum FileHandler {
+    #[default]
+    None,
+    Upload,
+    Url,
+}
+
+/// Immutable preset for a known web service
+#[derive(Debug, Clone)]
+pub struct WebAppTemplate {
+    pub template_id: String,
+    pub name: String,
+    pub url: String,
+    pub icon: String,
+    pub category: String,
+    pub mime_types: Vec<String>,
+    pub url_schemes: Vec<String>,
+    pub features: Vec<String>,
+    pub profile: String,
+    pub comment: String,
+    pub generic_name: String,
+    pub keywords: Vec<String>,
+    pub file_handler: FileHandler,
+}
+
+impl Default for WebAppTemplate {
+    fn default() -> Self {
+        Self {
+            template_id: String::new(),
+            name: String::new(),
+            url: String::new(),
+            icon: String::new(),
+            category: String::new(),
+            mime_types: Vec::new(),
+            url_schemes: Vec::new(),
+            features: Vec::new(),
+            profile: String::new(),
+            comment: String::new(),
+            generic_name: String::new(),
+            keywords: Vec::new(),
+            file_handler: FileHandler::None,
+        }
+    }
+}
+
+impl WebAppTemplate {
+    /// Domain extracted from URL for matching
+    pub fn domain(&self) -> Option<String> {
+        url::Url::parse(&self.url)
+            .ok()
+            .and_then(|u| u.host_str().map(|h| {
+                let h = h.strip_prefix("www.").unwrap_or(h);
+                h.to_lowercase()
+            }))
+    }
+}
+
+/// Central store for webapp templates with lookup helpers
+#[derive(Debug, Clone, Default)]
+pub struct TemplateRegistry {
+    templates: HashMap<String, WebAppTemplate>,
+    by_category: HashMap<String, Vec<String>>,
+}
+
+impl TemplateRegistry {
+    pub fn register(&mut self, tpl: WebAppTemplate) {
+        let id = tpl.template_id.clone();
+        let cat = tpl.category.clone();
+        self.templates.insert(id.clone(), tpl);
+        self.by_category.entry(cat).or_default().push(id);
+    }
+
+    pub fn register_many(&mut self, templates: Vec<WebAppTemplate>) {
+        for t in templates {
+            self.register(t);
+        }
+    }
+
+    pub fn get(&self, id: &str) -> Option<&WebAppTemplate> {
+        self.templates.get(id)
+    }
+
+    pub fn get_all(&self) -> Vec<&WebAppTemplate> {
+        self.templates.values().collect()
+    }
+
+    pub fn get_by_category(&self, category: &str) -> Vec<&WebAppTemplate> {
+        self.by_category
+            .get(category)
+            .map(|ids| {
+                ids.iter()
+                    .filter_map(|id| self.templates.get(id))
+                    .collect()
+            })
+            .unwrap_or_default()
+    }
+
+    pub fn categories(&self) -> Vec<String> {
+        let mut cats: Vec<String> = self.by_category.keys().cloned().collect();
+        cats.sort();
+        cats
+    }
+
+    pub fn match_url(&self, url: &str) -> Option<&WebAppTemplate> {
+        let url_lower = url.to_lowercase();
+        self.templates.values().find(|tpl| {
+            tpl.domain()
+                .map(|d| url_lower.contains(&d))
+                .unwrap_or(false)
+        })
+    }
+
+    pub fn search(&self, query: &str) -> Vec<&WebAppTemplate> {
+        let q = query.to_lowercase();
+        self.templates
+            .values()
+            .filter(|tpl| {
+                tpl.name.to_lowercase().contains(&q)
+                    || tpl.category.to_lowercase().contains(&q)
+                    || tpl.keywords.iter().any(|k| k.to_lowercase().contains(&q))
+            })
+            .collect()
+    }
+}
+
+/// Build registry with all bundled templates
+pub fn build_default_registry() -> TemplateRegistry {
+    let mut reg = TemplateRegistry::default();
+    reg.register_many(super::office365::templates());
+    reg.register_many(super::google::templates());
+    reg.register_many(super::communication::templates());
+    reg.register_many(super::media::templates());
+    reg.register_many(super::productivity::templates());
+    reg
+}

@@ -1,0 +1,26 @@
+[package]
+name = "webapps-viewer"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "big-webapps-viewer"
+path = "src/main.rs"
+
+[dependencies]
+webapps-core = { path = "../webapps-core" }
+gtk4.workspace = true
+libadwaita.workspace = true
+webkit6.workspace = true
+glib.workspace = true
+gio.workspace = true
+gdk4.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+log.workspace = true
+env_logger.workspace = true
+anyhow.workspace = true
+dirs.workspace = true
+clap.workspace = true
+gettextrs.workspace = true

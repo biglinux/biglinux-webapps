@@ -1,0 +1,30 @@
+[package]
+name = "webapps-manager"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "big-webapps-gui"
+path = "src/main.rs"
+
+[dependencies]
+webapps-core = { path = "../webapps-core" }
+gtk4.workspace = true
+libadwaita.workspace = true
+glib.workspace = true
+gio.workspace = true
+gdk4.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+log.workspace = true
+env_logger.workspace = true
+anyhow.workspace = true
+dirs.workspace = true
+reqwest.workspace = true
+scraper.workspace = true
+image.workspace = true
+url = "2"
+zip = { version = "2", default-features = false, features = ["deflate"] }
+open = "5"
+gettextrs.workspace = true
