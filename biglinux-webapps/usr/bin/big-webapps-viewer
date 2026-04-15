@@ -3,7 +3,7 @@
 CSD headerbar replicating GTK4/Adwaita style. Fullscreen auto-hide overlay.
 """
 
-APP_VERSION = "3.5.0"
+APP_VERSION = "3.5.1"
 
 import argparse
 import json
@@ -68,6 +68,7 @@ from PySide6.QtWidgets import (
 DATA_BASE = Path.home() / ".local" / "share" / "biglinux-webapps"
 CONFIG_BASE = Path.home() / ".config" / "biglinux-webapps"
 HOVER_ZONE = 60
+RESIZE_MARGIN = 8  # px from edge to trigger border resize
 
 
 def _is_dark_theme() -> bool:
@@ -319,6 +320,25 @@ class HeaderBar(QWidget):
                 w.showMaximized()
 
 
+class _ResizeHandle(QWidget):
+    """Transparent edge widget that initiates system resize on drag."""
+
+    def __init__(self, edges: Qt.Edges, cursor_shape, parent=None):
+        super().__init__(parent)
+        self.edges = edges
+        self.setCursor(cursor_shape)
+        self.setMouseTracking(True)
+        self.setAttribute(Qt.WidgetAttribute.WA_TransparentForMouseEvents, False)
+        self.setStyleSheet("background: transparent;")
+        self.raise_()
+
+    def mousePressEvent(self, event) -> None:
+        if event.button() == Qt.LeftButton:
+            wh = self.window().windowHandle()
+            if wh:
+                wh.startSystemResize(self.edges)
+
+
 class NavOverlay(QWidget):
     """Fullscreen-only auto-hide nav: ← → ⟳ ⊞"""
 
@@ -546,6 +566,9 @@ class WebAppWindow(QMainWindow):
         self._grip = QSizeGrip(self)
         self._grip.setFixedSize(16, 16)
 
+        # edge resize handles (left/right/bottom/corners)
+        self._setup_resize_handles()
+
     def _setup_shortcuts(self) -> None:
         for key, slot in (
             (QKeySequence("F5"), lambda: self.webview.reload()),
@@ -674,11 +697,15 @@ class WebAppWindow(QMainWindow):
 
     def _on_load_finished(self, ok: bool) -> None:
         """Unlock window size + transfer pending file."""
-        # restore resizability
+        # restore resizability + trigger page reflow after size lock
         if hasattr(self, "_pre_nav_size"):
             self.setMinimumSize(0, 0)
             self._enforce_screen_limits()
             del self._pre_nav_size
+            # force page layout recalculation after unlock
+            self.webview.page().runJavaScript(
+                "window.dispatchEvent(new Event('resize'));"
+            )
         if ok and self._pending_file and self._pending_file.is_file():
             self._page._pending_file = self._pending_file
             self._pending_file = None
@@ -745,12 +772,49 @@ class WebAppWindow(QMainWindow):
 
     # --- geometry ---
 
+    def _setup_resize_handles(self) -> None:
+        """Create transparent edge widgets for resize (left/right/bottom/corners)."""
+        m = RESIZE_MARGIN
+        self._resize_handles = []
+
+        specs = [
+            # (edges, cursor, x, y, w, h) — geometry set in resizeEvent
+            (Qt.LeftEdge, Qt.SizeHorCursor),
+            (Qt.RightEdge, Qt.SizeHorCursor),
+            (Qt.BottomEdge, Qt.SizeVerCursor),
+            (Qt.LeftEdge | Qt.BottomEdge, Qt.SizeBDiagCursor),
+            (Qt.RightEdge | Qt.BottomEdge, Qt.SizeFDiagCursor),
+        ]
+        for edges, cursor_shape in specs:
+            h = _ResizeHandle(edges, cursor_shape, self)
+            self._resize_handles.append(h)
+
+    def _position_resize_handles(self) -> None:
+        m = RESIZE_MARGIN
+        w, h = self.width(), self.height()
+        hdr_h = self.header.height() if self.header.isVisible() else 0
+        for handle in self._resize_handles:
+            e = handle.edges
+            if e == Qt.LeftEdge:
+                handle.setGeometry(0, hdr_h, m, h - hdr_h - m)
+            elif e == Qt.RightEdge:
+                handle.setGeometry(w - m, hdr_h, m, h - hdr_h - m)
+            elif e == Qt.BottomEdge:
+                handle.setGeometry(m, h - m, w - 2 * m, m)
+            elif e == (Qt.LeftEdge | Qt.BottomEdge):
+                handle.setGeometry(0, h - m, m, m)
+            elif e == (Qt.RightEdge | Qt.BottomEdge):
+                handle.setGeometry(w - m, h - m, m, m)
+            vis = not (self.isMaximized() or self.isFullScreen())
+            handle.setVisible(vis)
+
     def resizeEvent(self, event) -> None:
         super().resizeEvent(event)
         self._grip.move(
             self.width() - self._grip.width(),
             self.height() - self._grip.height(),
         )
+        self._position_resize_handles()
         self._apply_mask()
 
     def _apply_mask(self) -> None:
