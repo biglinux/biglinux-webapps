@@ -55,9 +55,9 @@ pub fn build(app: &adw::Application) {
     header.pack_start(&search_btn);
 
     // add button
-    let add_btn = gtk::Button::from_icon_name("list-add-symbolic");
+    let add_btn = gtk::Button::with_label(&gettext("Add"));
     add_btn.set_tooltip_text(Some(&gettext("Add WebApp")));
-    add_btn.update_property(&[gtk::accessible::Property::Label(&gettext("Add WebApp"))]);
+    add_btn.add_css_class("suggested-action");
     header.pack_start(&add_btn);
 
     // menu

@@ -61,9 +61,9 @@ pub fn show(
     let header = adw::HeaderBar::new();
     // placeholder for template button — will be wired after widgets exist
     let tmpl_btn = if is_new {
-        let btn = gtk::Button::from_icon_name("view-grid-symbolic");
-        btn.set_tooltip_text(Some(&gettext("Templates")));
-        btn.update_property(&[gtk::accessible::Property::Label(&gettext("Templates"))]);
+        let btn = gtk::Button::with_label(&gettext("Templates"));
+        btn.set_tooltip_text(Some(&gettext("Choose from templates")));
+        btn.add_css_class("suggested-action");
         header.pack_start(&btn);
         Some(btn)
     } else {
@@ -109,16 +109,9 @@ pub fn show(
         .title(gettext("URL"))
         .text(&webapp_cell.borrow().app_url)
         .build();
-    let detect_img = gtk::Image::from_icon_name("emblem-web-symbolic");
-    detect_img.set_pixel_size(24);
-    let detect_btn = gtk::Button::new();
-    detect_btn.set_child(Some(&detect_img));
+    let detect_btn = gtk::Button::with_label(&gettext("Detect"));
     detect_btn.set_tooltip_text(Some(&gettext("Detect name and icon from website")));
-    detect_btn.update_property(&[gtk::accessible::Property::Label(&gettext(
-        "Detect name and icon from website",
-    ))]);
     detect_btn.set_valign(gtk::Align::Center);
-    detect_btn.add_css_class("flat");
     url_row.add_suffix(&detect_btn);
     group_website.add(&url_row);
 
@@ -288,11 +281,33 @@ pub fn show(
         });
     }
 
-    // URL changed
+    // URL changed → update model + auto-detect with debounce
+    let debounce_handle: Rc<RefCell<Option<glib::SourceId>>> = Rc::new(RefCell::new(None));
     {
         let wc = webapp_cell.clone();
+        let db_handle = debounce_handle.clone();
+        let detect_btn_ref = detect_btn.clone();
         url_row.connect_changed(move |row| {
             wc.borrow_mut().app_url = row.text().to_string();
+            // cancel previous debounce
+            if let Some(id) = db_handle.borrow_mut().take() {
+                id.remove();
+            }
+            // schedule auto-detect after 800ms idle
+            let btn = detect_btn_ref.clone();
+            let handle = db_handle.clone();
+            let text = row.text().to_string();
+            let source = glib::timeout_add_local_once(
+                std::time::Duration::from_millis(800),
+                move || {
+                    handle.borrow_mut().take();
+                    // only trigger if URL looks valid (has a dot)
+                    if text.contains('.') && text.len() > 3 {
+                        btn.emit_clicked();
+                    }
+                },
+            );
+            *db_handle.borrow_mut() = Some(source);
         });
     }
 
@@ -320,12 +335,30 @@ pub fn show(
         let wc = webapp_cell.clone();
         let br = browser_row.clone();
         let pr = profile_row.clone();
+        let brs = browsers.clone();
+        let brow = browser_row.clone();
         mode_switch.connect_state_set(move |_, active| {
-            wc.borrow_mut().app_mode = if active {
-                AppMode::App
+            let mut app = wc.borrow_mut();
+            if active {
+                app.app_mode = AppMode::App;
+                // keep browser field unchanged → restored on switch back
             } else {
-                AppMode::Browser
-            };
+                app.app_mode = AppMode::Browser;
+                // if browser was __viewer__ (legacy data), pick default
+                if app.browser == "__viewer__" || app.browser.is_empty() {
+                    if let Some(def) = brs.borrow().default_browser() {
+                        app.browser = def.browser_id.clone();
+                    }
+                }
+                // update browser row subtitle
+                let name = brs
+                    .borrow()
+                    .get_by_id(&app.browser)
+                    .map(|b| b.display_name().to_string())
+                    .unwrap_or_else(|| app.browser.clone());
+                brow.set_subtitle(&name);
+            }
+            drop(app);
             br.set_visible(!active);
             pr.set_visible(!active);
             glib::Propagation::Proceed
@@ -518,35 +551,47 @@ pub fn show(
         let wc = webapp_cell.clone();
         let w = win.clone();
         save_btn.connect_clicked(move |_| {
-            let app = wc.borrow().clone();
+            let mut app = wc.borrow().clone();
 
             // validate
             if app.app_name.trim().is_empty() || app.app_url.trim().is_empty() {
                 return;
             }
 
-            // validate URL format
-            let url_str = app.app_url.trim();
-            let test_url = if !url_str.starts_with("http://")
+            // normalize URL: prepend https:// if missing scheme
+            let url_str = app.app_url.trim().to_string();
+            if !url_str.starts_with("http://")
                 && !url_str.starts_with("https://")
                 && !url_str.starts_with("file://")
             {
-                format!("https://{url_str}")
+                app.app_url = format!("https://{url_str}");
             } else {
-                url_str.to_string()
-            };
-            if url::Url::parse(&test_url).is_err() {
+                app.app_url = url_str;
+            }
+
+            // validate URL format
+            if url::Url::parse(&app.app_url).is_err() {
                 return;
             }
 
-            let ok = if is_new {
-                service::create_webapp(&app).is_ok()
+            let result = if is_new {
+                service::create_webapp(&app)
             } else {
-                service::update_webapp(&app).is_ok()
+                service::update_webapp(&app)
             };
+
+            match &result {
+                Ok(()) => log::info!(
+                    "Saved webapp '{}' mode={:?}",
+                    app.app_name,
+                    app.app_mode
+                ),
+                Err(e) => log::error!("Save webapp failed: {e}"),
+            }
+
             w.close();
             on_done(DialogResult {
-                saved: ok,
+                saved: result.is_ok(),
                 webapp: app,
             });
         });

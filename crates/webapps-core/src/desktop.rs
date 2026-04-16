@@ -123,6 +123,7 @@ pub fn install_desktop_entry(webapp: &WebApp) -> Result<()> {
     let content = generate_desktop_entry(webapp);
     fs::write(&path, content)?;
     log::info!("Installed desktop entry: {}", path.display());
+    refresh_desktop_database();
     Ok(())
 }
 
@@ -132,8 +133,27 @@ pub fn remove_desktop_entry(webapp: &WebApp) -> Result<()> {
     if path.exists() {
         fs::remove_file(&path)?;
         log::info!("Removed desktop entry: {}", path.display());
+        refresh_desktop_database();
     }
     Ok(())
+}
+
+/// Remove a desktop file by filename directly
+pub fn remove_desktop_file(filename: &str) -> Result<()> {
+    let path = config::applications_dir().join(filename);
+    if path.exists() {
+        fs::remove_file(&path)?;
+        log::info!("Removed old desktop entry: {}", path.display());
+    }
+    Ok(())
+}
+
+/// Notify desktop environment of .desktop changes
+fn refresh_desktop_database() {
+    let apps_dir = config::applications_dir();
+    let _ = std::process::Command::new("update-desktop-database")
+        .arg(&apps_dir)
+        .spawn();
 }
 
 /// Strip chars that could break desktop file Exec or shell parsing

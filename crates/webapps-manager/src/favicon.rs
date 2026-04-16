@@ -38,7 +38,26 @@ pub fn fetch_site_info(url: &str) -> Result<SiteInfo> {
     let html_text = resp.text()?;
     let doc = Html::parse_document(&html_text);
 
-    let title = extract_title(&doc).unwrap_or_default();
+    let mut title = extract_title(&doc).unwrap_or_default();
+
+    // fallback: if title is empty/generic (SPA stub), derive from hostname
+    let generic_titles = ["ok", "loading", "redirect", "please wait", ""];
+    if generic_titles
+        .iter()
+        .any(|g| title.trim().to_lowercase() == *g)
+        || title.len() < 3
+    {
+        if let Some(host) = parsed.host_str() {
+            // strip www. prefix, capitalize first letter
+            let clean = host.strip_prefix("www.").unwrap_or(host);
+            let mut chars = clean.chars();
+            title = match chars.next() {
+                Some(c) => c.to_uppercase().to_string() + chars.as_str(),
+                None => clean.to_string(),
+            };
+        }
+    }
+
     let icon_urls = extract_icon_urls(&doc, &url);
 
     // download icons to cache
@@ -62,6 +81,17 @@ pub fn fetch_site_info(url: &str) -> Result<SiteInfo> {
                 base.host_str().unwrap_or("")
             );
             if let Ok(path) = download_icon(&client, &favicon_url, &cache, 99) {
+                icon_paths.push(path);
+            }
+        }
+    }
+
+    // last resort: Google favicon service
+    if icon_paths.is_empty() {
+        if let Some(host) = parsed.host_str() {
+            let google_url =
+                format!("https://www.google.com/s2/favicons?domain={host}&sz=128");
+            if let Ok(path) = download_icon(&client, &google_url, &cache, 100) {
                 icon_paths.push(path);
             }
         }
@@ -133,6 +163,20 @@ fn download_icon(
 
     if !resp.status().is_success() {
         anyhow::bail!("HTTP {}", resp.status());
+    }
+
+    // reject non-image content types (e.g. HTML redirect pages)
+    if let Some(ct) = resp.headers().get(reqwest::header::CONTENT_TYPE) {
+        if let Ok(ct_str) = ct.to_str() {
+            let ct_lower = ct_str.to_lowercase();
+            if !ct_lower.starts_with("image/")
+                && !ct_lower.contains("svg")
+                && !ct_lower.contains("icon")
+                && !ct_lower.contains("octet-stream")
+            {
+                anyhow::bail!("Not an image: {ct_str}");
+            }
+        }
     }
 
     // check content-length before downloading

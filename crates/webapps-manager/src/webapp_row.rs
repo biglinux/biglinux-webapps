@@ -75,14 +75,12 @@ pub fn build_row(webapp: &WebApp, callbacks: &std::rc::Rc<RowCallbacks>) -> gtk:
     actions.set_valign(gtk::Align::Center);
 
     // browser indicator — resolve through same icon pipeline
-    // in App mode: show indicator only (not clickable) since viewer is fixed
     let browser_btn = gtk::Button::new();
     let browser_img = gtk::Image::new();
     browser_img.set_pixel_size(24);
     if webapp.app_mode == AppMode::App {
-        browser_img.set_icon_name(Some("application-x-executable-symbolic"));
-        browser_btn.set_tooltip_text(Some(&gettext("App mode")));
-        browser_btn.set_sensitive(false);
+        load_icon(&browser_img, "big-webapps");
+        browser_btn.set_tooltip_text(Some(&gettext("App mode (built-in viewer)")));
     } else {
         let browser_icon = webapps_core::models::Browser {
             browser_id: webapp.browser.clone(),
@@ -93,13 +91,6 @@ pub fn build_row(webapp: &WebApp, callbacks: &std::rc::Rc<RowCallbacks>) -> gtk:
         browser_btn.set_tooltip_text(Some(&gettext("Change browser")));
     }
     browser_btn.set_child(Some(&browser_img));
-    browser_btn.update_property(&[gtk::accessible::Property::Label(&if webapp.app_mode
-        == AppMode::App
-    {
-        gettext("App mode")
-    } else {
-        gettext("Change browser")
-    })]);
     browser_btn.add_css_class("flat");
     browser_btn.add_css_class("action-btn");
     {

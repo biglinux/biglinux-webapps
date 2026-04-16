@@ -42,10 +42,18 @@ pub fn save_webapps(collection: &WebAppCollection) -> Result<()> {
 }
 
 pub fn create_webapp(webapp: &WebApp) -> Result<()> {
+    let mut app = webapp.clone();
+    // ensure app_file is populated → needed for update/remove by file
+    if app.app_file.is_empty() {
+        app.app_file = format!(
+            "biglinux-webapp-{}.desktop",
+            desktop::desktop_file_id(&app.app_url)
+        );
+    }
     let mut col = load_webapps();
-    col.add(webapp.clone());
+    col.add(app.clone());
     save_webapps(&col)?;
-    desktop::install_desktop_entry(webapp)?;
+    desktop::install_desktop_entry(&app)?;
     Ok(())
 }
 
@@ -122,32 +130,46 @@ pub fn profile_shared(webapp: &WebApp) -> bool {
 // -- browser detection --
 
 pub fn detect_browsers() -> BrowserCollection {
-    let known_browsers = [
-        ("firefox", "/usr/bin/firefox"),
+    // (browser_id, [candidate_paths]) — first existing path wins
+    let known_browsers: &[(&str, &[&str])] = &[
+        ("firefox", &["/usr/bin/firefox"]),
         (
             "firefox-developer-edition",
-            "/usr/bin/firefox-developer-edition",
+            &["/usr/bin/firefox-developer-edition"],
         ),
-        ("librewolf", "/usr/bin/librewolf"),
-        ("google-chrome-stable", "/usr/bin/google-chrome-stable"),
-        ("google-chrome-beta", "/usr/bin/google-chrome-beta"),
-        ("google-chrome-unstable", "/usr/bin/google-chrome-unstable"),
-        ("chromium", "/usr/bin/chromium"),
-        ("brave-browser", "/usr/bin/brave-browser-stable"),
-        ("brave-browser-beta", "/usr/bin/brave-browser-beta"),
-        ("brave-browser-nightly", "/usr/bin/brave-browser-nightly"),
-        ("microsoft-edge-stable", "/usr/bin/microsoft-edge-stable"),
-        ("microsoft-edge-beta", "/usr/bin/microsoft-edge-beta"),
-        ("vivaldi-stable", "/usr/bin/vivaldi-stable"),
-        ("vivaldi-beta", "/usr/bin/vivaldi-beta"),
-        ("vivaldi-snapshot", "/usr/bin/vivaldi-snapshot"),
-        ("ungoogled-chromium", "/usr/bin/ungoogled-chromium"),
+        ("librewolf", &["/usr/bin/librewolf"]),
+        ("google-chrome-stable", &["/usr/bin/google-chrome-stable"]),
+        ("google-chrome-beta", &["/usr/bin/google-chrome-beta"]),
+        ("google-chrome-unstable", &["/usr/bin/google-chrome-unstable"]),
+        ("chromium", &["/usr/bin/chromium"]),
+        (
+            "brave",
+            &[
+                "/usr/bin/brave",
+                "/usr/bin/brave-browser",
+                "/usr/bin/brave-browser-stable",
+            ],
+        ),
+        (
+            "brave-beta",
+            &["/usr/bin/brave-browser-beta", "/usr/bin/brave-beta"],
+        ),
+        (
+            "brave-nightly",
+            &["/usr/bin/brave-browser-nightly", "/usr/bin/brave-nightly"],
+        ),
+        ("microsoft-edge-stable", &["/usr/bin/microsoft-edge-stable"]),
+        ("microsoft-edge-beta", &["/usr/bin/microsoft-edge-beta"]),
+        ("vivaldi-stable", &["/usr/bin/vivaldi-stable"]),
+        ("vivaldi-beta", &["/usr/bin/vivaldi-beta"]),
+        ("vivaldi-snapshot", &["/usr/bin/vivaldi-snapshot"]),
+        ("ungoogled-chromium", &["/usr/bin/ungoogled-chromium"]),
     ];
 
     let mut browsers: Vec<Browser> = Vec::new();
 
-    for (id, path) in &known_browsers {
-        if Path::new(path).exists() {
+    for (id, paths) in known_browsers {
+        if paths.iter().any(|p| Path::new(p).exists()) {
             browsers.push(Browser {
                 browser_id: id.to_string(),
                 is_default: false,
@@ -215,9 +237,7 @@ fn match_desktop_to_browser(desktop: &str) -> Option<String> {
         ("google-chrome-beta", "google-chrome-beta"),
         ("google-chrome-unstable", "google-chrome-unstable"),
         ("chromium", "chromium"),
-        ("brave-browser-stable", "brave-browser"),
-        ("brave-browser-beta", "brave-browser-beta"),
-        ("brave-browser-nightly", "brave-browser-nightly"),
+        ("brave", "brave"),
         ("microsoft-edge-stable", "microsoft-edge-stable"),
         ("microsoft-edge-beta", "microsoft-edge-beta"),
         ("vivaldi-stable", "vivaldi-stable"),

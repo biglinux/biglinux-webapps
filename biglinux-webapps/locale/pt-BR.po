@@ -98,7 +98,7 @@ msgstr "Categoria"
 
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:171
 msgid "App Mode"
-msgstr "Modo do App"
+msgstr "Modo App"
 
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:172
 msgid "Opens as a native window without browser interface"
@@ -352,3 +352,11 @@ msgstr "Download Concluído"
 #: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-viewer/src/window.rs:406
 msgid "Save File"
 msgstr "Salvar Arquivo"
+
+#: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/window.rs:58
+msgid "Add"
+msgstr "Adicionar"
+
+#: /home/talesam/Servidor/GitHub/biglinux-webapps/crates/webapps-manager/src/webapp_dialog.rs:112
+msgid "Detect"
+msgstr "Detectar"
