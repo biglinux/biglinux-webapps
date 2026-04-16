@@ -179,7 +179,10 @@ impl WebAppCollection {
         if query.is_empty() {
             return self.webapps.iter().collect();
         }
-        self.webapps.iter().filter(|app| app.matches(query)).collect()
+        self.webapps
+            .iter()
+            .filter(|app| app.matches(query))
+            .collect()
     }
 
     pub fn categorized(&self, query: Option<&str>) -> HashMap<String, Vec<&WebApp>> {

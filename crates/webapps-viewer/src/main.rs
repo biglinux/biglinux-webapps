@@ -39,7 +39,7 @@ fn main() -> glib::ExitCode {
     }
 
     let app = adw::Application::builder()
-        .application_id(&format!("br.com.biglinux.webapp.{}", cli.app_id))
+        .application_id(format!("br.com.biglinux.webapp.{}", cli.app_id))
         .build();
 
     let name = cli.name.clone();

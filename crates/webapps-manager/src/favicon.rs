@@ -18,11 +18,21 @@ pub fn fetch_site_info(url: &str) -> Result<SiteInfo> {
         url.to_string()
     };
 
+    // security: only allow http/https schemes → prevent file:// / ftp:// / data: SSRF
+    let parsed = url::Url::parse(&url)?;
+    match parsed.scheme() {
+        "http" | "https" => {}
+        other => anyhow::bail!("Blocked scheme: {other}"),
+    }
+
     let client = reqwest::blocking::Client::builder()
         .user_agent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120.0.0.0")
         .timeout(std::time::Duration::from_secs(10))
         .build()
-        .map_err(|e| { log::error!("TLS client init: {e:?}"); e })?;
+        .map_err(|e| {
+            log::error!("TLS client init: {e:?}");
+            e
+        })?;
 
     let resp = client.get(&url).send()?;
     let html_text = resp.text()?;
@@ -46,7 +56,11 @@ pub fn fetch_site_info(url: &str) -> Result<SiteInfo> {
     // try /favicon.ico fallback
     if icon_paths.is_empty() {
         if let Ok(base) = url::Url::parse(&url) {
-            let favicon_url = format!("{}://{}/favicon.ico", base.scheme(), base.host_str().unwrap_or(""));
+            let favicon_url = format!(
+                "{}://{}/favicon.ico",
+                base.scheme(),
+                base.host_str().unwrap_or("")
+            );
             if let Ok(path) = download_icon(&client, &favicon_url, &cache, 99) {
                 icon_paths.push(path);
             }
@@ -174,4 +188,109 @@ fn guess_extension(url: &str, bytes: &[u8]) -> &'static str {
         return "ico";
     }
     "png"
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn extract_title_basic() {
+        let html = Html::parse_document("<html><head><title>My Site</title></head></html>");
+        assert_eq!(extract_title(&html), Some("My Site".into()));
+    }
+
+    #[test]
+    fn extract_title_empty() {
+        let html = Html::parse_document("<html><head><title></title></head></html>");
+        assert_eq!(extract_title(&html), None);
+    }
+
+    #[test]
+    fn extract_title_missing() {
+        let html = Html::parse_document("<html><head></head></html>");
+        assert_eq!(extract_title(&html), None);
+    }
+
+    #[test]
+    fn extract_title_whitespace() {
+        let html = Html::parse_document("<html><head><title>  Hello World  </title></head></html>");
+        assert_eq!(extract_title(&html), Some("Hello World".into()));
+    }
+
+    #[test]
+    fn extract_icon_urls_link_rel() {
+        let html = Html::parse_document(
+            r#"<html><head><link rel="icon" href="/favicon.png"></head></html>"#,
+        );
+        let urls = extract_icon_urls(&html, "https://example.com");
+        assert_eq!(urls, vec!["https://example.com/favicon.png"]);
+    }
+
+    #[test]
+    fn extract_icon_urls_absolute() {
+        let html = Html::parse_document(
+            r#"<html><head><link rel="shortcut icon" href="https://cdn.example.com/icon.png"></head></html>"#,
+        );
+        let urls = extract_icon_urls(&html, "https://example.com");
+        assert_eq!(urls, vec!["https://cdn.example.com/icon.png"]);
+    }
+
+    #[test]
+    fn extract_icon_urls_og_image() {
+        let html = Html::parse_document(
+            r#"<html><head><meta property="og:image" content="https://example.com/og.png"></head></html>"#,
+        );
+        let urls = extract_icon_urls(&html, "https://example.com");
+        assert_eq!(urls, vec!["https://example.com/og.png"]);
+    }
+
+    #[test]
+    fn resolve_url_absolute() {
+        let base = url::Url::parse("https://example.com").ok();
+        assert_eq!(
+            resolve_url("https://cdn.example.com/icon.png", &base),
+            Some("https://cdn.example.com/icon.png".into())
+        );
+    }
+
+    #[test]
+    fn resolve_url_relative() {
+        let base = url::Url::parse("https://example.com/page/").ok();
+        assert_eq!(
+            resolve_url("../favicon.ico", &base),
+            Some("https://example.com/favicon.ico".into())
+        );
+    }
+
+    #[test]
+    fn resolve_url_no_base() {
+        assert_eq!(resolve_url("/favicon.ico", &None), None);
+    }
+
+    #[test]
+    fn guess_extension_png_magic() {
+        assert_eq!(guess_extension("https://x.com/img", b"\x89PNG\r\n"), "png");
+    }
+
+    #[test]
+    fn guess_extension_svg_magic() {
+        assert_eq!(guess_extension("https://x.com/img", b"<svg "), "svg");
+    }
+
+    #[test]
+    fn guess_extension_ico_magic() {
+        assert_eq!(guess_extension("https://x.com/img", &[0, 0, 1, 0]), "ico");
+    }
+
+    #[test]
+    fn guess_extension_url_fallback() {
+        assert_eq!(guess_extension("https://x.com/icon.svg", b"unknown"), "svg");
+        assert_eq!(guess_extension("https://x.com/icon.ico", b"unknown"), "ico");
+    }
+
+    #[test]
+    fn guess_extension_default_png() {
+        assert_eq!(guess_extension("https://x.com/img", b"unknown"), "png");
+    }
 }

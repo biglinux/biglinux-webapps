@@ -11,11 +11,18 @@ pub fn templates() -> Vec<WebAppTemplate> {
             comment: "Edit documents online with Microsoft Word".into(),
             generic_name: "Word Processor".into(),
             keywords: vec!["word", "document", "office", "docx", "microsoft"]
-                .into_iter().map(Into::into).collect(),
+                .into_iter()
+                .map(Into::into)
+                .collect(),
             mime_types: vec![
                 "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                "application/msword", "application/rtf", "text/rtf",
-            ].into_iter().map(Into::into).collect(),
+                "application/msword",
+                "application/rtf",
+                "text/rtf",
+            ]
+            .into_iter()
+            .map(Into::into)
+            .collect(),
             file_handler: FileHandler::Upload,
             profile: "office365".into(),
             ..Default::default()
@@ -29,11 +36,18 @@ pub fn templates() -> Vec<WebAppTemplate> {
             comment: "Edit spreadsheets online with Microsoft Excel".into(),
             generic_name: "Spreadsheet".into(),
             keywords: vec!["excel", "spreadsheet", "office", "xlsx", "csv", "microsoft"]
-                .into_iter().map(Into::into).collect(),
+                .into_iter()
+                .map(Into::into)
+                .collect(),
             mime_types: vec![
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                "application/vnd.ms-excel", "text/csv", "application/csv",
-            ].into_iter().map(Into::into).collect(),
+                "application/vnd.ms-excel",
+                "text/csv",
+                "application/csv",
+            ]
+            .into_iter()
+            .map(Into::into)
+            .collect(),
             file_handler: FileHandler::Upload,
             profile: "office365".into(),
             ..Default::default()
@@ -46,12 +60,24 @@ pub fn templates() -> Vec<WebAppTemplate> {
             category: "Office".into(),
             comment: "Create presentations online with Microsoft PowerPoint".into(),
             generic_name: "Presentation".into(),
-            keywords: vec!["powerpoint", "presentation", "office", "pptx", "slides", "microsoft"]
-                .into_iter().map(Into::into).collect(),
+            keywords: vec![
+                "powerpoint",
+                "presentation",
+                "office",
+                "pptx",
+                "slides",
+                "microsoft",
+            ]
+            .into_iter()
+            .map(Into::into)
+            .collect(),
             mime_types: vec![
                 "application/vnd.openxmlformats-officedocument.presentationml.presentation",
                 "application/vnd.ms-powerpoint",
-            ].into_iter().map(Into::into).collect(),
+            ]
+            .into_iter()
+            .map(Into::into)
+            .collect(),
             file_handler: FileHandler::Upload,
             profile: "office365".into(),
             ..Default::default()
@@ -65,7 +91,9 @@ pub fn templates() -> Vec<WebAppTemplate> {
             comment: "Take notes online with Microsoft OneNote".into(),
             generic_name: "Note Taking".into(),
             keywords: vec!["onenote", "notes", "office", "microsoft"]
-                .into_iter().map(Into::into).collect(),
+                .into_iter()
+                .map(Into::into)
+                .collect(),
             profile: "office365".into(),
             ..Default::default()
         },
@@ -78,7 +106,9 @@ pub fn templates() -> Vec<WebAppTemplate> {
             comment: "Email and calendar from Microsoft Outlook".into(),
             generic_name: "Email Client".into(),
             keywords: vec!["outlook", "email", "mail", "calendar", "microsoft"]
-                .into_iter().map(Into::into).collect(),
+                .into_iter()
+                .map(Into::into)
+                .collect(),
             features: vec!["notifications".into()],
             profile: "office365".into(),
             ..Default::default()
@@ -92,7 +122,9 @@ pub fn templates() -> Vec<WebAppTemplate> {
             comment: "Chat and video conferencing with Microsoft Teams".into(),
             generic_name: "Instant Messaging".into(),
             keywords: vec!["teams", "chat", "video", "conferencing", "microsoft"]
-                .into_iter().map(Into::into).collect(),
+                .into_iter()
+                .map(Into::into)
+                .collect(),
             features: vec!["notifications".into(), "camera".into(), "microphone".into()],
             profile: "office365".into(),
             ..Default::default()
@@ -106,7 +138,9 @@ pub fn templates() -> Vec<WebAppTemplate> {
             comment: "Cloud storage from Microsoft OneDrive".into(),
             generic_name: "Cloud Storage".into(),
             keywords: vec!["onedrive", "cloud", "storage", "files", "microsoft"]
-                .into_iter().map(Into::into).collect(),
+                .into_iter()
+                .map(Into::into)
+                .collect(),
             profile: "office365".into(),
             ..Default::default()
         },
@@ -119,7 +153,9 @@ pub fn templates() -> Vec<WebAppTemplate> {
             comment: "Microsoft 365 home — access all Office apps".into(),
             generic_name: "Office Suite".into(),
             keywords: vec!["office", "365", "microsoft", "word", "excel", "powerpoint"]
-                .into_iter().map(Into::into).collect(),
+                .into_iter()
+                .map(Into::into)
+                .collect(),
             profile: "office365".into(),
             ..Default::default()
         },

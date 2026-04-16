@@ -50,12 +50,12 @@ impl Default for WebAppTemplate {
 impl WebAppTemplate {
     /// Domain extracted from URL for matching
     pub fn domain(&self) -> Option<String> {
-        url::Url::parse(&self.url)
-            .ok()
-            .and_then(|u| u.host_str().map(|h| {
+        url::Url::parse(&self.url).ok().and_then(|u| {
+            u.host_str().map(|h| {
                 let h = h.strip_prefix("www.").unwrap_or(h);
                 h.to_lowercase()
-            }))
+            })
+        })
     }
 }
 
@@ -91,11 +91,7 @@ impl TemplateRegistry {
     pub fn get_by_category(&self, category: &str) -> Vec<&WebAppTemplate> {
         self.by_category
             .get(category)
-            .map(|ids| {
-                ids.iter()
-                    .filter_map(|id| self.templates.get(id))
-                    .collect()
-            })
+            .map(|ids| ids.iter().filter_map(|id| self.templates.get(id)).collect())
             .unwrap_or_default()
     }
 
@@ -136,4 +132,144 @@ pub fn build_default_registry() -> TemplateRegistry {
     reg.register_many(super::media::templates());
     reg.register_many(super::productivity::templates());
     reg
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn sample_template(id: &str, name: &str, url: &str, category: &str) -> WebAppTemplate {
+        WebAppTemplate {
+            template_id: id.into(),
+            name: name.into(),
+            url: url.into(),
+            category: category.into(),
+            keywords: vec![name.to_lowercase()],
+            ..Default::default()
+        }
+    }
+
+    #[test]
+    fn register_and_get() {
+        let mut reg = TemplateRegistry::default();
+        reg.register(sample_template(
+            "gmail",
+            "Gmail",
+            "https://mail.google.com",
+            "Communication",
+        ));
+        assert!(reg.get("gmail").is_some());
+        assert_eq!(reg.get("gmail").unwrap().name, "Gmail");
+        assert!(reg.get("nonexistent").is_none());
+    }
+
+    #[test]
+    fn categories_sorted() {
+        let mut reg = TemplateRegistry::default();
+        reg.register(sample_template("c", "C", "https://c.com", "Zebra"));
+        reg.register(sample_template("a", "A", "https://a.com", "Alpha"));
+        let cats = reg.categories();
+        assert_eq!(cats, vec!["Alpha", "Zebra"]);
+    }
+
+    #[test]
+    fn get_by_category() {
+        let mut reg = TemplateRegistry::default();
+        reg.register(sample_template(
+            "g",
+            "Gmail",
+            "https://mail.google.com",
+            "Communication",
+        ));
+        reg.register(sample_template(
+            "s",
+            "Spotify",
+            "https://spotify.com",
+            "Media",
+        ));
+        let comms = reg.get_by_category("Communication");
+        assert_eq!(comms.len(), 1);
+        assert_eq!(comms[0].name, "Gmail");
+        assert!(reg.get_by_category("Nonexistent").is_empty());
+    }
+
+    #[test]
+    fn match_url_finds_template() {
+        let mut reg = TemplateRegistry::default();
+        reg.register(sample_template(
+            "yt",
+            "YouTube",
+            "https://www.youtube.com",
+            "Media",
+        ));
+        let found = reg.match_url("https://youtube.com/watch?v=123");
+        assert!(found.is_some());
+        assert_eq!(found.unwrap().template_id, "yt");
+    }
+
+    #[test]
+    fn match_url_no_match() {
+        let mut reg = TemplateRegistry::default();
+        reg.register(sample_template(
+            "yt",
+            "YouTube",
+            "https://www.youtube.com",
+            "Media",
+        ));
+        assert!(reg.match_url("https://example.com").is_none());
+    }
+
+    #[test]
+    fn search_by_name() {
+        let mut reg = TemplateRegistry::default();
+        reg.register(sample_template(
+            "g",
+            "Gmail",
+            "https://mail.google.com",
+            "Communication",
+        ));
+        reg.register(sample_template(
+            "s",
+            "Spotify",
+            "https://spotify.com",
+            "Media",
+        ));
+        let results = reg.search("gmail");
+        assert_eq!(results.len(), 1);
+        assert_eq!(results[0].name, "Gmail");
+    }
+
+    #[test]
+    fn search_by_category() {
+        let mut reg = TemplateRegistry::default();
+        reg.register(sample_template(
+            "g",
+            "Gmail",
+            "https://mail.google.com",
+            "Communication",
+        ));
+        let results = reg.search("communication");
+        assert_eq!(results.len(), 1);
+    }
+
+    #[test]
+    fn search_empty_query() {
+        let reg = build_default_registry();
+        let results = reg.search("");
+        // empty query matches everything
+        assert!(!results.is_empty());
+    }
+
+    #[test]
+    fn default_registry_has_templates() {
+        let reg = build_default_registry();
+        assert!(reg.get_all().len() > 30);
+        assert!(!reg.categories().is_empty());
+    }
+
+    #[test]
+    fn domain_extraction() {
+        let tpl = sample_template("t", "Test", "https://www.example.com/path", "X");
+        assert_eq!(tpl.domain(), Some("example.com".into()));
+    }
 }

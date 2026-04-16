@@ -16,7 +16,7 @@ pub fn show(
     on_selected: impl Fn(String) + 'static,
 ) {
     let win = adw::Window::builder()
-        .title(&gettext("Select Browser"))
+        .title(gettext("Select Browser"))
         .default_width(400)
         .default_height(450)
         .modal(true)

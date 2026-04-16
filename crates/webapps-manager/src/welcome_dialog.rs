@@ -17,7 +17,7 @@ pub fn show_if_needed(parent: &adw::ApplicationWindow) {
 
 fn build_dialog(parent: &adw::ApplicationWindow) -> adw::Window {
     let dialog = adw::Window::builder()
-        .title(&gettext("Welcome to WebApps Manager"))
+        .title(gettext("Welcome to WebApps Manager"))
         .transient_for(parent)
         .modal(true)
         .destroy_with_parent(true)
@@ -44,9 +44,7 @@ fn build_dialog(parent: &adw::ApplicationWindow) -> adw::Window {
     let main_box = gtk::Box::new(gtk::Orientation::Vertical, 0);
 
     // flat headerbar
-    let headerbar = adw::HeaderBar::builder()
-        .show_title(false)
-        .build();
+    let headerbar = adw::HeaderBar::builder().show_title(false).build();
     headerbar.add_css_class("flat");
     main_box.append(&headerbar);
 
@@ -67,7 +65,10 @@ fn build_dialog(parent: &adw::ApplicationWindow) -> adw::Window {
     content.append(&icon);
 
     let title = gtk::Label::builder()
-        .label(&format!("<span size='x-large' weight='bold'>{}</span>", gettext("Welcome to WebApps Manager")))
+        .label(format!(
+            "<span size='x-large' weight='bold'>{}</span>",
+            gettext("Welcome to WebApps Manager")
+        ))
         .use_markup(true)
         .halign(gtk::Align::Center)
         .build();
@@ -75,7 +76,7 @@ fn build_dialog(parent: &adw::ApplicationWindow) -> adw::Window {
 
     // explanation
     let explanation = gtk::Label::builder()
-        .label(&format!(
+        .label(format!(
             "<b>{}</b>\n\n{}\n\n<b>{}</b>\n\n\
             \u{2022} <b>{}</b>: {}\n\
             \u{2022} <b>{}</b>: {}\n\
@@ -109,7 +110,7 @@ fn build_dialog(parent: &adw::ApplicationWindow) -> adw::Window {
         .build();
 
     let switch_label = gtk::Label::builder()
-        .label(&gettext("Don't show this again"))
+        .label(gettext("Don't show this again"))
         .xalign(0.0)
         .hexpand(true)
         .build();
@@ -124,7 +125,7 @@ fn build_dialog(parent: &adw::ApplicationWindow) -> adw::Window {
 
     // "Let's Start" button
     let btn = gtk::Button::builder()
-        .label(&gettext("Let's Start"))
+        .label(gettext("Let's Start"))
         .halign(gtk::Align::Center)
         .margin_top(24)
         .build();

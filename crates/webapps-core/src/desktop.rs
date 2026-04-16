@@ -104,7 +104,10 @@ pub fn desktop_file_id(url: &str) -> String {
 /// Path for a webapp's .desktop file
 pub fn desktop_file_path(webapp: &WebApp) -> PathBuf {
     let filename = if webapp.app_file.is_empty() {
-        format!("biglinux-webapp-{}.desktop", desktop_file_id(&webapp.app_url))
+        format!(
+            "biglinux-webapp-{}.desktop",
+            desktop_file_id(&webapp.app_url)
+        )
     } else {
         webapp.app_file.clone()
     };
@@ -136,6 +139,14 @@ pub fn remove_desktop_entry(webapp: &WebApp) -> Result<()> {
 /// Strip chars that could break desktop file Exec or shell parsing
 fn sanitize_desktop_field(s: &str) -> String {
     s.chars()
-        .filter(|c| *c != '"' && *c != '\'' && *c != '`' && *c != '\\' && *c != '\n' && *c != '\r' && *c != '$')
+        .filter(|c| {
+            *c != '"'
+                && *c != '\''
+                && *c != '`'
+                && *c != '\\'
+                && *c != '\n'
+                && *c != '\r'
+                && *c != '$'
+        })
         .collect()
 }

@@ -13,7 +13,7 @@ pub fn show(parent: &impl IsA<gtk::Window>, on_selected: impl Fn(String) + 'stat
     let callback: Rc<dyn Fn(String)> = Rc::new(on_selected);
 
     let win = adw::Window::builder()
-        .title(&gettext("Choose a Template"))
+        .title(gettext("Choose a Template"))
         .default_width(600)
         .default_height(500)
         .modal(true)
@@ -115,7 +115,13 @@ fn populate_search(
         container.append(&label);
         return;
     }
-    add_category_section(container, &gettext("Search Results"), &results, callback, win);
+    add_category_section(
+        container,
+        &gettext("Search Results"),
+        &results,
+        callback,
+        win,
+    );
 }
 
 fn add_category_section(
@@ -129,6 +135,7 @@ fn add_category_section(
     header.set_halign(gtk::Align::Start);
     header.add_css_class("title-4");
     header.set_margin_top(8);
+    header.set_accessible_role(gtk::AccessibleRole::Heading);
     container.append(&header);
 
     let listbox = gtk::ListBox::new();

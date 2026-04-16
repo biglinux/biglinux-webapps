@@ -2,14 +2,12 @@ use std::cell::Cell;
 use std::path::PathBuf;
 use std::rc::Rc;
 
-use glib::clone;
-use gtk4 as gtk;
-use gtk::prelude::*;
-use gdk4;
-use gettextrs::gettext;
-use libadwaita as adw;
 #[allow(unused_imports)]
 use adw::prelude::*;
+use gettextrs::gettext;
+use glib::clone;
+use gtk4 as gtk;
+use libadwaita as adw;
 use webkit6 as webkit;
 use webkit6::prelude::*;
 
@@ -36,6 +34,8 @@ pub fn build(
 
     // persist cookies in WebKitGTK format + allow third-party (auth flows)
     // NOTE: existing "Cookies" file = legacy Chromium format, not used by WebKitGTK6
+    // ITP disabled → allow cross-site cookies for login persistence
+    // (YouTube, Spotify etc use third-party auth flows that break with ITP)
     session.set_itp_enabled(false);
     if let Some(cm) = session.cookie_manager() {
         let cookie_db = data_dir.join("webkit-cookies.db");
@@ -47,9 +47,7 @@ pub fn build(
     }
 
     // --- webview ---
-    let webview = webkit::WebView::builder()
-        .network_session(&session)
-        .build();
+    let webview = webkit::WebView::builder().network_session(&session).build();
 
     configure_settings(&webview);
     inject_resize_block(&webview);
@@ -63,16 +61,20 @@ pub fn build(
     let back_btn = gtk::Button::from_icon_name("go-previous-symbolic");
     back_btn.set_sensitive(false);
     back_btn.set_tooltip_text(Some(&gettext("Back")));
+    back_btn.update_property(&[gtk::accessible::Property::Label(&gettext("Back"))]);
 
     let fwd_btn = gtk::Button::from_icon_name("go-next-symbolic");
     fwd_btn.set_sensitive(false);
     fwd_btn.set_tooltip_text(Some(&gettext("Forward")));
+    fwd_btn.update_property(&[gtk::accessible::Property::Label(&gettext("Forward"))]);
 
     let reload_btn = gtk::Button::from_icon_name("view-refresh-symbolic");
     reload_btn.set_tooltip_text(Some(&gettext("Reload")));
+    reload_btn.update_property(&[gtk::accessible::Property::Label(&gettext("Reload"))]);
 
     let fullscreen_btn = gtk::Button::from_icon_name("view-fullscreen-symbolic");
     fullscreen_btn.set_tooltip_text(Some(&gettext("Fullscreen")));
+    fullscreen_btn.update_property(&[gtk::accessible::Property::Label(&gettext("Fullscreen"))]);
 
     let menu_btn = build_menu_button();
 
@@ -87,7 +89,7 @@ pub fn build(
 
     // --- URL bar (hidden by default, toggled via Ctrl+L) ---
     let url_entry = gtk::Entry::builder()
-        .placeholder_text(&gettext("Enter URL…"))
+        .placeholder_text(gettext("Enter URL…"))
         .hexpand(true)
         .build();
     url_entry.set_text(url);
@@ -100,12 +102,17 @@ pub fn build(
 
     // Enter → navigate + hide bar
     url_entry.connect_activate(clone!(
-        #[weak] webview,
-        #[weak] url_bar,
+        #[weak]
+        webview,
+        #[weak]
+        url_bar,
         move |entry| {
             let mut text = entry.text().to_string();
             if !text.is_empty() {
-                if !text.starts_with("http://") && !text.starts_with("https://") && !text.starts_with("file://") {
+                if !text.starts_with("http://")
+                    && !text.starts_with("https://")
+                    && !text.starts_with("file://")
+                {
                     text = format!("https://{text}");
                 }
                 webview.load_uri(&text);
@@ -117,8 +124,10 @@ pub fn build(
     // Escape while focused → hide bar
     let key_ctrl = gtk::EventControllerKey::new();
     key_ctrl.connect_key_pressed(clone!(
-        #[weak] url_bar,
-        #[upgrade_or] glib::Propagation::Proceed,
+        #[weak]
+        url_bar,
+        #[upgrade_or]
+        glib::Propagation::Proceed,
         move |_, key, _, _| {
             if key == gdk4::Key::Escape {
                 url_bar.set_reveal_child(false);
@@ -158,22 +167,33 @@ pub fn build(
 
     // --- wire navigation ---
     back_btn.connect_clicked(clone!(
-        #[weak] webview,
-        move |_| { webview.go_back(); }
+        #[weak]
+        webview,
+        move |_| {
+            webview.go_back();
+        }
     ));
     fwd_btn.connect_clicked(clone!(
-        #[weak] webview,
-        move |_| { webview.go_forward(); }
+        #[weak]
+        webview,
+        move |_| {
+            webview.go_forward();
+        }
     ));
     reload_btn.connect_clicked(clone!(
-        #[weak] webview,
-        move |_| { webview.reload(); }
+        #[weak]
+        webview,
+        move |_| {
+            webview.reload();
+        }
     ));
 
     // --- title changed ---
     webview.connect_title_notify(clone!(
-        #[weak] title_widget,
-        #[weak] window,
+        #[weak]
+        title_widget,
+        #[weak]
+        window,
         move |wv| {
             if let Some(title) = wv.title() {
                 let t = title.to_string();
@@ -187,9 +207,12 @@ pub fn build(
 
     // --- URI changed → update subtitle + nav buttons ---
     webview.connect_uri_notify(clone!(
-        #[weak] title_widget,
-        #[weak] back_btn,
-        #[weak] fwd_btn,
+        #[weak]
+        title_widget,
+        #[weak]
+        back_btn,
+        #[weak]
+        fwd_btn,
         move |wv| {
             if let Some(uri) = wv.uri() {
                 title_widget.set_subtitle(&uri);
@@ -201,8 +224,10 @@ pub fn build(
 
     // --- load changed → update nav state ---
     webview.connect_load_changed(clone!(
-        #[weak] back_btn,
-        #[weak] fwd_btn,
+        #[weak]
+        back_btn,
+        #[weak]
+        fwd_btn,
         move |wv, _event| {
             back_btn.set_sensitive(wv.can_go_back());
             fwd_btn.set_sensitive(wv.can_go_forward());
@@ -213,10 +238,14 @@ pub fn build(
     let is_fullscreen = Rc::new(Cell::new(false));
 
     webview.connect_enter_fullscreen(clone!(
-        #[weak] window,
-        #[weak] toolbar,
-        #[strong] is_fullscreen,
-        #[upgrade_or] false,
+        #[weak]
+        window,
+        #[weak]
+        toolbar,
+        #[strong]
+        is_fullscreen,
+        #[upgrade_or]
+        false,
         move |_| {
             is_fullscreen.set(true);
             toolbar.set_reveal_top_bars(false);
@@ -226,10 +255,14 @@ pub fn build(
     ));
 
     webview.connect_leave_fullscreen(clone!(
-        #[weak] window,
-        #[weak] toolbar,
-        #[strong] is_fullscreen,
-        #[upgrade_or] false,
+        #[weak]
+        window,
+        #[weak]
+        toolbar,
+        #[strong]
+        is_fullscreen,
+        #[upgrade_or]
+        false,
         move |_| {
             is_fullscreen.set(false);
             toolbar.set_reveal_top_bars(true);
@@ -239,9 +272,12 @@ pub fn build(
     ));
 
     fullscreen_btn.connect_clicked(clone!(
-        #[weak] window,
-        #[weak] toolbar,
-        #[strong] is_fullscreen,
+        #[weak]
+        window,
+        #[weak]
+        toolbar,
+        #[strong]
+        is_fullscreen,
         move |_| {
             if is_fullscreen.get() {
                 is_fullscreen.set(false);
@@ -257,7 +293,8 @@ pub fn build(
 
     // --- downloads ---
     session.connect_download_started(clone!(
-        #[weak] window,
+        #[weak]
+        window,
         move |_session, download| {
             handle_download(&window, download);
         }
@@ -265,8 +302,10 @@ pub fn build(
 
     // --- notifications ---
     webview.connect_show_notification(clone!(
-        #[weak] window,
-        #[upgrade_or] false,
+        #[weak]
+        window,
+        #[upgrade_or]
+        false,
         move |_wv, notification| {
             show_notification(&window, notification);
             true
@@ -274,8 +313,10 @@ pub fn build(
     ));
 
     // --- permission requests ---
+    // auto-grant all → webapp UX expectation; webapps are user-trusted apps
+    // TODO: consider per-webapp permission preferences for untrusted sites
     webview.connect_permission_request(|_wv, request| {
-        // auto-grant camera, microphone, notifications
+        log::info!("Permission auto-granted: {:?}", request.type_());
         request.allow();
         true
     });
@@ -294,11 +335,19 @@ pub fn build(
     setup_context_menu(&webview);
 
     // --- keyboard shortcuts ---
-    setup_shortcuts(&window, &webview, &toolbar, &is_fullscreen, &url_bar, &url_entry);
+    setup_shortcuts(
+        &window,
+        &webview,
+        &toolbar,
+        &is_fullscreen,
+        &url_bar,
+        &url_entry,
+    );
 
     // --- save geometry on close ---
     window.connect_close_request(clone!(
-        #[strong] config_path,
+        #[strong]
+        config_path,
         move |win| {
             save_geometry(win, &config_path);
             glib::Propagation::Proceed
@@ -323,12 +372,18 @@ fn configure_settings(webview: &webkit::WebView) {
         s.set_enable_encrypted_media(true);
         s.set_enable_smooth_scrolling(true);
         s.set_enable_back_forward_navigation_gestures(true);
+        // spoof Chrome UA → sites like Spotify/Teams reject unknown browsers
+        s.set_user_agent(Some(
+            "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+        ));
     }
 }
 
 /// Inject JS to block web content from resizing/moving the window
 fn inject_resize_block(webview: &webkit::WebView) {
-    let ucm = webview.user_content_manager().unwrap();
+    let ucm = webview
+        .user_content_manager()
+        .expect("WebView must have UserContentManager");
     let script = webkit::UserScript::new(
         concat!(
             "window.resizeTo=function(){};",
@@ -355,8 +410,9 @@ fn build_menu_button() -> gtk::MenuButton {
     let btn = gtk::MenuButton::builder()
         .icon_name("open-menu-symbolic")
         .menu_model(&menu)
-        .tooltip_text(&gettext("Menu"))
+        .tooltip_text(gettext("Menu"))
         .build();
+    btn.update_property(&[gtk::accessible::Property::Label(&gettext("Menu"))]);
     btn
 }
 
@@ -374,13 +430,18 @@ fn setup_context_menu(webview: &webkit::WebView) {
             action.connect_activate(move |_, _| {
                 let _ = gio::AppInfo::launch_default_for_uri(&u, gio::AppLaunchContext::NONE);
             });
-            wv.insert_action_group("ctx", Some(&{
-                let group = gio::SimpleActionGroup::new();
-                group.add_action(&action);
-                group
-            }));
+            wv.insert_action_group(
+                "ctx",
+                Some(&{
+                    let group = gio::SimpleActionGroup::new();
+                    group.add_action(&action);
+                    group
+                }),
+            );
             let item = webkit::ContextMenuItem::from_gaction(
-                &action, &gettext("Open Link in Browser"), None,
+                &action,
+                &gettext("Open Link in Browser"),
+                None,
             );
             menu.append(&item);
         }
@@ -399,7 +460,8 @@ fn handle_download(window: &adw::ApplicationWindow, download: &webkit::Download)
 
     // notify on completion
     download.connect_finished(clone!(
-        #[weak] window,
+        #[weak]
+        window,
         move |dl| {
             let dest = dl.destination().map(|g| g.to_string()).unwrap_or_default();
             let fname = std::path::Path::new(&dest)
@@ -415,7 +477,7 @@ fn handle_download(window: &adw::ApplicationWindow, download: &webkit::Download)
     ));
 
     let dialog = gtk::FileDialog::builder()
-        .title(&gettext("Save File"))
+        .title(gettext("Save File"))
         .initial_name(&suggested)
         .build();
 
@@ -423,7 +485,8 @@ fn handle_download(window: &adw::ApplicationWindow, download: &webkit::Download)
         Some(window),
         gio::Cancellable::NONE,
         clone!(
-            #[strong] download,
+            #[strong]
+            download,
             move |result: Result<gio::File, glib::Error>| {
                 if let Ok(file) = result {
                     if let Some(path) = file.path() {
@@ -440,8 +503,14 @@ fn handle_download(window: &adw::ApplicationWindow, download: &webkit::Download)
 
 /// Bridge webkit notification → system notification
 fn show_notification(window: &adw::ApplicationWindow, notification: &webkit::Notification) {
-    let title = notification.title().map(|g| g.to_string()).unwrap_or_default();
-    let body = notification.body().map(|g| g.to_string()).unwrap_or_default();
+    let title = notification
+        .title()
+        .map(|g| g.to_string())
+        .unwrap_or_default();
+    let body = notification
+        .body()
+        .map(|g| g.to_string())
+        .unwrap_or_default();
 
     let notif = gio::Notification::new(&title);
     notif.set_body(Some(&body));
@@ -460,14 +529,19 @@ fn setup_shortcuts(
     url_bar: &gtk::Revealer,
     url_entry: &gtk::Entry,
 ) {
-    let app = window.application().unwrap();
+    let app = window
+        .application()
+        .expect("Window must belong to an Application");
 
     // F11 → fullscreen toggle
     let action_fs = gio::SimpleAction::new("toggle-fullscreen", None);
     action_fs.connect_activate(clone!(
-        #[weak] window,
-        #[weak] toolbar,
-        #[strong] is_fullscreen,
+        #[weak]
+        window,
+        #[weak]
+        toolbar,
+        #[strong]
+        is_fullscreen,
         move |_, _| {
             if is_fullscreen.get() {
                 is_fullscreen.set(false);
@@ -486,9 +560,12 @@ fn setup_shortcuts(
     // Escape → exit fullscreen
     let action_esc = gio::SimpleAction::new("exit-fullscreen", None);
     action_esc.connect_activate(clone!(
-        #[weak] window,
-        #[weak] toolbar,
-        #[strong] is_fullscreen,
+        #[weak]
+        window,
+        #[weak]
+        toolbar,
+        #[strong]
+        is_fullscreen,
         move |_, _| {
             if is_fullscreen.get() {
                 is_fullscreen.set(false);
@@ -503,8 +580,11 @@ fn setup_shortcuts(
     // Ctrl+R / F5 → reload
     let action_reload = gio::SimpleAction::new("reload", None);
     action_reload.connect_activate(clone!(
-        #[weak] webview,
-        move |_, _| { webview.reload(); }
+        #[weak]
+        webview,
+        move |_, _| {
+            webview.reload();
+        }
     ));
     window.add_action(&action_reload);
     app.set_accels_for_action("win.reload", &["<Ctrl>r", "F5"]);
@@ -512,8 +592,11 @@ fn setup_shortcuts(
     // Alt+Left → back
     let action_back = gio::SimpleAction::new("go-back", None);
     action_back.connect_activate(clone!(
-        #[weak] webview,
-        move |_, _| { webview.go_back(); }
+        #[weak]
+        webview,
+        move |_, _| {
+            webview.go_back();
+        }
     ));
     window.add_action(&action_back);
     app.set_accels_for_action("win.go-back", &["<Alt>Left"]);
@@ -521,8 +604,11 @@ fn setup_shortcuts(
     // Alt+Right → forward
     let action_fwd = gio::SimpleAction::new("go-forward", None);
     action_fwd.connect_activate(clone!(
-        #[weak] webview,
-        move |_, _| { webview.go_forward(); }
+        #[weak]
+        webview,
+        move |_, _| {
+            webview.go_forward();
+        }
     ));
     window.add_action(&action_fwd);
     app.set_accels_for_action("win.go-forward", &["<Alt>Right"]);
@@ -530,8 +616,11 @@ fn setup_shortcuts(
     // Ctrl+W → close
     let action_close = gio::SimpleAction::new("close-window", None);
     action_close.connect_activate(clone!(
-        #[weak] window,
-        move |_, _| { window.close(); }
+        #[weak]
+        window,
+        move |_, _| {
+            window.close();
+        }
     ));
     window.add_action(&action_close);
     app.set_accels_for_action("win.close-window", &["<Ctrl>w"]);
@@ -539,7 +628,8 @@ fn setup_shortcuts(
     // Zoom in/out/reset
     let action_zin = gio::SimpleAction::new("zoom-in", None);
     action_zin.connect_activate(clone!(
-        #[weak] webview,
+        #[weak]
+        webview,
         move |_, _| {
             let level = webview.zoom_level();
             webview.set_zoom_level(level + 0.1);
@@ -550,7 +640,8 @@ fn setup_shortcuts(
 
     let action_zout = gio::SimpleAction::new("zoom-out", None);
     action_zout.connect_activate(clone!(
-        #[weak] webview,
+        #[weak]
+        webview,
         move |_, _| {
             let level = webview.zoom_level();
             webview.set_zoom_level((level - 0.1).max(0.3));
@@ -561,8 +652,11 @@ fn setup_shortcuts(
 
     let action_zreset = gio::SimpleAction::new("zoom-reset", None);
     action_zreset.connect_activate(clone!(
-        #[weak] webview,
-        move |_, _| { webview.set_zoom_level(1.0); }
+        #[weak]
+        webview,
+        move |_, _| {
+            webview.set_zoom_level(1.0);
+        }
     ));
     window.add_action(&action_zreset);
     app.set_accels_for_action("win.zoom-reset", &["<Ctrl>0"]);
@@ -570,7 +664,8 @@ fn setup_shortcuts(
     // Ctrl+Shift+I → devtools
     let action_dev = gio::SimpleAction::new("devtools", None);
     action_dev.connect_activate(clone!(
-        #[weak] webview,
+        #[weak]
+        webview,
         move |_, _| {
             if let Some(inspector) = webview.inspector() {
                 inspector.show();
@@ -583,9 +678,12 @@ fn setup_shortcuts(
     // Ctrl+L → focus URL bar
     let action_url = gio::SimpleAction::new("focus-url", None);
     action_url.connect_activate(clone!(
-        #[weak] url_bar,
-        #[weak] url_entry,
-        #[weak] webview,
+        #[weak]
+        url_bar,
+        #[weak]
+        url_entry,
+        #[weak]
+        webview,
         move |_, _| {
             url_bar.set_reveal_child(true);
             if let Some(uri) = webview.uri() {
@@ -608,8 +706,10 @@ fn setup_fullscreen_reveal(toolbar: &adw::ToolbarView, is_fullscreen: &Rc<Cell<b
     // use motion controller to reveal header on hover in fullscreen
     let motion = gtk::EventControllerMotion::new();
     motion.connect_motion(clone!(
-        #[weak] toolbar,
-        #[strong] is_fullscreen,
+        #[weak]
+        toolbar,
+        #[strong]
+        is_fullscreen,
         move |_, _x, y| {
             if is_fullscreen.get() {
                 // reveal when mouse within 50px of top edge
@@ -622,16 +722,25 @@ fn setup_fullscreen_reveal(toolbar: &adw::ToolbarView, is_fullscreen: &Rc<Cell<b
 
 /// Load window geometry from JSON config
 fn load_geometry(window: &adw::ApplicationWindow, config_path: &PathBuf) {
-    if let Ok(data) = std::fs::read_to_string(config_path) {
-        if let Ok(geo) = serde_json::from_str::<serde_json::Value>(&data) {
+    let data = match std::fs::read_to_string(config_path) {
+        Ok(d) => d,
+        Err(_) => return, // no config yet → use defaults
+    };
+    match serde_json::from_str::<serde_json::Value>(&data) {
+        Ok(geo) => {
             let w = geo.get("width").and_then(|v| v.as_i64()).unwrap_or(1024) as i32;
             let h = geo.get("height").and_then(|v| v.as_i64()).unwrap_or(720) as i32;
             window.set_default_size(w, h);
 
-            if geo.get("maximized").and_then(|v| v.as_bool()).unwrap_or(false) {
+            if geo
+                .get("maximized")
+                .and_then(|v| v.as_bool())
+                .unwrap_or(false)
+            {
                 window.maximize();
             }
         }
+        Err(e) => log::warn!("Geometry parse fail: {e}"),
     }
 }
 

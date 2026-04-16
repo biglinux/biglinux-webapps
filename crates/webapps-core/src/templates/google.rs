@@ -19,7 +19,9 @@ pub fn templates() -> Vec<WebAppTemplate> {
             keywords: svec!["google", "docs", "document", "text"],
             mime_types: svec![
                 "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                "application/msword", "application/rtf", "text/plain"
+                "application/msword",
+                "application/rtf",
+                "text/plain"
             ],
             file_handler: FileHandler::Upload,
             profile: "google".into(),
@@ -36,7 +38,8 @@ pub fn templates() -> Vec<WebAppTemplate> {
             keywords: svec!["google", "sheets", "spreadsheet", "csv", "excel"],
             mime_types: svec![
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                "application/vnd.ms-excel", "text/csv"
+                "application/vnd.ms-excel",
+                "text/csv"
             ],
             file_handler: FileHandler::Upload,
             profile: "google".into(),
