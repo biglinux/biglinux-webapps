@@ -7,7 +7,7 @@ use std::path::PathBuf;
 /// Generate .desktop file content for a webapp
 pub fn generate_desktop_entry(webapp: &WebApp) -> String {
     let app_id = desktop_file_id(&webapp.app_url);
-    let wm_class = derive_wm_class(&webapp.app_url, &webapp.app_mode);
+    let wm_class = derive_wm_class(webapp);
     let has_mime = !webapp.mime_types.is_empty();
     let file_arg = if has_mime { " %f" } else { "" };
 
@@ -69,11 +69,14 @@ pub fn generate_desktop_entry(webapp: &WebApp) -> String {
     lines.join("\n") + "\n"
 }
 
-/// Derive WM class from URL + mode (matches original big-webapps script)
-fn derive_wm_class(url: &str, mode: &AppMode) -> String {
-    match mode {
+/// Derive WM class — must match what the browser/viewer actually sets.
+/// App mode → custom Freedesktop reverse-DNS.
+/// Browser mode → `{browser_prefix}-{url_class}-{profile}` (Chrome/Brave convention).
+fn derive_wm_class(webapp: &WebApp) -> String {
+    match webapp.app_mode {
         AppMode::App => {
-            let app_id = url
+            let app_id = webapp
+                .app_url
                 .replace("https://", "")
                 .replace("http://", "")
                 .replace('/', "_")
@@ -82,7 +85,40 @@ fn derive_wm_class(url: &str, mode: &AppMode) -> String {
                 .collect::<String>();
             format!("br.com.biglinux.webapp.{app_id}")
         }
-        AppMode::Browser => derive_class_from_url(url),
+        AppMode::Browser => {
+            let url_class = browser_url_class(&webapp.app_url);
+            let prefix = browser_wm_prefix(&webapp.browser);
+            // --user-data-dir always creates "Default" profile internally
+            format!("{prefix}-{url_class}-Default")
+        }
+    }
+}
+
+/// Map browser binary/id → WM_CLASS prefix that Chrome/Brave/Chromium actually use.
+fn browser_wm_prefix(browser: &str) -> &str {
+    let b = browser
+        .strip_prefix("flatpak-")
+        .unwrap_or(browser);
+    match b {
+        "brave" | "brave-browser" => "brave",
+        "google-chrome" | "google-chrome-stable" => "google-chrome",
+        "chromium" | "chromium-browser" => "chromium",
+        "microsoft-edge" | "microsoft-edge-stable" => "microsoft-edge",
+        "vivaldi" | "vivaldi-stable" => "vivaldi",
+        other => other,
+    }
+}
+
+/// URL → class matching Chrome/Brave convention: strip scheme, replace / → __.
+/// Ensures trailing slash for root paths so `deezer.com` → `deezer.com__`.
+fn browser_url_class(url: &str) -> String {
+    if let Ok(parsed) = url::Url::parse(url) {
+        let host = parsed.host_str().unwrap_or("");
+        let path = parsed.path();
+        let path_class = path.replace('/', "__");
+        format!("{host}{path_class}")
+    } else {
+        derive_class_from_url(url)
     }
 }
 

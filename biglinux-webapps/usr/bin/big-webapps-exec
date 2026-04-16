@@ -101,22 +101,14 @@ if grep -q '\-BigWebApp' <<< "$filename" && [[ $XDG_SESSION_TYPE == 'wayland' ]]
         cp "$filename" "$filename_orig"
         # Wait to system detect updated icon
         sleep 2
-        if [[ "$profile" == "Browser" ]]; then
-            "${browser_exec[@]}" --no-default-browser-check --app="$url" &
-        else
-            "${browser_exec[@]}" --no-default-browser-check --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
-        fi
+        "${browser_exec[@]}" --no-default-browser-check --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
      
         sleep 2
         mv -f "$filename_orig_bkp" "$filename_orig"
         flock -u 9
     else
         # another instance holds lock → just launch without icon swap
-        if [[ "$profile" == "Browser" ]]; then
-            "${browser_exec[@]}" --no-default-browser-check --app="$url" &
-        else
-            "${browser_exec[@]}" --no-default-browser-check --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
-        fi
+        "${browser_exec[@]}" --no-default-browser-check --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
     fi
     rm -f "$lockfile"
 else
@@ -128,9 +120,5 @@ else
         mv -f "$filename_bkp" "$filename"
     fi
 
-    if [[ "$profile" == "Browser" ]]; then
-        "${browser_exec[@]}" --no-default-browser-check --app="$url" &
-    else
-        "${browser_exec[@]}" --no-default-browser-check --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
-    fi
+    "${browser_exec[@]}" --no-default-browser-check --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
 fi
