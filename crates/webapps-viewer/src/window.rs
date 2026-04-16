@@ -34,6 +34,18 @@ pub fn build(
         Some(cache_dir.to_str().unwrap_or_default()),
     );
 
+    // persist cookies in WebKitGTK format + allow third-party (auth flows)
+    // NOTE: existing "Cookies" file = legacy Chromium format, not used by WebKitGTK6
+    session.set_itp_enabled(false);
+    if let Some(cm) = session.cookie_manager() {
+        let cookie_db = data_dir.join("webkit-cookies.db");
+        cm.set_persistent_storage(
+            cookie_db.to_str().unwrap_or_default(),
+            webkit::CookiePersistentStorage::Sqlite,
+        );
+        cm.set_accept_policy(webkit::CookieAcceptPolicy::Always);
+    }
+
     // --- webview ---
     let webview = webkit::WebView::builder()
         .network_session(&session)

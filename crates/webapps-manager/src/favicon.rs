@@ -21,7 +21,8 @@ pub fn fetch_site_info(url: &str) -> Result<SiteInfo> {
     let client = reqwest::blocking::Client::builder()
         .user_agent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120.0.0.0")
         .timeout(std::time::Duration::from_secs(10))
-        .build()?;
+        .build()
+        .map_err(|e| { log::error!("TLS client init: {e:?}"); e })?;
 
     let resp = client.get(&url).send()?;
     let html_text = resp.text()?;

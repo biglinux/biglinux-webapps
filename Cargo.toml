@@ -27,7 +27,7 @@ env_logger = "0.11"
 anyhow = "1"
 dirs = "6"
 clap = { version = "4", features = ["derive"] }
-reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "blocking"] }
+reqwest = { version = "0.12", default-features = false, features = ["native-tls", "blocking"] }
 scraper = "0.22"
 zbus = "5"
 tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
