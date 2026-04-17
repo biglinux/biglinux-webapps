@@ -17,6 +17,7 @@ pub fn templates() -> Vec<WebAppTemplate> {
             keywords: svec!["spotify", "music", "streaming", "audio", "playlist"],
             features: svec!["notifications", "media-keys"],
             url_schemes: svec!["spotify"],
+            requires_drm: true,
             ..Default::default()
         },
         WebAppTemplate {
@@ -30,6 +31,7 @@ pub fn templates() -> Vec<WebAppTemplate> {
             keywords: svec!["youtube", "music", "streaming", "google"],
             features: svec!["notifications", "media-keys"],
             profile: "google".into(),
+            requires_drm: true,
             ..Default::default()
         },
         WebAppTemplate {
@@ -41,28 +43,31 @@ pub fn templates() -> Vec<WebAppTemplate> {
             comment: "Watch movies and TV shows on Netflix".into(),
             generic_name: "Video Player".into(),
             keywords: svec!["netflix", "streaming", "movies", "series"],
+            requires_drm: true,
             ..Default::default()
         },
         WebAppTemplate {
             template_id: "prime-video".into(),
             name: "Amazon Prime Video".into(),
             url: "https://www.primevideo.com".into(),
-            icon: "prime-video".into(),
+            icon: "amazon".into(),
             category: "AudioVideo".into(),
             comment: "Watch movies and TV shows on Prime Video".into(),
             generic_name: "Video Player".into(),
             keywords: svec!["amazon", "prime", "video", "streaming", "movies"],
+            requires_drm: true,
             ..Default::default()
         },
         WebAppTemplate {
             template_id: "disney-plus".into(),
             name: "Disney+".into(),
             url: "https://www.disneyplus.com".into(),
-            icon: "disney-plus".into(),
+            icon: "video-television".into(),
             category: "AudioVideo".into(),
             comment: "Watch Disney, Marvel, Star Wars and more".into(),
             generic_name: "Video Player".into(),
             keywords: svec!["disney", "streaming", "movies", "marvel", "star wars"],
+            requires_drm: true,
             ..Default::default()
         },
         WebAppTemplate {
@@ -75,6 +80,7 @@ pub fn templates() -> Vec<WebAppTemplate> {
             generic_name: "Music Player".into(),
             keywords: svec!["tidal", "music", "hifi", "streaming", "lossless"],
             features: svec!["media-keys"],
+            requires_drm: true,
             ..Default::default()
         },
         WebAppTemplate {
@@ -87,13 +93,14 @@ pub fn templates() -> Vec<WebAppTemplate> {
             generic_name: "Music Player".into(),
             keywords: svec!["deezer", "music", "streaming"],
             features: svec!["media-keys"],
+            requires_drm: true,
             ..Default::default()
         },
         WebAppTemplate {
             template_id: "twitch".into(),
             name: "Twitch".into(),
             url: "https://www.twitch.tv".into(),
-            icon: "twitch".into(),
+            icon: "twitch-indicator".into(),
             category: "AudioVideo".into(),
             comment: "Live streaming platform".into(),
             generic_name: "Streaming".into(),

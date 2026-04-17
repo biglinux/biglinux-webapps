@@ -92,7 +92,7 @@ pub fn templates() -> Vec<WebAppTemplate> {
             template_id: "google-calendar".into(),
             name: "Google Calendar".into(),
             url: "https://calendar.google.com".into(),
-            icon: "google-calendar".into(),
+            icon: "calendar".into(),
             category: "Office".into(),
             comment: "Calendar and scheduling from Google".into(),
             generic_name: "Calendar".into(),

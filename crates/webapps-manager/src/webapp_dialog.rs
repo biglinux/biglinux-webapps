@@ -169,11 +169,26 @@ pub fn show(
     let mode_switch = gtk::Switch::new();
     mode_switch.set_valign(gtk::Align::Center);
     mode_switch.set_active(webapp_cell.borrow().app_mode == AppMode::App);
+
+    // DRM check for existing webapps → lock to Browser mode
+    let is_drm = {
+        let data = webapp_cell.borrow();
+        let reg = build_default_registry();
+        reg.requires_drm(&data.template_id, &data.app_url)
+    };
+    if is_drm {
+        mode_switch.set_active(false);
+        mode_switch.set_sensitive(false);
+        webapp_cell.borrow_mut().app_mode = AppMode::Browser;
+    }
+
     let mode_row = adw::ActionRow::builder()
         .title(gettext("App Mode"))
-        .subtitle(gettext(
-            "Opens as a native window without browser interface",
-        ))
+        .subtitle(if is_drm {
+            gettext("This service requires DRM — Browser mode is mandatory")
+        } else {
+            gettext("Opens as a native window without browser interface")
+        })
         .build();
     mode_row.add_suffix(&mode_switch);
     mode_row.set_activatable_widget(Some(&mode_switch));
@@ -248,17 +263,26 @@ pub fn show(
         let nr = name_row.clone();
         let ip = icon_preview.clone();
         let cd = cat_dropdown.clone();
+        let ms = mode_switch.clone();
+        let mr = mode_row.clone();
+        let br_row = browser_row.clone();
+        let pr_row = profile_row.clone();
         tb.connect_clicked(move |_| {
             let wc2 = wc.clone();
             let ur2 = ur.clone();
             let nr2 = nr.clone();
             let ip2 = ip.clone();
             let cd2 = cd.clone();
+            let ms2 = ms.clone();
+            let mr2 = mr.clone();
+            let br2 = br_row.clone();
+            let pr2 = pr_row.clone();
             template_gallery::show(&w, move |template_id| {
                 log::info!("Template callback received: {}", &template_id);
                 let reg = build_default_registry();
                 if let Some(tpl) = reg.get(&template_id) {
                     log::info!("Template found: {} url={}", &tpl.name, &tpl.url);
+                    let drm = tpl.requires_drm;
                     wc2.borrow_mut().apply_template(tpl);
                     // clone data before dropping borrow — set_text triggers connect_changed
                     let (url, name, icon, cat) = {
@@ -275,6 +299,21 @@ pub fn show(
                     crate::webapp_row::load_icon(&ip2, &icon);
                     if let Some(pos) = CATEGORIES.iter().position(|c| *c == cat) {
                         cd2.set_selected(pos as u32);
+                    }
+                    // DRM → force Browser mode, lock switch
+                    if drm {
+                        ms2.set_active(false);
+                        ms2.set_sensitive(false);
+                        mr2.set_subtitle(&gettext(
+                            "This service requires DRM — Browser mode is mandatory",
+                        ));
+                        br2.set_visible(true);
+                        pr2.set_visible(true);
+                    } else {
+                        ms2.set_sensitive(true);
+                        mr2.set_subtitle(&gettext(
+                            "Opens as a native window without browser interface",
+                        ));
                     }
                 }
             });

@@ -25,6 +25,8 @@ pub struct WebAppTemplate {
     pub generic_name: String,
     pub keywords: Vec<String>,
     pub file_handler: FileHandler,
+    /// Site needs DRM (Widevine) → force Browser mode
+    pub requires_drm: bool,
 }
 
 impl Default for WebAppTemplate {
@@ -43,6 +45,7 @@ impl Default for WebAppTemplate {
             generic_name: String::new(),
             keywords: Vec::new(),
             file_handler: FileHandler::None,
+            requires_drm: false,
         }
     }
 }
@@ -120,6 +123,16 @@ impl TemplateRegistry {
                     || tpl.keywords.iter().any(|k| k.to_lowercase().contains(&q))
             })
             .collect()
+    }
+
+    /// Check if a webapp needs DRM — match by template_id or URL domain
+    pub fn requires_drm(&self, template_id: &str, url: &str) -> bool {
+        if let Some(tpl) = self.templates.get(template_id) {
+            return tpl.requires_drm;
+        }
+        self.match_url(url)
+            .map(|tpl| tpl.requires_drm)
+            .unwrap_or(false)
     }
 }
 

@@ -153,6 +153,15 @@ fn add_category_section(
         crate::webapp_row::load_icon(&icon, &tpl.icon);
         row.add_prefix(&icon);
 
+        // DRM badge → indicate Browser mode required
+        if tpl.requires_drm {
+            let drm_icon = gtk::Image::from_icon_name("web-browser-symbolic");
+            drm_icon.set_pixel_size(16);
+            drm_icon.set_tooltip_text(Some(&gettext("Requires Browser mode (DRM)")));
+            drm_icon.add_css_class("dim-label");
+            row.add_suffix(&drm_icon);
+        }
+
         // fire callback immediately, then close gallery
         let cb = callback.clone();
         let tid = tpl.template_id.clone();

@@ -131,6 +131,11 @@ impl WebApp {
         self.app_icon_url = tpl.icon.clone();
         self.app_categories = tpl.category.clone();
 
+        // DRM sites require browser engine (Widevine) → force Browser mode
+        if tpl.requires_drm {
+            self.app_mode = AppMode::Browser;
+        }
+
         if !tpl.mime_types.is_empty() {
             self.mime_types = format!("{};", tpl.mime_types.join(";"));
         }
