@@ -5,7 +5,7 @@ use adw::prelude::*;
 use gettextrs::gettext;
 use gtk::gio;
 use gtk::glib;
-use std::cell::RefCell;
+use std::cell::{Cell, RefCell};
 use std::rc::Rc;
 use webapps_core::models::{AppMode, BrowserCollection, WebApp};
 use webapps_core::templates::build_default_registry;
@@ -232,6 +232,21 @@ pub fn show(
     form.append(&group_website);
     form.append(&group_appearance);
     form.append(&favicon_flow);
+
+    // collapse behavior for new webapps → progressive disclosure
+    if is_new {
+        group_behavior.set_visible(false);
+        let advanced_btn = gtk::Button::with_label(&gettext("Advanced Settings…"));
+        advanced_btn.add_css_class("flat");
+        advanced_btn.set_halign(gtk::Align::Start);
+        advanced_btn.set_margin_top(4);
+        let gb = group_behavior.clone();
+        advanced_btn.connect_clicked(move |btn| {
+            gb.set_visible(true);
+            btn.set_visible(false);
+        });
+        form.append(&advanced_btn);
+    }
     form.append(&group_behavior);
 
     // -- buttons --
@@ -255,6 +270,9 @@ pub fn show(
 
     // -- wire up signals --
 
+    // skip auto-detect when template populates URL (already has name+icon)
+    let skip_auto_detect: Rc<Cell<bool>> = Rc::new(Cell::new(false));
+
     // Template button → populate URL, name, icon, category after selection
     if let Some(ref tb) = tmpl_btn {
         let wc = webapp_cell.clone();
@@ -267,6 +285,7 @@ pub fn show(
         let mr = mode_row.clone();
         let br_row = browser_row.clone();
         let pr_row = profile_row.clone();
+        let skip_flag = skip_auto_detect.clone();
         tb.connect_clicked(move |_| {
             let wc2 = wc.clone();
             let ur2 = ur.clone();
@@ -277,6 +296,7 @@ pub fn show(
             let mr2 = mr.clone();
             let br2 = br_row.clone();
             let pr2 = pr_row.clone();
+            let skip2 = skip_flag.clone();
             template_gallery::show(&w, move |template_id| {
                 log::info!("Template callback received: {}", &template_id);
                 let reg = build_default_registry();
@@ -294,6 +314,8 @@ pub fn show(
                             data.main_category().to_string(),
                         )
                     };
+                    // skip auto-detect → template already has name+icon
+                    skip2.set(true);
                     ur2.set_text(&url);
                     nr2.set_text(&name);
                     crate::webapp_row::load_icon(&ip2, &icon);
@@ -326,11 +348,16 @@ pub fn show(
         let wc = webapp_cell.clone();
         let db_handle = debounce_handle.clone();
         let detect_btn_ref = detect_btn.clone();
+        let skip_flag = skip_auto_detect.clone();
         url_row.connect_changed(move |row| {
             wc.borrow_mut().app_url = row.text().to_string();
             // cancel previous debounce
             if let Some(id) = db_handle.borrow_mut().take() {
                 id.remove();
+            }
+            // skip if template just set the URL
+            if skip_flag.replace(false) {
+                return;
             }
             // schedule auto-detect after 800ms idle
             let btn = detect_btn_ref.clone();
@@ -526,20 +553,22 @@ pub fn show(
                     }
                 }
             });
+        });
+    }
 
-            // favicon picker selection
-            let wcc = wc.clone();
-            let ipc = ip.clone();
-            ff.connect_child_activated(move |_, child| {
-                if let Some(img) = child.child().and_then(|c| c.downcast::<gtk::Image>().ok()) {
-                    if let Some(file) = img.file() {
-                        let path = file.to_string();
-                        ipc.set_from_file(Some(&*path));
-                        wcc.borrow_mut().app_icon = path.clone();
-                        wcc.borrow_mut().app_icon_url = path;
-                    }
+    // favicon picker selection — wired once, ≠ inside detect handler
+    {
+        let wc = webapp_cell.clone();
+        let ip = icon_preview.clone();
+        favicon_flow.connect_child_activated(move |_, child| {
+            if let Some(img) = child.child().and_then(|c| c.downcast::<gtk::Image>().ok()) {
+                if let Some(file) = img.file() {
+                    let path = file.to_string();
+                    ip.set_from_file(Some(&*path));
+                    wc.borrow_mut().app_icon = path.clone();
+                    wc.borrow_mut().app_icon_url = path;
                 }
-            });
+            }
         });
     }
 
@@ -589,11 +618,26 @@ pub fn show(
     {
         let wc = webapp_cell.clone();
         let w = win.clone();
+        let ur = url_row.clone();
+        let nr = name_row.clone();
         save_btn.connect_clicked(move |_| {
             let mut app = wc.borrow().clone();
 
-            // validate
-            if app.app_name.trim().is_empty() || app.app_url.trim().is_empty() {
+            // clear previous error states
+            ur.remove_css_class("error");
+            nr.remove_css_class("error");
+
+            // validate name
+            if app.app_name.trim().is_empty() {
+                nr.add_css_class("error");
+                nr.grab_focus();
+                return;
+            }
+
+            // validate url
+            if app.app_url.trim().is_empty() {
+                ur.add_css_class("error");
+                ur.grab_focus();
                 return;
             }
 
@@ -610,6 +654,8 @@ pub fn show(
 
             // validate URL format
             if url::Url::parse(&app.app_url).is_err() {
+                ur.add_css_class("error");
+                ur.grab_focus();
                 return;
             }
 
@@ -620,19 +666,31 @@ pub fn show(
             };
 
             match &result {
-                Ok(()) => log::info!(
-                    "Saved webapp '{}' mode={:?}",
-                    app.app_name,
-                    app.app_mode
-                ),
-                Err(e) => log::error!("Save webapp failed: {e}"),
+                Ok(()) => {
+                    log::info!(
+                        "Saved webapp '{}' mode={:?}",
+                        app.app_name,
+                        app.app_mode
+                    );
+                    w.close();
+                    on_done(DialogResult {
+                        saved: true,
+                        webapp: app,
+                    });
+                }
+                Err(e) => {
+                    log::error!("Save webapp failed: {e}");
+                    // show error inline via banner-like label
+                    let banner = adw::Banner::new(&gettext("Failed to save webapp"));
+                    banner.set_revealed(true);
+                    if let Some(content) = w.content() {
+                        if let Ok(bx) = content.downcast::<gtk::Box>() {
+                            // insert after headerbar (index 1)
+                            bx.insert_child_after(&banner, bx.first_child().as_ref());
+                        }
+                    }
+                }
             }
-
-            w.close();
-            on_done(DialogResult {
-                saved: result.is_ok(),
-                webapp: app,
-            });
         });
     }
 
@@ -650,6 +708,16 @@ pub fn show(
         });
     }
     win.add_controller(esc);
+
+    // cancel debounce timer on window close → prevent firing on destroyed widgets
+    {
+        let db = debounce_handle.clone();
+        win.connect_destroy(move |_| {
+            if let Some(id) = db.borrow_mut().take() {
+                id.remove();
+            }
+        });
+    }
 
     win.present();
 

@@ -1,6 +1,6 @@
 # PLANNING.md — BigLinux WebApps v4.0.0 Full Audit
 
-> Generated: 2025-06-23 | Updated: 2025-06-24 (post-fix)  
+> Generated: 2025-06-23 | Updated: 2025-06-25 (Phase 2 fixes applied)  
 > Codebase: 26 .rs files, ~5100 LOC, 3 crates  
 > Tooling: cargo clippy, cargo fmt, cargo audit, manual review, GTK4/Adwaita audit, Orca a11y audit
 
@@ -453,3 +453,43 @@ A11y issues:    ~20 → target 0 (Phase A+B+C)
 - **Browser detection caching:** `detect_browsers()` spawns external processes (flatpak list, xdg-settings). Results should be cached for the app session since installed browsers don't change during a single run.
 - **shell_split() limitations:** Custom tokenizer doesn't handle escaped quotes (`\"`) or heredoc-style strings. Document this or switch to `shell-words` crate.
 - **ZIP path traversal:** Current `canonicalize()` check is correct but `canonicalize()` requires the path to exist. Consider using `Path::components()` check for `..` segments as additional defense.
+
+---
+
+## 11. Phase 2 Fixes Applied (2025-06-25)
+
+All changes verified: cargo build ✅, cargo clippy 0 warnings ✅, 35/35 tests ✅
+
+### Security
+| ID | Fix | File | Details |
+|----|-----|------|---------|
+| SEC-02 | ✅ Zip bomb protection | service.rs | `Read::take(50MB)` limit per extracted file + cleanup on oversize |
+
+### Code Quality
+| ID | Fix | File | Details |
+|----|-----|------|---------|
+| QUALITY-02 | ✅ Signal handler leak | webapp_dialog.rs | `favicon_flow.connect_child_activated` moved out of detect handler → wired once |
+| QUALITY-06 | ✅ Atomic JSON writes | service.rs | Write `.json.tmp` → `fs::rename()` → no corruption on crash |
+
+### UX
+| ID | Fix | File | Details |
+|----|-----|------|---------|
+| UX-01 | ✅ Validation feedback | webapp_dialog.rs | Error CSS class + `grab_focus()` on empty/invalid fields |
+| UX-02 | ✅ Save error display | webapp_dialog.rs | `adw::Banner` error message, dialog stays open |
+| UX-05 | ✅ Skip auto-detect on template | webapp_dialog.rs | `skip_auto_detect` Cell flag → no redundant favicon fetch |
+
+### Polish
+| ID | Fix | File | Details |
+|----|-----|------|---------|
+| POLISH-03 | ✅ Geometry save accuracy | viewer/window.rs | Use `window.width()/height()` for non-maximized, `default_size()` fallback for maximized |
+| POLISH-05 | ✅ Cancel debounce on close | webapp_dialog.rs | `connect_destroy` cancels pending `SourceId` timer |
+| POLISH-06 | ✅ Context menu action group leak | viewer/window.rs | Action group created once, action takes URI as `String` param → reused per right-click |
+
+### Phase 3 — High+Medium Priority (2025-06-25)
+
+| ID | Fix | File | Details |
+|----|-----|------|---------|
+| 2.6 | ✅ Permission prompt system | viewer/window.rs | Camera/mic/geolocation → `adw::AlertDialog` prompt, decision persisted in `permissions.json`, other perms auto-granted |
+| 2.3 | ✅ Background I/O threads | manager/window.rs | Import/export run on `std::thread::spawn`, result polled via `glib::timeout_add_local` |
+| 3.5 | ✅ Collapse Behavior section | webapp_dialog.rs | New webapps: Behavior group hidden, "Advanced Settings…" button reveals it |
+| 3.9 | ✅ Split service.rs | service/ | 735L monolith → 4 modules: mod.rs(249), browser.rs(126), io.rs(130), migration.rs(255) |

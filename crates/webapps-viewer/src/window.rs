@@ -1,5 +1,6 @@
 use std::cell::Cell;
-use std::path::PathBuf;
+use std::collections::HashMap;
+use std::path::{Path, PathBuf};
 use std::rc::Rc;
 
 #[allow(unused_imports)]
@@ -313,13 +314,47 @@ pub fn build(
     ));
 
     // --- permission requests ---
-    // auto-grant all → webapp UX expectation; webapps are user-trusted apps
-    // TODO: consider per-webapp permission preferences for untrusted sites
-    webview.connect_permission_request(|_wv, request| {
-        log::info!("Permission auto-granted: {:?}", request.type_());
-        request.allow();
-        true
-    });
+    // sensitive perms (camera/mic/geolocation) → prompt + remember
+    // other perms → auto-grant (webapp UX expectation)
+    let perm_path = data_dir.join("permissions.json");
+    webview.connect_permission_request(clone!(
+        #[weak]
+        window,
+        #[upgrade_or]
+        false,
+        move |_wv, request| {
+            match sensitive_perm_key(request) {
+                None => {
+                    // non-sensitive → auto-grant
+                    request.allow();
+                }
+                Some(perm_key) => {
+                    let stored = load_permissions(&perm_path);
+                    match stored.get(perm_key) {
+                        Some(true) => request.allow(),
+                        Some(false) => request.deny(),
+                        None => {
+                            // first time → prompt user
+                            let req = request.clone();
+                            let pp = perm_path.clone();
+                            let pk = perm_key.to_string();
+                            prompt_permission(&window, perm_key, move |granted| {
+                                if granted {
+                                    req.allow();
+                                } else {
+                                    req.deny();
+                                }
+                                let mut perms = load_permissions(&pp);
+                                perms.insert(pk, granted);
+                                save_permissions(&pp, &perms);
+                            });
+                        }
+                    }
+                }
+            }
+            true
+        }
+    ));
 
     // --- new window requests → open in same view ---
     webview.connect_create(|wv, action| {
@@ -418,34 +453,29 @@ fn build_menu_button() -> gtk::MenuButton {
 
 /// Custom context menu — add "Open in Browser" action for links
 fn setup_context_menu(webview: &webkit::WebView) {
-    webview.connect_context_menu(|wv, menu, hit| {
-        // add "Open in Browser" for links
-        if let Some(uri) = hit.link_uri() {
-            let uri_str = uri.to_string();
-            // add separator + custom item
-            menu.append(&webkit::ContextMenuItem::new_separator());
+    // create action group once → reuse across context menus, ≠ leak per right-click
+    let ctx_group = gio::SimpleActionGroup::new();
+    let action = gio::SimpleAction::new("open-link-browser", Some(glib::VariantTy::STRING));
+    action.connect_activate(|_, param| {
+        if let Some(uri) = param.and_then(|p| p.str()) {
+            let _ = gio::AppInfo::launch_default_for_uri(uri, gio::AppLaunchContext::NONE);
+        }
+    });
+    ctx_group.add_action(&action);
+    webview.insert_action_group("ctx", Some(&ctx_group));
 
-            let action = gio::SimpleAction::new("open-link-browser", None);
-            let u = uri_str.clone();
-            action.connect_activate(move |_, _| {
-                let _ = gio::AppInfo::launch_default_for_uri(&u, gio::AppLaunchContext::NONE);
-            });
-            wv.insert_action_group(
-                "ctx",
-                Some(&{
-                    let group = gio::SimpleActionGroup::new();
-                    group.add_action(&action);
-                    group
-                }),
-            );
+    let action_ref = action;
+    webview.connect_context_menu(move |_wv, menu, hit| {
+        if let Some(uri) = hit.link_uri() {
+            menu.append(&webkit::ContextMenuItem::new_separator());
+            let target = uri.to_variant();
             let item = webkit::ContextMenuItem::from_gaction(
-                &action,
+                &action_ref,
                 &gettext("Open Link in Browser"),
-                None,
+                Some(&target),
             );
             menu.append(&item);
         }
-
         false
     });
 }
@@ -750,10 +780,17 @@ fn save_geometry(window: &adw::ApplicationWindow, config_path: &PathBuf) {
         return;
     }
 
-    let (w, h) = window.default_size();
+    // use actual allocation → default_size() only returns initial set value
+    let (w, h) = if window.is_maximized() {
+        // when maximized, fall back to default_size (last unmaximized value)
+        let (dw, dh) = window.default_size();
+        (if dw > 0 { dw } else { 1024 }, if dh > 0 { dh } else { 720 })
+    } else {
+        (window.width().max(200), window.height().max(200))
+    };
     let geo = serde_json::json!({
-        "width": if w > 0 { w } else { 1024 },
-        "height": if h > 0 { h } else { 720 },
+        "width": w,
+        "height": h,
         "maximized": window.is_maximized(),
     });
 
@@ -763,4 +800,82 @@ fn save_geometry(window: &adw::ApplicationWindow, config_path: &PathBuf) {
     if let Err(e) = std::fs::write(config_path, geo.to_string()) {
         log::error!("Failed to save geometry: {e}");
     }
+}
+
+// --- permission management ---
+
+/// Return permission key for sensitive requests that need user prompt.
+/// Returns None for non-sensitive perms (auto-grant).
+fn sensitive_perm_key(request: &webkit::PermissionRequest) -> Option<&'static str> {
+    if request.is::<webkit::UserMediaPermissionRequest>() {
+        let umr = request.downcast_ref::<webkit::UserMediaPermissionRequest>().unwrap();
+        if webkit6::functions::user_media_permission_is_for_video_device(umr) {
+            Some("camera")
+        } else {
+            Some("microphone")
+        }
+    } else if request.is::<webkit::GeolocationPermissionRequest>() {
+        Some("geolocation")
+    } else {
+        None
+    }
+}
+
+fn load_permissions(path: &Path) -> HashMap<String, bool> {
+    std::fs::read_to_string(path)
+        .ok()
+        .and_then(|s| serde_json::from_str(&s).ok())
+        .unwrap_or_default()
+}
+
+fn save_permissions(path: &Path, perms: &HashMap<String, bool>) {
+    if let Ok(data) = serde_json::to_string_pretty(perms) {
+        std::fs::write(path, data).ok();
+    }
+}
+
+/// Show permission prompt dialog, call `on_result` with user decision
+fn prompt_permission<F: FnOnce(bool) + 'static>(
+    window: &adw::ApplicationWindow,
+    perm_key: &str,
+    on_result: F,
+) {
+    let (title, body) = match perm_key {
+        "camera" => (
+            gettext("Camera Access"),
+            gettext("This webapp wants to use your camera. Allow?"),
+        ),
+        "microphone" => (
+            gettext("Microphone Access"),
+            gettext("This webapp wants to use your microphone. Allow?"),
+        ),
+        "geolocation" => (
+            gettext("Location Access"),
+            gettext("This webapp wants to access your location. Allow?"),
+        ),
+        _ => (
+            gettext("Permission Request"),
+            gettext("This webapp is requesting a special permission. Allow?"),
+        ),
+    };
+
+    let dialog = adw::AlertDialog::builder()
+        .heading(title)
+        .body(body)
+        .build();
+    dialog.add_response("deny", &gettext("Deny"));
+    dialog.add_response("allow", &gettext("Allow"));
+    dialog.set_response_appearance("deny", adw::ResponseAppearance::Destructive);
+    dialog.set_response_appearance("allow", adw::ResponseAppearance::Suggested);
+    dialog.set_default_response(Some("deny"));
+
+    // wrap FnOnce → Fn(connect_response requires Fn), only fire once
+    let on_result = std::cell::RefCell::new(Some(on_result));
+    dialog.connect_response(None, move |_dlg, response| {
+        if let Some(f) = on_result.borrow_mut().take() {
+            f(response == "allow");
+        }
+    });
+
+    dialog.present(Some(window));
 }

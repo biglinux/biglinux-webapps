@@ -239,20 +239,37 @@ pub fn build(app: &adw::Application) {
                 move |result: Result<gio::File, glib::Error>| {
                     if let Ok(file) = result {
                         if let Some(path) = file.path() {
-                            match service::import_webapps(&path) {
-                                Ok((imported, dups)) => {
-                                    refresh_state(&stx);
-                                    populate_list(&crx, &stx, &brx, &wrx, &trx, &srx);
-                                    let msg =
-                                        gettext("Imported {imported}, skipped {dups} duplicates")
-                                            .replace("{imported}", &imported.to_string())
-                                            .replace("{dups}", &dups.to_string());
-                                    show_toast(&trx, &msg);
+                            // run import on background thread → ≠ block UI
+                            let (tx, rx) = std::sync::mpsc::channel();
+                            std::thread::spawn(move || {
+                                tx.send(service::import_webapps(&path)).ok();
+                            });
+                            let stx2 = stx.clone();
+                            let crx2 = crx.clone();
+                            let brx2 = brx.clone();
+                            let wrx2 = wrx.clone();
+                            let trx2 = trx.clone();
+                            let srx2 = srx.clone();
+                            glib::timeout_add_local(std::time::Duration::from_millis(100), move || {
+                                match rx.try_recv() {
+                                    Ok(Ok((imported, dups))) => {
+                                        refresh_state(&stx2);
+                                        populate_list(&crx2, &stx2, &brx2, &wrx2, &trx2, &srx2);
+                                        let msg =
+                                            gettext("Imported {imported}, skipped {dups} duplicates")
+                                                .replace("{imported}", &imported.to_string())
+                                                .replace("{dups}", &dups.to_string());
+                                        show_toast(&trx2, &msg);
+                                        glib::ControlFlow::Break
+                                    }
+                                    Ok(Err(e)) => {
+                                        show_toast(&trx2, &format!("{}: {e}", gettext("Import failed")));
+                                        glib::ControlFlow::Break
+                                    }
+                                    Err(std::sync::mpsc::TryRecvError::Empty) => glib::ControlFlow::Continue,
+                                    Err(std::sync::mpsc::TryRecvError::Disconnected) => glib::ControlFlow::Break,
                                 }
-                                Err(e) => {
-                                    show_toast(&trx, &format!("{}: {e}", gettext("Import failed")));
-                                }
-                            }
+                            });
                         }
                     }
                 },
@@ -275,19 +292,31 @@ pub fn build(app: &adw::Application) {
             dialog.save(Some(&*w), gio::Cancellable::NONE, move |result| {
                 if let Ok(file) = result {
                     if let Some(path) = file.path() {
-                        match service::export_webapps(&path) {
-                            Ok(status) => {
-                                let msg = if status == "no_webapps" {
-                                    gettext("No WebApps")
-                                } else {
-                                    gettext("WebApps exported successfully")
-                                };
-                                show_toast(&trx, &msg);
+                        // run export on background thread → ≠ block UI
+                        let (tx, rx) = std::sync::mpsc::channel();
+                        std::thread::spawn(move || {
+                            tx.send(service::export_webapps(&path)).ok();
+                        });
+                        let trx2 = trx.clone();
+                        glib::timeout_add_local(std::time::Duration::from_millis(100), move || {
+                            match rx.try_recv() {
+                                Ok(Ok(status)) => {
+                                    let msg = if status == "no_webapps" {
+                                        gettext("No WebApps")
+                                    } else {
+                                        gettext("WebApps exported successfully")
+                                    };
+                                    show_toast(&trx2, &msg);
+                                    glib::ControlFlow::Break
+                                }
+                                Ok(Err(e)) => {
+                                    show_toast(&trx2, &format!("{}: {e}", gettext("Export failed")));
+                                    glib::ControlFlow::Break
+                                }
+                                Err(std::sync::mpsc::TryRecvError::Empty) => glib::ControlFlow::Continue,
+                                Err(std::sync::mpsc::TryRecvError::Disconnected) => glib::ControlFlow::Break,
                             }
-                            Err(e) => {
-                                show_toast(&trx, &format!("{}: {e}", gettext("Export failed")))
-                            }
-                        }
+                        });
                     }
                 }
             });
