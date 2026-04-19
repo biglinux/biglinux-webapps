@@ -197,6 +197,18 @@ fn refresh_desktop_database() {
     let _ = std::process::Command::new("update-desktop-database")
         .arg(&apps_dir)
         .spawn();
+
+    // GNOME Shell caches app positions in app-picker-layout.
+    // Reset it so apps move to correct folder after category change.
+    if std::env::var("XDG_CURRENT_DESKTOP")
+        .unwrap_or_default()
+        .to_lowercase()
+        .contains("gnome")
+    {
+        let _ = std::process::Command::new("dconf")
+            .args(["reset", "/org/gnome/shell/app-picker-layout"])
+            .spawn();
+    }
 }
 
 /// Strip chars that could break desktop file Exec or shell parsing
