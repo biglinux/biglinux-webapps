@@ -40,7 +40,14 @@ pub fn generate_desktop_entry(webapp: &WebApp) -> String {
         format!("Exec={}", exec),
         format!("Icon={}", webapp.app_icon),
         format!("StartupWMClass={}", wm_class),
-        format!("Categories={}", webapp.app_categories),
+        format!(
+            "Categories={}",
+            if webapp.app_categories.ends_with(';') {
+                webapp.app_categories.clone()
+            } else {
+                format!("{};", webapp.app_categories)
+            }
+        ),
     ];
 
     if !webapp.mime_types.is_empty() {

@@ -31,6 +31,6 @@ Name[zh]=添加和删除 Web 应用
 Icon=big-webapps
 Exec=big-webapps-gui
 StartupWMClass=br.com.biglinux.webapps
-Categories=GTK;Utility;
+Categories=GTK;Webapps;
 Terminal=false
 StartupNotify=true

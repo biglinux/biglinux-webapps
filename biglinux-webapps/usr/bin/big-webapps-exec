@@ -57,8 +57,6 @@ case $browser in
 esac
 
 
-mkdir -p "$HOME/.bigwebapps/$browser"
-
 # Permission for flatpak browser
 if [[ $browser =~ flatpak ]]; then
     flatpak override --user --filesystem="$HOME/.bigwebapps/$browser" "${browser_exec[2]}"
@@ -78,6 +76,20 @@ if [[ $browser =~ (firefox|librewolf|flatpak-firefox) ]]; then
     XAPP_FORCE_GTKWINDOW_ICON="${icon//*\/}" MOZ_APP_REMOTINGNAME="$class" exec "${browser_exec[@]}" --class="$class" --name="$filename" --profile "$HOME/.bigwebapps/$browser/$filename" --no-remote "$url"
 
 fi
+
+# Build browser launch args based on profile type
+# Default/Browser → use native Chrome profile (keeps user logins/cookies)
+# Custom profile  → use isolated --user-data-dir (separate session)
+build_browser_args() {
+    if [[ $profile == "Default" || $profile == "Browser" ]]; then
+        browser_args=(--no-default-browser-check --profile-directory=Default --app="$url")
+    else
+        mkdir -p "$HOME/.bigwebapps/$browser/$profile"
+        browser_args=(--no-default-browser-check --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url")
+    fi
+}
+
+build_browser_args
 
 # If the big-webapp-version is set and using wayland, we change desktop file temporarily
 if grep -q '\-BigWebApp' <<< "$filename" && [[ $XDG_SESSION_TYPE == 'wayland' ]]; then
@@ -101,14 +113,14 @@ if grep -q '\-BigWebApp' <<< "$filename" && [[ $XDG_SESSION_TYPE == 'wayland' ]]
         cp "$filename" "$filename_orig"
         # Wait to system detect updated icon
         sleep 2
-        "${browser_exec[@]}" --no-default-browser-check --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
+        "${browser_exec[@]}" "${browser_args[@]}" &
      
         sleep 2
         mv -f "$filename_orig_bkp" "$filename_orig"
         flock -u 9
     else
         # another instance holds lock → just launch without icon swap
-        "${browser_exec[@]}" --no-default-browser-check --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
+        "${browser_exec[@]}" "${browser_args[@]}" &
     fi
     rm -f "$lockfile"
 else
@@ -120,5 +132,5 @@ else
         mv -f "$filename_bkp" "$filename"
     fi
 
-    "${browser_exec[@]}" --no-default-browser-check --user-data-dir="$HOME/.bigwebapps/$browser/$profile" --app="$url" &
+    "${browser_exec[@]}" "${browser_args[@]}" &
 fi
