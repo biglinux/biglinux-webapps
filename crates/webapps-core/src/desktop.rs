@@ -199,7 +199,7 @@ fn refresh_desktop_database() {
         .spawn();
 
     // GNOME Shell caches app positions in app-picker-layout.
-    // Reset it so apps move to correct folder after category change.
+    // Reset layout + ensure WebApps folder has correct category filter.
     if std::env::var("XDG_CURRENT_DESKTOP")
         .unwrap_or_default()
         .to_lowercase()
@@ -207,6 +207,15 @@ fn refresh_desktop_database() {
     {
         let _ = std::process::Command::new("dconf")
             .args(["reset", "/org/gnome/shell/app-picker-layout"])
+            .spawn();
+
+        // ensure WebApps folder uses correct category (match .desktop Categories=Webapps;)
+        let _ = std::process::Command::new("dconf")
+            .args([
+                "write",
+                "/org/gnome/desktop/app-folders/folders/WebApps/categories",
+                "['Webapps']",
+            ])
             .spawn();
     }
 }

@@ -240,7 +240,7 @@ pub fn build(app: &adw::Application) {
                     if let Ok(file) = result {
                         if let Some(path) = file.path() {
                             // run import on background thread → ≠ block UI
-                            let (tx, rx) = std::sync::mpsc::channel();
+                            let (tx, rx) = std::sync::mpsc::channel::<anyhow::Result<(usize, usize)>>();
                             std::thread::spawn(move || {
                                 tx.send(service::import_webapps(&path)).ok();
                             });
