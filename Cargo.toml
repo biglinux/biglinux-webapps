@@ -1,0 +1,41 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/webapps-core",
+    "crates/webapps-viewer",
+    "crates/webapps-manager",
+]
+
+[workspace.package]
+version = "4.0.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+repository = "https://github.com/biglinux/biglinux-webapps"
+
+[workspace.dependencies]
+gtk4 = { version = "0.11", features = ["v4_10"] }
+libadwaita = { version = "0.9", features = ["v1_6"] }
+webkit6 = { version = "0.6", features = ["v2_50"] }
+glib = { package = "glib", version = "0.22" }
+gio = { package = "gio", version = "0.22" }
+gdk4 = { package = "gdk4", version = "0.11" }
+gdk-pixbuf = { package = "gdk-pixbuf", version = "0.22" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+log = "0.4"
+env_logger = "0.11"
+anyhow = "1"
+dirs = "6"
+clap = { version = "4", features = ["derive"] }
+reqwest = { version = "0.12", default-features = false, features = ["native-tls", "blocking"] }
+scraper = "0.22"
+zbus = "5"
+tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
+image = { version = "0.25", default-features = false, features = ["png", "ico"] }
+gettextrs = { package = "gettext-rs", version = "0.7", features = ["gettext-system"] }
+
+[profile.release]
+lto = "thin"
+opt-level = "s"
+strip = true
+codegen-units = 1

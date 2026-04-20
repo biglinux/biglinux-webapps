@@ -1,7 +1,0 @@
-[lint]
-select = ["E", "F", "W"]
-ignore = ["E501"]
-
-[lint.per-file-ignores]
-# gi.require_version() must precede gi.repository imports
-"**/webapps/**/*.py" = ["E402"]

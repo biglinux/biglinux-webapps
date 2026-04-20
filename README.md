@@ -14,7 +14,8 @@ A modern GTK4 tool to create and manage webapps, supporting multiple browsers wh
 
 ## Technical Details
 
-- Built with Python using GTK4 and libadwaita
+- Built with Rust using GTK4 and libadwaita
+- WebKitGTK 6.0 for webapp viewer with isolated profiles
 - Uses website scraping to extract icons and metadata
 - Integrated with desktop environment via desktop files
 - Compatible with both Xorg and Wayland display servers
@@ -54,8 +55,8 @@ GPL-3.0
 
 ## Dependencies
 
-- python-bs4
-- python-requests
+- gtk4 (>= 4.10)
+- libadwaita-1 (>= 1.6)
+- webkitgtk-6.0 (>= 2.50)
 - gettext
-- python-pillow
-- python-gobject
+- openssl
