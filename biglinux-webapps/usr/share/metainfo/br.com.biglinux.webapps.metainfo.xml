@@ -1,81 +1,444 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>br.com.biglinux.webapps</id>
-
   <name>BigLinux WebApps</name>
+  <name xml:lang="bg">BigLinux WebApps</name>
+  <name xml:lang="cs">BigLinux WebApps</name>
+  <name xml:lang="da">BigLinux WebApps</name>
+  <name xml:lang="de">BigLinux WebApps</name>
+  <name xml:lang="el">BigLinux WebApps</name>
+  <name xml:lang="es">BigLinux WebApps</name>
+  <name xml:lang="et">BigLinux WebApps</name>
+  <name xml:lang="fi">BigLinux WebApps</name>
+  <name xml:lang="fr">BigLinux WebApps</name>
+  <name xml:lang="he">BigLinux WebApps</name>
+  <name xml:lang="hr">BigLinux WebApps</name>
+  <name xml:lang="hu">BigLinux WebApps</name>
+  <name xml:lang="is">BigLinux WebApps</name>
+  <name xml:lang="it">BigLinux WebApps</name>
+  <name xml:lang="ja">BigLinux WebApps</name>
+  <name xml:lang="ko">BigLinux WebApps</name>
+  <name xml:lang="nl">BigLinux WebApps</name>
+  <name xml:lang="no">BigLinux WebApps</name>
+  <name xml:lang="pl">BigLinux WebApps</name>
   <name xml:lang="pt-BR">BigLinux WebApps</name>
   <name xml:lang="pt">BigLinux WebApps</name>
-
+  <name xml:lang="ro">BigLinux WebApps</name>
+  <name xml:lang="ru">BigLinux WebApps</name>
+  <name xml:lang="sk">BigLinux WebApps</name>
+  <name xml:lang="sv">BigLinux WebApps</name>
+  <name xml:lang="tr">BigLinux WebApps</name>
+  <name xml:lang="uk">BigLinux WebApps</name>
+  <name xml:lang="zh">BigLinux WebApps</name>
   <summary>Turn any website into a desktop app</summary>
+  <summary xml:lang="bg">Превърнете всеки уебсайт в настолно приложение</summary>
+  <summary xml:lang="cs">Proměňte jakýkoli web v desktopovou aplikaci</summary>
+  <summary xml:lang="da">Gør enhver hjemmeside til en desktop-app</summary>
+  <summary xml:lang="de">Verwandeln Sie jede Website in eine Desktop-App</summary>
+  <summary xml:lang="el">Μετατρέψτε οποιονδήποτε ιστότοπο σε εφαρμογή επιφάνειας εργασίας</summary>
+  <summary xml:lang="es">Convierte cualquier sitio web en una aplicación de escritorio</summary>
+  <summary xml:lang="et">Muuda mis tahes veebisait töölauarakenduseks</summary>
+  <summary xml:lang="fi">Muunna mikä tahansa verkkosivusto työpöytäsovellukseksi</summary>
+  <summary xml:lang="fr">Transformez n'importe quel site web en application de bureau</summary>
+  <summary xml:lang="he">הפוך כל אתר לאפליקציית שולחן עבודה</summary>
+  <summary xml:lang="hr">Pretvorite bilo koju web stranicu u desktop aplikaciju</summary>
+  <summary xml:lang="hu">Alakítson bármely webhelyet asztali alkalmazássá</summary>
+  <summary xml:lang="is">Breyttu hvaða vefsíðu sem er í skjáborðsforrit</summary>
+  <summary xml:lang="it">Trasforma qualsiasi sito web in un'app desktop</summary>
+  <summary xml:lang="ja">あらゆる Web サイトをデスクトップアプリに変換</summary>
+  <summary xml:lang="ko">어떤 웹사이트든 데스크톱 앱으로 변환</summary>
+  <summary xml:lang="nl">Maak van elke website een desktop-app</summary>
+  <summary xml:lang="no">Gjør et hvilket som helst nettsted om til en skrivebordsapp</summary>
+  <summary xml:lang="pl">Zamień dowolną stronę internetową w aplikację desktopową</summary>
   <summary xml:lang="pt-BR">Transforme qualquer site em um aplicativo de desktop</summary>
   <summary xml:lang="pt">Transforme qualquer site numa aplicação de secretária</summary>
-
+  <summary xml:lang="ro">Transformă orice site într-o aplicație desktop</summary>
+  <summary xml:lang="ru">Преобразуйте любой сайт в настольное приложение</summary>
+  <summary xml:lang="sk">Premeňte ľubovoľnú webovú stránku na desktopovú aplikáciu</summary>
+  <summary xml:lang="sv">Gör vilken webbplats som helst till en skrivbordsapp</summary>
+  <summary xml:lang="tr">Herhangi bir web sitesini masaüstü uygulamasına dönüştürün</summary>
+  <summary xml:lang="uk">Перетворіть будь-який сайт на застосунок для робочого столу</summary>
+  <summary xml:lang="zh">将任何网站转换为桌面应用</summary>
   <developer id="br.com.biglinux">
     <name>BigLinux</name>
   </developer>
-
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
-
   <description>
-    <p>
-      Create and manage web applications as first-class desktop entries.
-      BigLinux WebApps wraps any website into its own launcher, optional
-      isolated browser profile, and a standalone window — with support for
-      every common browser (Firefox, Chrome, Brave, Edge, Vivaldi, and their
-      Flatpak variants) plus a built-in WebKitGTK viewer for single-purpose
-      app windows.
-    </p>
-    <p xml:lang="pt-BR">
-      Crie e gerencie aplicações web como entradas de desktop reais.
-      O BigLinux WebApps empacota qualquer site em um lançador próprio,
-      com perfil de navegador isolado opcional e janela independente.
-      Suporta Firefox, Chrome, Brave, Edge, Vivaldi e suas variantes Flatpak,
-      além de um visualizador WebKitGTK embutido para janelas de app
-      dedicadas.
-    </p>
+    <p>Create and manage web applications as first-class desktop entries. BigLinux WebApps wraps any website into its own launcher, optional isolated browser profile, and a standalone window. It supports Firefox, Chrome, Brave, Edge, Vivaldi, and their Flatpak variants, plus a built-in WebKitGTK viewer for single-purpose app windows.</p>
+    <p xml:lang="bg">Създавайте и управлявайте уеб приложения като истински записи на работния плот. BigLinux WebApps превръща всеки сайт в собствен стартер, с опционален изолиран браузърен профил и самостоятелен прозорец. Поддържа Firefox, Chrome, Brave, Edge, Vivaldi и техните Flatpak варианти, както и вграден WebKitGTK визуализатор за специализирани прозорци на приложения.</p>
+    <p xml:lang="cs">Vytvářejte a spravujte webové aplikace jako plnohodnotné položky na ploše. BigLinux WebApps zabalí jakýkoli web do vlastního spouštěče, volitelného izolovaného profilu prohlížeče a samostatného okna. Podporuje Firefox, Chrome, Brave, Edge, Vivaldi a jejich varianty Flatpak, plus vestavěný prohlížeč WebKitGTK pro jednoúčelová okna aplikací.</p>
+    <p xml:lang="da">Opret og administrer webapps som rigtige skrivebordsindgange. BigLinux WebApps pakker ethvert website ind i sin egen starter, med valgfri isoleret browserprofil og et selvstændigt vindue. Understøtter Firefox, Chrome, Brave, Edge, Vivaldi og deres Flatpak-varianter samt en indbygget WebKitGTK-fremviser til dedikerede appvinduer.</p>
+    <p xml:lang="de">Erstellen und verwalten Sie Webanwendungen als vollwertige Desktop-Einträge. BigLinux WebApps verpackt jede Website in einen eigenen Starter, ein optional isoliertes Browserprofil und ein eigenständiges Fenster. Unterstützt Firefox, Chrome, Brave, Edge, Vivaldi und ihre Flatpak-Varianten sowie einen integrierten WebKitGTK-Betrachter für dedizierte App-Fenster.</p>
+    <p xml:lang="el">Δημιουργήστε και διαχειριστείτε εφαρμογές ιστού ως κανονικές καταχωρίσεις επιφάνειας εργασίας. Το BigLinux WebApps μετατρέπει κάθε ιστότοπο σε δικό του εκκινητή, με προαιρετικό απομονωμένο προφίλ περιηγητή και ανεξάρτητο παράθυρο. Υποστηρίζει Firefox, Chrome, Brave, Edge, Vivaldi και τις Flatpak εκδόσεις τους, καθώς και ενσωματωμένο προβολέα WebKitGTK για αποκλειστικά παράθυρα εφαρμογών.</p>
+    <p xml:lang="es">Crea y gestiona aplicaciones web como entradas de escritorio reales. BigLinux WebApps convierte cualquier sitio en su propio lanzador, con un perfil de navegador aislado opcional y una ventana independiente. Es compatible con Firefox, Chrome, Brave, Edge, Vivaldi y sus variantes Flatpak, además de un visor WebKitGTK integrado para ventanas de aplicación dedicadas.</p>
+    <p xml:lang="et">Loo ja halda veebirakendusi täisväärtuslike töölauakirjetena. BigLinux WebApps pakendab iga veebisaidi eraldi käivitajaks, valikulise isoleeritud brauseriprofiili ja eraldiseisva aknaga. Toetatud on Firefox, Chrome, Brave, Edge, Vivaldi ja nende Flatpaki variandid ning sisseehitatud WebKitGTK vaatur spetsiaalsete rakenduseakende jaoks.</p>
+    <p xml:lang="fi">Luo ja hallitse verkkosovelluksia täysiverisinä työpöytämerkintöinä. BigLinux WebApps paketoi minkä tahansa sivuston omaksi käynnistimekseen, valinnaisella eristetyllä selainprofiililla ja itsenäisellä ikkunalla. Tukee Firefoxia, Chromea, Bravea, Edgeä, Vivaldia ja niiden Flatpak-versioita sekä sisäänrakennettua WebKitGTK-katselinta omistettuihin sovellusikkunoihin.</p>
+    <p xml:lang="fr">Créez et gérez des applications web comme de véritables entrées de bureau. BigLinux WebApps transforme n'importe quel site en son propre lanceur, avec un profil de navigateur isolé en option et une fenêtre autonome. Il prend en charge Firefox, Chrome, Brave, Edge, Vivaldi et leurs variantes Flatpak, ainsi qu'un visualiseur WebKitGTK intégré pour les fenêtres d'application dédiées.</p>
+    <p xml:lang="he">צרו ונהלו יישומי ווב כערכי שולחן עבודה מלאים. BigLinux WebApps עוטף כל אתר במפעיל משלו, עם פרופיל דפדפן מבודד אופציונלי וחלון עצמאי. נתמכים Firefox, Chrome, Brave, Edge, Vivaldi וגרסאות ה-Flatpak שלהם, יחד עם מציג WebKitGTK מובנה לחלונות ייעודיים של אפליקציות.</p>
+    <p xml:lang="hr">Stvarajte i upravljajte web aplikacijama kao pravim desktop unosima. BigLinux WebApps omotava bilo koju web stranicu u vlastiti pokretač, s opcionalnim izoliranim profilom preglednika i zasebnim prozorom. Podržava Firefox, Chrome, Brave, Edge, Vivaldi i njihove Flatpak varijante te ugrađeni WebKitGTK preglednik za namjenske prozore aplikacija.</p>
+    <p xml:lang="hu">Hozzon létre és kezeljen webalkalmazásokat elsőrangú asztali bejegyzésként. A BigLinux WebApps bármely webhelyet saját indítóvá, opcionálisan elkülönített böngészőprofillá és önálló ablakká alakít. Támogatja a Firefoxot, Chrome-ot, Brave-et, Edge-et, Vivaldit és Flatpak-változataikat, valamint egy beépített WebKitGTK megjelenítőt az egycélú alkalmazásablakokhoz.</p>
+    <p xml:lang="is">Búðu til og stjórnaðu vefforritum sem fullgildum skjáborðsfærslum. BigLinux WebApps pakkar hvaða vefsíðu sem er í eigin ræsiforrit, með valkvæðum einangruðum vafraprófíl og sjálfstæðum glugga. Styður Firefox, Chrome, Brave, Edge, Vivaldi og Flatpak-afbrigði þeirra, auk innbyggðs WebKitGTK-skoðara fyrir sérstaka appglugga.</p>
+    <p xml:lang="it">Crea e gestisci applicazioni web come vere voci desktop. BigLinux WebApps racchiude qualsiasi sito nel proprio launcher, con profilo browser isolato opzionale e finestra autonoma. Supporta Firefox, Chrome, Brave, Edge, Vivaldi e le loro varianti Flatpak, oltre a un visualizzatore WebKitGTK integrato per finestre di app dedicate.</p>
+    <p xml:lang="ja">Web アプリを本格的なデスクトップエントリーとして作成、管理できます。BigLinux WebApps は、あらゆるサイトを専用ランチャー、必要に応じて分離されたブラウザープロファイル、独立したウィンドウにまとめます。Firefox、Chrome、Brave、Edge、Vivaldi とその Flatpak 版に加え、単一用途のアプリウィンドウ向けの内蔵 WebKitGTK ビューアーをサポートします。</p>
+    <p xml:lang="ko">웹 애플리케이션을 정식 데스크톱 항목처럼 만들고 관리하세요. BigLinux WebApps는 어떤 사이트든 전용 실행기, 선택 가능한 격리 브라우저 프로필, 독립 창으로 감쌉니다. Firefox, Chrome, Brave, Edge, Vivaldi 및 각 Flatpak 변형을 지원하며, 단일 목적 앱 창을 위한 내장 WebKitGTK 뷰어도 제공합니다.</p>
+    <p xml:lang="nl">Maak en beheer webapps als volwaardige desktopvermeldingen. BigLinux WebApps verpakt elke website in een eigen starter, met een optioneel geïsoleerd browserprofiel en een zelfstandig venster. Ondersteunt Firefox, Chrome, Brave, Edge, Vivaldi en hun Flatpak-varianten, plus een ingebouwde WebKitGTK-viewer voor speciale appvensters.</p>
+    <p xml:lang="no">Opprett og administrer nettapper som fullverdige skrivebordsoppføringer. BigLinux WebApps pakker et hvilket som helst nettsted inn i sin egen oppstarter, med valgfri isolert nettleserprofil og et selvstendig vindu. Støtter Firefox, Chrome, Brave, Edge, Vivaldi og deres Flatpak-varianter, samt en innebygd WebKitGTK-viser for dedikerte appvinduer.</p>
+    <p xml:lang="pl">Twórz i zarządzaj aplikacjami webowymi jako pełnoprawnymi wpisami pulpitu. BigLinux WebApps opakowuje dowolną stronę w osobny launcher, opcjonalny odizolowany profil przeglądarki i niezależne okno. Obsługuje Firefox, Chrome, Brave, Edge, Vivaldi i ich warianty Flatpak, a także wbudowaną przeglądarkę WebKitGTK dla dedykowanych okien aplikacji.</p>
+    <p xml:lang="pt-BR">Crie e gerencie aplicações web como entradas de desktop reais. O BigLinux WebApps empacota qualquer site em um lançador próprio, com perfil de navegador isolado opcional e janela independente. Suporta Firefox, Chrome, Brave, Edge, Vivaldi e suas variantes Flatpak, além de um visualizador WebKitGTK embutido para janelas de app dedicadas.</p>
+    <p xml:lang="pt">Crie e gira aplicações web como entradas de secretária reais. O BigLinux WebApps transforma qualquer site no seu próprio lançador, com perfil de navegador isolado opcional e janela independente. Suporta Firefox, Chrome, Brave, Edge, Vivaldi e as respetivas variantes Flatpak, além de um visualizador WebKitGTK integrado para janelas de aplicação dedicadas.</p>
+    <p xml:lang="ro">Creează și gestionează aplicații web ca intrări desktop de primă clasă. BigLinux WebApps împachetează orice site într-un lansator propriu, cu profil de browser izolat opțional și fereastră independentă. Suportă Firefox, Chrome, Brave, Edge, Vivaldi și variantele lor Flatpak, plus un vizualizator WebKitGTK integrat pentru ferestre de aplicație dedicate.</p>
+    <p xml:lang="ru">Создавайте и управляйте веб-приложениями как полноценными элементами рабочего стола. BigLinux WebApps упаковывает любой сайт в собственный лаунчер, с необязательным изолированным профилем браузера и отдельным окном. Поддерживаются Firefox, Chrome, Brave, Edge, Vivaldi и их варианты Flatpak, а также встроенный просмотрщик WebKitGTK для специализированных окон приложений.</p>
+    <p xml:lang="sk">Vytvárajte a spravujte webové aplikácie ako plnohodnotné desktopové položky. BigLinux WebApps zabalí ľubovoľný web do vlastného spúšťača, s voliteľným izolovaným profilom prehliadača a samostatným oknom. Podporuje Firefox, Chrome, Brave, Edge, Vivaldi a ich Flatpak varianty, plus vstavaný prehliadač WebKitGTK pre jednoúčelové okná aplikácií.</p>
+    <p xml:lang="sv">Skapa och hantera webbappar som riktiga skrivbordsposter. BigLinux WebApps paketerar vilken webbplats som helst i en egen startare, med valfri isolerad webbläsarprofil och ett fristående fönster. Stöder Firefox, Chrome, Brave, Edge, Vivaldi och deras Flatpak-varianter, samt en inbyggd WebKitGTK-visare för dedikerade appfönster.</p>
+    <p xml:lang="tr">Web uygulamaları birinci sınıf masaüstü girdileri olarak oluşturun ve yönetin. BigLinux WebApps herhangi bir siteyi kendi başlatıcısına, isteğe bağlı yalıtılmış tarayıcı profiline ve bağımsız pencereye dönüştürür. Firefox, Chrome, Brave, Edge, Vivaldi ve bunların Flatpak varyantlarının yanı sıra tek amaçlı uygulama pencereleri için yerleşik bir WebKitGTK görüntüleyici desteklenir.</p>
+    <p xml:lang="uk">Створюйте та керуйте вебзастосунками як повноцінними елементами робочого столу. BigLinux WebApps загортає будь-який сайт у власний лаунчер, з необов’язковим ізольованим профілем браузера та окремим вікном. Підтримуються Firefox, Chrome, Brave, Edge, Vivaldi та їхні варіанти Flatpak, а також вбудований переглядач WebKitGTK для окремих вікон застосунків.</p>
+    <p xml:lang="zh">将 Web 应用创建并管理为一等桌面条目。BigLinux WebApps 可将任何网站封装为独立启动器，并可选配隔离的浏览器配置文件和独立窗口。支持 Firefox、Chrome、Brave、Edge、Vivaldi 及其 Flatpak 变体，并内置 WebKitGTK 查看器用于专用应用窗口。</p>
     <p>Features:</p>
+    <p xml:lang="bg">Функции:</p>
+    <p xml:lang="cs">Funkce:</p>
+    <p xml:lang="da">Funktioner:</p>
+    <p xml:lang="de">Funktionen:</p>
+    <p xml:lang="el">Χαρακτηριστικά:</p>
+    <p xml:lang="es">Funciones:</p>
+    <p xml:lang="et">Funktsioonid:</p>
+    <p xml:lang="fi">Ominaisuudet:</p>
+    <p xml:lang="fr">Fonctionnalités:</p>
+    <p xml:lang="he">תכונות:</p>
+    <p xml:lang="hr">Značajke:</p>
+    <p xml:lang="hu">Funkciók:</p>
+    <p xml:lang="is">Eiginleikar:</p>
+    <p xml:lang="it">Funzionalità:</p>
+    <p xml:lang="ja">機能:</p>
+    <p xml:lang="ko">기능:</p>
+    <p xml:lang="nl">Functies:</p>
+    <p xml:lang="no">Funksjoner:</p>
+    <p xml:lang="pl">Funkcje:</p>
+    <p xml:lang="pt-BR">Recursos:</p>
+    <p xml:lang="pt">Funcionalidades:</p>
+    <p xml:lang="ro">Funcții:</p>
+    <p xml:lang="ru">Возможности:</p>
+    <p xml:lang="sk">Funkcie:</p>
+    <p xml:lang="sv">Funktioner:</p>
+    <p xml:lang="tr">Özellikler:</p>
+    <p xml:lang="uk">Можливості:</p>
+    <p xml:lang="zh">功能：</p>
     <ul>
       <li>Detects every installed browser automatically</li>
+      <li xml:lang="bg">Открива автоматично всеки инсталиран браузър</li>
+      <li xml:lang="cs">Automaticky rozpozná všechny nainstalované prohlížeče</li>
+      <li xml:lang="da">Finder automatisk alle installerede browsere</li>
+      <li xml:lang="de">Erkennt automatisch alle installierten Browser</li>
+      <li xml:lang="el">Ανιχνεύει αυτόματα κάθε εγκατεστημένο περιηγητή</li>
+      <li xml:lang="es">Detecta automáticamente todos los navegadores instalados</li>
+      <li xml:lang="et">Tuvastab automaatselt kõik paigaldatud brauserid</li>
+      <li xml:lang="fi">Tunnistaa automaattisesti kaikki asennetut selaimet</li>
+      <li xml:lang="fr">Détecte automatiquement tous les navigateurs installés</li>
+      <li xml:lang="he">מזהה אוטומטית כל דפדפן מותקן</li>
+      <li xml:lang="hr">Automatski otkriva sve instalirane preglednike</li>
+      <li xml:lang="hu">Automatikusan felismeri az összes telepített böngészőt</li>
+      <li xml:lang="is">Skynjar sjálfkrafa alla uppsetta vafra</li>
+      <li xml:lang="it">Rileva automaticamente tutti i browser installati</li>
+      <li xml:lang="ja">インストール済みブラウザーを自動検出</li>
+      <li xml:lang="ko">설치된 모든 브라우저를 자동 감지</li>
+      <li xml:lang="nl">Detecteert automatisch elke geïnstalleerde browser</li>
+      <li xml:lang="no">Oppdager automatisk alle installerte nettlesere</li>
+      <li xml:lang="pl">Automatycznie wykrywa wszystkie zainstalowane przeglądarki</li>
+      <li xml:lang="pt-BR">Detecta automaticamente todos os navegadores instalados</li>
+      <li xml:lang="pt">Deteta automaticamente todos os navegadores instalados</li>
+      <li xml:lang="ro">Detectează automat toate browserele instalate</li>
+      <li xml:lang="ru">Автоматически определяет все установленные браузеры</li>
+      <li xml:lang="sk">Automaticky rozpozná všetky nainštalované prehliadače</li>
+      <li xml:lang="sv">Upptäcker automatiskt alla installerade webbläsare</li>
+      <li xml:lang="tr">Kurulu tüm tarayıcıları otomatik olarak algılar</li>
+      <li xml:lang="uk">Автоматично виявляє всі встановлені браузери</li>
+      <li xml:lang="zh">自动检测所有已安装的浏览器</li>
       <li>Follows the system default browser when creating new webapps</li>
+      <li xml:lang="bg">Следва системния браузър по подразбиране при създаване на нови webapps</li>
+      <li xml:lang="cs">Při vytváření nových webapp používá výchozí systémový prohlížeč</li>
+      <li xml:lang="da">Følger systemets standardbrowser ved oprettelse af nye webapps</li>
+      <li xml:lang="de">Verwendet beim Erstellen neuer WebApps den Standardbrowser des Systems</li>
+      <li xml:lang="el">Ακολουθεί τον προεπιλεγμένο περιηγητή του συστήματος κατά τη δημιουργία νέων webapps</li>
+      <li xml:lang="es">Usa el navegador predeterminado del sistema al crear nuevas webapps</li>
+      <li xml:lang="et">Uute veebirakenduste loomisel kasutab süsteemi vaikebrauserit</li>
+      <li xml:lang="fi">Käyttää uusien webappien luonnissa järjestelmän oletusselainta</li>
+      <li xml:lang="fr">Suit le navigateur par défaut du système lors de la création de nouvelles webapps</li>
+      <li xml:lang="he">משתמש בדפדפן ברירת המחדל של המערכת בעת יצירת WebApps חדשות</li>
+      <li xml:lang="hr">Prati zadani preglednik sustava pri stvaranju novih webappova</li>
+      <li xml:lang="hu">Új webappok létrehozásakor a rendszer alapértelmezett böngészőjét követi</li>
+      <li xml:lang="is">Fylgir sjálfgefnum kerfisvafra við gerð nýrra vefforrita</li>
+      <li xml:lang="it">Segue il browser predefinito di sistema quando crei nuove webapp</li>
+      <li xml:lang="ja">新しい WebApp の作成時にシステム既定ブラウザーを使用</li>
+      <li xml:lang="ko">새 WebApp 생성 시 시스템 기본 브라우저를 따름</li>
+      <li xml:lang="nl">Volgt de standaardbrowser van het systeem bij het maken van nieuwe webapps</li>
+      <li xml:lang="no">Følger systemets standardnettleser når nye webapper opprettes</li>
+      <li xml:lang="pl">Podczas tworzenia nowych webappów używa domyślnej przeglądarki systemowej</li>
+      <li xml:lang="pt-BR">Usa o navegador padrão do sistema ao criar novos webapps</li>
+      <li xml:lang="pt">Usa o navegador predefinido do sistema ao criar novas webapps</li>
+      <li xml:lang="ro">Folosește browserul implicit al sistemului la crearea de webapp-uri noi</li>
+      <li xml:lang="ru">Использует браузер по умолчанию в системе при создании новых WebApps</li>
+      <li xml:lang="sk">Pri vytváraní nových webappov používa predvolený systémový prehliadač</li>
+      <li xml:lang="sv">Följer systemets standardwebbläsare när nya webbappar skapas</li>
+      <li xml:lang="tr">Yeni web uygulamaları oluştururken sistem varsayılan tarayıcısını kullanır</li>
+      <li xml:lang="uk">Під час створення нових webapps використовує типовий браузер системи</li>
+      <li xml:lang="zh">创建新 WebApps 时遵循系统默认浏览器</li>
       <li>Isolated browser profiles per webapp</li>
+      <li xml:lang="bg">Изолирани браузърни профили за всяка webapp</li>
+      <li xml:lang="cs">Izolované profily prohlížeče pro každou webapp</li>
+      <li xml:lang="da">Isolerede browserprofiler pr. webapp</li>
+      <li xml:lang="de">Isolierte Browserprofile pro WebApp</li>
+      <li xml:lang="el">Απομονωμένα προφίλ περιηγητή για κάθε webapp</li>
+      <li xml:lang="es">Perfiles de navegador aislados por webapp</li>
+      <li xml:lang="et">Iga veebirakenduse jaoks eraldi brauseriprofiilid</li>
+      <li xml:lang="fi">Eristetyt selainprofiilit jokaiselle webappille</li>
+      <li xml:lang="fr">Profils de navigateur isolés pour chaque webapp</li>
+      <li xml:lang="he">פרופילי דפדפן מבודדים לכל WebApp</li>
+      <li xml:lang="hr">Izolirani profili preglednika za svaki webapp</li>
+      <li xml:lang="hu">Elszigetelt böngészőprofilok webapponként</li>
+      <li xml:lang="is">Einangraðir vafraprófílar fyrir hvert vefforrit</li>
+      <li xml:lang="it">Profili browser isolati per ogni webapp</li>
+      <li xml:lang="ja">WebApp ごとに分離されたブラウザープロファイル</li>
+      <li xml:lang="ko">WebApp별 격리 브라우저 프로필</li>
+      <li xml:lang="nl">Geïsoleerde browserprofielen per webapp</li>
+      <li xml:lang="no">Isolerte nettleserprofiler per webapp</li>
+      <li xml:lang="pl">Izolowane profile przeglądarki dla każdej webappki</li>
+      <li xml:lang="pt-BR">Perfis de navegador isolados por webapp</li>
+      <li xml:lang="pt">Perfis de navegador isolados por webapp</li>
+      <li xml:lang="ro">Profiluri de browser izolate pentru fiecare webapp</li>
+      <li xml:lang="ru">Изолированные профили браузера для каждой WebApp</li>
+      <li xml:lang="sk">Izolované profily prehliadača pre každú webapp</li>
+      <li xml:lang="sv">Isolerade webbläsarprofiler per webbapp</li>
+      <li xml:lang="tr">Her web uygulaması için yalıtılmış tarayıcı profilleri</li>
+      <li xml:lang="uk">Ізольовані профілі браузера для кожної webapp</li>
+      <li xml:lang="zh">每个 WebApp 都有独立的浏览器配置文件</li>
       <li>Bulk remove, import/export, and search</li>
+      <li xml:lang="bg">Масово премахване, импортиране/експортиране и търсене</li>
+      <li xml:lang="cs">Hromadné mazání, import/export a vyhledávání</li>
+      <li xml:lang="da">Massefjernelse, import/eksport og søgning</li>
+      <li xml:lang="de">Massenweises Entfernen, Import/Export und Suche</li>
+      <li xml:lang="el">Μαζική αφαίρεση, εισαγωγή/εξαγωγή και αναζήτηση</li>
+      <li xml:lang="es">Eliminación en lote, importar/exportar y búsqueda</li>
+      <li xml:lang="et">Hulgi eemaldamine, import/eksport ja otsing</li>
+      <li xml:lang="fi">Massapoisto, tuonti/vienti ja haku</li>
+      <li xml:lang="fr">Suppression en lot, import/export et recherche</li>
+      <li xml:lang="he">הסרה מרובה, ייבוא/ייצוא וחיפוש</li>
+      <li xml:lang="hr">Skupno uklanjanje, uvoz/izvoz i pretraživanje</li>
+      <li xml:lang="hu">Tömeges eltávolítás, import/export és keresés</li>
+      <li xml:lang="is">Magnfjarlæging, inn-/útflutningur og leit</li>
+      <li xml:lang="it">Rimozione in blocco, import/export e ricerca</li>
+      <li xml:lang="ja">一括削除、インポート/エクスポート、検索</li>
+      <li xml:lang="ko">일괄 제거, 가져오기/내보내기 및 검색</li>
+      <li xml:lang="nl">Bulk verwijderen, import/export en zoeken</li>
+      <li xml:lang="no">Massefjerning, import/eksport og søk</li>
+      <li xml:lang="pl">Usuwanie zbiorcze, import/eksport i wyszukiwanie</li>
+      <li xml:lang="pt-BR">Remoção em lote, importação/exportação e busca</li>
+      <li xml:lang="pt">Remoção em lote, importação/exportação e pesquisa</li>
+      <li xml:lang="ro">Eliminare în bloc, import/export și căutare</li>
+      <li xml:lang="ru">Массовое удаление, импорт/экспорт и поиск</li>
+      <li xml:lang="sk">Hromadné odstránenie, import/export a vyhľadávanie</li>
+      <li xml:lang="sv">Massborttagning, import/export och sökning</li>
+      <li xml:lang="tr">Toplu kaldırma, içe/dışa aktarma ve arama</li>
+      <li xml:lang="uk">Масове видалення, імпорт/експорт і пошук</li>
+      <li xml:lang="zh">批量移除、导入/导出和搜索</li>
       <li>Automatic favicon and title discovery</li>
+      <li xml:lang="bg">Автоматично откриване на favicon и заглавие</li>
+      <li xml:lang="cs">Automatické zjišťování favicon a názvu</li>
+      <li xml:lang="da">Automatisk registrering af favicon og titel</li>
+      <li xml:lang="de">Automatische Erkennung von Favicon und Titel</li>
+      <li xml:lang="el">Αυτόματη ανακάλυψη favicon και τίτλου</li>
+      <li xml:lang="es">Detección automática de favicon y título</li>
+      <li xml:lang="et">Favikooni ja pealkirja automaatne avastamine</li>
+      <li xml:lang="fi">Automaattinen faviconin ja otsikon tunnistus</li>
+      <li xml:lang="fr">Découverte automatique du favicon et du titre</li>
+      <li xml:lang="he">גילוי אוטומטי של favicon וכותרת</li>
+      <li xml:lang="hr">Automatsko otkrivanje favicona i naslova</li>
+      <li xml:lang="hu">Automatikus favicon- és címdetektálás</li>
+      <li xml:lang="is">Sjálfvirk uppgötvun favicon og titils</li>
+      <li xml:lang="it">Rilevamento automatico di favicon e titolo</li>
+      <li xml:lang="ja">favicon とタイトルを自動検出</li>
+      <li xml:lang="ko">파비콘과 제목 자동 감지</li>
+      <li xml:lang="nl">Automatische detectie van favicon en titel</li>
+      <li xml:lang="no">Automatisk oppdagelse av favicon og tittel</li>
+      <li xml:lang="pl">Automatyczne wykrywanie favicony i tytułu</li>
+      <li xml:lang="pt-BR">Descoberta automática de favicon e título</li>
+      <li xml:lang="pt">Descoberta automática de favicon e título</li>
+      <li xml:lang="ro">Descoperire automată a faviconului și titlului</li>
+      <li xml:lang="ru">Автоматическое обнаружение favicon и заголовка</li>
+      <li xml:lang="sk">Automatické zisťovanie favicon a názvu</li>
+      <li xml:lang="sv">Automatisk upptäckt av favicon och titel</li>
+      <li xml:lang="tr">Otomatik favicon ve başlık keşfi</li>
+      <li xml:lang="uk">Автоматичне виявлення favicon і заголовка</li>
+      <li xml:lang="zh">自动发现 favicon 和标题</li>
       <li>Built-in viewer with Wayland-native rendering</li>
+      <li xml:lang="bg">Вграден визуализатор с Wayland-native рендиране</li>
+      <li xml:lang="cs">Vestavěný prohlížeč s nativním vykreslováním pro Wayland</li>
+      <li xml:lang="da">Indbygget fremviser med Wayland-native rendering</li>
+      <li xml:lang="de">Integrierter Betrachter mit nativer Wayland-Darstellung</li>
+      <li xml:lang="el">Ενσωματωμένος προβολέας με εγγενή απόδοση Wayland</li>
+      <li xml:lang="es">Visor integrado con renderizado nativo de Wayland</li>
+      <li xml:lang="et">Sisseehitatud vaatur Waylandi natiivse renderdusega</li>
+      <li xml:lang="fi">Sisäänrakennettu katselin Wayland-natiivilla renderöinnillä</li>
+      <li xml:lang="fr">Visualiseur intégré avec rendu natif Wayland</li>
+      <li xml:lang="he">מציג מובנה עם רינדור מקורי ל-Wayland</li>
+      <li xml:lang="hr">Ugrađeni preglednik s izvornim Wayland prikazom</li>
+      <li xml:lang="hu">Beépített megjelenítő natív Wayland rendereléssel</li>
+      <li xml:lang="is">Innbyggður skoðari með innbyggðri Wayland-myndgerð</li>
+      <li xml:lang="it">Visualizzatore integrato con rendering nativo Wayland</li>
+      <li xml:lang="ja">Wayland ネイティブ描画に対応した内蔵ビューアー</li>
+      <li xml:lang="ko">Wayland 네이티브 렌더링을 지원하는 내장 뷰어</li>
+      <li xml:lang="nl">Ingebouwde viewer met Wayland-native rendering</li>
+      <li xml:lang="no">Innebygd viser med Wayland-native rendering</li>
+      <li xml:lang="pl">Wbudowana przeglądarka z natywnym renderowaniem Wayland</li>
+      <li xml:lang="pt-BR">Visualizador embutido com renderização nativa em Wayland</li>
+      <li xml:lang="pt">Visualizador integrado com renderização nativa em Wayland</li>
+      <li xml:lang="ro">Vizualizator integrat cu randare nativă Wayland</li>
+      <li xml:lang="ru">Встроенный просмотрщик с нативным рендерингом Wayland</li>
+      <li xml:lang="sk">Vstavaný prehliadač s natívnym renderovaním pre Wayland</li>
+      <li xml:lang="sv">Inbyggd visare med Wayland-nativ rendering</li>
+      <li xml:lang="tr">Wayland yerel işleme kullanan yerleşik görüntüleyici</li>
+      <li xml:lang="uk">Вбудований переглядач із нативним рендерингом Wayland</li>
+      <li xml:lang="zh">内置查看器，支持 Wayland 原生渲染</li>
     </ul>
   </description>
-
   <launchable type="desktop-id">br.com.biglinux.webapps.desktop</launchable>
-
   <url type="homepage">https://github.com/biglinux/biglinux-webapps</url>
   <url type="bugtracker">https://github.com/biglinux/biglinux-webapps/issues</url>
   <url type="vcs-browser">https://github.com/biglinux/biglinux-webapps</url>
-
   <screenshots>
     <screenshot type="default">
       <caption>Main window listing installed webapps</caption>
+      <caption xml:lang="bg">Главен прозорец със списък на инсталираните webapps</caption>
+      <caption xml:lang="cs">Hlavní okno se seznamem nainstalovaných webapp</caption>
+      <caption xml:lang="da">Hovedvindue med liste over installerede webapps</caption>
+      <caption xml:lang="de">Hauptfenster mit Liste installierter WebApps</caption>
+      <caption xml:lang="el">Κύριο παράθυρο με λίστα εγκατεστημένων webapps</caption>
+      <caption xml:lang="es">Ventana principal con la lista de webapps instaladas</caption>
+      <caption xml:lang="et">Peaaken installitud veebirakenduste loendiga</caption>
+      <caption xml:lang="fi">Pääikkuna, jossa näkyvät asennetut webappit</caption>
+      <caption xml:lang="fr">Fenêtre principale listant les webapps installées</caption>
+      <caption xml:lang="he">חלון ראשי עם רשימת ה-WebApps המותקנות</caption>
+      <caption xml:lang="hr">Glavni prozor s popisom instaliranih webappova</caption>
+      <caption xml:lang="hu">Főablak a telepített webappok listájával</caption>
+      <caption xml:lang="is">Aðalgluggi með lista yfir uppsett vefforrit</caption>
+      <caption xml:lang="it">Finestra principale con elenco delle webapp installate</caption>
+      <caption xml:lang="ja">インストール済み WebApp の一覧を表示するメインウィンドウ</caption>
+      <caption xml:lang="ko">설치된 WebApps 목록을 보여주는 메인 창</caption>
+      <caption xml:lang="nl">Hoofdvenster met lijst van geïnstalleerde webapps</caption>
+      <caption xml:lang="no">Hovedvindu med liste over installerte webapper</caption>
+      <caption xml:lang="pl">Główne okno z listą zainstalowanych webappów</caption>
+      <caption xml:lang="pt-BR">Janela principal listando os webapps instalados</caption>
+      <caption xml:lang="pt">Janela principal com a lista de webapps instaladas</caption>
+      <caption xml:lang="ro">Fereastra principală cu lista webapp-urilor instalate</caption>
+      <caption xml:lang="ru">Главное окно со списком установленных WebApps</caption>
+      <caption xml:lang="sk">Hlavné okno so zoznamom nainštalovaných webappov</caption>
+      <caption xml:lang="sv">Huvudfönster med lista över installerade webbappar</caption>
+      <caption xml:lang="tr">Yüklü web uygulamalarını listeleyen ana pencere</caption>
+      <caption xml:lang="uk">Головне вікно зі списком встановлених webapps</caption>
+      <caption xml:lang="zh">列出已安装 WebApps 的主窗口</caption>
       <image>https://github.com/user-attachments/assets/58e75c37-e93a-4b5f-a696-7990bf005286</image>
     </screenshot>
     <screenshot>
       <caption>Creating a new webapp</caption>
+      <caption xml:lang="bg">Създаване на нова webapp</caption>
+      <caption xml:lang="cs">Vytváření nové webapp</caption>
+      <caption xml:lang="da">Oprettelse af en ny webapp</caption>
+      <caption xml:lang="de">Erstellen einer neuen WebApp</caption>
+      <caption xml:lang="el">Δημιουργία νέας webapp</caption>
+      <caption xml:lang="es">Creación de una nueva webapp</caption>
+      <caption xml:lang="et">Uue veebirakenduse loomine</caption>
+      <caption xml:lang="fi">Uuden webappin luominen</caption>
+      <caption xml:lang="fr">Création d'une nouvelle webapp</caption>
+      <caption xml:lang="he">יצירת WebApp חדשה</caption>
+      <caption xml:lang="hr">Stvaranje nove webapp aplikacije</caption>
+      <caption xml:lang="hu">Új webapp létrehozása</caption>
+      <caption xml:lang="is">Að búa til nýtt vefforrit</caption>
+      <caption xml:lang="it">Creazione di una nuova webapp</caption>
+      <caption xml:lang="ja">新しい WebApp の作成</caption>
+      <caption xml:lang="ko">새 WebApp 만들기</caption>
+      <caption xml:lang="nl">Een nieuwe webapp maken</caption>
+      <caption xml:lang="no">Opprette en ny webapp</caption>
+      <caption xml:lang="pl">Tworzenie nowej webappki</caption>
+      <caption xml:lang="pt-BR">Criando um novo webapp</caption>
+      <caption xml:lang="pt">Criar uma nova webapp</caption>
+      <caption xml:lang="ro">Crearea unui webapp nou</caption>
+      <caption xml:lang="ru">Создание новой WebApp</caption>
+      <caption xml:lang="sk">Vytváranie novej webapp</caption>
+      <caption xml:lang="sv">Skapa en ny webbapp</caption>
+      <caption xml:lang="tr">Yeni bir web uygulaması oluşturma</caption>
+      <caption xml:lang="uk">Створення нової webapp</caption>
+      <caption xml:lang="zh">创建新的 WebApp</caption>
       <image>https://github.com/user-attachments/assets/00aff0ad-7b3c-49ff-a363-9ef76f3ef233</image>
     </screenshot>
     <screenshot>
       <caption>Template gallery for common services</caption>
+      <caption xml:lang="bg">Галерия с шаблони за често използвани услуги</caption>
+      <caption xml:lang="cs">Galerie šablon pro běžné služby</caption>
+      <caption xml:lang="da">Skabelongalleri til almindelige tjenester</caption>
+      <caption xml:lang="de">Vorlagengalerie für gängige Dienste</caption>
+      <caption xml:lang="el">Συλλογή προτύπων για κοινές υπηρεσίες</caption>
+      <caption xml:lang="es">Galería de plantillas para servicios comunes</caption>
+      <caption xml:lang="et">Levinud teenuste malligalerii</caption>
+      <caption xml:lang="fi">Malligalleria yleisille palveluille</caption>
+      <caption xml:lang="fr">Galerie de modèles pour les services courants</caption>
+      <caption xml:lang="he">גלריית תבניות לשירותים נפוצים</caption>
+      <caption xml:lang="hr">Galerija predložaka za uobičajene servise</caption>
+      <caption xml:lang="hu">Sablongaléria gyakori szolgáltatásokhoz</caption>
+      <caption xml:lang="is">Sniðmátasafn fyrir algengar þjónustur</caption>
+      <caption xml:lang="it">Galleria di modelli per i servizi comuni</caption>
+      <caption xml:lang="ja">一般的なサービス向けテンプレートギャラリー</caption>
+      <caption xml:lang="ko">일반 서비스용 템플릿 갤러리</caption>
+      <caption xml:lang="nl">Sjabloongalerij voor veelgebruikte diensten</caption>
+      <caption xml:lang="no">Malgalleri for vanlige tjenester</caption>
+      <caption xml:lang="pl">Galeria szablonów dla popularnych usług</caption>
+      <caption xml:lang="pt-BR">Galeria de modelos para serviços comuns</caption>
+      <caption xml:lang="pt">Galeria de modelos para serviços comuns</caption>
+      <caption xml:lang="ro">Galerie de șabloane pentru servicii comune</caption>
+      <caption xml:lang="ru">Галерея шаблонов для популярных сервисов</caption>
+      <caption xml:lang="sk">Galéria šablón pre bežné služby</caption>
+      <caption xml:lang="sv">Mallgalleri för vanliga tjänster</caption>
+      <caption xml:lang="tr">Yaygın hizmetler için şablon galerisi</caption>
+      <caption xml:lang="uk">Галерея шаблонів для поширених сервісів</caption>
+      <caption xml:lang="zh">常见服务的模板库</caption>
       <image>https://github.com/user-attachments/assets/b2a23dfe-e761-43d3-87cf-78d3aeea939a</image>
     </screenshot>
     <screenshot>
       <caption>Per-webapp browser selection</caption>
+      <caption xml:lang="bg">Избор на браузър за конкретна webapp</caption>
+      <caption xml:lang="cs">Výběr prohlížeče pro konkrétní webapp</caption>
+      <caption xml:lang="da">Browservalg pr. webapp</caption>
+      <caption xml:lang="de">Browserauswahl pro WebApp</caption>
+      <caption xml:lang="el">Επιλογή περιηγητή ανά webapp</caption>
+      <caption xml:lang="es">Selección de navegador por webapp</caption>
+      <caption xml:lang="et">Brauseri valik iga veebirakenduse jaoks</caption>
+      <caption xml:lang="fi">Selainvalinta webapp-kohtaisesti</caption>
+      <caption xml:lang="fr">Sélection du navigateur par webapp</caption>
+      <caption xml:lang="he">בחירת דפדפן לכל WebApp</caption>
+      <caption xml:lang="hr">Odabir preglednika po webappu</caption>
+      <caption xml:lang="hu">Böngészőválasztás webapponként</caption>
+      <caption xml:lang="is">Val á vafra fyrir hvert vefforrit</caption>
+      <caption xml:lang="it">Selezione del browser per webapp</caption>
+      <caption xml:lang="ja">WebApp ごとのブラウザー選択</caption>
+      <caption xml:lang="ko">WebApp별 브라우저 선택</caption>
+      <caption xml:lang="nl">Browserkeuze per webapp</caption>
+      <caption xml:lang="no">Nettleservalg per webapp</caption>
+      <caption xml:lang="pl">Wybór przeglądarki dla każdej webappki</caption>
+      <caption xml:lang="pt-BR">Seleção de navegador por webapp</caption>
+      <caption xml:lang="pt">Seleção de navegador por webapp</caption>
+      <caption xml:lang="ro">Selecția browserului pentru fiecare webapp</caption>
+      <caption xml:lang="ru">Выбор браузера для каждой WebApp</caption>
+      <caption xml:lang="sk">Výber prehliadača pre každú webapp</caption>
+      <caption xml:lang="sv">Webbläsarval per webbapp</caption>
+      <caption xml:lang="tr">Web uygulaması başına tarayıcı seçimi</caption>
+      <caption xml:lang="uk">Вибір браузера для кожної webapp</caption>
+      <caption xml:lang="zh">按 WebApp 选择浏览器</caption>
       <image>https://github.com/user-attachments/assets/7c6759c9-3abd-465a-92b3-53bb71450f36</image>
     </screenshot>
   </screenshots>
-
   <categories>
     <category>Network</category>
     <category>WebBrowser</category>
     <category>Utility</category>
   </categories>
-
   <keywords>
     <keyword>webapp</keyword>
     <keyword>website</keyword>
@@ -83,39 +446,199 @@
     <keyword>launcher</keyword>
     <keyword translate="no">PWA</keyword>
   </keywords>
-
   <content_rating type="oars-1.1" />
-
   <provides>
     <binary>big-webapps-gui</binary>
     <binary>big-webapps-viewer</binary>
     <binary>big-webapps-exec</binary>
   </provides>
-
   <recommends>
     <display_length compare="ge">768</display_length>
     <internet>offline-only</internet>
   </recommends>
-
   <supports>
     <control>pointing</control>
     <control>keyboard</control>
     <control>touch</control>
   </supports>
-
   <releases>
     <release version="4.0.0" date="2026-04-23">
       <description>
-        <p>
-          First stable release of the Rust rewrite. Replaces the previous
-          Python/GTK3 stack with a native Rust/GTK4/libadwaita build.
-        </p>
+        <p>First stable release of the Rust rewrite. Replaces the previous Python/GTK3 stack with a native Rust/GTK4/libadwaita build.</p>
+        <p xml:lang="bg">Първо стабилно издание на Rust пренаписването. Заменя предишния Python/GTK3 стек с нативна сборка на Rust/GTK4/libadwaita.</p>
+        <p xml:lang="cs">První stabilní vydání přepisu v Rustu. Nahrazuje předchozí stack Python/GTK3 nativním sestavením Rust/GTK4/libadwaita.</p>
+        <p xml:lang="da">Første stabile udgivelse af Rust-omskrivningen. Erstatter den tidligere Python/GTK3-stak med en native Rust/GTK4/libadwaita-build.</p>
+        <p xml:lang="de">Erste stabile Veröffentlichung der Rust-Neufassung. Ersetzt den bisherigen Python/GTK3-Stack durch einen nativen Rust/GTK4/libadwaita-Build.</p>
+        <p xml:lang="el">Πρώτη σταθερή έκδοση της επανεγγραφής σε Rust. Αντικαθιστά την προηγούμενη στοίβα Python/GTK3 με εγγενές build Rust/GTK4/libadwaita.</p>
+        <p xml:lang="es">Primera versión estable de la reescritura en Rust. Sustituye la pila anterior de Python/GTK3 por una compilación nativa en Rust/GTK4/libadwaita.</p>
+        <p xml:lang="et">Rusti ümberkirjutuse esimene stabiilne väljalase. Asendab varasema Python/GTK3 pinu loomuliku Rust/GTK4/libadwaita ehitusega.</p>
+        <p xml:lang="fi">Rust-uudelleenkirjoituksen ensimmäinen vakaa julkaisu. Korvaa aiemman Python/GTK3-pinon natiivilla Rust/GTK4/libadwaita-rakennuksella.</p>
+        <p xml:lang="fr">Première version stable de la réécriture en Rust. Remplace l'ancienne pile Python/GTK3 par une version native en Rust/GTK4/libadwaita.</p>
+        <p xml:lang="he">המהדורה היציבה הראשונה של הכתיבה מחדש ב-Rust. מחליפה את מחסנית Python/GTK3 הקודמת בבנייה מקורית של Rust/GTK4/libadwaita.</p>
+        <p xml:lang="hr">Prvo stabilno izdanje Rust prerade. Zamjenjuje prethodni Python/GTK3 sloj nativnom Rust/GTK4/libadwaita izgradnjom.</p>
+        <p xml:lang="hu">A Rust-újraírás első stabil kiadása. A korábbi Python/GTK3 verem helyét natív Rust/GTK4/libadwaita build veszi át.</p>
+        <p xml:lang="is">Fyrsta stöðuga útgáfa Rust-endurskrifunarinnar. Kemur í stað fyrri Python/GTK3-staflans með innfæddri Rust/GTK4/libadwaita-smíði.</p>
+        <p xml:lang="it">Prima versione stabile della riscrittura in Rust. Sostituisce il precedente stack Python/GTK3 con una build nativa Rust/GTK4/libadwaita.</p>
+        <p xml:lang="ja">Rust への書き直しの最初の安定版リリースです。従来の Python/GTK3 スタックを、ネイティブな Rust/GTK4/libadwaita ビルドに置き換えます。</p>
+        <p xml:lang="ko">Rust 재작성의 첫 안정판 릴리스입니다. 이전 Python/GTK3 스택을 네이티브 Rust/GTK4/libadwaita 빌드로 대체합니다.</p>
+        <p xml:lang="nl">Eerste stabiele release van de Rust-herschrijving. Vervangt de vorige Python/GTK3-stack door een native Rust/GTK4/libadwaita-build.</p>
+        <p xml:lang="no">Første stabile utgave av Rust-omskrivingen. Erstatter den tidligere Python/GTK3-stakken med en innfødt Rust/GTK4/libadwaita-bygging.</p>
+        <p xml:lang="pl">Pierwsze stabilne wydanie przepisu w Ruście. Zastępuje poprzedni stos Python/GTK3 natywną kompilacją Rust/GTK4/libadwaita.</p>
+        <p xml:lang="pt-BR">Primeira versão estável da reescrita em Rust. Substitui a antiga pilha Python/GTK3 por uma build nativa em Rust/GTK4/libadwaita.</p>
+        <p xml:lang="pt">Primeira versão estável da reescrita em Rust. Substitui a antiga stack Python/GTK3 por uma compilação nativa em Rust/GTK4/libadwaita.</p>
+        <p xml:lang="ro">Prima versiune stabilă a rescrierii în Rust. Înlocuiește vechiul stack Python/GTK3 cu un build nativ Rust/GTK4/libadwaita.</p>
+        <p xml:lang="ru">Первый стабильный выпуск переписывания на Rust. Заменяет прежний стек Python/GTK3 нативной сборкой Rust/GTK4/libadwaita.</p>
+        <p xml:lang="sk">Prvé stabilné vydanie prepisu do Rustu. Nahrádza predchádzajúci stack Python/GTK3 natívnym buildom Rust/GTK4/libadwaita.</p>
+        <p xml:lang="sv">Första stabila utgåvan av Rust-omskrivningen. Ersätter den tidigare Python/GTK3-stacken med en inbyggd Rust/GTK4/libadwaita-byggnad.</p>
+        <p xml:lang="tr">Rust ile yeniden yazımın ilk kararlı sürümü. Önceki Python/GTK3 yığınını yerel Rust/GTK4/libadwaita derlemesiyle değiştirir.</p>
+        <p xml:lang="uk">Перший стабільний випуск переписаної версії на Rust. Замінює попередній стек Python/GTK3 нативною збіркою Rust/GTK4/libadwaita.</p>
+        <p xml:lang="zh">Rust 重写版的首个稳定版本。以原生 Rust/GTK4/libadwaita 构建取代此前的 Python/GTK3 技术栈。</p>
         <ul>
           <li>Double-confirmation guard for the "Remove All" action</li>
+          <li xml:lang="bg">Двойно потвърждение за действието „Премахни всички“</li>
+          <li xml:lang="cs">Dvojité potvrzení pro akci „Odstranit vše“</li>
+          <li xml:lang="da">Dobbelt bekræftelse for handlingen "Fjern alle"</li>
+          <li xml:lang="de">Doppelte Bestätigung für die Aktion „Alle entfernen“</li>
+          <li xml:lang="el">Διπλή επιβεβαίωση για την ενέργεια «Αφαίρεση όλων»</li>
+          <li xml:lang="es">Confirmación doble para la acción "Eliminar todo"</li>
+          <li xml:lang="et">Topeltkinnitus toimingule „Eemalda kõik“</li>
+          <li xml:lang="fi">Kaksinkertainen vahvistus "Poista kaikki" -toiminnolle</li>
+          <li xml:lang="fr">Double confirmation pour l’action « Tout supprimer »</li>
+          <li xml:lang="he">אישור כפול לפעולת "הסר הכול"</li>
+          <li xml:lang="hr">Dvostruka potvrda za radnju „Ukloni sve”</li>
+          <li xml:lang="hu">Kettős megerősítés az „Összes eltávolítása” művelethez</li>
+          <li xml:lang="is">Tvöföld staðfesting fyrir „Fjarlægja allt“ aðgerðina</li>
+          <li xml:lang="it">Doppia conferma per l’azione "Rimuovi tutto"</li>
+          <li xml:lang="ja">「すべて削除」操作に対する二重確認ガード</li>
+          <li xml:lang="ko">"모두 제거" 동작에 대한 이중 확인 보호</li>
+          <li xml:lang="nl">Dubbele bevestiging voor de actie "Alles verwijderen"</li>
+          <li xml:lang="no">Dobbeltbekreftelse for handlingen "Fjern alle"</li>
+          <li xml:lang="pl">Podwójne potwierdzenie dla akcji „Usuń wszystko”</li>
+          <li xml:lang="pt-BR">Confirmação dupla para a ação "Remover tudo"</li>
+          <li xml:lang="pt">Confirmação dupla para a ação "Remover tudo"</li>
+          <li xml:lang="ro">Confirmare dublă pentru acțiunea „Elimină tot”</li>
+          <li xml:lang="ru">Двойное подтверждение для действия «Удалить всё»</li>
+          <li xml:lang="sk">Dvojité potvrdenie pre akciu „Odstrániť všetko”</li>
+          <li xml:lang="sv">Dubbel bekräftelse för åtgärden "Ta bort alla"</li>
+          <li xml:lang="tr">"Tümünü kaldır" işlemi için çift onay koruması</li>
+          <li xml:lang="uk">Подвійне підтвердження для дії «Видалити все»</li>
+          <li xml:lang="zh">“全部移除”操作的双重确认保护</li>
           <li>Bulk removal with multi-select dialog</li>
+          <li xml:lang="bg">Масово премахване с диалог за множествен избор</li>
+          <li xml:lang="cs">Hromadné mazání s dialogem pro vícenásobný výběr</li>
+          <li xml:lang="da">Massefjernelse med dialog til flere valg</li>
+          <li xml:lang="de">Massenentfernung mit Mehrfachauswahldialog</li>
+          <li xml:lang="el">Μαζική αφαίρεση με διάλογο πολλαπλής επιλογής</li>
+          <li xml:lang="es">Eliminación en lote con diálogo de selección múltiple</li>
+          <li xml:lang="et">Hulgi eemaldamine mitmikvaliku dialoogiga</li>
+          <li xml:lang="fi">Massapoisto monivalintavalintaikkunalla</li>
+          <li xml:lang="fr">Suppression en lot avec boîte de dialogue de sélection multiple</li>
+          <li xml:lang="he">הסרה מרובה עם תיבת דו-שיח לבחירה מרובה</li>
+          <li xml:lang="hr">Skupno uklanjanje s dijalogom višestrukog odabira</li>
+          <li xml:lang="hu">Tömeges eltávolítás többválasztásos párbeszédablakkal</li>
+          <li xml:lang="is">Magnfjarlæging með fjölvalsglugga</li>
+          <li xml:lang="it">Rimozione in blocco con finestra di selezione multipla</li>
+          <li xml:lang="ja">複数選択ダイアログによる一括削除</li>
+          <li xml:lang="ko">다중 선택 대화상자를 통한 일괄 제거</li>
+          <li xml:lang="nl">Bulkverwijdering met meervoudige-selectiedialoog</li>
+          <li xml:lang="no">Massefjerning med dialog for flervalg</li>
+          <li xml:lang="pl">Usuwanie zbiorcze z oknem wielokrotnego wyboru</li>
+          <li xml:lang="pt-BR">Remoção em lote com diálogo de múltipla seleção</li>
+          <li xml:lang="pt">Remoção em lote com diálogo de seleção múltipla</li>
+          <li xml:lang="ro">Eliminare în bloc cu dialog de selecție multiplă</li>
+          <li xml:lang="ru">Массовое удаление с диалогом множественного выбора</li>
+          <li xml:lang="sk">Hromadné odstránenie s dialógom viacnásobného výberu</li>
+          <li xml:lang="sv">Massborttagning med flervalsdialog</li>
+          <li xml:lang="tr">Çoklu seçim iletişim penceresiyle toplu kaldırma</li>
+          <li xml:lang="uk">Масове видалення з діалогом множинного вибору</li>
+          <li xml:lang="zh">带多选对话框的批量移除</li>
           <li>System default browser auto-selected when creating webapps</li>
+          <li xml:lang="bg">Системният браузър по подразбиране се избира автоматично при създаване на webapps</li>
+          <li xml:lang="cs">Při vytváření webapp se automaticky vybere výchozí systémový prohlížeč</li>
+          <li xml:lang="da">Systemets standardbrowser vælges automatisk ved oprettelse af webapps</li>
+          <li xml:lang="de">Beim Erstellen von WebApps wird automatisch der Standardbrowser des Systems ausgewählt</li>
+          <li xml:lang="el">Ο προεπιλεγμένος περιηγητής του συστήματος επιλέγεται αυτόματα κατά τη δημιουργία webapps</li>
+          <li xml:lang="es">El navegador predeterminado del sistema se selecciona automáticamente al crear webapps</li>
+          <li xml:lang="et">Veebirakenduste loomisel valitakse süsteemi vaikebrauser automaatselt</li>
+          <li xml:lang="fi">Järjestelmän oletusselain valitaan automaattisesti webappeja luotaessa</li>
+          <li xml:lang="fr">Le navigateur par défaut du système est sélectionné automatiquement lors de la création de webapps</li>
+          <li xml:lang="he">דפדפן ברירת המחדל של המערכת נבחר אוטומטית בעת יצירת WebApps</li>
+          <li xml:lang="hr">Zadani preglednik sustava automatski se odabire pri stvaranju webappova</li>
+          <li xml:lang="hu">A rendszer alapértelmezett böngészője automatikusan kiválasztásra kerül webappok létrehozásakor</li>
+          <li xml:lang="is">Sjálfgefinn kerfisvafri er valinn sjálfkrafa þegar vefforrit eru búin til</li>
+          <li xml:lang="it">Il browser predefinito di sistema viene selezionato automaticamente quando crei webapp</li>
+          <li xml:lang="ja">WebApp 作成時にシステム既定ブラウザーを自動選択</li>
+          <li xml:lang="ko">WebApp 생성 시 시스템 기본 브라우저 자동 선택</li>
+          <li xml:lang="nl">De standaardbrowser van het systeem wordt automatisch gekozen bij het maken van webapps</li>
+          <li xml:lang="no">Systemets standardnettleser velges automatisk når webapper opprettes</li>
+          <li xml:lang="pl">Domyślna przeglądarka systemowa jest wybierana automatycznie podczas tworzenia webappów</li>
+          <li xml:lang="pt-BR">O navegador padrão do sistema é selecionado automaticamente ao criar webapps</li>
+          <li xml:lang="pt">O navegador predefinido do sistema é selecionado automaticamente ao criar webapps</li>
+          <li xml:lang="ro">Browserul implicit al sistemului este selectat automat la crearea webapp-urilor</li>
+          <li xml:lang="ru">Системный браузер по умолчанию автоматически выбирается при создании WebApps</li>
+          <li xml:lang="sk">Predvolený systémový prehliadač sa pri vytváraní webappov vyberá automaticky</li>
+          <li xml:lang="sv">Systemets standardwebbläsare väljs automatiskt när webbappar skapas</li>
+          <li xml:lang="tr">Web uygulamaları oluşturulurken sistem varsayılan tarayıcısı otomatik seçilir</li>
+          <li xml:lang="uk">Типовий браузер системи автоматично вибирається під час створення webapps</li>
+          <li xml:lang="zh">创建 WebApps 时自动选择系统默认浏览器</li>
           <li>Icon resolution with size fallback chain and progressive name stripping</li>
+          <li xml:lang="bg">Разрешаване на икони с верига за резервни размери и прогресивно премахване на части от името</li>
+          <li xml:lang="cs">Řešení ikon s řetězcem náhradních velikostí a postupným zkracováním názvu</li>
+          <li xml:lang="da">Ikonopløsning med reservekæde af størrelser og progressiv fjernelse af navnedel</li>
+          <li xml:lang="de">Symbolauflösung mit Größen-Fallback-Kette und schrittweiser Namenskürzung</li>
+          <li xml:lang="el">Επίλυση εικονιδίων με αλυσίδα εναλλακτικών μεγεθών και προοδευτική αφαίρεση μέρους του ονόματος</li>
+          <li xml:lang="es">Resolución de iconos con cadena de tamaños alternativos y eliminación progresiva del nombre</li>
+          <li xml:lang="et">Ikoonide lahendamine suuruste varuahela ja nime järkjärgulise lühendamisega</li>
+          <li xml:lang="fi">Kuvakkeiden ratkaisu kokovaraketjulla ja asteittaisella nimen lyhentämisellä</li>
+          <li xml:lang="fr">Résolution des icônes avec chaîne de tailles de secours et suppression progressive du nom</li>
+          <li xml:lang="he">פתרון אייקונים עם שרשרת גדלים חלופית והסרה הדרגתית של חלקי השם</li>
+          <li xml:lang="hr">Razrješavanje ikona s lancem zamjenskih veličina i postupnim skraćivanjem naziva</li>
+          <li xml:lang="hu">Ikonafeloldás méret-visszalépési lánccal és fokozatos névcsökkentéssel</li>
+          <li xml:lang="is">Táknupplausn með varakeðju stærða og stigvaxandi nafnaafstrippingu</li>
+          <li xml:lang="it">Risoluzione icone con catena di fallback delle dimensioni e rimozione progressiva del nome</li>
+          <li xml:lang="ja">サイズのフォールバック連鎖と段階的な名前削除によるアイコン解決</li>
+          <li xml:lang="ko">크기 대체 체인과 점진적 이름 제거를 사용하는 아이콘 해석</li>
+          <li xml:lang="nl">Pictogramresolutie met keten van reservegroottes en progressieve naaminkorting</li>
+          <li xml:lang="no">Ikonoppløsning med reservekjede av størrelser og progressiv navneavkapping</li>
+          <li xml:lang="pl">Rozwiązywanie ikon z łańcuchem zapasowych rozmiarów i stopniowym skracaniem nazwy</li>
+          <li xml:lang="pt-BR">Resolução de ícones com cadeia de fallback de tamanhos e remoção progressiva do nome</li>
+          <li xml:lang="pt">Resolução de ícones com cadeia de tamanhos alternativos e remoção progressiva do nome</li>
+          <li xml:lang="ro">Rezolvare a pictogramelor cu lanț de dimensiuni de rezervă și eliminare progresivă a numelui</li>
+          <li xml:lang="ru">Определение значков с цепочкой резервных размеров и поэтапным сокращением имени</li>
+          <li xml:lang="sk">Riešenie ikon s reťazcom náhradných veľkostí a postupným skracovaním názvu</li>
+          <li xml:lang="sv">Ikonupplösning med kedja av reservstorlekar och progressiv namntrimning</li>
+          <li xml:lang="tr">Boyut yedek zinciri ve aşamalı ad kırpma ile simge çözümleme</li>
+          <li xml:lang="uk">Визначення піктограм із ланцюжком резервних розмірів і поступовим скороченням назви</li>
+          <li xml:lang="zh">带尺寸回退链和渐进式名称裁剪的图标解析</li>
           <li>29 translation catalogs</li>
+          <li xml:lang="bg">29 каталога с преводи</li>
+          <li xml:lang="cs">29 katalogů překladů</li>
+          <li xml:lang="da">29 oversættelseskataloger</li>
+          <li xml:lang="de">29 Übersetzungskataloge</li>
+          <li xml:lang="el">29 κατάλογοι μεταφράσεων</li>
+          <li xml:lang="es">29 catálogos de traducción</li>
+          <li xml:lang="et">29 tõlkekataloogi</li>
+          <li xml:lang="fi">29 käännösluetteloa</li>
+          <li xml:lang="fr">29 catalogues de traduction</li>
+          <li xml:lang="he">29 קטלוגי תרגום</li>
+          <li xml:lang="hr">29 kataloga prijevoda</li>
+          <li xml:lang="hu">29 fordítási katalógus</li>
+          <li xml:lang="is">29 þýðingaskrár</li>
+          <li xml:lang="it">29 cataloghi di traduzione</li>
+          <li xml:lang="ja">29 の翻訳カタログ</li>
+          <li xml:lang="ko">29개 번역 카탈로그</li>
+          <li xml:lang="nl">29 vertaalcatalogi</li>
+          <li xml:lang="no">29 oversettelseskataloger</li>
+          <li xml:lang="pl">29 katalogów tłumaczeń</li>
+          <li xml:lang="pt-BR">29 catálogos de tradução</li>
+          <li xml:lang="pt">29 catálogos de tradução</li>
+          <li xml:lang="ro">29 de cataloage de traduceri</li>
+          <li xml:lang="ru">29 каталогов переводов</li>
+          <li xml:lang="sk">29 katalógov prekladov</li>
+          <li xml:lang="sv">29 översättningskataloger</li>
+          <li xml:lang="tr">29 çeviri kataloğu</li>
+          <li xml:lang="uk">29 каталогів перекладів</li>
+          <li xml:lang="zh">29 个翻译目录</li>
         </ul>
       </description>
     </release>
