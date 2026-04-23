@@ -72,56 +72,79 @@ pub fn import_webapps(zip_path: &Path) -> Result<(usize, usize)> {
     for i in 0..archive.len() {
         let mut entry = archive.by_index(i)?;
         let name = entry.name().to_string();
-        if name.starts_with("icons/") {
-            let fname = name.strip_prefix("icons/").unwrap_or(&name);
-            // strict filename: must be non-empty, no path separators, no ..
-            if fname.is_empty()
-                || fname.contains('/')
-                || fname.contains('\\')
-                || fname.contains("..")
-            {
-                continue;
-            }
-            let dest = icons_dir.join(fname);
-            // verify dest stays within icons_dir
-            if let Ok(canonical) = dest.parent().map(|p| p.canonicalize()).transpose() {
-                if canonical.as_deref() != Some(icons_canonical.as_path()) {
-                    continue;
-                }
-            }
-            let mut out = fs::File::create(&dest)?;
-            // cap extracted size → prevent decompression bombs
-            let copied =
-                std::io::copy(&mut entry.by_ref().take(MAX_EXTRACTED_FILE_BYTES), &mut out)?;
-            if copied >= MAX_EXTRACTED_FILE_BYTES {
-                log::warn!(
-                    "Skipped oversized zip entry: {fname} (>{MAX_EXTRACTED_FILE_BYTES} bytes)"
-                );
-                let _ = fs::remove_file(&dest);
-            }
+        if !name.starts_with("icons/") {
+            continue;
+        }
+        let fname = name.strip_prefix("icons/").unwrap_or(&name);
+        // strict filename: must be non-empty, no path separators, no ..
+        if fname.is_empty() || fname.contains('/') || fname.contains('\\') || fname.contains("..") {
+            continue;
+        }
+
+        // Bail before creating the file when the declared size already exceeds
+        // the cap. Avoids the `create + truncate + remove` round-trip on
+        // decompression-bomb archives.
+        if entry.size() > MAX_EXTRACTED_FILE_BYTES {
+            log::warn!(
+                "Skipped oversized zip entry: {fname} (declared {} bytes)",
+                entry.size()
+            );
+            continue;
+        }
+
+        let dest = icons_dir.join(fname);
+        // Verify dest stays within icons_dir. Failure to canonicalize → DENY.
+        // The previous behaviour silently allowed extraction when canonicalize
+        // failed (e.g. transient FS error), defeating the path-escape defence.
+        let parent = dest.parent().ok_or_else(|| {
+            anyhow::anyhow!("Refusing import: zip entry {fname} has no parent directory")
+        })?;
+        let parent_canonical = parent
+            .canonicalize()
+            .with_context(|| format!("Refusing import: cannot canonicalize parent of {fname}"))?;
+        if parent_canonical != icons_canonical {
+            log::warn!(
+                "Refusing import of {fname}: would escape icons dir (target parent: {})",
+                parent_canonical.display()
+            );
+            continue;
+        }
+
+        let mut out = fs::File::create(&dest)?;
+        // Defence-in-depth: even if entry.size() lied, cap the actual copy.
+        let copied = std::io::copy(&mut entry.by_ref().take(MAX_EXTRACTED_FILE_BYTES), &mut out)?;
+        if copied >= MAX_EXTRACTED_FILE_BYTES {
+            log::warn!(
+                "Truncated oversized zip entry post-decompression: {fname} (>{MAX_EXTRACTED_FILE_BYTES} bytes)"
+            );
+            let _ = fs::remove_file(&dest);
         }
     }
 
     // import webapps, skip duplicates
     let existing = load_webapps();
+    let mut seen = existing
+        .webapps
+        .iter()
+        .map(|app| (app.app_name.clone(), app.app_url.clone()))
+        .collect::<std::collections::HashSet<_>>();
     let mut imported = 0usize;
     let mut duplicates = 0usize;
 
     for app in imported_apps {
-        let is_dup = existing
-            .webapps
-            .iter()
-            .any(|e| e.app_name == app.app_name && e.app_url == app.app_url);
-        if is_dup {
+        let dedupe_key = (app.app_name.clone(), app.app_url.clone());
+        if seen.contains(&dedupe_key) {
             duplicates += 1;
             continue;
         }
+
         // generate new app_file
         let mut new_app = app;
         new_app.app_file = generate_app_file(&new_app.browser, &new_app.app_url);
         if let Err(e) = create_webapp(&new_app) {
             log::error!("Import webapp {}: {e}", new_app.app_name);
         } else {
+            seen.insert(dedupe_key);
             imported += 1;
         }
     }

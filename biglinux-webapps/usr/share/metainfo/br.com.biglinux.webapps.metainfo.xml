@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>br.com.biglinux.webapps</id>
+
+  <name>BigLinux WebApps</name>
+  <name xml:lang="pt-BR">BigLinux WebApps</name>
+  <name xml:lang="pt">BigLinux WebApps</name>
+
+  <summary>Turn any website into a desktop app</summary>
+  <summary xml:lang="pt-BR">Transforme qualquer site em um aplicativo de desktop</summary>
+  <summary xml:lang="pt">Transforme qualquer site numa aplicação de secretária</summary>
+
+  <developer id="br.com.biglinux">
+    <name>BigLinux</name>
+  </developer>
+
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+
+  <description>
+    <p>
+      Create and manage web applications as first-class desktop entries.
+      BigLinux WebApps wraps any website into its own launcher, optional
+      isolated browser profile, and a standalone window — with support for
+      every common browser (Firefox, Chrome, Brave, Edge, Vivaldi, and their
+      Flatpak variants) plus a built-in WebKitGTK viewer for single-purpose
+      app windows.
+    </p>
+    <p xml:lang="pt-BR">
+      Crie e gerencie aplicações web como entradas de desktop reais.
+      O BigLinux WebApps empacota qualquer site em um lançador próprio,
+      com perfil de navegador isolado opcional e janela independente.
+      Suporta Firefox, Chrome, Brave, Edge, Vivaldi e suas variantes Flatpak,
+      além de um visualizador WebKitGTK embutido para janelas de app
+      dedicadas.
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>Detects every installed browser automatically</li>
+      <li>Follows the system default browser when creating new webapps</li>
+      <li>Isolated browser profiles per webapp</li>
+      <li>Bulk remove, import/export, and search</li>
+      <li>Automatic favicon and title discovery</li>
+      <li>Built-in viewer with Wayland-native rendering</li>
+    </ul>
+  </description>
+
+  <launchable type="desktop-id">br.com.biglinux.webapps.desktop</launchable>
+
+  <url type="homepage">https://github.com/biglinux/biglinux-webapps</url>
+  <url type="bugtracker">https://github.com/biglinux/biglinux-webapps/issues</url>
+  <url type="vcs-browser">https://github.com/biglinux/biglinux-webapps</url>
+
+  <screenshots>
+    <screenshot type="default">
+      <caption>Main window listing installed webapps</caption>
+      <image>https://github.com/user-attachments/assets/58e75c37-e93a-4b5f-a696-7990bf005286</image>
+    </screenshot>
+    <screenshot>
+      <caption>Creating a new webapp</caption>
+      <image>https://github.com/user-attachments/assets/00aff0ad-7b3c-49ff-a363-9ef76f3ef233</image>
+    </screenshot>
+    <screenshot>
+      <caption>Template gallery for common services</caption>
+      <image>https://github.com/user-attachments/assets/b2a23dfe-e761-43d3-87cf-78d3aeea939a</image>
+    </screenshot>
+    <screenshot>
+      <caption>Per-webapp browser selection</caption>
+      <image>https://github.com/user-attachments/assets/7c6759c9-3abd-465a-92b3-53bb71450f36</image>
+    </screenshot>
+  </screenshots>
+
+  <categories>
+    <category>Network</category>
+    <category>WebBrowser</category>
+    <category>Utility</category>
+  </categories>
+
+  <keywords>
+    <keyword>webapp</keyword>
+    <keyword>website</keyword>
+    <keyword>browser</keyword>
+    <keyword>launcher</keyword>
+    <keyword translate="no">PWA</keyword>
+  </keywords>
+
+  <content_rating type="oars-1.1" />
+
+  <provides>
+    <binary>big-webapps-gui</binary>
+    <binary>big-webapps-viewer</binary>
+    <binary>big-webapps-exec</binary>
+  </provides>
+
+  <recommends>
+    <display_length compare="ge">768</display_length>
+    <internet>offline-only</internet>
+  </recommends>
+
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
+
+  <releases>
+    <release version="4.0.0" date="2026-04-23">
+      <description>
+        <p>
+          First stable release of the Rust rewrite. Replaces the previous
+          Python/GTK3 stack with a native Rust/GTK4/libadwaita build.
+        </p>
+        <ul>
+          <li>Double-confirmation guard for the "Remove All" action</li>
+          <li>Bulk removal with multi-select dialog</li>
+          <li>System default browser auto-selected when creating webapps</li>
+          <li>Icon resolution with size fallback chain and progressive name stripping</li>
+          <li>29 translation catalogs</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+</component>

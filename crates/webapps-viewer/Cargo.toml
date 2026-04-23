@@ -24,3 +24,4 @@ anyhow.workspace = true
 dirs.workspace = true
 clap.workspace = true
 gettextrs.workspace = true
+url.workspace = true

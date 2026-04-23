@@ -8,6 +8,11 @@
 *.swo
 *~
 
+# AI coding assistants (local state markers / caches)
+.codex
+.claude/
+.serena/
+
 # OS artifacts
 .DS_Store
 Thumbs.db

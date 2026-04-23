@@ -3,34 +3,42 @@ use libadwaita as adw;
 
 use adw::prelude::*;
 use gettextrs::gettext;
-use gtk::glib;
+use std::cell::RefCell;
 use std::rc::Rc;
-use webapps_core::templates::{build_default_registry, TemplateRegistry, WebAppTemplate};
+use webapps_core::templates::{default_registry, TemplateRegistry, WebAppTemplate};
 
-/// Show template gallery. Fires callback immediately on selection.
-pub fn show(parent: &impl IsA<gtk::Window>, on_selected: impl Fn(String) + 'static) {
-    let registry = build_default_registry();
-    let callback: Rc<dyn Fn(String)> = Rc::new(on_selected);
+/// One-shot owning callback container — fires its inner closure at most once.
+type OnceCallbackCell = Rc<RefCell<Option<Box<dyn FnOnce(String)>>>>;
 
-    let win = adw::Window::builder()
+/// Show template gallery. Fires the callback at most once on the first
+/// selection — guards against the user double-activating a row before the
+/// modal closes, which would otherwise apply the template twice and clobber
+/// any edits made between the two invocations.
+pub fn show(parent: &impl IsA<gtk::Widget>, on_selected: impl FnOnce(String) + 'static) {
+    let registry = default_registry();
+    let on_selected_cell: OnceCallbackCell = Rc::new(RefCell::new(Some(Box::new(on_selected))));
+    let callback: Rc<dyn Fn(String)> = {
+        let cell = on_selected_cell.clone();
+        Rc::new(move |template_id| {
+            if let Some(cb) = cell.borrow_mut().take() {
+                cb(template_id);
+            }
+        })
+    };
+
+    let dialog = adw::Dialog::builder()
         .title(gettext("Choose a Template"))
-        .default_width(600)
-        .default_height(500)
-        .modal(true)
-        .transient_for(parent)
         .build();
+    crate::geometry::bind_adw_dialog(&dialog, "template-gallery.json", 600, 500);
 
-    let content = gtk::Box::new(gtk::Orientation::Vertical, 0);
-
-    // headerbar with search
+    let toolbar = adw::ToolbarView::new();
     let header = adw::HeaderBar::new();
     let search_entry = gtk::SearchEntry::new();
     search_entry.set_placeholder_text(Some(&gettext("Search templates...")));
     search_entry.set_hexpand(true);
     header.set_title_widget(Some(&search_entry));
-    content.append(&header);
+    toolbar.add_top_bar(&header);
 
-    // scrollable content
     let scroll = gtk::ScrolledWindow::new();
     scroll.set_vexpand(true);
     scroll.set_hscrollbar_policy(gtk::PolicyType::Never);
@@ -42,52 +50,34 @@ pub fn show(parent: &impl IsA<gtk::Window>, on_selected: impl Fn(String) + 'stat
     main_box.set_margin_end(12);
 
     scroll.set_child(Some(&main_box));
-    content.append(&scroll);
+    toolbar.set_content(Some(&scroll));
+    dialog.set_child(Some(&toolbar));
 
-    // initial populate
-    populate_all(&main_box, &registry, &callback, &win);
+    populate_all(&main_box, registry, &callback, &dialog);
 
-    // search handler
     {
         let mb = main_box.clone();
-        let reg = registry;
         let cb = callback.clone();
-        let w = win.clone();
+        let d = dialog.clone();
         search_entry.connect_search_changed(move |entry| {
             let query = entry.text().to_string();
             clear_box(&mb);
             if query.is_empty() {
-                populate_all(&mb, &reg, &cb, &w);
+                populate_all(&mb, registry, &cb, &d);
             } else {
-                populate_search(&mb, &reg, &query, &cb, &w);
+                populate_search(&mb, registry, &query, &cb, &d);
             }
         });
     }
 
-    // ESC to close
-    let esc = gtk::EventControllerKey::new();
-    {
-        let w = win.clone();
-        esc.connect_key_pressed(move |_, key, _, _| {
-            if key == gtk::gdk::Key::Escape {
-                w.close();
-                glib::Propagation::Stop
-            } else {
-                glib::Propagation::Proceed
-            }
-        });
-    }
-    win.add_controller(esc);
-
-    win.set_content(Some(&content));
-    win.present();
+    dialog.present(Some(parent));
 }
 
 fn populate_all(
     container: &gtk::Box,
     registry: &TemplateRegistry,
     callback: &Rc<dyn Fn(String)>,
-    win: &adw::Window,
+    dialog: &adw::Dialog,
 ) {
     let mut categories = registry.categories();
     categories.sort();
@@ -96,7 +86,7 @@ fn populate_all(
         if templates.is_empty() {
             continue;
         }
-        add_category_section(container, cat, &templates, callback, win);
+        add_category_section(container, cat, &templates, callback, dialog);
     }
 }
 
@@ -105,7 +95,7 @@ fn populate_search(
     registry: &TemplateRegistry,
     query: &str,
     callback: &Rc<dyn Fn(String)>,
-    win: &adw::Window,
+    dialog: &adw::Dialog,
 ) {
     let results = registry.search(query);
     if results.is_empty() {
@@ -120,7 +110,7 @@ fn populate_search(
         &gettext("Search Results"),
         &results,
         callback,
-        win,
+        dialog,
     );
 }
 
@@ -129,7 +119,7 @@ fn add_category_section(
     category: &str,
     templates: &[&WebAppTemplate],
     callback: &Rc<dyn Fn(String)>,
-    win: &adw::Window,
+    dialog: &adw::Dialog,
 ) {
     let header = gtk::Label::new(Some(category));
     header.set_halign(gtk::Align::Start);
@@ -150,25 +140,28 @@ fn add_category_section(
             .build();
         let icon = gtk::Image::new();
         icon.set_pixel_size(32);
+        icon.set_accessible_role(gtk::AccessibleRole::Presentation);
         crate::webapp_row::load_icon(&icon, &tpl.icon);
         row.add_prefix(&icon);
 
-        // DRM badge → indicate Browser mode required
+        // DRM badge → indicate Browser mode required. Tooltip isn't announced
+        // by AT-SPI, so expose the information via an accessible label.
         if tpl.requires_drm {
+            let drm_label = gettext("Requires external browser (DRM)");
             let drm_icon = gtk::Image::from_icon_name("web-browser-symbolic");
             drm_icon.set_pixel_size(16);
-            drm_icon.set_tooltip_text(Some(&gettext("Requires Browser mode (DRM)")));
+            drm_icon.set_tooltip_text(Some(&drm_label));
+            drm_icon.update_property(&[gtk::accessible::Property::Label(&drm_label)]);
             drm_icon.add_css_class("dim-label");
             row.add_suffix(&drm_icon);
         }
 
-        // fire callback immediately, then close gallery
         let cb = callback.clone();
         let tid = tpl.template_id.clone();
-        let w = win.clone();
+        let d = dialog.clone();
         row.connect_activated(move |_| {
             cb(tid.clone());
-            w.close();
+            d.close();
         });
 
         listbox.append(&row);

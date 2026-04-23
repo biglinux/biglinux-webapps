@@ -27,11 +27,18 @@ impl Browser {
     }
 
     pub fn kind(&self) -> BrowserKind {
-        let id = self.browser_id.to_lowercase();
-        if id.contains("firefox") || id.contains("librewolf") {
+        let id = &self.browser_id;
+        if id == crate::models::BrowserId::VIEWER {
+            return BrowserKind::Viewer;
+        }
+        // TOML-driven: firefox_like covers Gecko browsers added in browsers.toml.
+        // String-pattern fallback handles legacy IDs not present in the file.
+        let is_gecko = crate::browsers::find_def(id).map_or_else(
+            || id.contains("firefox") || id.contains("librewolf"),
+            |d| d.firefox_like,
+        );
+        if is_gecko {
             BrowserKind::Firefox
-        } else if id == "__viewer__" {
-            BrowserKind::Viewer
         } else {
             BrowserKind::Chromium
         }
@@ -80,47 +87,26 @@ impl BrowserCollection {
     }
 }
 
-// -- display name mapping --
+// ---------------------------------------------------------------------------
+// Display name + icon resolution — driven by browsers.toml, with fallbacks
+// ---------------------------------------------------------------------------
 
 fn display_name_for(id: &str) -> &str {
+    // OnceLock data is 'static, so &def.display_name coerces to &'_ str safely
+    if let Some(def) = crate::browsers::find_def(id) {
+        return &def.display_name;
+    }
     match id {
-        "google-chrome-stable" => "Google Chrome",
-        "google-chrome-beta" => "Google Chrome Beta",
-        "google-chrome-unstable" => "Google Chrome Dev",
-        "chromium" => "Chromium",
-        "chromium-dev" => "Chromium Dev",
-        "microsoft-edge-stable" => "Microsoft Edge",
-        "microsoft-edge-beta" => "Microsoft Edge Beta",
-        "microsoft-edge-dev" => "Microsoft Edge Dev",
-        "brave-browser" | "brave" => "Brave",
-        "brave-browser-beta" => "Brave Beta",
-        "brave-browser-nightly" => "Brave Nightly",
-        "vivaldi-stable" | "vivaldi" => "Vivaldi",
-        "vivaldi-beta" => "Vivaldi Beta",
-        "vivaldi-snapshot" => "Vivaldi Snapshot",
-        "firefox" => "Firefox",
-        "firefox-developer-edition" => "Firefox Developer",
-        "firefox-nightly" => "Firefox Nightly",
-        "librewolf" => "LibreWolf",
-        "ungoogled-chromium" => "Ungoogled Chromium",
-        "__viewer__" => "Built-in Viewer",
+        crate::models::BrowserId::VIEWER => "Built-in Viewer",
         other => other,
     }
 }
 
 fn icon_name_for(id: &str) -> String {
-    // strip flatpak prefix if present
-    let base = id
-        .strip_prefix("com.google.")
-        .or_else(|| id.strip_prefix("org.chromium."))
-        .or_else(|| id.strip_prefix("org.mozilla."))
-        .unwrap_or(id);
-
-    // handle flatpak-style IDs → map to icon filename
-    let icon = match base {
-        "Chrome" | "google-chrome-stable" => "google-chrome-stable",
-        "Chromium" | "chromium" => "chromium",
-        _ => base,
-    };
-    icon.to_string()
+    // For known browsers the icon name is the native browser ID
+    if let Some(def) = crate::browsers::find_def(id) {
+        return def.id.clone();
+    }
+    // Fallback: strip flatpak- prefix and return remainder
+    id.strip_prefix("flatpak-").unwrap_or(id).to_string()
 }

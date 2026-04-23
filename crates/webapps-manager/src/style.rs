@@ -2,49 +2,56 @@ use gtk4 as gtk;
 use gtk4::gdk as gdk4;
 
 const CSS: &str = r#"
-/* webapp icon — subtle rounding for modern look */
+/* App icon in list rows — soft rounded corners for a polished look */
 .webapp-icon {
     border-radius: 10px;
 }
 
-/* webapp row — refined spacing */
-.webapp-row {
-    padding: 6px 12px;
-    min-height: 56px;
-}
-
-/* category header */
-.category-header {
-    padding-top: 18px;
-    padding-bottom: 6px;
-}
-
-/* action button — circular, subtle */
-.action-btn {
-    border-radius: 50%;
-    min-width: 36px;
-    min-height: 36px;
-    padding: 6px;
-}
-
-/* app mode badge */
-.app-mode-badge {
-    font-size: 0.7em;
-    font-weight: bold;
-    padding: 2px 8px;
-    border-radius: 12px;
-    background: alpha(@accent_bg_color, 0.15);
-    color: @accent_fg_color;
-}
-
-/* empty state refinement */
+/* Empty-state icon is decorative; soften its presence */
 .empty-state-icon {
-    opacity: 0.6;
+    opacity: 0.72;
 }
 
-/* delete button hover emphasis */
-.action-btn.error:hover {
-    background: alpha(@error_bg_color, 0.15);
+/* Segmented action bar on webapp rows — three buttons share a rounded
+   container divided by thin separators. */
+.webapp-actions {
+    padding: 0;
+}
+.webapp-actions > button {
+    min-width: 34px;
+    min-height: 32px;
+    padding: 4px 10px;
+    background-color: alpha(currentColor, 0.07);
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    transition: background-color 140ms ease-out;
+}
+.webapp-actions > button:hover {
+    background-color: alpha(currentColor, 0.14);
+}
+.webapp-actions > button:active {
+    background-color: alpha(currentColor, 0.20);
+}
+.webapp-actions > button:not(:last-child) {
+    border-right: 1px solid alpha(currentColor, 0.10);
+}
+.webapp-actions > button:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.webapp-actions > button:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.webapp-actions > button.destructive {
+    color: @error_color;
+}
+.webapp-actions > button.destructive:hover {
+    background-color: alpha(@error_color, 0.15);
+}
+.webapp-actions > button.destructive:active {
+    background-color: alpha(@error_color, 0.25);
 }
 "#;
 

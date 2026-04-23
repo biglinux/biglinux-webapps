@@ -1,0 +1,13 @@
+[package]
+name = "webapps-exec"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "big-webapps-exec"
+path = "src/main.rs"
+
+[dependencies]
+webapps-core = { path = "../webapps-core" }
+libc = "0.2"

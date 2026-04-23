@@ -2,6 +2,7 @@
 resolver = "2"
 members = [
     "crates/webapps-core",
+    "crates/webapps-exec",
     "crates/webapps-viewer",
     "crates/webapps-manager",
 ]
@@ -28,11 +29,11 @@ anyhow = "1"
 dirs = "6"
 clap = { version = "4", features = ["derive"] }
 reqwest = { version = "0.12", default-features = false, features = ["native-tls", "blocking"] }
-scraper = "0.22"
-zbus = "5"
-tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
+scraper = "0.26"
 image = { version = "0.25", default-features = false, features = ["png", "ico"] }
+url = "2"
 gettextrs = { package = "gettext-rs", version = "0.7", features = ["gettext-system"] }
+toml = "0.8"
 
 [profile.release]
 lto = "thin"

@@ -10,5 +10,6 @@ serde_json.workspace = true
 log.workspace = true
 anyhow.workspace = true
 dirs.workspace = true
-url = "2"
+url.workspace = true
 gettextrs.workspace = true
+toml.workspace = true

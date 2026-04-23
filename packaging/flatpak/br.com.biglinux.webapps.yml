@@ -1,0 +1,106 @@
+# Flatpak manifest for BigLinux WebApps.
+#
+# Local test build (source = this working tree):
+#   flatpak-builder --user --install --force-clean build-dir \
+#       packaging/flatpak/br.com.biglinux.webapps.yml
+#
+# For Flathub submission the git source below has to be pinned to a tag/commit
+# and offline cargo dependencies must be generated via
+# `packaging/flatpak/generate-cargo-sources.sh` (creates cargo-sources.json).
+app-id: br.com.biglinux.webapps
+runtime: org.gnome.Platform
+# GNOME 48 (March 2025) is the current Flathub-recommended branch. Bump in
+# lock-step with GNOME upstream releases — each branch is supported for one
+# year. `rust-stable` must match the underlying Freedesktop base (24.08 for
+# GNOME 48); verify with `flatpak info -m org.gnome.Sdk//<ver>`.
+runtime-version: '48'
+sdk: org.gnome.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+command: big-webapps-gui
+
+finish-args:
+  # Display + input
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --share=ipc
+  - --device=dri
+  # WebKitGTK sandbox helper needs /dev/shm
+  - --device=shm
+  # Network for favicon/title fetch and webapp navigation
+  - --share=network
+  # User can place webapps pointing to local files; grant read-only home access
+  - --filesystem=home:ro
+  # Desktop integration: write .desktop / icon files the manager creates
+  - --filesystem=xdg-data/applications:create
+  - --filesystem=xdg-data/icons:create
+  # Flatpak browser detection — list installed browsers via the host spawn bus
+  - --talk-name=org.freedesktop.Flatpak
+  # Inter-app launch hook (xdg-open equivalents)
+  - --talk-name=org.freedesktop.portal.OpenURI
+  # Notifications from webapps
+  - --talk-name=org.freedesktop.Notifications
+  # Read host theme/fonts for a native look
+  - --filesystem=xdg-config/gtk-3.0:ro
+  - --filesystem=xdg-config/gtk-4.0:ro
+
+build-options:
+  append-path: /usr/lib/sdk/rust-stable/bin
+  build-args:
+    - --share=network  # drop on Flathub once cargo-sources.json is wired up
+  env:
+    CARGO_HOME: /run/build/biglinux-webapps/cargo
+    RUST_BACKTRACE: '1'
+
+modules:
+  - name: biglinux-webapps
+    buildsystem: simple
+    build-commands:
+      # Compile all three Rust binaries in the workspace
+      - cargo build --release --locked --workspace
+
+      # Install binaries
+      - install -Dm755 target/release/big-webapps-gui   "${FLATPAK_DEST}/bin/big-webapps-gui"
+      - install -Dm755 target/release/big-webapps-viewer "${FLATPAK_DEST}/bin/big-webapps-viewer"
+      - install -Dm755 target/release/big-webapps-exec   "${FLATPAK_DEST}/bin/big-webapps-exec"
+
+      # Desktop entry
+      - install -Dm644 biglinux-webapps/usr/share/applications/br.com.biglinux.webapps.desktop
+          "${FLATPAK_DEST}/share/applications/br.com.biglinux.webapps.desktop"
+
+      # AppStream metadata (Flathub gate)
+      - install -Dm644 biglinux-webapps/usr/share/metainfo/br.com.biglinux.webapps.metainfo.xml
+          "${FLATPAK_DEST}/share/metainfo/br.com.biglinux.webapps.metainfo.xml"
+
+      # Icons — scalable plus the Flatpak-expected app-id-named copy
+      - install -Dm644 biglinux-webapps/usr/share/icons/hicolor/scalable/apps/big-webapps.svg
+          "${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/br.com.biglinux.webapps.svg"
+      - install -Dm644 biglinux-webapps/usr/share/icons/hicolor/scalable/apps/big-webapps-symbolic.svg
+          "${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/br.com.biglinux.webapps-symbolic.svg"
+
+      # Browser definitions (runtime-editable)
+      - install -Dm644 biglinux-webapps/usr/share/biglinux-webapps/browsers.toml
+          "${FLATPAK_DEST}/share/biglinux-webapps/browsers.toml"
+
+      # Compile + install translations
+      - |
+        for po in po/*.po; do
+          lang="$(basename "$po" .po)"
+          locale_dir="${lang//-/_}"
+          msgfmt -o "/tmp/${lang}.mo" "$po"
+          install -Dm644 "/tmp/${lang}.mo" \
+            "${FLATPAK_DEST}/share/locale/${locale_dir}/LC_MESSAGES/biglinux-webapps.mo"
+        done
+
+    sources:
+      - type: dir
+        # Points at the working tree so `flatpak-builder` can consume the
+        # local checkout directly. For Flathub, replace this block with a
+        # `type: git` block pinning the release tag, and include
+        # `cargo-sources.json` for offline crate fetching.
+        path: ../..
+        skip:
+          - target
+          - .git
+          - packaging/arch/pkg
+          - packaging/arch/src
