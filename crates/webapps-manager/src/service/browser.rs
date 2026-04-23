@@ -1,83 +1,46 @@
 use std::path::Path;
 
+use webapps_core::browsers::browser_defs;
 use webapps_core::models::{Browser, BrowserCollection};
 
+/// Detect all installed browsers (native + Flatpak) and identify the system default.
+///
+/// Browser support is driven by `/usr/share/biglinux-webapps/browsers.toml` (or the
+/// version embedded in the binary as a fallback). Add new browsers there — no
+/// recompilation needed.
 pub fn detect_browsers() -> BrowserCollection {
-    // (browser_id, [candidate_paths]) — first existing path wins
-    let known_browsers: &[(&str, &[&str])] = &[
-        ("firefox", &["/usr/bin/firefox"]),
-        (
-            "firefox-developer-edition",
-            &["/usr/bin/firefox-developer-edition"],
-        ),
-        ("librewolf", &["/usr/bin/librewolf"]),
-        ("google-chrome-stable", &["/usr/bin/google-chrome-stable"]),
-        ("google-chrome-beta", &["/usr/bin/google-chrome-beta"]),
-        ("google-chrome-unstable", &["/usr/bin/google-chrome-unstable"]),
-        ("chromium", &["/usr/bin/chromium"]),
-        (
-            "brave",
-            &[
-                "/usr/bin/brave",
-                "/usr/bin/brave-browser",
-                "/usr/bin/brave-browser-stable",
-            ],
-        ),
-        (
-            "brave-beta",
-            &["/usr/bin/brave-browser-beta", "/usr/bin/brave-beta"],
-        ),
-        (
-            "brave-nightly",
-            &["/usr/bin/brave-browser-nightly", "/usr/bin/brave-nightly"],
-        ),
-        ("microsoft-edge-stable", &["/usr/bin/microsoft-edge-stable"]),
-        ("microsoft-edge-beta", &["/usr/bin/microsoft-edge-beta"]),
-        ("vivaldi-stable", &["/usr/bin/vivaldi-stable"]),
-        ("vivaldi-beta", &["/usr/bin/vivaldi-beta"]),
-        ("vivaldi-snapshot", &["/usr/bin/vivaldi-snapshot"]),
-        ("ungoogled-chromium", &["/usr/bin/ungoogled-chromium"]),
-    ];
-
+    let defs = browser_defs();
     let mut browsers: Vec<Browser> = Vec::new();
 
-    for (id, paths) in known_browsers {
-        if paths.iter().any(|p| Path::new(p).exists()) {
+    // Native: first existing candidate path wins
+    for def in defs {
+        if def.native_paths.iter().any(|p| Path::new(p).exists()) {
             browsers.push(Browser {
-                browser_id: id.to_string(),
+                browser_id: def.id.clone(),
                 is_default: false,
             });
         }
     }
 
-    // detect flatpak browsers
+    // Flatpak: entries with flatpak_app_id + flatpak_id
     if let Ok(output) = std::process::Command::new("flatpak")
         .args(["list", "--app", "--columns=application"])
         .output()
     {
         let stdout = String::from_utf8_lossy(&output.stdout);
-        let flatpak_map = [
-            ("org.mozilla.firefox", "flatpak-firefox"),
-            ("com.google.Chrome", "flatpak-google-chrome-stable"),
-            ("org.chromium.Chromium", "flatpak-chromium"),
-            ("com.brave.Browser", "flatpak-brave-browser"),
-            ("com.microsoft.Edge", "flatpak-microsoft-edge-stable"),
-            ("com.vivaldi.Vivaldi", "flatpak-vivaldi-stable"),
-            ("io.gitlab.librewolf-community", "flatpak-librewolf"),
-        ];
-        for (flatpak_id, browser_id) in &flatpak_map {
-            if stdout.lines().any(|l| l.trim() == *flatpak_id) {
-                browsers.push(Browser {
-                    browser_id: browser_id.to_string(),
-                    is_default: false,
-                });
+        for def in defs {
+            if let (Some(app_id), Some(fid)) = (&def.flatpak_app_id, &def.flatpak_id) {
+                if stdout.lines().any(|l| l.trim() == app_id.as_str()) {
+                    browsers.push(Browser {
+                        browser_id: fid.clone(),
+                        is_default: false,
+                    });
+                }
             }
         }
     }
 
-    // detect system default
-    let default_id = detect_default_browser();
-
+    let default_id = detect_default_browser(defs);
     let mut col = BrowserCollection {
         browsers,
         default_id: None,
@@ -88,39 +51,107 @@ pub fn detect_browsers() -> BrowserCollection {
     col
 }
 
-fn detect_default_browser() -> Option<String> {
-    let output = std::process::Command::new("xdg-settings")
-        .args(["get", "default-web-browser"])
-        .output()
-        .ok()?;
-    let desktop_name = String::from_utf8_lossy(&output.stdout).trim().to_string();
-    if desktop_name.is_empty() {
-        return None;
-    }
-    match_desktop_to_browser(&desktop_name)
+fn detect_default_browser(defs: &[webapps_core::browsers::BrowserDef]) -> Option<String> {
+    let desktop = query_default_browser()?;
+    resolve_default_id(defs, &desktop)
 }
 
-fn match_desktop_to_browser(desktop: &str) -> Option<String> {
-    let d = desktop.to_lowercase();
-    let mappings = [
-        ("firefox", "firefox"),
-        ("firefox-developer", "firefox-developer-edition"),
-        ("librewolf", "librewolf"),
-        ("google-chrome-stable", "google-chrome-stable"),
-        ("google-chrome-beta", "google-chrome-beta"),
-        ("google-chrome-unstable", "google-chrome-unstable"),
-        ("chromium", "chromium"),
-        ("brave", "brave"),
-        ("microsoft-edge-stable", "microsoft-edge-stable"),
-        ("microsoft-edge-beta", "microsoft-edge-beta"),
-        ("vivaldi-stable", "vivaldi-stable"),
-        ("vivaldi-beta", "vivaldi-beta"),
-        ("vivaldi-snapshot", "vivaldi-snapshot"),
-    ];
-    for (pattern, id) in &mappings {
-        if d.contains(pattern) {
-            return Some(id.to_string());
+fn query_default_browser() -> Option<String> {
+    // xdg-settings is the canonical source; xdg-mime is the fallback for
+    // distros/desktops where xdg-settings isn't configured.
+    let primary = std::process::Command::new("xdg-settings")
+        .args(["get", "default-web-browser"])
+        .output()
+        .ok()
+        .map(|o| String::from_utf8_lossy(&o.stdout).trim().to_lowercase())
+        .filter(|s| !s.is_empty());
+    if primary.is_some() {
+        return primary;
+    }
+    std::process::Command::new("xdg-mime")
+        .args(["query", "default", "x-scheme-handler/http"])
+        .output()
+        .ok()
+        .map(|o| String::from_utf8_lossy(&o.stdout).trim().to_lowercase())
+        .filter(|s| !s.is_empty())
+}
+
+/// Map a `.desktop` filename to a `browser_id`. Collects every pattern, alias,
+/// or Flatpak app-id that appears in the desktop name and keeps the longest —
+/// so `brave-beta.desktop` picks `brave-beta` over `brave`, and
+/// `google-chrome.desktop` picks `google-chrome-stable` via its alias even
+/// though the full `google-chrome-stable` pattern isn't present.
+fn resolve_default_id(
+    defs: &[webapps_core::browsers::BrowserDef],
+    desktop: &str,
+) -> Option<String> {
+    let mut candidates: Vec<(usize, String)> = Vec::new();
+    for def in defs {
+        if !def.desktop_pattern.is_empty() && desktop.contains(&def.desktop_pattern) {
+            candidates.push((def.desktop_pattern.len(), def.id.clone()));
+        }
+        for alias in &def.desktop_aliases {
+            if !alias.is_empty() && desktop.contains(alias.as_str()) {
+                candidates.push((alias.len(), def.id.clone()));
+            }
+        }
+        // Flatpak default: xdg-settings returns the reverse-DNS app-id; in
+        // that case we hand back the `flatpak_id`, not the native `id`.
+        if let (Some(app_id), Some(flatpak_id)) = (&def.flatpak_app_id, &def.flatpak_id) {
+            let lowered = app_id.to_lowercase();
+            if !lowered.is_empty() && desktop.contains(&lowered) {
+                candidates.push((lowered.len(), flatpak_id.clone()));
+            }
         }
     }
-    None
+    candidates.sort_by_key(|(len, _)| std::cmp::Reverse(*len));
+    candidates.into_iter().next().map(|(_, id)| id)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use webapps_core::browsers::browser_defs;
+
+    #[test]
+    fn chrome_desktop_resolves_to_stable_via_alias() {
+        let id = resolve_default_id(browser_defs(), "google-chrome.desktop");
+        assert_eq!(id.as_deref(), Some("google-chrome-stable"));
+    }
+
+    #[test]
+    fn chrome_beta_desktop_prefers_specific_pattern() {
+        let id = resolve_default_id(browser_defs(), "google-chrome-beta.desktop");
+        assert_eq!(id.as_deref(), Some("google-chrome-beta"));
+    }
+
+    #[test]
+    fn edge_desktop_resolves_to_stable_via_alias() {
+        let id = resolve_default_id(browser_defs(), "microsoft-edge.desktop");
+        assert_eq!(id.as_deref(), Some("microsoft-edge-stable"));
+    }
+
+    #[test]
+    fn vivaldi_desktop_resolves_to_stable_via_alias() {
+        let id = resolve_default_id(browser_defs(), "vivaldi.desktop");
+        assert_eq!(id.as_deref(), Some("vivaldi-stable"));
+    }
+
+    #[test]
+    fn brave_beta_desktop_prefers_specific_pattern() {
+        let id = resolve_default_id(browser_defs(), "brave-browser-beta.desktop");
+        assert_eq!(id.as_deref(), Some("brave-beta"));
+    }
+
+    #[test]
+    fn flatpak_firefox_desktop_returns_flatpak_id() {
+        let id = resolve_default_id(browser_defs(), "org.mozilla.firefox.desktop");
+        assert_eq!(id.as_deref(), Some("flatpak-firefox"));
+    }
+
+    #[test]
+    fn unknown_desktop_returns_none() {
+        let id = resolve_default_id(browser_defs(), "some-other-browser.desktop");
+        assert!(id.is_none());
+    }
 }

@@ -1,0 +1,1106 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the biglinux-webapps package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: biglinux-webapps\n"
+"Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
+"POT-Creation-Date: 2026-04-23 09:40+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: is\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
+#: crates/webapps-manager/src/browser_dialog.rs:36
+msgid "Select Browser"
+msgstr "Veldu vafra"
+
+#: crates/webapps-manager/src/browser_dialog.rs:68
+msgid "Auto-hide headerbar"
+msgstr "Fela hausstikuna sjálfkrafa"
+
+#: crates/webapps-manager/src/browser_dialog.rs:70
+msgid "Hide the titlebar; reveal it by moving the cursor to the top edge."
+msgstr ""
+"Felur titilstikuna; birtu hana aftur með því að færa bendilinn að efri brún."
+
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+#: crates/webapps-manager/src/browser_dialog.rs:148
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:43
+#: crates/webapps-manager/src/window/actions/remove_all.rs:28
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:133
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:186
+#: crates/webapps-manager/src/window/list.rs:193
+msgid "Cancel"
+msgstr "Hætta við"
+
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 357
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
+#: crates/webapps-manager/src/browser_dialog.rs:149
+msgid "OK"
+msgstr "Í lagi"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
+#: crates/webapps-manager/src/browser_dialog.rs:194
+#: crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:169
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:65
+msgid "Internal Browser"
+msgstr "Innbyggður vafri"
+
+#: crates/webapps-manager/src/browser_dialog.rs:196
+msgid ""
+"Embedded browser with better system integration. May not work on all "
+"websites."
+msgstr ""
+"Innbyggður vafri með betri kerfissamþættingu. Virkar hugsanlega ekki á "
+"öllumvefsíðum."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 50
+#: crates/webapps-manager/src/template_gallery.rs:30
+msgid "Choose a Template"
+msgstr "Veldu sniðmát"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 56
+#: crates/webapps-manager/src/template_gallery.rs:37
+msgid "Search templates..."
+msgstr "Leita að sniðmátum..."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 96
+#: crates/webapps-manager/src/template_gallery.rs:102
+msgid "No templates found"
+msgstr "Engin ekki fundin."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 94
+#: crates/webapps-manager/src/template_gallery.rs:110
+msgid "Search Results"
+msgstr "Leitni niðurstöður"
+
+#: crates/webapps-manager/src/template_gallery.rs:150
+msgid "Requires external browser (DRM)"
+msgstr "Krefst ytri vafra (DRM)"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 445
+#: crates/webapps-manager/src/webapp_dialog/handlers/lifecycle.rs:99
+msgid "Failed to save webapp"
+msgstr "Mistókst að vista vefforrit"
+
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:50
+msgid "Icon candidate {n}"
+msgstr "Táknmyndakostur {n}"
+
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:88
+msgid "Select Icon"
+msgstr "Veldu tákn"
+
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:94
+msgid "Images"
+msgstr "Myndir"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 290
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:20
+#| msgid "Application menu category"
+msgid "Application Icon"
+msgstr "Tákn forrits"
+
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 90
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 179
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 240
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:27
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:31
+msgid "Select"
+msgstr "Veldu"
+
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:39
+msgid "Detected icon candidates"
+msgstr "Fundnir táknmyndakostir"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 221
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:44
+msgid "Category"
+msgstr "Flokkur"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 226
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:23
+msgid "Browser"
+msgstr "Vafri"
+
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:75
+msgid "Use separate profile"
+msgstr "Notaðu aðskilda prófíl"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 345
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:77
+#| msgid "Allows independent cookies and sessions"
+msgid "Allows independent cookies and sessions for this webapp"
+msgstr "Leyfir aðskildar smákökur og lotur fyrir þetta vefforrit"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:86
+msgid "Profile Name"
+msgstr "Nafn prófíls"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 152
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:16
+msgid "URL"
+msgstr "Vefslóð"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 156
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:19
+msgid "Detect"
+msgstr "Greina"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 157
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:20
+msgid "Detect name and icon from website"
+msgstr "Greina nafn og tákn frá vefsíðu"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 166
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 480
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:25
+msgid "Name"
+msgstr "Nafn"
+
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:23
+#: crates/webapps-manager/src/window/shortcuts_window.rs:20
+msgid "New WebApp"
+msgstr "Nýtt WebApp"
+
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 104
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:25
+msgid "Edit WebApp"
+msgstr "Breyta Vefforrit"
+
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:44
+msgid "Save"
+msgstr "Vista"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 336
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:59
+#| msgid "Loading..."
+msgid "Loading…"
+msgstr "Hleð…"
+
+#: crates/webapps-manager/src/webapp_row.rs:86
+msgid "Change browser"
+msgstr "Skiptu um vafra"
+
+#: crates/webapps-manager/src/webapp_row.rs:96
+msgid "Edit"
+msgstr "Breyta"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
+#: crates/webapps-manager/src/webapp_row.rs:106
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:187
+#: crates/webapps-manager/src/window/list.rs:194
+#| msgid "Remove All"
+msgid "Remove"
+msgstr "Fjarlægja"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
+#: crates/webapps-manager/src/welcome_dialog.rs:20
+#: crates/webapps-manager/src/welcome_dialog.rs:47
+msgid "Welcome to WebApps Manager"
+msgstr "Velkomin í WebApps Stjóra"
+
+#: crates/webapps-manager/src/welcome_dialog.rs:60
+msgid "What are WebApps?"
+msgstr "Hvað eru WebApps?"
+
+#: crates/webapps-manager/src/welcome_dialog.rs:61
+msgid ""
+"WebApps are web applications that run in a dedicated browser window, "
+"providing a more app-like experience for your favorite websites."
+msgstr ""
+"WebApps eru vefforrit sem keyra í sérstökum vafraglugga og bjóða upp á "
+"upplifun sem líkist forriti fyrir uppáhaldsvefsíðurnar þínar."
+
+#: crates/webapps-manager/src/welcome_dialog.rs:62
+msgid "Benefits of using WebApps:"
+msgstr "Kostir við að nota WebApps:"
+
+#: crates/webapps-manager/src/welcome_dialog.rs:63
+msgid "Focus"
+msgstr "Einbeiting"
+
+#: crates/webapps-manager/src/welcome_dialog.rs:63
+msgid "Work without the distractions of other browser tabs"
+msgstr "Vinna án truflana frá öðrum flipa í vafranum"
+
+#: crates/webapps-manager/src/welcome_dialog.rs:64
+msgid "Desktop Integration"
+msgstr "Þráðtenging við skjáborð"
+
+#: crates/webapps-manager/src/welcome_dialog.rs:64
+msgid "Quick access from your application menu"
+msgstr "Hraður aðgangur úr forritavalmyndinni þinni"
+
+#: crates/webapps-manager/src/welcome_dialog.rs:65
+msgid "Isolated Profiles"
+msgstr "Aðskilin prófíl"
+
+#: crates/webapps-manager/src/welcome_dialog.rs:65
+msgid "Each webapp can have its own cookies and settings"
+msgstr "Hvert webapp getur haft sín eigin smákökur og stillingar"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
+#: crates/webapps-manager/src/welcome_dialog.rs:82
+msgid "Don't show this again"
+msgstr "Ekki sýna þetta aftur"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
+#: crates/webapps-manager/src/welcome_dialog.rs:94
+msgid "Let's Start"
+msgstr "לְבַשֵּׁל"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
+#: crates/webapps-manager/src/window/actions/about.rs:15
+#: crates/webapps-manager/src/window/ui.rs:22
+msgid "WebApps Manager"
+msgstr "Vefforritastjóri"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 62
+#: crates/webapps-manager/src/window/actions/import_export.rs:20
+#: crates/webapps-manager/src/window/ui.rs:104
+msgid "Import WebApps"
+msgstr "Flytja vefforrit"
+
+#: crates/webapps-manager/src/window/actions/import_export.rs:24
+msgid "ZIP files"
+msgstr "ZIP skrár"
+
+#: crates/webapps-manager/src/window/actions/import_export.rs:49
+msgid "Import failed"
+msgstr "Innflutningur mistókst"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 61
+#: crates/webapps-manager/src/window/actions/import_export.rs:67
+#: crates/webapps-manager/src/window/ui.rs:105
+msgid "Export WebApps"
+msgstr "Flytja út vefforrit"
+
+#: crates/webapps-manager/src/window/actions/import_export.rs:87
+msgid "Export failed"
+msgstr "Útflutningur mistókst"
+
+#: crates/webapps-manager/src/window/actions/import_export.rs:101
+msgid "Imported {imported}, skipped {dups} duplicates"
+msgstr "Flutt inn {imported}, sleppt {dups} tvíriti"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
+#: crates/webapps-manager/src/window/actions/import_export.rs:108
+msgid "No WebApps"
+msgstr "Engin ekki vefforrit."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 166
+#: crates/webapps-manager/src/window/actions/import_export.rs:110
+msgid "WebApps exported successfully"
+msgstr "Vefforritin fluttast út með góðum árangri"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
+#: crates/webapps-manager/src/window/actions/remove_all.rs:23
+#: crates/webapps-manager/src/window/ui.rs:120
+msgid "Remove All WebApps"
+msgstr "Fjarlægja allar vefforrit."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 346
+#: crates/webapps-manager/src/window/actions/remove_all.rs:25
+#| msgid ""
+#| "Are you sure you want to remove all your WebApps? This action cannot be undone.\n"
+#| "\n"
+#| "Type \"{0}\" to confirm."
+msgid ""
+"Are you sure you want to remove all your WebApps? This action cannot be "
+"undone."
+msgstr ""
+"Ertu viss um að þú viljir fjarlægja öll WebApps-forritin þín? Ekki er hægt "
+"að afturkalla þessa aðgerð."
+
+#: crates/webapps-manager/src/window/actions/remove_all.rs:29
+msgid "Continue"
+msgstr "Halda áfram"
+
+#: crates/webapps-manager/src/window/actions/remove_all.rs:47
+msgid "Final Confirmation"
+msgstr "Lokastaðfesting"
+
+#: crates/webapps-manager/src/window/actions/remove_all.rs:49
+msgid "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
+msgstr "Ertu ALVEG viss um að þú viljir fjarlægja ÖLL WebApps-forritin þín?"
+
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+#: crates/webapps-manager/src/window/actions/remove_all.rs:52
+#| msgid "Cancel"
+msgid "No, Cancel"
+msgstr "Nei, hætta við"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
+#: crates/webapps-manager/src/window/actions/remove_all.rs:53
+#| msgid "Remove All"
+msgid "Yes, Remove All"
+msgstr "Já, fjarlægja allt"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
+#: crates/webapps-manager/src/window/actions/remove_all.rs:74
+msgid "All WebApps have been removed"
+msgstr "Öll vefforrit hafa verið fjarlægð."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 445
+#: crates/webapps-manager/src/window/actions/remove_all.rs:79
+msgid "Failed to remove all WebApps"
+msgstr "Ekki tókst að fjarlægja allar vefforrit."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:27
+#| msgid "No WebApps Found"
+msgid "No WebApps to remove"
+msgstr "Engin WebApps til að fjarlægja"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:32
+#| msgid "Remove All WebApps"
+msgid "Remove WebApps"
+msgstr "Fjarlægja WebApps"
+
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:42
+#| msgid ""
+#| "This will delete all webapps and their desktop entries. This cannot be "
+#| "undone."
+msgid "Select the WebApps you want to remove. This cannot be undone."
+msgstr ""
+"Veldu WebApps sem þú vilt fjarlægja. Ekki er hægt að afturkalla þessa "
+"aðgerð."
+
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 90
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 179
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 240
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:63
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:65
+#| msgid "Select"
+msgid "Select all"
+msgstr "Velja allt"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:134
+#| msgid "Remove All"
+msgid "Remove Selected"
+msgstr "Fjarlægja valið"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:157
+#| msgid "Delete WebApp"
+msgid "Select at least one WebApp"
+msgstr "Veldu að minnsta kosti eitt WebApp"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:176
+#| msgid "Remove All WebApps"
+msgid "Remove Selected WebApps?"
+msgstr "Fjarlægja valin WebApps?"
+
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:178
+#| msgid ""
+#| "This will delete all webapps and their desktop entries. This cannot be "
+#| "undone."
+msgid ""
+"This will remove {count} WebApps and their desktop entries. This cannot be "
+"undone."
+msgstr ""
+"Þetta mun fjarlægja {count} WebApps og skjáborðsfærslur þeirra. Ekki er hægt"
+" að afturkalla þessa aðgerð."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:218
+#| msgid "All WebApps have been removed"
+msgid "{count} WebApps removed"
+msgstr "{count} WebApps fjarlægð"
+
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:220
+msgid "{ok} removed, {fail} failed"
+msgstr "{ok} fjarlægð, {fail} mistókst"
+
+#: crates/webapps-manager/src/window/list.rs:37
+msgid "{} results"
+msgstr "{} niðurstöður"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
+#: crates/webapps-manager/src/window/list.rs:57
+#| msgid "No WebApps"
+msgid "No WebApps yet"
+msgstr "Engin WebApps ennþá"
+
+#: crates/webapps-manager/src/window/list.rs:59
+msgid "Turn any website into a desktop app. Press Add to get started."
+msgstr ""
+"Breyttu hvaða vefsíðu sem er í skjáborðsforrit. Ýttu á Bæta við til að "
+"byrja."
+
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 109
+#: crates/webapps-manager/src/window/list.rs:65
+#: crates/webapps-manager/src/window/ui.rs:39
+#: crates/webapps-manager/src/window/ui.rs:40
+msgid "Add WebApp"
+msgstr "Bæta við Vefforriti"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 214
+#: crates/webapps-manager/src/window/list.rs:124
+#: crates/webapps-manager/src/window/mod.rs:118
+msgid "WebApp created successfully"
+msgstr "Vefforrit búið til með góðum árangri"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 257
+#: crates/webapps-manager/src/window/list.rs:141
+msgid "WebApp updated successfully"
+msgstr "Vefforrit uppfært með góðum árangri"
+
+#: crates/webapps-manager/src/window/list.rs:177
+msgid "Browser changed"
+msgstr "Vafri breyttur"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
+#: crates/webapps-manager/src/window/list.rs:190
+#| msgid "Remove All WebApps"
+msgid "Remove WebApp?"
+msgstr "Fjarlægja WebApp?"
+
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+#: crates/webapps-manager/src/window/list.rs:203
+msgid "Also delete configuration folder"
+msgstr "Einnig eyða stillingaskránni."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
+#: crates/webapps-manager/src/window/list.rs:223
+#| msgid "All WebApps have been removed"
+msgid "WebApp removed"
+msgstr "WebApp fjarlægt"
+
+#: crates/webapps-manager/src/window/shortcuts_window.rs:18
+msgid "General"
+msgstr "Almennt"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 94
+#: crates/webapps-manager/src/window/shortcuts_window.rs:21
+msgid "Search"
+msgstr "Leita"
+
+#: crates/webapps-manager/src/window/shortcuts_window.rs:22
+msgid "Quit"
+msgstr "Hætta"
+
+#: crates/webapps-manager/src/window/shortcuts_window.rs:23
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:40
+msgid "Show this dialog"
+msgstr "Sýna þennan glugga"
+
+#: crates/webapps-manager/src/window/shortcuts_window.rs:26
+#: crates/webapps-manager/src/window/shortcuts_window.rs:32
+#: crates/webapps-manager/src/window/ui.rs:124
+#: crates/webapps-viewer/src/window/chrome.rs:90
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:45
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:53
+msgid "Keyboard Shortcuts"
+msgstr "Flýtilyklar"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 51
+#: crates/webapps-manager/src/window/ui.rs:34
+#: crates/webapps-manager/src/window/ui.rs:35
+msgid "Search WebApps"
+msgstr "Leitaðu að Vefforritum"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 72
+#: crates/webapps-manager/src/window/ui.rs:38
+msgid "Add"
+msgstr "Bæta við"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 79
+#: crates/webapps-manager/src/window/ui.rs:47
+msgid "Main Menu"
+msgstr "Aðalvalmynd"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 65
+#: crates/webapps-manager/src/window/ui.rs:107
+msgid "Browse Applications Folder"
+msgstr "Skoða forritaskrá"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 66
+#: crates/webapps-manager/src/window/ui.rs:111
+msgid "Browse Profiles Folder"
+msgstr "Skoða möppu prófíla"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
+#: crates/webapps-manager/src/window/ui.rs:117
+#| msgid "Remove All WebApps"
+msgid "Remove WebApps in Bulk"
+msgstr "Fjarlægja WebApps í einu lagi"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
+#: crates/webapps-manager/src/window/ui.rs:125
+msgid "About"
+msgstr "Um umfjöllun"
+
+#: crates/webapps-manager/src/window/mod.rs:45
+msgid "Detecting installed browsers…"
+msgstr "Greini uppsetta vafra…"
+
+#: crates/webapps-viewer/src/window/chrome.rs:23
+msgid "Back"
+msgstr "Til baka"
+
+#: crates/webapps-viewer/src/window/chrome.rs:24
+msgid "Forward"
+msgstr "Áfram"
+
+#: crates/webapps-viewer/src/window/chrome.rs:25
+msgid "Reload"
+msgstr "Endurhlaða"
+
+#: crates/webapps-viewer/src/window/chrome.rs:27
+msgid "Fullscreen"
+msgstr "Allur skjár"
+
+#: crates/webapps-viewer/src/window/chrome.rs:41
+msgid "Enter URL…"
+msgstr "Sláðu inn URL…"
+
+#: crates/webapps-viewer/src/window/chrome.rs:82
+msgid "Zoom In"
+msgstr "Stækka"
+
+#: crates/webapps-viewer/src/window/chrome.rs:83
+msgid "Zoom Out"
+msgstr "Minnka"
+
+#: crates/webapps-viewer/src/window/chrome.rs:84
+msgid "Reset Zoom"
+msgstr "Endurstilla aðdrátt"
+
+#: crates/webapps-viewer/src/window/chrome.rs:86
+msgid "Developer Tools"
+msgstr "Forritaraverkfæri"
+
+#: crates/webapps-viewer/src/window/chrome.rs:96
+#: crates/webapps-viewer/src/window/chrome.rs:98
+msgid "Menu"
+msgstr "Valmynd"
+
+#: crates/webapps-viewer/src/window/context_menu.rs:27
+msgid "Open Link in Browser"
+msgstr "Opna hlekk í vafra"
+
+#: crates/webapps-viewer/src/window/downloads/mod.rs:28
+msgid "Download Complete"
+msgstr "Niðurhal lokið"
+
+#: crates/webapps-viewer/src/window/downloads/mod.rs:37
+msgid "Save File"
+msgstr "Vista skrá"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:87
+msgid "Camera Access"
+msgstr "Aðgangur að myndavél"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:88
+msgid "This webapp wants to use your camera. Allow?"
+msgstr "Þetta vefforrit vill nota myndavélina þína. Leyfa?"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:91
+msgid "Microphone Access"
+msgstr "Aðgangur að hljóðnema"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:92
+msgid "This webapp wants to use your microphone. Allow?"
+msgstr "Þetta vefforrit vill nota hljóðnemann þinn. Leyfa?"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:95
+msgid "Location Access"
+msgstr "Aðgangur að staðsetningu"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:96
+msgid "This webapp wants to access your location. Allow?"
+msgstr "Þetta vefforrit vill fá aðgang að staðsetningunni þinni. Leyfa?"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:99
+msgid "Clipboard Access"
+msgstr "Aðgangur að klippispjaldi"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:100
+msgid "This webapp wants to read from your clipboard. Allow?"
+msgstr "Þetta vefforrit vill lesa af klippispjaldinu þínu. Leyfa?"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:103
+msgid "Permission Request"
+msgstr "Leyfisbeiðni"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:104
+msgid "This webapp is requesting a special permission. Allow?"
+msgstr "Þetta vefforrit biður um sérstakt leyfi. Leyfa?"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:112
+msgid "Deny"
+msgstr "Hafna"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:113
+msgid "Allow"
+msgstr "Leyfa"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:17
+msgid "Navigation"
+msgstr "Leiðsögn"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:19
+msgid "Focus address bar"
+msgstr "Setja fókus á veffangastiku"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:20
+msgid "Reload page"
+msgstr "Endurhlaða síðu"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:21
+msgid "Go back"
+msgstr "Fara til baka"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:22
+msgid "Go forward"
+msgstr "Fara áfram"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:27
+msgid "View"
+msgstr "Sýn"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:29
+msgid "Toggle fullscreen"
+msgstr "Víxla heilskjá"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:30
+msgid "Zoom in"
+msgstr "Þysja inn"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:31
+msgid "Zoom out"
+msgstr "Þysja út"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:32
+msgid "Reset zoom"
+msgstr "Endurstilla þysjun"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:37
+msgid "Window"
+msgstr "Gluggi"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:39
+msgid "Close window"
+msgstr "Loka glugga"
+
+#~ msgid "This site requires DRM — the internal browser cannot be used"
+#~ msgstr "Þessi síða krefst DRM — ekki er hægt að nota innbyggða vafrann"
+
+#~ msgid "Advanced Settings…"
+#~ msgstr "Ítarlegar stillingar…"
+
+#~ msgid "Appearance"
+#~ msgstr "Útlit"
+
+#~ msgid "Icon and application category"
+#~ msgstr "Táknmynd og flokkur forrits"
+
+#~ msgid "Icon"
+#~ msgstr "Tákn"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 180
+#~ msgid "Choose an icon for the webapp"
+#~ msgstr "Veldu táknmynd fyrir vefforritið"
+
+#~ msgid "Behavior"
+#~ msgstr "Hegðun"
+
+#~ msgid "How the webapp opens and runs"
+#~ msgstr "Hvernig vefforritið opnast og keyrir"
+
+#~ msgid "Separate Profile"
+#~ msgstr "Aðskilin prófíl"
+
+#~ msgid "Website"
+#~ msgstr "Vefsíða"
+
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 32
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 163
+#~ msgid "Templates"
+#~ msgstr "sniðmát"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 167
+#~ msgid "Choose from templates"
+#~ msgstr "Veldu úr sniðmátum"
+
+#~ msgid "Internal browser"
+#~ msgstr "Innbyggður vafri"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 352
+#~ msgid "Delete"
+#~ msgstr "Eyða"
+
+#~ msgid "Press + to create your first webapp"
+#~ msgstr "Ýttu á + til að búa til fyrsta vefforritið þitt"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 371
+#~ msgid "WebApp deleted successfully"
+#~ msgstr "Vefumsókn eytt með góðum árangri"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 292
+#~ msgid "Opens as a native window without browser interface"
+#~ msgstr "Opnast sem innfæddur gluggi án vafra viðmóts"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 106
+#~ msgid "Add a new webapp to get started"
+#~ msgstr "Bættu við nýrri vefumsókn til að byrja."
+
+#~ msgid "App Mode"
+#~ msgstr "Forritsstilling"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 63
+#~ msgid "Search templates"
+#~ msgstr "Leitaðu að sniðmátum"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 91
+#, python-brace-format
+#~ msgid "Browser: {0}"
+#~ msgstr "Vafri: {0}"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 113
+#, python-brace-format
+#~ msgid "Edit {0}"
+#~ msgstr "Breyta {0}"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 127
+#, python-brace-format
+#~ msgid "Delete {0}"
+#~ msgstr "Eyða {0}"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
+#~ msgid ""
+#~ "<b>What are WebApps?</b>\n"
+#~ "\n"
+#~ "WebApps are web applications that run in a dedicated browser window, providing a more app-like experience for your favorite websites.\n"
+#~ "\n"
+#~ "<b>Benefits of using WebApps:</b>\n"
+#~ "\n"
+#~ "• <b>Focus</b>: Work without the distractions of other browser tabs\n"
+#~ "• <b>Desktop Integration</b>: Quick access from your application menu\n"
+#~ "• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
+#~ msgstr ""
+#~ "<b>Hvað eru Vefforrit?</b>\n"
+#~ "\n"
+#~ "Vefforrit eru vefumsóknir sem keyra í sérstöku vafravindu, sem veitir meira forritalíkt upplifun fyrir uppáhalds vefsíður þínar.\n"
+#~ "\n"
+#~ "<b>Ávinningur af notkun Vefforrita:</b>\n"
+#~ "\n"
+#~ "• <b>Fókus</b>: Vinna án truflana frá öðrum vafratöflum\n"
+#~ "• <b>Vinnustöðva samþætting</b>: Fljótleg aðgangur frá forritavalmyndinni þinni\n"
+#~ "• <b>Einangruð prófíl</b>: Valfrjálst, hvert vefforrit getur haft sín eigin kökur og stillingar\n"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 170
+#~ msgid "System Default"
+#~ msgstr "ברירת מחדל של מערכת"
+
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 136
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 258
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 440
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 441
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 590
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 151
+#~ msgid "Default"
+#~ msgstr "ברירת מחדל"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 163
+#~ msgid "Please select a browser."
+#~ msgstr "Vinsamlegast veldu vafra."
+
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 172
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 637
+#~ msgid "Error"
+#~ msgstr "Villa"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 172
+#~ msgid "App Icon"
+#~ msgstr "App tákn"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 187
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 278
+#~ msgid "Available Icons"
+#~ msgstr "tákn í boði"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 339
+#~ msgid "Profile Settings"
+#~ msgstr "Prófíllstillingar"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 341
+#~ msgid "Configure a separate browser profile for this webapp"
+#~ msgstr "Stilltuðu aðskilda vafra prófíl fyrir þessa vefumsókn."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 414
+#~ msgid "Detecting website information, please wait"
+#~ msgstr "Að greina vefsíðugögn, vinsamlegast bíða."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 453
+#~ msgid "Please enter a URL first."
+#~ msgstr "Vinsamlegast sláðu inn URL fyrst."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 609
+#~ msgid "Please enter a name for the WebApp."
+#~ msgstr "Vinsamlegast sláðu inn nafn fyrir vefforritið."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 613
+#~ msgid "Please enter a URL for the WebApp."
+#~ msgstr "Vinsamlegast sláðu inn vefslóð fyrir vefforritið."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 617
+#~ msgid "Please select a browser for the WebApp."
+#~ msgstr "Vinsamlegast veldu vafra fyrir WebApp."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 60
+#~ msgid "Refresh"
+#~ msgstr "Ferskaðuðu"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 87
+#~ msgid "Show Welcome Screen"
+#~ msgstr "sýna velkomin skjár"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 313
+#, python-brace-format
+#~ msgid "Browser changed to {0}"
+#~ msgstr "Vafri breytist í {0}"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 372
+#, python-brace-format
+#~ msgid ""
+#~ "Are you sure you want to delete {0}?\n"
+#~ "\n"
+#~ "URL: {1}\n"
+#~ "Browser: {2}"
+#~ msgstr ""
+#~ "Ertu viss um að þú viljir eyða {0}?\n"
+#~ "\n"
+#~ "Vefslóð: {1}  \n"
+#~ "Vafri: {2}"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 341
+#~ msgid "REMOVE ALL"
+#~ msgstr "FJARLÆGÐU ALLT"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/favicon_picker.py, line: 63
+#, python-brace-format
+#~ msgid "Icon {0} of {1}"
+#~ msgstr "Tákn {0} af {1}"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
+#~ msgid "There are no WebApps to export."
+#~ msgstr "Engin ekki vefforrit til að flytja út."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
+#~ msgid "The selected file does not exist."
+#~ msgstr "Valda valin skráin er ekki til."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 272
+#~ msgid "The selected file is not a valid ZIP archive."
+#~ msgstr "Valda skráin er ekki gilt ZIP skjal."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 346
+#~ msgid "Error importing WebApps"
+#~ msgstr "Villa við að flytja inn WebApps"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 403
+#~ msgid "Imported {} WebApps successfully ({} duplicates skipped)"
+#~ msgstr "Innflutt {} WebApps með góðum árangri ({} afrit sleppt)"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 341
+#~ msgid "Imported {} WebApps successfully"
+#~ msgstr "Innflutt {} WebApps með góðum árangri"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
+#~ msgid "No"
+#~ msgstr "Nei"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 364
+#~ msgid "Yes"
+#~ msgstr "Já"

@@ -2,4 +2,7 @@ mod browser;
 mod webapp;
 
 pub use browser::{Browser, BrowserCollection, BrowserKind};
-pub use webapp::{AppMode, WebApp, WebAppCollection};
+pub use webapp::{
+    AppCategory, AppMode, BrowserId, CategoryList, DesktopFileName, ProfileKind,
+    UrlValidationError, WebApp, WebAppCollection, WebAppUrl,
+};

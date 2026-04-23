@@ -1,0 +1,1094 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the biglinux-webapps package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: biglinux-webapps\n"
+"Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
+"POT-Creation-Date: 2026-04-23 09:40+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
+#: crates/webapps-manager/src/browser_dialog.rs:36
+msgid "Select Browser"
+msgstr "브라우저 선택"
+
+#: crates/webapps-manager/src/browser_dialog.rs:68
+msgid "Auto-hide headerbar"
+msgstr "헤더바 자동 숨기기"
+
+#: crates/webapps-manager/src/browser_dialog.rs:70
+msgid "Hide the titlebar; reveal it by moving the cursor to the top edge."
+msgstr "제목 표시줄을 숨깁니다. 커서를 상단 가장자리로 이동하면 다시 표시됩니다."
+
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+#: crates/webapps-manager/src/browser_dialog.rs:148
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:43
+#: crates/webapps-manager/src/window/actions/remove_all.rs:28
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:133
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:186
+#: crates/webapps-manager/src/window/list.rs:193
+msgid "Cancel"
+msgstr "취소"
+
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 357
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
+#: crates/webapps-manager/src/browser_dialog.rs:149
+msgid "OK"
+msgstr "알겠습니다."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
+#: crates/webapps-manager/src/browser_dialog.rs:194
+#: crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:169
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:65
+msgid "Internal Browser"
+msgstr "내장 브라우저"
+
+#: crates/webapps-manager/src/browser_dialog.rs:196
+msgid ""
+"Embedded browser with better system integration. May not work on all "
+"websites."
+msgstr "시스템 통합이 더 나은 내장 브라우저입니다. 일부 웹사이트에서는 작동하지 않을 수 있습니다."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 50
+#: crates/webapps-manager/src/template_gallery.rs:30
+msgid "Choose a Template"
+msgstr "템플릿 선택"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 56
+#: crates/webapps-manager/src/template_gallery.rs:37
+msgid "Search templates..."
+msgstr "템플릿 검색..."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 96
+#: crates/webapps-manager/src/template_gallery.rs:102
+msgid "No templates found"
+msgstr "템플릿을 찾을 수 없습니다."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 94
+#: crates/webapps-manager/src/template_gallery.rs:110
+msgid "Search Results"
+msgstr "검색 결과"
+
+#: crates/webapps-manager/src/template_gallery.rs:150
+msgid "Requires external browser (DRM)"
+msgstr "외부 브라우저 필요 (DRM)"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 446
+#: crates/webapps-manager/src/webapp_dialog/handlers/lifecycle.rs:99
+msgid "Failed to save webapp"
+msgstr "WebApp 저장에 실패했습니다"
+
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:50
+msgid "Icon candidate {n}"
+msgstr "아이콘 후보 {n}"
+
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:88
+msgid "Select Icon"
+msgstr "아이콘 선택"
+
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:94
+msgid "Images"
+msgstr "이미지"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 290
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:20
+#| msgid "Application menu category"
+msgid "Application Icon"
+msgstr "애플리케이션 아이콘"
+
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 90
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 179
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 240
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:27
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:31
+msgid "Select"
+msgstr "선택하십시오"
+
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:39
+msgid "Detected icon candidates"
+msgstr "감지된 아이콘 후보"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 221
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:44
+msgid "Category"
+msgstr "카테고리"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 226
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:23
+msgid "Browser"
+msgstr "브라우저"
+
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:75
+msgid "Use separate profile"
+msgstr "별도의 프로필 사용"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 345
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:77
+#| msgid "Allows independent cookies and sessions"
+msgid "Allows independent cookies and sessions for this webapp"
+msgstr "이 WebApp에 대해 독립된 쿠키와 세션을 허용합니다"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:86
+msgid "Profile Name"
+msgstr "프로필 이름"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 152
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:16
+msgid "URL"
+msgstr "URL"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 156
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:19
+msgid "Detect"
+msgstr "감지하다"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 157
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:20
+msgid "Detect name and icon from website"
+msgstr "웹사이트에서 이름과 아이콘 감지"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 166
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 480
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:25
+msgid "Name"
+msgstr "이름"
+
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:23
+#: crates/webapps-manager/src/window/shortcuts_window.rs:20
+msgid "New WebApp"
+msgstr "새 WebApp"
+
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 104
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:25
+msgid "Edit WebApp"
+msgstr "웹앱 편집"
+
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:44
+msgid "Save"
+msgstr "저장"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 336
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:59
+#| msgid "Loading..."
+msgid "Loading…"
+msgstr "불러오는 중…"
+
+#: crates/webapps-manager/src/webapp_row.rs:86
+msgid "Change browser"
+msgstr "브라우저 변경"
+
+#: crates/webapps-manager/src/webapp_row.rs:96
+msgid "Edit"
+msgstr "편집"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
+#: crates/webapps-manager/src/webapp_row.rs:106
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:187
+#: crates/webapps-manager/src/window/list.rs:194
+#| msgid "Remove All"
+msgid "Remove"
+msgstr "제거"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
+#: crates/webapps-manager/src/welcome_dialog.rs:20
+#: crates/webapps-manager/src/welcome_dialog.rs:47
+msgid "Welcome to WebApps Manager"
+msgstr "웹앱 관리자에 오신 것을 환영합니다."
+
+#: crates/webapps-manager/src/welcome_dialog.rs:60
+msgid "What are WebApps?"
+msgstr "WebApps란 무엇인가요?"
+
+#: crates/webapps-manager/src/welcome_dialog.rs:61
+msgid ""
+"WebApps are web applications that run in a dedicated browser window, "
+"providing a more app-like experience for your favorite websites."
+msgstr ""
+"WebApps는 전용 브라우저 창에서 실행되는 웹 애플리케이션으로, 좋아하는 웹사이트를 더 앱처럼 사용할 수 있는 환경을 제공합니다."
+
+#: crates/webapps-manager/src/welcome_dialog.rs:62
+msgid "Benefits of using WebApps:"
+msgstr "WebApps 사용의 장점:"
+
+#: crates/webapps-manager/src/welcome_dialog.rs:63
+msgid "Focus"
+msgstr "집중"
+
+#: crates/webapps-manager/src/welcome_dialog.rs:63
+msgid "Work without the distractions of other browser tabs"
+msgstr "다른 브라우저 탭의 방해 없이 작업하세요"
+
+#: crates/webapps-manager/src/welcome_dialog.rs:64
+msgid "Desktop Integration"
+msgstr "데스크탑 통합"
+
+#: crates/webapps-manager/src/welcome_dialog.rs:64
+msgid "Quick access from your application menu"
+msgstr "애플리케이션 메뉴에서 빠르게 접근 가능"
+
+#: crates/webapps-manager/src/welcome_dialog.rs:65
+msgid "Isolated Profiles"
+msgstr "분리된 프로필"
+
+#: crates/webapps-manager/src/welcome_dialog.rs:65
+msgid "Each webapp can have its own cookies and settings"
+msgstr "각 WebApp은 자체 쿠키와 설정을 가질 수 있습니다"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
+#: crates/webapps-manager/src/welcome_dialog.rs:82
+msgid "Don't show this again"
+msgstr "다시 표시하지 않기"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
+#: crates/webapps-manager/src/welcome_dialog.rs:94
+msgid "Let's Start"
+msgstr "시작하겠습니다."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
+#: crates/webapps-manager/src/window/actions/about.rs:15
+#: crates/webapps-manager/src/window/ui.rs:22
+msgid "WebApps Manager"
+msgstr "웹앱 관리자"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 63
+#: crates/webapps-manager/src/window/actions/import_export.rs:20
+#: crates/webapps-manager/src/window/ui.rs:104
+msgid "Import WebApps"
+msgstr "웹앱 가져오기"
+
+#: crates/webapps-manager/src/window/actions/import_export.rs:24
+msgid "ZIP files"
+msgstr "ZIP 파일"
+
+#: crates/webapps-manager/src/window/actions/import_export.rs:49
+msgid "Import failed"
+msgstr "가져오기 실패"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 62
+#: crates/webapps-manager/src/window/actions/import_export.rs:67
+#: crates/webapps-manager/src/window/ui.rs:105
+msgid "Export WebApps"
+msgstr "웹앱 내보내기"
+
+#: crates/webapps-manager/src/window/actions/import_export.rs:87
+msgid "Export failed"
+msgstr "내보내기 실패"
+
+#: crates/webapps-manager/src/window/actions/import_export.rs:101
+msgid "Imported {imported}, skipped {dups} duplicates"
+msgstr "{imported}개 가져옴, {dups}개 중복 건너뜀"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
+#: crates/webapps-manager/src/window/actions/import_export.rs:108
+msgid "No WebApps"
+msgstr "웹앱 없음"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 166
+#: crates/webapps-manager/src/window/actions/import_export.rs:110
+msgid "WebApps exported successfully"
+msgstr "웹앱이 성공적으로 내보내졌습니다."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 390
+#: crates/webapps-manager/src/window/actions/remove_all.rs:23
+#: crates/webapps-manager/src/window/ui.rs:120
+msgid "Remove All WebApps"
+msgstr "모든 웹앱 제거"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 346
+#: crates/webapps-manager/src/window/actions/remove_all.rs:25
+#| msgid ""
+#| "Are you sure you want to remove all your WebApps? This action cannot be undone.\n"
+#| "\n"
+#| "Type \"{0}\" to confirm."
+msgid ""
+"Are you sure you want to remove all your WebApps? This action cannot be "
+"undone."
+msgstr "모든 WebApps를 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다."
+
+#: crates/webapps-manager/src/window/actions/remove_all.rs:29
+msgid "Continue"
+msgstr "계속"
+
+#: crates/webapps-manager/src/window/actions/remove_all.rs:47
+msgid "Final Confirmation"
+msgstr "최종 확인"
+
+#: crates/webapps-manager/src/window/actions/remove_all.rs:49
+msgid "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
+msgstr "정말로 모든 WebApps를 삭제하시겠습니까?"
+
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+#: crates/webapps-manager/src/window/actions/remove_all.rs:52
+#| msgid "Cancel"
+msgid "No, Cancel"
+msgstr "아니요, 취소"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
+#: crates/webapps-manager/src/window/actions/remove_all.rs:53
+#| msgid "Remove All"
+msgid "Yes, Remove All"
+msgstr "예, 모두 제거"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 444
+#: crates/webapps-manager/src/window/actions/remove_all.rs:74
+msgid "All WebApps have been removed"
+msgstr "모든 웹앱이 제거되었습니다."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 446
+#: crates/webapps-manager/src/window/actions/remove_all.rs:79
+msgid "Failed to remove all WebApps"
+msgstr "모든 웹앱을 제거하지 못했습니다."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:27
+#| msgid "No WebApps Found"
+msgid "No WebApps to remove"
+msgstr "제거할 WebApps가 없습니다"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 390
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:32
+#| msgid "Remove All WebApps"
+msgid "Remove WebApps"
+msgstr "WebApps 제거"
+
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:42
+#| msgid ""
+#| "This will delete all webapps and their desktop entries. This cannot be "
+#| "undone."
+msgid "Select the WebApps you want to remove. This cannot be undone."
+msgstr "제거할 WebApps를 선택하세요. 이 작업은 되돌릴 수 없습니다."
+
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 90
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 179
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 240
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:63
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:65
+#| msgid "Select"
+msgid "Select all"
+msgstr "모두 선택"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:134
+#| msgid "Remove All"
+msgid "Remove Selected"
+msgstr "선택 항목 제거"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:157
+#| msgid "Delete WebApp"
+msgid "Select at least one WebApp"
+msgstr "WebApp을 하나 이상 선택하세요"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 390
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:176
+#| msgid "Remove All WebApps"
+msgid "Remove Selected WebApps?"
+msgstr "선택한 WebApps를 제거하시겠습니까?"
+
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:178
+#| msgid ""
+#| "This will delete all webapps and their desktop entries. This cannot be "
+#| "undone."
+msgid ""
+"This will remove {count} WebApps and their desktop entries. This cannot be "
+"undone."
+msgstr "이 작업은 {count}개의 WebApps와 해당 데스크톱 항목을 제거합니다. 이 작업은 되돌릴 수 없습니다."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 444
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:218
+#| msgid "All WebApps have been removed"
+msgid "{count} WebApps removed"
+msgstr "{count}개의 WebApps 제거됨"
+
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:220
+msgid "{ok} removed, {fail} failed"
+msgstr "{ok}개 제거됨, {fail}개 실패"
+
+#: crates/webapps-manager/src/window/list.rs:37
+msgid "{} results"
+msgstr "{}개 결과"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
+#: crates/webapps-manager/src/window/list.rs:57
+#| msgid "No WebApps"
+msgid "No WebApps yet"
+msgstr "아직 WebApps가 없습니다"
+
+#: crates/webapps-manager/src/window/list.rs:59
+msgid "Turn any website into a desktop app. Press Add to get started."
+msgstr "어떤 웹사이트든 데스크톱 앱으로 바꾸세요. 시작하려면 추가를 누르세요."
+
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 109
+#: crates/webapps-manager/src/window/list.rs:65
+#: crates/webapps-manager/src/window/ui.rs:39
+#: crates/webapps-manager/src/window/ui.rs:40
+msgid "Add WebApp"
+msgstr "웹앱 추가"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 214
+#: crates/webapps-manager/src/window/list.rs:124
+#: crates/webapps-manager/src/window/mod.rs:118
+msgid "WebApp created successfully"
+msgstr "웹앱이 성공적으로 생성되었습니다."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 257
+#: crates/webapps-manager/src/window/list.rs:141
+msgid "WebApp updated successfully"
+msgstr "웹앱이 성공적으로 업데이트되었습니다."
+
+#: crates/webapps-manager/src/window/list.rs:177
+msgid "Browser changed"
+msgstr "브라우저가 변경되었습니다"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 390
+#: crates/webapps-manager/src/window/list.rs:190
+#| msgid "Remove All WebApps"
+msgid "Remove WebApp?"
+msgstr "WebApp을 제거하시겠습니까?"
+
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
+# 
+#: crates/webapps-manager/src/window/list.rs:203
+msgid "Also delete configuration folder"
+msgstr "구성 폴더도 삭제하십시오."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 444
+#: crates/webapps-manager/src/window/list.rs:223
+#| msgid "All WebApps have been removed"
+msgid "WebApp removed"
+msgstr "WebApp이 제거되었습니다"
+
+#: crates/webapps-manager/src/window/shortcuts_window.rs:18
+msgid "General"
+msgstr "일반"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 94
+#: crates/webapps-manager/src/window/shortcuts_window.rs:21
+msgid "Search"
+msgstr "검색"
+
+#: crates/webapps-manager/src/window/shortcuts_window.rs:22
+msgid "Quit"
+msgstr "종료"
+
+#: crates/webapps-manager/src/window/shortcuts_window.rs:23
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:40
+msgid "Show this dialog"
+msgstr "이 대화 상자 표시"
+
+#: crates/webapps-manager/src/window/shortcuts_window.rs:26
+#: crates/webapps-manager/src/window/shortcuts_window.rs:32
+#: crates/webapps-manager/src/window/ui.rs:124
+#: crates/webapps-viewer/src/window/chrome.rs:90
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:45
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:53
+msgid "Keyboard Shortcuts"
+msgstr "키보드 단축키"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 51
+#: crates/webapps-manager/src/window/ui.rs:34
+#: crates/webapps-manager/src/window/ui.rs:35
+msgid "Search WebApps"
+msgstr "웹앱 검색"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 72
+#: crates/webapps-manager/src/window/ui.rs:38
+msgid "Add"
+msgstr "추가"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 79
+#: crates/webapps-manager/src/window/ui.rs:47
+msgid "Main Menu"
+msgstr "메인 메뉴"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 66
+#: crates/webapps-manager/src/window/ui.rs:107
+msgid "Browse Applications Folder"
+msgstr "응용 프로그램 폴더 탐색"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 67
+#: crates/webapps-manager/src/window/ui.rs:111
+msgid "Browse Profiles Folder"
+msgstr "프로필 폴더 탐색"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 390
+#: crates/webapps-manager/src/window/ui.rs:117
+#| msgid "Remove All WebApps"
+msgid "Remove WebApps in Bulk"
+msgstr "WebApps 일괄 제거"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 70
+#: crates/webapps-manager/src/window/ui.rs:125
+msgid "About"
+msgstr "정보"
+
+#: crates/webapps-manager/src/window/mod.rs:45
+msgid "Detecting installed browsers…"
+msgstr "설치된 브라우저를 감지하는 중…"
+
+#: crates/webapps-viewer/src/window/chrome.rs:23
+msgid "Back"
+msgstr "뒤로"
+
+#: crates/webapps-viewer/src/window/chrome.rs:24
+msgid "Forward"
+msgstr "앞으로"
+
+#: crates/webapps-viewer/src/window/chrome.rs:25
+msgid "Reload"
+msgstr "새로 고침"
+
+#: crates/webapps-viewer/src/window/chrome.rs:27
+msgid "Fullscreen"
+msgstr "전체 화면"
+
+#: crates/webapps-viewer/src/window/chrome.rs:41
+msgid "Enter URL…"
+msgstr "URL 입력…"
+
+#: crates/webapps-viewer/src/window/chrome.rs:82
+msgid "Zoom In"
+msgstr "확대"
+
+#: crates/webapps-viewer/src/window/chrome.rs:83
+msgid "Zoom Out"
+msgstr "축소"
+
+#: crates/webapps-viewer/src/window/chrome.rs:84
+msgid "Reset Zoom"
+msgstr "확대/축소 초기화"
+
+#: crates/webapps-viewer/src/window/chrome.rs:86
+msgid "Developer Tools"
+msgstr "개발자 도구"
+
+#: crates/webapps-viewer/src/window/chrome.rs:96
+#: crates/webapps-viewer/src/window/chrome.rs:98
+msgid "Menu"
+msgstr "메뉴"
+
+#: crates/webapps-viewer/src/window/context_menu.rs:27
+msgid "Open Link in Browser"
+msgstr "브라우저에서 링크 열기"
+
+#: crates/webapps-viewer/src/window/downloads/mod.rs:28
+msgid "Download Complete"
+msgstr "다운로드 완료"
+
+#: crates/webapps-viewer/src/window/downloads/mod.rs:37
+msgid "Save File"
+msgstr "파일 저장"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:87
+msgid "Camera Access"
+msgstr "카메라 접근"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:88
+msgid "This webapp wants to use your camera. Allow?"
+msgstr "이 WebApp이 카메라를 사용하려고 합니다. 허용하시겠습니까?"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:91
+msgid "Microphone Access"
+msgstr "마이크 접근"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:92
+msgid "This webapp wants to use your microphone. Allow?"
+msgstr "이 WebApp이 마이크를 사용하려고 합니다. 허용하시겠습니까?"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:95
+msgid "Location Access"
+msgstr "위치 접근"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:96
+msgid "This webapp wants to access your location. Allow?"
+msgstr "이 WebApp이 위치 정보에 접근하려고 합니다. 허용하시겠습니까?"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:99
+msgid "Clipboard Access"
+msgstr "클립보드 접근"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:100
+msgid "This webapp wants to read from your clipboard. Allow?"
+msgstr "이 WebApp이 클립보드를 읽으려고 합니다. 허용하시겠습니까?"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:103
+msgid "Permission Request"
+msgstr "권한 요청"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:104
+msgid "This webapp is requesting a special permission. Allow?"
+msgstr "이 WebApp이 특별한 권한을 요청하고 있습니다. 허용하시겠습니까?"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:112
+msgid "Deny"
+msgstr "거부"
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:113
+msgid "Allow"
+msgstr "허용"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:17
+msgid "Navigation"
+msgstr "탐색"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:19
+msgid "Focus address bar"
+msgstr "주소 표시줄에 포커스"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:20
+msgid "Reload page"
+msgstr "페이지 새로고침"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:21
+msgid "Go back"
+msgstr "뒤로"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:22
+msgid "Go forward"
+msgstr "앞으로"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:27
+msgid "View"
+msgstr "보기"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:29
+msgid "Toggle fullscreen"
+msgstr "전체 화면 전환"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:30
+msgid "Zoom in"
+msgstr "확대"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:31
+msgid "Zoom out"
+msgstr "축소"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:32
+msgid "Reset zoom"
+msgstr "확대/축소 재설정"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:37
+msgid "Window"
+msgstr "창"
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:39
+msgid "Close window"
+msgstr "창 닫기"
+
+#~ msgid "This site requires DRM — the internal browser cannot be used"
+#~ msgstr "이 사이트는 DRM이 필요하므로 내부 브라우저를 사용할 수 없습니다"
+
+#~ msgid "Advanced Settings…"
+#~ msgstr "고급 설정…"
+
+#~ msgid "Appearance"
+#~ msgstr "모양"
+
+#~ msgid "Icon and application category"
+#~ msgstr "아이콘 및 애플리케이션 카테고리"
+
+#~ msgid "Icon"
+#~ msgstr "아이콘"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 180
+#~ msgid "Choose an icon for the webapp"
+#~ msgstr "WebApp 아이콘 선택"
+
+#~ msgid "Behavior"
+#~ msgstr "동작"
+
+#~ msgid "How the webapp opens and runs"
+#~ msgstr "WebApp이 열리고 실행되는 방식"
+
+#~ msgid "Separate Profile"
+#~ msgstr "별도 프로필"
+
+#~ msgid "Website"
+#~ msgstr "웹사이트"
+
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 32
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 163
+#~ msgid "Templates"
+#~ msgstr "템플릿"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 167
+#~ msgid "Choose from templates"
+#~ msgstr "템플릿에서 선택하세요."
+
+#~ msgid "Internal browser"
+#~ msgstr "내장 브라우저"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 352
+#~ msgid "Delete"
+#~ msgstr "삭제"
+
+#~ msgid "Press + to create your first webapp"
+#~ msgstr "+를 눌러 첫 번째 WebApp을 만드세요"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 371
+#~ msgid "WebApp deleted successfully"
+#~ msgstr "웹앱이 성공적으로 삭제되었습니다."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 292
+#~ msgid "Opens as a native window without browser interface"
+#~ msgstr "브라우저 인터페이스 없이 네이티브 윈도우로 열림"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 106
+#~ msgid "Add a new webapp to get started"
+#~ msgstr "시작하려면 새 웹앱을 추가하세요."
+
+#~ msgid "App Mode"
+#~ msgstr "앱 모드"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 63
+#~ msgid "Search templates"
+#~ msgstr "템플릿 검색"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 91
+#, python-brace-format
+#~ msgid "Browser: {0}"
+#~ msgstr "브라우저: {0}"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 113
+#, python-brace-format
+#~ msgid "Edit {0}"
+#~ msgstr "{0} 편집"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 127
+#, python-brace-format
+#~ msgid "Delete {0}"
+#~ msgstr "{0} 삭제"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
+#~ msgid ""
+#~ "<b>What are WebApps?</b>\n"
+#~ "\n"
+#~ "WebApps are web applications that run in a dedicated browser window, providing a more app-like experience for your favorite websites.\n"
+#~ "\n"
+#~ "<b>Benefits of using WebApps:</b>\n"
+#~ "\n"
+#~ "• <b>Focus</b>: Work without the distractions of other browser tabs\n"
+#~ "• <b>Desktop Integration</b>: Quick access from your application menu\n"
+#~ "• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
+#~ msgstr ""
+#~ "<b>웹앱이란?</b>\n"
+#~ "\n"
+#~ "웹앱은 전용 브라우저 창에서 실행되는 웹 애플리케이션으로, 좋아하는 웹사이트에 대해 더 앱 같은 경험을 제공합니다.\n"
+#~ "\n"
+#~ "<b>웹앱 사용의 이점:</b>\n"
+#~ "\n"
+#~ "• <b>집중</b>: 다른 브라우저 탭의 방해 없이 작업\n"
+#~ "• <b>데스크탑 통합</b>: 애플리케이션 메뉴에서 빠른 접근\n"
+#~ "• <b>격리된 프로필</b>: 선택적으로 각 웹앱은 자체 쿠키와 설정을 가질 수 있음\n"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 170
+#~ msgid "System Default"
+#~ msgstr "시스템 기본값"
+
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 136
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 258
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 440
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 441
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 590
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 151
+#~ msgid "Default"
+#~ msgstr "기본값"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 163
+#~ msgid "Please select a browser."
+#~ msgstr "브라우저를 선택하세요."
+
+# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
+# 
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 172
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 637
+#~ msgid "Error"
+#~ msgstr "오류"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 172
+#~ msgid "App Icon"
+#~ msgstr "앱 아이콘"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 187
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 278
+#~ msgid "Available Icons"
+#~ msgstr "사용 가능한 아이콘"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 339
+#~ msgid "Profile Settings"
+#~ msgstr "프로필 설정"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 341
+#~ msgid "Configure a separate browser profile for this webapp"
+#~ msgstr "이 웹앱을 위한 별도의 브라우저 프로필을 구성하세요."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 414
+#~ msgid "Detecting website information, please wait"
+#~ msgstr "웹사이트 정보를 감지하는 중입니다. 잠시만 기다려 주십시오."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 453
+#~ msgid "Please enter a URL first."
+#~ msgstr "먼저 URL을 입력하세요."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 609
+#~ msgid "Please enter a name for the WebApp."
+#~ msgstr "웹앱의 이름을 입력하세요."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 613
+#~ msgid "Please enter a URL for the WebApp."
+#~ msgstr "웹앱의 URL을 입력하세요."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 617
+#~ msgid "Please select a browser for the WebApp."
+#~ msgstr "웹앱을 위한 브라우저를 선택하세요."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 61
+#~ msgid "Refresh"
+#~ msgstr "새로 고침"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 87
+#~ msgid "Show Welcome Screen"
+#~ msgstr "환영 화면 표시"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 313
+#, python-brace-format
+#~ msgid "Browser changed to {0}"
+#~ msgstr "브라우저가 {0}로 변경되었습니다."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 372
+#, python-brace-format
+#~ msgid ""
+#~ "Are you sure you want to delete {0}?\n"
+#~ "\n"
+#~ "URL: {1}\n"
+#~ "Browser: {2}"
+#~ msgstr ""
+#~ "{0}를 삭제하시겠습니까?\n"
+#~ "\n"
+#~ "URL: {1}\n"
+#~ "브라우저: {2}"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 341
+#~ msgid "REMOVE ALL"
+#~ msgstr "모두 제거"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/favicon_picker.py, line: 63
+#, python-brace-format
+#~ msgid "Icon {0} of {1}"
+#~ msgstr "아이콘 {0}의 {1}"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
+#~ msgid "There are no WebApps to export."
+#~ msgstr "내보낼 웹앱이 없습니다."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
+#~ msgid "The selected file does not exist."
+#~ msgstr "선택한 파일이 존재하지 않습니다."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 272
+#~ msgid "The selected file is not a valid ZIP archive."
+#~ msgstr "선택한 파일은 유효한 ZIP 아카이브가 아닙니다."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 346
+#~ msgid "Error importing WebApps"
+#~ msgstr "웹앱 가져오기 오류"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 404
+#~ msgid "Imported {} WebApps successfully ({} duplicates skipped)"
+#~ msgstr "{} 웹앱이 성공적으로 가져와졌습니다 ({} 중복 항목 건너뜀)"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 341
+#~ msgid "Imported {} WebApps successfully"
+#~ msgstr "{} 웹앱이 성공적으로 가져와졌습니다."
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
+#~ msgid "No"
+#~ msgstr "No"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 364
+#~ msgid "Yes"
+#~ msgstr "예"

@@ -1,10 +1,18 @@
 [Unit]
-Description=BigLinux Webapps
+Description=BigLinux WebApps — session initializer
+Documentation=https://github.com/biglinux/biglinux-webapps
+# Run after the graphical session is up so desktop database refresh has effect
+After=graphical-session.target
 PartOf=graphical-session.target
 
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/biglinux-webapps-systemd
+# The script only touches ~/.local/share/applications and runs
+# update-desktop-database; no need for elevated capabilities.
+NoNewPrivileges=yes
+StandardOutput=journal
+StandardError=journal
 
 [Install]
-WantedBy=default.target
+WantedBy=graphical-session.target

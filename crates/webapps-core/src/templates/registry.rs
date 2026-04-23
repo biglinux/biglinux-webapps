@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::sync::OnceLock;
 
 /// File-handling strategy for webapp template
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
@@ -136,7 +137,11 @@ impl TemplateRegistry {
     }
 }
 
-/// Build registry with all bundled templates
+/// Build registry with all bundled templates.
+///
+/// Cheap callers (UI handlers fired on every dialog open) should use
+/// [`default_registry`] instead — this function rebuilds the registry from
+/// scratch each call and the templates are immutable.
 pub fn build_default_registry() -> TemplateRegistry {
     let mut reg = TemplateRegistry::default();
     reg.register_many(super::office365::templates());
@@ -145,6 +150,12 @@ pub fn build_default_registry() -> TemplateRegistry {
     reg.register_many(super::media::templates());
     reg.register_many(super::productivity::templates());
     reg
+}
+
+/// Process-wide cached registry. Built once on first call.
+pub fn default_registry() -> &'static TemplateRegistry {
+    static REGISTRY: OnceLock<TemplateRegistry> = OnceLock::new();
+    REGISTRY.get_or_init(build_default_registry)
 }
 
 #[cfg(test)]

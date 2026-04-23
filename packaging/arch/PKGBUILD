@@ -1,0 +1,228 @@
+# shellcheck shell=bash disable=SC2034,SC2154
+pkgname=biglinux-webapps
+pkgver=$(date +%y.%m.%d)
+pkgrel=$(date +%H%M)
+arch=('x86_64')
+license=('GPL')
+url="https://github.com/biglinux/$pkgname"
+pkgdesc="Installs and removes BigLinux WebApps"
+depends=(
+	'gtk4'
+	'libadwaita'
+	'webkitgtk-6.0'
+	'openssl'
+	'gettext'
+	'xdg-utils'
+	'desktop-file-utils'
+)
+makedepends=('rust' 'cargo' 'gettext')
+optdepends=(
+	'dconf: GNOME app-folder integration'
+	'flatpak: detect Flatpak browsers as webapp targets'
+)
+
+# ---------------------------------------------------------------------------
+# Local-source detection
+# ---------------------------------------------------------------------------
+# Resolution order:
+#   1. `BIGLINUX_WEBAPPS_FORCE_GIT=1` env  → always git, never local
+#   2. `BIGLINUX_WEBAPPS_LOCAL_SOURCE=<path>` env → explicit local checkout
+#   3. PKGBUILD lives in `packaging/arch/` of a working tree (dev default)
+#   4. PKGBUILD lives next to the source files (extracted release tarball)
+#   5. Fall back to `git+<url>.git` (network required)
+#
+# Detection uses BASH_SOURCE[0] — the absolute path of this file — instead of
+# `$startdir`. Some build wrappers (chroot helpers, build farms, makepkg -p)
+# reset `$startdir` before sourcing the PKGBUILD; BASH_SOURCE is set by bash
+# itself and is always accurate.
+_has_workspace_files() {
+	local root="$1"
+	[ -f "${root}/Cargo.toml" ] &&
+		[ -d "${root}/crates" ] &&
+		[ -d "${root}/${pkgname}" ]
+}
+
+_local_root=""
+_already_prepared=0
+if [ "${BIGLINUX_WEBAPPS_FORCE_GIT:-0}" != "1" ]; then
+	# (2) Explicit override
+	if [ -n "${BIGLINUX_WEBAPPS_LOCAL_SOURCE:-}" ]; then
+		if _candidate="$(cd "${BIGLINUX_WEBAPPS_LOCAL_SOURCE}" 2>/dev/null && pwd -P)" &&
+			_has_workspace_files "${_candidate}"; then
+			_local_root="${_candidate}"
+		else
+			echo "==> BIGLINUX_WEBAPPS_LOCAL_SOURCE=${BIGLINUX_WEBAPPS_LOCAL_SOURCE} does not contain a valid checkout — ignoring" >&2
+		fi
+		unset _candidate
+	fi
+
+	# (3) and (4) Auto-detect relative to this PKGBUILD
+	if [ -z "${_local_root}" ] && [ -n "${BASH_SOURCE[0]:-}" ]; then
+		_pkgbuild_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd -P)"
+		if [ -n "${_pkgbuild_dir}" ]; then
+			# (3) PKGBUILD inside packaging/arch/ — repo root is two levels up
+			_candidate="$(cd "${_pkgbuild_dir}/../.." && pwd -P)"
+			if _has_workspace_files "${_candidate}"; then
+				_local_root="${_candidate}"
+			# (4) PKGBUILD next to source files (release tarball layout)
+			elif _has_workspace_files "${_pkgbuild_dir}"; then
+				_local_root="${_pkgbuild_dir}"
+			fi
+			unset _candidate
+		fi
+		unset _pkgbuild_dir
+	fi
+
+	# (5) Re-sourcing during a later phase (e.g., fakeroot for package()):
+	# `srcdir` already contains the mirrored source from an earlier prepare().
+	# This branch is critical — without it, BASH_SOURCE may resolve elsewhere
+	# inside fakeroot and we would accidentally fall back to git, then
+	# clobber the build output.
+	if [ -z "${_local_root}" ] && [ -n "${srcdir:-}" ] &&
+		_has_workspace_files "${srcdir}/${pkgname}"; then
+		_local_root="${srcdir}/${pkgname}"
+		_already_prepared=1
+	fi
+fi
+
+if [ -n "${_local_root}" ]; then
+	# Empty source array → makepkg skips the network fetch entirely.
+	if [ "${_already_prepared}" = "1" ]; then
+		echo "==> Reusing source already prepared at ${_local_root}" >&2
+	else
+		echo "==> Local source detected at ${_local_root} — skipping git fetch" >&2
+	fi
+	source=()
+	md5sums=()
+else
+	echo "==> No local source found, will fetch from ${url}.git" >&2
+	echo "    Tip: set BIGLINUX_WEBAPPS_LOCAL_SOURCE=/path/to/checkout to skip the fetch" >&2
+	source=("git+${url}.git")
+	md5sums=('SKIP')
+fi
+
+if [ -e "${pkgname}.install" ]; then
+	install=${pkgname}.install
+fi
+
+prepare() {
+	# Skip when there is no local source (git path will populate srcdir) or
+	# when a previous phase already mirrored the tree — re-running the mirror
+	# would erase cargo's `target/` between build() and package().
+	if [ -z "${_local_root}" ] || [ "${_already_prepared}" = "1" ]; then
+		return 0
+	fi
+
+	msg2 "Mirroring local source tree from ${_local_root}"
+	mkdir -p "${srcdir}/${pkgname}"
+
+	# Mirror the working tree but skip build artefacts and VCS metadata so
+	# cargo does not pick up stale binaries from the developer's machine.
+	# Excludes are anchored to the tree root with a leading slash; otherwise
+	# rsync would also drop legitimate `crates/*/src/` directories.
+	#
+	# `--delete` removes files in srcdir that no longer exist in _local_root
+	# (clean state across re-runs). `target/` stays because it is excluded
+	# from the file list — `--delete` ignores excluded paths by default.
+	if command -v rsync >/dev/null 2>&1; then
+		rsync -a --delete \
+			--exclude='/target' \
+			--exclude='/.git' \
+			--exclude='/packaging/arch/pkg' \
+			--exclude='/packaging/arch/src' \
+			--exclude='*.pkg.tar.*' \
+			--exclude='*.log' \
+			"${_local_root}/" "${srcdir}/${pkgname}/"
+	else
+		# Portable fallback for environments without rsync. Preserve target/
+		# explicitly across re-runs.
+		_preserved_target=""
+		if [ -d "${srcdir}/${pkgname}/target" ]; then
+			_preserved_target="$(mktemp -d)"
+			mv "${srcdir}/${pkgname}/target" "${_preserved_target}/target"
+		fi
+		cp -a "${_local_root}/." "${srcdir}/${pkgname}/"
+		rm -rf \
+			"${srcdir}/${pkgname}/target" \
+			"${srcdir}/${pkgname}/.git" \
+			"${srcdir}/${pkgname}/packaging/arch/pkg" \
+			"${srcdir}/${pkgname}/packaging/arch/src"
+		if [ -n "${_preserved_target}" ] && [ -d "${_preserved_target}/target" ]; then
+			mv "${_preserved_target}/target" "${srcdir}/${pkgname}/target"
+			rmdir "${_preserved_target}" 2>/dev/null || true
+		fi
+		unset _preserved_target
+	fi
+}
+
+build() {
+	# Verify default folder
+	if [ -d "${srcdir}/${pkgname}/${pkgname}" ]; then
+		InternalDir="${srcdir}/${pkgname}/${pkgname}"
+	else
+		InternalDir="${srcdir}/${pkgname}"
+	fi
+
+	# Build Rust binaries
+	cd "${srcdir}/${pkgname}" || return 1
+	# Surface the package version (date-based) in the About dialog instead of
+	# the Cargo manifest's static version.
+	export BIGLINUX_WEBAPPS_VERSION="${pkgver}-${pkgrel}"
+	cargo build --release --locked --workspace
+
+	# Compile gettext message catalogs (.po → .mo) from the source-of-truth
+	# directory. The Rust runtime uses gettextrs which looks for .mo files at:
+	#   /usr/share/locale/<lang>/LC_MESSAGES/biglinux-webapps.mo
+	while IFS= read -r -d '' po_file; do
+		lang=$(basename "$po_file" .po)
+		msgfmt -o "${srcdir}/${pkgname}/po/${lang}.mo" "$po_file"
+	done < <(find "${srcdir}/${pkgname}/po" -maxdepth 1 -name '*.po' -print0)
+}
+
+package() {
+	# Verify default folder
+	if [ -d "${srcdir}/${pkgname}/${pkgname}" ]; then
+		InternalDir="${srcdir}/${pkgname}/${pkgname}"
+	else
+		InternalDir="${srcdir}/${pkgname}"
+	fi
+
+	# Copy package tree (icons, profiles, skel, .desktop, systemd, menus)
+	if [ -d "${InternalDir}/usr" ]; then
+		cp -a "${InternalDir}/usr" "${pkgdir}/"
+	fi
+
+	if [ -d "${InternalDir}/etc" ]; then
+		cp -a "${InternalDir}/etc" "${pkgdir}/"
+	fi
+
+	# Install Rust binaries
+	install -Dm755 "${srcdir}/${pkgname}/target/release/big-webapps-gui" \
+		"${pkgdir}/usr/bin/big-webapps-gui"
+	install -Dm755 "${srcdir}/${pkgname}/target/release/big-webapps-viewer" \
+		"${pkgdir}/usr/bin/big-webapps-viewer"
+	install -Dm755 "${srcdir}/${pkgname}/target/release/big-webapps-exec" \
+		"${pkgdir}/usr/bin/big-webapps-exec"
+
+	# Install browser definitions (editable without recompiling)
+	install -Dm644 "${InternalDir}/usr/share/biglinux-webapps/browsers.toml" \
+		"${pkgdir}/usr/share/biglinux-webapps/browsers.toml"
+
+	# Install AppStream metadata so Discover / Software / Flatpak front-ends
+	# recognize the package.
+	install -Dm644 "${InternalDir}/usr/share/metainfo/br.com.biglinux.webapps.metainfo.xml" \
+		"${pkgdir}/usr/share/metainfo/br.com.biglinux.webapps.metainfo.xml"
+
+	# Install compiled .mo locale files
+	while IFS= read -r -d '' mo_file; do
+		lang=$(basename "$mo_file" .mo)
+		# Normalize pt-BR → pt_BR for POSIX locale directory naming
+		locale_dir="${lang//-/_}"
+		install -Dm644 "$mo_file" \
+			"${pkgdir}/usr/share/locale/${locale_dir}/LC_MESSAGES/biglinux-webapps.mo"
+	done < <(find "${srcdir}/${pkgname}/po" -maxdepth 1 -name '*.mo' -print0)
+
+	# Install license
+	install -Dm644 "${srcdir}/${pkgname}/LICENSE" \
+		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}

@@ -1,20 +1,11 @@
-mod browser_dialog;
-mod favicon;
-mod service;
-mod style;
-mod template_gallery;
-mod webapp_dialog;
-mod webapp_row;
-mod welcome_dialog;
-mod window;
-
 use libadwaita as adw;
 
 use adw::prelude::*;
 use webapps_core::config;
+use webapps_manager::{style, window};
 
 fn main() {
-    env_logger::init();
+    init_logger();
     webapps_core::i18n::init();
 
     let app = adw::Application::builder()
@@ -30,4 +21,8 @@ fn main() {
     });
 
     app.run();
+}
+
+fn init_logger() {
+    env_logger::Builder::from_env(env_logger::Env::default().default_filter_or("info")).init();
 }

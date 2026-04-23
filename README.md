@@ -60,3 +60,40 @@ GPL-3.0
 - webkitgtk-6.0 (>= 2.50)
 - gettext
 - openssl
+
+## Development Validation
+
+Run the repo-local validator before sending changes for review:
+
+```bash
+bash scripts/validate-customizations.sh
+```
+
+## Contributing Translations
+
+Translations use gettext. Source catalogs live in `po/`.
+
+**Extracting new strings** (after adding `gettext("…")` calls in Rust source):
+
+```bash
+# update the .pot template and merge it into every catalog
+./scripts/update-translations.sh
+```
+
+**Adding a new language** (`xx` = locale code):
+
+```bash
+cp po/en.po po/xx.po
+# edit xx.po with your translations
+```
+
+**Building .mo files** (done automatically by PKGBUILD):
+
+```bash
+for po in po/*.po; do
+    lang=$(basename "$po" .po)
+    msgfmt -o "po/${lang}.mo" "$po"
+done
+```
+
+Runtime `.mo` files are installed to `/usr/share/locale/<lang>/LC_MESSAGES/biglinux-webapps.mo`.

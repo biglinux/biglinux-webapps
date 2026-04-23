@@ -1,0 +1,558 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR BigLinux
+# This file is distributed under the same license as the biglinux-webapps package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: biglinux-webapps 4.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
+"POT-Creation-Date: 2026-04-23 09:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: crates/webapps-manager/src/browser_dialog.rs:36
+msgid "Select Browser"
+msgstr ""
+
+#: crates/webapps-manager/src/browser_dialog.rs:68
+msgid "Auto-hide headerbar"
+msgstr ""
+
+#: crates/webapps-manager/src/browser_dialog.rs:70
+msgid "Hide the titlebar; reveal it by moving the cursor to the top edge."
+msgstr ""
+
+#: crates/webapps-manager/src/browser_dialog.rs:148 crates/webapps-manager/src/webapp_dialog/ui/shell.rs:43 crates/webapps-manager/src/window/actions/remove_all.rs:28 crates/webapps-manager/src/window/actions/remove_multiple.rs:133 crates/webapps-manager/src/window/actions/remove_multiple.rs:186 crates/webapps-manager/src/window/list.rs:193
+msgid "Cancel"
+msgstr ""
+
+#: crates/webapps-manager/src/browser_dialog.rs:149
+msgid "OK"
+msgstr ""
+
+#: crates/webapps-manager/src/browser_dialog.rs:194 crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:169 crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:65
+msgid "Internal Browser"
+msgstr ""
+
+#: crates/webapps-manager/src/browser_dialog.rs:196
+msgid "Embedded browser with better system integration. May not work on all websites."
+msgstr ""
+
+#: crates/webapps-manager/src/template_gallery.rs:30
+msgid "Choose a Template"
+msgstr ""
+
+#: crates/webapps-manager/src/template_gallery.rs:37
+msgid "Search templates..."
+msgstr ""
+
+#: crates/webapps-manager/src/template_gallery.rs:102
+msgid "No templates found"
+msgstr ""
+
+#: crates/webapps-manager/src/template_gallery.rs:110
+msgid "Search Results"
+msgstr ""
+
+#: crates/webapps-manager/src/template_gallery.rs:150
+msgid "Requires external browser (DRM)"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_dialog/handlers/lifecycle.rs:99
+msgid "Failed to save webapp"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:50
+msgid "Icon candidate {n}"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:88
+msgid "Select Icon"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:94
+msgid "Images"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:20
+msgid "Application Icon"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:27 crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:31
+msgid "Select"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:39
+msgid "Detected icon candidates"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:44
+msgid "Category"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:23
+msgid "Browser"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:75
+msgid "Use separate profile"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:77
+msgid "Allows independent cookies and sessions for this webapp"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:86
+msgid "Profile Name"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:16
+msgid "URL"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:19
+msgid "Detect"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:20
+msgid "Detect name and icon from website"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:25
+msgid "Name"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:23 crates/webapps-manager/src/window/shortcuts_window.rs:20
+msgid "New WebApp"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:25
+msgid "Edit WebApp"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:44
+msgid "Save"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:59
+msgid "Loading…"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_row.rs:86
+msgid "Change browser"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_row.rs:96
+msgid "Edit"
+msgstr ""
+
+#: crates/webapps-manager/src/webapp_row.rs:106 crates/webapps-manager/src/window/actions/remove_multiple.rs:187 crates/webapps-manager/src/window/list.rs:194
+msgid "Remove"
+msgstr ""
+
+#: crates/webapps-manager/src/welcome_dialog.rs:20 crates/webapps-manager/src/welcome_dialog.rs:47
+msgid "Welcome to WebApps Manager"
+msgstr ""
+
+#: crates/webapps-manager/src/welcome_dialog.rs:60
+msgid "What are WebApps?"
+msgstr ""
+
+#: crates/webapps-manager/src/welcome_dialog.rs:61
+msgid "WebApps are web applications that run in a dedicated browser window, providing a more app-like experience for your favorite websites."
+msgstr ""
+
+#: crates/webapps-manager/src/welcome_dialog.rs:62
+msgid "Benefits of using WebApps:"
+msgstr ""
+
+#: crates/webapps-manager/src/welcome_dialog.rs:63
+msgid "Focus"
+msgstr ""
+
+#: crates/webapps-manager/src/welcome_dialog.rs:63
+msgid "Work without the distractions of other browser tabs"
+msgstr ""
+
+#: crates/webapps-manager/src/welcome_dialog.rs:64
+msgid "Desktop Integration"
+msgstr ""
+
+#: crates/webapps-manager/src/welcome_dialog.rs:64
+msgid "Quick access from your application menu"
+msgstr ""
+
+#: crates/webapps-manager/src/welcome_dialog.rs:65
+msgid "Isolated Profiles"
+msgstr ""
+
+#: crates/webapps-manager/src/welcome_dialog.rs:65
+msgid "Each webapp can have its own cookies and settings"
+msgstr ""
+
+#: crates/webapps-manager/src/welcome_dialog.rs:82
+msgid "Don't show this again"
+msgstr ""
+
+#: crates/webapps-manager/src/welcome_dialog.rs:94
+msgid "Let's Start"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/about.rs:15 crates/webapps-manager/src/window/ui.rs:22
+msgid "WebApps Manager"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/import_export.rs:20 crates/webapps-manager/src/window/ui.rs:104
+msgid "Import WebApps"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/import_export.rs:24
+msgid "ZIP files"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/import_export.rs:49
+msgid "Import failed"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/import_export.rs:67 crates/webapps-manager/src/window/ui.rs:105
+msgid "Export WebApps"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/import_export.rs:87
+msgid "Export failed"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/import_export.rs:101
+msgid "Imported {imported}, skipped {dups} duplicates"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/import_export.rs:108
+msgid "No WebApps"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/import_export.rs:110
+msgid "WebApps exported successfully"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/remove_all.rs:23 crates/webapps-manager/src/window/ui.rs:120
+msgid "Remove All WebApps"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/remove_all.rs:25
+msgid "Are you sure you want to remove all your WebApps? This action cannot be undone."
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/remove_all.rs:29
+msgid "Continue"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/remove_all.rs:47
+msgid "Final Confirmation"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/remove_all.rs:49
+msgid "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/remove_all.rs:52
+msgid "No, Cancel"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/remove_all.rs:53
+msgid "Yes, Remove All"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/remove_all.rs:74
+msgid "All WebApps have been removed"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/remove_all.rs:79
+msgid "Failed to remove all WebApps"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:27
+msgid "No WebApps to remove"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:32
+msgid "Remove WebApps"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:42
+msgid "Select the WebApps you want to remove. This cannot be undone."
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:63 crates/webapps-manager/src/window/actions/remove_multiple.rs:65
+msgid "Select all"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:134
+msgid "Remove Selected"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:157
+msgid "Select at least one WebApp"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:176
+msgid "Remove Selected WebApps?"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:178
+msgid "This will remove {count} WebApps and their desktop entries. This cannot be undone."
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:218
+msgid "{count} WebApps removed"
+msgstr ""
+
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:220
+msgid "{ok} removed, {fail} failed"
+msgstr ""
+
+#: crates/webapps-manager/src/window/list.rs:37
+msgid "{} results"
+msgstr ""
+
+#: crates/webapps-manager/src/window/list.rs:57
+msgid "No WebApps yet"
+msgstr ""
+
+#: crates/webapps-manager/src/window/list.rs:59
+msgid "Turn any website into a desktop app. Press Add to get started."
+msgstr ""
+
+#: crates/webapps-manager/src/window/list.rs:65 crates/webapps-manager/src/window/ui.rs:39 crates/webapps-manager/src/window/ui.rs:40
+msgid "Add WebApp"
+msgstr ""
+
+#: crates/webapps-manager/src/window/list.rs:124 crates/webapps-manager/src/window/mod.rs:118
+msgid "WebApp created successfully"
+msgstr ""
+
+#: crates/webapps-manager/src/window/list.rs:141
+msgid "WebApp updated successfully"
+msgstr ""
+
+#: crates/webapps-manager/src/window/list.rs:177
+msgid "Browser changed"
+msgstr ""
+
+#: crates/webapps-manager/src/window/list.rs:190
+msgid "Remove WebApp?"
+msgstr ""
+
+#: crates/webapps-manager/src/window/list.rs:203
+msgid "Also delete configuration folder"
+msgstr ""
+
+#: crates/webapps-manager/src/window/list.rs:223
+msgid "WebApp removed"
+msgstr ""
+
+#: crates/webapps-manager/src/window/shortcuts_window.rs:18
+msgid "General"
+msgstr ""
+
+#: crates/webapps-manager/src/window/shortcuts_window.rs:21
+msgid "Search"
+msgstr ""
+
+#: crates/webapps-manager/src/window/shortcuts_window.rs:22
+msgid "Quit"
+msgstr ""
+
+#: crates/webapps-manager/src/window/shortcuts_window.rs:23 crates/webapps-viewer/src/window/shortcuts_window.rs:40
+msgid "Show this dialog"
+msgstr ""
+
+#: crates/webapps-manager/src/window/shortcuts_window.rs:26 crates/webapps-manager/src/window/shortcuts_window.rs:32 crates/webapps-manager/src/window/ui.rs:124 crates/webapps-viewer/src/window/chrome.rs:90 crates/webapps-viewer/src/window/shortcuts_window.rs:45 crates/webapps-viewer/src/window/shortcuts_window.rs:53
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: crates/webapps-manager/src/window/ui.rs:34 crates/webapps-manager/src/window/ui.rs:35
+msgid "Search WebApps"
+msgstr ""
+
+#: crates/webapps-manager/src/window/ui.rs:38
+msgid "Add"
+msgstr ""
+
+#: crates/webapps-manager/src/window/ui.rs:47
+msgid "Main Menu"
+msgstr ""
+
+#: crates/webapps-manager/src/window/ui.rs:107
+msgid "Browse Applications Folder"
+msgstr ""
+
+#: crates/webapps-manager/src/window/ui.rs:111
+msgid "Browse Profiles Folder"
+msgstr ""
+
+#: crates/webapps-manager/src/window/ui.rs:117
+msgid "Remove WebApps in Bulk"
+msgstr ""
+
+#: crates/webapps-manager/src/window/ui.rs:125
+msgid "About"
+msgstr ""
+
+#: crates/webapps-manager/src/window/mod.rs:45
+msgid "Detecting installed browsers…"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/chrome.rs:23
+msgid "Back"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/chrome.rs:24
+msgid "Forward"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/chrome.rs:25
+msgid "Reload"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/chrome.rs:27
+msgid "Fullscreen"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/chrome.rs:41
+msgid "Enter URL…"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/chrome.rs:82
+msgid "Zoom In"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/chrome.rs:83
+msgid "Zoom Out"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/chrome.rs:84
+msgid "Reset Zoom"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/chrome.rs:86
+msgid "Developer Tools"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/chrome.rs:96 crates/webapps-viewer/src/window/chrome.rs:98
+msgid "Menu"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/context_menu.rs:27
+msgid "Open Link in Browser"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/downloads/mod.rs:28
+msgid "Download Complete"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/downloads/mod.rs:37
+msgid "Save File"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:87
+msgid "Camera Access"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:88
+msgid "This webapp wants to use your camera. Allow?"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:91
+msgid "Microphone Access"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:92
+msgid "This webapp wants to use your microphone. Allow?"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:95
+msgid "Location Access"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:96
+msgid "This webapp wants to access your location. Allow?"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:99
+msgid "Clipboard Access"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:100
+msgid "This webapp wants to read from your clipboard. Allow?"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:103
+msgid "Permission Request"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:104
+msgid "This webapp is requesting a special permission. Allow?"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:112
+msgid "Deny"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/permissions/mod.rs:113
+msgid "Allow"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:17
+msgid "Navigation"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:19
+msgid "Focus address bar"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:20
+msgid "Reload page"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:21
+msgid "Go back"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:22
+msgid "Go forward"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:27
+msgid "View"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:29
+msgid "Toggle fullscreen"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:30
+msgid "Zoom in"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:31
+msgid "Zoom out"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:32
+msgid "Reset zoom"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:37
+msgid "Window"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:39
+msgid "Close window"
+msgstr ""
