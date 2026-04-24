@@ -96,6 +96,20 @@ mod tests {
     }
 
     #[test]
+    fn derive_wm_class_app_mode_matches_viewer_application_id() {
+        // Must equal the viewer's GTK application_id so Wayland compositors can
+        // associate the window with the .desktop entry (otherwise the taskbar
+        // shows the raw app_id and a generic icon).
+        let w = app("https://cloud.talesam.org/apps/notes", AppMode::App);
+        let cls = derive_wm_class(&w);
+        let expected = format!(
+            "br.com.biglinux.webapp.{}",
+            desktop_file_id(&w.app_url)
+        );
+        assert_eq!(cls, expected);
+    }
+
+    #[test]
     fn derive_wm_class_browser_mode_includes_prefix() {
         let w = app("https://web.whatsapp.com/", AppMode::Browser);
         let cls = derive_wm_class(&w);

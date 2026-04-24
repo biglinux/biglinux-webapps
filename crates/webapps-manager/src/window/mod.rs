@@ -76,12 +76,18 @@ pub fn build(app: &adw::Application) {
         ui_async::run_with_result(
             || {
                 let migrated = service::migrate_legacy_desktops();
+                let regenerated = service::regenerate_app_mode_desktops();
                 let webapps = service::load_webapps();
-                (migrated, webapps)
+                (migrated, regenerated, webapps)
             },
-            move |(migrated, webapps): (usize, WebAppCollection)| {
+            move |(migrated, regenerated, webapps): (usize, usize, WebAppCollection)| {
                 if migrated > 0 {
                     log::info!("Migrated {migrated} legacy webapps from .desktop files");
+                }
+                if regenerated > 0 {
+                    log::info!(
+                        "Regenerated {regenerated} viewer-mode .desktop entries (StartupWMClass alignment)"
+                    );
                 }
                 state::apply_webapps(&context_for_load.state, webapps);
                 list::populate_list(&context_for_load);
