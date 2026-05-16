@@ -2,7 +2,7 @@ use crate::models::{AppMode, WebApp};
 
 use super::paths::desktop_file_id;
 use super::sanitize::{sanitize_desktop_field, sanitize_desktop_value};
-use super::wm_class::{derive_class_from_url, derive_wm_class};
+use super::wm_class::derive_wm_class;
 
 pub fn generate_desktop_entry(webapp: &WebApp) -> String {
     let app_id = desktop_file_id(&webapp.app_url);
@@ -68,7 +68,9 @@ fn build_exec_command(webapp: &WebApp, app_id: &str) -> String {
             )
         }
         AppMode::Browser => {
-            let class = sanitize_desktop_field(&derive_class_from_url(&webapp.app_url));
+            // Same string we emit as `StartupWMClass`, so the launched Chromium
+            // window reports a WM_CLASS that maps back to this `.desktop` entry.
+            let class = sanitize_desktop_field(&derive_wm_class(webapp));
             format!(
                 "big-webapps-exec filename=\"{safe_file}\" {safe_browser} --class=\"{class}\" --profile-directory={safe_profile} --app=\"{safe_url}\"{file_arg}",
             )

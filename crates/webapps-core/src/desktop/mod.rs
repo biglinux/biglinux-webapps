@@ -1,18 +1,21 @@
 mod builder;
+mod icon;
 mod paths;
 mod sanitize;
 mod wm_class;
 
 pub use builder::generate_desktop_entry;
+pub use icon::{persist_icon, webapp_icons_dir};
 pub use paths::{
-    desktop_file_id, desktop_file_path, install_desktop_entry, remove_desktop_entry,
-    remove_desktop_file,
+    desktop_file_id, desktop_file_path, install_desktop_entry, legacy_host_desktop_file_id,
+    remove_desktop_entry, remove_desktop_file, viewer_desktop_filename,
 };
+pub use wm_class::{canonical_browser_desktop_filename, chromium_browser_app_id};
 
 #[cfg(test)]
 mod tests {
     use super::sanitize::{sanitize_desktop_field, sanitize_desktop_value};
-    use super::wm_class::{browser_url_class, derive_wm_class};
+    use super::wm_class::derive_wm_class;
     use super::*;
     use crate::models::{AppMode, WebApp};
 
@@ -38,6 +41,34 @@ mod tests {
     #[test]
     fn desktop_file_id_plain_domain() {
         assert_eq!(desktop_file_id("https://spotify.com"), "spotifycom");
+    }
+
+    #[test]
+    fn desktop_file_id_includes_path_to_avoid_collisions() {
+        assert_eq!(
+            desktop_file_id("https://cloud.talesam.org/apps/notes"),
+            "cloudtalesamorg_apps_notes"
+        );
+        assert_eq!(
+            desktop_file_id("https://cloud.talesam.org/apps/calendar"),
+            "cloudtalesamorg_apps_calendar"
+        );
+    }
+
+    #[test]
+    fn legacy_host_desktop_file_id_keeps_pre_path_scheme() {
+        assert_eq!(
+            legacy_host_desktop_file_id("https://cloud.talesam.org/apps/notes"),
+            "cloudtalesamorg"
+        );
+    }
+
+    #[test]
+    fn viewer_desktop_filename_uses_path_aware_id() {
+        assert_eq!(
+            viewer_desktop_filename("https://cloud.talesam.org/apps/notes"),
+            "biglinux-webapp-cloudtalesamorg_apps_notes.desktop"
+        );
     }
 
     #[test]
@@ -70,19 +101,20 @@ mod tests {
     }
 
     #[test]
-    fn browser_url_class_adds_trailing_slash_for_root() {
-        let cls = browser_url_class("https://deezer.com");
-        assert!(cls.ends_with("__"), "Expected trailing __ but got: {cls}");
+    fn chromium_app_id_matches_brave_synthesis_for_spotify() {
+        // Matches the value Brave 148 on GNOME 47 Wayland actually emits as the
+        // xdg-shell app_id when launched with --app=URL --profile-directory=Default
+        // for https://open.spotify.com/intl-pt/. If this diverges, GNOME Shell
+        // can't map the window to our .desktop and falls back to the host browser's
+        // icon.
+        let id = chromium_browser_app_id("brave", "https://open.spotify.com/intl-pt/", "Default");
+        assert_eq!(id, "brave-open.spotify.com__intl-pt_-Default");
     }
 
     #[test]
-    fn browser_url_class_keeps_subpath() {
-        let cls = browser_url_class("https://web.whatsapp.com/some/path");
-        assert!(
-            cls.contains("web.whatsapp.com"),
-            "Expected host in class: {cls}"
-        );
-        assert!(cls.contains("__"), "Expected __ separator: {cls}");
+    fn chromium_app_id_root_path_has_single_trailing_underscore() {
+        let id = chromium_browser_app_id("brave", "https://deezer.com/", "Default");
+        assert_eq!(id, "brave-deezer.com__-Default");
     }
 
     #[test]
@@ -102,19 +134,29 @@ mod tests {
         // shows the raw app_id and a generic icon).
         let w = app("https://cloud.talesam.org/apps/notes", AppMode::App);
         let cls = derive_wm_class(&w);
-        let expected = format!(
-            "br.com.biglinux.webapp.{}",
-            desktop_file_id(&w.app_url)
-        );
+        let expected = format!("br.com.biglinux.webapp.{}", desktop_file_id(&w.app_url));
         assert_eq!(cls, expected);
     }
 
     #[test]
-    fn derive_wm_class_browser_mode_includes_prefix() {
+    fn derive_wm_class_browser_mode_matches_chromium_app_id() {
+        // Browser-mode StartupWMClass must equal what Chromium synthesizes for
+        // the running window's Wayland app_id, otherwise GNOME Shell can't fall
+        // back to the StartupWMClass lookup either.
         let w = app("https://web.whatsapp.com/", AppMode::Browser);
         let cls = derive_wm_class(&w);
-        assert!(cls.starts_with("brave"), "Expected brave prefix: {cls}");
-        assert!(cls.ends_with("-Default"), "Expected -Default suffix: {cls}");
+        assert_eq!(cls, "brave-web.whatsapp.com__-Default");
+    }
+
+    #[test]
+    fn canonical_browser_desktop_filename_matches_app_id_plus_extension() {
+        // GNOME's primary window→.desktop lookup matches the running Wayland
+        // app_id against the .desktop basename — these must agree exactly.
+        let w = app("https://open.spotify.com/intl-pt/", AppMode::Browser);
+        assert_eq!(
+            canonical_browser_desktop_filename(&w),
+            "brave-open.spotify.com__intl-pt_-Default.desktop"
+        );
     }
 
     #[test]

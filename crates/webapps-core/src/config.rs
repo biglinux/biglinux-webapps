@@ -45,7 +45,9 @@ pub fn system_icons_dir() -> PathBuf {
     PathBuf::from("/usr/share/biglinux/webapps/icons")
 }
 
-/// Browser profile storage: ~/.local/share/biglinux-webapps/profiles/
+/// Browser profile storage: ~/.bigwebapps/
 pub fn profiles_dir() -> PathBuf {
-    data_dir().join("profiles")
+    dirs::home_dir()
+        .unwrap_or_else(|| PathBuf::from("~"))
+        .join(".bigwebapps")
 }

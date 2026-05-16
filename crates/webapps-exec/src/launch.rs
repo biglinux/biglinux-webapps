@@ -6,7 +6,7 @@
 
 use std::{os::unix::process::CommandExt, path::Path, process::Command};
 
-use webapps_core::browsers::BrowserDef;
+use webapps_core::{browsers::BrowserDef, config};
 
 use crate::{wayland, Args};
 
@@ -25,21 +25,18 @@ pub fn firefox(
     icon: &str,
     is_flatpak: bool,
 ) -> ! {
-    let home = std::env::var("HOME").unwrap_or_default();
     let profile_name = args.filename.trim_end_matches(".desktop");
-    let profile_dir = format!("{home}/.bigwebapps/{browser_id}/{profile_name}");
+    let profile_dir = config::profiles_dir().join(browser_id).join(profile_name);
 
-    setup_firefox_profile(Path::new(&profile_dir));
+    setup_firefox_profile(&profile_dir);
 
-    let icon_stem = Path::new(icon)
-        .file_stem()
-        .map(|s| s.to_string_lossy().to_string())
-        .unwrap_or_else(|| icon.to_string());
-
+    // XApp accepts either a theme name or an absolute path here; pass the
+    // raw Icon= value through so the manager's absolute path (the common
+    // case after icon persistence at save time) is honored as-is.
     let (program, prefix_args) = base_spec(def, browser_id, is_flatpak);
     let mut cmd = Command::new(&program);
     cmd.args(&prefix_args)
-        .env("XAPP_FORCE_GTKWINDOW_ICON", &icon_stem)
+        .env("XAPP_FORCE_GTKWINDOW_ICON", icon)
         .env("MOZ_APP_REMOTINGNAME", &args.class)
         .arg(format!("--class={}", args.class))
         .arg(format!("--name={profile_name}"))
@@ -58,8 +55,7 @@ pub fn firefox(
 /// On Wayland with a `-BigWebApp`-suffixed desktop file, performs the
 /// compositor icon-swap workaround before spawning the browser.
 pub fn chromium(args: &Args, browser_id: &str, def: Option<&'static BrowserDef>, is_flatpak: bool) {
-    let home = std::env::var("HOME").unwrap_or_default();
-    let (program, cmd_args) = build_chromium_spec(args, &home, browser_id, def, is_flatpak);
+    let (program, cmd_args) = build_chromium_spec(args, browser_id, def, is_flatpak);
 
     let spawn = move || {
         if let Err(e) = Command::new(&program).args(&cmd_args).spawn() {
@@ -80,13 +76,12 @@ pub fn chromium(args: &Args, browser_id: &str, def: Option<&'static BrowserDef>,
 /// Runs `flatpak override --user --filesystem=<path> <app_id>` so the
 /// sandboxed browser can read and write its profile data.
 pub fn grant_flatpak_access(browser_id: &str, app_id: &str) {
-    let home = std::env::var("HOME").unwrap_or_default();
-    let data_dir = format!("{home}/.bigwebapps/{browser_id}");
+    let data_dir = config::profiles_dir().join(browser_id);
     let status = Command::new("flatpak")
         .args([
             "override",
             "--user",
-            &format!("--filesystem={data_dir}"),
+            &format!("--filesystem={}", data_dir.display()),
             app_id,
         ])
         .status();
@@ -156,33 +151,37 @@ fn base_spec(
 
 /// Assemble the complete Chromium argv as `(program, args)`.
 ///
-/// Profile "Default" / "Browser" → reuse native browser profile.
-/// Any other profile name → isolated `--user-data-dir` session.
+/// Always uses an isolated `--user-data-dir` so the webapp runs in its own
+/// browser process. Sharing the browser's main user-data-dir routes the new
+/// window through IPC into the existing process, causing the taskbar to group
+/// the webapp under the browser's own entry instead of its own `.desktop`.
+///
+/// For sentinel profiles "Default" / "Browser" the data dir is per-webapp
+/// (keyed by `args.filename`); custom names share their named dir across
+/// webapps that opted in.
 fn build_chromium_spec(
     args: &Args,
-    home: &str,
     browser_id: &str,
     def: Option<&BrowserDef>,
     is_flatpak: bool,
 ) -> (String, Vec<String>) {
     let (program, mut cmd_args) = base_spec(def, browser_id, is_flatpak);
 
-    let profile_args = if args.profile == "Default" || args.profile == "Browser" {
-        vec![
-            "--no-default-browser-check".to_string(),
-            "--profile-directory=Default".to_string(),
-            format!("--app={}", args.url),
-        ]
+    let profile_key = if args.profile == "Default" || args.profile == "Browser" {
+        // Per-webapp dir so each Default/Browser webapp gets its own process.
+        args.filename.trim_end_matches(".desktop")
     } else {
-        let profile_dir = format!("{home}/.bigwebapps/{browser_id}/{}", args.profile);
-        let _ = std::fs::create_dir_all(&profile_dir);
-        vec![
-            "--no-default-browser-check".to_string(),
-            format!("--user-data-dir={profile_dir}"),
-            format!("--app={}", args.url),
-        ]
+        args.profile.as_str()
     };
+    let profile_dir = config::profiles_dir().join(browser_id).join(profile_key);
+    let _ = std::fs::create_dir_all(&profile_dir);
 
-    cmd_args.extend(profile_args);
+    cmd_args.extend([
+        "--no-default-browser-check".to_string(),
+        format!("--user-data-dir={}", profile_dir.display()),
+        format!("--profile-directory={}", args.profile),
+        format!("--class={}", args.class),
+        format!("--app={}", args.url),
+    ]);
     (program, cmd_args)
 }

@@ -76,17 +76,51 @@ pub fn build(app: &adw::Application) {
         ui_async::run_with_result(
             || {
                 let migrated = service::migrate_legacy_desktops();
-                let regenerated = service::regenerate_app_mode_desktops();
+                let regenerated_app = service::regenerate_app_mode_desktops();
+                let regenerated_browser = service::regenerate_browser_mode_desktops();
+                // Rename before persisting icons so the icon migration sees the
+                // canonical app_file and doesn't rewrite the soon-to-be-deleted entry.
+                let renamed_browser = service::migrate_browser_desktop_filenames();
+                let persisted_icons = service::persist_existing_icons();
                 let webapps = service::load_webapps();
-                (migrated, regenerated, webapps)
+                (
+                    migrated,
+                    regenerated_app,
+                    regenerated_browser,
+                    renamed_browser,
+                    persisted_icons,
+                    webapps,
+                )
             },
-            move |(migrated, regenerated, webapps): (usize, usize, WebAppCollection)| {
+            move |(
+                migrated,
+                regenerated_app,
+                regenerated_browser,
+                renamed_browser,
+                persisted_icons,
+                webapps,
+            ): (usize, usize, usize, usize, usize, WebAppCollection)| {
                 if migrated > 0 {
                     log::info!("Migrated {migrated} legacy webapps from .desktop files");
                 }
-                if regenerated > 0 {
+                if regenerated_app > 0 {
                     log::info!(
-                        "Regenerated {regenerated} viewer-mode .desktop entries (StartupWMClass alignment)"
+                        "Regenerated {regenerated_app} viewer-mode .desktop entries (StartupWMClass alignment)"
+                    );
+                }
+                if regenerated_browser > 0 {
+                    log::info!(
+                        "Regenerated {regenerated_browser} browser-mode .desktop entries (StartupWMClass + --class alignment)"
+                    );
+                }
+                if renamed_browser > 0 {
+                    log::info!(
+                        "Renamed {renamed_browser} browser-mode .desktop entries to the Chromium app_id scheme"
+                    );
+                }
+                if persisted_icons > 0 {
+                    log::info!(
+                        "Persisted {persisted_icons} webapp icons into the data directory (Icon= now uses a stable absolute path)"
                     );
                 }
                 state::apply_webapps(&context_for_load.state, webapps);

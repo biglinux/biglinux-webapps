@@ -1,4 +1,5 @@
 mod browser;
+mod browser_url;
 mod crud;
 mod icons;
 mod io;
@@ -13,7 +14,10 @@ pub use crud::{
 };
 pub use icons::resolve_icon_path;
 pub use io::{export_webapps, import_webapps};
-pub use migration::{migrate_legacy_desktops, regenerate_app_mode_desktops};
+pub use migration::{
+    migrate_browser_desktop_filenames, migrate_legacy_desktops, persist_existing_icons,
+    regenerate_app_mode_desktops, regenerate_browser_mode_desktops,
+};
 pub use repository::{load_webapps, save_webapps};
 pub use welcome::{mark_welcome_shown, should_show_welcome};
 

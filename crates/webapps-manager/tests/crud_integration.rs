@@ -9,12 +9,13 @@
 //! refactor breaks atomicity or accidentally drops the lock, this suite will
 //! flag it.
 
-use std::sync::Mutex;
+use std::{fs, sync::Mutex};
 
 use serial_test::serial;
 use tempfile::TempDir;
 
-use webapps_core::models::{AppMode, BrowserId, WebApp};
+use webapps_core::config;
+use webapps_core::models::{AppMode, BrowserId, WebApp, WebAppCollection};
 
 // Single mutex held across the body of any test that mutates env vars — protects
 // against parallel test runners that ignore the `serial` attribute (e.g. cargo
@@ -54,6 +55,18 @@ fn make_app(name: &str, url: &str) -> WebApp {
     }
 }
 
+fn make_browser_app(name: &str, url: &str) -> WebApp {
+    WebApp {
+        app_name: name.to_string(),
+        app_url: url.to_string(),
+        app_categories: "Webapps".to_string(),
+        browser: "brave".to_string(),
+        app_mode: AppMode::Browser,
+        app_file: "old-browser-entry.desktop".to_string(),
+        ..WebApp::default()
+    }
+}
+
 #[test]
 #[serial]
 fn create_then_load_round_trip() {
@@ -68,13 +81,36 @@ fn create_then_load_round_trip() {
 
 #[test]
 #[serial]
+fn app_mode_create_uses_path_aware_desktop_name() {
+    let _sandbox = XdgSandbox::new();
+    let mut app = make_app("Notes", "https://cloud.talesam.org/apps/notes");
+    app.app_file.clear();
+
+    webapps_manager::service::create_webapp(&app).expect("create");
+
+    let collection = webapps_manager::service::load_webapps();
+    assert_eq!(collection.webapps.len(), 1);
+    let saved = &collection.webapps[0];
+    assert_eq!(
+        saved.app_file,
+        "biglinux-webapp-cloudtalesamorg_apps_notes.desktop"
+    );
+}
+
+#[test]
+#[serial]
 fn delete_removes_from_persisted_collection() {
     let _sandbox = XdgSandbox::new();
     let app = make_app("DeleteMe", "https://example.com/del");
     webapps_manager::service::create_webapp(&app).expect("create");
     assert_eq!(webapps_manager::service::load_webapps().webapps.len(), 1);
+    let saved = webapps_manager::service::load_webapps()
+        .webapps
+        .into_iter()
+        .next()
+        .expect("saved app");
 
-    webapps_manager::service::delete_webapp(&app, false).expect("delete");
+    webapps_manager::service::delete_webapp(&saved, false).expect("delete");
     assert!(webapps_manager::service::load_webapps().webapps.is_empty());
 }
 
@@ -82,8 +118,13 @@ fn delete_removes_from_persisted_collection() {
 #[serial]
 fn update_replaces_entry_in_place() {
     let _sandbox = XdgSandbox::new();
-    let mut app = make_app("Original", "https://example.com/u");
+    let app = make_app("Original", "https://example.com/u");
     webapps_manager::service::create_webapp(&app).expect("create");
+    let mut app = webapps_manager::service::load_webapps()
+        .webapps
+        .into_iter()
+        .next()
+        .expect("saved app");
 
     app.app_name = "Updated".to_string();
     webapps_manager::service::update_webapp(&app).expect("update");
@@ -131,4 +172,141 @@ fn create_validates_app_url() {
 
     let result = webapps_manager::service::create_webapp(&app);
     assert!(result.is_err(), "expected URL validation failure");
+}
+
+#[test]
+#[serial]
+fn browser_create_uses_chromium_app_id_desktop_name() {
+    let _sandbox = XdgSandbox::new();
+    let app = make_browser_app("Browser", "http://127.0.0.1:9/browser");
+
+    webapps_manager::service::create_webapp(&app).expect("create");
+
+    let collection = webapps_manager::service::load_webapps();
+    assert_eq!(collection.webapps.len(), 1);
+    let saved = &collection.webapps[0];
+    assert_eq!(saved.app_file, "brave-127.0.0.1__browser-Default.desktop");
+
+    let desktop = config::applications_dir().join(&saved.app_file);
+    let content = std::fs::read_to_string(desktop).expect("desktop entry");
+    assert!(content.contains("StartupWMClass=brave-127.0.0.1__browser-Default"));
+    assert!(content.contains("--class=\"brave-127.0.0.1__browser-Default\""));
+}
+
+#[test]
+#[serial]
+fn delete_browser_default_profile_removes_isolated_dir() {
+    let _sandbox = XdgSandbox::new();
+    let app = make_browser_app("Browser", "http://127.0.0.1:9/delete-profile");
+
+    webapps_manager::service::create_webapp(&app).expect("create");
+    let saved = webapps_manager::service::load_webapps()
+        .webapps
+        .into_iter()
+        .next()
+        .expect("saved app");
+
+    let profile_key = saved.app_file.trim_end_matches(".desktop");
+    let profile_dir = config::profiles_dir()
+        .join(&saved.browser)
+        .join(profile_key);
+    std::fs::create_dir_all(&profile_dir).expect("profile dir");
+
+    webapps_manager::service::delete_webapp(&saved, false).expect("delete");
+
+    assert!(!profile_dir.exists(), "profile dir should be removed");
+}
+
+#[test]
+#[serial]
+fn delete_all_removes_browser_default_profiles() {
+    let _sandbox = XdgSandbox::new();
+    let app = make_browser_app("Browser", "http://127.0.0.1:9/delete-all-profile");
+
+    webapps_manager::service::create_webapp(&app).expect("create");
+    let saved = webapps_manager::service::load_webapps()
+        .webapps
+        .into_iter()
+        .next()
+        .expect("saved app");
+
+    let profile_key = saved.app_file.trim_end_matches(".desktop");
+    let profile_dir = config::profiles_dir()
+        .join(&saved.browser)
+        .join(profile_key);
+    std::fs::create_dir_all(&profile_dir).expect("profile dir");
+
+    webapps_manager::service::delete_all_webapps().expect("delete all");
+
+    assert!(!profile_dir.exists(), "profile dir should be removed");
+}
+
+#[test]
+#[serial]
+fn app_mode_migration_moves_single_legacy_viewer_storage() {
+    let _sandbox = XdgSandbox::new();
+    let app = make_app("Notes", "https://cloud.talesam.org/apps/notes");
+    webapps_manager::service::save_webapps(&WebAppCollection {
+        webapps: vec![app.clone()],
+    })
+    .expect("save collection");
+
+    let legacy_id = webapps_core::desktop::legacy_host_desktop_file_id(&app.app_url);
+    let new_id = webapps_core::desktop::desktop_file_id(&app.app_url);
+    let legacy_geometry = config::config_dir().join(format!("{legacy_id}.json"));
+    let legacy_data = config::data_dir().join(&legacy_id);
+    let legacy_cache = config::cache_dir().join(&legacy_id);
+    fs::create_dir_all(config::config_dir()).expect("config dir");
+    fs::write(&legacy_geometry, "{}").expect("legacy geometry");
+    fs::create_dir_all(&legacy_data).expect("legacy data");
+    fs::create_dir_all(&legacy_cache).expect("legacy cache");
+
+    let count = webapps_manager::service::regenerate_app_mode_desktops();
+
+    assert_eq!(count, 1);
+    assert!(!legacy_geometry.exists());
+    assert!(!legacy_data.exists());
+    assert!(!legacy_cache.exists());
+    assert!(config::config_dir().join(format!("{new_id}.json")).exists());
+    assert!(config::data_dir().join(&new_id).exists());
+    assert!(config::cache_dir().join(&new_id).exists());
+
+    let saved = webapps_manager::service::load_webapps()
+        .webapps
+        .into_iter()
+        .next()
+        .expect("saved app");
+    assert_eq!(
+        saved.app_file,
+        "biglinux-webapp-cloudtalesamorg_apps_notes.desktop"
+    );
+
+    let desktop = config::applications_dir().join(&saved.app_file);
+    let content = fs::read_to_string(desktop).expect("desktop entry");
+    assert!(content.contains("--app-id=\"cloudtalesamorg_apps_notes\""));
+    assert!(content.contains("StartupWMClass=br.com.biglinux.webapp.cloudtalesamorg_apps_notes"));
+}
+
+#[test]
+#[serial]
+fn app_mode_migration_keeps_shared_legacy_viewer_storage() {
+    let _sandbox = XdgSandbox::new();
+    let notes = make_app("Notes", "https://cloud.talesam.org/apps/notes");
+    let calendar = make_app("Calendar", "https://cloud.talesam.org/apps/calendar");
+    webapps_manager::service::save_webapps(&WebAppCollection {
+        webapps: vec![notes.clone(), calendar],
+    })
+    .expect("save collection");
+
+    let legacy_id = webapps_core::desktop::legacy_host_desktop_file_id(&notes.app_url);
+    let legacy_data = config::data_dir().join(&legacy_id);
+    fs::create_dir_all(&legacy_data).expect("legacy data");
+
+    let count = webapps_manager::service::regenerate_app_mode_desktops();
+
+    assert_eq!(count, 2);
+    assert!(legacy_data.exists());
+    assert!(!config::data_dir()
+        .join(webapps_core::desktop::desktop_file_id(&notes.app_url))
+        .exists());
 }

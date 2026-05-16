@@ -2652,6 +2652,8 @@ dependencies = [
  "log",
  "serde",
  "serde_json",
+ "serial_test",
+ "tempfile",
  "toml 0.8.23",
  "url",
 ]
