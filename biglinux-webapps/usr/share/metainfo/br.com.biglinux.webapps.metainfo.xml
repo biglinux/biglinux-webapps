@@ -462,6 +462,11 @@
     <control>touch</control>
   </supports>
   <releases>
+    <release version="4.0.1" date="2026-05-16">
+      <description>
+        <p>Fixes Wayland desktop IDs and icon mapping for browser-backed webapps, preserves integrated-viewer profiles across ID migrations, improves favicon quality selection, and refines auto-hidden headerbar and media playback behavior.</p>
+      </description>
+    </release>
     <release version="4.0.0" date="2026-04-23">
       <description>
         <p>First stable release of the Rust rewrite. Replaces the previous Python/GTK3 stack with a native Rust/GTK4/libadwaita build.</p>

@@ -65,32 +65,28 @@ pub fn generate_app_file(browser: &str, url: &str) -> String {
     filename
 }
 
-pub(super) fn cleanup_viewer_data(url: &str) {
-    let app_id = desktop::desktop_file_id(url);
-    let legacy_app_id = desktop::legacy_host_desktop_file_id(url);
+pub(super) fn cleanup_viewer_data(webapp: &WebApp) {
     let collection = super::super::repository::load_webapps();
+    let app_ids = [
+        desktop::viewer_app_id(webapp),
+        desktop::desktop_file_id(&webapp.app_url),
+        desktop::legacy_host_desktop_file_id(&webapp.app_url),
+    ];
 
-    cleanup_viewer_data_for_id(url, &app_id, &collection, desktop::desktop_file_id);
-    if legacy_app_id != app_id {
-        cleanup_viewer_data_for_id(
-            url,
-            &legacy_app_id,
-            &collection,
-            desktop::legacy_host_desktop_file_id,
-        );
+    for app_id in app_ids {
+        cleanup_viewer_data_for_id(webapp, &app_id, &collection);
     }
 }
 
 fn cleanup_viewer_data_for_id(
-    url: &str,
+    webapp: &WebApp,
     app_id: &str,
     collection: &webapps_core::models::WebAppCollection,
-    id_for_url: fn(&str) -> String,
 ) {
     let still_in_use = collection
         .webapps
         .iter()
-        .any(|app| app.app_url != url && id_for_url(&app.app_url) == app_id);
+        .any(|app| app.app_file != webapp.app_file && desktop::viewer_app_id(app) == app_id);
     if still_in_use {
         log::info!("Skipping cleanup of viewer data for {app_id}: shared with another webapp");
         return;
@@ -161,7 +157,7 @@ pub(super) fn profile_dir_for(webapp: &WebApp) -> Result<Option<PathBuf>> {
 
 pub(super) fn cleanup_deleted_app(webapp: &WebApp, delete_profile: bool) -> Result<()> {
     match webapp.app_mode {
-        AppMode::App => cleanup_viewer_data(&webapp.app_url),
+        AppMode::App => cleanup_viewer_data(webapp),
         AppMode::Browser => cleanup_browser_profile(webapp, delete_profile)?,
     }
     cleanup_persisted_icon(webapp);

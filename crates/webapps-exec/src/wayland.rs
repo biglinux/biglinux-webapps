@@ -131,6 +131,9 @@ fn release_lock(fd: i32, path: &str) {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::sync::Mutex;
+
+    static ENV_GUARD: Mutex<()> = Mutex::new(());
 
     #[test]
     fn original_desktop_name_strips_big_webapp_suffix() {
@@ -156,13 +159,18 @@ mod tests {
 
     #[test]
     fn swap_settle_falls_back_to_default_when_env_missing() {
-        // Use a serial guard via a unique env name so other tests don't interfere.
+        let _guard = ENV_GUARD
+            .lock()
+            .unwrap_or_else(|poisoned| poisoned.into_inner());
         std::env::remove_var(ENV_SWAP_SETTLE_MS);
         assert_eq!(swap_settle(), Duration::from_millis(DEFAULT_SWAP_SETTLE_MS));
     }
 
     #[test]
     fn swap_settle_honours_env_override() {
+        let _guard = ENV_GUARD
+            .lock()
+            .unwrap_or_else(|poisoned| poisoned.into_inner());
         std::env::set_var(ENV_SWAP_SETTLE_MS, "1234");
         assert_eq!(swap_settle(), Duration::from_millis(1234));
         std::env::remove_var(ENV_SWAP_SETTLE_MS);
@@ -170,6 +178,9 @@ mod tests {
 
     #[test]
     fn swap_settle_ignores_non_numeric_env() {
+        let _guard = ENV_GUARD
+            .lock()
+            .unwrap_or_else(|poisoned| poisoned.into_inner());
         std::env::set_var(ENV_SWAP_SETTLE_MS, "not-a-number");
         assert_eq!(swap_settle(), Duration::from_millis(DEFAULT_SWAP_SETTLE_MS));
         std::env::remove_var(ENV_SWAP_SETTLE_MS);

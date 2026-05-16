@@ -7,6 +7,7 @@ use gtk4 as gtk;
 use libadwaita as adw;
 
 use webapps_core::models::{AppMode, BrowserCollection, BrowserId, WebApp};
+use webapps_core::templates::default_registry;
 
 use crate::browser_dialog;
 
@@ -16,12 +17,34 @@ use super::super::validation;
 pub(crate) fn setup_url_handler(
     widgets: &DialogWidgets,
     webapp_cell: Rc<RefCell<WebApp>>,
+    browsers: Rc<RefCell<BrowserCollection>>,
+    drm_required: Rc<Cell<bool>>,
     skip_auto_detect: Rc<Cell<bool>>,
     debounce_handle: Rc<RefCell<Option<glib::SourceId>>>,
 ) {
     let detect_button = widgets.detect_button.clone();
+    let browser_row = widgets.browser_row.clone();
+    let browser_icon = widgets.browser_icon.clone();
+    let profile_row = widgets.profile_row.clone();
     widgets.url_row.connect_changed(move |row| {
-        webapp_cell.borrow_mut().app_url = row.text().to_string();
+        let text = row.text().to_string();
+        {
+            let mut webapp = webapp_cell.borrow_mut();
+            webapp.app_url = text.clone();
+            let requires_drm = default_registry().requires_drm(&webapp.template_id, &text);
+            drm_required.set(requires_drm);
+            if requires_drm && webapp.browser_id().is_viewer() {
+                if let Some(browser_id) = preferred_external_browser(&browsers.borrow()) {
+                    webapp.browser = browser_id;
+                    webapp.app_mode = AppMode::Browser;
+                }
+            }
+        }
+        let selected_browser = webapp_cell.borrow().browser.clone();
+        update_browser_row_subtitle(&browser_row, &browsers.borrow(), &selected_browser);
+        super::super::ui::update_browser_icon(&browser_icon, &webapp_cell.borrow());
+        profile_row.set_visible(!webapp_cell.borrow().browser_id().is_viewer());
+
         if let Some(id) = debounce_handle.borrow_mut().take() {
             id.remove();
         }
@@ -32,7 +55,6 @@ pub(crate) fn setup_url_handler(
 
         let detect_button = detect_button.clone();
         let scheduled_handle = debounce_handle.clone();
-        let text = row.text().to_string();
         let source =
             glib::timeout_add_local_once(std::time::Duration::from_millis(800), move || {
                 scheduled_handle.borrow_mut().take();
@@ -174,4 +196,45 @@ fn update_browser_row_subtitle(
             .unwrap_or_else(|| id.to_string())
     };
     browser_row.set_subtitle(&label);
+}
+
+fn preferred_external_browser(browsers: &BrowserCollection) -> Option<String> {
+    browsers
+        .default_browser()
+        .filter(|browser| browser.browser_id != BrowserId::VIEWER)
+        .or_else(|| {
+            browsers
+                .browsers
+                .iter()
+                .find(|browser| browser.browser_id != BrowserId::VIEWER)
+        })
+        .map(|browser| browser.browser_id.clone())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use webapps_core::models::Browser;
+
+    #[test]
+    fn preferred_external_browser_skips_viewer_fallback() {
+        let browsers = BrowserCollection {
+            browsers: vec![
+                Browser {
+                    browser_id: BrowserId::VIEWER.to_string(),
+                    is_default: true,
+                },
+                Browser {
+                    browser_id: "brave".to_string(),
+                    is_default: false,
+                },
+            ],
+            default_id: Some(BrowserId::VIEWER.to_string()),
+        };
+
+        assert_eq!(
+            preferred_external_browser(&browsers),
+            Some("brave".to_string())
+        );
+    }
 }

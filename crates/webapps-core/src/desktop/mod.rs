@@ -8,7 +8,7 @@ pub use builder::generate_desktop_entry;
 pub use icon::{persist_icon, webapp_icons_dir};
 pub use paths::{
     desktop_file_id, desktop_file_path, install_desktop_entry, legacy_host_desktop_file_id,
-    remove_desktop_entry, remove_desktop_file, viewer_desktop_filename,
+    remove_desktop_entry, remove_desktop_file, viewer_app_id, viewer_desktop_filename,
 };
 pub use wm_class::{canonical_browser_desktop_filename, chromium_browser_app_id};
 
@@ -69,6 +69,13 @@ mod tests {
             viewer_desktop_filename("https://cloud.talesam.org/apps/notes"),
             "biglinux-webapp-cloudtalesamorg_apps_notes.desktop"
         );
+    }
+
+    #[test]
+    fn viewer_app_id_uses_persisted_desktop_filename() {
+        let mut w = app("https://cloud.talesam.org/apps/notes", AppMode::App);
+        w.app_file = "biglinux-webapp-cloudtalesamorg.desktop".to_string();
+        assert_eq!(viewer_app_id(&w), "cloudtalesamorg");
     }
 
     #[test]

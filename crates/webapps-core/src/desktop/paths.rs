@@ -45,6 +45,20 @@ pub fn viewer_desktop_filename(url: &str) -> String {
     format!("biglinux-webapp-{}.desktop", desktop_file_id(url))
 }
 
+pub fn viewer_app_id(webapp: &WebApp) -> String {
+    webapp
+        .desktop_file_name()
+        .and_then(|file_name| {
+            file_name
+                .as_str()
+                .strip_prefix("biglinux-webapp-")
+                .and_then(|name| name.strip_suffix(".desktop"))
+                .map(sanitize_id_part)
+        })
+        .filter(|id| !id.is_empty())
+        .unwrap_or_else(|| desktop_file_id(&webapp.app_url))
+}
+
 fn sanitize_id_part(value: &str) -> String {
     let mut result = String::with_capacity(value.len());
     let mut previous_was_separator = false;

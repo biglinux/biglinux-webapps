@@ -243,16 +243,16 @@ fn delete_all_removes_browser_default_profiles() {
 
 #[test]
 #[serial]
-fn app_mode_migration_moves_single_legacy_viewer_storage() {
+fn app_mode_migration_preserves_existing_viewer_identity() {
     let _sandbox = XdgSandbox::new();
-    let app = make_app("Notes", "https://cloud.talesam.org/apps/notes");
+    let mut app = make_app("Notes", "https://cloud.talesam.org/apps/notes");
+    app.app_file = "biglinux-webapp-cloudtalesamorg.desktop".to_string();
     webapps_manager::service::save_webapps(&WebAppCollection {
         webapps: vec![app.clone()],
     })
     .expect("save collection");
 
     let legacy_id = webapps_core::desktop::legacy_host_desktop_file_id(&app.app_url);
-    let new_id = webapps_core::desktop::desktop_file_id(&app.app_url);
     let legacy_geometry = config::config_dir().join(format!("{legacy_id}.json"));
     let legacy_data = config::data_dir().join(&legacy_id);
     let legacy_cache = config::cache_dir().join(&legacy_id);
@@ -264,27 +264,48 @@ fn app_mode_migration_moves_single_legacy_viewer_storage() {
     let count = webapps_manager::service::regenerate_app_mode_desktops();
 
     assert_eq!(count, 1);
-    assert!(!legacy_geometry.exists());
-    assert!(!legacy_data.exists());
-    assert!(!legacy_cache.exists());
-    assert!(config::config_dir().join(format!("{new_id}.json")).exists());
-    assert!(config::data_dir().join(&new_id).exists());
-    assert!(config::cache_dir().join(&new_id).exists());
+    assert!(legacy_geometry.exists());
+    assert!(legacy_data.exists());
+    assert!(legacy_cache.exists());
 
     let saved = webapps_manager::service::load_webapps()
         .webapps
         .into_iter()
         .next()
         .expect("saved app");
-    assert_eq!(
-        saved.app_file,
-        "biglinux-webapp-cloudtalesamorg_apps_notes.desktop"
-    );
+    assert_eq!(saved.app_file, "biglinux-webapp-cloudtalesamorg.desktop");
 
     let desktop = config::applications_dir().join(&saved.app_file);
     let content = fs::read_to_string(desktop).expect("desktop entry");
-    assert!(content.contains("--app-id=\"cloudtalesamorg_apps_notes\""));
-    assert!(content.contains("StartupWMClass=br.com.biglinux.webapp.cloudtalesamorg_apps_notes"));
+    assert!(content.contains("--app-id=\"cloudtalesamorg\""));
+    assert!(content.contains("StartupWMClass=br.com.biglinux.webapp.cloudtalesamorg"));
+}
+
+#[test]
+#[serial]
+fn app_mode_migration_moves_storage_when_identity_already_changed() {
+    let _sandbox = XdgSandbox::new();
+    let mut app = make_app("Notes", "https://cloud.talesam.org/apps/notes");
+    app.app_file = "biglinux-webapp-cloudtalesamorg_apps_notes.desktop".to_string();
+    webapps_manager::service::save_webapps(&WebAppCollection {
+        webapps: vec![app.clone()],
+    })
+    .expect("save collection");
+
+    let legacy_id = webapps_core::desktop::legacy_host_desktop_file_id(&app.app_url);
+    let new_id = webapps_core::desktop::viewer_app_id(&app);
+    let legacy_data = config::data_dir().join(&legacy_id);
+    let legacy_cache = config::cache_dir().join(&legacy_id);
+    fs::create_dir_all(&legacy_data).expect("legacy data");
+    fs::create_dir_all(&legacy_cache).expect("legacy cache");
+
+    let count = webapps_manager::service::regenerate_app_mode_desktops();
+
+    assert_eq!(count, 1);
+    assert!(!legacy_data.exists());
+    assert!(!legacy_cache.exists());
+    assert!(config::data_dir().join(&new_id).exists());
+    assert!(config::cache_dir().join(&new_id).exists());
 }
 
 #[test]

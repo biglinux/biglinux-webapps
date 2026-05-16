@@ -1,11 +1,11 @@
 use crate::models::{AppMode, WebApp};
 
-use super::paths::desktop_file_id;
+use super::paths::viewer_app_id;
 use super::sanitize::{sanitize_desktop_field, sanitize_desktop_value};
 use super::wm_class::derive_wm_class;
 
 pub fn generate_desktop_entry(webapp: &WebApp) -> String {
-    let app_id = desktop_file_id(&webapp.app_url);
+    let app_id = viewer_app_id(webapp);
     let exec = build_exec_command(webapp, &app_id);
     let wm_class = sanitize_desktop_field(&derive_wm_class(webapp));
 

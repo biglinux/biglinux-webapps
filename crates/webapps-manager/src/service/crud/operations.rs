@@ -57,11 +57,9 @@ pub fn update_webapp(webapp: &WebApp) -> Result<()> {
         if canonical != app.app_file {
             app.app_file = canonical;
         }
-    } else {
+    } else if app.desktop_file_name().is_none() {
         let canonical = desktop::viewer_desktop_filename(&app.app_url);
-        if canonical != app.app_file {
-            app.app_file = canonical;
-        }
+        app.app_file = canonical;
     }
 
     let webapp_clone = app.clone();

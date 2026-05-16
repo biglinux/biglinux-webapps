@@ -24,10 +24,17 @@ pub(super) fn configure_settings(webview: &webkit::WebView) {
         s.set_enable_developer_extras(DEVELOPER_TOOLS_ENABLED);
         // Auto-play permitted (Spotify, YouTube, Music) but the navigator.mediaDevices
         // API still requires user-gesture-driven prompts handled by permissions/.
+        s.set_enable_media(true);
         s.set_media_playback_requires_user_gesture(false);
+        s.set_media_playback_allows_inline(true);
+        s.set_enable_webaudio(true);
+        s.set_enable_media_capabilities(true);
         s.set_enable_media_stream(true);
         s.set_enable_mediasource(true);
         s.set_enable_encrypted_media(true);
+        s.set_enable_site_specific_quirks(true);
+        s.set_enable_html5_local_storage(true);
+        s.set_enable_page_cache(true);
         s.set_enable_smooth_scrolling(true);
         s.set_enable_back_forward_navigation_gestures(true);
         // spoof Chrome UA → sites like Spotify/Teams reject unknown browsers

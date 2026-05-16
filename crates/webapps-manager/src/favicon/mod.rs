@@ -21,9 +21,11 @@ pub fn fetch_site_info(url: &str) -> Result<SiteInfo> {
     let document = scraper::Html::parse_document(&html_text);
 
     let title = derive_title(&document, &parsed);
-    let icon_urls = html::extract_icon_urls(&document, &normalized_url);
+    let mut icon_candidates = html::extract_icon_candidates(&document, &normalized_url);
+    icon_candidates.extend(fetch_manifest_icons(&client, &document, &normalized_url));
+    html::sort_icon_candidates(&mut icon_candidates);
     let cache_dir = ensure_favicon_cache()?;
-    let icon_paths = download_icon_set(&client, &parsed, &cache_dir, &icon_urls);
+    let icon_paths = download_icon_set(&client, &parsed, &cache_dir, &icon_candidates);
 
     Ok(SiteInfo { title, icon_paths })
 }
@@ -92,14 +94,14 @@ fn download_icon_set(
     client: &reqwest::blocking::Client,
     parsed_url: &url::Url,
     cache_dir: &std::path::Path,
-    icon_urls: &[String],
+    icon_candidates: &[html::IconCandidate],
 ) -> Vec<PathBuf> {
     let mut icon_paths = Vec::new();
 
-    for (index, icon_url) in icon_urls.iter().enumerate() {
-        match download::download_icon(client, icon_url, cache_dir, index) {
+    for (index, candidate) in icon_candidates.iter().enumerate() {
+        match download::download_icon(client, &candidate.url, cache_dir, index) {
             Ok(path) => icon_paths.push(path),
-            Err(error) => log::warn!("Download icon {icon_url}: {error}"),
+            Err(error) => log::warn!("Download icon {}: {error}", candidate.url),
         }
     }
 
@@ -111,6 +113,75 @@ fn download_icon_set(
     }
 
     icon_paths
+}
+
+#[derive(serde::Deserialize)]
+struct WebManifest {
+    icons: Option<Vec<ManifestIcon>>,
+}
+
+#[derive(serde::Deserialize)]
+struct ManifestIcon {
+    src: String,
+    sizes: Option<String>,
+    #[serde(rename = "type")]
+    mime_type: Option<String>,
+}
+
+fn fetch_manifest_icons(
+    client: &reqwest::blocking::Client,
+    document: &scraper::Html,
+    base_url: &str,
+) -> Vec<html::IconCandidate> {
+    let mut candidates = Vec::new();
+    for manifest_url in html::extract_manifest_urls(document, base_url) {
+        match fetch_manifest(client, &manifest_url) {
+            Ok(manifest) => {
+                let base = url::Url::parse(&manifest_url).ok();
+                for icon in manifest.icons.unwrap_or_default() {
+                    if let Some(abs) = html::resolve_url(&icon.src, &base) {
+                        let sizes = icon.sizes.unwrap_or_default();
+                        let mime_type = icon.mime_type.unwrap_or_default();
+                        candidates.push(html::IconCandidate::new(
+                            abs.clone(),
+                            html::largest_declared_size(&sizes),
+                            html::IconSource::Manifest,
+                            sizes.eq_ignore_ascii_case("any")
+                                || mime_type.eq_ignore_ascii_case("image/svg+xml")
+                                || abs
+                                    .split('?')
+                                    .next()
+                                    .unwrap_or(&abs)
+                                    .to_lowercase()
+                                    .ends_with(".svg"),
+                        ));
+                    }
+                }
+            }
+            Err(err) => log::warn!("Fetch web manifest {manifest_url}: {err}"),
+        }
+    }
+    candidates
+}
+
+fn fetch_manifest(client: &reqwest::blocking::Client, manifest_url: &str) -> Result<WebManifest> {
+    let response = client
+        .get(manifest_url)
+        .timeout(std::time::Duration::from_secs(5))
+        .send()?;
+    if !response.status().is_success() {
+        anyhow::bail!("HTTP {}", response.status());
+    }
+    if let Some(content_length) = response.content_length() {
+        if content_length > 512 * 1024 {
+            anyhow::bail!("Manifest too large: {content_length} bytes");
+        }
+    }
+    let text = response.text()?;
+    if text.len() > 512 * 1024 {
+        anyhow::bail!("Manifest too large: {} bytes", text.len());
+    }
+    Ok(serde_json::from_str(&text)?)
 }
 
 fn download_fallback_favicon(
@@ -139,7 +210,7 @@ fn download_google_favicon(
         return;
     };
 
-    let google_url = format!("https://www.google.com/s2/favicons?domain={host}&sz=128");
+    let google_url = format!("https://www.google.com/s2/favicons?domain={host}&sz=256");
     if let Ok(path) = download::download_icon(client, &google_url, cache_dir, 100) {
         icon_paths.push(path);
     }

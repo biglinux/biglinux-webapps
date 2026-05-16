@@ -15,10 +15,10 @@ use super::{load_webapps, save_webapps, webapps_json_path};
 /// Marker indicating the viewer-mode `StartupWMClass` realignment migration ran.
 ///
 /// v1 aligned `StartupWMClass` with the viewer's host-only GTK application ID.
-/// v2 moves viewer IDs to host+path so multiple webapps under the same host do
-/// not share the same WebKit data/cache directory. This marker records that the
-/// one-shot regeneration has run so we only do it once per user.
-const WMCLASS_MIGRATION_MARKER: &str = ".desktop-wmclass-aligned-v2";
+/// v2 moved viewer IDs to host+path. v3 keeps existing viewer identities stable
+/// and only uses path-aware IDs for newly created entries, so WebKit cookies do
+/// not move just because the URL derivation changed.
+const WMCLASS_MIGRATION_MARKER: &str = ".desktop-wmclass-aligned-v3";
 
 /// Marker for the browser-mode realignment migration.
 ///
@@ -232,7 +232,9 @@ fn regenerate_desktops_once(mode: AppMode, marker_name: &str) -> usize {
         let mut updated = app.clone();
         if mode == AppMode::App {
             migrate_viewer_storage(&updated, &collection);
-            updated.app_file = desktop::viewer_desktop_filename(&updated.app_url);
+            if updated.desktop_file_name().is_none() {
+                updated.app_file = desktop::viewer_desktop_filename(&updated.app_url);
+            }
         }
         match desktop::install_desktop_entry(&updated) {
             Ok(()) => {
@@ -278,7 +280,7 @@ fn regenerate_desktops_once(mode: AppMode, marker_name: &str) -> usize {
 
 fn migrate_viewer_storage(app: &WebApp, collection: &WebAppCollection) {
     let old_id = desktop::legacy_host_desktop_file_id(&app.app_url);
-    let new_id = desktop::desktop_file_id(&app.app_url);
+    let new_id = desktop::viewer_app_id(app);
     if old_id == new_id {
         return;
     }

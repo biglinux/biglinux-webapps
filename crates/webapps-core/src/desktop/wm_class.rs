@@ -1,18 +1,15 @@
 use crate::models::{AppMode, WebApp};
 
-use super::paths::desktop_file_id;
+use super::paths::viewer_app_id;
 
 pub(super) fn derive_wm_class(webapp: &WebApp) -> String {
     match webapp.app_mode {
         AppMode::App => {
             // Must match the GTK application_id set by the viewer
-            // (`br.com.biglinux.webapp.{desktop_file_id}`), so Wayland compositors
+            // (`br.com.biglinux.webapp.{viewer_app_id}`), so Wayland compositors
             // can associate the window with this desktop entry — otherwise the
             // taskbar falls back to displaying the raw app_id and a generic icon.
-            format!(
-                "br.com.biglinux.webapp.{}",
-                desktop_file_id(&webapp.app_url)
-            )
+            format!("br.com.biglinux.webapp.{}", viewer_app_id(webapp))
         }
         // Chromium-family browsers (Brave/Chrome/Edge/Vivaldi/Chromium) ignore
         // `--class` when picking the xdg-shell `app_id` on Wayland — they
