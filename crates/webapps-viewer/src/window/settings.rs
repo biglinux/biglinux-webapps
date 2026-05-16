@@ -34,9 +34,10 @@ pub(super) fn configure_settings(webview: &webkit::WebView) {
         s.set_enable_encrypted_media(true);
         s.set_enable_site_specific_quirks(true);
         s.set_enable_html5_local_storage(true);
-        s.set_enable_page_cache(true);
+        s.set_enable_page_cache(false);
         s.set_enable_smooth_scrolling(true);
         s.set_enable_back_forward_navigation_gestures(true);
+        s.set_hardware_acceleration_policy(webkit::HardwareAccelerationPolicy::Always);
         // spoof Chrome UA → sites like Spotify/Teams reject unknown browsers
         s.set_user_agent(Some(SPOOFED_UA));
     }

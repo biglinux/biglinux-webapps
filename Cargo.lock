@@ -2644,7 +2644,7 @@ dependencies = [
 
 [[package]]
 name = "webapps-core"
-version = "4.0.1"
+version = "4.0.6"
 dependencies = [
  "anyhow",
  "dirs",
@@ -2660,7 +2660,7 @@ dependencies = [
 
 [[package]]
 name = "webapps-exec"
-version = "4.0.1"
+version = "4.0.6"
 dependencies = [
  "libc",
  "webapps-core",
@@ -2668,7 +2668,7 @@ dependencies = [
 
 [[package]]
 name = "webapps-manager"
-version = "4.0.1"
+version = "4.0.6"
 dependencies = [
  "anyhow",
  "async-channel",
@@ -2698,7 +2698,7 @@ dependencies = [
 
 [[package]]
 name = "webapps-viewer"
-version = "4.0.1"
+version = "4.0.6"
 dependencies = [
  "anyhow",
  "clap",

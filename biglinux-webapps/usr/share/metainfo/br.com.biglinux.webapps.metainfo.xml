@@ -462,6 +462,31 @@
     <control>touch</control>
   </supports>
   <releases>
+    <release version="4.0.6" date="2026-05-16">
+      <description>
+        <p>Reduces the integrated viewer startup recovery delay so stalled persisted sessions reload faster.</p>
+      </description>
+    </release>
+    <release version="4.0.5" date="2026-05-16">
+      <description>
+        <p>Adds a one-time startup recovery reload for integrated-viewer pages that reopen from a persisted session but remain blank, matching the manual reload needed by YouTube.</p>
+      </description>
+    </release>
+    <release version="4.0.4" date="2026-05-16">
+      <description>
+        <p>Fixes the integrated viewer startup sequence so complex pages such as YouTube start loading only after the window and loading overlay are fully connected.</p>
+      </description>
+    </release>
+    <release version="4.0.3" date="2026-05-16">
+      <description>
+        <p>Simplifies the integrated viewer loading indicator, centers it reliably, and reveals long-running pages such as YouTube as soon as content is committed.</p>
+      </description>
+    </release>
+    <release version="4.0.2" date="2026-05-16">
+      <description>
+        <p>Optimizes the integrated WebKit viewer with tighter cache and memory pressure settings, enables hardware acceleration, and replaces the blank initial page with a dark neon loading overlay.</p>
+      </description>
+    </release>
     <release version="4.0.1" date="2026-05-16">
       <description>
         <p>Fixes Wayland desktop IDs and icon mapping for browser-backed webapps, preserves integrated-viewer profiles across ID migrations, improves favicon quality selection, and refines auto-hidden headerbar and media playback behavior.</p>

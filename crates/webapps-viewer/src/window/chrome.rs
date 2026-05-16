@@ -4,7 +4,7 @@ use gtk4 as gtk;
 use libadwaita as adw;
 use webkit6 as webkit;
 
-use super::settings;
+use super::{loading, settings};
 
 pub(super) struct ViewerChrome {
     pub title_widget: adw::WindowTitle,
@@ -52,7 +52,8 @@ pub(super) fn build_chrome(name: &str, url: &str, webview: &webkit::WebView) -> 
     let toolbar = adw::ToolbarView::new();
     toolbar.add_top_bar(&header);
     toolbar.add_top_bar(&url_bar);
-    toolbar.set_content(Some(webview));
+    let content = loading::build_loading_overlay(webview);
+    toolbar.set_content(Some(&content));
     toolbar.set_reveal_top_bars(true);
 
     ViewerChrome {

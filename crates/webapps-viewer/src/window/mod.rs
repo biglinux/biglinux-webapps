@@ -10,12 +10,14 @@ mod chrome;
 mod context_menu;
 mod downloads;
 mod geometry;
+mod loading;
 mod navigation;
 mod permissions;
 mod session;
 mod settings;
 mod shortcuts;
 mod shortcuts_window;
+mod startup;
 
 #[allow(unused_imports)]
 use adw::prelude::*;
@@ -34,7 +36,7 @@ pub fn build(
     app_id: &str,
     auto_hide_headerbar: bool,
 ) -> adw::ApplicationWindow {
-    let viewer_session = session::build_viewer_session(app_id, url);
+    let viewer_session = session::build_viewer_session(app_id);
     let chrome = chrome::build_chrome(name, url, &viewer_session.webview);
 
     let window = adw::ApplicationWindow::builder()
@@ -98,6 +100,8 @@ pub fn build(
     if auto_hide_headerbar {
         chrome.toolbar.set_reveal_top_bars(false);
     }
+
+    startup::connect_initial_load(&window, &viewer_session.webview, url);
 
     window
 }
