@@ -57,6 +57,9 @@ pub(super) fn build_loading_overlay(webview: &webkit::WebView) -> gtk::Overlay {
 fn load_css() {
     CSS_LOADED.call_once(|| {
         let provider = gtk::CssProvider::new();
+        // load_from_data deprecated in 4.12; load_from_string keeps existing
+        // behaviour. Suppress until a refactor adopts the modern API.
+        #[allow(deprecated)]
         provider.load_from_data(CSS);
 
         if let Some(display) = gdk::Display::default() {

@@ -1,3 +1,6 @@
+//! `WebApp` entity: the entry, its collection, and the value types
+//! (categories, identifiers, URL validation).
+
 mod collection;
 mod entry;
 mod types;

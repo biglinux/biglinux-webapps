@@ -1,3 +1,6 @@
+//! Form sections of the webapp dialog: appearance, behavior, and website
+//! inputs.
+
 mod appearance;
 mod behavior;
 mod website;

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
-"POT-Creation-Date: 2026-04-23 09:40+0000\n"
+"POT-Creation-Date: 2026-05-16 22:43+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -31,24 +31,24 @@ msgid "Hide the titlebar; reveal it by moving the cursor to the top edge."
 msgstr "Başlık çubuğunu gizler; imleci üst kenara taşıyarak yeniden gösterin."
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 #: crates/webapps-manager/src/browser_dialog.rs:148
 #: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:43
 #: crates/webapps-manager/src/window/actions/remove_all.rs:28
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:133
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:186
-#: crates/webapps-manager/src/window/list.rs:193
+#: crates/webapps-manager/src/window/list.rs:194
 msgid "Cancel"
 msgstr "İptal et"
 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 357
 # File: biglinux-webapps/biglinux-
@@ -62,7 +62,7 @@ msgstr "Tamam"
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
 #: crates/webapps-manager/src/browser_dialog.rs:194
-#: crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:169
+#: crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:191
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:65
 msgid "Internal Browser"
 msgstr "Dahili Tarayıcı"
@@ -124,12 +124,11 @@ msgstr "Resimler"
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 290
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:20
-#| msgid "Application menu category"
 msgid "Application Icon"
 msgstr "Uygulama simgesi"
 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 90
 # File: biglinux-webapps/biglinux-
@@ -158,11 +157,11 @@ msgid "Browser"
 msgstr "Tarayıcı"
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:75
 msgid "Use separate profile"
 msgstr "Ayrı profil kullanın"
@@ -170,7 +169,6 @@ msgstr "Ayrı profil kullanın"
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 345
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:77
-#| msgid "Allows independent cookies and sessions"
 msgid "Allows independent cookies and sessions for this webapp"
 msgstr "Bu webapp için bağımsız çerezlere ve oturumlara izin verir"
 
@@ -212,7 +210,7 @@ msgid "New WebApp"
 msgstr "Yeni WebApp"
 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 104
 # File: biglinux-webapps/biglinux-
@@ -224,11 +222,11 @@ msgid "Edit WebApp"
 msgstr "Web Uygulamasını Düzenle"
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 #: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:44
 msgid "Save"
 msgstr "Kaydet"
@@ -236,7 +234,6 @@ msgstr "Kaydet"
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 336
 #: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:59
-#| msgid "Loading..."
 msgid "Loading…"
 msgstr "Yükleniyor…"
 
@@ -252,8 +249,7 @@ msgstr "Düzenle"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
 #: crates/webapps-manager/src/webapp_row.rs:106
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:187
-#: crates/webapps-manager/src/window/list.rs:194
-#| msgid "Remove All"
+#: crates/webapps-manager/src/window/list.rs:195
 msgid "Remove"
 msgstr "Kaldır"
 
@@ -379,10 +375,6 @@ msgstr "Tüm Web Uygulamalarını Kaldır"
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 346
 #: crates/webapps-manager/src/window/actions/remove_all.rs:25
-#| msgid ""
-#| "Are you sure you want to remove all your WebApps? This action cannot be undone.\n"
-#| "\n"
-#| "Type \"{0}\" to confirm."
 msgid ""
 "Are you sure you want to remove all your WebApps? This action cannot be "
 "undone."
@@ -400,24 +392,21 @@ msgstr "Son onay"
 
 #: crates/webapps-manager/src/window/actions/remove_all.rs:49
 msgid "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
-msgstr ""
-"TÜM WebApps'lerinizi kaldırmak istediğinizden KESİNLİKLE emin misiniz?"
+msgstr "TÜM WebApps'lerinizi kaldırmak istediğinizden KESİNLİKLE emin misiniz?"
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 #: crates/webapps-manager/src/window/actions/remove_all.rs:52
-#| msgid "Cancel"
 msgid "No, Cancel"
 msgstr "Hayır, vazgeç"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
 #: crates/webapps-manager/src/window/actions/remove_all.rs:53
-#| msgid "Remove All"
 msgid "Yes, Remove All"
 msgstr "Evet, hepsini kaldır"
 
@@ -436,7 +425,6 @@ msgstr "Tüm Web Uygulamaları kaldırma işlemi başarısız oldu."
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:27
-#| msgid "No WebApps Found"
 msgid "No WebApps to remove"
 msgstr "Kaldırılacak WebApps yok"
 
@@ -445,19 +433,15 @@ msgstr "Kaldırılacak WebApps yok"
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:32
-#| msgid "Remove All WebApps"
 msgid "Remove WebApps"
 msgstr "WebApps'leri kaldır"
 
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:42
-#| msgid ""
-#| "This will delete all webapps and their desktop entries. This cannot be "
-#| "undone."
 msgid "Select the WebApps you want to remove. This cannot be undone."
 msgstr "Kaldırmak istediğiniz WebApps'leri seçin. Bu işlem geri alınamaz."
 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 90
 # File: biglinux-webapps/biglinux-
@@ -466,21 +450,18 @@ msgstr "Kaldırmak istediğiniz WebApps'leri seçin. Bu işlem geri alınamaz."
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 240
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:63
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:65
-#| msgid "Select"
 msgid "Select all"
 msgstr "Tümünü seç"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:134
-#| msgid "Remove All"
 msgid "Remove Selected"
 msgstr "Seçilenleri kaldır"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:157
-#| msgid "Delete WebApp"
 msgid "Select at least one WebApp"
 msgstr "En az bir WebApp seçin"
 
@@ -489,25 +470,20 @@ msgstr "En az bir WebApp seçin"
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:176
-#| msgid "Remove All WebApps"
 msgid "Remove Selected WebApps?"
 msgstr "Seçilen WebApps kaldırılsın mı?"
 
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:178
-#| msgid ""
-#| "This will delete all webapps and their desktop entries. This cannot be "
-#| "undone."
 msgid ""
 "This will remove {count} WebApps and their desktop entries. This cannot be "
 "undone."
 msgstr ""
-"Bu işlem {count} WebApps'i ve onların masaüstü girdilerini kaldıracaktır. Bu"
-" işlem geri alınamaz."
+"Bu işlem {count} WebApps'i ve onların masaüstü girdilerini kaldıracaktır. Bu "
+"işlem geri alınamaz."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:218
-#| msgid "All WebApps have been removed"
 msgid "{count} WebApps removed"
 msgstr "{count} WebApps kaldırıldı"
 
@@ -522,7 +498,6 @@ msgstr "{} sonuç"
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
 #: crates/webapps-manager/src/window/list.rs:57
-#| msgid "No WebApps"
 msgid "No WebApps yet"
 msgstr "Henüz WebApps yok"
 
@@ -533,7 +508,7 @@ msgstr ""
 "Ekle'ye basın."
 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
 # File: biglinux-webapps/biglinux-
@@ -549,7 +524,7 @@ msgstr "Web Uygulaması Ekle"
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 214
 #: crates/webapps-manager/src/window/list.rs:124
-#: crates/webapps-manager/src/window/mod.rs:118
+#: crates/webapps-manager/src/window/mod.rs:158
 msgid "WebApp created successfully"
 msgstr "Web Uygulaması başarıyla oluşturuldu."
 
@@ -563,31 +538,43 @@ msgstr "WebApp başarıyla güncellendi."
 msgid "Browser changed"
 msgstr "Tarayıcı değiştirildi"
 
+#: crates/webapps-manager/src/window/list.rs:181
+#, fuzzy
+#| msgid "Browser changed"
+msgid "Browser change failed"
+msgstr "Tarayıcı değiştirildi"
+
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
-#: crates/webapps-manager/src/window/list.rs:190
-#| msgid "Remove All WebApps"
+#: crates/webapps-manager/src/window/list.rs:191
 msgid "Remove WebApp?"
 msgstr "WebApp kaldırılsın mı?"
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
-# 
-#: crates/webapps-manager/src/window/list.rs:203
+#
+#: crates/webapps-manager/src/window/list.rs:204
 msgid "Also delete configuration folder"
 msgstr "Ayrıca yapılandırma klasörünü silin."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
-#: crates/webapps-manager/src/window/list.rs:223
-#| msgid "All WebApps have been removed"
+#: crates/webapps-manager/src/window/list.rs:224
 msgid "WebApp removed"
 msgstr "WebApp kaldırıldı"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
+#: crates/webapps-manager/src/window/list.rs:228
+#, fuzzy
+#| msgid "Remove Selected"
+msgid "Remove failed"
+msgstr "Seçilenleri kaldır"
 
 #: crates/webapps-manager/src/window/shortcuts_window.rs:18
 msgid "General"
@@ -611,7 +598,7 @@ msgstr "Bu iletişim kutusunu göster"
 #: crates/webapps-manager/src/window/shortcuts_window.rs:26
 #: crates/webapps-manager/src/window/shortcuts_window.rs:32
 #: crates/webapps-manager/src/window/ui.rs:124
-#: crates/webapps-viewer/src/window/chrome.rs:90
+#: crates/webapps-viewer/src/window/chrome.rs:91
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:45
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:53
 msgid "Keyboard Shortcuts"
@@ -653,7 +640,6 @@ msgstr "Profiller Klasörünü Gözat"
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
 #: crates/webapps-manager/src/window/ui.rs:117
-#| msgid "Remove All WebApps"
 msgid "Remove WebApps in Bulk"
 msgstr "WebApps'leri toplu kaldır"
 
@@ -687,24 +673,24 @@ msgstr "Tam ekran"
 msgid "Enter URL…"
 msgstr "URL girin…"
 
-#: crates/webapps-viewer/src/window/chrome.rs:82
+#: crates/webapps-viewer/src/window/chrome.rs:83
 msgid "Zoom In"
 msgstr "Yakınlaştır"
 
-#: crates/webapps-viewer/src/window/chrome.rs:83
+#: crates/webapps-viewer/src/window/chrome.rs:84
 msgid "Zoom Out"
 msgstr "Uzaklaştır"
 
-#: crates/webapps-viewer/src/window/chrome.rs:84
+#: crates/webapps-viewer/src/window/chrome.rs:85
 msgid "Reset Zoom"
 msgstr "Yakınlaştırmayı Sıfırla"
 
-#: crates/webapps-viewer/src/window/chrome.rs:86
+#: crates/webapps-viewer/src/window/chrome.rs:87
 msgid "Developer Tools"
 msgstr "Geliştirici Araçları"
 
-#: crates/webapps-viewer/src/window/chrome.rs:96
-#: crates/webapps-viewer/src/window/chrome.rs:98
+#: crates/webapps-viewer/src/window/chrome.rs:97
+#: crates/webapps-viewer/src/window/chrome.rs:99
 msgid "Menu"
 msgstr "Menü"
 
@@ -720,51 +706,51 @@ msgstr "İndirme Tamamlandı"
 msgid "Save File"
 msgstr "Dosyayı Kaydet"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:87
+#: crates/webapps-viewer/src/window/permissions/mod.rs:91
 msgid "Camera Access"
 msgstr "Kamera Erişimi"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:88
+#: crates/webapps-viewer/src/window/permissions/mod.rs:92
 msgid "This webapp wants to use your camera. Allow?"
 msgstr "Bu WebApp kameranızı kullanmak istiyor. İzin verilsin mi?"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:91
+#: crates/webapps-viewer/src/window/permissions/mod.rs:95
 msgid "Microphone Access"
 msgstr "Mikrofon Erişimi"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:92
+#: crates/webapps-viewer/src/window/permissions/mod.rs:96
 msgid "This webapp wants to use your microphone. Allow?"
 msgstr "Bu WebApp mikrofonunuzu kullanmak istiyor. İzin verilsin mi?"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:95
+#: crates/webapps-viewer/src/window/permissions/mod.rs:99
 msgid "Location Access"
 msgstr "Konum Erişimi"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:96
+#: crates/webapps-viewer/src/window/permissions/mod.rs:100
 msgid "This webapp wants to access your location. Allow?"
 msgstr "Bu WebApp konumunuza erişmek istiyor. İzin verilsin mi?"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:99
+#: crates/webapps-viewer/src/window/permissions/mod.rs:103
 msgid "Clipboard Access"
 msgstr "Pano Erişimi"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:100
+#: crates/webapps-viewer/src/window/permissions/mod.rs:104
 msgid "This webapp wants to read from your clipboard. Allow?"
 msgstr "Bu WebApp panonuzu okumak istiyor. İzin verilsin mi?"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:103
+#: crates/webapps-viewer/src/window/permissions/mod.rs:107
 msgid "Permission Request"
 msgstr "İzin İsteği"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:104
+#: crates/webapps-viewer/src/window/permissions/mod.rs:108
 msgid "This webapp is requesting a special permission. Allow?"
 msgstr "Bu WebApp özel bir izin istiyor. İzin verilsin mi?"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:112
+#: crates/webapps-viewer/src/window/permissions/mod.rs:116
 msgid "Deny"
 msgstr "Reddet"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:113
+#: crates/webapps-viewer/src/window/permissions/mod.rs:117
 msgid "Allow"
 msgstr "İzin Ver"
 
@@ -849,7 +835,7 @@ msgstr "Pencereyi kapat"
 #~ msgstr "Web Sitesi"
 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 32
 # File: biglinux-webapps/biglinux-
@@ -919,23 +905,29 @@ msgstr "Pencereyi kapat"
 #~ msgid ""
 #~ "<b>What are WebApps?</b>\n"
 #~ "\n"
-#~ "WebApps are web applications that run in a dedicated browser window, providing a more app-like experience for your favorite websites.\n"
+#~ "WebApps are web applications that run in a dedicated browser window, "
+#~ "providing a more app-like experience for your favorite websites.\n"
 #~ "\n"
 #~ "<b>Benefits of using WebApps:</b>\n"
 #~ "\n"
 #~ "• <b>Focus</b>: Work without the distractions of other browser tabs\n"
 #~ "• <b>Desktop Integration</b>: Quick access from your application menu\n"
-#~ "• <b>Isolated Profiles</b>: Optionally, each webapp can have its own cookies and settings\n"
+#~ "• <b>Isolated Profiles</b>: Optionally, each webapp can have its own "
+#~ "cookies and settings\n"
 #~ msgstr ""
 #~ "<b>Web Uygulamaları nedir?</b>\n"
 #~ "\n"
-#~ "Web Uygulamaları, özel bir tarayıcı penceresinde çalışan web uygulamalarıdır ve favori web siteleriniz için daha uygulama benzeri bir deneyim sunar.\n"
+#~ "Web Uygulamaları, özel bir tarayıcı penceresinde çalışan web "
+#~ "uygulamalarıdır ve favori web siteleriniz için daha uygulama benzeri bir "
+#~ "deneyim sunar.\n"
 #~ "\n"
 #~ "<b>Web Uygulamaları kullanmanın avantajları:</b>\n"
 #~ "\n"
-#~ "• <b>Odaklanma</b>: Diğer tarayıcı sekmelerinin dikkat dağıtıcı etkisi olmadan çalışma\n"
+#~ "• <b>Odaklanma</b>: Diğer tarayıcı sekmelerinin dikkat dağıtıcı etkisi "
+#~ "olmadan çalışma\n"
 #~ "• <b> masaüstü entegrasyonu</b>: Uygulama menünüzden hızlı erişim\n"
-#~ "• <b>İzolasyonlu Profiller</b>: İsteğe bağlı olarak, her web uygulaması kendi çerezlerine ve ayarlarına sahip olabilir\n"
+#~ "• <b>İzolasyonlu Profiller</b>: İsteğe bağlı olarak, her web uygulaması "
+#~ "kendi çerezlerine ve ayarlarına sahip olabilir\n"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 170
@@ -943,9 +935,9 @@ msgstr "Pencereyi kapat"
 #~ msgstr "Sistem Varsayılanı"
 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 136
 # File: biglinux-webapps/biglinux-
@@ -967,7 +959,7 @@ msgstr "Pencereyi kapat"
 #~ msgstr "Lütfen bir tarayıcı seçin."
 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
-# 
+#
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 172
 # File: biglinux-webapps/biglinux-

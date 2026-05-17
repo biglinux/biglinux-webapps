@@ -1,3 +1,6 @@
+//! Value types for the `WebApp` model: mode, categories, identifiers, URL
+//! type, and shared validators.
+
 mod app_mode;
 mod categories;
 mod identifiers;

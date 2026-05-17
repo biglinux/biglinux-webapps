@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
-"POT-Creation-Date: 2026-04-23 09:40+0000\n"
+"POT-Creation-Date: 2026-05-16 22:43+0000\n"
 "PO-Revision-Date: 2026-04-23 00:00+0000\n"
 "Last-Translator: Codex <noreply@openai.com>\n"
 "Language-Team: English\n"
@@ -29,7 +29,7 @@ msgstr "Hide the titlebar; reveal it by moving the cursor to the top edge."
 #: crates/webapps-manager/src/window/actions/remove_all.rs:28
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:133
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:186
-#: crates/webapps-manager/src/window/list.rs:193
+#: crates/webapps-manager/src/window/list.rs:194
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -38,7 +38,7 @@ msgid "OK"
 msgstr "OK"
 
 #: crates/webapps-manager/src/browser_dialog.rs:194
-#: crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:169
+#: crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:191
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:65
 msgid "Internal Browser"
 msgstr "Internal Browser"
@@ -88,7 +88,6 @@ msgid "Images"
 msgstr "Images"
 
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:20
-#| msgid "Application menu category"
 msgid "Application Icon"
 msgstr "Application Icon"
 
@@ -164,7 +163,7 @@ msgstr "Edit"
 
 #: crates/webapps-manager/src/webapp_row.rs:106
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:187
-#: crates/webapps-manager/src/window/list.rs:194
+#: crates/webapps-manager/src/window/list.rs:195
 msgid "Remove"
 msgstr "Remove"
 
@@ -365,7 +364,7 @@ msgid "Add WebApp"
 msgstr "Add WebApp"
 
 #: crates/webapps-manager/src/window/list.rs:124
-#: crates/webapps-manager/src/window/mod.rs:118
+#: crates/webapps-manager/src/window/mod.rs:158
 msgid "WebApp created successfully"
 msgstr "WebApp created successfully"
 
@@ -377,17 +376,29 @@ msgstr "WebApp updated successfully"
 msgid "Browser changed"
 msgstr "Browser changed"
 
-#: crates/webapps-manager/src/window/list.rs:190
+#: crates/webapps-manager/src/window/list.rs:181
+#, fuzzy
+#| msgid "Browser changed"
+msgid "Browser change failed"
+msgstr "Browser changed"
+
+#: crates/webapps-manager/src/window/list.rs:191
 msgid "Remove WebApp?"
 msgstr "Remove WebApp?"
 
-#: crates/webapps-manager/src/window/list.rs:203
+#: crates/webapps-manager/src/window/list.rs:204
 msgid "Also delete configuration folder"
 msgstr "Also delete configuration folder"
 
-#: crates/webapps-manager/src/window/list.rs:223
+#: crates/webapps-manager/src/window/list.rs:224
 msgid "WebApp removed"
 msgstr "WebApp removed"
+
+#: crates/webapps-manager/src/window/list.rs:228
+#, fuzzy
+#| msgid "Remove Selected"
+msgid "Remove failed"
+msgstr "Remove Selected"
 
 #: crates/webapps-manager/src/window/shortcuts_window.rs:18
 msgid "General"
@@ -409,7 +420,7 @@ msgstr "Show this dialog"
 #: crates/webapps-manager/src/window/shortcuts_window.rs:26
 #: crates/webapps-manager/src/window/shortcuts_window.rs:32
 #: crates/webapps-manager/src/window/ui.rs:124
-#: crates/webapps-viewer/src/window/chrome.rs:90
+#: crates/webapps-viewer/src/window/chrome.rs:91
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:45
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:53
 msgid "Keyboard Shortcuts"
@@ -445,7 +456,6 @@ msgid "About"
 msgstr "About"
 
 #: crates/webapps-manager/src/window/mod.rs:45
-#| msgid "Detecting installed browsers"
 msgid "Detecting installed browsers…"
 msgstr "Detecting installed browsers…"
 
@@ -469,24 +479,24 @@ msgstr "Fullscreen"
 msgid "Enter URL…"
 msgstr "Enter URL…"
 
-#: crates/webapps-viewer/src/window/chrome.rs:82
+#: crates/webapps-viewer/src/window/chrome.rs:83
 msgid "Zoom In"
 msgstr "Zoom In"
 
-#: crates/webapps-viewer/src/window/chrome.rs:83
+#: crates/webapps-viewer/src/window/chrome.rs:84
 msgid "Zoom Out"
 msgstr "Zoom Out"
 
-#: crates/webapps-viewer/src/window/chrome.rs:84
+#: crates/webapps-viewer/src/window/chrome.rs:85
 msgid "Reset Zoom"
 msgstr "Reset Zoom"
 
-#: crates/webapps-viewer/src/window/chrome.rs:86
+#: crates/webapps-viewer/src/window/chrome.rs:87
 msgid "Developer Tools"
 msgstr "Developer Tools"
 
-#: crates/webapps-viewer/src/window/chrome.rs:96
-#: crates/webapps-viewer/src/window/chrome.rs:98
+#: crates/webapps-viewer/src/window/chrome.rs:97
+#: crates/webapps-viewer/src/window/chrome.rs:99
 msgid "Menu"
 msgstr "Menu"
 
@@ -502,51 +512,51 @@ msgstr "Download Complete"
 msgid "Save File"
 msgstr "Save File"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:87
+#: crates/webapps-viewer/src/window/permissions/mod.rs:91
 msgid "Camera Access"
 msgstr "Camera Access"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:88
+#: crates/webapps-viewer/src/window/permissions/mod.rs:92
 msgid "This webapp wants to use your camera. Allow?"
 msgstr "This webapp wants to use your camera. Allow?"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:91
+#: crates/webapps-viewer/src/window/permissions/mod.rs:95
 msgid "Microphone Access"
 msgstr "Microphone Access"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:92
+#: crates/webapps-viewer/src/window/permissions/mod.rs:96
 msgid "This webapp wants to use your microphone. Allow?"
 msgstr "This webapp wants to use your microphone. Allow?"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:95
+#: crates/webapps-viewer/src/window/permissions/mod.rs:99
 msgid "Location Access"
 msgstr "Location Access"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:96
+#: crates/webapps-viewer/src/window/permissions/mod.rs:100
 msgid "This webapp wants to access your location. Allow?"
 msgstr "This webapp wants to access your location. Allow?"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:99
+#: crates/webapps-viewer/src/window/permissions/mod.rs:103
 msgid "Clipboard Access"
 msgstr "Clipboard Access"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:100
+#: crates/webapps-viewer/src/window/permissions/mod.rs:104
 msgid "This webapp wants to read from your clipboard. Allow?"
 msgstr "This webapp wants to read from your clipboard. Allow?"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:103
+#: crates/webapps-viewer/src/window/permissions/mod.rs:107
 msgid "Permission Request"
 msgstr "Permission Request"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:104
+#: crates/webapps-viewer/src/window/permissions/mod.rs:108
 msgid "This webapp is requesting a special permission. Allow?"
 msgstr "This webapp is requesting a special permission. Allow?"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:112
+#: crates/webapps-viewer/src/window/permissions/mod.rs:116
 msgid "Deny"
 msgstr "Deny"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:113
+#: crates/webapps-viewer/src/window/permissions/mod.rs:117
 msgid "Allow"
 msgstr "Allow"
 

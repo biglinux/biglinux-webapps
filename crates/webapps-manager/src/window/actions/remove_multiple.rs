@@ -1,3 +1,6 @@
+// TODO(onda6): migrate to BigDialogSpec + Relm4 FactoryComponent for the
+// bulk-selection list (currently uses an interior-mutable Vec of
+// (WebApp, CheckButton) pairs).
 use std::cell::RefCell;
 use std::rc::Rc;
 

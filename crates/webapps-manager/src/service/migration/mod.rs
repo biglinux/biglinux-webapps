@@ -1,3 +1,6 @@
+//! Migration of legacy shell-based webapps into the current `WebApp` model:
+//! parses the old shell wrappers and converts entries on import.
+
 mod parse;
 mod shell;
 

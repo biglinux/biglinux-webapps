@@ -1,3 +1,6 @@
+//! Built-in webapp template registry grouped by category (communication,
+//! google, media, office365, productivity) and exposed via a single registry.
+
 mod communication;
 mod google;
 mod media;

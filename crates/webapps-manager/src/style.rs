@@ -57,6 +57,7 @@ const CSS: &str = r#"
 
 pub fn load_css() {
     let provider = gtk::CssProvider::new();
+    #[allow(deprecated)]
     provider.load_from_data(CSS);
 
     if let Some(display) = gdk4::Display::default() {

@@ -14,8 +14,8 @@ license = "GPL-3.0-or-later"
 repository = "https://github.com/biglinux/biglinux-webapps"
 
 [workspace.dependencies]
-gtk4 = { version = "0.11", features = ["v4_10"] }
-libadwaita = { version = "0.9", features = ["v1_6"] }
+gtk4 = { version = "0.11", features = ["v4_22"] }
+libadwaita = { version = "0.9", features = ["v1_9"] }
 webkit6 = { version = "0.6", features = ["v2_50"] }
 glib = { package = "glib", version = "0.22" }
 gio = { package = "gio", version = "0.22" }
@@ -40,3 +40,8 @@ lto = "thin"
 opt-level = "s"
 strip = true
 codegen-units = 1
+
+# caveman: cargo-machete ignore list (virtual workspace — only workspace
+# section is valid; per-crate ignores live in each crate's Cargo.toml).
+[workspace.metadata.cargo-machete]
+ignored = []

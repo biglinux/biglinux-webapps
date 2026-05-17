@@ -16,7 +16,16 @@ pub(super) struct WindowUi {
     pub status_label: gtk::Label,
 }
 
-pub(super) fn build_window(app: &adw::Application) -> WindowUi {
+/// Build the window shell with the supplied Relm4 list widget mounted inside
+/// the scrolled clamp.
+///
+/// `list_widget` is the root `gtk::Box` of the Relm4 `WebAppListController`.
+/// The returned `WindowUi.content_box` stays present for API compatibility
+/// but is unused by the Relm4 path.
+pub(super) fn build_window_with_list(
+    app: &adw::Application,
+    list_widget: Option<&gtk::Widget>,
+) -> WindowUi {
     let window = adw::ApplicationWindow::builder()
         .application(app)
         .title(gettext("WebApps Manager"))
@@ -68,12 +77,18 @@ pub(super) fn build_window(app: &adw::Application) -> WindowUi {
     clamp.set_maximum_size(900);
     clamp.set_tightening_threshold(720);
 
+    // caveman: legacy stub content_box kept for backwards-compat exposure.
+    // when a Relm4 list widget is supplied we mount it inside the clamp
+    // directly; otherwise we fall back to the legacy hand-built box.
     let content_box = gtk::Box::new(gtk::Orientation::Vertical, 18);
     content_box.set_margin_start(12);
     content_box.set_margin_end(12);
     content_box.set_margin_top(18);
     content_box.set_margin_bottom(24);
-    clamp.set_child(Some(&content_box));
+    match list_widget {
+        Some(widget) => clamp.set_child(Some(widget)),
+        None => clamp.set_child(Some(&content_box)),
+    }
     scroll.set_child(Some(&clamp));
     main_box.append(&scroll);
 

@@ -1,3 +1,4 @@
+// TODO(onda6): migrate to BigDialogSpec + Relm4 SimpleComponent.
 use gtk4 as gtk;
 use libadwaita as adw;
 

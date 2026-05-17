@@ -1,3 +1,10 @@
+//! WebApp create/edit dialog: form handlers, async tasks (favicon detection,
+//! icon picking), UI assembly, and field validation.
+
+// TODO(onda6): migrate to BigDialogSpec + Relm4 component (typed
+// Init/Input/Output, model-owns-state). Currently uses an interior-mutable
+// webapp cell, a debounce SourceId, and raw widget wiring. Keep WebAppUrl
+// validation contract intact across the migration.
 mod handlers;
 mod tasks;
 mod ui;

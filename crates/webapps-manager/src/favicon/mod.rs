@@ -1,3 +1,6 @@
+//! Favicon detection for WebApps: fetch a target page, parse the HTML for
+//! icon links, and download the chosen asset to a local path.
+
 mod download;
 mod html;
 

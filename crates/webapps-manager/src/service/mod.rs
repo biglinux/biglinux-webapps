@@ -1,3 +1,6 @@
+//! Manager service layer: browser detection, CRUD on webapps, icon handling,
+//! IO persistence, migrations, repository access, and the welcome flow.
+
 mod browser;
 mod browser_url;
 mod crud;

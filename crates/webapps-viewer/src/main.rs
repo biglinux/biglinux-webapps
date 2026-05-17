@@ -1,3 +1,6 @@
+//! Binary entrypoint for the WebApp Viewer: parses CLI args (URL, window
+//! title, profile) and launches the WebKit-based viewer window.
+
 mod window;
 
 use clap::Parser;

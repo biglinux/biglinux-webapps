@@ -1,3 +1,6 @@
+//! Download handling for the WebApp viewer window: wires WebKit download
+//! signals to the UI.
+
 mod connect;
 
 use gettextrs::gettext;

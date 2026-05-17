@@ -1,3 +1,6 @@
+//! Signal handlers for the webapp dialog: field bindings, dialog lifecycle
+//! (cancel/save/destroy), and media pickers (icon, favicon).
+
 mod fields;
 mod lifecycle;
 mod media;

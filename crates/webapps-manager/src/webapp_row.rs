@@ -20,6 +20,7 @@ pub fn load_icon(image: &gtk::Image, icon_ref: &str) {
             let target = image.pixel_size().max(32) * 4;
             match gdk_pixbuf::Pixbuf::from_file_at_size(p, target, target) {
                 Ok(pixbuf) => {
+                    #[allow(deprecated)]
                     let tex = gdk4::Texture::for_pixbuf(&pixbuf);
                     image.set_paintable(Some(&tex));
                 }
@@ -104,7 +105,7 @@ fn build_edit_button(webapp: &WebApp, callbacks: &Rc<RowCallbacks>) -> gtk::Butt
 
 fn build_delete_button(webapp: &WebApp, callbacks: &Rc<RowCallbacks>) -> gtk::Button {
     let button = segmented_button("user-trash-symbolic", &gettext("Remove"));
-    button.add_css_class("destructive");
+    button.add_css_class("destructive-action");
     {
         let cb = callbacks.clone();
         let app = webapp.clone();

@@ -1,3 +1,6 @@
+//! Binary entrypoint for the WebApps Manager: builds the libadwaita
+//! `Application`, installs styles, and shows the manager window.
+
 use libadwaita as adw;
 
 use adw::prelude::*;

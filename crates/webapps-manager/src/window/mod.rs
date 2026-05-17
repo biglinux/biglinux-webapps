@@ -1,3 +1,6 @@
+//! Manager main window: actions, list view, context menu, keyboard shortcuts,
+//! shared state, and UI assembly.
+
 mod actions;
 mod context;
 mod list;
@@ -17,9 +20,12 @@ use gtk::glib;
 use gtk::prelude::*;
 use gtk4 as gtk;
 use libadwaita as adw;
+use relm4::component::Component;
+use relm4::ComponentController;
 
 use webapps_core::models::{BrowserCollection, WebApp, WebAppCollection};
 
+use crate::relm4_window::list::{WebAppListController, WebAppListOutput};
 use crate::{geometry, service, ui_async, webapp_dialog, welcome_dialog};
 
 use self::context::WindowContext;
@@ -36,7 +42,13 @@ pub fn build(app: &adw::Application) {
     let state = state::new_empty_state();
     let browsers = Rc::new(RefCell::new(BrowserCollection::default()));
 
-    let ui = ui::build_window(app);
+    // Build the Relm4 list controller first so we can mount its widget
+    // inside the window's scrolled clamp. The output channel is captured
+    // below (via `connect_receiver`) so row actions and the empty-state
+    // CTA reach the existing dialog handlers.
+    let list_connector = WebAppListController::builder().launch(());
+    let list_widget: gtk::Widget = list_connector.widget().clone().upcast();
+    let ui = ui::build_window_with_list(app, Some(&list_widget));
 
     // Block "Add" until browser detection completes — clicking before would create
     // a webapp with browser="", silently producing a broken .desktop file.
@@ -58,6 +70,24 @@ pub fn build(app: &adw::Application) {
         });
     }
 
+    // caveman: deferred context so `connect_receiver` can fire row outputs
+    // back into the same handlers the legacy code uses.
+    let context_slot: Rc<RefCell<Option<WindowContext>>> = Rc::new(RefCell::new(None));
+    let list_controller = {
+        let slot = context_slot.clone();
+        list_connector.connect_receiver(move |_, out| {
+            let Some(ctx) = slot.borrow().as_ref().cloned() else {
+                return;
+            };
+            match out {
+                WebAppListOutput::EditRequested(app) => list::handle_edit(ctx, &app),
+                WebAppListOutput::BrowserRequested(app) => list::handle_browser_change(ctx, &app),
+                WebAppListOutput::DeleteRequested(app) => list::handle_delete(ctx, &app),
+                WebAppListOutput::AddRequested => list::open_add_dialog(&ctx),
+            }
+        })
+    };
+
     let context = WindowContext {
         state,
         browsers,
@@ -65,7 +95,9 @@ pub fn build(app: &adw::Application) {
         window: Rc::new(ui.window),
         toast: Rc::new(ui.toast_overlay),
         status: Rc::new(ui.status_label),
+        list: Rc::new(list_controller),
     };
+    *context_slot.borrow_mut() = Some(context.clone());
 
     list::populate_list(&context);
     actions::install_window_actions(&context);

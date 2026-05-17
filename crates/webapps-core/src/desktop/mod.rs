@@ -1,3 +1,6 @@
+//! Desktop integration helpers: generate `.desktop` entries, install icons,
+//! pick WM_CLASS, and compute desktop-file identifiers and paths.
+
 mod builder;
 mod icon;
 mod paths;

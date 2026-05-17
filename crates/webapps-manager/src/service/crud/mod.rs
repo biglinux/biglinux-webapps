@@ -1,3 +1,6 @@
+//! CRUD operations for webapps: create/update/delete plus shared helpers like
+//! profile generation and custom-profile-name validation.
+
 mod helpers;
 mod operations;
 

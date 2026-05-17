@@ -1,3 +1,6 @@
+//! Viewer navigation wiring: fullscreen toggle, URL entry, and WebView
+//! navigation controls and new-window requests.
+
 mod fullscreen;
 mod url_entry;
 mod webview;

@@ -1,3 +1,6 @@
+//! Window-level actions for the manager: about, browse, import/export,
+//! bulk-remove flows.
+
 mod about;
 mod browse;
 mod import_export;

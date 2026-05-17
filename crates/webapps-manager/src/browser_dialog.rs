@@ -1,3 +1,6 @@
+// TODO(onda6): migrate to BigDialogSpec + Relm4 SimpleComponent (typed
+// BrowserSelection output channel) — currently uses an interior-mutable
+// once-callback + group of `gtk::CheckButton`s wired manually.
 use gtk4 as gtk;
 use libadwaita as adw;
 

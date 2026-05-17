@@ -1,3 +1,6 @@
+//! Domain models for WebApps: `Browser` catalog plus the `WebApp` entity and
+//! its value types.
+
 mod browser;
 mod webapp;
 

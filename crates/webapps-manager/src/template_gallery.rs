@@ -1,3 +1,6 @@
+// TODO(onda6): migrate to BigDialogSpec + Relm4 FactoryComponent for the
+// template grid (currently uses an interior-mutable boxed-FnOnce callback
+// cell).
 use gtk4 as gtk;
 use libadwaita as adw;
 

@@ -1,3 +1,6 @@
+//! WebKit permission request handling for the WebApp viewer (camera,
+//! microphone, geolocation, notifications, etc.).
+
 mod connect;
 
 use std::collections::HashMap;
@@ -72,8 +75,14 @@ pub(super) fn load_permissions(path: &Path) -> HashMap<String, bool> {
 }
 
 pub(super) fn save_permissions(path: &Path, perms: &HashMap<String, bool>) {
-    if let Ok(data) = serde_json::to_string_pretty(perms) {
-        std::fs::write(path, data).ok();
+    // Atomic write: a crash mid-write must never leave the user re-prompted for
+    // an already-denied permission. See tmp/agent_working/05-threats.md §H-3.
+    let Ok(data) = serde_json::to_string_pretty(perms) else {
+        return;
+    };
+    let tmp = path.with_extension("json.tmp");
+    if std::fs::write(&tmp, data.as_bytes()).is_ok() {
+        let _ = std::fs::rename(&tmp, path);
     }
 }
 

@@ -1,3 +1,6 @@
+//! UI assembly for the webapp dialog: sectioned form layout and outer shell
+//! window.
+
 mod sections;
 mod shell;
 

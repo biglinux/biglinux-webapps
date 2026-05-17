@@ -1,3 +1,6 @@
+//! Keyboard shortcut actions for the viewer window: webview navigation,
+//! window-level commands, and zoom controls.
+
 mod webview_actions;
 mod window_actions;
 mod zoom_actions;
