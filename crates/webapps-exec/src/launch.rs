@@ -33,7 +33,14 @@ pub fn firefox(
     // XApp accepts either a theme name or an absolute path here; pass the
     // raw Icon= value through so the manager's absolute path (the common
     // case after icon persistence at save time) is honored as-is.
-    let (program, prefix_args) = base_spec(def, browser_id, is_flatpak);
+    let Some((program, prefix_args)) = base_spec(def, is_flatpak) else {
+        eprintln!(
+            "big-webapps-exec: refusing to launch {browser_id:?} — no registered \
+             native_paths/flatpak_app_id resolved. Defense-in-depth: not using \
+             browser_id as program name."
+        );
+        std::process::exit(1);
+    };
     let mut cmd = Command::new(&program);
     cmd.args(&prefix_args)
         .env("XAPP_FORCE_GTKWINDOW_ICON", icon)
@@ -55,7 +62,14 @@ pub fn firefox(
 /// On Wayland with a `-BigWebApp`-suffixed desktop file, performs the
 /// compositor icon-swap workaround before spawning the browser.
 pub fn chromium(args: &Args, browser_id: &str, def: Option<&'static BrowserDef>, is_flatpak: bool) {
-    let (program, cmd_args) = build_chromium_spec(args, browser_id, def, is_flatpak);
+    let Some((program, cmd_args)) = build_chromium_spec(args, browser_id, def, is_flatpak) else {
+        eprintln!(
+            "big-webapps-exec: refusing to launch {browser_id:?} — no registered \
+             native_paths/flatpak_app_id resolved. Defense-in-depth: not using \
+             browser_id as program name."
+        );
+        return;
+    };
 
     let spawn = move || {
         if let Err(e) = Command::new(&program).args(&cmd_args).spawn() {
@@ -127,25 +141,23 @@ fn copy_profile_file(src: &str, dst: &Path) {
 ///
 /// For Flatpak: `("flatpak", ["run", "<app_id>"])`
 /// For native: `("<binary_path>", [])`
-fn base_spec(
-    def: Option<&BrowserDef>,
-    browser_id: &str,
-    is_flatpak: bool,
-) -> (String, Vec<String>) {
+///
+/// Defense-in-depth: never falls back to `browser_id` as the program
+/// name. If `def` does not resolve a known program (registered
+/// `flatpak_app_id` for Flatpak, or an existing `native_paths` entry
+/// for native), the function returns `None`. The caller must reject
+/// the launch — passing `browser_id` to `Command::new` would let a
+/// malicious or stale registry entry control the executed binary.
+fn base_spec(def: Option<&BrowserDef>, is_flatpak: bool) -> Option<(String, Vec<String>)> {
     if is_flatpak {
-        let app_id = def
-            .and_then(|d| d.flatpak_app_id.as_deref())
-            .unwrap_or_else(|| browser_id.strip_prefix("flatpak-").unwrap_or(browser_id));
-        (
+        let app_id = def.and_then(|d| d.flatpak_app_id.as_deref())?;
+        Some((
             "flatpak".to_string(),
             vec!["run".to_string(), app_id.to_string()],
-        )
+        ))
     } else {
-        let exec = def
-            .and_then(|d| d.native_paths.iter().find(|p| Path::new(p).exists()))
-            .map(String::as_str)
-            .unwrap_or(browser_id);
-        (exec.to_string(), Vec::new())
+        let exec = def.and_then(|d| d.native_paths.iter().find(|p| Path::new(p).exists()))?;
+        Some((exec.clone(), Vec::new()))
     }
 }
 
@@ -164,8 +176,8 @@ fn build_chromium_spec(
     browser_id: &str,
     def: Option<&BrowserDef>,
     is_flatpak: bool,
-) -> (String, Vec<String>) {
-    let (program, mut cmd_args) = base_spec(def, browser_id, is_flatpak);
+) -> Option<(String, Vec<String>)> {
+    let (program, mut cmd_args) = base_spec(def, is_flatpak)?;
 
     let profile_key = if args.profile == "Default" || args.profile == "Browser" {
         // Per-webapp dir so each Default/Browser webapp gets its own process.
@@ -183,5 +195,5 @@ fn build_chromium_spec(
         format!("--class={}", args.class),
         format!("--app={}", args.url),
     ]);
-    (program, cmd_args)
+    Some((program, cmd_args))
 }

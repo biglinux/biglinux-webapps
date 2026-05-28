@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-3.0-or-later
 # Regenerate po/biglinux-webapps.pot from the Rust sources and merge the
 # updated template into every per-language .po. Run after adding, removing,
 # or modifying gettext() strings in the codebase.

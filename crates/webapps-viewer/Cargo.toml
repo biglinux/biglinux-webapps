@@ -1,4 +1,5 @@
 [package]
+publish = false  # internal workspace crate; not for crates.io
 name = "webapps-viewer"
 version.workspace = true
 edition.workspace = true
@@ -22,3 +23,5 @@ env_logger.workspace = true
 clap.workspace = true
 gettextrs.workspace = true
 url.workspace = true
+big-relm4-components = { path = "../../../big-rust-components/crates/big-relm4-components" }
+big-app-kit = { path = "../../../big-rust-components/crates/big-app-kit", default-features = false }

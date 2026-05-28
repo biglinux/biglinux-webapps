@@ -1,0 +1,17 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Discord
+Exec=big-webapps-exec filename="brave-discord.com__-Default.desktop" brave --class="discord.com" --profile-directory=Browser --app="https://discord.com"
+Icon=webapp-discord
+StartupWMClass=discord.com
+Categories=Webapps;
+StartupNotify=false
+
+Actions=SoftwareRender;
+
+[Desktop Action SoftwareRender]
+Name=Software Render
+Exec=SoftwareRender big-webapps-exec filename="brave-discord.com__-Default.desktop" brave --class="discord.com" --profile-directory=Browser --app="https://discord.com"

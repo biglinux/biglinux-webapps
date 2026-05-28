@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+## arg 1:  the new package version
+#pre_install() {
+# do something here
+#}
+
+## arg 1:  the new package version
+post_install() {
+	systemctl --global enable biglinux-webapps
+	# caveman: refresh icon/desktop/mime caches. launcher visible immediately.
+	if command -v gtk4-update-icon-cache >/dev/null 2>&1; then
+		gtk4-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+	elif command -v gtk-update-icon-cache >/dev/null 2>&1; then
+		gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+	fi
+	if command -v update-desktop-database >/dev/null 2>&1; then
+		update-desktop-database -q /usr/share/applications 2>/dev/null || true
+	fi
+}
+
+## arg 2:  the old package version
+#pre_upgrade() {
+# do something here
+#}
+
+## arg 2:  the old package version
+post_upgrade() {
+	post_install
+}
+
+## arg 1:  the old package version
+pre_remove() {
+	systemctl --global disable biglinux-webapps
+}
+
+## arg 1:  the old package version
+#post_remove() {
+# do something here
+#}

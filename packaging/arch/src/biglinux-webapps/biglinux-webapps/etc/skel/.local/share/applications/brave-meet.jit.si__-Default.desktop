@@ -1,0 +1,17 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Jitsi Meet
+Exec=big-webapps-exec filename="brave-meet.jit.si__-Default.desktop" brave --class="meet.jit.si__" --profile-directory=Browser --app="https://meet.jit.si/"
+Icon=webapp-jitsi
+StartupWMClass=meet.jit.si__
+Categories=Webapps;
+StartupNotify=false
+
+Actions=SoftwareRender;
+
+[Desktop Action SoftwareRender]
+Name=Software Render
+Exec=SoftwareRender big-webapps-exec filename="brave-meet.jit.si__-Default.desktop" brave --class="meet.jit.si__" --profile-directory=Browser --app="https://meet.jit.si/"

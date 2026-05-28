@@ -59,7 +59,7 @@ static BROWSER_DEFS: OnceLock<Vec<BrowserDef>> = OnceLock::new();
 
 /// Return the loaded browser definitions (loaded once per process via [`OnceLock`]).
 ///
-/// Reads from [`SYSTEM_PATH`] first; falls back to the embedded default on any
+/// Reads from `SYSTEM_PATH` first; falls back to the embedded default on any
 /// read or parse error, and logs a warning.
 pub fn browser_defs() -> &'static [BrowserDef] {
     BROWSER_DEFS.get_or_init(load_browser_defs)

@@ -2877,7 +2877,6 @@ dependencies = [
  "gdk-pixbuf",
  "gdk4",
  "gettext-rs",
- "gio",
  "glib",
  "gtk4",
  "image",
@@ -2900,6 +2899,8 @@ dependencies = [
 name = "webapps-viewer"
 version = "4.0.6"
 dependencies = [
+ "big-app-kit",
+ "big-relm4-components",
  "clap",
  "env_logger",
  "gdk4",

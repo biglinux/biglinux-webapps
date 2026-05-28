@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-3.0-or-later
 # Generate `cargo-sources.json` for offline Flathub builds.
 #
 # Flathub builders have no network access; every cargo registry dependency has

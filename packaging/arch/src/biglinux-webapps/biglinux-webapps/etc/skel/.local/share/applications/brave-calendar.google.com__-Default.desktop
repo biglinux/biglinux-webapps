@@ -1,0 +1,17 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Calendar
+Exec=big-webapps-exec filename="brave-calendar.google.com__-Default.desktop" brave --class="calendar.google.com" --profile-directory=Browser --app="https://calendar.google.com"
+Icon=webapp-g-calendar
+StartupWMClass=calendar.google.com
+Categories=Webapps;
+StartupNotify=false
+
+Actions=SoftwareRender;
+
+[Desktop Action SoftwareRender]
+Name=Software Render
+Exec=SoftwareRender big-webapps-exec filename="brave-calendar.google.com__-Default.desktop" brave --class="calendar.google.com" --profile-directory=Browser --app="https://calendar.google.com"

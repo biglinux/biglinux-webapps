@@ -1,0 +1,17 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=WhatsApp
+Exec=big-webapps-exec filename="brave-web.whatsapp.com__-Default.desktop" brave --class="web.whatsapp.com" --profile-directory=Browser --app="https://web.whatsapp.com"
+Icon=webapp-whatsapp
+StartupWMClass=web.whatsapp.com
+Categories=Webapps;
+StartupNotify=false
+
+Actions=SoftwareRender;
+
+[Desktop Action SoftwareRender]
+Name=Software Render
+Exec=SoftwareRender big-webapps-exec filename="brave-web.whatsapp.com__-Default.desktop" brave --class="web.whatsapp.com" --profile-directory=Browser --app="https://web.whatsapp.com"

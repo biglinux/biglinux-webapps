@@ -1,0 +1,87 @@
+# caveman: install rust + cargo tools + system libs
+name: setup-rust
+description: Install pinned Rust toolchain, cargo helpers, and system libs.
+
+inputs:
+  toolchain:
+    description: Rust channel (overrides rust-toolchain.toml)
+    required: false
+    default: ""
+  system-libs:
+    description: |
+      Space-separated bundles to install. Options:
+      gtk4 adw vte webkit pipewire mpv gstreamer ffmpeg v4l common
+    required: false
+    default: "common"
+  cargo-tools:
+    description: Space-separated cargo bin tools to install.
+    required: false
+    default: "cargo-deny cargo-audit cargo-machete cargo-nextest"
+  cache-key:
+    description: Extra cache key suffix.
+    required: false
+    default: "default"
+
+runs:
+  using: composite
+  steps:
+    # system libs
+    - name: apt deps
+      shell: bash
+      run: |
+        set -euxo pipefail
+        sudo apt-get update -qq
+        # base
+        pkgs=(build-essential pkg-config curl git ca-certificates gettext xdg-utils libssl-dev)
+        for bundle in ${{ inputs.system-libs }}; do
+          case "$bundle" in
+            common) ;;
+            gtk4)       pkgs+=(libgtk-4-dev libglib2.0-dev libcairo2-dev libpango1.0-dev) ;;
+            adw)        pkgs+=(libadwaita-1-dev) ;;
+            vte)        pkgs+=(libvte-2.91-gtk4-dev) ;;
+            webkit)     pkgs+=(libwebkitgtk-6.0-dev libsoup-3.0-dev) ;;
+            pipewire)   pkgs+=(libpipewire-0.3-dev libspa-0.2-dev) ;;
+            mpv)        pkgs+=(libmpv-dev) ;;
+            gstreamer)  pkgs+=(libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev) ;;
+            ffmpeg)     pkgs+=(ffmpeg libavcodec-dev libavformat-dev libavutil-dev libswscale-dev) ;;
+            v4l)        pkgs+=(libv4l-dev v4l-utils) ;;
+            *) echo "unknown bundle: $bundle" >&2; exit 1 ;;
+          esac
+        done
+        sudo apt-get install -y --no-install-recommends "${pkgs[@]}"
+
+    # rust toolchain — honors rust-toolchain.toml unless override given
+    - name: install rust
+      shell: bash
+      run: |
+        set -euxo pipefail
+        if [ -n "${{ inputs.toolchain }}" ]; then
+          rustup toolchain install "${{ inputs.toolchain }}" --component rustfmt --component clippy --profile minimal
+          rustup default "${{ inputs.toolchain }}"
+        else
+          # picks rust-toolchain.toml automatically
+          rustup show active-toolchain || rustup toolchain install stable
+        fi
+        rustc -V
+        cargo -V
+
+    # cache
+    - name: cache cargo + target
+      # actions/cache@v4 pinned to commit SHA
+      uses: actions/cache@0c907a75c2c80ebcb7f088228285e798b750cf8f
+      with:
+        path: |
+          ~/.cargo/registry/index
+          ~/.cargo/registry/cache
+          ~/.cargo/git/db
+          target
+        key: ${{ runner.os }}-cargo-${{ inputs.cache-key }}-${{ hashFiles('**/Cargo.lock', 'rust-toolchain.toml') }}
+        restore-keys: |
+          ${{ runner.os }}-cargo-${{ inputs.cache-key }}-
+
+    # cargo helpers — taiki-e/install-action is precompiled & fast
+    - name: install cargo tools
+      # taiki-e/install-action pinned to commit SHA (v2.44.x range)
+      uses: taiki-e/install-action@9ca1734d8940023f074414ee621fd530c4ce10f2
+      with:
+        tool: ${{ inputs.cargo-tools }}

@@ -1,0 +1,17 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Drive
+Exec=big-webapps-exec filename="brave-drive.google.com__-Default.desktop" brave --class="drive.google.com" --profile-directory=Browser --app="https://drive.google.com"
+Icon=webapp-g-drive
+StartupWMClass=drive.google.com
+Categories=Webapps;
+StartupNotify=false
+
+Actions=SoftwareRender;
+
+[Desktop Action SoftwareRender]
+Name=Software Render
+Exec=SoftwareRender big-webapps-exec filename="brave-drive.google.com__-Default.desktop" brave --class="drive.google.com" --profile-directory=Browser --app="https://drive.google.com"

@@ -1,4 +1,5 @@
 [package]
+publish = false  # internal workspace crate; not for crates.io
 name = "webapps-exec"
 version.workspace = true
 edition.workspace = true

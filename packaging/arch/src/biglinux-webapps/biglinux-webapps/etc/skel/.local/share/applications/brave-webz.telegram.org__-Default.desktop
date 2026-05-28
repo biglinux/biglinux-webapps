@@ -1,0 +1,17 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Telegram
+Exec=big-webapps-exec filename="brave-webz.telegram.org__-Default.desktop" brave --class="webz.telegram.org" --profile-directory=Browser --app="https://webz.telegram.org"
+Icon=webapp-telegram-webapp
+StartupWMClass=webz.telegram.org
+Categories=Webapps;
+StartupNotify=false
+
+Actions=SoftwareRender;
+
+[Desktop Action SoftwareRender]
+Name=Software Render
+Exec=SoftwareRender big-webapps-exec filename="brave-webz.telegram.org__-Default.desktop" brave --class="webz.telegram.org" --profile-directory=Browser --app="https://webz.telegram.org"

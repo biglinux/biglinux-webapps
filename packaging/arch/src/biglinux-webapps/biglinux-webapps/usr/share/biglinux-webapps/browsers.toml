@@ -1,0 +1,199 @@
+# BigLinux WebApps — browser definitions
+# =========================================
+# Source of truth for all browser support. Distro maintainers can edit this
+# file to add, remove, or adjust browsers without recompiling.
+#
+# The runtime reads from:  /usr/share/biglinux-webapps/browsers.toml
+# Falling back to the version embedded in the binary when that file is absent.
+#
+# FIELDS
+# ------
+# id              Stable ID stored in webapps.json (must not change after creation)
+# display_name    Human-readable label shown in the manager UI
+# native_paths    Binary paths checked for native install; first existing path wins
+# wm_class_prefix WM_CLASS prefix set by Chromium-family browsers (empty for Gecko)
+# desktop_pattern Substring matched against `xdg-settings get default-web-browser` output
+# firefox_like    true = Gecko engine → different CLI launch flags in big-webapps-exec
+# flatpak_app_id  Flatpak application ID (absent = no Flatpak detection for this browser)
+# flatpak_id      browser_id assigned when detected via Flatpak (required if flatpak_app_id set)
+#
+# NOTE: big-webapps-exec (bash) mirrors flatpak_app_id / flatpak_id in its case statement.
+# Keep both in sync when adding a new browser.
+
+# ---------------------------------------------------------------------------
+# Gecko / Firefox-family
+# ---------------------------------------------------------------------------
+
+[[browser]]
+id             = "firefox"
+display_name   = "Firefox"
+native_paths   = ["/usr/bin/firefox"]
+wm_class_prefix = ""
+desktop_pattern = "firefox"
+firefox_like   = true
+flatpak_app_id = "org.mozilla.firefox"
+flatpak_id     = "flatpak-firefox"
+
+[[browser]]
+id             = "firefox-developer-edition"
+display_name   = "Firefox Developer Edition"
+native_paths   = ["/usr/bin/firefox-developer-edition"]
+wm_class_prefix = ""
+desktop_pattern = "firefox-developer"
+firefox_like   = true
+
+[[browser]]
+id             = "librewolf"
+display_name   = "LibreWolf"
+native_paths   = ["/usr/bin/librewolf"]
+wm_class_prefix = ""
+desktop_pattern = "librewolf"
+firefox_like   = true
+flatpak_app_id = "io.gitlab.librewolf-community"
+flatpak_id     = "flatpak-librewolf"
+
+# ---------------------------------------------------------------------------
+# Google Chrome
+# ---------------------------------------------------------------------------
+
+[[browser]]
+id             = "google-chrome-stable"
+display_name   = "Google Chrome"
+native_paths   = ["/usr/bin/google-chrome-stable"]
+wm_class_prefix = "google-chrome"
+desktop_pattern = "google-chrome-stable"
+desktop_aliases = ["google-chrome"]
+firefox_like   = false
+flatpak_app_id = "com.google.Chrome"
+flatpak_id     = "flatpak-google-chrome-stable"
+legacy_flatpak_ids = ["flatpak-chrome"]
+
+[[browser]]
+id             = "google-chrome-beta"
+display_name   = "Google Chrome Beta"
+native_paths   = ["/usr/bin/google-chrome-beta"]
+wm_class_prefix = "google-chrome"
+desktop_pattern = "google-chrome-beta"
+firefox_like   = false
+
+[[browser]]
+id             = "google-chrome-unstable"
+display_name   = "Google Chrome Dev"
+native_paths   = ["/usr/bin/google-chrome-unstable"]
+wm_class_prefix = "google-chrome"
+desktop_pattern = "google-chrome-unstable"
+firefox_like   = false
+
+# ---------------------------------------------------------------------------
+# Chromium
+# ---------------------------------------------------------------------------
+
+[[browser]]
+id             = "chromium"
+display_name   = "Chromium"
+native_paths   = ["/usr/bin/chromium"]
+wm_class_prefix = "chromium"
+desktop_pattern = "chromium"
+firefox_like   = false
+flatpak_app_id = "org.chromium.Chromium"
+flatpak_id     = "flatpak-chromium"
+
+[[browser]]
+id             = "ungoogled-chromium"
+display_name   = "Ungoogled Chromium"
+native_paths   = ["/usr/bin/ungoogled-chromium"]
+wm_class_prefix = "chromium"
+desktop_pattern = "ungoogled-chromium"
+firefox_like   = false
+flatpak_app_id = "com.github.Eloston.UngoogledChromium"
+flatpak_id     = "flatpak-ungoogled-chromium"
+
+# ---------------------------------------------------------------------------
+# Brave
+# ---------------------------------------------------------------------------
+
+[[browser]]
+id             = "brave"
+display_name   = "Brave"
+native_paths   = ["/usr/bin/brave", "/usr/bin/brave-browser", "/usr/bin/brave-browser-stable"]
+wm_class_prefix = "brave"
+desktop_pattern = "brave"
+firefox_like   = false
+flatpak_app_id = "com.brave.Browser"
+flatpak_id     = "flatpak-brave-browser"
+legacy_flatpak_ids = ["flatpak-brave"]
+
+[[browser]]
+id             = "brave-beta"
+display_name   = "Brave Beta"
+native_paths   = ["/usr/bin/brave-browser-beta", "/usr/bin/brave-beta"]
+wm_class_prefix = "brave"
+desktop_pattern = "brave-beta"
+desktop_aliases = ["brave-browser-beta"]
+firefox_like   = false
+flatpak_app_id = "com.brave.Browser.Beta"
+flatpak_id     = "flatpak-brave-beta"
+
+[[browser]]
+id             = "brave-nightly"
+display_name   = "Brave Nightly"
+native_paths   = ["/usr/bin/brave-browser-nightly", "/usr/bin/brave-nightly"]
+wm_class_prefix = "brave"
+desktop_pattern = "brave-nightly"
+desktop_aliases = ["brave-browser-nightly"]
+firefox_like   = false
+
+# ---------------------------------------------------------------------------
+# Microsoft Edge
+# ---------------------------------------------------------------------------
+
+[[browser]]
+id             = "microsoft-edge-stable"
+display_name   = "Microsoft Edge"
+native_paths   = ["/usr/bin/microsoft-edge-stable"]
+wm_class_prefix = "microsoft-edge"
+desktop_pattern = "microsoft-edge-stable"
+desktop_aliases = ["microsoft-edge"]
+firefox_like   = false
+flatpak_app_id = "com.microsoft.Edge"
+flatpak_id     = "flatpak-microsoft-edge-stable"
+legacy_flatpak_ids = ["flatpak-edge"]
+
+[[browser]]
+id             = "microsoft-edge-beta"
+display_name   = "Microsoft Edge Beta"
+native_paths   = ["/usr/bin/microsoft-edge-beta"]
+wm_class_prefix = "microsoft-edge"
+desktop_pattern = "microsoft-edge-beta"
+firefox_like   = false
+
+# ---------------------------------------------------------------------------
+# Vivaldi
+# ---------------------------------------------------------------------------
+
+[[browser]]
+id             = "vivaldi-stable"
+display_name   = "Vivaldi"
+native_paths   = ["/usr/bin/vivaldi-stable"]
+wm_class_prefix = "vivaldi"
+desktop_pattern = "vivaldi-stable"
+desktop_aliases = ["vivaldi"]
+firefox_like   = false
+flatpak_app_id = "com.vivaldi.Vivaldi"
+flatpak_id     = "flatpak-vivaldi-stable"
+
+[[browser]]
+id             = "vivaldi-beta"
+display_name   = "Vivaldi Beta"
+native_paths   = ["/usr/bin/vivaldi-beta"]
+wm_class_prefix = "vivaldi"
+desktop_pattern = "vivaldi-beta"
+firefox_like   = false
+
+[[browser]]
+id             = "vivaldi-snapshot"
+display_name   = "Vivaldi Snapshot"
+native_paths   = ["/usr/bin/vivaldi-snapshot"]
+wm_class_prefix = "vivaldi"
+desktop_pattern = "vivaldi-snapshot"
+firefox_like   = false

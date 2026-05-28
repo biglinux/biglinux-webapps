@@ -1,4 +1,5 @@
 [package]
+publish = false  # internal workspace crate; not for crates.io
 name = "webapps-manager"
 version.workspace = true
 edition.workspace = true
@@ -17,7 +18,6 @@ webapps-core = { path = "../webapps-core" }
 gtk4.workspace = true
 libadwaita.workspace = true
 glib.workspace = true
-gio.workspace = true
 gdk4.workspace = true
 gdk-pixbuf.workspace = true
 serde.workspace = true
