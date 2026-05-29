@@ -1,10 +1,4 @@
-#[allow(unused_imports)]
-use adw::prelude::*;
 use big_app_kit::desktop;
-#[allow(unused_imports)]
-use gtk::prelude::*;
-use gtk4 as gtk;
-use libadwaita as adw;
 
 use webapps_core::config;
 

@@ -1,9 +1,6 @@
-#[allow(unused_imports)]
 use adw::prelude::*;
 use big_relm4_components::feedback::tooltip;
 use gettextrs::gettext;
-#[allow(unused_imports)]
-use gtk::prelude::*;
 use gtk4 as gtk;
 use libadwaita as adw;
 
@@ -13,16 +10,12 @@ pub(super) struct WindowUi {
     pub search_btn: gtk::ToggleButton,
     pub add_btn: gtk::Button,
     pub search_entry: gtk::SearchEntry,
-    pub content_box: gtk::Box,
-    pub status_label: gtk::Label,
 }
 
 /// Build the window shell with the supplied Relm4 list widget mounted inside
 /// the scrolled clamp.
 ///
 /// `list_widget` is the root `gtk::Box` of the Relm4 `WebAppListController`.
-/// The returned `WindowUi.content_box` stays present for API compatibility
-/// but is unused by the Relm4 path.
 pub(super) fn build_window_with_list(
     app: &adw::Application,
     list_widget: Option<&gtk::Widget>,
@@ -110,8 +103,6 @@ pub(super) fn build_window_with_list(
         search_btn,
         add_btn,
         search_entry,
-        content_box,
-        status_label,
     }
 }
 

@@ -5,12 +5,9 @@
 //! insertion, and `AdwPreferencesDialog` covers the same use case with better
 //! AT-SPI semantics (each row is announced individually).
 
-#[allow(unused_imports)]
 use adw::prelude::*;
 use big_relm4_components::list::info_row::{BigInfoRow, BigInfoRowSpec};
 use gettextrs::gettext;
-#[allow(unused_imports)]
-use gtk::prelude::*;
 use gtk4 as gtk;
 use libadwaita as adw;
 

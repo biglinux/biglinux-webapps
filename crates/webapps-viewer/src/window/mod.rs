@@ -19,7 +19,6 @@ mod shortcuts;
 mod shortcuts_window;
 mod startup;
 
-#[allow(unused_imports)]
 use adw::prelude::*;
 use glib::clone;
 use gtk4 as gtk;

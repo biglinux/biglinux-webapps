@@ -1,12 +1,6 @@
-#[allow(unused_imports)]
-use adw::prelude::*;
 use big_app_kit::desktop;
 use big_app_kit::file_dialogs::FilePicker;
 use gettextrs::gettext;
-#[allow(unused_imports)]
-use gtk::prelude::*;
-use gtk4 as gtk;
-use libadwaita as adw;
 
 use crate::{service, ui_async};
 

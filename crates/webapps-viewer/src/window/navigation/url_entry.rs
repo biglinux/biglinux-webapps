@@ -1,6 +1,4 @@
 use glib::clone;
-#[allow(unused_imports)]
-use gtk::prelude::*;
 use gtk4 as gtk;
 use webkit6 as webkit;
 use webkit6::prelude::*;

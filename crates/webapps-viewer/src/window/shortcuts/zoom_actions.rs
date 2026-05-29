@@ -1,5 +1,3 @@
-#[allow(unused_imports)]
-use adw::prelude::*;
 use big_app_kit::desktop;
 use glib::clone;
 use gtk4 as gtk;

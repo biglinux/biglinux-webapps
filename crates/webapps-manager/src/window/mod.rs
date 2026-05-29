@@ -12,13 +12,10 @@ mod ui;
 use std::cell::RefCell;
 use std::rc::Rc;
 
-#[allow(unused_imports)]
 use adw::prelude::*;
 use big_relm4_components::feedback::tooltip;
 use gettextrs::gettext;
 use gtk::glib;
-#[allow(unused_imports)]
-use gtk::prelude::*;
 use gtk4 as gtk;
 use libadwaita as adw;
 use relm4::component::Component;
@@ -94,10 +91,8 @@ pub fn build(app: &adw::Application) {
     let context = WindowContext {
         state,
         browsers,
-        content: Rc::new(ui.content_box),
         window: Rc::new(ui.window),
         toast: Rc::new(ui.toast_overlay),
-        status: Rc::new(ui.status_label),
         list: Rc::new(list_controller),
     };
     *context_slot.borrow_mut() = Some(context.clone());

@@ -1,7 +1,6 @@
 //! Window geometry: persistence of size/position across sessions.
 use std::path::PathBuf;
 
-#[allow(unused_imports)]
 use adw::prelude::*;
 use libadwaita as adw;
 

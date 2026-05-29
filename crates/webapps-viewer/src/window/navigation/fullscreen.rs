@@ -1,8 +1,6 @@
 use std::cell::Cell;
 use std::rc::Rc;
 
-#[allow(unused_imports)]
-use adw::prelude::*;
 use glib::clone;
 use gtk4 as gtk;
 use libadwaita as adw;

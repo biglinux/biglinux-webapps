@@ -8,7 +8,6 @@ mod zoom_actions;
 use std::cell::Cell;
 use std::rc::Rc;
 
-#[allow(unused_imports)]
 use adw::prelude::*;
 use big_app_kit::desktop;
 use glib::clone;

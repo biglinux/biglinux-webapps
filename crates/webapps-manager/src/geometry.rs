@@ -7,7 +7,6 @@
 
 use std::path::PathBuf;
 
-#[allow(unused_imports)]
 use adw::prelude::*;
 use gtk4 as gtk;
 use libadwaita as adw;
