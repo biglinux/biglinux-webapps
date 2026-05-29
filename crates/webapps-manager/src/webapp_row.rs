@@ -22,8 +22,20 @@ pub fn load_icon(image: &gtk::Image, icon_ref: &str) {
             let target = image.pixel_size().max(32) * 4;
             match gdk_pixbuf::Pixbuf::from_file_at_size(p, target, target) {
                 Ok(pixbuf) => {
-                    #[allow(deprecated)]
-                    let tex = gdk4::Texture::for_pixbuf(&pixbuf);
+                    // Build the texture from the pixbuf's own buffer — byte-for-byte
+                    // what the deprecated `Texture::for_pixbuf` did internally.
+                    let format = if pixbuf.has_alpha() {
+                        gdk4::MemoryFormat::R8g8b8a8
+                    } else {
+                        gdk4::MemoryFormat::R8g8b8
+                    };
+                    let tex = gdk4::MemoryTexture::new(
+                        pixbuf.width(),
+                        pixbuf.height(),
+                        format,
+                        &pixbuf.read_pixel_bytes(),
+                        pixbuf.rowstride() as usize,
+                    );
                     image.set_paintable(Some(&tex));
                 }
                 Err(_) => image.set_from_file(Some(p)),
