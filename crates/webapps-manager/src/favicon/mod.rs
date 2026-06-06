@@ -5,6 +5,7 @@ use anyhow::Result;
 use std::path::PathBuf;
 
 use webapps_core::config;
+use webapps_core::desktop;
 
 pub struct SiteInfo {
     pub title: String,
@@ -24,7 +25,7 @@ pub fn fetch_site_info(url: &str) -> Result<SiteInfo> {
     let mut icon_candidates = html::extract_icon_candidates(&document, &normalized_url);
     icon_candidates.extend(fetch_manifest_icons(&client, &document, &normalized_url));
     html::sort_icon_candidates(&mut icon_candidates);
-    let cache_dir = ensure_favicon_cache()?;
+    let cache_dir = ensure_favicon_cache(&normalized_url)?;
     let icon_paths = download_icon_set(&client, &parsed, &cache_dir, &icon_candidates);
 
     Ok(SiteInfo { title, icon_paths })
@@ -84,8 +85,27 @@ fn fallback_title_from_host(parsed_url: &url::Url) -> String {
     }
 }
 
-fn ensure_favicon_cache() -> Result<PathBuf> {
-    let cache_dir = config::cache_dir().join("favicons");
+/// Per-site favicon cache directory.
+///
+/// Each detection writes its candidate icons as `icon_<index>.<ext>` with the
+/// index restarting at 0 for every site. A single flat directory shared across
+/// all sites meant a second site's detection overwrote the first site's
+/// `icon_0.png` — and since the dialog keeps that volatile cache path in
+/// `app_icon` until the user saves, the icon copied into the stable per-app path
+/// at save time could be the *other* site's image. That is a time-of-check /
+/// time-of-use race between "detect" and "save": persisting a stable copy didn't
+/// help because the source bytes were already clobbered. Namespacing the cache by
+/// the site's stable id (the same id used for the persisted icon and `.desktop`
+/// name) keeps each site's candidates in their own directory, so concurrent or
+/// interleaved detections can never clobber each other.
+fn favicon_cache_dir(url: &str) -> PathBuf {
+    config::cache_dir()
+        .join("favicons")
+        .join(desktop::desktop_file_id(url))
+}
+
+fn ensure_favicon_cache(url: &str) -> Result<PathBuf> {
+    let cache_dir = favicon_cache_dir(url);
     std::fs::create_dir_all(&cache_dir)?;
     Ok(cache_dir)
 }
@@ -213,5 +233,30 @@ fn download_google_favicon(
     let google_url = format!("https://www.google.com/s2/favicons?domain={host}&sz=256");
     if let Ok(path) = download::download_icon(client, &google_url, cache_dir, 100) {
         icon_paths.push(path);
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn favicon_cache_dir_is_namespaced_per_site() {
+        // Two different sites must resolve to different cache directories so a
+        // detection for one can never overwrite the other's `icon_<index>` files.
+        let reddit = favicon_cache_dir("https://www.reddit.com/");
+        let loy = favicon_cache_dir("https://example.com/");
+
+        assert_ne!(reddit, loy);
+        assert!(reddit.ends_with("favicons/wwwredditcom"));
+        assert!(loy.ends_with("favicons/examplecom"));
+    }
+
+    #[test]
+    fn favicon_cache_dir_is_stable_for_same_site() {
+        assert_eq!(
+            favicon_cache_dir("https://example.com/"),
+            favicon_cache_dir("https://example.com/")
+        );
     }
 }
