@@ -51,7 +51,33 @@ sudo pacman -S biglinux-webapps
 
 ## License
 
-GPL-3.0
+GPL-3.0-or-later
+
+## Building from source
+
+Requires a Rust toolchain (pinned in `rust-toolchain.toml`) plus the GTK4 /
+libadwaita / WebKitGTK 6.0 dev libraries.
+
+```bash
+cargo build --release --workspace --locked
+./target/release/big-webapps-gui
+```
+
+Other binaries: `big-webapps-viewer` (WebKit window), `big-webapps-exec`
+(launcher shim).
+
+## For contributors and AI agents
+
+Start here before editing the tree:
+
+- `AGENTS.md` — crate/binary map, build/test/lint commands, where to edit.
+- `ARCHITECTURE.md` — async boundaries, subprocess argv table, data flow.
+- `INVARIANTS.md` — enforced contracts and their CI gate.
+- `SECURITY.md` — threat model, reporting channel.
+
+The committed quality gate is `.github/workflows/rust-quality.yml`
+(fmt, clippy `-D warnings`, build `--locked`, test, `cargo deny`,
+`cargo machete`, i18n POT freshness).
 
 ## Dependencies
 

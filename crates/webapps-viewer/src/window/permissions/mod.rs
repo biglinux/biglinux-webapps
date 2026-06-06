@@ -77,7 +77,7 @@ pub(super) fn load_permissions(path: &Path) -> HashMap<String, bool> {
 
 pub(super) fn save_permissions(path: &Path, perms: &HashMap<String, bool>) {
     // Atomic write: a crash mid-write must never leave the user re-prompted for
-    // an already-denied permission. See tmp/agent_working/05-threats.md §H-3.
+    // an already-denied permission. Write to a temp file, then rename into place.
     let Ok(data) = serde_json::to_string_pretty(perms) else {
         return;
     };

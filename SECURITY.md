@@ -31,7 +31,7 @@ Include: affected version, reproduction steps, impact, suggested fix (optional).
 - WebView sandbox flags (no host filesystem access, no node integration)
 - Per-app profile dir isolation (cookies, storage, cache scoped per webapp)
 - URL validation against allowlist scheme (`https://`, no `file://`, no `javascript:`)
-- Atomic JSON profile write via `BigAtomicJsonStore` (crash-mid-rename safe)
+- Atomic JSON profile/state write via tmp-file + `rename` (crash-mid-rename safe; `crates/webapps-viewer/src/window/permissions/mod.rs`, `crates/webapps-manager/src/service/repository.rs`)
 - Icon download path canonicalization (no traversal into XDG dirs)
 - Subprocess argv terminator on launcher invocations
 
@@ -55,8 +55,8 @@ See `INVARIANTS.md` for the enforced contract (subprocess argv, path canonicaliz
 | Threat | Mitigation |
 |--------|-----------|
 | Spoofing | URL scheme allowlist, per-app origin pinning |
-| Tampering | `BigAtomicJsonStore` for profiles, signed model artifacts |
-| Repudiation | structured logs via `tracing` |
-| Information disclosure | per-app profile isolation, redaction in logs |
-| DoS | WebView process cap, profile size budget |
+| Tampering | atomic tmp+rename writes; exclusive advisory lock (`fs2::FileExt::lock_exclusive` on `webapps.json.lock`) across every read-modify-write transaction |
+| Repudiation | logs via `log` + `env_logger` |
+| Information disclosure | per-app profile dir isolation |
+| DoS | favicon/manifest fetch size + timeout caps (`crates/webapps-manager/src/favicon/download.rs`) |
 | Elevation of privilege | WebView sandbox, no setuid, user-only install |

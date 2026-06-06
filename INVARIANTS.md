@@ -8,7 +8,7 @@ Contracts the CI gates protect. Each line is enforced by a check listed in the r
 |---|---|
 | Rust toolchain pinned to the channel in `rust-toolchain.toml` | `rust-toolchain.toml` consumed by `dtolnay/rust-toolchain` in `.github/workflows/rust-quality.yml` |
 | `cargo build --release --workspace --locked` succeeds with `-D warnings` | `rust-quality.yml` step "build" |
-| Every binary `--help` returns in < 200 ms on dev hardware | `tmp/agent_working/07-perf.md` budget; manual check until Stage 13b benchmark step lands |
+| Every binary `--help` returns in < 200 ms on dev hardware | manual check; benchmark step not yet wired in `rust-quality.yml` |
 
 ## Source quality
 
@@ -17,7 +17,7 @@ Contracts the CI gates protect. Each line is enforced by a check listed in the r
 | `cargo fmt --all -- --check` is clean | `rust-quality.yml` step "rustfmt" |
 | `cargo clippy --workspace --all-targets` is clean with `-D warnings` | `rust-quality.yml` step "clippy" |
 | Test suite is green: `cargo test --release --workspace --locked` | `rust-quality.yml` step "test" |
-| No file in `crates/**/*.rs` exceeds 700 LOC (soft cap 400) | reviewed at `tmp/agent_working/11-agent-cl.md`; no automated gate yet — proposal: `scripts/file-budget.sh` |
+| No file in `crates/**/*.rs` exceeds 700 LOC (soft cap 400) | review-time; no automated gate yet — proposal: `scripts/file-budget.sh` |
 
 ## Supply chain & licensing
 
@@ -31,24 +31,24 @@ Contracts the CI gates protect. Each line is enforced by a check listed in the r
 
 | invariant | enforced by |
 |---|---|
-| `webapps-exec` only spawns browsers in the whitelist defined in `webapps-core::browsers` | follow-up commit (Stage 5 H-1); test G-1/G-2 in `tmp/agent_working/12-tests.md` |
-| Atomic write for persisted permissions: `tmp + rename`, never overwrite-in-place | `webapps-viewer/src/window/permissions/mod.rs::save_permissions` + Stage 5 §H-3 |
-| Inter-process file locking via `flock(LOCK_EX)` on `WebappsLock` for any write transaction | `webapps-manager/src/service/repository.rs::WebappsLock` |
+| `webapps-exec` only spawns browsers resolved via the whitelist in `webapps-core::browsers` (`find_def` + `BrowserDef`) | `webapps-exec/src/launch.rs` resolves only `native_paths`/`flatpak_app_id`; unit tests in `webapps-core/src/browsers.rs` |
+| Atomic write for persisted permissions: `tmp + rename`, never overwrite-in-place | `webapps-viewer/src/window/permissions/mod.rs::save_permissions` |
+| Inter-process file locking via an exclusive advisory lock (`fs2::FileExt::lock_exclusive`) on `WebappsLock` for any write transaction | `webapps-manager/src/service/repository.rs::WebappsLock` |
 | All shell-quoted desktop-file `Exec=` lines pass `desktop::sanitize::sanitize_exec_arg` | unit tests in `webapps-core/src/desktop/sanitize.rs` (6 cases) |
 
 ## Resource lifecycle
 
 | invariant | enforced by |
 |---|---|
-| No long-lived signal handler holds a strong `Rc` back to its owner widget — all use `#[weak]` or capture-by-value | reviewed at `tmp/agent_working/06-lifecycle.md`; 51 `Weak`/`#[weak]` usages verified |
-| Every `glib::SourceId` debounce is `.remove()`d before being replaced | `webapp_dialog/handlers/{lifecycle,fields}.rs` pattern; ledger row in 06 |
-| `WebappsLock::drop` unlocks the flock even on panic | `repository.rs` Drop impl |
+| No long-lived signal handler holds a strong `Rc` back to its owner widget — all use `#[weak]` or capture-by-value | review-time; `#[weak]`/`Weak` usages across `crates/webapps-manager/src` |
+| Every `glib::SourceId` debounce is `.remove()`d before being replaced | `webapp_dialog/handlers/{lifecycle,fields}.rs` pattern; review-time |
+| `WebappsLock::drop` releases the advisory lock even on panic | `repository.rs` `Drop for WebappsLock` impl |
 
 ## i18n
 
 | invariant | enforced by |
 |---|---|
-| 100 % of user-visible strings are routed through `gettext` / `ngettext` | `tmp/agent_working/08-i18n.md` (coverage 100 % at this commit) |
+| 100 % of user-visible strings are routed through `gettext` / `ngettext` | review-time; POT freshness gate (`rust-quality.yml` step "i18n POT freshness") catches new untranslated strings |
 | `po/biglinux-webapps.pot` matches `xtr` output from current sources | `rust-quality.yml` step "i18n POT freshness" |
 | `.po` catalogs round-trip via `msgmerge` (handled by `scripts/update-translations.sh`) | script invoked by CI step above |
 
@@ -56,13 +56,13 @@ Contracts the CI gates protect. Each line is enforced by a check listed in the r
 
 | invariant | enforced by |
 |---|---|
-| Every icon-only `Button` has an accessible name via `update_property(accessible::Property::Label, …)` | `tmp/agent_working/09-a11y.md`; live AT-SPI walk in CI deferred to `09-a11y-vm.md` |
+| Every icon-only `Button` has an accessible name via `update_property(accessible::Property::Label, …)` | review-time; live AT-SPI walk in CI not yet wired |
 | Destructive actions are never the default response in `adw::AlertDialog` | manual review; `list.rs:197` sets default_response = "cancel" |
 | Toast announcements use `adw::ToastOverlay` (role=status) for transient state | enforced by widget choice |
 
 ## Performance budgets
 
-From `tmp/agent_working/07-perf.md` — validated on VM in Stage 13b (not yet wired).
+Target budgets (not yet wired into CI; validated manually on a VM).
 
 | metric | budget |
 |---|---:|
@@ -77,24 +77,12 @@ From `tmp/agent_working/07-perf.md` — validated on VM in Stage 13b (not yet wi
 | "Launch webapp" p50 | ≤ 700 ms |
 | CI test runtime | ≤ 30 s |
 
-## Pipeline artifacts (this commit)
+## Enforcement entrypoint
 
-| stage | file |
-|---|---|
-| 0 readiness | `tmp/agent_working/00-readiness.md` |
-| 1 cartography | `tmp/agent_working/01-map.md` |
-| 2 dead code | `tmp/agent_working/02-deadcode.md` |
-| 3 duplication | `tmp/agent_working/03-duplication.md` |
-| 4 licensing | `tmp/agent_working/04-licensing.md` |
-| 5 STRIDE threats | `tmp/agent_working/05-threats.md` |
-| 6 lifecycle | `tmp/agent_working/06-lifecycle.md` |
-| 7 perf baseline | `tmp/agent_working/07-perf.md` |
-| 8 i18n | `tmp/agent_working/08-i18n.md` |
-| 9 a11y | `tmp/agent_working/09-a11y.md` |
-| 10 user CL | `tmp/agent_working/10-user-cl.md` |
-| 11 agent CL | `tmp/agent_working/11-agent-cl.md` |
-| 12 tests | `tmp/agent_working/12-tests.md` |
-| 13 CI & invariants | `INVARIANTS.md` (this file) + `.github/workflows/rust-quality.yml` |
+The single committed enforcement point is `.github/workflows/rust-quality.yml`
+(this file plus that workflow). Internal audit scratch is local-only and not
+shipped; every contract above repoints to the real gate, the source path, or an
+honest "review-time" / "not yet wired" marker.
 
 ## How to extend
 

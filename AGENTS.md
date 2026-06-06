@@ -1,4 +1,4 @@
-# AGENT.md — BigLinux WebApps
+# AGENTS.md — BigLinux WebApps
 
 Working notes for any AI coding agent operating on this repository.
 Read this before touching the tree. Humans can read it too.

@@ -36,7 +36,7 @@ webapps-viewer).
 ## Reproduce gates
 
 ```sh
-cd /home/bruno/note/codigo-pacotes/biglinux-webapps
+cd biglinux-webapps   # repo root
 cargo fmt --all -- --check
 cargo clippy --workspace --all-targets --all-features -- -D warnings
 RUSTDOCFLAGS="-D warnings" cargo doc --workspace --no-deps --all-features
