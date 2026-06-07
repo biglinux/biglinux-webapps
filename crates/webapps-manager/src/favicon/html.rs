@@ -1,4 +1,13 @@
+use std::sync::LazyLock;
+
 use scraper::{Html, Selector};
+
+static TITLE: LazyLock<Selector> =
+    LazyLock::new(|| Selector::parse("title").expect("static selector"));
+static LINK_REL: LazyLock<Selector> =
+    LazyLock::new(|| Selector::parse("link[rel]").expect("static selector"));
+static META_OG_IMAGE: LazyLock<Selector> =
+    LazyLock::new(|| Selector::parse("meta[property='og:image']").expect("static selector"));
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub(super) enum IconSource {
@@ -54,8 +63,7 @@ impl IconCandidate {
 }
 
 pub(super) fn extract_title(doc: &Html) -> Option<String> {
-    let selector = Selector::parse("title").ok()?;
-    doc.select(&selector)
+    doc.select(&TITLE)
         .next()
         .map(|element| element.text().collect::<String>().trim().to_string())
         .filter(|title| !title.is_empty())
@@ -73,39 +81,35 @@ pub(super) fn extract_icon_candidates(doc: &Html, base_url: &str) -> Vec<IconCan
     let mut urls = Vec::new();
     let base = url::Url::parse(base_url).ok();
 
-    if let Ok(selector) = Selector::parse("link[rel]") {
-        for element in doc.select(&selector) {
-            let rel = element.value().attr("rel").unwrap_or("").to_lowercase();
-            let Some(source) = icon_source_from_rel(&rel) else {
-                continue;
-            };
-            if let Some(href) = element.value().attr("href") {
-                if let Some(abs) = resolve_url(href, &base) {
-                    let sizes = element.value().attr("sizes").unwrap_or("");
-                    let mime_type = element.value().attr("type").unwrap_or("");
-                    push_best_candidate(
-                        &mut urls,
-                        IconCandidate::new(
-                            abs,
-                            largest_declared_size(sizes),
-                            source,
-                            is_vector_hint(href, sizes, mime_type),
-                        ),
-                    );
-                }
+    for element in doc.select(&LINK_REL) {
+        let rel = element.value().attr("rel").unwrap_or("").to_lowercase();
+        let Some(source) = icon_source_from_rel(&rel) else {
+            continue;
+        };
+        if let Some(href) = element.value().attr("href") {
+            if let Some(abs) = resolve_url(href, &base) {
+                let sizes = element.value().attr("sizes").unwrap_or("");
+                let mime_type = element.value().attr("type").unwrap_or("");
+                push_best_candidate(
+                    &mut urls,
+                    IconCandidate::new(
+                        abs,
+                        largest_declared_size(sizes),
+                        source,
+                        is_vector_hint(href, sizes, mime_type),
+                    ),
+                );
             }
         }
     }
 
-    if let Ok(selector) = Selector::parse("meta[property='og:image']") {
-        for element in doc.select(&selector) {
-            if let Some(content) = element.value().attr("content") {
-                if let Some(abs) = resolve_url(content, &base) {
-                    push_best_candidate(
-                        &mut urls,
-                        IconCandidate::new(abs, None, IconSource::OgImage, false),
-                    );
-                }
+    for element in doc.select(&META_OG_IMAGE) {
+        if let Some(content) = element.value().attr("content") {
+            if let Some(abs) = resolve_url(content, &base) {
+                push_best_candidate(
+                    &mut urls,
+                    IconCandidate::new(abs, None, IconSource::OgImage, false),
+                );
             }
         }
     }
@@ -118,16 +122,14 @@ pub(super) fn extract_manifest_urls(doc: &Html, base_url: &str) -> Vec<String> {
     let mut urls = Vec::new();
     let base = url::Url::parse(base_url).ok();
 
-    if let Ok(selector) = Selector::parse("link[rel]") {
-        for element in doc.select(&selector) {
-            let rel = element.value().attr("rel").unwrap_or("").to_lowercase();
-            if !rel.split_whitespace().any(|token| token == "manifest") {
-                continue;
-            }
-            if let Some(href) = element.value().attr("href") {
-                if let Some(abs) = resolve_url(href, &base) {
-                    urls.push(abs);
-                }
+    for element in doc.select(&LINK_REL) {
+        let rel = element.value().attr("rel").unwrap_or("").to_lowercase();
+        if !rel.split_whitespace().any(|token| token == "manifest") {
+            continue;
+        }
+        if let Some(href) = element.value().attr("href") {
+            if let Some(abs) = resolve_url(href, &base) {
+                urls.push(abs);
             }
         }
     }
