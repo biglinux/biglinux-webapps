@@ -41,6 +41,9 @@ pub fn show(parent: &impl IsA<gtk::Widget>, on_selected: impl FnOnce(String) + '
     let search_entry = gtk::SearchEntry::new();
     search_entry.set_placeholder_text(Some(&gettext("Search templates...")));
     search_entry.set_hexpand(true);
+    search_entry.update_property(&[gtk::accessible::Property::Label(&gettext(
+        "Search templates",
+    ))]);
     header.set_title_widget(Some(&search_entry));
     toolbar.add_top_bar(&header);
 

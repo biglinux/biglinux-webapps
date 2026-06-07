@@ -43,6 +43,8 @@ pub(super) fn build_chrome(name: &str, url: &str, webview: &webkit::WebView) -> 
         .hexpand(true)
         .build();
     url_entry.set_text(url);
+    // Placeholder text is not an accessible name; label it explicitly.
+    url_entry.update_property(&[gtk::accessible::Property::Label(&gettext("Address"))]);
 
     let url_bar = gtk::Revealer::builder()
         .transition_type(gtk::RevealerTransitionType::SlideDown)
