@@ -5,7 +5,9 @@ use webapps_core::models::{AppMode, WebApp};
 
 use super::super::browser_url::resolve_browser_url;
 use super::super::repository::{load_webapps, mutate_webapps};
-use super::helpers::{cleanup_deleted_app, profile_dir_for, validate_webapp};
+use super::cleanup::cleanup_deleted_app;
+use super::profile_files::profile_dir_for;
+use super::validation::validate_webapp;
 
 pub fn create_webapp(webapp: &WebApp) -> Result<()> {
     let mut app = webapp.clone();

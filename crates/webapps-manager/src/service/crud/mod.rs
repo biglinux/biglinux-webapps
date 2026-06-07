@@ -1,11 +1,14 @@
-//! CRUD operations for webapps: create/update/delete plus shared helpers like
-//! profile generation and custom-profile-name validation.
+//! CRUD operations for webapps: create/update/delete plus shared routines for
+//! profile-file generation, cleanup, and custom-profile-name validation.
 
-mod helpers;
+mod cleanup;
 mod operations;
+mod profile_files;
+mod validation;
 
-pub use helpers::{generate_app_file, profile_shared, validate_custom_profile_name};
 pub use operations::{create_webapp, delete_all_webapps, delete_webapp, update_webapp};
+pub use profile_files::{generate_app_file, profile_shared};
+pub use validation::validate_custom_profile_name;
 
 #[cfg(test)]
 mod tests {
