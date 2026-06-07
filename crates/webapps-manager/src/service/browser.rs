@@ -1,5 +1,6 @@
 use std::path::Path;
 
+use big_app_kit::subprocess::BigSubprocessSpec;
 use webapps_core::browsers::browser_defs;
 use webapps_core::models::{Browser, BrowserCollection};
 
@@ -23,9 +24,11 @@ pub fn detect_browsers() -> BrowserCollection {
     }
 
     // Flatpak: entries with flatpak_app_id + flatpak_id
-    if let Ok(output) = std::process::Command::new("flatpak")
+    if let Ok(output) = BigSubprocessSpec::builder()
+        .program("flatpak")
         .args(["list", "--app", "--columns=application"])
-        .output()
+        .build()
+        .run()
     {
         let stdout = String::from_utf8_lossy(&output.stdout);
         for def in defs {
@@ -59,18 +62,22 @@ fn detect_default_browser(defs: &[webapps_core::browsers::BrowserDef]) -> Option
 fn query_default_browser() -> Option<String> {
     // xdg-settings is the canonical source; xdg-mime is the fallback for
     // distros/desktops where xdg-settings isn't configured.
-    let primary = std::process::Command::new("xdg-settings")
+    let primary = BigSubprocessSpec::builder()
+        .program("xdg-settings")
         .args(["get", "default-web-browser"])
-        .output()
+        .build()
+        .run()
         .ok()
         .map(|o| String::from_utf8_lossy(&o.stdout).trim().to_lowercase())
         .filter(|s| !s.is_empty());
     if primary.is_some() {
         return primary;
     }
-    std::process::Command::new("xdg-mime")
+    BigSubprocessSpec::builder()
+        .program("xdg-mime")
         .args(["query", "default", "x-scheme-handler/http"])
-        .output()
+        .build()
+        .run()
         .ok()
         .map(|o| String::from_utf8_lossy(&o.stdout).trim().to_lowercase())
         .filter(|s| !s.is_empty())

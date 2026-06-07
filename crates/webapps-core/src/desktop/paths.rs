@@ -1,6 +1,8 @@
-use anyhow::Result;
 use std::fs;
 use std::path::PathBuf;
+
+use anyhow::Result;
+use big_os_kit::subprocess::BigSubprocessSpec;
 
 use crate::config;
 use crate::models::WebApp;
@@ -118,13 +120,15 @@ pub fn remove_desktop_file(filename: &str) -> Result<()> {
 
 fn refresh_desktop_database() {
     let apps_dir = config::applications_dir();
-    // status() blocks and reaps the child to prevent zombie processes
-    match std::process::Command::new("update-desktop-database")
+    // run() blocks and reaps the child to prevent zombie processes
+    match BigSubprocessSpec::builder()
+        .program("update-desktop-database")
         .arg(&apps_dir)
-        .status()
+        .build()
+        .run()
     {
-        Ok(status) if status.success() => {}
-        Ok(status) => log::warn!("update-desktop-database exited with {status}"),
+        Ok(out) if out.status.success() => {}
+        Ok(out) => log::warn!("update-desktop-database exited with {:?}", out.status),
         Err(err) => log::warn!("update-desktop-database not found or failed: {err}"),
     }
 
@@ -142,9 +146,14 @@ fn refresh_desktop_database() {
             ],
         ];
         for args in commands {
-            match std::process::Command::new("dconf").args(*args).status() {
-                Ok(status) if status.success() => {}
-                Ok(status) => log::warn!("dconf {} exited with {status}", args[0]),
+            match BigSubprocessSpec::builder()
+                .program("dconf")
+                .args(*args)
+                .build()
+                .run()
+            {
+                Ok(out) if out.status.success() => {}
+                Ok(out) => log::warn!("dconf {} exited with {:?}", args[0], out.status),
                 Err(err) => log::warn!("dconf {} failed: {err}", args[0]),
             }
         }

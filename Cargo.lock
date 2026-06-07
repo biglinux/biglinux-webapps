@@ -116,6 +116,7 @@ checksum = "72b3254f16251a8381aa12e40e3c4d2f0199f8c6508fbecb9d91f575e0fbb8c6"
 name = "big-app-kit"
 version = "0.1.0"
 dependencies = [
+ "big-os-kit",
  "big-relm4-components",
  "bon",
  "gtk4",
@@ -128,9 +129,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "big-os-kit"
+version = "0.1.0"
+dependencies = [
+ "bon",
+ "libc",
+ "serde",
+ "serde_json",
+ "thiserror",
+]
+
+[[package]]
 name = "big-relm4-components"
 version = "0.1.0"
 dependencies = [
+ "big-os-kit",
  "gtk4",
  "libadwaita",
  "relm4",
@@ -2966,6 +2979,7 @@ name = "webapps-core"
 version = "4.0.6"
 dependencies = [
  "anyhow",
+ "big-os-kit",
  "dirs",
  "gettext-rs",
  "log",
@@ -2981,6 +2995,7 @@ dependencies = [
 name = "webapps-exec"
 version = "4.0.6"
 dependencies = [
+ "big-os-kit",
  "libc",
  "webapps-core",
 ]
