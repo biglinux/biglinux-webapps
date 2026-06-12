@@ -1,10 +1,36 @@
 use anyhow::Result;
+use std::io::Read;
 use std::path::PathBuf;
 
 /// Hard cap on icon byte size. Favicons in the wild rarely exceed 200 KB; the
 /// 1 MB ceiling defends against decompression abuse while leaving headroom for
 /// well-padded SVG/PNG sets some sites ship.
 const MAX_ICON_BYTES: usize = 1024 * 1024;
+
+/// Read a response body, refusing to buffer more than `max_bytes`.
+///
+/// `Response::bytes`/`text` read the whole body into memory first and only
+/// then can a size be checked — a server that omits or lies about
+/// `Content-Length` could stream gigabytes and OOM the process before any
+/// post-hoc length check runs. Reading through a `take`-bounded reader caps
+/// the allocation at the source. Reads one byte past the limit so an
+/// over-size body is detected rather than silently truncated.
+pub(super) fn read_body_capped(
+    response: reqwest::blocking::Response,
+    max_bytes: usize,
+) -> Result<Vec<u8>> {
+    if let Some(declared) = response.content_length() {
+        if declared as usize > max_bytes {
+            anyhow::bail!("Response too large: {declared} bytes");
+        }
+    }
+    let mut body = Vec::new();
+    response.take(max_bytes as u64 + 1).read_to_end(&mut body)?;
+    if body.len() > max_bytes {
+        anyhow::bail!("Response too large: exceeds {max_bytes} bytes");
+    }
+    Ok(body)
+}
 
 pub(super) fn download_icon(
     client: &reqwest::blocking::Client,
@@ -38,18 +64,9 @@ pub(super) fn download_icon(
         }
     }
 
-    if let Some(content_length) = response.content_length() {
-        if content_length as usize > MAX_ICON_BYTES {
-            anyhow::bail!("Icon too large: {content_length} bytes");
-        }
-    }
-
-    let bytes = response.bytes()?;
+    let bytes = read_body_capped(response, MAX_ICON_BYTES)?;
     if bytes.is_empty() {
         anyhow::bail!("Empty response");
-    }
-    if bytes.len() > MAX_ICON_BYTES {
-        anyhow::bail!("Icon too large: {} bytes", bytes.len());
     }
 
     let ext = guess_extension(url, &bytes);

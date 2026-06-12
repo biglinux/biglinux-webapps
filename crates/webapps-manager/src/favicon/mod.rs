@@ -9,6 +9,12 @@ use std::path::PathBuf;
 
 use webapps_core::config;
 
+/// Hard cap on a fetched HTML page. Real pages are well under this; the cap
+/// stops a hostile server from streaming an unbounded body into memory.
+const MAX_PAGE_BYTES: usize = 4 * 1024 * 1024;
+/// Hard cap on a fetched web-app manifest (`manifest.json`).
+const MAX_MANIFEST_BYTES: usize = 512 * 1024;
+
 pub struct SiteInfo {
     pub title: String,
     pub icon_paths: Vec<PathBuf>,
@@ -20,8 +26,9 @@ pub fn fetch_site_info(url: &str) -> Result<SiteInfo> {
 
     let client = build_http_client()?;
     let response = client.get(&normalized_url).send()?;
-    let html_text = response.text()?;
-    let document = scraper::Html::parse_document(&html_text);
+    let html_bytes = download::read_body_capped(response, MAX_PAGE_BYTES)?;
+    let html_text = String::from_utf8_lossy(&html_bytes);
+    let document = scraper::Html::parse_document(html_text.as_ref());
 
     let title = derive_title(&document, &parsed);
     let mut icon_candidates = html::extract_icon_candidates(&document, &normalized_url);
@@ -175,16 +182,8 @@ fn fetch_manifest(client: &reqwest::blocking::Client, manifest_url: &str) -> Res
     if !response.status().is_success() {
         anyhow::bail!("HTTP {}", response.status());
     }
-    if let Some(content_length) = response.content_length() {
-        if content_length > 512 * 1024 {
-            anyhow::bail!("Manifest too large: {content_length} bytes");
-        }
-    }
-    let text = response.text()?;
-    if text.len() > 512 * 1024 {
-        anyhow::bail!("Manifest too large: {} bytes", text.len());
-    }
-    Ok(serde_json::from_str(&text)?)
+    let body = download::read_body_capped(response, MAX_MANIFEST_BYTES)?;
+    Ok(serde_json::from_slice(&body)?)
 }
 
 fn download_fallback_favicon(
