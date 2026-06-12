@@ -134,6 +134,7 @@ version = "0.1.0"
 dependencies = [
  "bon",
  "libc",
+ "log",
  "serde",
  "serde_json",
  "thiserror",
