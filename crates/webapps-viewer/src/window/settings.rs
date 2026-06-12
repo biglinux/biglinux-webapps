@@ -6,9 +6,9 @@ pub(super) const DEVELOPER_TOOLS_ENABLED: bool = cfg!(debug_assertions);
 
 /// Chrome UA spoof: some sites (Spotify, Teams, YouTube) reject non-Chrome browsers.
 /// Update when Chrome reaches a version ≥2 years older than the current stable.
-/// Last updated: 2024-11 (Chrome 131).
+/// Last updated: 2026-06 (Chrome 149).
 pub(super) const SPOOFED_UA: &str =
-    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36";
 
 /// Configure WebView settings for webapp usage (JS, media, UA spoof, DevTools).
 ///
