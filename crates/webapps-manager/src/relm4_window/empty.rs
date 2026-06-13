@@ -4,6 +4,7 @@
 //! the spec into the concrete `adw::StatusPage` used by the webapps manager
 //! when the catalog is empty.
 
+use big_relm4_components::display::status_page::build_empty_state;
 use big_relm4_components::state::empty::BigEmptyStateSpec;
 use gettextrs::gettext;
 use libadwaita as adw;
@@ -25,30 +26,14 @@ pub fn build_spec() -> BigEmptyStateSpec {
 
 /// Realise a spec into an [`adw::StatusPage`] + optional CTA button.
 ///
-/// Returns the page (already containing the button as child) and the button
-/// itself so callers can wire signals without re-walking the widget tree.
+/// Thin wrapper over the catalog renderer
+/// [`big_relm4_components::display::status_page::build_empty_state`]; adds the
+/// webapps-specific `empty-state-icon` style. Returns the page (already
+/// containing the button as child) and the button itself so callers can wire
+/// signals without re-walking the widget tree.
 #[must_use]
 pub fn build_page(spec: &BigEmptyStateSpec) -> (adw::StatusPage, Option<gtk::Button>) {
-    let page = adw::StatusPage::builder()
-        .icon_name(&spec.icon_name)
-        .title(&spec.title)
-        .vexpand(true)
-        .build();
+    let (page, button) = build_empty_state(spec);
     page.add_css_class("empty-state-icon");
-    if let Some(body) = spec.body.as_deref() {
-        page.set_description(Some(body));
-    }
-
-    let button = spec.action.as_ref().map(|action| {
-        let btn = gtk::Button::with_label(&action.label);
-        if action.suggested {
-            btn.add_css_class("suggested-action");
-        }
-        btn.add_css_class("pill");
-        btn.set_halign(gtk::Align::Center);
-        page.set_child(Some(&btn));
-        btn
-    });
-
     (page, button)
 }
