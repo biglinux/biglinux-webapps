@@ -1,5 +1,4 @@
-use gtk4 as gtk;
-use gtk4::gdk as gdk4;
+use big_relm4_components::theme;
 
 const CSS: &str = r#"
 /* App icon in list rows — soft rounded corners for a polished look */
@@ -55,15 +54,6 @@ const CSS: &str = r#"
 }
 "#;
 
-pub fn load_css() {
-    let provider = gtk::CssProvider::new();
-    provider.load_from_string(CSS);
-
-    if let Some(display) = gdk4::Display::default() {
-        gtk::style_context_add_provider_for_display(
-            &display,
-            &provider,
-            gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
-        );
-    }
+pub fn install_manager_css() {
+    theme::load_app_css(CSS);
 }

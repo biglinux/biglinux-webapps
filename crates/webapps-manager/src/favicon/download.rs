@@ -1,70 +1,46 @@
 use anyhow::Result;
-use std::io::Read;
+use big_os_kit::http_client::{http_get_bytes_capped, RequestHeaders};
 use std::path::PathBuf;
+use std::time::Duration;
 
 /// Hard cap on icon byte size. Favicons in the wild rarely exceed 200 KB; the
 /// 1 MB ceiling defends against decompression abuse while leaving headroom for
 /// well-padded SVG/PNG sets some sites ship.
 const MAX_ICON_BYTES: usize = 1024 * 1024;
 
-/// Read a response body, refusing to buffer more than `max_bytes`.
-///
-/// `Response::bytes`/`text` read the whole body into memory first and only
-/// then can a size be checked — a server that omits or lies about
-/// `Content-Length` could stream gigabytes and OOM the process before any
-/// post-hoc length check runs. Reading through a `take`-bounded reader caps
-/// the allocation at the source. Reads one byte past the limit so an
-/// over-size body is detected rather than silently truncated.
-pub(super) fn read_body_capped(
-    response: reqwest::blocking::Response,
-    max_bytes: usize,
-) -> Result<Vec<u8>> {
-    if let Some(declared) = response.content_length() {
-        if declared as usize > max_bytes {
-            anyhow::bail!("Response too large: {declared} bytes");
-        }
-    }
-    let mut body = Vec::new();
-    response.take(max_bytes as u64 + 1).read_to_end(&mut body)?;
-    if body.len() > max_bytes {
-        anyhow::bail!("Response too large: exceeds {max_bytes} bytes");
-    }
-    Ok(body)
-}
-
 pub(super) fn download_icon(
-    client: &reqwest::blocking::Client,
     url: &str,
     cache_dir: &std::path::Path,
     index: usize,
 ) -> Result<PathBuf> {
-    let response = client
-        .get(url)
-        .timeout(std::time::Duration::from_secs(5))
-        .send()?;
+    let response = http_get_bytes_capped(
+        url,
+        &RequestHeaders::browser(),
+        MAX_ICON_BYTES as u64,
+        Duration::from_secs(5),
+    )
+    .map_err(|error| anyhow::anyhow!(error))?;
 
-    if !response.status().is_success() {
-        anyhow::bail!("HTTP {}", response.status());
+    if !(200..300).contains(&response.status) {
+        anyhow::bail!("HTTP {}", response.status);
     }
 
-    if let Some(content_type) = response.headers().get(reqwest::header::CONTENT_TYPE) {
-        if let Ok(content_type) = content_type.to_str() {
-            let content_type = content_type.to_lowercase();
-            // Strict allowlist: `image/*` covers png/jpeg/webp/svg/x-icon, plus
-            // explicit `application/octet-stream` (some CDNs serve favicons that
-            // way). Reject anything else — accepting "could be image" responses
-            // expanded the parser attack surface unnecessarily.
-            let acceptable = content_type.starts_with("image/")
-                || content_type == "application/octet-stream"
-                || content_type.starts_with("application/octet-stream;")
-                || content_type.starts_with("application/vnd.microsoft.icon");
-            if !acceptable {
-                anyhow::bail!("Not an image: {content_type}");
-            }
+    if let Some(content_type) = response.content_type.as_deref() {
+        let content_type = content_type.to_lowercase();
+        // Strict allowlist: `image/*` covers png/jpeg/webp/svg/x-icon, plus
+        // explicit `application/octet-stream` (some CDNs serve favicons that
+        // way). Reject anything else — accepting "could be image" responses
+        // expanded the parser attack surface unnecessarily.
+        let acceptable = content_type.starts_with("image/")
+            || content_type == "application/octet-stream"
+            || content_type.starts_with("application/octet-stream;")
+            || content_type.starts_with("application/vnd.microsoft.icon");
+        if !acceptable {
+            anyhow::bail!("Not an image: {content_type}");
         }
     }
 
-    let bytes = read_body_capped(response, MAX_ICON_BYTES)?;
+    let bytes = response.bytes;
     if bytes.is_empty() {
         anyhow::bail!("Empty response");
     }

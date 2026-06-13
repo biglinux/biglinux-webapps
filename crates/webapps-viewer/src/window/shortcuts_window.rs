@@ -59,7 +59,7 @@ fn build_group(title: &str, rows: &[(String, &str)]) -> adw::PreferencesGroup {
     for (label, accel) in rows {
         let row = BigInfoRow::new(BigInfoRowSpec::new(label.as_str())).into_root();
         let accel_label = gtk::Label::builder()
-            .label(format!("<tt>{}</tt>", escape_markup(accel)))
+            .label(format!("<tt>{}</tt>", gtk::glib::markup_escape_text(accel)))
             .use_markup(true)
             .build();
         accel_label.add_css_class("dim-label");
@@ -70,11 +70,4 @@ fn build_group(title: &str, rows: &[(String, &str)]) -> adw::PreferencesGroup {
         group.add(&row);
     }
     group
-}
-
-fn escape_markup(input: &str) -> String {
-    input
-        .replace('&', "&amp;")
-        .replace('<', "&lt;")
-        .replace('>', "&gt;")
 }

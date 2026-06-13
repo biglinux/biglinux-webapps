@@ -16,7 +16,7 @@ fn main() {
         .build();
 
     app.connect_startup(|_| {
-        style::load_css();
+        style::install_manager_css();
     });
 
     app.connect_activate(|app| {

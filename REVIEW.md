@@ -28,6 +28,9 @@ webapps-viewer).
 | BWA-4 | 158 unit tests cover sanitize.rs adversarial inputs + CRUD. No `tests/` integration target (binary-only crates). | RESIDUAL (binary-only) |
 | New | `SYSTEM_PATH` broken intra-doc link fixed in `crates/webapps-core/src/browsers.rs:62`. | DONE |
 | New | Unused direct deps removed: `gio` (webapps-manager — uses `gtk::gio::*`), `relm4` (webapps-viewer — uses only `big_relm4_components`). | DONE |
+| 2026-06-12 | S1 supply-chain pass: `fs2` → `fs4` for repository file locking; lock/allowlist refreshed. `fmt`, `clippy`, `cargo test`, `cargo doc`, supply-chain strict PASS. | DONE |
+| 2026-06-12 | S2 small-fix pass: save-button signal self-cycle removed, CSS loading centralized in `big_relm4_components::theme`, and shortcut markup escaping switched to `glib::markup_escape_text`. `fmt`, `clippy`, `cargo test`, `cargo doc`, `cargo machete`, component-check, and supply-chain strict PASS. | DONE |
+| 2026-06-13 | S7 HTTP gateway migration: favicon HTML/manifest/icon fetches and browser redirect resolution now use `big_os_kit::http_client`; direct `reqwest` is removed from the lock graph. Lock allowlist refreshed for the gateway transitive crates. Focused check/clippy/tests/doc and supply-chain strict PASS. | DONE |
 
 ## Residual accepted
 

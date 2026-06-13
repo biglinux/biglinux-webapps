@@ -29,7 +29,7 @@ env_logger = "0.11"
 anyhow = "1"
 dirs = "6"
 clap = { version = "4", features = ["derive"] }
-reqwest = { version = "0.12", default-features = false, features = ["rustls-tls-native-roots", "blocking"] }
+big-os-kit = { path = "../big-rust-components/crates/big-os-kit" }
 scraper = "0.26"
 image = { version = "0.25", default-features = false, features = ["png", "ico"] }
 url = "2"

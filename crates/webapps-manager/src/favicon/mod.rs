@@ -5,7 +5,9 @@ mod download;
 mod html;
 
 use anyhow::Result;
+use big_os_kit::http_client::{http_get_bytes_capped, RequestHeaders};
 use std::path::PathBuf;
+use std::time::Duration;
 
 use webapps_core::config;
 
@@ -24,18 +26,26 @@ pub fn fetch_site_info(url: &str) -> Result<SiteInfo> {
     let normalized_url = normalize_http_url(url)?;
     let parsed = url::Url::parse(&normalized_url)?;
 
-    let client = build_http_client()?;
-    let response = client.get(&normalized_url).send()?;
-    let html_bytes = download::read_body_capped(response, MAX_PAGE_BYTES)?;
+    let html_response = http_get_bytes_capped(
+        &normalized_url,
+        &RequestHeaders::browser(),
+        MAX_PAGE_BYTES as u64,
+        Duration::from_secs(10),
+    )
+    .map_err(|error| anyhow::anyhow!(error))?;
+    if !(200..300).contains(&html_response.status) {
+        anyhow::bail!("HTTP {}", html_response.status);
+    }
+    let html_bytes = html_response.bytes;
     let html_text = String::from_utf8_lossy(&html_bytes);
     let document = scraper::Html::parse_document(html_text.as_ref());
 
     let title = derive_title(&document, &parsed);
     let mut icon_candidates = html::extract_icon_candidates(&document, &normalized_url);
-    icon_candidates.extend(fetch_manifest_icons(&client, &document, &normalized_url));
+    icon_candidates.extend(fetch_manifest_icons(&document, &normalized_url));
     html::sort_icon_candidates(&mut icon_candidates);
     let cache_dir = ensure_favicon_cache()?;
-    let icon_paths = download_icon_set(&client, &parsed, &cache_dir, &icon_candidates);
+    let icon_paths = download_icon_set(&parsed, &cache_dir, &icon_candidates);
 
     Ok(SiteInfo { title, icon_paths })
 }
@@ -52,17 +62,6 @@ fn normalize_http_url(raw_url: &str) -> Result<String> {
         "http" | "https" => Ok(normalized),
         other => anyhow::bail!("Blocked scheme: {other}"),
     }
-}
-
-fn build_http_client() -> Result<reqwest::blocking::Client> {
-    reqwest::blocking::Client::builder()
-        .user_agent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120.0.0.0")
-        .timeout(std::time::Duration::from_secs(10))
-        .build()
-        .map_err(|error| {
-            log::error!("TLS client init: {error:?}");
-            error.into()
-        })
 }
 
 fn derive_title(document: &scraper::Html, parsed_url: &url::Url) -> String {
@@ -101,7 +100,6 @@ fn ensure_favicon_cache() -> Result<PathBuf> {
 }
 
 fn download_icon_set(
-    client: &reqwest::blocking::Client,
     parsed_url: &url::Url,
     cache_dir: &std::path::Path,
     icon_candidates: &[html::IconCandidate],
@@ -109,17 +107,17 @@ fn download_icon_set(
     let mut icon_paths = Vec::new();
 
     for (index, candidate) in icon_candidates.iter().enumerate() {
-        match download::download_icon(client, &candidate.url, cache_dir, index) {
+        match download::download_icon(&candidate.url, cache_dir, index) {
             Ok(path) => icon_paths.push(path),
             Err(error) => log::warn!("Download icon {}: {error}", candidate.url),
         }
     }
 
     if icon_paths.is_empty() {
-        download_fallback_favicon(client, parsed_url, cache_dir, &mut icon_paths);
+        download_fallback_favicon(parsed_url, cache_dir, &mut icon_paths);
     }
     if icon_paths.is_empty() {
-        download_google_favicon(client, parsed_url, cache_dir, &mut icon_paths);
+        download_google_favicon(parsed_url, cache_dir, &mut icon_paths);
     }
 
     icon_paths
@@ -138,14 +136,10 @@ struct ManifestIcon {
     mime_type: Option<String>,
 }
 
-fn fetch_manifest_icons(
-    client: &reqwest::blocking::Client,
-    document: &scraper::Html,
-    base_url: &str,
-) -> Vec<html::IconCandidate> {
+fn fetch_manifest_icons(document: &scraper::Html, base_url: &str) -> Vec<html::IconCandidate> {
     let mut candidates = Vec::new();
     for manifest_url in html::extract_manifest_urls(document, base_url) {
-        match fetch_manifest(client, &manifest_url) {
+        match fetch_manifest(&manifest_url) {
             Ok(manifest) => {
                 let base = url::Url::parse(&manifest_url).ok();
                 for icon in manifest.icons.unwrap_or_default() {
@@ -174,20 +168,21 @@ fn fetch_manifest_icons(
     candidates
 }
 
-fn fetch_manifest(client: &reqwest::blocking::Client, manifest_url: &str) -> Result<WebManifest> {
-    let response = client
-        .get(manifest_url)
-        .timeout(std::time::Duration::from_secs(5))
-        .send()?;
-    if !response.status().is_success() {
-        anyhow::bail!("HTTP {}", response.status());
+fn fetch_manifest(manifest_url: &str) -> Result<WebManifest> {
+    let response = http_get_bytes_capped(
+        manifest_url,
+        &RequestHeaders::browser(),
+        MAX_MANIFEST_BYTES as u64,
+        Duration::from_secs(5),
+    )
+    .map_err(|error| anyhow::anyhow!(error))?;
+    if !(200..300).contains(&response.status) {
+        anyhow::bail!("HTTP {}", response.status);
     }
-    let body = download::read_body_capped(response, MAX_MANIFEST_BYTES)?;
-    Ok(serde_json::from_slice(&body)?)
+    Ok(serde_json::from_slice(&response.bytes)?)
 }
 
 fn download_fallback_favicon(
-    client: &reqwest::blocking::Client,
     parsed_url: &url::Url,
     cache_dir: &std::path::Path,
     icon_paths: &mut Vec<PathBuf>,
@@ -197,13 +192,12 @@ fn download_fallback_favicon(
         parsed_url.scheme(),
         parsed_url.host_str().unwrap_or("")
     );
-    if let Ok(path) = download::download_icon(client, &favicon_url, cache_dir, 99) {
+    if let Ok(path) = download::download_icon(&favicon_url, cache_dir, 99) {
         icon_paths.push(path);
     }
 }
 
 fn download_google_favicon(
-    client: &reqwest::blocking::Client,
     parsed_url: &url::Url,
     cache_dir: &std::path::Path,
     icon_paths: &mut Vec<PathBuf>,
@@ -213,7 +207,7 @@ fn download_google_favicon(
     };
 
     let google_url = format!("https://www.google.com/s2/favicons?domain={host}&sz=256");
-    if let Ok(path) = download::download_icon(client, &google_url, cache_dir, 100) {
+    if let Ok(path) = download::download_icon(&google_url, cache_dir, 100) {
         icon_paths.push(path);
     }
 }

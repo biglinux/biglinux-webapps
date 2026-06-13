@@ -57,8 +57,8 @@ Welcome? --no--> List(load) --create-->  Dialog(new)   --validate+save--> List
 
 - Manager `ui_async.rs` wraps `glib::MainContext::spawn_local` for favicon
   fetches, browser detection, and icon resolution.
-- `favicon/` performs `reqwest::blocking` work inside `glib` IO threads to
-  avoid blocking the GTK main loop.
+- `favicon/` performs capped blocking HTTP through `big_os_kit::http_client`
+  inside `glib` IO threads to avoid blocking the GTK main loop.
 - All Relm4 components run on the main context; no background tokio runtime.
 - Viewer downloads/permissions hook into WebKit asynchronous callbacks; user
   consent is awaited via `adw::AlertDialog` futures.

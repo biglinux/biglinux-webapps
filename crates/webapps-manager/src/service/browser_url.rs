@@ -15,6 +15,8 @@ use std::collections::HashMap;
 use std::sync::{Mutex, OnceLock};
 use std::time::Duration;
 
+use big_os_kit::http_client::{http_get_stream_with_extra_headers, RequestHeaders};
+
 static RESOLVED_URLS: OnceLock<Mutex<HashMap<String, String>>> = OnceLock::new();
 
 /// Resolve `url` to its post-redirect destination using the system locale's
@@ -37,34 +39,23 @@ pub fn resolve_browser_url(url: &str) -> String {
 }
 
 fn resolve_browser_url_uncached(url: &str, accept_language: &str) -> String {
-    let mut builder = reqwest::blocking::Client::builder()
-        .user_agent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120.0.0.0")
-        .timeout(Duration::from_secs(5))
-        .redirect(reqwest::redirect::Policy::limited(10));
-
-    if !accept_language.is_empty() {
-        let mut headers = reqwest::header::HeaderMap::new();
-        if let Ok(value) = reqwest::header::HeaderValue::from_str(accept_language) {
-            headers.insert(reqwest::header::ACCEPT_LANGUAGE, value);
-            builder = builder.default_headers(headers);
-        }
-    }
-
-    let client = match builder.build() {
-        Ok(c) => c,
-        Err(err) => {
-            log::warn!("Resolve {url}: build client failed: {err}");
-            return url.to_string();
-        }
+    let extra_headers = if accept_language.is_empty() {
+        Vec::new()
+    } else {
+        vec![("Accept-Language", accept_language)]
     };
 
-    match client.get(url).send() {
+    match http_get_stream_with_extra_headers(
+        url,
+        &RequestHeaders::browser(),
+        &extra_headers,
+        Duration::from_secs(5),
+    ) {
         Ok(response) => {
-            let final_url = response.url().to_string();
-            if final_url != url {
-                log::info!("Resolved {url} → {final_url}");
+            if response.final_url != url {
+                log::info!("Resolved {url} → {}", response.final_url);
             }
-            final_url
+            response.final_url
         }
         Err(err) => {
             log::warn!("Resolve {url}: request failed: {err}");

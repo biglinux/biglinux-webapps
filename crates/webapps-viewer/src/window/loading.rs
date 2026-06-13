@@ -1,8 +1,8 @@
 use std::{cell::Cell, rc::Rc, sync::Once, time::Duration};
 
+use big_relm4_components::theme;
 use glib::clone;
 use gtk4 as gtk;
-use gtk4::gdk;
 use gtk4::prelude::*;
 use webkit6 as webkit;
 use webkit6::prelude::*;
@@ -24,7 +24,7 @@ const CSS: &str = r#"
 static CSS_LOADED: Once = Once::new();
 
 pub(super) fn build_loading_overlay(webview: &webkit::WebView) -> gtk::Overlay {
-    load_css();
+    theme::load_app_css_once(CSS, &CSS_LOADED);
 
     let overlay = gtk::Overlay::new();
     overlay.set_child(Some(webview));
@@ -52,21 +52,6 @@ pub(super) fn build_loading_overlay(webview: &webkit::WebView) -> gtk::Overlay {
     sync_initial_state(webview, &veil, &spinner, &generation);
 
     overlay
-}
-
-fn load_css() {
-    CSS_LOADED.call_once(|| {
-        let provider = gtk::CssProvider::new();
-        provider.load_from_string(CSS);
-
-        if let Some(display) = gdk::Display::default() {
-            gtk::style_context_add_provider_for_display(
-                &display,
-                &provider,
-                gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
-            );
-        }
-    });
 }
 
 fn connect_loading_state(

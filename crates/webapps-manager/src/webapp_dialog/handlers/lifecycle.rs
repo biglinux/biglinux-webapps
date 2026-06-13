@@ -33,13 +33,12 @@ pub(crate) fn setup_save_handler(
     let url_row = widgets.url_row.clone();
     let name_row = widgets.name_row.clone();
     let profile_entry = widgets.profile_entry.clone();
-    let save_button = widgets.save_button.clone();
     let cancel_button = widgets.cancel_button.clone();
     let spinner_box = widgets.spinner_box.clone();
     // on_done fires at most once; wrap it so it can be moved into the worker
     // callback without Fn/FnOnce conflicts.
     let on_done = Rc::new(on_done);
-    widgets.save_button.connect_clicked(move |_| {
+    widgets.save_button.connect_clicked(move |save_button| {
         clear_error_state(&url_row, &name_row, &profile_entry);
 
         let app = webapp_cell.borrow().clone();
@@ -68,7 +67,7 @@ pub(crate) fn setup_save_handler(
         spinner_box.set_visible(true);
 
         let dialog = dialog.clone();
-        let save_button = save_button.clone();
+        let save_button = save_button.downgrade();
         let cancel_button = cancel_button.clone();
         let spinner_box = spinner_box.clone();
         let on_done = on_done.clone();
@@ -95,7 +94,9 @@ pub(crate) fn setup_save_handler(
                     }
                     Err(err) => {
                         log::error!("Save webapp failed: {err}");
-                        save_button.set_sensitive(true);
+                        if let Some(save_button) = save_button.upgrade() {
+                            save_button.set_sensitive(true);
+                        }
                         cancel_button.set_sensitive(true);
                         reveal_save_error(&dialog, &gettext("Failed to save webapp"));
                     }

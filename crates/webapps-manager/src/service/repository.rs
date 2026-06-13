@@ -1,5 +1,5 @@
 use anyhow::{Context, Result};
-use fs2::FileExt;
+use fs4::FileExt as Fs4FileExt;
 use std::fs;
 use std::path::{Path, PathBuf};
 
@@ -14,7 +14,7 @@ fn lock_path() -> PathBuf {
     config::data_dir().join("webapps.json.lock")
 }
 
-/// RAII guard around a `fs2::FileExt` exclusive lock on `webapps.json.lock`.
+/// RAII guard around an exclusive lock on `webapps.json.lock`.
 ///
 /// Held across the load → mutate → save sequence so two `big-webapps-gui`
 /// instances cannot race and overwrite each other's edits.
@@ -36,7 +36,7 @@ impl WebappsLock {
             .with_context(|| format!("Open lock file {}", path.display()))?;
         // Blocks if another process holds the lock — that is exactly the desired
         // serialisation semantics, and webapps.json edits complete in milliseconds.
-        FileExt::lock_exclusive(&file)
+        <fs::File as Fs4FileExt>::lock(&file)
             .with_context(|| format!("Acquire exclusive lock on {}", path.display()))?;
         Ok(Self { file })
     }
@@ -46,7 +46,7 @@ impl Drop for WebappsLock {
     fn drop(&mut self) {
         // Lock is released automatically on close, but be explicit so it is
         // visible to readers and survives a future File handle leak refactor.
-        let _ = FileExt::unlock(&self.file);
+        let _ = <fs::File as Fs4FileExt>::unlock(&self.file);
     }
 }
 
