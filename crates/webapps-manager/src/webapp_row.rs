@@ -65,7 +65,7 @@ pub fn build_row(webapp: &WebApp, callbacks: &Rc<RowCallbacks>) -> adw::ActionRo
     // allow_markup() preserves the legacy pre-escaped title/subtitle behaviour.
     let strip = BigButtonStripRow::new(
         BigButtonStripRowSpec::new(glib_markup_escape(&webapp.app_name))
-            .subtitle(glib_markup_escape(&webapp.app_url))
+            .subtitle(glib_markup_escape(&service::display_url(&webapp.app_url)))
             .spacing(0)
             .activatable(false)
             .allow_markup(),

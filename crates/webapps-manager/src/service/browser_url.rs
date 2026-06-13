@@ -107,9 +107,69 @@ fn derive_accept_language(lang: &str) -> String {
     }
 }
 
+/// Compact, human-readable form of `url` for list-row subtitles.
+///
+/// Returns `host` + `path` only, dropping the scheme, the query string, the
+/// fragment, a leading `www.`, and any trailing slash. The point is sign-in
+/// flows: a captured Google OAuth URL such as
+/// `https://accounts.google.com/v3/signin/identifier?continue=…` carries
+/// hundreds of query characters that wrap a row over several lines and break
+/// its layout — the bloat lives entirely in the query, so dropping it yields a
+/// stable `accounts.google.com/v3/signin/identifier`. Falls back to the raw
+/// string when the URL has no parseable host. Display-only: the stored launch
+/// URL keeps its full form.
+#[must_use]
+pub fn display_url(url: &str) -> String {
+    let Ok(parsed) = url::Url::parse(url) else {
+        return url.to_string();
+    };
+    let Some(host) = parsed.host_str() else {
+        return url.to_string();
+    };
+    let host = host.strip_prefix("www.").unwrap_or(host);
+    let path = parsed.path().trim_end_matches('/');
+    if path.is_empty() {
+        host.to_string()
+    } else {
+        format!("{host}{path}")
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn display_url_drops_oauth_query_and_scheme() {
+        assert_eq!(
+            display_url(
+                "https://accounts.google.com/v3/signin/identifier?continue=https://calendar.google.com/calendar&service=cl&flowName=GlifWebSignIn"
+            ),
+            "accounts.google.com/v3/signin/identifier"
+        );
+    }
+
+    #[test]
+    fn display_url_shows_bare_host_for_root() {
+        assert_eq!(
+            display_url("https://calendar.google.com/"),
+            "calendar.google.com"
+        );
+        assert_eq!(display_url("https://www.notion.so/"), "notion.so");
+    }
+
+    #[test]
+    fn display_url_keeps_meaningful_path() {
+        assert_eq!(
+            display_url("https://notion.so/myworkspace"),
+            "notion.so/myworkspace"
+        );
+    }
+
+    #[test]
+    fn display_url_falls_back_on_unparseable() {
+        assert_eq!(display_url("not-a-url"), "not-a-url");
+    }
 
     #[test]
     fn accept_language_handles_pt_br() {

@@ -59,7 +59,10 @@ impl FactoryComponent for WebAppRowFactory {
         // legacy pre-escaped title/subtitle behaviour).
         let row = BigInfoRow::new(
             BigInfoRowSpec::new(glib::markup_escape_text(&self.webapp.app_name).to_string())
-                .subtitle(glib::markup_escape_text(&self.webapp.app_url).to_string())
+                .subtitle(
+                    glib::markup_escape_text(&crate::service::display_url(&self.webapp.app_url))
+                        .to_string(),
+                )
                 .allow_markup(),
         )
         .into_root();

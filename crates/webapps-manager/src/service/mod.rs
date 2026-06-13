@@ -11,6 +11,7 @@ mod repository;
 mod welcome;
 
 pub use browser::detect_browsers;
+pub use browser_url::display_url;
 pub use crud::{
     create_webapp, delete_all_webapps, delete_webapp, generate_app_file, profile_shared,
     update_webapp, validate_custom_profile_name,
