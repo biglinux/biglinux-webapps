@@ -3,8 +3,6 @@ use std::rc::Rc;
 
 use webapps_core::models::{WebApp, WebAppCollection};
 
-use crate::service;
-
 #[derive(Debug, Clone)]
 pub(super) struct WebAppSection {
     pub title: String,
@@ -29,12 +27,6 @@ pub(super) fn new_empty_state() -> SharedState {
     };
     rebuild_sections(&mut state);
     Rc::new(RefCell::new(state))
-}
-
-pub(super) fn refresh_state(state: &SharedState) {
-    let mut state = state.borrow_mut();
-    state.webapps = service::load_webapps();
-    rebuild_sections(&mut state);
 }
 
 /// Replace the webapp set without hitting disk — used when a background worker

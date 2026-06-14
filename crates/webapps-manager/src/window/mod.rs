@@ -94,6 +94,7 @@ pub fn build(app: &adw::Application) {
         window: Rc::new(ui.window),
         toast: Rc::new(ui.toast_overlay),
         list: Rc::new(list_controller),
+        reload_generation: Rc::new(std::cell::Cell::new(0)),
     };
     *context_slot.borrow_mut() = Some(context.clone());
 
@@ -103,6 +104,11 @@ pub fn build(app: &adw::Application) {
     // Kick off migration + initial load on a worker thread.
     {
         let context_for_load = context.clone();
+        // Snapshot the reload generation: if the user creates/edits a webapp
+        // (which bumps it via refresh_and_render) before this slow startup load
+        // finishes, the freshly-persisted list is newer — don't clobber it with
+        // this pre-change disk snapshot.
+        let load_generation = context.reload_generation.get();
         ui_async::run_with_result(
             || {
                 let migrated = service::migrate_legacy_desktops();
@@ -152,6 +158,9 @@ pub fn build(app: &adw::Application) {
                     log::info!(
                         "Persisted {persisted_icons} webapp icons into the data directory (Icon= now uses a stable absolute path)"
                     );
+                }
+                if context_for_load.reload_generation.get() != load_generation {
+                    return;
                 }
                 state::apply_webapps(&context_for_load.state, webapps);
                 list::populate_list(&context_for_load);

@@ -17,7 +17,7 @@ use gtk4 as gtk;
 use libadwaita as adw;
 
 use relm4::ComponentController;
-use webapps_core::models::{AppMode, BrowserId, WebApp};
+use webapps_core::models::{AppMode, BrowserId, WebApp, WebAppCollection};
 use webapps_core::templates::default_registry;
 
 use crate::relm4_window::list::{WebAppListInput, WebAppSection as Relm4Section};
@@ -26,9 +26,25 @@ use crate::{browser_dialog, service, ui_async, webapp_dialog};
 use super::context::WindowContext;
 use super::state;
 
+/// Reload the webapp set after a mutation and repaint the list.
+///
+/// `service::load_webapps` does blocking file I/O (read + advisory lock), so it
+/// runs on a worker thread; the result is applied on the main thread via
+/// `state::apply_webapps` (no disk hit). A `reload_generation` guard drops a
+/// result that finished after a newer `refresh_and_render` was issued, so rapid
+/// save/delete sequences completing out of order can't repaint stale data.
 pub(super) fn refresh_and_render(context: &WindowContext) {
-    state::refresh_state(&context.state);
-    populate_list(context);
+    let generation = context.reload_generation.get().wrapping_add(1);
+    context.reload_generation.set(generation);
+
+    let context = context.clone();
+    ui_async::run_with_result(service::load_webapps, move |webapps: WebAppCollection| {
+        if context.reload_generation.get() != generation {
+            return;
+        }
+        state::apply_webapps(&context.state, webapps);
+        populate_list(&context);
+    });
 }
 
 /// Push the current state snapshot into the Relm4 list controller.
