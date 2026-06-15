@@ -294,8 +294,8 @@ msgid ""
 "Are you sure you want to remove all your WebApps? This action cannot be "
 "undone."
 msgstr ""
-"Tem certeza que deseja remover todos os seus WebApps? Esta ação não pode ser "
-"desfeita."
+"Tem certeza que deseja remover todos os seus WebApps? Esta ação não pode ser"
+" desfeita."
 
 #: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_all.rs:28
 msgid "Continue"
@@ -385,9 +385,8 @@ msgid "Browser changed"
 msgstr "Navegador alterado"
 
 #: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:128
-#, fuzzy
 msgid "Browser change failed"
-msgstr "Navegador alterado"
+msgstr "Falha ao alterar o navegador"
 
 #: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:138
 msgid "Remove WebApp?"
@@ -402,9 +401,8 @@ msgid "WebApp removed"
 msgstr "WebApp removido"
 
 #: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:173
-#, fuzzy
 msgid "Remove failed"
-msgstr "Remover Selecionados"
+msgstr "Falha ao remover"
 
 #: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/shortcuts_window.rs:19
 msgid "General"
