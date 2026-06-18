@@ -140,6 +140,7 @@ dependencies = [
  "big-os-kit",
  "gtk4",
  "libadwaita",
+ "log",
  "relm4",
 ]
 
@@ -2788,6 +2789,7 @@ dependencies = [
  "gtk4",
  "libadwaita",
  "log",
+ "relm4",
  "serde_json",
  "url",
  "webapps-core",

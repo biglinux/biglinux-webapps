@@ -7,6 +7,7 @@
 //! - [`shortcuts`]   — keyboard shortcuts via GActions
 //! - [`settings`]    — WebView settings + JS injection
 mod chrome;
+mod component;
 mod context_menu;
 mod downloads;
 mod geometry;
@@ -19,14 +20,28 @@ mod shortcuts;
 mod shortcuts_window;
 mod startup;
 
+use std::cell::RefCell;
+
 use adw::prelude::*;
-use glib::clone;
+use gtk::glib;
 use gtk4 as gtk;
 use libadwaita as adw;
+use relm4::{Component, ComponentController, Controller};
 
-use webapps_core::config;
+use self::component::{ViewerInit, ViewerWindow};
 
-/// Build and wire up the viewer window.
+thread_local! {
+    /// Keepalive for viewer window controllers: parked for the window's
+    /// lifetime, dropped on window destroy (tears the component tree down) —
+    /// no `unsafe` window `set_data`.
+    static VIEWER_CONTROLLERS:
+        RefCell<Vec<(glib::WeakRef<adw::ApplicationWindow>, Controller<ViewerWindow>)>> =
+        const { RefCell::new(Vec::new()) };
+}
+
+/// Build the viewer window: create the `adw::ApplicationWindow` and mount the
+/// Relm4 [`ViewerWindow`] component (which owns the WebView, chrome, and all
+/// navigation/permission/download/shortcut wiring).
 pub fn build(
     app: &adw::Application,
     url: &str,
@@ -35,72 +50,38 @@ pub fn build(
     app_id: &str,
     auto_hide_headerbar: bool,
 ) -> adw::ApplicationWindow {
-    let viewer_session = session::build_viewer_session(app_id);
-    let chrome = chrome::build_chrome(name, url, &viewer_session.webview);
-
     let window = adw::ApplicationWindow::builder()
         .application(app)
         .title(name)
         .default_width(1024)
         .default_height(720)
-        .content(&chrome.toolbar)
         .build();
 
-    if !icon.is_empty() {
-        gtk::Window::set_default_icon_name(icon);
+    let controller = ViewerWindow::builder()
+        .launch(ViewerInit {
+            window: window.clone(),
+            url: url.to_string(),
+            name: name.to_string(),
+            icon: icon.to_string(),
+            app_id: app_id.to_string(),
+            auto_hide_headerbar,
+        })
+        .detach();
+    window.set_content(Some(controller.widget()));
+
+    VIEWER_CONTROLLERS.with(|reg| reg.borrow_mut().push((window.downgrade(), controller)));
+    {
+        let window_weak = window.downgrade();
+        window.connect_destroy(move |_| {
+            let Some(closed) = window_weak.upgrade() else {
+                return;
+            };
+            VIEWER_CONTROLLERS.with(|reg| {
+                reg.borrow_mut()
+                    .retain(|(w, _)| w.upgrade().is_some_and(|w| w != closed));
+            });
+        });
     }
-
-    let config_path = config::config_dir().join(format!("{app_id}.json"));
-    geometry::load_geometry(&window, &config_path);
-    navigation::connect_url_entry(&chrome.url_entry, &chrome.url_bar, &viewer_session.webview);
-    navigation::connect_navigation_controls(
-        &window,
-        &viewer_session.webview,
-        &chrome.title_widget,
-        &chrome.back_btn,
-        &chrome.forward_btn,
-        &chrome.reload_btn,
-    );
-    let is_fullscreen = navigation::connect_fullscreen(
-        &window,
-        &chrome.toolbar,
-        &viewer_session.webview,
-        &chrome.fullscreen_btn,
-        auto_hide_headerbar,
-    );
-    downloads::connect_download_handlers(&window, &viewer_session.session, &viewer_session.webview);
-    permissions::connect_permission_requests(
-        &window,
-        &viewer_session.webview,
-        &viewer_session.data_dir.join("permissions.json"),
-    );
-    navigation::connect_new_window_requests(&viewer_session.webview);
-    context_menu::setup_context_menu(&viewer_session.webview);
-
-    shortcuts::setup_shortcuts(
-        &window,
-        &viewer_session.webview,
-        &chrome.toolbar,
-        &is_fullscreen,
-        &chrome.url_bar,
-        &chrome.url_entry,
-    );
-
-    window.connect_close_request(clone!(
-        #[strong]
-        config_path,
-        move |win| {
-            geometry::save_geometry(win, &config_path);
-            glib::Propagation::Proceed
-        }
-    ));
-
-    navigation::setup_fullscreen_reveal(&chrome.toolbar, &is_fullscreen, auto_hide_headerbar);
-    if auto_hide_headerbar {
-        chrome.toolbar.set_reveal_top_bars(false);
-    }
-
-    startup::connect_initial_load(&window, &viewer_session.webview, url);
 
     window
 }

@@ -4,30 +4,23 @@ use gettextrs::gettext;
 use gtk4 as gtk;
 use libadwaita as adw;
 
-pub(super) struct WindowUi {
-    pub window: adw::ApplicationWindow,
-    pub toast_overlay: adw::ToastOverlay,
+/// Header controls the [`super::component::ManagerWindow`] wires to messages.
+pub(super) struct WindowControls {
     pub search_btn: gtk::ToggleButton,
     pub add_btn: gtk::Button,
     pub search_entry: gtk::SearchEntry,
 }
 
-/// Build the window shell with the supplied Relm4 list widget mounted inside
-/// the scrolled clamp.
+/// Populate `toast_overlay` (the component `Root`) with the manager chrome and
+/// mount the Relm4 list widget inside the scrolled clamp. The window itself is
+/// created by the launcher ([`super::build`]) and owns this content — keeping
+/// the chrome window-agnostic (ADR-D14 mountable content).
 ///
-/// `list_widget` is the root `gtk::Box` of the Relm4 `WebAppListController`.
-pub(super) fn build_window_with_list(
-    app: &adw::Application,
-    list_widget: Option<&gtk::Widget>,
-) -> WindowUi {
-    let window = adw::ApplicationWindow::builder()
-        .application(app)
-        .title(gettext("WebApps Manager"))
-        .default_width(820)
-        .default_height(680)
-        .build();
-
-    let toast_overlay = adw::ToastOverlay::new();
+/// `list_widget` is the root widget of the Relm4 `WebAppListController`.
+pub(super) fn build_content(
+    toast_overlay: &adw::ToastOverlay,
+    list_widget: &gtk::Widget,
+) -> WindowControls {
     let main_box = gtk::Box::new(gtk::Orientation::Vertical, 0);
 
     let header = adw::HeaderBar::new();
@@ -70,19 +63,7 @@ pub(super) fn build_window_with_list(
     let clamp = adw::Clamp::new();
     clamp.set_maximum_size(900);
     clamp.set_tightening_threshold(720);
-
-    // caveman: legacy stub content_box kept for backwards-compat exposure.
-    // when a Relm4 list widget is supplied we mount it inside the clamp
-    // directly; otherwise we fall back to the legacy hand-built box.
-    let content_box = gtk::Box::new(gtk::Orientation::Vertical, 18);
-    content_box.set_margin_start(12);
-    content_box.set_margin_end(12);
-    content_box.set_margin_top(18);
-    content_box.set_margin_bottom(24);
-    match list_widget {
-        Some(widget) => clamp.set_child(Some(widget)),
-        None => clamp.set_child(Some(&content_box)),
-    }
+    clamp.set_child(Some(list_widget));
     scroll.set_child(Some(&clamp));
     main_box.append(&scroll);
 
@@ -95,11 +76,8 @@ pub(super) fn build_window_with_list(
     main_box.append(&status_label);
 
     toast_overlay.set_child(Some(&main_box));
-    window.set_content(Some(&toast_overlay));
 
-    WindowUi {
-        window,
-        toast_overlay,
+    WindowControls {
         search_btn,
         add_btn,
         search_entry,

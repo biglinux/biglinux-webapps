@@ -15,10 +15,18 @@ pub(super) struct ViewerChrome {
     pub fullscreen_btn: gtk::Button,
     pub url_entry: gtk::Entry,
     pub url_bar: gtk::Revealer,
-    pub toolbar: adw::ToolbarView,
 }
 
-pub(super) fn build_chrome(name: &str, url: &str, webview: &webkit::WebView) -> ViewerChrome {
+/// Populate `toolbar` (the [`super::component::ViewerWindow`] `Root`) with the
+/// header, URL bar, and the loading overlay wrapping the WebView. The window is
+/// created by the launcher ([`super::build`]); the chrome is window-agnostic
+/// mountable content (ADR-D14).
+pub(super) fn build_chrome(
+    toolbar: &adw::ToolbarView,
+    name: &str,
+    url: &str,
+    webview: &webkit::WebView,
+) -> ViewerChrome {
     let title_widget = adw::WindowTitle::new(name, url);
 
     let back_btn = navigation_button("go-previous-symbolic", &gettext("Back"), false);
@@ -52,7 +60,6 @@ pub(super) fn build_chrome(name: &str, url: &str, webview: &webkit::WebView) -> 
         .child(&url_entry)
         .build();
 
-    let toolbar = adw::ToolbarView::new();
     toolbar.add_top_bar(&header);
     toolbar.add_top_bar(&url_bar);
     let content = loading::build_loading_overlay(webview);
@@ -67,7 +74,6 @@ pub(super) fn build_chrome(name: &str, url: &str, webview: &webkit::WebView) -> 
         fullscreen_btn,
         url_entry,
         url_bar,
-        toolbar,
     }
 }
 

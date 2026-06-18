@@ -71,8 +71,13 @@ pub(super) fn build_viewer_session(app_id: &str) -> ViewerSession {
 fn memory_pressure_settings(limit_mb: u32) -> webkit::MemoryPressureSettings {
     let mut pressure = webkit::MemoryPressureSettings::new();
     pressure.set_memory_limit(limit_mb);
-    pressure.set_conservative_threshold(MEMORY_PRESSURE_CONSERVATIVE_THRESHOLD);
+    // Order matters: `set_conservative_threshold` asserts the new value is below
+    // the *current* strict threshold, so strict must be raised to its target
+    // (0.75) before conservative (0.50) is applied — otherwise the conservative
+    // value is compared against webkit's lower default strict fraction and a
+    // GLib CRITICAL fires on every launch.
     pressure.set_strict_threshold(MEMORY_PRESSURE_STRICT_THRESHOLD);
+    pressure.set_conservative_threshold(MEMORY_PRESSURE_CONSERVATIVE_THRESHOLD);
     pressure.set_kill_threshold(0.0);
     pressure.set_poll_interval(MEMORY_PRESSURE_POLL_INTERVAL_SECONDS);
     pressure

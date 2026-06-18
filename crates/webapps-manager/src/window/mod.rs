@@ -1,7 +1,12 @@
-//! Manager main window: actions, list view, context menu, keyboard shortcuts,
-//! shared state, and UI assembly.
+//! Manager main window.
+//!
+//! The window content is the Relm4 `ManagerWindow` component (actions, list,
+//! search, toasts, shortcuts live there). This module's [`build`] is the
+//! launcher: it creates the `adw::ApplicationWindow`, mounts the component, and
+//! owns geometry + presentation.
 
 mod actions;
+mod component;
 mod context;
 mod list;
 mod shortcuts;
@@ -10,211 +15,81 @@ mod state;
 mod ui;
 
 use std::cell::RefCell;
-use std::rc::Rc;
 
 use adw::prelude::*;
-use big_relm4_components::feedback::tooltip;
 use gettextrs::gettext;
 use gtk::glib;
 use gtk4 as gtk;
 use libadwaita as adw;
-use relm4::component::Component;
-use relm4::ComponentController;
+use relm4::{Component, ComponentController, Controller};
 
-use webapps_core::models::{BrowserCollection, WebApp, WebAppCollection};
+use crate::{geometry, welcome_dialog};
 
-use crate::relm4_window::list::{WebAppListController, WebAppListOutput};
-use crate::{geometry, service, ui_async, webapp_dialog, welcome_dialog};
-
-use self::context::WindowContext;
+use self::component::{ManagerInit, ManagerWindow};
 
 const MAIN_WINDOW_GEOMETRY: &str = "manager-window.json";
 const MAIN_DEFAULT_WIDTH: i32 = 800;
 const MAIN_DEFAULT_HEIGHT: i32 = 650;
 
+thread_local! {
+    /// Keepalive for the manager window controller: parked for the window's
+    /// lifetime and dropped (tearing the component tree down) on window destroy
+    /// — no `unsafe` window `set_data`, lifetime tied through this registry.
+    static MANAGER_CONTROLLERS:
+        RefCell<Vec<(glib::WeakRef<adw::ApplicationWindow>, Controller<ManagerWindow>)>> =
+        const { RefCell::new(Vec::new()) };
+}
+
 pub fn build(app: &adw::Application) {
-    // migrate + load happen on a worker thread so a slow home (NFS, etc.)
-    // can't delay the first paint. The window opens with an empty collection
-    // and the real data is swapped in via `apply_webapps` once the worker
-    // finishes.
-    let state = state::new_empty_state();
-    let browsers = Rc::new(RefCell::new(BrowserCollection::default()));
+    let window = adw::ApplicationWindow::builder()
+        .application(app)
+        .title(gettext("WebApps Manager"))
+        .default_width(820)
+        .default_height(680)
+        .build();
 
-    // Build the Relm4 list controller first so we can mount its widget
-    // inside the window's scrolled clamp. The output channel is captured
-    // below (via `connect_receiver`) so row actions and the empty-state
-    // CTA reach the existing dialog handlers.
-    let list_connector = WebAppListController::builder().launch(());
-    let list_widget: gtk::Widget = list_connector.widget().clone().upcast();
-    let ui = ui::build_window_with_list(app, Some(&list_widget));
-
-    // Block "Add" until browser detection completes — clicking before would create
-    // a webapp with browser="", silently producing a broken .desktop file.
-    ui.add_btn.set_sensitive(false);
-    tooltip::set(&ui.add_btn, &gettext("Detecting installed browsers…"));
-    {
-        let browsers = browsers.clone();
-        let add_btn = ui.add_btn.clone();
-        ui_async::run_with_result(service::detect_browsers, move |detected| {
-            let has_any = !detected.browsers.is_empty();
-            *browsers.borrow_mut() = detected;
-            add_btn.set_sensitive(has_any);
-            tooltip::update(
-                &add_btn,
-                &gettext(if has_any {
-                    "Add WebApp"
-                } else {
-                    "No supported browser is installed"
-                }),
-            );
-        });
-    }
-
-    // caveman: deferred context so `connect_receiver` can fire row outputs
-    // back into the same handlers the legacy code uses.
-    let context_slot: Rc<RefCell<Option<WindowContext>>> = Rc::new(RefCell::new(None));
-    let list_controller = {
-        let slot = context_slot.clone();
-        list_connector.connect_receiver(move |_, out| {
-            let Some(ctx) = slot.borrow().as_ref().cloned() else {
-                return;
-            };
-            match out {
-                WebAppListOutput::EditRequested(app) => list::handle_edit(ctx, &app),
-                WebAppListOutput::BrowserRequested(app) => list::handle_browser_change(ctx, &app),
-                WebAppListOutput::DeleteRequested(app) => list::handle_delete(ctx, &app),
-                WebAppListOutput::AddRequested => list::open_add_dialog(&ctx),
-            }
+    // The window content is the Relm4 ManagerWindow component (chrome + list +
+    // actions + search + shortcuts). It owns the WindowContext; we own the
+    // window, geometry, and presentation here.
+    let controller = ManagerWindow::builder()
+        .launch(ManagerInit {
+            app: app.clone(),
+            window: window.clone(),
         })
-    };
-
-    let context = WindowContext {
-        state,
-        browsers,
-        window: Rc::new(ui.window),
-        toast: Rc::new(ui.toast_overlay),
-        list: Rc::new(list_controller),
-        reload_generation: Rc::new(std::cell::Cell::new(0)),
-    };
-    *context_slot.borrow_mut() = Some(context.clone());
-
-    list::populate_list(&context);
-    actions::install_window_actions(&context);
-
-    // Kick off migration + initial load on a worker thread.
-    {
-        let context_for_load = context.clone();
-        // Snapshot the reload generation: if the user creates/edits a webapp
-        // (which bumps it via refresh_and_render) before this slow startup load
-        // finishes, the freshly-persisted list is newer — don't clobber it with
-        // this pre-change disk snapshot.
-        let load_generation = context.reload_generation.get();
-        ui_async::run_with_result(
-            || {
-                let migrated = service::migrate_legacy_desktops();
-                let regenerated_app = service::regenerate_app_mode_desktops();
-                let regenerated_browser = service::regenerate_browser_mode_desktops();
-                // Rename before persisting icons so the icon migration sees the
-                // canonical app_file and doesn't rewrite the soon-to-be-deleted entry.
-                let renamed_browser = service::migrate_browser_desktop_filenames();
-                let persisted_icons = service::persist_existing_icons();
-                let webapps = service::load_webapps();
-                (
-                    migrated,
-                    regenerated_app,
-                    regenerated_browser,
-                    renamed_browser,
-                    persisted_icons,
-                    webapps,
-                )
-            },
-            move |(
-                migrated,
-                regenerated_app,
-                regenerated_browser,
-                renamed_browser,
-                persisted_icons,
-                webapps,
-            ): (usize, usize, usize, usize, usize, WebAppCollection)| {
-                if migrated > 0 {
-                    log::info!("Migrated {migrated} legacy webapps from .desktop files");
-                }
-                if regenerated_app > 0 {
-                    log::info!(
-                        "Regenerated {regenerated_app} viewer-mode .desktop entries (StartupWMClass alignment)"
-                    );
-                }
-                if regenerated_browser > 0 {
-                    log::info!(
-                        "Regenerated {regenerated_browser} browser-mode .desktop entries (StartupWMClass + --class alignment)"
-                    );
-                }
-                if renamed_browser > 0 {
-                    log::info!(
-                        "Renamed {renamed_browser} browser-mode .desktop entries to the Chromium app_id scheme"
-                    );
-                }
-                if persisted_icons > 0 {
-                    log::info!(
-                        "Persisted {persisted_icons} webapp icons into the data directory (Icon= now uses a stable absolute path)"
-                    );
-                }
-                if context_for_load.reload_generation.get() != load_generation {
-                    return;
-                }
-                state::apply_webapps(&context_for_load.state, webapps);
-                list::populate_list(&context_for_load);
-            },
-        );
-    }
-
-    {
-        let context = context.clone();
-        ui.search_entry.connect_search_changed(move |entry| {
-            state::set_filter_text(&context.state, entry.text().to_string());
-            list::populate_list(&context);
-        });
-    }
-
-    {
-        let context = context.clone();
-        ui.add_btn.connect_clicked(move |_| {
-            let mut new_app = WebApp::default();
-            new_app.app_file = service::generate_app_file(&new_app.browser, &new_app.app_url);
-            if let Some(default_browser) = context.browsers.borrow().default_browser() {
-                new_app.browser = default_browser.browser_id.clone();
-            }
-
-            let after_save = context.clone();
-            webapp_dialog::show(
-                &*context.window,
-                new_app,
-                context.browsers.clone(),
-                true,
-                move |result| {
-                    if result.saved {
-                        list::refresh_and_render(&after_save);
-                        after_save.show_toast(&gettext("WebApp created successfully"));
-                    }
-                },
-            );
-        });
-    }
-
-    shortcuts::install_shortcuts(app, &context.window, &ui.add_btn, &ui.search_btn);
+        .detach();
+    window.set_content(Some(controller.widget()));
 
     let geometry_path = geometry::geometry_path(MAIN_WINDOW_GEOMETRY);
     geometry::load_geometry(
-        &*context.window,
+        &window,
         &geometry_path,
         MAIN_DEFAULT_WIDTH,
         MAIN_DEFAULT_HEIGHT,
     );
-    context.window.connect_close_request(move |win| {
-        geometry::save_geometry(win, &geometry_path);
-        glib::Propagation::Proceed
-    });
+    {
+        let geometry_path = geometry_path.clone();
+        window.connect_close_request(move |win| {
+            geometry::save_geometry(win, &geometry_path);
+            glib::Propagation::Proceed
+        });
+    }
 
-    context.window.present();
-    welcome_dialog::show_if_needed(&context.window);
+    // Park the controller for the window's lifetime; drop it on destroy so the
+    // component tree tears down with the window.
+    MANAGER_CONTROLLERS.with(|reg| reg.borrow_mut().push((window.downgrade(), controller)));
+    {
+        let window_weak = window.downgrade();
+        window.connect_destroy(move |_| {
+            let Some(closed) = window_weak.upgrade() else {
+                return;
+            };
+            MANAGER_CONTROLLERS.with(|reg| {
+                reg.borrow_mut()
+                    .retain(|(w, _)| w.upgrade().is_some_and(|w| w != closed));
+            });
+        });
+    }
+
+    window.present();
+    welcome_dialog::show_if_needed(&window);
 }
