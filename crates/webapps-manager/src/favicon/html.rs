@@ -232,6 +232,93 @@ mod tests {
     }
 
     #[test]
+    fn icon_source_priority_orders_manifest_high_ogimage_zero() {
+        use IconSource::{AppleTouch, Icon, Manifest, MaskIcon, OgImage};
+        assert!(Manifest.priority() > AppleTouch.priority());
+        assert!(AppleTouch.priority() > MaskIcon.priority());
+        assert!(MaskIcon.priority() > Icon.priority());
+        assert!(Icon.priority() > OgImage.priority());
+        assert_eq!(OgImage.priority(), 0);
+    }
+
+    #[test]
+    fn resolve_url_absolute_and_relative() {
+        let base = Some(url::Url::parse("https://example.com/page/").unwrap());
+        assert_eq!(
+            resolve_url("http://cdn.test/i.png", &base).as_deref(),
+            Some("http://cdn.test/i.png")
+        );
+        assert_eq!(
+            resolve_url("/icon.png", &base).as_deref(),
+            Some("https://example.com/icon.png")
+        );
+        assert_eq!(
+            resolve_url("rel.png", &base).as_deref(),
+            Some("https://example.com/page/rel.png")
+        );
+        // Absolute href with NO base must still pass through (pins the
+        // `http || https` scheme guard against `&&`, which would hit `base?`).
+        assert_eq!(
+            resolve_url("https://abs.test/i.png", &None).as_deref(),
+            Some("https://abs.test/i.png")
+        );
+        assert_eq!(resolve_url("/rel.png", &None), None);
+    }
+
+    #[test]
+    fn icon_source_from_rel_classifies_each_kind() {
+        assert_eq!(
+            icon_source_from_rel("apple-touch-icon"),
+            Some(IconSource::AppleTouch)
+        );
+        assert_eq!(
+            icon_source_from_rel("apple-touch-icon-precomposed"),
+            Some(IconSource::AppleTouch)
+        );
+        assert_eq!(
+            icon_source_from_rel("mask-icon"),
+            Some(IconSource::MaskIcon)
+        );
+        assert_eq!(icon_source_from_rel("icon"), Some(IconSource::Icon));
+        assert_eq!(
+            icon_source_from_rel("shortcut icon"),
+            Some(IconSource::Icon)
+        );
+        assert_eq!(icon_source_from_rel("stylesheet"), None);
+    }
+
+    #[test]
+    fn is_vector_hint_detects_svg_any_and_mime() {
+        assert!(is_vector_hint("/i.svg", "", ""));
+        assert!(is_vector_hint("/i.svg?v=2", "", "")); // query stripped
+        assert!(is_vector_hint("/i.png", "any", "")); // sizes any
+        assert!(is_vector_hint("/i.png", "", "image/svg+xml")); // mime
+        assert!(!is_vector_hint("/i.png", "32x32", "image/png"));
+    }
+
+    #[test]
+    fn push_best_candidate_keeps_highest_quality_per_url() {
+        let mut candidates = Vec::new();
+        push_best_candidate(
+            &mut candidates,
+            IconCandidate::new("u".into(), Some(32), IconSource::Icon, false),
+        );
+        // Higher declared size for the same url → replaces.
+        push_best_candidate(
+            &mut candidates,
+            IconCandidate::new("u".into(), Some(128), IconSource::Icon, false),
+        );
+        assert_eq!(candidates.len(), 1);
+        assert_eq!(candidates[0].declared_size, Some(128));
+        // Lower quality for the same url → kept.
+        push_best_candidate(
+            &mut candidates,
+            IconCandidate::new("u".into(), Some(16), IconSource::Icon, false),
+        );
+        assert_eq!(candidates[0].declared_size, Some(128));
+    }
+
+    #[test]
     fn extract_icon_urls_link_rel() {
         let html = Html::parse_document(
             r#"<html><head><link rel="icon" href="/favicon.png"></head></html>"#,
