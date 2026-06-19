@@ -14,6 +14,8 @@ depends=(
 	'gettext'
 	'xdg-utils'
 	'desktop-file-utils'
+	'imagemagick'
+	'p7zip'
 )
 makedepends=('rust' 'cargo' 'gettext')
 optdepends=(

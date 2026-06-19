@@ -1,6 +1,8 @@
-use anyhow::Result;
+use anyhow::{Context, Result};
 use big_os_kit::http_client::{http_get_bytes_capped, RequestHeaders};
+use std::io::Write;
 use std::path::PathBuf;
+use std::process::{Command, Stdio};
 use std::time::Duration;
 
 /// Hard cap on icon byte size. Favicons in the wild rarely exceed 200 KB; the
@@ -49,16 +51,38 @@ pub(super) fn download_icon(
     let path = cache_dir.join(format!("icon_{index}.{ext}"));
 
     if ext == "ico" {
-        if let Ok(image) = image::load_from_memory(&bytes) {
-            let png_path = cache_dir.join(format!("icon_{index}.png"));
-            if image.save(&png_path).is_ok() {
-                return Ok(png_path);
-            }
+        let png_path = cache_dir.join(format!("icon_{index}.png"));
+        if convert_icon_to_png_with_magick(&bytes, &png_path).is_ok() {
+            return Ok(png_path);
         }
     }
 
     std::fs::write(&path, &bytes)?;
     Ok(path)
+}
+
+fn convert_icon_to_png_with_magick(bytes: &[u8], png_path: &std::path::Path) -> Result<()> {
+    let mut command = Command::new("magick");
+    command.arg("-");
+    command.arg(format!("PNG:{}", png_path.display()));
+    command.stdin(Stdio::piped());
+    command.stdout(Stdio::null());
+    command.stderr(Stdio::piped());
+    let mut child = command.spawn().context("spawn ImageMagick magick")?;
+    {
+        let stdin = child
+            .stdin
+            .as_mut()
+            .ok_or_else(|| anyhow::anyhow!("failed to open magick stdin"))?;
+        stdin.write_all(bytes)?;
+    }
+    let output = child.wait_with_output()?;
+    if output.status.success() {
+        Ok(())
+    } else {
+        let stderr = String::from_utf8_lossy(&output.stderr);
+        anyhow::bail!("magick icon conversion failed: {stderr}")
+    }
 }
 
 fn guess_extension(url: &str, bytes: &[u8]) -> &'static str {

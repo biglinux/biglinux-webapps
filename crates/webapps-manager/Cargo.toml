@@ -29,13 +29,12 @@ anyhow.workspace = true
 dirs.workspace = true
 big-os-kit = { workspace = true, features = ["http-client"] }
 scraper.workspace = true
-image.workspace = true
 url.workspace = true
-zip = { version = "2", default-features = false, features = ["deflate"] }
 open = "5"
 async-channel = "2"
 fs4 = "1"
 gettextrs.workspace = true
+tempfile.workspace = true
 # Relm4 + shared BigLinux components (onda6 migration).
 # big-rust-components requires gtk4 v4_22 / libadwaita v1_9 — features are
 # additive across the workspace, so the higher version is selected at build time.

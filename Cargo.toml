@@ -31,10 +31,10 @@ dirs = "6"
 clap = { version = "4", features = ["derive"] }
 big-os-kit = { path = "../big-rust-components/crates/big-os-kit" }
 scraper = "0.26"
-image = { version = "0.25", default-features = false, features = ["png", "ico"] }
 url = "2"
 gettextrs = { package = "gettext-rs", version = "0.7", features = ["gettext-system"] }
 toml = "0.8"
+tempfile = "3"
 
 [profile.release]
 lto = "thin"

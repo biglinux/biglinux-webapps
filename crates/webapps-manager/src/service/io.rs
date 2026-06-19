@@ -2,6 +2,7 @@ use anyhow::{Context, Result};
 use std::fs;
 use std::io::{Read, Write};
 use std::path::Path;
+use std::process::{Command, Stdio};
 
 use webapps_core::config;
 use webapps_core::models::WebApp;
@@ -17,17 +18,12 @@ pub fn export_webapps(zip_path: &Path) -> Result<String> {
         return Ok("no_webapps".into());
     }
 
-    let file = fs::File::create(zip_path).context("Create zip file")?;
-    let mut zip = zip::ZipWriter::new(file);
-    let options = zip::write::SimpleFileOptions::default()
-        .compression_method(zip::CompressionMethod::Deflated);
-
-    // write manifest
+    let stage = tempfile::tempdir().context("Create export staging directory")?;
     let manifest = serde_json::to_string_pretty(&col.webapps)?;
-    zip.start_file("webapps.json", options)?;
-    zip.write_all(manifest.as_bytes())?;
+    fs::write(stage.path().join("webapps.json"), manifest)?;
+    let icons_stage = stage.path().join("icons");
+    fs::create_dir_all(&icons_stage)?;
 
-    // copy icons
     for app in &col.webapps {
         if app.app_icon_url.is_empty() {
             continue;
@@ -39,39 +35,36 @@ pub fn export_webapps(zip_path: &Path) -> Result<String> {
                 .map(|n| n.to_string_lossy().to_string())
                 .unwrap_or_default();
             if !fname.is_empty() {
-                zip.start_file(format!("icons/{fname}"), options)?;
-                let mut f = fs::File::open(icon_path)?;
-                let mut buf = Vec::new();
-                f.read_to_end(&mut buf)?;
-                zip.write_all(&buf)?;
+                fs::copy(icon_path, icons_stage.join(fname))?;
             }
         }
     }
 
-    zip.finish()?;
+    let output = Command::new("7z")
+        .args(["a", "-tzip", "-bd", "-y", "--"])
+        .arg(zip_path)
+        .arg("webapps.json")
+        .arg("icons")
+        .current_dir(stage.path())
+        .stdin(Stdio::null())
+        .stdout(Stdio::null())
+        .stderr(Stdio::piped())
+        .output()
+        .context("spawn 7z export")?;
+    ensure_7z_success("export", zip_path, &output)?;
     Ok("ok".into())
 }
 
 pub fn import_webapps(zip_path: &Path) -> Result<(usize, usize)> {
-    let file = fs::File::open(zip_path).context("Open zip file")?;
-    let mut archive = zip::ZipArchive::new(file)?;
-
-    // read manifest
-    let manifest = {
-        let mut entry = archive.by_name("webapps.json")?;
-        let mut buf = String::new();
-        entry.read_to_string(&mut buf)?;
-        buf
-    };
+    let manifest = read_archive_entry_to_string(zip_path, "webapps.json", MAX_EXTRACTED_FILE_BYTES)
+        .context("Read webapps.json from import archive")?;
     let imported_apps: Vec<WebApp> = serde_json::from_str(&manifest)?;
 
-    // extract icons
     let icons_dir = config::data_dir().join("icons");
     fs::create_dir_all(&icons_dir)?;
     let icons_canonical = icons_dir.canonicalize()?;
-    for i in 0..archive.len() {
-        let mut entry = archive.by_index(i)?;
-        let name = entry.name().to_string();
+    for entry in list_archive_entries(zip_path)? {
+        let name = entry.path;
         if !name.starts_with("icons/") {
             continue;
         }
@@ -81,13 +74,10 @@ pub fn import_webapps(zip_path: &Path) -> Result<(usize, usize)> {
             continue;
         }
 
-        // Bail before creating the file when the declared size already exceeds
-        // the cap. Avoids the `create + truncate + remove` round-trip on
-        // decompression-bomb archives.
-        if entry.size() > MAX_EXTRACTED_FILE_BYTES {
+        if entry.size > MAX_EXTRACTED_FILE_BYTES {
             log::warn!(
                 "Skipped oversized zip entry: {fname} (declared {} bytes)",
-                entry.size()
+                entry.size
             );
             continue;
         }
@@ -111,8 +101,8 @@ pub fn import_webapps(zip_path: &Path) -> Result<(usize, usize)> {
         }
 
         let mut out = fs::File::create(&dest)?;
-        // Defence-in-depth: even if entry.size() lied, cap the actual copy.
-        let copied = std::io::copy(&mut entry.by_ref().take(MAX_EXTRACTED_FILE_BYTES), &mut out)?;
+        let copied =
+            copy_archive_entry_capped(zip_path, &name, &mut out, MAX_EXTRACTED_FILE_BYTES)?;
         if copied >= MAX_EXTRACTED_FILE_BYTES {
             log::warn!(
                 "Truncated oversized zip entry post-decompression: {fname} (>{MAX_EXTRACTED_FILE_BYTES} bytes)"
@@ -150,4 +140,116 @@ pub fn import_webapps(zip_path: &Path) -> Result<(usize, usize)> {
     }
 
     Ok((imported, duplicates))
+}
+
+#[derive(Debug)]
+struct ArchiveEntry {
+    path: String,
+    size: u64,
+}
+
+fn list_archive_entries(zip_path: &Path) -> Result<Vec<ArchiveEntry>> {
+    let output = Command::new("7z")
+        .args(["l", "-slt", "-bd", "--"])
+        .arg(zip_path)
+        .stdin(Stdio::null())
+        .output()
+        .context("spawn 7z list")?;
+    ensure_7z_success("list", zip_path, &output)?;
+    let text = String::from_utf8_lossy(&output.stdout);
+    let mut entries = Vec::new();
+    let mut path: Option<String> = None;
+    let mut size = 0_u64;
+    let mut in_entries = false;
+    for line in text.lines() {
+        if line == "----------" {
+            if !in_entries {
+                in_entries = true;
+                path = None;
+                size = 0;
+            } else if let Some(path) = path.take() {
+                entries.push(ArchiveEntry { path, size });
+                size = 0;
+            }
+            continue;
+        }
+        if !in_entries {
+            continue;
+        }
+        if let Some(value) = line.strip_prefix("Path = ") {
+            if let Some(previous) = path.replace(value.to_string()) {
+                entries.push(ArchiveEntry {
+                    path: previous,
+                    size,
+                });
+                size = 0;
+            }
+        } else if let Some(value) = line.strip_prefix("Size = ") {
+            size = value.parse().unwrap_or(0);
+        }
+    }
+    if let Some(path) = path {
+        entries.push(ArchiveEntry { path, size });
+    }
+    Ok(entries)
+}
+
+fn read_archive_entry_to_string(zip_path: &Path, entry: &str, max_bytes: u64) -> Result<String> {
+    let mut bytes = Vec::new();
+    let copied = copy_archive_entry_capped(zip_path, entry, &mut bytes, max_bytes)?;
+    if copied > max_bytes {
+        anyhow::bail!("archive entry {entry} exceeds {max_bytes} bytes");
+    }
+    Ok(String::from_utf8(bytes)?)
+}
+
+fn copy_archive_entry_capped(
+    zip_path: &Path,
+    entry: &str,
+    out: &mut dyn Write,
+    max_bytes: u64,
+) -> Result<u64> {
+    let mut child = Command::new("7z")
+        .args(["x", "-so", "-bd", "--"])
+        .arg(zip_path)
+        .arg(entry)
+        .stdin(Stdio::null())
+        .stdout(Stdio::piped())
+        .stderr(Stdio::piped())
+        .spawn()
+        .context("spawn 7z extract")?;
+    let mut stdout = child
+        .stdout
+        .take()
+        .ok_or_else(|| anyhow::anyhow!("failed to capture 7z stdout"))?;
+    let mut copied = 0_u64;
+    let mut buf = [0_u8; 8192];
+    loop {
+        let read = stdout.read(&mut buf)?;
+        if read == 0 {
+            break;
+        }
+        copied = copied.saturating_add(read as u64);
+        if copied > max_bytes {
+            let _ = child.kill();
+            let _ = child.wait();
+            return Ok(copied);
+        }
+        out.write_all(&buf[..read])?;
+    }
+    drop(stdout);
+    let output = child.wait_with_output()?;
+    ensure_7z_success("extract", zip_path, &output)?;
+    Ok(copied)
+}
+
+fn ensure_7z_success(action: &str, path: &Path, output: &std::process::Output) -> Result<()> {
+    if output.status.success() {
+        return Ok(());
+    }
+    let mut details = String::from_utf8_lossy(&output.stderr).trim().to_string();
+    if details.is_empty() {
+        details = String::from_utf8_lossy(&output.stdout).trim().to_string();
+    }
+    anyhow::bail!("7z {action} failed for {}: {details}", path.display())
 }
