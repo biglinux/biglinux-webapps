@@ -17,8 +17,11 @@
 # flatpak_app_id  Flatpak application ID (absent = no Flatpak detection for this browser)
 # flatpak_id      browser_id assigned when detected via Flatpak (required if flatpak_app_id set)
 #
-# NOTE: big-webapps-exec (bash) mirrors flatpak_app_id / flatpak_id in its case statement.
-# Keep both in sync when adding a new browser.
+# NOTE: big-webapps-exec (Rust) reads this file at runtime via webapps-core::browsers.
+# The very same file is embedded in the binary as a build-time fallback
+# (include_str! in crates/webapps-core/src/browsers.rs), so editing here updates
+# both the installed copy and the embedded fallback on the next build — no manual
+# mirroring needed.
 
 # ---------------------------------------------------------------------------
 # Gecko / Firefox-family
