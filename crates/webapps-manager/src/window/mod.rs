@@ -17,7 +17,6 @@ mod ui;
 use std::cell::RefCell;
 
 use adw::prelude::*;
-use gettextrs::gettext;
 use gtk::glib;
 use gtk4 as gtk;
 use libadwaita as adw;
@@ -28,8 +27,6 @@ use crate::{geometry, welcome_dialog};
 use self::component::{ManagerInit, ManagerWindow};
 
 const MAIN_WINDOW_GEOMETRY: &str = "manager-window.json";
-const MAIN_DEFAULT_WIDTH: i32 = 800;
-const MAIN_DEFAULT_HEIGHT: i32 = 650;
 
 thread_local! {
     /// Keepalive for the manager window controller: parked for the window's
@@ -41,11 +38,16 @@ thread_local! {
 }
 
 pub fn build(app: &adw::Application) {
+    // Window title + default geometry come from the canonical BigShellSpec so
+    // the documented shell contract is the single source of truth (was three
+    // divergent literals: 820×680 here vs 800×650 in the geometry fallback).
+    let shell = crate::relm4_window::shell_spec::build();
+
     let window = adw::ApplicationWindow::builder()
         .application(app)
-        .title(gettext("WebApps Manager"))
-        .default_width(820)
-        .default_height(680)
+        .title(&shell.title)
+        .default_width(shell.default_width)
+        .default_height(shell.default_height)
         .build();
 
     // The window content is the Relm4 ManagerWindow component (chrome + list +
@@ -63,8 +65,8 @@ pub fn build(app: &adw::Application) {
     geometry::load_geometry(
         &window,
         &geometry_path,
-        MAIN_DEFAULT_WIDTH,
-        MAIN_DEFAULT_HEIGHT,
+        shell.default_width,
+        shell.default_height,
     );
     {
         let geometry_path = geometry_path.clone();

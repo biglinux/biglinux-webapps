@@ -90,6 +90,37 @@ pub(super) fn open_add_dialog(context: &WindowContext) {
     );
 }
 
+/// Open the curated template gallery; the chosen template seeds a fresh
+/// webapp that is then opened in the standard create dialog for review/edit.
+pub(super) fn open_template_gallery(context: &WindowContext) {
+    let parent = context.window.clone();
+    let context = context.clone();
+    crate::template_gallery::show(&*parent, move |template_id| {
+        let mut new_app = WebApp::default();
+        if let Some(tpl) = default_registry().get(&template_id) {
+            new_app.apply_template(tpl);
+        }
+        if let Some(default_browser) = context.browsers.borrow().default_browser() {
+            new_app.browser = default_browser.browser_id.clone();
+        }
+        new_app.app_file = service::generate_app_file(&new_app.browser, &new_app.app_url);
+
+        let after_save = context.clone();
+        webapp_dialog::show(
+            &*context.window,
+            new_app,
+            context.browsers.clone(),
+            true,
+            move |result| {
+                if result.saved {
+                    refresh_and_render(&after_save);
+                    after_save.show_toast(&gettext("WebApp created successfully"));
+                }
+            },
+        );
+    });
+}
+
 pub(super) fn handle_edit(context: WindowContext, app: &WebApp) {
     let browsers = context.browsers.clone();
     let after_save = context.clone();

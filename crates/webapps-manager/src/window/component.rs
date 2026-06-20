@@ -43,6 +43,8 @@ pub(super) struct ManagerInit {
 pub(super) enum ManagerInput {
     /// The "Add" button was clicked.
     AddRequested,
+    /// The "Templates" button was clicked.
+    TemplatesRequested,
     /// The search entry text changed.
     SearchChanged(String),
 }
@@ -82,17 +84,20 @@ impl Component for ManagerWindow {
         let list_widget: gtk::Widget = list_connector.widget().clone().upcast();
         let controls = ui::build_content(&root, &list_widget);
 
-        // Block "Add" until browser detection completes — clicking before would
-        // create a webapp with browser="", producing a broken .desktop file.
+        // Block "Add"/"Templates" until browser detection completes — creating a
+        // webapp with browser="" would produce a broken .desktop file.
         controls.add_btn.set_sensitive(false);
+        controls.templates_btn.set_sensitive(false);
         tooltip::set(&controls.add_btn, &gettext("Detecting installed browsers…"));
         {
             let browsers = browsers.clone();
             let add_btn = controls.add_btn.clone();
+            let templates_btn = controls.templates_btn.clone();
             ui_async::run_with_result(service::detect_browsers, move |detected| {
                 let has_any = !detected.browsers.is_empty();
                 *browsers.borrow_mut() = detected;
                 add_btn.set_sensitive(has_any);
+                templates_btn.set_sensitive(has_any);
                 tooltip::update(
                     &add_btn,
                     &gettext(if has_any {
@@ -206,6 +211,12 @@ impl Component for ManagerWindow {
                 .add_btn
                 .connect_clicked(move |_| sender.input(ManagerInput::AddRequested));
         }
+        {
+            let sender = sender.clone();
+            controls
+                .templates_btn
+                .connect_clicked(move |_| sender.input(ManagerInput::TemplatesRequested));
+        }
 
         shortcuts::install_shortcuts(&app, &window, &controls.add_btn, &controls.search_btn);
 
@@ -218,6 +229,7 @@ impl Component for ManagerWindow {
     fn update(&mut self, msg: Self::Input, _sender: ComponentSender<Self>, _root: &Self::Root) {
         match msg {
             ManagerInput::AddRequested => list::open_add_dialog(&self.context),
+            ManagerInput::TemplatesRequested => list::open_template_gallery(&self.context),
             ManagerInput::SearchChanged(text) => {
                 state::set_filter_text(&self.context.state, text);
                 list::populate_list(&self.context);

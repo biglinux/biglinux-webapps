@@ -8,6 +8,7 @@ use libadwaita as adw;
 pub(super) struct WindowControls {
     pub search_btn: gtk::ToggleButton,
     pub add_btn: gtk::Button,
+    pub templates_btn: gtk::Button,
     pub search_entry: gtk::SearchEntry,
 }
 
@@ -36,6 +37,13 @@ pub(super) fn build_content(
     add_btn.update_property(&[gtk::accessible::Property::Label(&gettext("Add WebApp"))]);
     add_btn.add_css_class("suggested-action");
     header.pack_start(&add_btn);
+
+    let templates_btn = gtk::Button::from_icon_name("view-grid-symbolic");
+    tooltip::set(&templates_btn, &gettext("Choose from templates"));
+    templates_btn.update_property(&[gtk::accessible::Property::Label(&gettext(
+        "Choose from templates",
+    ))]);
+    header.pack_start(&templates_btn);
 
     let menu_btn = gtk::MenuButton::new();
     menu_btn.set_icon_name("open-menu-symbolic");
@@ -80,6 +88,7 @@ pub(super) fn build_content(
     WindowControls {
         search_btn,
         add_btn,
+        templates_btn,
         search_entry,
     }
 }

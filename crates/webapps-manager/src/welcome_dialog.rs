@@ -36,35 +36,50 @@ fn build_dialog() -> adw::AlertDialog {
     icon.set_accessible_role(gtk::AccessibleRole::Presentation);
     content.append(&icon);
 
-    let explanation = gtk::Label::builder()
-        .label(format!(
-            "<b>{}</b>\n\n{}\n\n<b>{}</b>\n\n\
-            \u{2022} <b>{}</b>: {}\n\
-            \u{2022} <b>{}</b>: {}\n\
-            \u{2022} <b>{}</b>: {}",
-            gettext("What are WebApps?"),
-            gettext("WebApps are web applications that run in a dedicated browser window, providing a more app-like experience for your favorite websites."),
-            gettext("Benefits of using WebApps:"),
-            gettext("Focus"), gettext("Work without the distractions of other browser tabs"),
-            gettext("Desktop Integration"), gettext("Quick access from your application menu"),
-            gettext("Isolated Profiles"), gettext("Each webapp can have its own cookies and settings"),
+    let intro = gtk::Label::builder()
+        .label(gettext(
+            "WebApps run your favorite websites in their own dedicated window, \
+             for a focused, app-like experience.",
         ))
-        .use_markup(true)
         .wrap(true)
-        .max_width_chars(60)
-        .halign(gtk::Align::Start)
+        .justify(gtk::Justification::Center)
+        .halign(gtk::Align::Center)
+        .max_width_chars(46)
         .build();
-    content.append(&explanation);
+    content.append(&intro);
+
+    // Benefits as a native boxed list — scannable and individually labelled for
+    // AT-SPI, replacing the former single markup blob.
+    let benefits = adw::PreferencesGroup::builder()
+        .title(gettext("Benefits"))
+        .margin_top(6)
+        .build();
+    benefits.add(&benefit_row(
+        "view-fullscreen-symbolic",
+        &gettext("Focus"),
+        &gettext("Work without the distractions of other browser tabs"),
+    ));
+    benefits.add(&benefit_row(
+        "view-grid-symbolic",
+        &gettext("Desktop Integration"),
+        &gettext("Quick access from your application menu"),
+    ));
+    benefits.add(&benefit_row(
+        "channel-secure-symbolic",
+        &gettext("Isolated Profiles"),
+        &gettext("Each webapp can have its own cookies and settings"),
+    ));
+    content.append(&benefits);
 
     // "Don't show again" — `AdwSwitchRow` wires its label↔switch a11y relation.
     let show_switch_row = adw::SwitchRow::builder()
         .title(gettext("Don't show this again"))
         .active(false)
-        .margin_top(12)
         .build();
     let switch_list = gtk::ListBox::new();
     switch_list.set_selection_mode(gtk::SelectionMode::None);
     switch_list.add_css_class("boxed-list");
+    switch_list.set_margin_top(6);
     switch_list.append(&show_switch_row);
     content.append(&switch_list);
 
@@ -77,4 +92,16 @@ fn build_dialog() -> adw::AlertDialog {
     });
 
     dialog
+}
+
+/// A single benefit line: symbolic icon + title + explanation.
+fn benefit_row(icon_name: &str, title: &str, subtitle: &str) -> adw::ActionRow {
+    let row = adw::ActionRow::builder()
+        .title(title)
+        .subtitle(subtitle)
+        .build();
+    let icon = gtk::Image::from_icon_name(icon_name);
+    icon.set_accessible_role(gtk::AccessibleRole::Presentation);
+    row.add_prefix(&icon);
+    row
 }

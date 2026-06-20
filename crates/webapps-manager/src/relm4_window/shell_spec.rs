@@ -1,9 +1,10 @@
 //! Canonical [`BigShellSpec`] description for the webapps manager.
 //!
-//! The widget tree is still built imperatively in `window/ui.rs`; this spec
-//! documents the intended shell contract (size, header policy, toast usage)
-//! so a future migration to a `BigShell`-based builder can derive the GTK
-//! tree directly from the spec.
+//! `window::build` consumes this spec for the window title and default
+//! geometry (single source of truth). The chrome widget tree is still built
+//! imperatively in `window/ui.rs`; the remaining fields (header policy, toast
+//! usage) document the intended contract so a future migration to a
+//! `BigShell`-based builder can derive the rest of the GTK tree from the spec.
 
 use big_app_kit::shell::{BigHeaderPolicy, BigShellKind, BigShellSpec};
 use webapps_core::config;

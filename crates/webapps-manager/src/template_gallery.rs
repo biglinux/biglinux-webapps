@@ -6,7 +6,6 @@ use libadwaita as adw;
 
 use adw::prelude::*;
 use big_relm4_components::feedback::tooltip;
-use big_relm4_components::list::info_row::{BigInfoRow, BigInfoRowSpec};
 use gettextrs::gettext;
 use std::cell::RefCell;
 use std::rc::Rc;
@@ -136,45 +135,85 @@ fn add_category_section(
     header.set_accessible_role(gtk::AccessibleRole::Heading);
     container.append(&header);
 
-    let listbox = gtk::ListBox::new();
-    listbox.add_css_class("boxed-list");
-    listbox.set_selection_mode(gtk::SelectionMode::None);
+    let flow = gtk::FlowBox::new();
+    flow.set_selection_mode(gtk::SelectionMode::None);
+    flow.set_homogeneous(true);
+    flow.set_row_spacing(6);
+    flow.set_column_spacing(6);
+    flow.set_min_children_per_line(2);
+    flow.set_max_children_per_line(4);
+    flow.update_property(&[gtk::accessible::Property::Label(category)]);
 
     for tpl in templates {
-        let row =
-            BigInfoRow::new(BigInfoRowSpec::new(tpl.name.as_str()).subtitle(tpl.url.as_str()))
-                .into_root();
-        row.set_activatable(true);
-        let icon = gtk::Image::new();
-        icon.set_pixel_size(32);
-        icon.set_accessible_role(gtk::AccessibleRole::Presentation);
-        crate::webapp_row::load_icon(&icon, &tpl.icon);
-        row.add_prefix(&icon);
-
-        // DRM badge → indicate Browser mode required. Tooltip isn't announced
-        // by AT-SPI, so expose the information via an accessible label.
-        if tpl.requires_drm {
-            let drm_label = gettext("Requires external browser (DRM)");
-            let drm_icon = gtk::Image::from_icon_name("web-browser-symbolic");
-            drm_icon.set_pixel_size(16);
-            tooltip::set(&drm_icon, &drm_label);
-            drm_icon.update_property(&[gtk::accessible::Property::Label(&drm_label)]);
-            drm_icon.add_css_class("dim-label");
-            row.add_suffix(&drm_icon);
-        }
-
-        let cb = callback.clone();
-        let tid = tpl.template_id.clone();
-        let d = dialog.clone();
-        row.connect_activated(move |_| {
-            cb(tid.clone());
-            d.close();
-        });
-
-        listbox.append(&row);
+        flow.append(&build_template_tile(tpl, callback, dialog));
     }
 
-    container.append(&listbox);
+    container.append(&flow);
+}
+
+/// One template rendered as an icon tile.
+///
+/// The activatable widget is a real `gtk::Button` (not a bare activatable
+/// `FlowBoxChild`) so it is keyboard-reachable and AT-SPI exposes a click
+/// action — a `FlowBoxChild` alone would report `actions=[]`.
+fn build_template_tile(
+    tpl: &WebAppTemplate,
+    callback: &Rc<dyn Fn(String)>,
+    dialog: &adw::Dialog,
+) -> gtk::FlowBoxChild {
+    let content = gtk::Box::new(gtk::Orientation::Vertical, 6);
+    content.set_halign(gtk::Align::Center);
+    content.set_margin_top(10);
+    content.set_margin_bottom(10);
+    content.set_margin_start(6);
+    content.set_margin_end(6);
+    content.set_width_request(108);
+
+    let icon = gtk::Image::new();
+    icon.set_pixel_size(48);
+    icon.set_accessible_role(gtk::AccessibleRole::Presentation);
+    crate::webapp_row::load_icon(&icon, &tpl.icon);
+    content.append(&icon);
+
+    let name = gtk::Label::new(Some(&tpl.name));
+    name.set_wrap(true);
+    name.set_justify(gtk::Justification::Center);
+    name.set_max_width_chars(12);
+    name.add_css_class("caption");
+    content.append(&name);
+
+    // DRM templates can only run in an external browser. Tooltips aren't
+    // announced by AT-SPI, so the constraint goes into the accessible name too.
+    let mut accessible_name = tpl.name.clone();
+    if tpl.requires_drm {
+        let drm_hint = gettext("Requires external browser (DRM)");
+        let drm_icon = gtk::Image::from_icon_name("web-browser-symbolic");
+        drm_icon.set_pixel_size(12);
+        drm_icon.set_accessible_role(gtk::AccessibleRole::Presentation);
+        drm_icon.add_css_class("dim-label");
+        tooltip::set(&drm_icon, &drm_hint);
+        content.append(&drm_icon);
+        accessible_name = format!("{} — {drm_hint}", tpl.name);
+    }
+
+    let button = gtk::Button::builder().child(&content).build();
+    button.add_css_class("flat");
+    tooltip::set(&button, &tpl.url);
+    button.update_property(&[gtk::accessible::Property::Label(&accessible_name)]);
+
+    let cb = callback.clone();
+    let tid = tpl.template_id.clone();
+    let d = dialog.clone();
+    button.connect_clicked(move |_| {
+        cb(tid.clone());
+        d.close();
+    });
+
+    let child = gtk::FlowBoxChild::new();
+    child.set_child(Some(&button));
+    // Focus lives on the inner button so keyboard traversal hits the action.
+    child.set_focusable(false);
+    child
 }
 
 fn clear_box(bx: &gtk::Box) {
