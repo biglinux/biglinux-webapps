@@ -4,6 +4,11 @@ use gettextrs::gettext;
 use gtk4 as gtk;
 use libadwaita as adw;
 
+/// The curated template gallery is wired but not launched yet. Flip to `true`
+/// to surface the header "Templates" button (the gallery + its handler stay
+/// fully wired behind it). Keep `false` until the feature ships.
+const TEMPLATES_FEATURE_ENABLED: bool = false;
+
 /// Header controls the [`super::component::ManagerWindow`] wires to messages.
 pub(super) struct WindowControls {
     pub search_btn: gtk::ToggleButton,
@@ -43,7 +48,9 @@ pub(super) fn build_content(
     templates_btn.update_property(&[gtk::accessible::Property::Label(&gettext(
         "Choose from templates",
     ))]);
-    header.pack_start(&templates_btn);
+    if TEMPLATES_FEATURE_ENABLED {
+        header.pack_start(&templates_btn);
+    }
 
     let menu_btn = gtk::MenuButton::new();
     menu_btn.set_icon_name("open-menu-symbolic");
