@@ -18,7 +18,9 @@ use crate::{wayland, Args};
 /// Launch a Firefox-like browser. Calls `exec()` — never returns normally.
 ///
 /// Sets up the per-webapp profile directory (userChrome.css + user.js) on
-/// first run, then replaces the current process with the browser.
+/// first run, then replaces the current process with the browser. The Wayland
+/// `app_id` is pinned to the `.desktop` basename via `MOZ_APP_REMOTINGNAME` so
+/// the window carries the webapp icon and groups under its own taskbar entry.
 pub fn firefox(
     args: &Args,
     browser_id: &str,
@@ -49,7 +51,14 @@ pub fn firefox(
     let mut cmd = Command::new(&program);
     cmd.args(&prefix_args)
         .env("XAPP_FORCE_GTKWINDOW_ICON", icon)
-        .env("MOZ_APP_REMOTINGNAME", &args.class)
+        // Wayland taskbar icon + grouping: the compositor (KDE/GNOME) maps a
+        // window back to its `.desktop` (and thus its icon) only when the
+        // Wayland `app_id` equals the `.desktop` *basename*. Firefox sets the
+        // app_id from MOZ_APP_REMOTINGNAME (Mozilla bug 1859546; app_id must
+        // match the desktop name, bug 1826330), so it must be `profile_name`
+        // (= the installed `.desktop` basename), NOT the WM_CLASS. `--class`
+        // below still carries the WM_CLASS for X11 grouping/StartupWMClass.
+        .env("MOZ_APP_REMOTINGNAME", profile_name)
         .arg(format!("--class={}", args.class))
         .arg(format!("--name={profile_name}"))
         .arg("--profile")
@@ -202,6 +211,7 @@ fn build_chromium_spec(
 
     cmd_args.extend([
         "--no-default-browser-check".to_string(),
+        "--no-first-run".to_string(),
         format!("--user-data-dir={}", profile_dir.display()),
         format!("--profile-directory={}", args.profile),
         format!("--class={}", args.class),
