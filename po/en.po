@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-24 08:44+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
+"POT-Creation-Date: 2026-06-20 11:56+0000\n"
 "PO-Revision-Date: 2026-04-23 00:00+0000\n"
 "Last-Translator: Codex <noreply@openai.com>\n"
 "Language-Team: English\n"
@@ -12,38 +12,38 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/browser_dialog.rs:40
+#: crates/webapps-manager/src/browser_dialog.rs:40
 msgid "Select Browser"
 msgstr "Select Browser"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/browser_dialog.rs:72
+#: crates/webapps-manager/src/browser_dialog.rs:72
 msgid "Auto-hide headerbar"
 msgstr "Auto-hide headerbar"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/browser_dialog.rs:74
+#: crates/webapps-manager/src/browser_dialog.rs:74
 msgid "Hide the titlebar; reveal it by moving the cursor to the top edge."
 msgstr "Hide the titlebar; reveal it by moving the cursor to the top edge."
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/browser_dialog.rs:150
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/shell.rs:43
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_all.rs:26
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:142
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:194
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:140
+#: crates/webapps-manager/src/browser_dialog.rs:150
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:43
+#: crates/webapps-manager/src/window/actions/remove_all.rs:26
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:142
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:194
+#: crates/webapps-manager/src/window/list.rs:187
 msgid "Cancel"
 msgstr "Cancel"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/browser_dialog.rs:151
+#: crates/webapps-manager/src/browser_dialog.rs:151
 msgid "OK"
 msgstr "OK"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/browser_dialog.rs:196
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:191
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:66
+#: crates/webapps-manager/src/browser_dialog.rs:196
+#: crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:191
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:66
 msgid "Internal Browser"
 msgstr "Internal Browser"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/browser_dialog.rs:197
+#: crates/webapps-manager/src/browser_dialog.rs:197
 msgid ""
 "Embedded browser with better system integration. May not work on all "
 "websites."
@@ -51,242 +51,243 @@ msgstr ""
 "Embedded browser with better system integration. May not work on all "
 "websites."
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/relm4_window/empty.rs:19
+#: crates/webapps-manager/src/relm4_window/empty.rs:20
 msgid "No WebApps yet"
 msgstr "No WebApps yet"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/relm4_window/empty.rs:21
+#: crates/webapps-manager/src/relm4_window/empty.rs:22
 msgid "Turn any website into a desktop app. Press Add to get started."
 msgstr "Turn any website into a desktop app. Press Add to get started."
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/relm4_window/empty.rs:23
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:49
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:50
+#: crates/webapps-manager/src/relm4_window/empty.rs:24
+#: crates/webapps-manager/src/window/ui.rs:36
+#: crates/webapps-manager/src/window/ui.rs:37
 msgid "Add WebApp"
 msgstr "Add WebApp"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/relm4_window/list.rs:151
+#: crates/webapps-manager/src/relm4_window/list.rs:151
 msgid "{} results"
 msgstr "{} results"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/relm4_window/row.rs:117
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_row.rs:92
+#: crates/webapps-manager/src/relm4_window/row.rs:120
 msgid "Change browser"
 msgstr "Change browser"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/relm4_window/row.rs:128
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_row.rs:102
+#: crates/webapps-manager/src/relm4_window/row.rs:131
 msgid "Edit"
 msgstr "Edit"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/relm4_window/row.rs:139
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_row.rs:112
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:196
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:142
+#: crates/webapps-manager/src/relm4_window/row.rs:142
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:196
+#: crates/webapps-manager/src/window/list.rs:189
 msgid "Remove"
 msgstr "Remove"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/relm4_window/shell_spec.rs:20
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/about.rs:15
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:32
+#: crates/webapps-manager/src/relm4_window/shell_spec.rs:21
+#: crates/webapps-manager/src/window/actions/about.rs:15
 msgid "WebApps Manager"
 msgstr "WebApps Manager"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:35
+#: crates/webapps-manager/src/template_gallery.rs:34
 msgid "Choose a Template"
 msgstr "Choose a Template"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:42
+#: crates/webapps-manager/src/template_gallery.rs:41
 msgid "Search templates..."
 msgstr "Search templates..."
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:107
+#: crates/webapps-manager/src/template_gallery.rs:44
+#, fuzzy
+#| msgid "Search templates..."
+msgid "Search templates"
+msgstr "Search templates..."
+
+#: crates/webapps-manager/src/template_gallery.rs:109
 msgid "No templates found"
 msgstr "No templates found"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:115
+#: crates/webapps-manager/src/template_gallery.rs:117
 msgid "Search Results"
 msgstr "Search Results"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:154
+#: crates/webapps-manager/src/template_gallery.rs:189
 msgid "Requires external browser (DRM)"
 msgstr "Requires external browser (DRM)"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/handlers/lifecycle.rs:100
+#: crates/webapps-manager/src/webapp_dialog/handlers/lifecycle.rs:101
 msgid "Failed to save webapp"
 msgstr "Failed to save webapp"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/handlers/media.rs:49
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:49
 msgid "Icon candidate {n}"
 msgstr "Icon candidate {n}"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/handlers/media.rs:91
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:91
 msgid "Select Icon"
 msgstr "Select Icon"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/handlers/media.rs:93
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:93
 msgid "Images"
 msgstr "Images"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:20
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:20
 msgid "Application Icon"
 msgstr "Application Icon"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:26
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:32
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:26
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:32
 msgid "Select"
 msgstr "Select"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:38
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:38
 msgid "Detected icon candidates"
 msgstr "Detected icon candidates"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:43
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:43
 msgid "Category"
 msgstr "Category"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:24
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:24
 msgid "Browser"
 msgstr "Browser"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:76
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:76
 msgid "Use separate profile"
 msgstr "Use separate profile"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:78
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:78
 msgid "Allows independent cookies and sessions for this webapp"
 msgstr "Allows independent cookies and sessions for this webapp"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:87
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:87
 msgid "Profile Name"
 msgstr "Profile Name"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:17
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:17
 msgid "URL"
 msgstr "URL"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:20
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:20
 msgid "Detect"
 msgstr "Detect"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:23
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:23
 msgid "Detect name and icon from website"
 msgstr "Detect name and icon from website"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:29
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:29
 msgid "Name"
 msgstr "Name"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/shell.rs:23
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/shortcuts_window.rs:21
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:23
+#: crates/webapps-manager/src/window/shortcuts_window.rs:18
 msgid "New WebApp"
 msgstr "New WebApp"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/shell.rs:25
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:25
 msgid "Edit WebApp"
 msgstr "Edit WebApp"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/shell.rs:44
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:44
 msgid "Save"
 msgstr "Save"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/shell.rs:59
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:59
 msgid "Loading…"
 msgstr "Loading…"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:21
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:48
+#: crates/webapps-manager/src/welcome_dialog.rs:28
 msgid "Welcome to WebApps Manager"
 msgstr "Welcome to WebApps Manager"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:61
-msgid "What are WebApps?"
-msgstr "What are WebApps?"
-
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:62
-msgid ""
-"WebApps are web applications that run in a dedicated browser window, "
-"providing a more app-like experience for your favorite websites."
-msgstr ""
-"WebApps are web applications that run in a dedicated browser window, "
-"providing a more app-like experience for your favorite websites."
-
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:63
-msgid "Benefits of using WebApps:"
-msgstr "Benefits of using WebApps:"
-
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:64
-msgid "Focus"
-msgstr "Focus"
-
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:64
-msgid "Work without the distractions of other browser tabs"
-msgstr "Work without the distractions of other browser tabs"
-
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:65
-msgid "Desktop Integration"
-msgstr "Desktop Integration"
-
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:65
-msgid "Quick access from your application menu"
-msgstr "Quick access from your application menu"
-
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:66
-msgid "Isolated Profiles"
-msgstr "Isolated Profiles"
-
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:66
-msgid "Each webapp can have its own cookies and settings"
-msgstr "Each webapp can have its own cookies and settings"
-
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:83
-msgid "Don't show this again"
-msgstr "Don't show this again"
-
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:95
+#: crates/webapps-manager/src/welcome_dialog.rs:29
 msgid "Let's Start"
 msgstr "Let's Start"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/import_export.rs:21
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:120
+#: crates/webapps-manager/src/welcome_dialog.rs:41
+#, fuzzy
+#| msgid ""
+#| "WebApps are web applications that run in a dedicated browser window, "
+#| "providing a more app-like experience for your favorite websites."
+msgid ""
+"WebApps run your favorite websites in their own dedicated window, for a "
+"focused, app-like experience."
+msgstr ""
+"WebApps are web applications that run in a dedicated browser window, "
+"providing a more app-like experience for your favorite websites."
+
+#: crates/webapps-manager/src/welcome_dialog.rs:54
+msgid "Benefits"
+msgstr ""
+
+#: crates/webapps-manager/src/welcome_dialog.rs:59
+msgid "Focus"
+msgstr "Focus"
+
+#: crates/webapps-manager/src/welcome_dialog.rs:60
+msgid "Work without the distractions of other browser tabs"
+msgstr "Work without the distractions of other browser tabs"
+
+#: crates/webapps-manager/src/welcome_dialog.rs:64
+msgid "Desktop Integration"
+msgstr "Desktop Integration"
+
+#: crates/webapps-manager/src/welcome_dialog.rs:65
+msgid "Quick access from your application menu"
+msgstr "Quick access from your application menu"
+
+#: crates/webapps-manager/src/welcome_dialog.rs:69
+msgid "Isolated Profiles"
+msgstr "Isolated Profiles"
+
+#: crates/webapps-manager/src/welcome_dialog.rs:70
+msgid "Each webapp can have its own cookies and settings"
+msgstr "Each webapp can have its own cookies and settings"
+
+#: crates/webapps-manager/src/welcome_dialog.rs:76
+msgid "Don't show this again"
+msgstr "Don't show this again"
+
+#: crates/webapps-manager/src/window/actions/import_export.rs:15
+#: crates/webapps-manager/src/window/ui.rs:98
 msgid "Import WebApps"
 msgstr "Import WebApps"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/import_export.rs:22
+#: crates/webapps-manager/src/window/actions/import_export.rs:16
 msgid "ZIP files"
 msgstr "ZIP files"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/import_export.rs:33
+#: crates/webapps-manager/src/window/actions/import_export.rs:27
 msgid "Import failed"
 msgstr "Import failed"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/import_export.rs:46
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:121
+#: crates/webapps-manager/src/window/actions/import_export.rs:40
+#: crates/webapps-manager/src/window/ui.rs:99
 msgid "Export WebApps"
 msgstr "Export WebApps"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/import_export.rs:57
+#: crates/webapps-manager/src/window/actions/import_export.rs:51
 msgid "Export failed"
 msgstr "Export failed"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/import_export.rs:66
+#: crates/webapps-manager/src/window/actions/import_export.rs:60
 msgid "Imported {imported}, skipped {dups} duplicates"
 msgstr "Imported {imported}, skipped {dups} duplicates"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/import_export.rs:73
+#: crates/webapps-manager/src/window/actions/import_export.rs:67
 msgid "No WebApps"
 msgstr "No WebApps"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/import_export.rs:75
+#: crates/webapps-manager/src/window/actions/import_export.rs:69
 msgid "WebApps exported successfully"
 msgstr "WebApps exported successfully"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_all.rs:24
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:136
+#: crates/webapps-manager/src/window/actions/remove_all.rs:24
+#: crates/webapps-manager/src/window/ui.rs:114
 msgid "Remove All WebApps"
 msgstr "Remove All WebApps"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_all.rs:25
+#: crates/webapps-manager/src/window/actions/remove_all.rs:25
 msgid ""
 "Are you sure you want to remove all your WebApps? This action cannot be "
 "undone."
@@ -294,64 +295,64 @@ msgstr ""
 "Are you sure you want to remove all your WebApps? This action cannot be "
 "undone."
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_all.rs:28
+#: crates/webapps-manager/src/window/actions/remove_all.rs:28
 msgid "Continue"
 msgstr "Continue"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_all.rs:45
+#: crates/webapps-manager/src/window/actions/remove_all.rs:45
 msgid "Final Confirmation"
 msgstr "Final Confirmation"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_all.rs:46
+#: crates/webapps-manager/src/window/actions/remove_all.rs:46
 msgid "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
 msgstr "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_all.rs:47
+#: crates/webapps-manager/src/window/actions/remove_all.rs:47
 msgid "No, Cancel"
 msgstr "No, Cancel"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_all.rs:49
+#: crates/webapps-manager/src/window/actions/remove_all.rs:49
 msgid "Yes, Remove All"
 msgstr "Yes, Remove All"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_all.rs:69
+#: crates/webapps-manager/src/window/actions/remove_all.rs:69
 msgid "All WebApps have been removed"
 msgstr "All WebApps have been removed"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_all.rs:74
+#: crates/webapps-manager/src/window/actions/remove_all.rs:74
 msgid "Failed to remove all WebApps"
 msgstr "Failed to remove all WebApps"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:33
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:33
 msgid "No WebApps to remove"
 msgstr "No WebApps to remove"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:38
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:38
 msgid "Remove WebApps"
 msgstr "Remove WebApps"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:48
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:48
 msgid "Select the WebApps you want to remove. This cannot be undone."
 msgstr "Select the WebApps you want to remove. This cannot be undone."
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:69
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:70
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:69
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:70
 msgid "Select all"
 msgstr "Select all"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:143
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:143
 msgid "Remove Selected"
 msgstr "Remove Selected"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:166
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:166
 msgid "Select at least one WebApp"
 msgstr "Select at least one WebApp"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:185
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:185
 msgid "Remove Selected WebApps?"
 msgstr "Remove Selected WebApps?"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:187
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:187
 msgid ""
 "This will remove {count} WebApps and their desktop entries. This cannot be "
 "undone."
@@ -359,252 +360,274 @@ msgstr ""
 "This will remove {count} WebApps and their desktop entries. This cannot be "
 "undone."
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:226
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:226
 msgid "{count} WebApps removed"
 msgstr "{count} WebApps removed"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:228
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:228
 msgid "{ok} removed, {fail} failed"
 msgstr "{ok} removed, {fail} failed"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:71
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/mod.rs:193
+#: crates/webapps-manager/src/window/component.rs:91
+msgid "Detecting installed browsers…"
+msgstr "Detecting installed browsers…"
+
+#: crates/webapps-manager/src/window/list.rs:87
+#: crates/webapps-manager/src/window/list.rs:117
 msgid "WebApp created successfully"
 msgstr "WebApp created successfully"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:88
+#: crates/webapps-manager/src/window/list.rs:135
 msgid "WebApp updated successfully"
 msgstr "WebApp updated successfully"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:124
+#: crates/webapps-manager/src/window/list.rs:171
 msgid "Browser changed"
 msgstr "Browser changed"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:128
+#: crates/webapps-manager/src/window/list.rs:175
 #, fuzzy
 msgid "Browser change failed"
 msgstr "Browser changed"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:138
+#: crates/webapps-manager/src/window/list.rs:185
 msgid "Remove WebApp?"
 msgstr "Remove WebApp?"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:150
+#: crates/webapps-manager/src/window/list.rs:197
 msgid "Also delete configuration folder"
 msgstr "Also delete configuration folder"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:170
+#: crates/webapps-manager/src/window/list.rs:217
 msgid "WebApp removed"
 msgstr "WebApp removed"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:173
+#: crates/webapps-manager/src/window/list.rs:220
 #, fuzzy
 msgid "Remove failed"
 msgstr "Remove Selected"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/shortcuts_window.rs:19
+#: crates/webapps-manager/src/window/shortcuts_window.rs:16
 msgid "General"
 msgstr "General"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/shortcuts_window.rs:22
+#: crates/webapps-manager/src/window/shortcuts_window.rs:19
 msgid "Search"
 msgstr "Search"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/shortcuts_window.rs:23
+#: crates/webapps-manager/src/window/shortcuts_window.rs:20
 msgid "Quit"
 msgstr "Quit"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/shortcuts_window.rs:24
+#: crates/webapps-manager/src/window/shortcuts_window.rs:21
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:38
 msgid "Show this dialog"
 msgstr "Show this dialog"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/shortcuts_window.rs:27
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/shortcuts_window.rs:33
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:140
+#: crates/webapps-manager/src/window/shortcuts_window.rs:24
+#: crates/webapps-manager/src/window/shortcuts_window.rs:30
+#: crates/webapps-manager/src/window/ui.rs:118
+#: crates/webapps-viewer/src/window/chrome.rs:100
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:43
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:51
 msgid "Keyboard Shortcuts"
 msgstr "Keyboard Shortcuts"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:44
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:45
+#: crates/webapps-manager/src/window/ui.rs:31
+#: crates/webapps-manager/src/window/ui.rs:32
 msgid "Search WebApps"
 msgstr "Search WebApps"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:48
+#: crates/webapps-manager/src/window/ui.rs:35
 msgid "Add"
 msgstr "Add"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:57
+#: crates/webapps-manager/src/window/ui.rs:42
+#: crates/webapps-manager/src/window/ui.rs:44
+#, fuzzy
+#| msgid "Choose a Template"
+msgid "Choose from templates"
+msgstr "Choose a Template"
+
+#: crates/webapps-manager/src/window/ui.rs:51
 msgid "Main Menu"
 msgstr "Main Menu"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:123
+#: crates/webapps-manager/src/window/ui.rs:101
 msgid "Browse Applications Folder"
 msgstr "Browse Applications Folder"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:127
+#: crates/webapps-manager/src/window/ui.rs:105
 msgid "Browse Profiles Folder"
 msgstr "Browse Profiles Folder"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:133
+#: crates/webapps-manager/src/window/ui.rs:111
 msgid "Remove WebApps in Bulk"
 msgstr "Remove WebApps in Bulk"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:141
+#: crates/webapps-manager/src/window/ui.rs:119
 msgid "About"
 msgstr "About"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/mod.rs:57
-msgid "Detecting installed browsers…"
-msgstr "Detecting installed browsers…"
-
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:24
+#: crates/webapps-viewer/src/window/chrome.rs:32
 msgid "Back"
 msgstr "Back"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:25
+#: crates/webapps-viewer/src/window/chrome.rs:33
 msgid "Forward"
 msgstr "Forward"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:26
+#: crates/webapps-viewer/src/window/chrome.rs:34
 msgid "Reload"
 msgstr "Reload"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:28
+#: crates/webapps-viewer/src/window/chrome.rs:36
 msgid "Fullscreen"
 msgstr "Fullscreen"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:42
+#: crates/webapps-viewer/src/window/chrome.rs:50
 msgid "Enter URL…"
 msgstr "Enter URL…"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:84
+#. Placeholder text is not an accessible name; label it explicitly.
+#: crates/webapps-viewer/src/window/chrome.rs:55
+msgid "Address"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/chrome.rs:92
 msgid "Zoom In"
 msgstr "Zoom In"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:85
+#: crates/webapps-viewer/src/window/chrome.rs:93
 msgid "Zoom Out"
 msgstr "Zoom Out"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:86
+#: crates/webapps-viewer/src/window/chrome.rs:94
 msgid "Reset Zoom"
 msgstr "Reset Zoom"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:88
+#: crates/webapps-viewer/src/window/chrome.rs:96
 msgid "Developer Tools"
 msgstr "Developer Tools"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:99
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:100
+#: crates/webapps-viewer/src/window/chrome.rs:107
+#: crates/webapps-viewer/src/window/chrome.rs:108
 msgid "Menu"
 msgstr "Menu"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/context_menu.rs:24
+#: crates/webapps-viewer/src/window/context_menu.rs:24
 msgid "Open Link in Browser"
 msgstr "Open Link in Browser"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/downloads/mod.rs:32
+#: crates/webapps-viewer/src/window/downloads/mod.rs:32
 msgid "Download Complete"
 msgstr "Download Complete"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/downloads/mod.rs:41
+#: crates/webapps-viewer/src/window/downloads/mod.rs:41
 msgid "Save File"
 msgstr "Save File"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:97
+#: crates/webapps-viewer/src/window/permissions/mod.rs:97
 msgid "Camera Access"
 msgstr "Camera Access"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:98
+#: crates/webapps-viewer/src/window/permissions/mod.rs:98
 msgid "This webapp wants to use your camera. Allow?"
 msgstr "This webapp wants to use your camera. Allow?"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:101
+#: crates/webapps-viewer/src/window/permissions/mod.rs:101
 msgid "Microphone Access"
 msgstr "Microphone Access"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:102
+#: crates/webapps-viewer/src/window/permissions/mod.rs:102
 msgid "This webapp wants to use your microphone. Allow?"
 msgstr "This webapp wants to use your microphone. Allow?"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:105
+#: crates/webapps-viewer/src/window/permissions/mod.rs:105
 msgid "Location Access"
 msgstr "Location Access"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:106
+#: crates/webapps-viewer/src/window/permissions/mod.rs:106
 msgid "This webapp wants to access your location. Allow?"
 msgstr "This webapp wants to access your location. Allow?"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:109
+#: crates/webapps-viewer/src/window/permissions/mod.rs:109
 msgid "Clipboard Access"
 msgstr "Clipboard Access"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:110
+#: crates/webapps-viewer/src/window/permissions/mod.rs:110
 msgid "This webapp wants to read from your clipboard. Allow?"
 msgstr "This webapp wants to read from your clipboard. Allow?"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:113
+#: crates/webapps-viewer/src/window/permissions/mod.rs:113
 msgid "Permission Request"
 msgstr "Permission Request"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:114
+#: crates/webapps-viewer/src/window/permissions/mod.rs:114
 msgid "This webapp is requesting a special permission. Allow?"
 msgstr "This webapp is requesting a special permission. Allow?"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:125
+#: crates/webapps-viewer/src/window/permissions/mod.rs:125
 msgid "Deny"
 msgstr "Deny"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:127
+#: crates/webapps-viewer/src/window/permissions/mod.rs:127
 msgid "Allow"
 msgstr "Allow"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:18
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:15
 msgid "Navigation"
 msgstr "Navigation"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:20
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:17
 msgid "Focus address bar"
 msgstr "Focus address bar"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:21
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:18
 msgid "Reload page"
 msgstr "Reload page"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:22
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:19
 msgid "Go back"
 msgstr "Go back"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:23
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:20
 msgid "Go forward"
 msgstr "Go forward"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:28
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:25
 msgid "View"
 msgstr "View"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:30
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:27
 msgid "Toggle fullscreen"
 msgstr "Toggle fullscreen"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:31
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:28
 msgid "Zoom in"
 msgstr "Zoom in"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:32
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:29
 msgid "Zoom out"
 msgstr "Zoom out"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:33
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:30
 msgid "Reset zoom"
 msgstr "Reset zoom"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:38
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:35
 msgid "Window"
 msgstr "Window"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:40
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:37
 msgid "Close window"
 msgstr "Close window"
+
+#~ msgid "What are WebApps?"
+#~ msgstr "What are WebApps?"
+
+#~ msgid "Benefits of using WebApps:"
+#~ msgstr "Benefits of using WebApps:"
 
 #~ msgid "This site requires DRM  the internal browser cannot be used"
 #~ msgstr "This site requires DRM  the internal browser cannot be used"

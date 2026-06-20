@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-24 08:44+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
+"POT-Creation-Date: 2026-06-20 11:56+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -18,15 +18,15 @@ msgstr ""
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/browser_dialog.rs:40
+#: crates/webapps-manager/src/browser_dialog.rs:40
 msgid "Select Browser"
 msgstr "ブラウザを選択してください"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/browser_dialog.rs:72
+#: crates/webapps-manager/src/browser_dialog.rs:72
 msgid "Auto-hide headerbar"
 msgstr "ヘッダーバーを自動的に隠す"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/browser_dialog.rs:74
+#: crates/webapps-manager/src/browser_dialog.rs:74
 msgid "Hide the titlebar; reveal it by moving the cursor to the top edge."
 msgstr "タイトルバーを隠します。カーソルを上端に移動すると再び表示されます。"
 
@@ -36,12 +36,12 @@ msgstr "タイトルバーを隠します。カーソルを上端に移動する
 #
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/browser_dialog.rs:150
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/shell.rs:43
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_all.rs:26
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:142
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:194
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:140
+#: crates/webapps-manager/src/browser_dialog.rs:150
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:43
+#: crates/webapps-manager/src/window/actions/remove_all.rs:26
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:142
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:194
+#: crates/webapps-manager/src/window/list.rs:187
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -55,19 +55,19 @@ msgstr "キャンセル"
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/browser_dialog.rs:151
+#: crates/webapps-manager/src/browser_dialog.rs:151
 msgid "OK"
 msgstr "OK"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/browser_dialog.rs:196
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:191
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:66
+#: crates/webapps-manager/src/browser_dialog.rs:196
+#: crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:191
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:66
 msgid "Internal Browser"
 msgstr "内蔵ブラウザー"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/browser_dialog.rs:197
+#: crates/webapps-manager/src/browser_dialog.rs:197
 msgid ""
 "Embedded browser with better system integration. May not work on all "
 "websites."
@@ -77,11 +77,11 @@ msgstr ""
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/relm4_window/empty.rs:19
+#: crates/webapps-manager/src/relm4_window/empty.rs:20
 msgid "No WebApps yet"
 msgstr "まだ WebApps がありません"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/relm4_window/empty.rs:21
+#: crates/webapps-manager/src/relm4_window/empty.rs:22
 msgid "Turn any website into a desktop app. Press Add to get started."
 msgstr ""
 "あらゆる Web サイトをデスクトップアプリに変換します。開始するには「追加」を押"
@@ -95,92 +95,94 @@ msgstr ""
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 109
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/relm4_window/empty.rs:23
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:49
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:50
+#: crates/webapps-manager/src/relm4_window/empty.rs:24
+#: crates/webapps-manager/src/window/ui.rs:36
+#: crates/webapps-manager/src/window/ui.rs:37
 msgid "Add WebApp"
 msgstr "WebAppを追加"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/relm4_window/list.rs:151
+#: crates/webapps-manager/src/relm4_window/list.rs:151
 msgid "{} results"
 msgstr "{} 件の結果"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/relm4_window/row.rs:117
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_row.rs:92
+#: crates/webapps-manager/src/relm4_window/row.rs:120
 msgid "Change browser"
 msgstr "ブラウザを変更"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/relm4_window/row.rs:128
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_row.rs:102
+#: crates/webapps-manager/src/relm4_window/row.rs:131
 msgid "Edit"
 msgstr "編集"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/relm4_window/row.rs:139
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_row.rs:112
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:196
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:142
+#: crates/webapps-manager/src/relm4_window/row.rs:142
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:196
+#: crates/webapps-manager/src/window/list.rs:189
 msgid "Remove"
 msgstr "削除"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/relm4_window/shell_spec.rs:20
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/about.rs:15
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:32
+#: crates/webapps-manager/src/relm4_window/shell_spec.rs:21
+#: crates/webapps-manager/src/window/actions/about.rs:15
 msgid "WebApps Manager"
 msgstr "Webアプリ管理者"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 50
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:35
+#: crates/webapps-manager/src/template_gallery.rs:34
 msgid "Choose a Template"
 msgstr "テンプレートを選択してください。"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 56
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:42
+#: crates/webapps-manager/src/template_gallery.rs:41
 msgid "Search templates..."
 msgstr "テンプレートを検索中..."
 
 # File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 63
+#: crates/webapps-manager/src/template_gallery.rs:44
+msgid "Search templates"
+msgstr "テンプレートを検索"
+
+# File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 96
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:107
+#: crates/webapps-manager/src/template_gallery.rs:109
 msgid "No templates found"
 msgstr "テンプレートが見つかりませんでした。"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 94
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:115
+#: crates/webapps-manager/src/template_gallery.rs:117
 msgid "Search Results"
 msgstr "検索結果"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/template_gallery.rs:154
+#: crates/webapps-manager/src/template_gallery.rs:189
 msgid "Requires external browser (DRM)"
 msgstr "外部ブラウザーが必要です (DRM)"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 445
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/handlers/lifecycle.rs:100
+#: crates/webapps-manager/src/webapp_dialog/handlers/lifecycle.rs:101
 msgid "Failed to save webapp"
 msgstr "WebApp を保存できませんでした"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/handlers/media.rs:49
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:49
 msgid "Icon candidate {n}"
 msgstr "アイコン候補 {n}"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/handlers/media.rs:91
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:91
 msgid "Select Icon"
 msgstr "アイコンを選択"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/handlers/media.rs:93
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:93
 msgid "Images"
 msgstr "画像"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 290
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:20
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:20
 msgid "Application Icon"
 msgstr "アプリケーションアイコン"
 
@@ -192,24 +194,24 @@ msgstr "アプリケーションアイコン"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 179
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 240
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:26
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:32
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:26
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:32
 msgid "Select"
 msgstr "選択"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:38
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:38
 msgid "Detected icon candidates"
 msgstr "検出されたアイコン候補"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 221
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:43
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:43
 msgid "Category"
 msgstr "カテゴリ"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 226
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:24
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:24
 msgid "Browser"
 msgstr "ブラウザ"
 
@@ -219,37 +221,37 @@ msgstr "ブラウザ"
 #
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:76
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:76
 msgid "Use separate profile"
 msgstr "別のプロファイルを使用する"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 345
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:78
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:78
 msgid "Allows independent cookies and sessions for this webapp"
 msgstr "この WebApp で独立した Cookie とセッションを使用できます"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:87
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:87
 msgid "Profile Name"
 msgstr "プロフィール名"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 152
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:17
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:17
 msgid "URL"
 msgstr "URL"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 156
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:20
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:20
 msgid "Detect"
 msgstr "検出"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 157
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:23
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:23
 msgid "Detect name and icon from website"
 msgstr "ウェブサイトから名前とアイコンを検出する"
 
@@ -257,12 +259,12 @@ msgstr "ウェブサイトから名前とアイコンを検出する"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 166
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 480
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:29
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:29
 msgid "Name"
 msgstr "名前"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/shell.rs:23
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/shortcuts_window.rs:21
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:23
+#: crates/webapps-manager/src/window/shortcuts_window.rs:18
 msgid "New WebApp"
 msgstr "新しい WebApp"
 
@@ -274,7 +276,7 @@ msgstr "新しい WebApp"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 46
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/shell.rs:25
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:25
 msgid "Edit WebApp"
 msgstr "ウェブアプリを編集する"
 
@@ -284,13 +286,13 @@ msgstr "ウェブアプリを編集する"
 #
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/shell.rs:44
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:44
 msgid "Save"
 msgstr "保存"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 336
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/webapp_dialog/ui/shell.rs:59
+#: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:59
 msgid "Loading…"
 msgstr "読み込み中…"
 
@@ -298,102 +300,101 @@ msgstr "読み込み中…"
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:21
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:48
+#: crates/webapps-manager/src/welcome_dialog.rs:28
 msgid "Welcome to WebApps Manager"
 msgstr "WebAppsマネージャーへようこそ"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:61
-msgid "What are WebApps?"
-msgstr "WebAppsとは何ですか？"
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
+#: crates/webapps-manager/src/welcome_dialog.rs:29
+msgid "Let's Start"
+msgstr "始めましょう"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:62
+#: crates/webapps-manager/src/welcome_dialog.rs:41
+#, fuzzy
+#| msgid ""
+#| "WebApps are web applications that run in a dedicated browser window, "
+#| "providing a more app-like experience for your favorite websites."
 msgid ""
-"WebApps are web applications that run in a dedicated browser window, "
-"providing a more app-like experience for your favorite websites."
+"WebApps run your favorite websites in their own dedicated window, for a "
+"focused, app-like experience."
 msgstr ""
 "WebAppsは専用のブラウザウィンドウで動作するウェブアプリケーションで、お気に入"
 "りのウェブサイトをよりアプリのように利用できます。"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:63
-msgid "Benefits of using WebApps:"
-msgstr "WebAppsを使うメリット："
+#: crates/webapps-manager/src/welcome_dialog.rs:54
+msgid "Benefits"
+msgstr ""
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:64
+#: crates/webapps-manager/src/welcome_dialog.rs:59
 msgid "Focus"
 msgstr "集中"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:64
+#: crates/webapps-manager/src/welcome_dialog.rs:60
 msgid "Work without the distractions of other browser tabs"
 msgstr "他のブラウザタブの邪魔を受けずに作業できます"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:65
+#: crates/webapps-manager/src/welcome_dialog.rs:64
 msgid "Desktop Integration"
 msgstr "デスクトップ統合"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:65
+#: crates/webapps-manager/src/welcome_dialog.rs:65
 msgid "Quick access from your application menu"
 msgstr "アプリケーションメニューからすばやくアクセス"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:66
+#: crates/webapps-manager/src/welcome_dialog.rs:69
 msgid "Isolated Profiles"
 msgstr "分離されたプロファイル"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:66
+#: crates/webapps-manager/src/welcome_dialog.rs:70
 msgid "Each webapp can have its own cookies and settings"
 msgstr "各WebAppは独自のクッキーと設定を持てます"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:83
+#: crates/webapps-manager/src/welcome_dialog.rs:76
 msgid "Don't show this again"
 msgstr "これを再表示しない"
 
 # File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/welcome_dialog.rs:95
-msgid "Let's Start"
-msgstr "始めましょう"
-
-# File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 62
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/import_export.rs:21
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:120
+#: crates/webapps-manager/src/window/actions/import_export.rs:15
+#: crates/webapps-manager/src/window/ui.rs:98
 msgid "Import WebApps"
 msgstr "ウェブアプリをインポート"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/import_export.rs:22
+#: crates/webapps-manager/src/window/actions/import_export.rs:16
 msgid "ZIP files"
 msgstr "ZIPファイル"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/import_export.rs:33
+#: crates/webapps-manager/src/window/actions/import_export.rs:27
 msgid "Import failed"
 msgstr "インポートに失敗しました"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 61
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/import_export.rs:46
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:121
+#: crates/webapps-manager/src/window/actions/import_export.rs:40
+#: crates/webapps-manager/src/window/ui.rs:99
 msgid "Export WebApps"
 msgstr "Webアプリをエクスポート"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/import_export.rs:57
+#: crates/webapps-manager/src/window/actions/import_export.rs:51
 msgid "Export failed"
 msgstr "エクスポートに失敗しました"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/import_export.rs:66
+#: crates/webapps-manager/src/window/actions/import_export.rs:60
 msgid "Imported {imported}, skipped {dups} duplicates"
 msgstr "インポート済み {imported}、重複 {dups} はスキップされました"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/import_export.rs:73
+#: crates/webapps-manager/src/window/actions/import_export.rs:67
 msgid "No WebApps"
 msgstr "ウェブアプリはありません"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 166
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/import_export.rs:75
+#: crates/webapps-manager/src/window/actions/import_export.rs:69
 msgid "WebApps exported successfully"
 msgstr "WebAppsが正常にエクスポートされました"
 
@@ -401,29 +402,29 @@ msgstr "WebAppsが正常にエクスポートされました"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_all.rs:24
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:136
+#: crates/webapps-manager/src/window/actions/remove_all.rs:24
+#: crates/webapps-manager/src/window/ui.rs:114
 msgid "Remove All WebApps"
 msgstr "すべてのWebアプリを削除"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 346
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_all.rs:25
+#: crates/webapps-manager/src/window/actions/remove_all.rs:25
 msgid ""
 "Are you sure you want to remove all your WebApps? This action cannot be "
 "undone."
 msgstr ""
 "すべての WebApps を削除してもよろしいですか？この操作は元に戻せません。"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_all.rs:28
+#: crates/webapps-manager/src/window/actions/remove_all.rs:28
 msgid "Continue"
 msgstr "続行"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_all.rs:45
+#: crates/webapps-manager/src/window/actions/remove_all.rs:45
 msgid "Final Confirmation"
 msgstr "最終確認"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_all.rs:46
+#: crates/webapps-manager/src/window/actions/remove_all.rs:46
 msgid "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
 msgstr "本当にすべての WebApps を削除してよろしいですか？"
 
@@ -433,31 +434,31 @@ msgstr "本当にすべての WebApps を削除してよろしいですか？"
 #
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_all.rs:47
+#: crates/webapps-manager/src/window/actions/remove_all.rs:47
 msgid "No, Cancel"
 msgstr "いいえ、キャンセル"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_all.rs:49
+#: crates/webapps-manager/src/window/actions/remove_all.rs:49
 msgid "Yes, Remove All"
 msgstr "はい、すべて削除"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_all.rs:69
+#: crates/webapps-manager/src/window/actions/remove_all.rs:69
 msgid "All WebApps have been removed"
 msgstr "すべてのWebアプリが削除されました。"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 445
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_all.rs:74
+#: crates/webapps-manager/src/window/actions/remove_all.rs:74
 msgid "Failed to remove all WebApps"
 msgstr "すべてのWebアプリを削除できませんでした。"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:33
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:33
 msgid "No WebApps to remove"
 msgstr "削除する WebApps がありません"
 
@@ -465,11 +466,11 @@ msgstr "削除する WebApps がありません"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:38
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:38
 msgid "Remove WebApps"
 msgstr "WebApps を削除"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:48
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:48
 msgid "Select the WebApps you want to remove. This cannot be undone."
 msgstr "削除したい WebApps を選択してください。この操作は元に戻せません。"
 
@@ -481,20 +482,20 @@ msgstr "削除したい WebApps を選択してください。この操作は元
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 179
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 240
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:69
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:70
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:69
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:70
 msgid "Select all"
 msgstr "すべて選択"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:143
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:143
 msgid "Remove Selected"
 msgstr "選択項目を削除"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:166
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:166
 msgid "Select at least one WebApp"
 msgstr "少なくとも 1 つの WebApp を選択してください"
 
@@ -502,11 +503,11 @@ msgstr "少なくとも 1 つの WebApp を選択してください"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:185
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:185
 msgid "Remove Selected WebApps?"
 msgstr "選択した WebApps を削除しますか？"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:187
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:187
 msgid ""
 "This will remove {count} WebApps and their desktop entries. This cannot be "
 "undone."
@@ -516,32 +517,36 @@ msgstr ""
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:226
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:226
 msgid "{count} WebApps removed"
 msgstr "{count} 件の WebApps を削除しました"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/actions/remove_multiple.rs:228
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:228
 msgid "{ok} removed, {fail} failed"
 msgstr "{ok} 件を削除、{fail} 件が失敗"
 
+#: crates/webapps-manager/src/window/component.rs:91
+msgid "Detecting installed browsers…"
+msgstr "インストールされているブラウザーを検出しています…"
+
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 214
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:71
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/mod.rs:193
+#: crates/webapps-manager/src/window/list.rs:87
+#: crates/webapps-manager/src/window/list.rs:117
 msgid "WebApp created successfully"
 msgstr "WebAppが正常に作成されました"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 257
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:88
+#: crates/webapps-manager/src/window/list.rs:135
 msgid "WebApp updated successfully"
 msgstr "WebAppが正常に更新されました"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:124
+#: crates/webapps-manager/src/window/list.rs:171
 msgid "Browser changed"
 msgstr "ブラウザが変更されました"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:128
+#: crates/webapps-manager/src/window/list.rs:175
 #, fuzzy
 msgid "Browser change failed"
 msgstr "ブラウザが変更されました"
@@ -550,7 +555,7 @@ msgstr "ブラウザが変更されました"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:138
+#: crates/webapps-manager/src/window/list.rs:185
 msgid "Remove WebApp?"
 msgstr "WebApp を削除しますか？"
 
@@ -560,75 +565,86 @@ msgstr "WebApp を削除しますか？"
 #
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:150
+#: crates/webapps-manager/src/window/list.rs:197
 msgid "Also delete configuration folder"
 msgstr "構成フォルダーも削除してください。"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:170
+#: crates/webapps-manager/src/window/list.rs:217
 msgid "WebApp removed"
 msgstr "WebApp を削除しました"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/list.rs:173
+#: crates/webapps-manager/src/window/list.rs:220
 #, fuzzy
 msgid "Remove failed"
 msgstr "選択項目を削除"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/shortcuts_window.rs:19
+#: crates/webapps-manager/src/window/shortcuts_window.rs:16
 msgid "General"
 msgstr "一般"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 94
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/shortcuts_window.rs:22
+#: crates/webapps-manager/src/window/shortcuts_window.rs:19
 msgid "Search"
 msgstr "検索"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/shortcuts_window.rs:23
+#: crates/webapps-manager/src/window/shortcuts_window.rs:20
 msgid "Quit"
 msgstr "終了"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/shortcuts_window.rs:24
+#: crates/webapps-manager/src/window/shortcuts_window.rs:21
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:38
 msgid "Show this dialog"
 msgstr "このダイアログを表示"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/shortcuts_window.rs:27
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/shortcuts_window.rs:33
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:140
+#: crates/webapps-manager/src/window/shortcuts_window.rs:24
+#: crates/webapps-manager/src/window/shortcuts_window.rs:30
+#: crates/webapps-manager/src/window/ui.rs:118
+#: crates/webapps-viewer/src/window/chrome.rs:100
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:43
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:51
 msgid "Keyboard Shortcuts"
 msgstr "キーボードショートカット"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 51
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:44
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:45
+#: crates/webapps-manager/src/window/ui.rs:31
+#: crates/webapps-manager/src/window/ui.rs:32
 msgid "Search WebApps"
 msgstr "ウェブアプリを検索"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 72
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:48
+#: crates/webapps-manager/src/window/ui.rs:35
 msgid "Add"
 msgstr "追加"
 
 # File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 167
+#: crates/webapps-manager/src/window/ui.rs:42
+#: crates/webapps-manager/src/window/ui.rs:44
+msgid "Choose from templates"
+msgstr "テンプレートから選択してください"
+
+# File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 79
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:57
+#: crates/webapps-manager/src/window/ui.rs:51
 msgid "Main Menu"
 msgstr "メインメニュー"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 65
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:123
+#: crates/webapps-manager/src/window/ui.rs:101
 msgid "Browse Applications Folder"
 msgstr "アプリケーションフォルダーをブラウズ"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 66
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:127
+#: crates/webapps-manager/src/window/ui.rs:105
 msgid "Browse Profiles Folder"
 msgstr "プロファイルフォルダーを参照"
 
@@ -636,168 +652,175 @@ msgstr "プロファイルフォルダーを参照"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:133
+#: crates/webapps-manager/src/window/ui.rs:111
 msgid "Remove WebApps in Bulk"
 msgstr "WebApps を一括削除"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/ui.rs:141
+#: crates/webapps-manager/src/window/ui.rs:119
 msgid "About"
 msgstr "情報について"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-manager/src/window/mod.rs:57
-msgid "Detecting installed browsers…"
-msgstr "インストールされているブラウザーを検出しています…"
-
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:24
+#: crates/webapps-viewer/src/window/chrome.rs:32
 msgid "Back"
 msgstr "戻る"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:25
+#: crates/webapps-viewer/src/window/chrome.rs:33
 msgid "Forward"
 msgstr "進む"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:26
+#: crates/webapps-viewer/src/window/chrome.rs:34
 msgid "Reload"
 msgstr "再読み込み"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:28
+#: crates/webapps-viewer/src/window/chrome.rs:36
 msgid "Fullscreen"
 msgstr "全画面"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:42
+#: crates/webapps-viewer/src/window/chrome.rs:50
 msgid "Enter URL…"
 msgstr "URLを入力…"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:84
+#. Placeholder text is not an accessible name; label it explicitly.
+#: crates/webapps-viewer/src/window/chrome.rs:55
+msgid "Address"
+msgstr ""
+
+#: crates/webapps-viewer/src/window/chrome.rs:92
 msgid "Zoom In"
 msgstr "拡大"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:85
+#: crates/webapps-viewer/src/window/chrome.rs:93
 msgid "Zoom Out"
 msgstr "縮小"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:86
+#: crates/webapps-viewer/src/window/chrome.rs:94
 msgid "Reset Zoom"
 msgstr "ズームをリセット"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:88
+#: crates/webapps-viewer/src/window/chrome.rs:96
 msgid "Developer Tools"
 msgstr "開発者ツール"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:99
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/chrome.rs:100
+#: crates/webapps-viewer/src/window/chrome.rs:107
+#: crates/webapps-viewer/src/window/chrome.rs:108
 msgid "Menu"
 msgstr "メニュー"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/context_menu.rs:24
+#: crates/webapps-viewer/src/window/context_menu.rs:24
 msgid "Open Link in Browser"
 msgstr "ブラウザでリンクを開く"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/downloads/mod.rs:32
+#: crates/webapps-viewer/src/window/downloads/mod.rs:32
 msgid "Download Complete"
 msgstr "ダウンロード完了"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/downloads/mod.rs:41
+#: crates/webapps-viewer/src/window/downloads/mod.rs:41
 msgid "Save File"
 msgstr "ファイルを保存"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:97
+#: crates/webapps-viewer/src/window/permissions/mod.rs:97
 msgid "Camera Access"
 msgstr "カメラへのアクセス"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:98
+#: crates/webapps-viewer/src/window/permissions/mod.rs:98
 msgid "This webapp wants to use your camera. Allow?"
 msgstr "この WebApp はカメラを使用しようとしています。許可しますか？"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:101
+#: crates/webapps-viewer/src/window/permissions/mod.rs:101
 msgid "Microphone Access"
 msgstr "マイクへのアクセス"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:102
+#: crates/webapps-viewer/src/window/permissions/mod.rs:102
 msgid "This webapp wants to use your microphone. Allow?"
 msgstr "この WebApp はマイクを使用しようとしています。許可しますか？"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:105
+#: crates/webapps-viewer/src/window/permissions/mod.rs:105
 msgid "Location Access"
 msgstr "位置情報へのアクセス"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:106
+#: crates/webapps-viewer/src/window/permissions/mod.rs:106
 msgid "This webapp wants to access your location. Allow?"
 msgstr "この WebApp は位置情報にアクセスしようとしています。許可しますか？"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:109
+#: crates/webapps-viewer/src/window/permissions/mod.rs:109
 msgid "Clipboard Access"
 msgstr "クリップボードへのアクセス"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:110
+#: crates/webapps-viewer/src/window/permissions/mod.rs:110
 msgid "This webapp wants to read from your clipboard. Allow?"
 msgstr "この WebApp はクリップボードを読み取ろうとしています。許可しますか？"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:113
+#: crates/webapps-viewer/src/window/permissions/mod.rs:113
 msgid "Permission Request"
 msgstr "権限の要求"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:114
+#: crates/webapps-viewer/src/window/permissions/mod.rs:114
 msgid "This webapp is requesting a special permission. Allow?"
 msgstr "この WebApp は特別な権限を要求しています。許可しますか？"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:125
+#: crates/webapps-viewer/src/window/permissions/mod.rs:125
 msgid "Deny"
 msgstr "拒否"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/permissions/mod.rs:127
+#: crates/webapps-viewer/src/window/permissions/mod.rs:127
 msgid "Allow"
 msgstr "許可"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:18
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:15
 msgid "Navigation"
 msgstr "ナビゲーション"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:20
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:17
 msgid "Focus address bar"
 msgstr "アドレスバーにフォーカス"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:21
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:18
 msgid "Reload page"
 msgstr "ページを再読み込み"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:22
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:19
 msgid "Go back"
 msgstr "戻る"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:23
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:20
 msgid "Go forward"
 msgstr "進む"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:28
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:25
 msgid "View"
 msgstr "表示"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:30
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:27
 msgid "Toggle fullscreen"
 msgstr "全画面表示を切り替え"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:31
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:28
 msgid "Zoom in"
 msgstr "拡大"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:32
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:29
 msgid "Zoom out"
 msgstr "縮小"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:33
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:30
 msgid "Reset zoom"
 msgstr "ズームをリセット"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:38
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:35
 msgid "Window"
 msgstr "ウィンドウ"
 
-#: /home/bruno/note/codigo-pacotes/biglinux-webapps/crates/webapps-viewer/src/window/shortcuts_window.rs:40
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:37
 msgid "Close window"
 msgstr "ウィンドウを閉じる"
+
+#~ msgid "What are WebApps?"
+#~ msgstr "WebAppsとは何ですか？"
+
+#~ msgid "Benefits of using WebApps:"
+#~ msgstr "WebAppsを使うメリット："
 
 #~ msgid "This site requires DRM — the internal browser cannot be used"
 #~ msgstr "このサイトは DRM を必要とするため、内蔵ブラウザーは使用できません"
@@ -840,11 +863,6 @@ msgstr "ウィンドウを閉じる"
 #~ msgid "Templates"
 #~ msgstr "テンプレート"
 
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 167
-#~ msgid "Choose from templates"
-#~ msgstr "テンプレートから選択してください"
-
 #~ msgid "Internal browser"
 #~ msgstr "内蔵ブラウザー"
 
@@ -873,11 +891,6 @@ msgstr "ウィンドウを閉じる"
 
 #~ msgid "App Mode"
 #~ msgstr "アプリモード"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 63
-#~ msgid "Search templates"
-#~ msgstr "テンプレートを検索"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 91
