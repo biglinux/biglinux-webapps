@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps 4.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
-"POT-Creation-Date: 2026-06-20 11:56+0000\n"
+"POT-Creation-Date: 2026-06-20 19:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,20 +29,24 @@ msgstr ""
 msgid "Hide the titlebar; reveal it by moving the cursor to the top edge."
 msgstr ""
 
-#: crates/webapps-manager/src/browser_dialog.rs:150 crates/webapps-manager/src/webapp_dialog/ui/shell.rs:43 crates/webapps-manager/src/window/actions/remove_all.rs:26 crates/webapps-manager/src/window/actions/remove_multiple.rs:142 crates/webapps-manager/src/window/actions/remove_multiple.rs:194 crates/webapps-manager/src/window/list.rs:187
+#: crates/webapps-manager/src/browser_dialog.rs:152 crates/webapps-manager/src/webapp_dialog/ui/shell.rs:43 crates/webapps-manager/src/window/actions/remove_all.rs:26 crates/webapps-manager/src/window/actions/remove_multiple.rs:142 crates/webapps-manager/src/window/actions/remove_multiple.rs:194 crates/webapps-manager/src/window/list.rs:187
 msgid "Cancel"
 msgstr ""
 
-#: crates/webapps-manager/src/browser_dialog.rs:151
+#: crates/webapps-manager/src/browser_dialog.rs:153
 msgid "OK"
 msgstr ""
 
-#: crates/webapps-manager/src/browser_dialog.rs:196 crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:191 crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:66
-msgid "Internal Browser"
+#: crates/webapps-manager/src/browser_dialog.rs:205
+msgid "Embedded browser with better system integration. May not work on all websites."
 msgstr ""
 
-#: crates/webapps-manager/src/browser_dialog.rs:197
-msgid "Embedded browser with better system integration. May not work on all websites."
+#: crates/webapps-manager/src/browser_dialog.rs:207
+msgid "Unavailable: this site requires DRM, which the internal browser does not support."
+msgstr ""
+
+#: crates/webapps-manager/src/browser_dialog.rs:209 crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:191 crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:66
+msgid "Internal Browser"
 msgstr ""
 
 #: crates/webapps-manager/src/relm4_window/empty.rs:20

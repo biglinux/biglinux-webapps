@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
-"POT-Creation-Date: 2026-06-20 11:56+0000\n"
+"POT-Creation-Date: 2026-06-20 19:19+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -38,7 +38,7 @@ msgstr ""
 #
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
-#: crates/webapps-manager/src/browser_dialog.rs:150
+#: crates/webapps-manager/src/browser_dialog.rs:152
 #: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:43
 #: crates/webapps-manager/src/window/actions/remove_all.rs:26
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:142
@@ -57,25 +57,33 @@ msgstr "Отмена"
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
-#: crates/webapps-manager/src/browser_dialog.rs:151
+#: crates/webapps-manager/src/browser_dialog.rs:153
 msgid "OK"
 msgstr "ОК"
 
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
-#: crates/webapps-manager/src/browser_dialog.rs:196
-#: crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:191
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:66
-msgid "Internal Browser"
-msgstr "Встроенный браузер"
-
-#: crates/webapps-manager/src/browser_dialog.rs:197
+#: crates/webapps-manager/src/browser_dialog.rs:205
 msgid ""
 "Embedded browser with better system integration. May not work on all "
 "websites."
 msgstr ""
 "Встроенный браузер с лучшей интеграцией с системой. Может работать не на "
 "всех сайтах."
+
+#: crates/webapps-manager/src/browser_dialog.rs:207
+#, fuzzy
+#| msgid "This site requires DRM — the internal browser cannot be used"
+msgid ""
+"Unavailable: this site requires DRM, which the internal browser does not "
+"support."
+msgstr "Этот сайт требует DRM — внутренний браузер нельзя использовать"
+
+# File: biglinux-webapps/biglinux-
+# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
+#: crates/webapps-manager/src/browser_dialog.rs:209
+#: crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:191
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:66
+msgid "Internal Browser"
+msgstr "Встроенный браузер"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
@@ -826,9 +834,6 @@ msgstr "Закрыть окно"
 
 #~ msgid "Benefits of using WebApps:"
 #~ msgstr "Преимущества использования WebApps:"
-
-#~ msgid "This site requires DRM — the internal browser cannot be used"
-#~ msgstr "Этот сайт требует DRM — внутренний браузер нельзя использовать"
 
 #~ msgid "Advanced Settings…"
 #~ msgstr "Расширенные настройки…"

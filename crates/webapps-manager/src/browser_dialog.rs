@@ -85,15 +85,17 @@ pub fn show(
         });
     }
 
-    if allow_viewer {
-        append_viewer_row(
-            &listbox,
-            &selected_id,
-            &check_group,
-            &viewer_options,
-            current_id,
-        );
-    }
+    // Always show the internal browser; when the site needs DRM the row is
+    // rendered disabled with an explanation instead of being silently omitted,
+    // so the user can see the option exists and why it is unavailable.
+    append_viewer_row(
+        &listbox,
+        &selected_id,
+        &check_group,
+        &viewer_options,
+        current_id,
+        allow_viewer,
+    );
 
     for browser in &browsers.browsers {
         let row = BigInfoRow::new(BigInfoRowSpec::new(browser.display_name())).into_root();
@@ -185,20 +187,29 @@ pub fn show(
     dialog.present(Some(parent));
 }
 
+/// Append the "Internal Browser" choice.
+///
+/// `enabled` is false for DRM sites: the row is shown but rendered insensitive
+/// with an explanatory subtitle (the WebKit viewer ships no Widevine, so DRM
+/// content cannot play there). Showing it disabled — rather than omitting it —
+/// tells the user the option exists and why it is unavailable.
 fn append_viewer_row(
     listbox: &gtk::ListBox,
     selected: &Rc<RefCell<String>>,
     check_group: &Rc<RefCell<Vec<gtk::CheckButton>>>,
     viewer_options: &adw::PreferencesGroup,
     current_id: &str,
+    enabled: bool,
 ) {
-    let row = BigInfoRow::new(
-        BigInfoRowSpec::new(gettext("Internal Browser")).subtitle(gettext(
-            "Embedded browser with better system integration. May not work on all websites.",
-        )),
-    )
-    .into_root();
-    row.set_activatable(true);
+    let subtitle = if enabled {
+        gettext("Embedded browser with better system integration. May not work on all websites.")
+    } else {
+        gettext("Unavailable: this site requires DRM, which the internal browser does not support.")
+    };
+    let row = BigInfoRow::new(BigInfoRowSpec::new(gettext("Internal Browser")).subtitle(subtitle))
+        .into_root();
+    row.set_activatable(enabled);
+    row.set_sensitive(enabled);
 
     let icon = gtk::Image::new();
     icon.set_pixel_size(32);
@@ -207,21 +218,24 @@ fn append_viewer_row(
     row.add_prefix(&icon);
 
     let check = gtk::CheckButton::new();
-    if current_id == BrowserId::VIEWER {
+    check.set_sensitive(enabled);
+    if enabled && current_id == BrowserId::VIEWER {
         check.set_active(true);
     }
     check_group.borrow_mut().push(check.clone());
 
-    let sel = selected.clone();
-    let viewer_options = viewer_options.clone();
-    check.connect_toggled(move |btn| {
-        if btn.is_active() {
-            *sel.borrow_mut() = BrowserId::VIEWER.to_string();
-            viewer_options.set_visible(true);
-        }
-    });
+    if enabled {
+        let sel = selected.clone();
+        let viewer_options = viewer_options.clone();
+        check.connect_toggled(move |btn| {
+            if btn.is_active() {
+                *sel.borrow_mut() = BrowserId::VIEWER.to_string();
+                viewer_options.set_visible(true);
+            }
+        });
+        row.set_activatable_widget(Some(&check));
+    }
 
     row.add_suffix(&check);
-    row.set_activatable_widget(Some(&check));
     listbox.append(&row);
 }

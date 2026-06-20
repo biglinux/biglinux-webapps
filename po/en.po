@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
-"POT-Creation-Date: 2026-06-20 11:56+0000\n"
+"POT-Creation-Date: 2026-06-20 19:19+0000\n"
 "PO-Revision-Date: 2026-04-23 00:00+0000\n"
 "Last-Translator: Codex <noreply@openai.com>\n"
 "Language-Team: English\n"
@@ -24,7 +24,7 @@ msgstr "Auto-hide headerbar"
 msgid "Hide the titlebar; reveal it by moving the cursor to the top edge."
 msgstr "Hide the titlebar; reveal it by moving the cursor to the top edge."
 
-#: crates/webapps-manager/src/browser_dialog.rs:150
+#: crates/webapps-manager/src/browser_dialog.rs:152
 #: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:43
 #: crates/webapps-manager/src/window/actions/remove_all.rs:26
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:142
@@ -33,23 +33,31 @@ msgstr "Hide the titlebar; reveal it by moving the cursor to the top edge."
 msgid "Cancel"
 msgstr "Cancel"
 
-#: crates/webapps-manager/src/browser_dialog.rs:151
+#: crates/webapps-manager/src/browser_dialog.rs:153
 msgid "OK"
 msgstr "OK"
 
-#: crates/webapps-manager/src/browser_dialog.rs:196
-#: crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:191
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:66
-msgid "Internal Browser"
-msgstr "Internal Browser"
-
-#: crates/webapps-manager/src/browser_dialog.rs:197
+#: crates/webapps-manager/src/browser_dialog.rs:205
 msgid ""
 "Embedded browser with better system integration. May not work on all "
 "websites."
 msgstr ""
 "Embedded browser with better system integration. May not work on all "
 "websites."
+
+#: crates/webapps-manager/src/browser_dialog.rs:207
+#, fuzzy
+#| msgid "This site requires DRM  the internal browser cannot be used"
+msgid ""
+"Unavailable: this site requires DRM, which the internal browser does not "
+"support."
+msgstr "This site requires DRM  the internal browser cannot be used"
+
+#: crates/webapps-manager/src/browser_dialog.rs:209
+#: crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:191
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:66
+msgid "Internal Browser"
+msgstr "Internal Browser"
 
 #: crates/webapps-manager/src/relm4_window/empty.rs:20
 msgid "No WebApps yet"
@@ -628,9 +636,6 @@ msgstr "Close window"
 
 #~ msgid "Benefits of using WebApps:"
 #~ msgstr "Benefits of using WebApps:"
-
-#~ msgid "This site requires DRM  the internal browser cannot be used"
-#~ msgstr "This site requires DRM  the internal browser cannot be used"
 
 #~ msgid "Advanced Settings"
 #~ msgstr "Advanced Settings"
