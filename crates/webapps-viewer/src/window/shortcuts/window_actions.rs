@@ -1,12 +1,13 @@
 use std::cell::Cell;
 use std::rc::Rc;
 
-use big_app_kit::desktop;
 use glib::clone;
 use gtk4 as gtk;
 use libadwaita as adw;
 use webkit6 as webkit;
 use webkit6::prelude::*;
+
+use crate::platform::desktop;
 
 pub(super) fn register_fullscreen_actions(
     window: &adw::ApplicationWindow,

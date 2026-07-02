@@ -25,5 +25,3 @@ clap.workspace = true
 gettextrs.workspace = true
 url.workspace = true
 relm4 = { version = "0.11", features = ["libadwaita"] }
-big-relm4-components = { path = "../../../big-rust-components/crates/big-relm4-components" }
-big-app-kit = { path = "../../../big-rust-components/crates/big-app-kit", default-features = false }

@@ -1,9 +1,10 @@
 use anyhow::{Context, Result};
-use big_os_kit::http_client::{http_get_bytes_capped, RequestHeaders};
 use std::io::Write;
 use std::path::PathBuf;
 use std::process::{Command, Stdio};
 use std::time::Duration;
+
+use crate::http_client::{http_get_bytes_capped, RequestHeaders};
 
 /// Hard cap on icon byte size. Favicons in the wild rarely exceed 200 KB; the
 /// 1 MB ceiling defends against decompression abuse while leaving headroom for

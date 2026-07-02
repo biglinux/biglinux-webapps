@@ -12,5 +12,4 @@ path = "src/main.rs"
 
 [dependencies]
 webapps-core = { path = "../webapps-core" }
-big-os-kit = { path = "../../../big-rust-components/crates/big-os-kit" }
 libc = "0.2"

@@ -1,4 +1,4 @@
-use big_relm4_components::theme;
+use crate::platform::theme;
 
 const CSS: &str = r#"
 /* App icon in list rows — soft rounded corners for a polished look */

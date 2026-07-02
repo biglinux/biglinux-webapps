@@ -1,8 +1,8 @@
 use std::path::Path;
 
-use big_app_kit::subprocess::BigSubprocessSpec;
 use webapps_core::browsers::browser_defs;
 use webapps_core::models::{Browser, BrowserCollection};
+use webapps_core::subprocess::SubprocessSpec;
 
 /// Detect all installed browsers (native + Flatpak) and identify the system default.
 ///
@@ -24,7 +24,7 @@ pub fn detect_browsers() -> BrowserCollection {
     }
 
     // Flatpak: entries with flatpak_app_id + flatpak_id
-    if let Ok(output) = BigSubprocessSpec::builder()
+    if let Ok(output) = SubprocessSpec::builder()
         .program("flatpak")
         .args(["list", "--app", "--columns=application"])
         .build()
@@ -62,7 +62,7 @@ fn detect_default_browser(defs: &[webapps_core::browsers::BrowserDef]) -> Option
 fn query_default_browser() -> Option<String> {
     // xdg-settings is the canonical source; xdg-mime is the fallback for
     // distros/desktops where xdg-settings isn't configured.
-    let primary = BigSubprocessSpec::builder()
+    let primary = SubprocessSpec::builder()
         .program("xdg-settings")
         .args(["get", "default-web-browser"])
         .build()
@@ -73,7 +73,7 @@ fn query_default_browser() -> Option<String> {
     if primary.is_some() {
         return primary;
     }
-    BigSubprocessSpec::builder()
+    SubprocessSpec::builder()
         .program("xdg-mime")
         .args(["query", "default", "x-scheme-handler/http"])
         .build()

@@ -1,8 +1,8 @@
 use std::cell::RefCell;
 use std::rc::Rc;
 
+use crate::platform::tooltip;
 use adw::prelude::*;
-use big_relm4_components::feedback::tooltip;
 use gettextrs::gettext;
 use gtk::glib;
 use gtk4 as gtk;

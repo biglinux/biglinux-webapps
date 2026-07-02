@@ -1,9 +1,10 @@
 use adw::prelude::*;
-use big_relm4_components::feedback::tooltip;
 use gettextrs::gettext;
 use gtk4 as gtk;
 use libadwaita as adw;
 use webkit6 as webkit;
+
+use crate::platform::tooltip;
 
 use super::{loading, settings};
 

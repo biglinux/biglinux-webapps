@@ -5,10 +5,10 @@ mod download;
 mod html;
 
 use anyhow::Result;
-use big_os_kit::http_client::{http_get_bytes_capped, RequestHeaders};
 use std::path::PathBuf;
 use std::time::Duration;
 
+use crate::http_client::{http_get_bytes_capped, RequestHeaders};
 use webapps_core::config;
 use webapps_core::desktop;
 

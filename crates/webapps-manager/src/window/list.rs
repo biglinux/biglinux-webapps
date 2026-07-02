@@ -1,17 +1,12 @@
-//! Bridge between the (still-shared) `WindowContext` and the Relm4
-//! [`WebAppListController`].
+//! Bridge between `WindowContext` and the Relm4 [`WebAppListController`].
 //!
-//! After the onda6 migration, list rendering is driven by Relm4; this module
-//! is just a thin shim that converts `state::sections_snapshot` into a
-//! `WebAppListInput::Refresh` message. Row-action handlers (`handle_edit`,
-//! `handle_browser_change`, `handle_delete`) are unchanged and still target
-//! the existing dialogs.
+//! Converts `state::sections_snapshot` into a `WebAppListInput::Refresh`
+//! message and routes row actions to the dialog handlers.
 
 use std::cell::RefCell;
 use std::rc::Rc;
 
 use adw::prelude::*;
-use big_app_kit::dialogs;
 use gettextrs::gettext;
 use gtk4 as gtk;
 use libadwaita as adw;
@@ -20,6 +15,7 @@ use relm4::ComponentController;
 use webapps_core::models::{AppMode, BrowserId, WebApp, WebAppCollection};
 use webapps_core::templates::default_registry;
 
+use crate::platform::dialogs;
 use crate::relm4_window::list::{WebAppListInput, WebAppSection as Relm4Section};
 use crate::{browser_dialog, service, ui_async, webapp_dialog};
 

@@ -15,7 +15,7 @@ use std::collections::HashMap;
 use std::sync::{Mutex, OnceLock};
 use std::time::Duration;
 
-use big_os_kit::http_client::{http_get_stream_with_extra_headers, RequestHeaders};
+use crate::http_client::{http_get_stream_with_extra_headers, RequestHeaders};
 
 static RESOLVED_URLS: OnceLock<Mutex<HashMap<String, String>>> = OnceLock::new();
 

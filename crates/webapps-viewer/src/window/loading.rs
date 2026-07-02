@@ -1,11 +1,12 @@
 use std::{cell::Cell, rc::Rc, sync::Once, time::Duration};
 
-use big_relm4_components::theme;
 use glib::clone;
 use gtk4 as gtk;
 use gtk4::prelude::*;
 use webkit6 as webkit;
 use webkit6::prelude::*;
+
+use crate::platform::theme;
 
 const CONTENT_REVEAL_DELAY_MS: u64 = 250;
 

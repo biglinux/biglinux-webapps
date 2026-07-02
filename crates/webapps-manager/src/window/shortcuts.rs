@@ -1,5 +1,5 @@
+use crate::platform::desktop;
 use adw::prelude::*;
-use big_app_kit::desktop;
 use glib::clone;
 use gtk::glib;
 use gtk4 as gtk;

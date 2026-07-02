@@ -38,9 +38,6 @@ thread_local! {
 }
 
 pub fn build(app: &adw::Application) {
-    // Window title + default geometry come from the canonical BigShellSpec so
-    // the documented shell contract is the single source of truth (was three
-    // divergent literals: 820×680 here vs 800×650 in the geometry fallback).
     let shell = crate::relm4_window::shell_spec::build();
 
     let window = adw::ApplicationWindow::builder()

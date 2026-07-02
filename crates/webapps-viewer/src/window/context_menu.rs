@@ -1,9 +1,10 @@
-use big_app_kit::desktop;
 use gettextrs::gettext;
 use gtk::glib::variant::ToVariant;
 use gtk4 as gtk;
 use webkit6 as webkit;
 use webkit6::prelude::*;
+
+use crate::platform::desktop;
 
 pub(super) fn setup_context_menu(webview: &webkit::WebView) {
     use gtk::gio;

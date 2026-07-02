@@ -5,10 +5,11 @@
 //! dialog gives the same result with better AT-SPI semantics.
 
 use adw::prelude::*;
-use big_relm4_components::list::info_row::{BigInfoRow, BigInfoRowSpec};
 use gettextrs::gettext;
 use gtk4 as gtk;
 use libadwaita as adw;
+
+use crate::platform::info_row::{InfoRow, InfoRowSpec};
 
 pub(super) fn present(parent: &adw::ApplicationWindow) {
     let navigation = build_group(
@@ -57,7 +58,7 @@ pub(super) fn present(parent: &adw::ApplicationWindow) {
 fn build_group(title: &str, rows: &[(String, &str)]) -> adw::PreferencesGroup {
     let group = adw::PreferencesGroup::builder().title(title).build();
     for (label, accel) in rows {
-        let row = BigInfoRow::new(BigInfoRowSpec::new(label.as_str())).into_root();
+        let row = InfoRow::new(InfoRowSpec::new(label.as_str())).into_root();
         let accel_label = gtk::Label::builder()
             .label(format!("<tt>{}</tt>", gtk::glib::markup_escape_text(accel)))
             .use_markup(true)

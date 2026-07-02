@@ -2,10 +2,10 @@ use std::fs;
 use std::path::PathBuf;
 
 use anyhow::Result;
-use big_os_kit::subprocess::BigSubprocessSpec;
 
 use crate::config;
 use crate::models::WebApp;
+use crate::subprocess::SubprocessSpec;
 
 use super::builder::generate_desktop_entry;
 
@@ -121,7 +121,7 @@ pub fn remove_desktop_file(filename: &str) -> Result<()> {
 fn refresh_desktop_database() {
     let apps_dir = config::applications_dir();
     // run() blocks and reaps the child to prevent zombie processes
-    match BigSubprocessSpec::builder()
+    match SubprocessSpec::builder()
         .program("update-desktop-database")
         .arg(&apps_dir)
         .build()
@@ -146,7 +146,7 @@ fn refresh_desktop_database() {
             ],
         ];
         for args in commands {
-            match BigSubprocessSpec::builder()
+            match SubprocessSpec::builder()
                 .program("dconf")
                 .args(*args)
                 .build()

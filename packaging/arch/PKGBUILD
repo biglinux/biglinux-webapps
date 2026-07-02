@@ -191,11 +191,11 @@ package() {
 
 	# Copy package tree (icons, profiles, skel, .desktop, systemd, menus)
 	if [ -d "${InternalDir}/usr" ]; then
-		cp -a "${InternalDir}/usr" "${pkgdir}/"
+		cp -R --no-preserve=ownership "${InternalDir}/usr" "${pkgdir}/"
 	fi
 
 	if [ -d "${InternalDir}/etc" ]; then
-		cp -a "${InternalDir}/etc" "${pkgdir}/"
+		cp -R --no-preserve=ownership "${InternalDir}/etc" "${pkgdir}/"
 	fi
 
 	# Install Rust binaries

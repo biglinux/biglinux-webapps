@@ -6,10 +6,11 @@
 //! AT-SPI semantics (each row is announced individually).
 
 use adw::prelude::*;
-use big_relm4_components::list::info_row::{BigInfoRow, BigInfoRowSpec};
 use gettextrs::gettext;
 use gtk4 as gtk;
 use libadwaita as adw;
+
+use crate::platform::info_row::{InfoRow, InfoRowSpec};
 
 pub(super) fn present(parent: &adw::ApplicationWindow) {
     let group = adw::PreferencesGroup::builder()
@@ -34,7 +35,7 @@ pub(super) fn present(parent: &adw::ApplicationWindow) {
 }
 
 fn add_shortcut(group: &adw::PreferencesGroup, label: &str, accel: &str) {
-    let row = BigInfoRow::new(BigInfoRowSpec::new(label)).into_root();
+    let row = InfoRow::new(InfoRowSpec::new(label)).into_root();
     let accel_label = gtk::Label::builder()
         .label(format!("<tt>{}</tt>", glib_escape(accel)))
         .use_markup(true)

@@ -6,7 +6,7 @@
 
 use std::{os::unix::process::CommandExt, path::Path, process::Command};
 
-use big_os_kit::subprocess::BigSubprocessSpec;
+use webapps_core::subprocess::SubprocessSpec;
 use webapps_core::{browsers::BrowserDef, config};
 
 use crate::{wayland, Args};
@@ -44,10 +44,8 @@ pub fn firefox(
         );
         std::process::exit(1);
     };
-    // bigagents: app-local-subprocess — Firefox path uses exec() to REPLACE the
-    // launcher process image (session managers/taskbars must track the browser
-    // PID, not a wrapper). BigSubprocessSpec models spawn/run, not execve, so
-    // this site stays on std::process::Command by design.
+    // Firefox must replace this process so session managers track the browser
+    // PID, not the launcher.
     let mut cmd = Command::new(&program);
     cmd.args(&prefix_args)
         .env("XAPP_FORCE_GTKWINDOW_ICON", icon)
@@ -86,7 +84,7 @@ pub fn chromium(args: &Args, browser_id: &str, def: Option<&'static BrowserDef>,
     };
 
     let spawn = move || {
-        if let Err(e) = BigSubprocessSpec::builder()
+        if let Err(e) = SubprocessSpec::builder()
             .program(program.as_str())
             .args(&cmd_args)
             .build()
@@ -110,7 +108,7 @@ pub fn chromium(args: &Args, browser_id: &str, def: Option<&'static BrowserDef>,
 /// sandboxed browser can read and write its profile data.
 pub fn grant_flatpak_access(browser_id: &str, app_id: &str) {
     let data_dir = config::profiles_dir().join(browser_id);
-    let status = BigSubprocessSpec::builder()
+    let status = SubprocessSpec::builder()
         .program("flatpak")
         .args([
             "override",

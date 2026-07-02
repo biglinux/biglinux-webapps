@@ -7,6 +7,8 @@
 pub mod browser_dialog;
 pub mod favicon;
 pub mod geometry;
+pub mod http_client;
+pub mod platform;
 pub mod relm4_window;
 pub mod service;
 pub mod style;
