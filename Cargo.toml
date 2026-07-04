@@ -25,11 +25,11 @@ gdk-pixbuf = { package = "gdk-pixbuf", version = "0.22" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 log = "0.4"
-env_logger = "0.11"
+env_logger = { version = "0.11", default-features = false, features = ["auto-color", "regex"] }
 anyhow = "1"
 dirs = "6"
 clap = { version = "4", features = ["derive"] }
-reqwest = { version = "0.12", default-features = false, features = ["rustls-tls-native-roots", "blocking"] }
+reqwest = { version = "0.12", default-features = false, features = ["native-tls", "blocking"] }
 scraper = "0.26"
 url = "2"
 gettextrs = { package = "gettext-rs", version = "0.7", features = ["gettext-system"] }
