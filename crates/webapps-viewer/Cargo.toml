@@ -15,6 +15,10 @@ webapps-core = { path = "../webapps-core" }
 gtk4.workspace = true
 libadwaita.workspace = true
 webkit6.workspace = true
+# Already in the tree as a webkit6 dependency (libsoup-3.0 is linked either
+# way); declared directly so the cookie-jar migration can drive both of
+# libsoup's persistent backends.
+soup3 = "0.9"
 glib.workspace = true
 gio.workspace = true
 gdk4.workspace = true
@@ -25,3 +29,6 @@ clap.workspace = true
 gettextrs.workspace = true
 url.workspace = true
 relm4 = { version = "0.11", features = ["libadwaita"] }
+
+[dev-dependencies]
+tempfile.workspace = true

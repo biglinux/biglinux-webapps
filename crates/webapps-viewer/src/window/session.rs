@@ -6,10 +6,12 @@ use webkit6::prelude::*;
 
 use webapps_core::config;
 
+use super::cookie_migration;
 use super::settings;
 
 const WEB_PROCESS_MEMORY_LIMIT_MB: u32 = 1024;
 const NETWORK_PROCESS_MEMORY_LIMIT_MB: u32 = 512;
+const COOKIE_STORE_FILENAME: &str = "webkit-cookies.txt";
 const MEMORY_PRESSURE_CONSERVATIVE_THRESHOLD: f64 = 0.50;
 const MEMORY_PRESSURE_STRICT_THRESHOLD: f64 = 0.75;
 const MEMORY_PRESSURE_POLL_INTERVAL_SECONDS: f64 = 30.0;
@@ -42,10 +44,16 @@ pub(super) fn build_viewer_session(app_id: &str) -> ViewerSession {
 
     session.set_itp_enabled(false);
     if let Some(cookie_manager) = session.cookie_manager() {
-        let cookie_db = data_dir.join("webkit-cookies.db");
+        let cookie_store = data_dir.join(COOKIE_STORE_FILENAME);
+        // The text backend is used because libsoup's SQLite jar loses data:
+        // expirations past 2038 overflow its 32-bit insert, and `SameSite=None`
+        // reads back as `Lax`. Converting the existing jar has to happen before
+        // `set_persistent_storage`, or the first launch after a package update
+        // would silently log the user out of every webapp.
+        cookie_migration::migrate_legacy_cookie_jar(&data_dir, &cookie_store);
         cookie_manager.set_persistent_storage(
-            cookie_db.to_str().unwrap_or_default(),
-            webkit::CookiePersistentStorage::Sqlite,
+            cookie_store.to_str().unwrap_or_default(),
+            webkit::CookiePersistentStorage::Text,
         );
         cookie_manager.set_accept_policy(webkit::CookieAcceptPolicy::Always);
     }
@@ -57,6 +65,14 @@ pub(super) fn build_viewer_session(app_id: &str) -> ViewerSession {
     let background = gdk::RGBA::new(0.012, 0.014, 0.030, 1.0);
     webview.set_background_color(&background);
     settings::configure_settings(&webview);
+    // Order matters: the persisted decision is applied before the webview can
+    // issue a request, so a profile already known to need the native UA never
+    // sends the spoofed one. The watcher then only has work to do on a profile
+    // that has not been classified yet.
+    settings::apply_persisted_user_agent(&webview, &data_dir);
+    if let Some(cookie_manager) = session.cookie_manager() {
+        settings::watch_for_native_ua_site(&cookie_manager, &webview, &data_dir);
+    }
     settings::inject_resize_block(&webview);
     webview.set_vexpand(true);
     webview.set_hexpand(true);

@@ -29,7 +29,14 @@ env_logger = { version = "0.11", default-features = false, features = ["auto-col
 anyhow = "1"
 dirs = "6"
 clap = { version = "4", features = ["derive"] }
-reqwest = { version = "0.12", default-features = false, features = ["native-tls", "blocking"] }
+# `gzip`: CDNs serve `manifest.json` with `Content-Encoding: gzip` whether or not
+# the client advertises it (Google Cloud Storage stores it pre-compressed and
+# replays the header). Without this feature reqwest hands the raw deflate stream
+# to `serde_json`, every manifest parse fails, and the high-resolution icon set
+# those manifests declare is never seen — the launcher falls back to a 32 px
+# favicon. Decoding also happens before the read cap, so the cap still bounds
+# decompressed bytes.
+reqwest = { version = "0.12", default-features = false, features = ["native-tls", "blocking", "gzip"] }
 scraper = "0.26"
 url = "2"
 gettextrs = { package = "gettext-rs", version = "0.7", features = ["gettext-system"] }

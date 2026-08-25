@@ -9,6 +9,7 @@
 mod chrome;
 mod component;
 mod context_menu;
+mod cookie_migration;
 mod downloads;
 mod geometry;
 mod loading;

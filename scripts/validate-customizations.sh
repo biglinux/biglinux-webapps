@@ -16,7 +16,7 @@ require_command() {
 
 readonly shell_targets=(
 	"biglinux-webapps/usr/bin/biglinux-webapps-systemd"
-	"packaging/arch/PKGBUILD"
+	"pkgbuild/PKGBUILD"
 )
 
 for command_name in cargo shellcheck shfmt bash; do

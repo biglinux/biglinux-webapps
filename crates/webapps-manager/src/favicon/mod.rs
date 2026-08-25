@@ -3,6 +3,7 @@
 
 mod download;
 mod html;
+mod image;
 
 use anyhow::Result;
 use std::path::PathBuf;
@@ -17,6 +18,31 @@ use webapps_core::desktop;
 const MAX_PAGE_BYTES: usize = 4 * 1024 * 1024;
 /// Hard cap on a fetched web-app manifest (`manifest.json`).
 const MAX_MANIFEST_BYTES: usize = 512 * 1024;
+
+/// Ceiling on how many declared candidates we actually fetch.
+///
+/// Ranking needs the real pixel dimensions, and those only exist once the bytes
+/// are in hand — so candidates have to be downloaded to be judged. Sites that
+/// list a dozen `apple-touch-icon` sizes would otherwise turn one "Detect" click
+/// into a dozen round trips. Candidates arrive pre-sorted by their declared
+/// quality, so truncating the tail drops the least promising ones.
+const MAX_CANDIDATE_DOWNLOADS: usize = 10;
+
+/// Below this side length an icon is treated as too small to hand to a launcher
+/// as-is, which triggers both well-known-path probing and a final upscale.
+/// Launchers draw at 96–128 px, doubled again on HiDPI.
+const MIN_ACCEPTABLE_SIDE: u32 = 256;
+
+/// Conventional icon locations to probe when nothing declared in the page is
+/// big enough. These are unlisted on plenty of sites that still serve them, and
+/// an `apple-touch-icon` is 180 px at minimum — far better than a 32 px favicon.
+const WELL_KNOWN_ICON_PATHS: &[&str] = &[
+    "/apple-touch-icon.png",
+    "/apple-touch-icon-precomposed.png",
+    "/apple-touch-icon-180x180.png",
+    "/icon.png",
+    "/logo.png",
+];
 
 pub struct SiteInfo {
     pub title: String,
@@ -43,7 +69,10 @@ pub fn fetch_site_info(url: &str) -> Result<SiteInfo> {
 
     let title = derive_title(&document, &parsed);
     let mut icon_candidates = html::extract_icon_candidates(&document, &normalized_url);
-    icon_candidates.extend(fetch_manifest_icons(&document, &normalized_url));
+    html::merge_candidates(
+        &mut icon_candidates,
+        fetch_manifest_icons(&document, &normalized_url),
+    );
     html::sort_icon_candidates(&mut icon_candidates);
     let cache_dir = ensure_favicon_cache(&normalized_url)?;
     let icon_paths = download_icon_set(&parsed, &cache_dir, &icon_candidates);
@@ -119,28 +148,141 @@ fn ensure_favicon_cache(url: &str) -> Result<PathBuf> {
     Ok(cache_dir)
 }
 
+/// Fetch the candidate set, then rank it by **measured** resolution.
+///
+/// The declared ordering from `sort_icon_candidates` only decides fetch order.
+/// Final ranking is redone on the bytes, because `sizes=""` in the page and
+/// `"sizes"` in the manifest are author hints that are frequently absent or
+/// simply wrong — trusting them is what put a 32 px favicon ahead of the
+/// site's real 512 px app icon.
 fn download_icon_set(
     parsed_url: &url::Url,
     cache_dir: &std::path::Path,
     icon_candidates: &[html::IconCandidate],
 ) -> Vec<PathBuf> {
-    let mut icon_paths = Vec::new();
+    let mut icons = Vec::new();
 
-    for (index, candidate) in icon_candidates.iter().enumerate() {
-        match download::download_icon(&candidate.url, cache_dir, index) {
-            Ok(path) => icon_paths.push(path),
+    for (index, candidate) in icon_candidates
+        .iter()
+        .take(MAX_CANDIDATE_DOWNLOADS)
+        .enumerate()
+    {
+        match download::download_icon(&candidate.url, cache_dir, index, candidate.source) {
+            Ok(icon) => icons.push(icon),
             Err(error) => log::warn!("Download icon {}: {error}", candidate.url),
         }
     }
 
-    if icon_paths.is_empty() {
-        download_fallback_favicon(parsed_url, cache_dir, &mut icon_paths);
+    // Probing runs whenever the declared set is missing *or* uniformly small:
+    // a page that only links a 32 px favicon may still serve a 180 px
+    // apple-touch-icon at its conventional path without ever mentioning it.
+    if best_side(&icons) < MIN_ACCEPTABLE_SIDE {
+        probe_well_known_paths(parsed_url, cache_dir, &mut icons);
     }
-    if icon_paths.is_empty() {
-        download_google_favicon(parsed_url, cache_dir, &mut icon_paths);
+    if icons.is_empty() {
+        download_fallback_favicon(parsed_url, cache_dir, &mut icons);
+    }
+    if icons.is_empty() {
+        download_favicon_services(parsed_url, cache_dir, &mut icons);
     }
 
-    icon_paths
+    rank_by_measured_resolution(&mut icons);
+    normalize_best(&mut icons, cache_dir);
+
+    icons.into_iter().map(|icon| icon.path).collect()
+}
+
+/// Best resolution among candidates that are actually usable as icons.
+///
+/// Banners are excluded deliberately: a page whose only large image is a
+/// 1200×630 `og:image` still needs the well-known-path probe, and counting the
+/// banner here would suppress it and leave the 32 px favicon as the real winner.
+fn best_side(icons: &[download::DownloadedIcon]) -> u32 {
+    icons
+        .iter()
+        .filter(|icon| icon.is_icon_shaped() && icon.source.rank_tier() > 0)
+        .map(download::DownloadedIcon::effective_side)
+        .max()
+        .unwrap_or(0)
+}
+
+/// Final ranking, most-preferred first.
+///
+/// Resolution alone is not enough, because the two biggest images a page offers
+/// are often the two least suitable:
+///
+///  * `og:image` is a 1200×630 social share card — a wide screenshot, not a
+///    logo. Ranked purely on pixel count it beat Discord's and Slack's real
+///    512 px app icons.
+///  * `mask-icon` is Safari's pinned-tab silhouette: a flat single-colour path
+///    which, being an SVG, scores unlimited resolution.
+///
+/// So shape and provenance gate the comparison, and resolution only decides
+/// among candidates that already look like icons.
+fn rank_by_measured_resolution(icons: &mut [download::DownloadedIcon]) {
+    icons.sort_by_key(|icon| {
+        std::cmp::Reverse((
+            u8::from(icon.is_icon_shaped()),
+            icon.source.rank_tier(),
+            icon.effective_side(),
+            u8::from(icon.is_vector),
+        ))
+    });
+}
+
+/// Replace the winner with a `TARGET_SIDE` render when it is too small, so the
+/// `.desktop` never points at an asset the shell has to upscale itself.
+///
+/// Only the winner is touched: the rest stay at native resolution for the
+/// dialog's candidate picker, where the user is choosing between *images*, not
+/// resolutions. Vectors are left alone — they already scale losslessly.
+fn normalize_best(icons: &mut Vec<download::DownloadedIcon>, cache_dir: &std::path::Path) {
+    let Some(best) = icons.first() else {
+        return;
+    };
+    if best.is_vector || best.effective_side() >= download::TARGET_SIDE {
+        return;
+    }
+    let source = best.source;
+    let Some(upscaled) = download::upscale_to_target(&best.path, cache_dir) else {
+        return;
+    };
+    let dimensions = image::measure_file(&upscaled);
+    icons.insert(
+        0,
+        download::DownloadedIcon {
+            path: upscaled,
+            dimensions,
+            is_vector: false,
+            source,
+        },
+    );
+}
+
+fn probe_well_known_paths(
+    parsed_url: &url::Url,
+    cache_dir: &std::path::Path,
+    icons: &mut Vec<download::DownloadedIcon>,
+) {
+    for (offset, path) in WELL_KNOWN_ICON_PATHS.iter().enumerate() {
+        let Ok(probe_url) = parsed_url.join(path) else {
+            continue;
+        };
+        // Index base sits above MAX_CANDIDATE_DOWNLOADS so probe results can
+        // never overwrite a declared candidate's `icon_<index>` file.
+        let index = MAX_CANDIDATE_DOWNLOADS + offset;
+        // A conventional path is an undeclared `apple-touch-icon`, so it earns the
+        // same top rank tier as a declared one.
+        match download::download_icon(
+            probe_url.as_str(),
+            cache_dir,
+            index,
+            html::IconSource::AppleTouch,
+        ) {
+            Ok(icon) => icons.push(icon),
+            Err(error) => log::debug!("Probe {probe_url}: {error}"),
+        }
+    }
 }
 
 #[derive(serde::Deserialize)]
@@ -202,33 +344,47 @@ fn fetch_manifest(manifest_url: &str) -> Result<WebManifest> {
     Ok(serde_json::from_slice(&response.bytes)?)
 }
 
+/// `/favicon.ico` at the site root. Built with `Url::join` rather than string
+/// formatting so a non-default port survives — the old
+/// `format!("{scheme}://{host}/favicon.ico")` dropped `:8080`, sending the
+/// request to the wrong service on hosts that run one.
 fn download_fallback_favicon(
     parsed_url: &url::Url,
     cache_dir: &std::path::Path,
-    icon_paths: &mut Vec<PathBuf>,
+    icons: &mut Vec<download::DownloadedIcon>,
 ) {
-    let favicon_url = format!(
-        "{}://{}/favicon.ico",
-        parsed_url.scheme(),
-        parsed_url.host_str().unwrap_or("")
-    );
-    if let Ok(path) = download::download_icon(&favicon_url, cache_dir, 99) {
-        icon_paths.push(path);
+    let Ok(favicon_url) = parsed_url.join("/favicon.ico") else {
+        return;
+    };
+    if let Ok(icon) =
+        download::download_icon(favicon_url.as_str(), cache_dir, 99, html::IconSource::Icon)
+    {
+        icons.push(icon);
     }
 }
 
-fn download_google_favicon(
+/// Last resort: third-party favicon proxies. Both are tried and the larger
+/// result wins — each falls back to a low-res cached copy for some domains, so
+/// whichever happens to hold the better one varies by site.
+fn download_favicon_services(
     parsed_url: &url::Url,
     cache_dir: &std::path::Path,
-    icon_paths: &mut Vec<PathBuf>,
+    icons: &mut Vec<download::DownloadedIcon>,
 ) {
     let Some(host) = parsed_url.host_str() else {
         return;
     };
 
-    let google_url = format!("https://www.google.com/s2/favicons?domain={host}&sz=256");
-    if let Ok(path) = download::download_icon(&google_url, cache_dir, 100) {
-        icon_paths.push(path);
+    let services = [
+        format!("https://www.google.com/s2/favicons?domain={host}&sz=256"),
+        format!("https://icons.duckduckgo.com/ip3/{host}.ico"),
+    ];
+    for (offset, service_url) in services.iter().enumerate() {
+        match download::download_icon(service_url, cache_dir, 100 + offset, html::IconSource::Icon)
+        {
+            Ok(icon) => icons.push(icon),
+            Err(error) => log::debug!("Favicon service {service_url}: {error}"),
+        }
     }
 }
 
@@ -254,5 +410,198 @@ mod tests {
             favicon_cache_dir("https://example.com/"),
             favicon_cache_dir("https://example.com/")
         );
+    }
+
+    fn icon(path: &str, side: Option<u32>, is_vector: bool) -> download::DownloadedIcon {
+        sourced_icon(path, side, side, is_vector, html::IconSource::Icon)
+    }
+
+    fn sourced_icon(
+        path: &str,
+        width: Option<u32>,
+        height: Option<u32>,
+        is_vector: bool,
+        source: html::IconSource,
+    ) -> download::DownloadedIcon {
+        download::DownloadedIcon {
+            path: PathBuf::from(path),
+            dimensions: width
+                .zip(height)
+                .map(|(width, height)| image::Dimensions { width, height }),
+            is_vector,
+            source,
+        }
+    }
+
+    #[test]
+    fn ranking_puts_highest_measured_resolution_first() {
+        let mut icons = vec![
+            icon("small.png", Some(32), false),
+            icon("huge.png", Some(1024), false),
+            icon("medium.png", Some(180), false),
+        ];
+        rank_by_measured_resolution(&mut icons);
+        assert_eq!(
+            icons
+                .iter()
+                .map(|icon| icon.path.to_string_lossy().into_owned())
+                .collect::<Vec<_>>(),
+            vec!["huge.png", "medium.png", "small.png"]
+        );
+    }
+
+    #[test]
+    fn ranking_sinks_unmeasurable_icons_below_measured_ones() {
+        // An asset whose header we could not parse might be anything; a known
+        // 16 px PNG is at least a known quantity.
+        let mut icons = vec![
+            icon("mystery.png", None, false),
+            icon("tiny.png", Some(16), false),
+        ];
+        rank_by_measured_resolution(&mut icons);
+        assert_eq!(icons[0].path, PathBuf::from("tiny.png"));
+    }
+
+    #[test]
+    fn ranking_prefers_vector_when_effective_sides_tie() {
+        let mut icons = vec![
+            icon("raster.png", Some(image::VECTOR_SIDE), false),
+            icon("vector.svg", Some(image::VECTOR_SIDE), true),
+        ];
+        rank_by_measured_resolution(&mut icons);
+        assert_eq!(icons[0].path, PathBuf::from("vector.svg"));
+    }
+
+    #[test]
+    fn ranking_rejects_og_image_banner_in_favour_of_smaller_square_icon() {
+        // Regression pin for Discord/Slack: a 1200x630 share card is the biggest
+        // image on the page and the worst possible launcher icon.
+        let mut icons = vec![
+            sourced_icon(
+                "banner.png",
+                Some(1200),
+                Some(630),
+                false,
+                html::IconSource::OgImage,
+            ),
+            sourced_icon(
+                "icon-512.png",
+                Some(512),
+                Some(512),
+                false,
+                html::IconSource::Manifest,
+            ),
+        ];
+        rank_by_measured_resolution(&mut icons);
+        assert_eq!(icons[0].path, PathBuf::from("icon-512.png"));
+    }
+
+    #[test]
+    fn ranking_rejects_square_og_image_in_favour_of_smaller_real_icon() {
+        // Even a perfectly square og:image is a share card, not a logo, so the
+        // shape gate alone is not enough — provenance has to outrank pixels.
+        let mut icons = vec![
+            sourced_icon(
+                "square-banner.png",
+                Some(1024),
+                Some(1024),
+                false,
+                html::IconSource::OgImage,
+            ),
+            sourced_icon(
+                "icon-64.png",
+                Some(64),
+                Some(64),
+                false,
+                html::IconSource::Icon,
+            ),
+        ];
+        rank_by_measured_resolution(&mut icons);
+        assert_eq!(icons[0].path, PathBuf::from("icon-64.png"));
+    }
+
+    #[test]
+    fn ranking_sinks_monochrome_mask_icon_svg_below_a_small_colour_icon() {
+        // A mask-icon SVG scores unlimited resolution; its tier must still lose
+        // to any real full-colour icon.
+        let mut icons = vec![
+            sourced_icon(
+                "mask.svg",
+                Some(image::VECTOR_SIDE),
+                Some(image::VECTOR_SIDE),
+                true,
+                html::IconSource::MaskIcon,
+            ),
+            sourced_icon(
+                "icon-32.png",
+                Some(32),
+                Some(32),
+                false,
+                html::IconSource::Icon,
+            ),
+        ];
+        rank_by_measured_resolution(&mut icons);
+        assert_eq!(icons[0].path, PathBuf::from("icon-32.png"));
+    }
+
+    #[test]
+    fn ranking_still_accepts_a_banner_when_it_is_all_there_is() {
+        // Demotion must not become exclusion: a share card beats no icon.
+        let mut icons = vec![sourced_icon(
+            "banner.png",
+            Some(1200),
+            Some(630),
+            false,
+            html::IconSource::OgImage,
+        )];
+        rank_by_measured_resolution(&mut icons);
+        assert_eq!(icons[0].path, PathBuf::from("banner.png"));
+    }
+
+    #[test]
+    fn best_side_ignores_banners_so_probing_still_runs() {
+        assert_eq!(best_side(&[]), 0);
+        assert_eq!(best_side(&[icon("x.png", None, false)]), 0);
+        // A page offering only a 32 px favicon must still be probed for an
+        // unlisted apple-touch-icon.
+        assert!(best_side(&[icon("x.png", Some(32), false)]) < MIN_ACCEPTABLE_SIDE);
+        assert!(best_side(&[icon("x.png", Some(512), false)]) >= MIN_ACCEPTABLE_SIDE);
+        // A huge og:image must not count as "we already have a good icon".
+        let banner = sourced_icon(
+            "banner.png",
+            Some(1200),
+            Some(630),
+            false,
+            html::IconSource::OgImage,
+        );
+        assert_eq!(best_side(&[banner]), 0);
+    }
+
+    #[test]
+    fn normalize_best_leaves_vectors_and_large_rasters_untouched() {
+        let cache = std::path::Path::new("/nonexistent-cache");
+
+        let mut vector = vec![icon("vector.svg", Some(image::VECTOR_SIDE), true)];
+        normalize_best(&mut vector, cache);
+        assert_eq!(vector.len(), 1, "an SVG already scales losslessly");
+
+        let mut large = vec![icon("big.png", Some(download::TARGET_SIDE), false)];
+        normalize_best(&mut large, cache);
+        assert_eq!(large.len(), 1, "a 512 px source needs no upscale");
+
+        let mut empty: Vec<download::DownloadedIcon> = Vec::new();
+        normalize_best(&mut empty, cache);
+        assert!(empty.is_empty(), "no candidates must not panic");
+    }
+
+    #[test]
+    fn probe_indexes_cannot_collide_with_declared_candidate_indexes() {
+        // Declared candidates occupy 0..MAX_CANDIDATE_DOWNLOADS; probes and the
+        // two fallbacks must sit above that, or a probe would overwrite a
+        // declared candidate's `icon_<index>` file on disk.
+        let probe_range =
+            MAX_CANDIDATE_DOWNLOADS..MAX_CANDIDATE_DOWNLOADS + WELL_KNOWN_ICON_PATHS.len();
+        assert!(probe_range.start >= MAX_CANDIDATE_DOWNLOADS);
+        assert!(probe_range.end <= 99, "99..=101 are the fallback indexes");
     }
 }
