@@ -113,7 +113,7 @@ executables are rejected at validation time (INVARIANTS — security).
 
 ## 8. Packaging
 
-`packaging/arch/PKGBUILD`: declares `pkgname=biglinux-webapps`, depends on
+`pkgbuild/PKGBUILD`: declares `pkgname=biglinux-webapps`, depends on
 `gtk4`, `libadwaita`, `webkitgtk-6.0`, `xdg-utils`, `desktop-file-utils`;
 makedepends on `rust`, `cargo`, `gettext`. Local-source detection prefers
 the workspace checkout (`BIGLINUX_WEBAPPS_LOCAL_SOURCE` env, or `Cargo.toml +

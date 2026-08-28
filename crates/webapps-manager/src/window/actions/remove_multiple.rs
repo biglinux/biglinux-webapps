@@ -1,19 +1,15 @@
-// TODO(onda6): migrate to BigDialogSpec + Relm4 FactoryComponent for the
-// bulk-selection list (currently uses an interior-mutable Vec of
-// (WebApp, CheckButton) pairs).
 use std::cell::RefCell;
 use std::rc::Rc;
 
 use adw::prelude::*;
-use big_app_kit::desktop;
-use big_app_kit::dialogs;
-use big_relm4_components::list::info_row::{BigInfoRow, BigInfoRowSpec};
 use gettextrs::gettext;
 use gtk4 as gtk;
 use libadwaita as adw;
 
 use webapps_core::models::WebApp;
 
+use crate::platform::info_row::{InfoRow, InfoRowSpec};
+use crate::platform::{desktop, dialogs};
 use crate::{geometry, service, ui_async, webapp_row};
 
 use super::super::context::WindowContext;
@@ -67,7 +63,7 @@ fn open_dialog(context: &WindowContext) {
     group.set_margin_bottom(12);
 
     let select_all = gtk::CheckButton::with_label(&gettext("Select all"));
-    let select_all_row = BigInfoRow::new(BigInfoRowSpec::new(gettext("Select all"))).into_root();
+    let select_all_row = InfoRow::new(InfoRowSpec::new(gettext("Select all"))).into_root();
     select_all_row.set_activatable(true);
     select_all_row.add_prefix(&select_all);
     select_all_row.set_activatable_widget(Some(&select_all));
@@ -77,8 +73,8 @@ fn open_dialog(context: &WindowContext) {
 
     for app in &webapps {
         // allow_markup() preserves the pre-escaped strings the legacy code passed in.
-        let row = BigInfoRow::new(
-            BigInfoRowSpec::new(glib_markup_escape(&app.app_name))
+        let row = InfoRow::new(
+            InfoRowSpec::new(glib_markup_escape(&app.app_name))
                 .subtitle(glib_markup_escape(&app.app_url))
                 .allow_markup(),
         )

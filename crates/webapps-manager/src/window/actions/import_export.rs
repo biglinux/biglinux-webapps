@@ -1,7 +1,7 @@
-use big_app_kit::desktop;
-use big_app_kit::file_dialogs::FilePicker;
 use gettextrs::gettext;
 
+use crate::platform::desktop;
+use crate::platform::file_dialogs::FilePicker;
 use crate::{service, ui_async};
 
 use super::super::context::WindowContext;

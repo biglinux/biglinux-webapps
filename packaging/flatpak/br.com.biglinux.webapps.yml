@@ -102,5 +102,5 @@ modules:
         skip:
           - target
           - .git
-          - packaging/arch/pkg
-          - packaging/arch/src
+          - pkgbuild/pkg
+          - pkgbuild/src

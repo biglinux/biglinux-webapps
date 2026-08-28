@@ -1,8 +1,8 @@
 use std::cell::RefCell;
 use std::rc::Rc;
 
+use crate::platform::file_dialogs::FilePicker;
 use adw::prelude::*;
-use big_app_kit::file_dialogs::FilePicker;
 use gettextrs::gettext;
 use gtk4 as gtk;
 use libadwaita as adw;

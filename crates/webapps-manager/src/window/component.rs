@@ -1,23 +1,20 @@
 //! `ManagerWindow` — the webapps manager window as a Relm4 [`Component`].
 //!
-//! Finishes the onda6 migration: the window content (header + search + the
-//! Relm4 `WebAppListController` + toast overlay) is now a Relm4 component
-//! (ADR-D14 mountable content; `Root` is the `adw::ToastOverlay`, never the
-//! window). The launcher [`super::build`] creates the `adw::ApplicationWindow`,
-//! mounts `controller.widget()`, and owns geometry + presentation.
+//! The window content (header, search, list, toast overlay) is mounted as a
+//! Relm4 component. The launcher [`super::build`] creates the
+//! `adw::ApplicationWindow`, mounts `controller.widget()`, and owns geometry
+//! plus presentation.
 //!
 //! Model owns the window-scoped [`WindowContext`]; the header's Add button and
 //! the search entry emit typed [`ManagerInput`] messages handled in
 //! [`Component::update`]. Row actions (edit/browser/delete/add) arrive as
-//! `WebAppListController` outputs and are routed to the existing, tested
-//! handler functions — the migration re-homes the chrome into a component
-//! without rewriting the proven CRUD/load logic.
+//! `WebAppListController` outputs and are routed to handler functions.
 
 use std::cell::{Cell, RefCell};
 use std::rc::Rc;
 
+use crate::platform::tooltip;
 use adw::prelude::*;
-use big_relm4_components::feedback::tooltip;
 use gettextrs::gettext;
 use gtk4 as gtk;
 use libadwaita as adw;

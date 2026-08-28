@@ -8,6 +8,7 @@ anstyle-wincon
 anyhow
 arbitrary
 async-channel
+async-compression
 atomic-waker
 autocfg
 base64
@@ -35,6 +36,8 @@ clap_derive
 clap_lex
 colorchoice
 combine
+compression-codecs
+compression-core
 concurrent-queue
 core-foundation
 core-foundation-sys
@@ -263,6 +266,7 @@ tinyvec
 tinyvec_macros
 tokio
 tokio-rustls
+tokio-util
 toml
 toml_datetime
 toml_edit

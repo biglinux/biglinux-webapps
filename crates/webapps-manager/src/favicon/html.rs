@@ -23,8 +23,36 @@ impl IconSource {
         match self {
             Self::Manifest => 6,
             Self::AppleTouch => 5,
-            Self::MaskIcon => 4,
             Self::Icon => 3,
+            // `mask-icon` is Safari's pinned-tab asset: a single-colour
+            // silhouette with no brand colour, meant to be recoloured by the
+            // browser chrome. It used to sit above `Icon` *and* score the vector
+            // bonus, so a monochrome outline beat the site's real full-colour
+            // icon. It stays in the list only as a last resort before og:image.
+            Self::MaskIcon => 1,
+            Self::OgImage => 0,
+        }
+    }
+
+    /// Whether being an SVG should promote this candidate. Resolution
+    /// independence is worth a lot — except for `mask-icon`, where the vector is
+    /// a flat silhouette and winning on that bonus is precisely the wrong
+    /// outcome.
+    fn honours_vector_bonus(self) -> bool {
+        self != Self::MaskIcon
+    }
+
+    /// Coarse band applied *after* download, ahead of measured resolution.
+    ///
+    /// Everything a site publishes as an app icon shares the top tier, so
+    /// resolution decides between them. The two sources that are not really app
+    /// icons get their own tiers below, which no pixel count can overcome: a
+    /// monochrome silhouette or a share banner is the wrong picture, not merely
+    /// a smaller one.
+    pub(super) fn rank_tier(self) -> u8 {
+        match self {
+            Self::Manifest | Self::AppleTouch | Self::Icon => 2,
+            Self::MaskIcon => 1,
             Self::OgImage => 0,
         }
     }
@@ -53,9 +81,11 @@ impl IconCandidate {
         }
     }
 
+    /// Declared quality, used only to order *fetch* attempts — the final
+    /// ranking is redone in `mod.rs` on the measured pixel dimensions.
     fn quality_key(&self) -> (u8, u32, u32) {
         (
-            u8::from(self.vector_hint),
+            u8::from(self.vector_hint && self.source.honours_vector_bonus()),
             self.declared_size.unwrap_or(0),
             u32::from(self.source.priority()),
         )
@@ -190,6 +220,20 @@ fn is_vector_hint(href: &str, sizes: &str, mime_type: &str) -> bool {
             .ends_with(".svg")
 }
 
+/// Fold `incoming` into `candidates`, keeping one entry per URL.
+///
+/// The same asset is routinely listed both as a `<link rel="icon">` and in the
+/// manifest. Concatenating the two lists meant downloading those URLs twice and
+/// showing the identical image twice in the dialog's candidate picker.
+pub(super) fn merge_candidates(
+    candidates: &mut Vec<IconCandidate>,
+    incoming: impl IntoIterator<Item = IconCandidate>,
+) {
+    for candidate in incoming {
+        push_best_candidate(candidates, candidate);
+    }
+}
+
 fn push_best_candidate(candidates: &mut Vec<IconCandidate>, candidate: IconCandidate) {
     if let Some(existing) = candidates
         .iter_mut()
@@ -235,10 +279,50 @@ mod tests {
     fn icon_source_priority_orders_manifest_high_ogimage_zero() {
         use IconSource::{AppleTouch, Icon, Manifest, MaskIcon, OgImage};
         assert!(Manifest.priority() > AppleTouch.priority());
-        assert!(AppleTouch.priority() > MaskIcon.priority());
-        assert!(MaskIcon.priority() > Icon.priority());
-        assert!(Icon.priority() > OgImage.priority());
+        assert!(AppleTouch.priority() > Icon.priority());
+        // `mask-icon` sits *below* `icon`: it is a monochrome Safari pinned-tab
+        // silhouette, so it must never outrank the site's full-colour icon.
+        assert!(Icon.priority() > MaskIcon.priority());
+        assert!(MaskIcon.priority() > OgImage.priority());
         assert_eq!(OgImage.priority(), 0);
+    }
+
+    #[test]
+    fn mask_icon_svg_does_not_outrank_full_colour_png() {
+        // Regression pin: the vector bonus used to be unconditional, so a
+        // monochrome `mask-icon` SVG sorted ahead of a 512 px colour PNG and
+        // became the launcher icon.
+        let mut candidates = vec![
+            IconCandidate::new("mask.svg".into(), None, IconSource::MaskIcon, true),
+            IconCandidate::new("icon-512.png".into(), Some(512), IconSource::Icon, false),
+        ];
+        sort_icon_candidates(&mut candidates);
+        assert_eq!(candidates[0].url, "icon-512.png");
+    }
+
+    #[test]
+    fn merge_candidates_dedupes_by_url_keeping_best() {
+        // The same asset commonly appears in both the HTML links and the
+        // manifest; merging must not queue it for download twice.
+        let mut candidates = vec![IconCandidate::new(
+            "same.png".into(),
+            Some(32),
+            IconSource::Icon,
+            false,
+        )];
+        merge_candidates(
+            &mut candidates,
+            vec![
+                IconCandidate::new("same.png".into(), Some(512), IconSource::Manifest, false),
+                IconCandidate::new("other.png".into(), Some(64), IconSource::Manifest, false),
+            ],
+        );
+        assert_eq!(candidates.len(), 2);
+        let same = candidates
+            .iter()
+            .find(|candidate| candidate.url == "same.png")
+            .expect("merged entry");
+        assert_eq!(same.declared_size, Some(512));
     }
 
     #[test]

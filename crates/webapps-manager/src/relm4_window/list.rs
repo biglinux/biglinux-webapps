@@ -95,7 +95,6 @@ impl SimpleComponent for WebAppListController {
                 WebAppSectionOutput::DeleteRequested(app) => WebAppListOutput::DeleteRequested(app),
             });
 
-        // Empty state via BigEmptyStateSpec.
         let spec = empty::build_spec();
         let (empty_page, empty_button) = empty::build_page(&spec);
         if let Some(btn) = empty_button {

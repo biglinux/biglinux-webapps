@@ -1,15 +1,13 @@
-// TODO(onda6): migrate to BigDialogSpec + Relm4 SimpleComponent (typed
-// BrowserSelection output channel) — currently uses an interior-mutable
-// once-callback + group of `gtk::CheckButton`s wired manually.
 use gtk4 as gtk;
 use libadwaita as adw;
 
 use adw::prelude::*;
-use big_relm4_components::list::info_row::{BigInfoRow, BigInfoRowSpec};
 use gettextrs::gettext;
 use std::cell::RefCell;
 use std::rc::Rc;
 use webapps_core::models::{BrowserCollection, BrowserId};
+
+use crate::platform::info_row::{InfoRow, InfoRowSpec};
 
 /// User's browser selection plus viewer-only options.
 pub struct BrowserSelection {
@@ -98,7 +96,7 @@ pub fn show(
     );
 
     for browser in &browsers.browsers {
-        let row = BigInfoRow::new(BigInfoRowSpec::new(browser.display_name())).into_root();
+        let row = InfoRow::new(InfoRowSpec::new(browser.display_name())).into_root();
         row.set_activatable(true);
 
         let icon = gtk::Image::new();
@@ -206,8 +204,8 @@ fn append_viewer_row(
     } else {
         gettext("Unavailable: this site requires DRM, which the internal browser does not support.")
     };
-    let row = BigInfoRow::new(BigInfoRowSpec::new(gettext("Internal Browser")).subtitle(subtitle))
-        .into_root();
+    let row =
+        InfoRow::new(InfoRowSpec::new(gettext("Internal Browser")).subtitle(subtitle)).into_root();
     row.set_activatable(enabled);
     row.set_sensitive(enabled);
 

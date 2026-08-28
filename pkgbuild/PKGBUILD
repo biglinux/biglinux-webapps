@@ -29,7 +29,7 @@ optdepends=(
 # Resolution order:
 #   1. `BIGLINUX_WEBAPPS_FORCE_GIT=1` env  → always git, never local
 #   2. `BIGLINUX_WEBAPPS_LOCAL_SOURCE=<path>` env → explicit local checkout
-#   3. PKGBUILD lives in `packaging/arch/` of a working tree (dev default)
+#   3. PKGBUILD lives in `pkgbuild/` of a working tree (dev default)
 #   4. PKGBUILD lives next to the source files (extracted release tarball)
 #   5. Fall back to `git+<url>.git` (network required)
 #
@@ -62,8 +62,13 @@ if [ "${BIGLINUX_WEBAPPS_FORCE_GIT:-0}" != "1" ]; then
 	if [ -z "${_local_root}" ] && [ -n "${BASH_SOURCE[0]:-}" ]; then
 		_pkgbuild_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd -P)"
 		if [ -n "${_pkgbuild_dir}" ]; then
-			# (3) PKGBUILD inside packaging/arch/ — repo root is two levels up
-			_candidate="$(cd "${_pkgbuild_dir}/../.." && pwd -P)"
+			# (3) PKGBUILD inside pkgbuild/ — repo root is one level up.
+			# This offset tracks the directory this file lives in: it was
+			# `../..` while the PKGBUILD sat in packaging/arch/. Moving the
+			# file without adjusting it here silently resolves one level too
+			# high, where _has_workspace_files fails and the build falls back
+			# to a network git fetch instead of the local checkout.
+			_candidate="$(cd "${_pkgbuild_dir}/.." && pwd -P)"
 			if _has_workspace_files "${_candidate}"; then
 				_local_root="${_candidate}"
 			# (4) PKGBUILD next to source files (release tarball layout)
@@ -130,8 +135,8 @@ prepare() {
 		rsync -a --delete \
 			--exclude='/target' \
 			--exclude='/.git' \
-			--exclude='/packaging/arch/pkg' \
-			--exclude='/packaging/arch/src' \
+			--exclude='/pkgbuild/pkg' \
+			--exclude='/pkgbuild/src' \
 			--exclude='*.pkg.tar.*' \
 			--exclude='*.log' \
 			"${_local_root}/" "${srcdir}/${pkgname}/"
@@ -147,8 +152,8 @@ prepare() {
 		rm -rf \
 			"${srcdir}/${pkgname}/target" \
 			"${srcdir}/${pkgname}/.git" \
-			"${srcdir}/${pkgname}/packaging/arch/pkg" \
-			"${srcdir}/${pkgname}/packaging/arch/src"
+			"${srcdir}/${pkgname}/pkgbuild/pkg" \
+			"${srcdir}/${pkgname}/pkgbuild/src"
 		if [ -n "${_preserved_target}" ] && [ -d "${_preserved_target}/target" ]; then
 			mv "${_preserved_target}/target" "${srcdir}/${pkgname}/target"
 			rmdir "${_preserved_target}" 2>/dev/null || true
@@ -191,11 +196,11 @@ package() {
 
 	# Copy package tree (icons, profiles, skel, .desktop, systemd, menus)
 	if [ -d "${InternalDir}/usr" ]; then
-		cp -a "${InternalDir}/usr" "${pkgdir}/"
+		cp -R --no-preserve=ownership "${InternalDir}/usr" "${pkgdir}/"
 	fi
 
 	if [ -d "${InternalDir}/etc" ]; then
-		cp -a "${InternalDir}/etc" "${pkgdir}/"
+		cp -R --no-preserve=ownership "${InternalDir}/etc" "${pkgdir}/"
 	fi
 
 	# Install Rust binaries

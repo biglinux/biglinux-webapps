@@ -99,13 +99,13 @@ scripts/
 
 ## Packaging channels
 
-### Arch (`packaging/arch/PKGBUILD`)
+### Arch (`pkgbuild/PKGBUILD`)
 - Auto-detects a local working tree via `BASH_SOURCE[0]`; falls back to
   `git+${url}.git` when building without one.
 - Version = `$(date +%y.%m.%d)-$(date +%H%M)`, surfaced to the app via the
   `BIGLINUX_WEBAPPS_VERSION` env var at build time.
 - Mirrors the source into `$srcdir/$pkgname` via rsync with `target/`,
-  `.git/`, and `packaging/arch/{pkg,src}/` excluded — do not casually add
+  `.git/`, and `pkgbuild/{pkg,src}/` excluded — do not casually add
   new top-level dirs without extending the exclude list.
 
 ### Flatpak (`packaging/flatpak/br.com.biglinux.webapps.yml`)
@@ -150,9 +150,9 @@ That wraps:
 cargo fmt --check
 cargo clippy --workspace --all-targets --all-features -- -D warnings
 cargo test --workspace
-shellcheck biglinux-webapps/usr/bin/biglinux-webapps-systemd packaging/arch/PKGBUILD
-shfmt -d   biglinux-webapps/usr/bin/biglinux-webapps-systemd packaging/arch/PKGBUILD
-bash -n    biglinux-webapps/usr/bin/biglinux-webapps-systemd packaging/arch/PKGBUILD
+shellcheck biglinux-webapps/usr/bin/biglinux-webapps-systemd pkgbuild/PKGBUILD
+shfmt -d   biglinux-webapps/usr/bin/biglinux-webapps-systemd pkgbuild/PKGBUILD
+bash -n    biglinux-webapps/usr/bin/biglinux-webapps-systemd pkgbuild/PKGBUILD
 ```
 
 Warnings are failures. If the script is missing a tool, install it; do not

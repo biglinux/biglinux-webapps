@@ -1,11 +1,8 @@
-// TODO(onda6): migrate to BigDialogSpec + Relm4 FactoryComponent for the
-// template grid (currently uses an interior-mutable boxed-FnOnce callback
-// cell).
 use gtk4 as gtk;
 use libadwaita as adw;
 
+use crate::platform::tooltip;
 use adw::prelude::*;
-use big_relm4_components::feedback::tooltip;
 use gettextrs::gettext;
 use std::cell::RefCell;
 use std::rc::Rc;

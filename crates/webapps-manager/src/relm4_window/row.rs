@@ -5,8 +5,6 @@
 //! actions become typed `WebAppRowOutput` messages routed to the parent
 //! list component.
 
-use big_relm4_components::feedback::tooltip;
-use big_relm4_components::list::info_row::{BigInfoRow, BigInfoRowSpec};
 use libadwaita as adw;
 use relm4::adw::prelude::*;
 use relm4::factory::{DynamicIndex, FactoryComponent, FactorySender};
@@ -14,6 +12,8 @@ use relm4::gtk;
 
 use webapps_core::models::{AppMode, Browser, WebApp};
 
+use crate::platform::info_row::{InfoRow, InfoRowSpec};
+use crate::platform::tooltip;
 use crate::webapp_row::load_icon;
 
 /// Init payload for [`WebAppRowFactory`].
@@ -55,10 +55,8 @@ impl FactoryComponent for WebAppRowFactory {
     type Index = DynamicIndex;
 
     fn init_root(&self) -> Self::Root {
-        // Use the cataloged BigInfoRow helper (allow_markup preserves the
-        // legacy pre-escaped title/subtitle behaviour).
-        let row = BigInfoRow::new(
-            BigInfoRowSpec::new(glib::markup_escape_text(&self.webapp.app_name).to_string())
+        let row = InfoRow::new(
+            InfoRowSpec::new(glib::markup_escape_text(&self.webapp.app_name).to_string())
                 .subtitle(
                     glib::markup_escape_text(&crate::service::display_url(&self.webapp.app_url))
                         .to_string(),

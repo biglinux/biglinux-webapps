@@ -1,10 +1,11 @@
 use adw::prelude::*;
-use big_relm4_components::list::info_row::{BigInfoRow, BigInfoRowSpec};
 use gettextrs::gettext;
 use gtk4 as gtk;
 use libadwaita as adw;
 
 use webapps_core::models::WebApp;
+
+use crate::platform::info_row::{InfoRow, InfoRowSpec};
 
 use super::super::CATEGORIES;
 
@@ -17,7 +18,7 @@ pub(crate) struct AppearanceSection {
 }
 
 pub(crate) fn build_appearance_section(webapp: &WebApp) -> AppearanceSection {
-    let icon_row = BigInfoRow::new(BigInfoRowSpec::new(gettext("Application Icon"))).into_root();
+    let icon_row = InfoRow::new(InfoRowSpec::new(gettext("Application Icon"))).into_root();
     let icon_preview = gtk::Image::new();
     icon_preview.set_pixel_size(32);
     icon_preview.set_accessible_role(gtk::AccessibleRole::Presentation);

@@ -1,4 +1,4 @@
-use big_app_kit::desktop;
+use crate::platform::desktop;
 
 use webapps_core::config;
 

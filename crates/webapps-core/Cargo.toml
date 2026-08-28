@@ -7,7 +7,6 @@ license.workspace = true
 publish = false  # internal workspace crate; not for crates.io
 
 [dependencies]
-big-os-kit = { path = "../../../big-rust-components/crates/big-os-kit" }
 serde.workspace = true
 serde_json.workspace = true
 log.workspace = true

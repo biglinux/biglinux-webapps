@@ -1,9 +1,10 @@
-use big_app_kit::desktop;
 use glib::clone;
 use gtk4 as gtk;
 use libadwaita as adw;
 use webkit6 as webkit;
 use webkit6::prelude::*;
+
+use crate::platform::desktop;
 
 pub(super) fn register_navigation_actions(
     window: &adw::ApplicationWindow,

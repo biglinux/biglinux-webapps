@@ -7,10 +7,11 @@ use std::collections::HashMap;
 use std::path::Path;
 
 use adw::prelude::*;
-use big_app_kit::dialogs;
 use gettextrs::gettext;
 use libadwaita as adw;
 use webkit6 as webkit;
+
+use crate::platform::dialogs;
 
 pub(super) use connect::connect_permission_requests;
 

@@ -1,11 +1,4 @@
 //! First-run welcome dialog.
-//!
-//! Finishes the onda6 migration: replaces the hand-built `adw::Dialog` with
-//! the cataloged `big_app_kit::dialogs` content-dialog helper (an
-//! `adw::AlertDialog` carrying a content box), so it matches the rest of the
-//! manager's dialog surface and satisfies the component policy (no direct
-//! `adw::Dialog`). The dialog is informational + a single "don't show again"
-//! switch; its only effect fires on dismissal.
 
 use gtk4 as gtk;
 use libadwaita as adw;
@@ -13,6 +6,7 @@ use libadwaita as adw;
 use adw::prelude::*;
 use gettextrs::gettext;
 
+use crate::platform::dialogs;
 use crate::service;
 
 /// Show the welcome dialog on first run only. Returns immediately.
@@ -24,7 +18,7 @@ pub fn show_if_needed(parent: &adw::ApplicationWindow) {
 }
 
 fn build_dialog() -> adw::AlertDialog {
-    let (dialog, content) = big_app_kit::dialogs::content_dialog(
+    let (dialog, content) = dialogs::content_dialog(
         &gettext("Welcome to WebApps Manager"),
         &gettext("Let's Start"),
     );

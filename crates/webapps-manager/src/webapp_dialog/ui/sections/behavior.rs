@@ -2,12 +2,13 @@ use std::cell::RefCell;
 use std::rc::Rc;
 
 use adw::prelude::*;
-use big_relm4_components::list::info_row::{BigInfoRow, BigInfoRowSpec};
 use gettextrs::gettext;
 use gtk4 as gtk;
 use libadwaita as adw;
 
 use webapps_core::models::{BrowserCollection, WebApp};
+
+use crate::platform::info_row::{InfoRow, InfoRowSpec};
 
 pub(crate) struct BehaviorSection {
     pub browser_row: adw::ActionRow,
@@ -21,7 +22,7 @@ pub(crate) fn build_behavior_section(
     webapp: &WebApp,
     browsers: Rc<RefCell<BrowserCollection>>,
 ) -> BehaviorSection {
-    let browser_row = BigInfoRow::new(BigInfoRowSpec::new(gettext("Browser"))).into_root();
+    let browser_row = InfoRow::new(InfoRowSpec::new(gettext("Browser"))).into_root();
     let browser_icon = gtk::Image::new();
     browser_icon.set_pixel_size(20);
     browser_icon.set_accessible_role(gtk::AccessibleRole::Presentation);

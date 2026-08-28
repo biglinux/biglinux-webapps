@@ -33,6 +33,8 @@ Contracts the CI gates protect. Each line is enforced by a check listed in the r
 |---|---|
 | `webapps-exec` only spawns browsers resolved via the whitelist in `webapps-core::browsers` (`find_def` + `BrowserDef`) | `webapps-exec/src/launch.rs` resolves only `native_paths`/`flatpak_app_id`; unit tests in `webapps-core/src/browsers.rs` |
 | Atomic write for persisted permissions: `tmp + rename`, never overwrite-in-place | `webapps-viewer/src/window/permissions/mod.rs::save_permissions` |
+| Viewer cookies persist via libsoup's **Text** jar, never `Sqlite` (which overflows expiries past 2038 and degrades `SameSite=None` to `Lax`) | `webapps-viewer/src/window/session.rs` sets `CookiePersistentStorage::Text`; rationale + round-trip tests in `window/cookie_migration.rs` |
+| A profile holding a legacy `webkit-cookies.db` is converted to the text jar before `set_persistent_storage`, so a package update never drops sessions | `webapps-viewer/src/window/cookie_migration.rs::migrate_legacy_cookie_jar`; 10 unit tests incl. `round_trips_cookies_through_both_backends` |
 | Inter-process file locking via an exclusive advisory lock (`fs2::FileExt::lock_exclusive`) on `WebappsLock` for any write transaction | `webapps-manager/src/service/repository.rs::WebappsLock` |
 | All shell-quoted desktop-file `Exec=` lines pass `desktop::sanitize::sanitize_exec_arg` | unit tests in `webapps-core/src/desktop/sanitize.rs` (6 cases) |
 

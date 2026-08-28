@@ -27,7 +27,7 @@ log.workspace = true
 env_logger.workspace = true
 anyhow.workspace = true
 dirs.workspace = true
-big-os-kit = { workspace = true, features = ["http-client"] }
+reqwest.workspace = true
 scraper.workspace = true
 url.workspace = true
 open = "5"
@@ -35,12 +35,7 @@ async-channel = "2"
 fs4 = "1"
 gettextrs.workspace = true
 tempfile.workspace = true
-# Relm4 + shared BigLinux components (onda6 migration).
-# big-rust-components requires gtk4 v4_22 / libadwaita v1_9 — features are
-# additive across the workspace, so the higher version is selected at build time.
 relm4 = { version = "0.11", features = ["libadwaita"] }
-big-relm4-components = { path = "../../../big-rust-components/crates/big-relm4-components" }
-big-app-kit = { path = "../../../big-rust-components/crates/big-app-kit", default-features = false }
 
 [dev-dependencies]
 tempfile = "3"

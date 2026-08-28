@@ -1,9 +1,8 @@
 use adw::prelude::*;
-use big_app_kit::desktop;
-use big_app_kit::dialogs;
 use gettextrs::gettext;
 use libadwaita as adw;
 
+use crate::platform::{desktop, dialogs};
 use crate::{service, ui_async};
 
 use super::super::context::WindowContext;

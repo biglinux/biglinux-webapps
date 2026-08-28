@@ -3,13 +3,14 @@
 
 mod connect;
 
-use big_app_kit::file_dialogs::FilePicker;
 use gettextrs::gettext;
 use glib::clone;
 use gtk4 as gtk;
 use libadwaita as adw;
 use webkit6 as webkit;
 use webkit6::prelude::*;
+
+use crate::platform::file_dialogs::FilePicker;
 
 pub(super) use connect::connect_download_handlers;
 
