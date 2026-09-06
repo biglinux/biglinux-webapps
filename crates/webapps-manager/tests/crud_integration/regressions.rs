@@ -2,6 +2,54 @@ use super::*;
 
 #[test]
 #[serial]
+fn editing_legacy_flatpak_entries_keeps_launchers_and_profiles() {
+    let _sandbox = XdgSandbox::new();
+    for id in [
+        "flatpak-brave",
+        "flatpak-chrome",
+        "flatpak-chrome-unstable",
+        "flatpak-edge",
+        "flatpak-firefox",
+    ] {
+        let filename = format!("{id}-Existing.desktop");
+        let profile = config::profiles_dir().join(id).join("Work");
+        fs::create_dir_all(&profile).unwrap();
+        fs::write(profile.join("Cookies"), b"existing session").unwrap();
+        let registry = config::data_dir().join("webapps.json");
+        fs::create_dir_all(registry.parent().unwrap()).unwrap();
+        fs::write(
+            &registry,
+            serde_json::to_vec(&serde_json::json!([{
+                "browser": id, "app_name": "Existing", "app_file": filename,
+                "app_url": "https://example.com/", "app_profile": "Work"
+            }]))
+            .unwrap(),
+        )
+        .unwrap();
+        let mut app = webapps_manager::service::try_load_webapps()
+            .unwrap()
+            .webapps
+            .remove(0);
+        app.app_name = "Renamed".into();
+        webapps_manager::service::update_webapp(&app).unwrap();
+        let saved = webapps_manager::service::try_load_webapps()
+            .unwrap()
+            .webapps
+            .remove(0);
+        assert_eq!(saved.browser, id);
+        assert_eq!(saved.app_file, filename);
+        assert_eq!(saved.app_profile, "Work");
+        assert_eq!(
+            fs::read(profile.join("Cookies")).unwrap(),
+            b"existing session"
+        );
+        let desktop = fs::read_to_string(config::applications_dir().join(filename)).unwrap();
+        assert!(desktop.contains(&format!(" {id} ")));
+    }
+}
+
+#[test]
+#[serial]
 fn corrupt_registry_blocks_every_mutation_without_replacing_bytes() {
     let _sandbox = XdgSandbox::new();
     let path = config::data_dir().join("webapps.json");

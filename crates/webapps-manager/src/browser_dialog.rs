@@ -106,7 +106,7 @@ pub fn show(
         row.add_prefix(&icon);
 
         let check = gtk::CheckButton::new();
-        if browser.browser_id == current_id {
+        if browser.matches_id(current_id) {
             check.set_active(true);
         }
         {

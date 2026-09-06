@@ -136,6 +136,76 @@ mod tests {
     use super::*;
 
     #[test]
+    fn every_legacy_flatpak_id_keeps_its_application_mapping() {
+        let definitions = parse_defs(DEFAULT_TOML).unwrap();
+        for (id, app_id) in [
+            ("flatpak-brave", "com.brave.Browser"),
+            ("flatpak-chrome", "com.google.Chrome"),
+            ("flatpak-chrome-unstable", "com.google.ChromeDev"),
+            ("flatpak-chromium", "org.chromium.Chromium"),
+            ("flatpak-edge", "com.microsoft.Edge"),
+            (
+                "flatpak-ungoogled-chromium",
+                "com.github.Eloston.UngoogledChromium",
+            ),
+            ("flatpak-firefox", "org.mozilla.firefox"),
+            ("flatpak-librewolf", "io.gitlab.librewolf-community"),
+        ] {
+            let definition = definitions
+                .iter()
+                .find(|definition| {
+                    definition.flatpak_id.as_deref() == Some(id)
+                        || definition
+                            .legacy_flatpak_ids
+                            .iter()
+                            .any(|alias| alias == id)
+                })
+                .unwrap_or_else(|| panic!("Missing browser {id}"));
+            assert_eq!(definition.flatpak_app_id.as_deref(), Some(app_id));
+        }
+    }
+
+    #[test]
+    fn legacy_native_locations_remain_registered() {
+        let definitions = parse_defs(DEFAULT_TOML).unwrap();
+        for (id, path) in [
+            ("firefox", "/usr/lib/firefox/firefox"),
+            ("brave", "/usr/lib/brave-browser/brave"),
+            ("brave", "/opt/brave-bin/brave"),
+            ("librewolf", "/usr/lib/librewolf/librewolf"),
+            ("chromium", "/usr/lib/chromium/chromium"),
+            ("google-chrome-stable", "/opt/google/chrome/google-chrome"),
+            (
+                "google-chrome-beta",
+                "/opt/google/chrome-beta/google-chrome",
+            ),
+            (
+                "google-chrome-unstable",
+                "/opt/google/chrome-unstable/google-chrome",
+            ),
+            (
+                "microsoft-edge-stable",
+                "/opt/microsoft/msedge/microsoft-edge",
+            ),
+            ("vivaldi-stable", "/opt/vivaldi/vivaldi"),
+            ("vivaldi-beta", "/opt/vivaldi-beta/vivaldi"),
+            ("vivaldi-snapshot", "/opt/vivaldi-snapshot/vivaldi"),
+        ] {
+            let definition = definitions
+                .iter()
+                .find(|definition| definition.id == id)
+                .unwrap();
+            assert!(
+                definition
+                    .native_paths
+                    .iter()
+                    .any(|candidate| candidate == path),
+                "{path}"
+            );
+        }
+    }
+
+    #[test]
     fn embedded_toml_parses_successfully() {
         let defs = parse_defs(DEFAULT_TOML).expect("embedded TOML must be valid");
         assert!(!defs.is_empty(), "Expected at least one browser definition");
