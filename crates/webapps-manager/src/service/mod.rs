@@ -8,6 +8,7 @@ mod icons;
 mod io;
 mod migration;
 mod repository;
+mod transaction;
 mod welcome;
 
 pub use browser::detect_browsers;
@@ -22,7 +23,7 @@ pub use migration::{
     migrate_browser_desktop_filenames, migrate_legacy_desktops, persist_existing_icons,
     regenerate_app_mode_desktops, regenerate_browser_mode_desktops,
 };
-pub use repository::{load_webapps, save_webapps};
+pub use repository::{load_webapps, save_webapps, try_load_webapps};
 pub use welcome::{mark_welcome_shown, should_show_welcome};
 
 pub(crate) use repository::webapps_json_path;

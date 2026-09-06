@@ -44,8 +44,9 @@ pub fn http_get_bytes_capped(
     max_bytes: u64,
     timeout: Duration,
 ) -> Result<ByteResponse> {
-    let response = client(timeout)
+    let response = client()?
         .get(url)
+        .timeout(timeout)
         .headers(header_map(headers, &[])?)
         .send()
         .with_context(|| format!("GET {url}"))?;
@@ -58,8 +59,9 @@ pub fn http_get_stream_with_extra_headers(
     extra_headers: &[(&str, &str)],
     timeout: Duration,
 ) -> Result<StreamResponse> {
-    let response = client(timeout)
+    let response = client()?
         .get(url)
+        .timeout(timeout)
         .headers(header_map(headers, extra_headers)?)
         .send()
         .with_context(|| format!("GET {url}"))?;
@@ -69,12 +71,18 @@ pub fn http_get_stream_with_extra_headers(
     })
 }
 
-fn client(timeout: Duration) -> Client {
-    Client::builder()
-        .timeout(timeout)
-        .redirect(Policy::limited(10))
-        .build()
-        .expect("reqwest client builder accepts static configuration")
+fn client() -> Result<&'static Client> {
+    static CLIENT: std::sync::OnceLock<Result<Client, String>> = std::sync::OnceLock::new();
+    CLIENT
+        .get_or_init(|| {
+            Client::builder()
+                .connect_timeout(Duration::from_secs(5))
+                .redirect(Policy::limited(10))
+                .build()
+                .map_err(|error| error.to_string())
+        })
+        .as_ref()
+        .map_err(|error| anyhow::anyhow!("HTTP client: {error}"))
 }
 
 fn header_map(headers: &RequestHeaders, extra_headers: &[(&str, &str)]) -> Result<HeaderMap> {

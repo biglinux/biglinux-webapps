@@ -7,26 +7,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
-"POT-Creation-Date: 2026-06-20 19:19+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2026-09-06 19:25+0000\n"
+"PO-Revision-Date: 2026-09-06 16:24-0300\n"
+"Last-Translator: Luna (gpt-5.6-luna)\n"
+"Language-Team: ro\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: attranslate\n"
+"X-Generator: Luna (gpt-5.6-luna)\n"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
-#: crates/webapps-manager/src/browser_dialog.rs:40
+#: crates/webapps-manager/src/browser_dialog.rs:38
 msgid "Select Browser"
 msgstr "Selectați browserul"
 
-#: crates/webapps-manager/src/browser_dialog.rs:72
+#: crates/webapps-manager/src/browser_dialog.rs:70
 msgid "Auto-hide headerbar"
 msgstr "Ascunde automat bara de antet"
 
-#: crates/webapps-manager/src/browser_dialog.rs:74
+#: crates/webapps-manager/src/browser_dialog.rs:72
 msgid "Hide the titlebar; reveal it by moving the cursor to the top edge."
 msgstr ""
 "Ascunde bara de titlu; arată-o din nou mutând cursorul spre marginea de sus."
@@ -37,12 +38,12 @@ msgstr ""
 #
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
-#: crates/webapps-manager/src/browser_dialog.rs:152
+#: crates/webapps-manager/src/browser_dialog.rs:150
 #: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:43
-#: crates/webapps-manager/src/window/actions/remove_all.rs:26
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:142
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:194
-#: crates/webapps-manager/src/window/list.rs:187
+#: crates/webapps-manager/src/window/actions/remove_all.rs:25
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:138
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:190
+#: crates/webapps-manager/src/window/list.rs:183
 msgid "Cancel"
 msgstr "Anulează"
 
@@ -56,11 +57,11 @@ msgstr "Anulează"
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
-#: crates/webapps-manager/src/browser_dialog.rs:153
+#: crates/webapps-manager/src/browser_dialog.rs:151
 msgid "OK"
 msgstr "OK"
 
-#: crates/webapps-manager/src/browser_dialog.rs:205
+#: crates/webapps-manager/src/browser_dialog.rs:203
 msgid ""
 "Embedded browser with better system integration. May not work on all "
 "websites."
@@ -68,29 +69,29 @@ msgstr ""
 "Browser încorporat cu integrare mai bună cu sistemul. Este posibil să nu "
 "funcționeze pe toate site-urile."
 
-#: crates/webapps-manager/src/browser_dialog.rs:207
-#, fuzzy
-#| msgid "This site requires DRM — the internal browser cannot be used"
+#: crates/webapps-manager/src/browser_dialog.rs:205
 msgid ""
 "Unavailable: this site requires DRM, which the internal browser does not "
 "support."
-msgstr "Acest site necesită DRM — browserul intern nu poate fi folosit"
+msgstr ""
+"Indisponibil: acest site necesită DRM, pe care browserul intern nu îl "
+"acceptă."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
-#: crates/webapps-manager/src/browser_dialog.rs:209
+#: crates/webapps-manager/src/browser_dialog.rs:208
 #: crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:191
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:66
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:67
 msgid "Internal Browser"
 msgstr "Browser intern"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
-#: crates/webapps-manager/src/relm4_window/empty.rs:20
+#: crates/webapps-manager/src/relm4_window/empty.rs:16
 msgid "No WebApps yet"
 msgstr "Nu există încă WebApps"
 
-#: crates/webapps-manager/src/relm4_window/empty.rs:22
+#: crates/webapps-manager/src/relm4_window/empty.rs:18
 msgid "Turn any website into a desktop app. Press Add to get started."
 msgstr ""
 "Transformă orice site într-o aplicație desktop. Apasă Adaugă pentru a începe."
@@ -103,94 +104,105 @@ msgstr ""
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 109
-#: crates/webapps-manager/src/relm4_window/empty.rs:24
-#: crates/webapps-manager/src/window/ui.rs:36
-#: crates/webapps-manager/src/window/ui.rs:37
+#: crates/webapps-manager/src/relm4_window/empty.rs:20
+#: crates/webapps-manager/src/window/ui.rs:41
+#: crates/webapps-manager/src/window/ui.rs:42
 msgid "Add WebApp"
 msgstr "Adaugă WebApp"
 
-#: crates/webapps-manager/src/relm4_window/list.rs:151
+#: crates/webapps-manager/src/relm4_window/list.rs:178
 msgid "{} results"
 msgstr "{} rezultate"
 
-#: crates/webapps-manager/src/relm4_window/row.rs:120
+#: crates/webapps-manager/src/relm4_window/row.rs:118
 msgid "Change browser"
 msgstr "Schimbă browser"
 
-#: crates/webapps-manager/src/relm4_window/row.rs:131
+#: crates/webapps-manager/src/relm4_window/row.rs:129
 msgid "Edit"
 msgstr "Editează"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
-#: crates/webapps-manager/src/relm4_window/row.rs:142
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:196
-#: crates/webapps-manager/src/window/list.rs:189
+#: crates/webapps-manager/src/relm4_window/row.rs:140
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:192
+#: crates/webapps-manager/src/window/list.rs:185
 msgid "Remove"
 msgstr "Elimină"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
-#: crates/webapps-manager/src/relm4_window/shell_spec.rs:21
+#: crates/webapps-manager/src/relm4_window/shell_spec.rs:12
 #: crates/webapps-manager/src/window/actions/about.rs:15
 msgid "WebApps Manager"
 msgstr "Manager aplicații web"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 50
-#: crates/webapps-manager/src/template_gallery.rs:34
+#: crates/webapps-manager/src/template_gallery.rs:31
 msgid "Choose a Template"
 msgstr "Alegeți un șablon"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 56
-#: crates/webapps-manager/src/template_gallery.rs:41
+#: crates/webapps-manager/src/template_gallery.rs:38
 msgid "Search templates..."
 msgstr "Caută șabloane..."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 63
-#: crates/webapps-manager/src/template_gallery.rs:44
+#: crates/webapps-manager/src/template_gallery.rs:41
 msgid "Search templates"
 msgstr "Caută șabloane"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 96
-#: crates/webapps-manager/src/template_gallery.rs:109
+#: crates/webapps-manager/src/template_gallery.rs:106
 msgid "No templates found"
 msgstr "Nu au fost găsite șabloane."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 94
-#: crates/webapps-manager/src/template_gallery.rs:117
+#: crates/webapps-manager/src/template_gallery.rs:114
 msgid "Search Results"
 msgstr "Rezultatele căutării"
 
-#: crates/webapps-manager/src/template_gallery.rs:189
+#: crates/webapps-manager/src/template_gallery.rs:186
 msgid "Requires external browser (DRM)"
 msgstr "Necesită browser extern (DRM)"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 445
-#: crates/webapps-manager/src/webapp_dialog/handlers/lifecycle.rs:101
+#: crates/webapps-manager/src/webapp_dialog/handlers/lifecycle.rs:105
 msgid "Failed to save webapp"
 msgstr "Salvarea WebApp a eșuat"
 
-#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:49
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:91
 msgid "Icon candidate {n}"
 msgstr "Candidat pentru pictogramă {n}"
 
-#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:91
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:98
+msgid "Recommended icon"
+msgstr "Pictogramă recomandată"
+
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:121
+#| msgid "No icon with sufficient quality found (minimum 256 × 256 px)."
+msgid "No icon with sufficient quality found (minimum 64 × 64 px)."
+msgstr ""
+"Nu a fost găsită nicio pictogramă de calitate suficientă (minimum 64 × 64 "
+"px)."
+
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:156
 msgid "Select Icon"
 msgstr "Selectează pictogramă"
 
-#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:93
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:158
 msgid "Images"
 msgstr "Imagini"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 290
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:20
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:21
 msgid "Application Icon"
 msgstr "Pictograma aplicației"
 
@@ -202,24 +214,24 @@ msgstr "Pictograma aplicației"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 179
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 240
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:26
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:32
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:27
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:33
 msgid "Select"
 msgstr "Selectați"
 
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:38
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:39
 msgid "Detected icon candidates"
 msgstr "Candidați de pictograme detectați"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 221
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:43
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:44
 msgid "Category"
 msgstr "Categorie"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 226
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:24
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:25
 msgid "Browser"
 msgstr "Browser"
 
@@ -229,19 +241,22 @@ msgstr "Browser"
 #
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:76
-msgid "Use separate profile"
-msgstr "Utilizați un profil separat"
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:77
+msgid "Use named profile"
+msgstr "Folosește un profil cu nume"
 
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 345
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:78
-msgid "Allows independent cookies and sessions for this webapp"
-msgstr "Permite cookie-uri și sesiuni independente pentru această webapp"
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:79
+msgid ""
+"By default, each webapp is isolated. A name shares sessions with webapps "
+"using the same browser and profile."
+msgstr ""
+"În mod implicit, fiecare aplicație web este izolată. Atribuirea unui nume "
+"profilului permite aplicațiilor web care folosesc același browser și profil "
+"să partajeze sesiunile."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:87
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:88
 msgid "Profile Name"
 msgstr "Nume profil"
 
@@ -272,7 +287,7 @@ msgid "Name"
 msgstr "Nume"
 
 #: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:23
-#: crates/webapps-manager/src/window/shortcuts_window.rs:18
+#: crates/webapps-manager/src/window/shortcuts_window.rs:19
 msgid "New WebApp"
 msgstr "WebApp nou"
 
@@ -308,67 +323,62 @@ msgstr "Se încarcă…"
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
-#: crates/webapps-manager/src/welcome_dialog.rs:28
+#: crates/webapps-manager/src/welcome_dialog.rs:22
 msgid "Welcome to WebApps Manager"
 msgstr "Bine ați venit la Managerul de WebApps"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
-#: crates/webapps-manager/src/welcome_dialog.rs:29
+#: crates/webapps-manager/src/welcome_dialog.rs:23
 msgid "Let's Start"
 msgstr "Să începem"
 
-#: crates/webapps-manager/src/welcome_dialog.rs:41
-#, fuzzy
-#| msgid ""
-#| "WebApps are web applications that run in a dedicated browser window, "
-#| "providing a more app-like experience for your favorite websites."
+#: crates/webapps-manager/src/welcome_dialog.rs:35
 msgid ""
 "WebApps run your favorite websites in their own dedicated window, for a "
 "focused, app-like experience."
 msgstr ""
-"WebApps sunt aplicații web care rulează într-o fereastră de browser "
-"dedicată, oferind o experiență mai asemănătoare unei aplicații pentru site-"
-"urile tale preferate."
+"WebApps rulează site-urile tale preferate într-o fereastră dedicată, pentru "
+"o experiență concentrată, asemănătoare unei aplicații."
 
-#: crates/webapps-manager/src/welcome_dialog.rs:54
+#: crates/webapps-manager/src/welcome_dialog.rs:48
 msgid "Benefits"
-msgstr ""
+msgstr "Beneficii"
 
-#: crates/webapps-manager/src/welcome_dialog.rs:59
+#: crates/webapps-manager/src/welcome_dialog.rs:53
 msgid "Focus"
 msgstr "Concentrare"
 
-#: crates/webapps-manager/src/welcome_dialog.rs:60
+#: crates/webapps-manager/src/welcome_dialog.rs:54
 msgid "Work without the distractions of other browser tabs"
 msgstr "Lucrează fără distragerile altor file de browser"
 
-#: crates/webapps-manager/src/welcome_dialog.rs:64
+#: crates/webapps-manager/src/welcome_dialog.rs:58
 msgid "Desktop Integration"
 msgstr "Integrare pe desktop"
 
-#: crates/webapps-manager/src/welcome_dialog.rs:65
+#: crates/webapps-manager/src/welcome_dialog.rs:59
 msgid "Quick access from your application menu"
 msgstr "Acces rapid din meniul aplicațiilor"
 
-#: crates/webapps-manager/src/welcome_dialog.rs:69
+#: crates/webapps-manager/src/welcome_dialog.rs:63
 msgid "Isolated Profiles"
 msgstr "Profiluri izolate"
 
-#: crates/webapps-manager/src/welcome_dialog.rs:70
+#: crates/webapps-manager/src/welcome_dialog.rs:64
 msgid "Each webapp can have its own cookies and settings"
 msgstr "Fiecare webapp poate avea propriile cookie-uri și setări"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
-#: crates/webapps-manager/src/welcome_dialog.rs:76
+#: crates/webapps-manager/src/welcome_dialog.rs:70
 msgid "Don't show this again"
 msgstr "Nu mai arăta asta."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 62
 #: crates/webapps-manager/src/window/actions/import_export.rs:15
-#: crates/webapps-manager/src/window/ui.rs:98
+#: crates/webapps-manager/src/window/ui.rs:105
 msgid "Import WebApps"
 msgstr "Importați aplicații web"
 
@@ -383,7 +393,7 @@ msgstr "Importul a eșuat"
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 61
 #: crates/webapps-manager/src/window/actions/import_export.rs:40
-#: crates/webapps-manager/src/window/ui.rs:99
+#: crates/webapps-manager/src/window/ui.rs:106
 msgid "Export WebApps"
 msgstr "Exportați aplicațiile web"
 
@@ -411,14 +421,14 @@ msgstr "WebApps exportate cu succes"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
-#: crates/webapps-manager/src/window/actions/remove_all.rs:24
-#: crates/webapps-manager/src/window/ui.rs:114
+#: crates/webapps-manager/src/window/actions/remove_all.rs:23
+#: crates/webapps-manager/src/window/ui.rs:121
 msgid "Remove All WebApps"
 msgstr "Elimină toate aplicațiile web"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 346
-#: crates/webapps-manager/src/window/actions/remove_all.rs:25
+#: crates/webapps-manager/src/window/actions/remove_all.rs:24
 msgid ""
 "Are you sure you want to remove all your WebApps? This action cannot be "
 "undone."
@@ -426,15 +436,15 @@ msgstr ""
 "Sigur vrei să elimini toate WebApps-urile tale? Această acțiune nu poate fi "
 "anulată."
 
-#: crates/webapps-manager/src/window/actions/remove_all.rs:28
+#: crates/webapps-manager/src/window/actions/remove_all.rs:27
 msgid "Continue"
 msgstr "Continuă"
 
-#: crates/webapps-manager/src/window/actions/remove_all.rs:45
+#: crates/webapps-manager/src/window/actions/remove_all.rs:44
 msgid "Final Confirmation"
 msgstr "Confirmare finală"
 
-#: crates/webapps-manager/src/window/actions/remove_all.rs:46
+#: crates/webapps-manager/src/window/actions/remove_all.rs:45
 msgid "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
 msgstr "Ești ABSOLUT sigur că vrei să elimini TOATE WebApps-urile tale?"
 
@@ -444,31 +454,31 @@ msgstr "Ești ABSOLUT sigur că vrei să elimini TOATE WebApps-urile tale?"
 #
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
-#: crates/webapps-manager/src/window/actions/remove_all.rs:47
+#: crates/webapps-manager/src/window/actions/remove_all.rs:46
 msgid "No, Cancel"
 msgstr "Nu, anulează"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
-#: crates/webapps-manager/src/window/actions/remove_all.rs:49
+#: crates/webapps-manager/src/window/actions/remove_all.rs:48
 msgid "Yes, Remove All"
 msgstr "Da, elimină tot"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
-#: crates/webapps-manager/src/window/actions/remove_all.rs:69
+#: crates/webapps-manager/src/window/actions/remove_all.rs:68
 msgid "All WebApps have been removed"
 msgstr "Toate aplicațiile web au fost eliminate."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 445
-#: crates/webapps-manager/src/window/actions/remove_all.rs:74
+#: crates/webapps-manager/src/window/actions/remove_all.rs:73
 msgid "Failed to remove all WebApps"
 msgstr "Nu s-au putut elimina toate aplicațiile web."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:33
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:29
 msgid "No WebApps to remove"
 msgstr "Nu există WebApps de eliminat"
 
@@ -476,11 +486,11 @@ msgstr "Nu există WebApps de eliminat"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:38
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:34
 msgid "Remove WebApps"
 msgstr "Elimină WebApps"
 
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:48
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:44
 msgid "Select the WebApps you want to remove. This cannot be undone."
 msgstr ""
 "Selectează WebApps-urile pe care vrei să le elimini. Această acțiune nu "
@@ -494,20 +504,20 @@ msgstr ""
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 179
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 240
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:69
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:70
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:65
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:66
 msgid "Select all"
 msgstr "Selectează tot"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:143
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:139
 msgid "Remove Selected"
 msgstr "Elimină selecția"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:166
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:162
 msgid "Select at least one WebApp"
 msgstr "Selectează cel puțin o WebApp"
 
@@ -515,11 +525,11 @@ msgstr "Selectează cel puțin o WebApp"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:185
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:181
 msgid "Remove Selected WebApps?"
 msgstr "Elimini WebApps-urile selectate?"
 
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:187
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:183
 msgid ""
 "This will remove {count} WebApps and their desktop entries. This cannot be "
 "undone."
@@ -529,45 +539,44 @@ msgstr ""
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:226
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:222
 msgid "{count} WebApps removed"
 msgstr "{count} WebApps eliminate"
 
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:228
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:224
 msgid "{ok} removed, {fail} failed"
 msgstr "{ok} eliminate, {fail} eșuate"
 
-#: crates/webapps-manager/src/window/component.rs:91
+#: crates/webapps-manager/src/window/component.rs:88
 msgid "Detecting installed browsers…"
 msgstr "Se detectează browserele instalate…"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 214
-#: crates/webapps-manager/src/window/list.rs:87
-#: crates/webapps-manager/src/window/list.rs:117
+#: crates/webapps-manager/src/window/list.rs:83
+#: crates/webapps-manager/src/window/list.rs:113
 msgid "WebApp created successfully"
 msgstr "WebApp creat cu succes"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 257
-#: crates/webapps-manager/src/window/list.rs:135
+#: crates/webapps-manager/src/window/list.rs:131
 msgid "WebApp updated successfully"
 msgstr "WebApp actualizat cu succes"
 
-#: crates/webapps-manager/src/window/list.rs:171
+#: crates/webapps-manager/src/window/list.rs:167
 msgid "Browser changed"
 msgstr "Browserul a fost schimbat"
 
-#: crates/webapps-manager/src/window/list.rs:175
-#, fuzzy
+#: crates/webapps-manager/src/window/list.rs:171
 msgid "Browser change failed"
-msgstr "Browserul a fost schimbat"
+msgstr "Schimbarea browserului a eșuat"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
-#: crates/webapps-manager/src/window/list.rs:185
+#: crates/webapps-manager/src/window/list.rs:181
 msgid "Remove WebApp?"
 msgstr "Elimini WebApp-ul?"
 
@@ -577,86 +586,85 @@ msgstr "Elimini WebApp-ul?"
 #
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
-#: crates/webapps-manager/src/window/list.rs:197
+#: crates/webapps-manager/src/window/list.rs:193
 msgid "Also delete configuration folder"
 msgstr "Dezinstalează și folderul de configurare."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
-#: crates/webapps-manager/src/window/list.rs:217
+#: crates/webapps-manager/src/window/list.rs:213
 msgid "WebApp removed"
 msgstr "WebApp eliminată"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
-#: crates/webapps-manager/src/window/list.rs:220
-#, fuzzy
+#: crates/webapps-manager/src/window/list.rs:216
 msgid "Remove failed"
-msgstr "Elimină selecția"
+msgstr "Eliminarea a eșuat"
 
-#: crates/webapps-manager/src/window/shortcuts_window.rs:16
+#: crates/webapps-manager/src/window/shortcuts_window.rs:17
 msgid "General"
 msgstr "Generale"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 94
-#: crates/webapps-manager/src/window/shortcuts_window.rs:19
+#: crates/webapps-manager/src/window/shortcuts_window.rs:20
 msgid "Search"
 msgstr "Căutare"
 
-#: crates/webapps-manager/src/window/shortcuts_window.rs:20
+#: crates/webapps-manager/src/window/shortcuts_window.rs:21
 msgid "Quit"
 msgstr "Ieșire"
 
-#: crates/webapps-manager/src/window/shortcuts_window.rs:21
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:38
+#: crates/webapps-manager/src/window/shortcuts_window.rs:22
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:39
 msgid "Show this dialog"
 msgstr "Afișați acest dialog"
 
-#: crates/webapps-manager/src/window/shortcuts_window.rs:24
-#: crates/webapps-manager/src/window/shortcuts_window.rs:30
-#: crates/webapps-manager/src/window/ui.rs:118
-#: crates/webapps-viewer/src/window/chrome.rs:100
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:43
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:51
+#: crates/webapps-manager/src/window/shortcuts_window.rs:25
+#: crates/webapps-manager/src/window/shortcuts_window.rs:31
+#: crates/webapps-manager/src/window/ui.rs:125
+#: crates/webapps-viewer/src/window/chrome.rs:101
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:44
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:52
 msgid "Keyboard Shortcuts"
 msgstr "Scurtături de la tastatură"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 51
-#: crates/webapps-manager/src/window/ui.rs:31
-#: crates/webapps-manager/src/window/ui.rs:32
+#: crates/webapps-manager/src/window/ui.rs:36
+#: crates/webapps-manager/src/window/ui.rs:37
 msgid "Search WebApps"
 msgstr "Caută WebApps"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 72
-#: crates/webapps-manager/src/window/ui.rs:35
+#: crates/webapps-manager/src/window/ui.rs:40
 msgid "Add"
 msgstr "Adaugă"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 167
-#: crates/webapps-manager/src/window/ui.rs:42
-#: crates/webapps-manager/src/window/ui.rs:44
+#: crates/webapps-manager/src/window/ui.rs:47
+#: crates/webapps-manager/src/window/ui.rs:49
 msgid "Choose from templates"
 msgstr "Alege din șabloane"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 79
-#: crates/webapps-manager/src/window/ui.rs:51
+#: crates/webapps-manager/src/window/ui.rs:58
 msgid "Main Menu"
 msgstr "Meniu Principal"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 65
-#: crates/webapps-manager/src/window/ui.rs:101
+#: crates/webapps-manager/src/window/ui.rs:108
 msgid "Browse Applications Folder"
 msgstr "Răsfoiește folderul Aplicații"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 66
-#: crates/webapps-manager/src/window/ui.rs:105
+#: crates/webapps-manager/src/window/ui.rs:112
 msgid "Browse Profiles Folder"
 msgstr "Răsfoiește folderul Profiluri"
 
@@ -664,453 +672,166 @@ msgstr "Răsfoiește folderul Profiluri"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
-#: crates/webapps-manager/src/window/ui.rs:111
+#: crates/webapps-manager/src/window/ui.rs:118
 msgid "Remove WebApps in Bulk"
 msgstr "Elimină WebApps în bloc"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
-#: crates/webapps-manager/src/window/ui.rs:119
+#: crates/webapps-manager/src/window/ui.rs:126
 msgid "About"
 msgstr "Despre"
 
-#: crates/webapps-viewer/src/window/chrome.rs:32
+#: crates/webapps-viewer/src/window/chrome.rs:33
 msgid "Back"
 msgstr "Înapoi"
 
-#: crates/webapps-viewer/src/window/chrome.rs:33
+#: crates/webapps-viewer/src/window/chrome.rs:34
 msgid "Forward"
 msgstr "Înainte"
 
-#: crates/webapps-viewer/src/window/chrome.rs:34
+#: crates/webapps-viewer/src/window/chrome.rs:35
 msgid "Reload"
 msgstr "Reîncarcă"
 
-#: crates/webapps-viewer/src/window/chrome.rs:36
+#: crates/webapps-viewer/src/window/chrome.rs:37
 msgid "Fullscreen"
 msgstr "Ecran complet"
 
-#: crates/webapps-viewer/src/window/chrome.rs:50
+#: crates/webapps-viewer/src/window/chrome.rs:51
 msgid "Enter URL…"
 msgstr "Introdu URL…"
 
 #. Placeholder text is not an accessible name; label it explicitly.
-#: crates/webapps-viewer/src/window/chrome.rs:55
+#: crates/webapps-viewer/src/window/chrome.rs:56
 msgid "Address"
-msgstr ""
+msgstr "Adresă"
 
-#: crates/webapps-viewer/src/window/chrome.rs:92
+#: crates/webapps-viewer/src/window/chrome.rs:93
 msgid "Zoom In"
 msgstr "Mărește"
 
-#: crates/webapps-viewer/src/window/chrome.rs:93
+#: crates/webapps-viewer/src/window/chrome.rs:94
 msgid "Zoom Out"
 msgstr "Micșorează"
 
-#: crates/webapps-viewer/src/window/chrome.rs:94
+#: crates/webapps-viewer/src/window/chrome.rs:95
 msgid "Reset Zoom"
 msgstr "Resetează zoom-ul"
 
-#: crates/webapps-viewer/src/window/chrome.rs:96
+#: crates/webapps-viewer/src/window/chrome.rs:97
 msgid "Developer Tools"
 msgstr "Instrumente pentru dezvoltatori"
 
-#: crates/webapps-viewer/src/window/chrome.rs:107
 #: crates/webapps-viewer/src/window/chrome.rs:108
+#: crates/webapps-viewer/src/window/chrome.rs:109
 msgid "Menu"
 msgstr "Meniu"
 
-#: crates/webapps-viewer/src/window/context_menu.rs:24
+#: crates/webapps-viewer/src/window/context_menu.rs:25
 msgid "Open Link in Browser"
 msgstr "Deschide linkul în browser"
 
-#: crates/webapps-viewer/src/window/downloads/mod.rs:32
+#: crates/webapps-viewer/src/window/downloads/mod.rs:29
 msgid "Download Complete"
 msgstr "Descărcare completă"
 
-#: crates/webapps-viewer/src/window/downloads/mod.rs:41
+#: crates/webapps-viewer/src/window/downloads/mod.rs:45
 msgid "Save File"
 msgstr "Salvează fișierul"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:97
+#: crates/webapps-viewer/src/window/permissions/mod.rs:103
 msgid "Camera Access"
 msgstr "Acces la cameră"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:98
+#: crates/webapps-viewer/src/window/permissions/mod.rs:104
 msgid "This webapp wants to use your camera. Allow?"
 msgstr "Acest WebApp dorește să folosească camera dvs. Permiteți?"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:101
+#: crates/webapps-viewer/src/window/permissions/mod.rs:107
 msgid "Microphone Access"
 msgstr "Acces la microfon"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:102
+#: crates/webapps-viewer/src/window/permissions/mod.rs:108
 msgid "This webapp wants to use your microphone. Allow?"
 msgstr "Acest WebApp dorește să folosească microfonul dvs. Permiteți?"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:105
+#: crates/webapps-viewer/src/window/permissions/mod.rs:111
 msgid "Location Access"
 msgstr "Acces la locație"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:106
+#: crates/webapps-viewer/src/window/permissions/mod.rs:112
 msgid "This webapp wants to access your location. Allow?"
 msgstr "Acest WebApp dorește să acceseze locația dvs. Permiteți?"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:109
+#: crates/webapps-viewer/src/window/permissions/mod.rs:115
 msgid "Clipboard Access"
 msgstr "Acces la clipboard"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:110
+#: crates/webapps-viewer/src/window/permissions/mod.rs:116
 msgid "This webapp wants to read from your clipboard. Allow?"
 msgstr "Acest WebApp dorește să citească din clipboardul dvs. Permiteți?"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:113
+#: crates/webapps-viewer/src/window/permissions/mod.rs:119
 msgid "Permission Request"
 msgstr "Cerere de permisiune"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:114
+#: crates/webapps-viewer/src/window/permissions/mod.rs:120
 msgid "This webapp is requesting a special permission. Allow?"
 msgstr "Acest WebApp solicită o permisiune specială. Permiteți?"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:125
+#: crates/webapps-viewer/src/window/permissions/mod.rs:131
 msgid "Deny"
 msgstr "Refuză"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:127
+#: crates/webapps-viewer/src/window/permissions/mod.rs:133
 msgid "Allow"
 msgstr "Permite"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:15
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:16
 msgid "Navigation"
 msgstr "Navigare"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:17
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:18
 msgid "Focus address bar"
 msgstr "Focalizează bara de adrese"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:18
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:19
 msgid "Reload page"
 msgstr "Reîncarcă pagina"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:19
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:20
 msgid "Go back"
 msgstr "Înapoi"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:20
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:21
 msgid "Go forward"
 msgstr "Înainte"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:25
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:26
 msgid "View"
 msgstr "Vizualizare"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:27
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:28
 msgid "Toggle fullscreen"
 msgstr "Comută ecran complet"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:28
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:29
 msgid "Zoom in"
 msgstr "Mărește"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:29
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:30
 msgid "Zoom out"
 msgstr "Micșorează"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:30
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:31
 msgid "Reset zoom"
 msgstr "Resetează zoomul"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:35
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:36
 msgid "Window"
 msgstr "Fereastră"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:37
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:38
 msgid "Close window"
 msgstr "Închide fereastra"
-
-#~ msgid "What are WebApps?"
-#~ msgstr "Ce sunt WebApps?"
-
-#~ msgid "Benefits of using WebApps:"
-#~ msgstr "Beneficiile utilizării WebApps:"
-
-#~ msgid "Advanced Settings…"
-#~ msgstr "Setări avansate…"
-
-#~ msgid "Appearance"
-#~ msgstr "Aspect"
-
-#~ msgid "Icon and application category"
-#~ msgstr "Pictogramă și categorie a aplicației"
-
-#~ msgid "Icon"
-#~ msgstr "Pictogramă"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 180
-#~ msgid "Choose an icon for the webapp"
-#~ msgstr "Alegeți o pictogramă pentru WebApp"
-
-#~ msgid "Behavior"
-#~ msgstr "Comportament"
-
-#~ msgid "How the webapp opens and runs"
-#~ msgstr "Cum se deschide și rulează WebApp"
-
-#~ msgid "Separate Profile"
-#~ msgstr "Profil separat"
-
-#~ msgid "Website"
-#~ msgstr "Site web"
-
-# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
-#
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 32
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 163
-#~ msgid "Templates"
-#~ msgstr "Șabloane"
-
-#~ msgid "Internal browser"
-#~ msgstr "Browser intern"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 352
-#~ msgid "Delete"
-#~ msgstr "Șterge"
-
-#~ msgid "Press + to create your first webapp"
-#~ msgstr "Apăsați + pentru a crea primul dvs. WebApp"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 371
-#~ msgid "WebApp deleted successfully"
-#~ msgstr "WebApp șters cu succes"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 292
-#~ msgid "Opens as a native window without browser interface"
-#~ msgstr "Se deschide ca o fereastră nativă fără interfață de browser."
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 106
-#~ msgid "Add a new webapp to get started"
-#~ msgstr "Adăugați o nouă aplicație web pentru a începe."
-
-#~ msgid "App Mode"
-#~ msgstr "Modul aplicație"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 91
-#, python-brace-format
-#~ msgid "Browser: {0}"
-#~ msgstr "Browser: {0}"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 113
-#, python-brace-format
-#~ msgid "Edit {0}"
-#~ msgstr "Editează {0}"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 127
-#, python-brace-format
-#~ msgid "Delete {0}"
-#~ msgstr "Șterge {0}"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
-#~ msgid ""
-#~ "<b>What are WebApps?</b>\n"
-#~ "\n"
-#~ "WebApps are web applications that run in a dedicated browser window, "
-#~ "providing a more app-like experience for your favorite websites.\n"
-#~ "\n"
-#~ "<b>Benefits of using WebApps:</b>\n"
-#~ "\n"
-#~ "• <b>Focus</b>: Work without the distractions of other browser tabs\n"
-#~ "• <b>Desktop Integration</b>: Quick access from your application menu\n"
-#~ "• <b>Isolated Profiles</b>: Optionally, each webapp can have its own "
-#~ "cookies and settings\n"
-#~ msgstr ""
-#~ "<b>Ce sunt WebApps?</b>\n"
-#~ "\n"
-#~ "WebApps sunt aplicații web care rulează într-o fereastră de browser "
-#~ "dedicată, oferind o experiență mai asemănătoare cu cea a aplicațiilor "
-#~ "pentru site-urile tale preferate.\n"
-#~ "\n"
-#~ "<b>Beneficiile utilizării WebApps:</b>\n"
-#~ "\n"
-#~ "• <b>Concentrare</b>: Lucrează fără distragerile altor tab-uri de "
-#~ "browser\n"
-#~ "• <b>Integrare pe desktop</b>: Acces rapid din meniul aplicației tale\n"
-#~ "• <b>Profiluri izolate</b>: Opțional, fiecare webapp poate avea propriile "
-#~ "sale cookie-uri și setări\n"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 170
-#~ msgid "System Default"
-#~ msgstr "Implicit sistem"
-
-# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
-#
-# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
-#
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 136
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 258
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 440
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 441
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 590
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 151
-#~ msgid "Default"
-#~ msgstr "Implicit"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 163
-#~ msgid "Please select a browser."
-#~ msgstr "Vă rugăm să selectați un browser."
-
-# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
-#
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 172
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 637
-#~ msgid "Error"
-#~ msgstr "Eroare"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 172
-#~ msgid "App Icon"
-#~ msgstr "Pictograma aplicație"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 187
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 278
-#~ msgid "Available Icons"
-#~ msgstr "Iconi disponibile"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 339
-#~ msgid "Profile Settings"
-#~ msgstr "Setări profil"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 341
-#~ msgid "Configure a separate browser profile for this webapp"
-#~ msgstr ""
-#~ "Configurează un profil de browser separat pentru această aplicație web."
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 414
-#~ msgid "Detecting website information, please wait"
-#~ msgstr "Detectarea informațiilor site-ului, vă rugăm să așteptați"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 453
-#~ msgid "Please enter a URL first."
-#~ msgstr "Vă rugăm să introduceți mai întâi un URL."
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 609
-#~ msgid "Please enter a name for the WebApp."
-#~ msgstr "Vă rugăm să introduceți un nume pentru WebApp."
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 613
-#~ msgid "Please enter a URL for the WebApp."
-#~ msgstr "Vă rugăm să introduceți un URL pentru WebApp."
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 617
-#~ msgid "Please select a browser for the WebApp."
-#~ msgstr "Vă rugăm să selectați un browser pentru WebApp."
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 60
-#~ msgid "Refresh"
-#~ msgstr "Actualizează"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 87
-#~ msgid "Show Welcome Screen"
-#~ msgstr "Afișează Ecranul de Bun Venit"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 313
-#, python-brace-format
-#~ msgid "Browser changed to {0}"
-#~ msgstr "Browserul a fost schimbat în {0}"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 372
-#, python-brace-format
-#~ msgid ""
-#~ "Are you sure you want to delete {0}?\n"
-#~ "\n"
-#~ "URL: {1}\n"
-#~ "Browser: {2}"
-#~ msgstr ""
-#~ "Ești sigur că vrei să ștergi {0}?\n"
-#~ "\n"
-#~ "URL: {1}\n"
-#~ "Browser: {2}"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 341
-#~ msgid "REMOVE ALL"
-#~ msgstr "ELIMINARE TOTUL"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/favicon_picker.py, line: 63
-#, python-brace-format
-#~ msgid "Icon {0} of {1}"
-#~ msgstr "Icon {0} din {1}"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
-#~ msgid "There are no WebApps to export."
-#~ msgstr "Nu există WebApps de exportat."
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
-#~ msgid "The selected file does not exist."
-#~ msgstr "Fișierul selectat nu există."
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 272
-#~ msgid "The selected file is not a valid ZIP archive."
-#~ msgstr "Fișierul selectat nu este un arhivă ZIP validă."
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 346
-#~ msgid "Error importing WebApps"
-#~ msgstr "Eroare la importarea WebApps"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 403
-#~ msgid "Imported {} WebApps successfully ({} duplicates skipped)"
-#~ msgstr "WebApps importate cu succes ({} duplicate omise)"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 341
-#~ msgid "Imported {} WebApps successfully"
-#~ msgstr "WebApps {} importate cu succes"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
-#~ msgid "No"
-#~ msgstr "Nu"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 364
-#~ msgid "Yes"
-#~ msgstr "Da"

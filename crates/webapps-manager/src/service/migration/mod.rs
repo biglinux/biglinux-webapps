@@ -5,15 +5,14 @@ mod parse;
 mod shell;
 
 use std::fs;
-use std::path::Path;
 
 use webapps_core::config;
 use webapps_core::desktop;
 use webapps_core::models::{AppMode, WebApp, WebAppCollection};
 
 use super::browser_url::resolve_browser_url;
-use super::repository::mutate_webapps;
-use super::{load_webapps, save_webapps, webapps_json_path};
+use super::transaction::RegistryTransaction;
+use super::{save_webapps, webapps_json_path};
 
 /// Marker indicating the viewer-mode `StartupWMClass` realignment migration ran.
 ///
@@ -90,262 +89,126 @@ pub fn regenerate_browser_mode_desktops() -> usize {
 /// Shell can't map the running window to the entry and falls back to the
 /// generic host-browser icon. Returns the number of entries actually renamed.
 pub fn migrate_browser_desktop_filenames() -> usize {
-    let marker = config::data_dir().join(BROWSER_FILENAME_MIGRATION_MARKER);
-    if marker.exists() {
-        return 0;
-    }
-
-    let collection = load_webapps();
-    let mut renames: Vec<(String, WebApp)> = Vec::new();
-
-    for app in &collection.webapps {
-        if app.app_mode != AppMode::Browser {
-            continue;
-        }
-
-        // Resolve redirects first — Chromium derives the runtime app_id from
-        // the post-redirect URL, so the saved URL must already reflect that
-        // for the predicted filename to stick.
-        let resolved_url = resolve_browser_url(&app.app_url);
-        let mut updated = app.clone();
-        updated.app_url = resolved_url;
-        let canonical = desktop::canonical_browser_desktop_filename(&updated);
-        if canonical == app.app_file && updated.app_url == app.app_url {
-            continue;
-        }
-
-        let old_file = app.app_file.clone();
-        updated.app_file = canonical;
-
-        match desktop::install_desktop_entry(&updated) {
-            Ok(()) => {
-                if !old_file.is_empty() && old_file != updated.app_file {
-                    if let Err(err) = desktop::remove_desktop_file(&old_file) {
-                        log::warn!(
-                            "Remove stale desktop entry {old_file} during browser-filename migration: {err}"
-                        );
-                    }
-                }
-                renames.push((old_file, updated));
-            }
-            Err(err) => log::warn!(
-                "Install canonical desktop entry for {}: {err}",
-                app.app_name
-            ),
-        }
-    }
-
-    let count = renames.len();
-    if count > 0 {
-        let updates = renames.clone();
-        if let Err(err) = mutate_webapps(move |collection| {
-            for (old_file, updated) in &updates {
-                collection.remove_by_file(old_file);
-                collection.add(updated.clone());
-            }
-            Ok(())
-        }) {
-            log::warn!("Browser-filename migration: save webapps.json failed: {err}");
-        }
-    }
-
-    if let Err(err) = fs::create_dir_all(config::data_dir()).and_then(|()| fs::write(&marker, "")) {
-        log::warn!(
-            "Write browser-filename migration marker {}: {err}",
-            marker.display()
-        );
-    }
-
-    count
+    migrate_once(
+        BROWSER_FILENAME_MIGRATION_MARKER,
+        Some(AppMode::Browser),
+        true,
+        false,
+    )
 }
 
-/// One-shot pass over every saved webapp: re-persist the icon into our data
-/// directory under a stable stem and rewrite the `.desktop` so `Icon=` points
-/// at the new absolute path. Returns the number of entries whose icon was
-/// actually rewritten.
 pub fn persist_existing_icons() -> usize {
-    let marker = config::data_dir().join(ICON_PERSIST_MIGRATION_MARKER);
-    if marker.exists() {
-        return 0;
-    }
-
-    let collection = load_webapps();
-    let mut rewrites: Vec<(String, String)> = Vec::new();
-
-    for app in &collection.webapps {
-        let Some(new_icon) = desktop::persist_icon(app) else {
-            continue;
-        };
-        if new_icon == app.app_icon {
-            continue;
-        }
-        let mut updated = app.clone();
-        updated.app_icon = new_icon.clone();
-        match desktop::install_desktop_entry(&updated) {
-            Ok(()) => rewrites.push((app.app_file.clone(), new_icon)),
-            Err(err) => log::warn!(
-                "Persist icon for {}: rewrite desktop entry failed: {err}",
-                app.app_name
-            ),
-        }
-    }
-
-    let count = rewrites.len();
-    if count > 0 {
-        let updates = rewrites.clone();
-        if let Err(err) = mutate_webapps(move |collection| {
-            for (app_file, new_icon) in &updates {
-                if let Some(app) = collection
-                    .webapps
-                    .iter_mut()
-                    .find(|app| &app.app_file == app_file)
-                {
-                    app.app_icon = new_icon.clone();
-                }
-            }
-            Ok(())
-        }) {
-            log::warn!("Persist icon migration: save webapps.json failed: {err}");
-        }
-    }
-
-    if let Err(err) = fs::create_dir_all(config::data_dir()).and_then(|()| fs::write(&marker, "")) {
-        log::warn!(
-            "Write icon-persist migration marker {}: {err}",
-            marker.display()
-        );
-    }
-
-    count
+    migrate_once(ICON_PERSIST_MIGRATION_MARKER, None, false, true)
 }
 
-fn regenerate_desktops_once(mode: AppMode, marker_name: &str) -> usize {
-    let marker = config::data_dir().join(marker_name);
-    if marker.exists() {
-        return 0;
-    }
+fn regenerate_desktops_once(mode: AppMode, marker: &str) -> usize {
+    migrate_once(marker, Some(mode), false, false)
+}
 
-    let collection = load_webapps();
-    let mut regenerated = 0;
-    let mut updates: Vec<(String, WebApp)> = Vec::new();
-    for app in &collection.webapps {
-        if app.app_mode != mode {
-            continue;
+fn migrate_once(
+    marker_name: &str,
+    mode: Option<AppMode>,
+    rename_browser: bool,
+    icons: bool,
+) -> usize {
+    let result = (|| -> anyhow::Result<usize> {
+        let mut transaction = RegistryTransaction::begin()?;
+        let marker = config::data_dir().join(marker_name);
+        if marker.exists() {
+            return Ok(0);
         }
-        let mut updated = app.clone();
-        if mode == AppMode::App {
-            migrate_viewer_storage(&updated, &collection);
-            if updated.desktop_file_name().is_none() {
+        let snapshot = transaction.collection.webapps.clone();
+        let mut count = 0;
+        for app in &snapshot {
+            if mode.is_some_and(|mode| app.app_mode != mode) {
+                continue;
+            }
+            let mut updated = app.clone();
+            if rename_browser {
+                updated.app_url = resolve_browser_url(&app.app_url);
+                updated.app_file = desktop::canonical_browser_desktop_filename(&updated);
+            } else if updated.desktop_file_name().is_none() {
                 updated.app_file = desktop::viewer_desktop_filename(&updated.app_url);
             }
-        }
-        match desktop::install_desktop_entry(&updated) {
-            Ok(()) => {
-                regenerated += 1;
-                if updated.app_file != app.app_file {
-                    if !app.app_file.is_empty() {
-                        if let Err(err) = desktop::remove_desktop_file(&app.app_file) {
-                            log::warn!(
-                                "Remove stale desktop entry {} during app-mode migration: {err}",
-                                app.app_file
-                            );
-                        }
-                    }
-                    updates.push((app.app_file.clone(), updated));
+            if updated.app_file != app.app_file {
+                anyhow::ensure!(
+                    !transaction
+                        .collection
+                        .webapps
+                        .iter()
+                        .any(|other| other.app_file == updated.app_file)
+                        && !config::applications_dir().join(&updated.app_file).exists(),
+                    "Desktop migration collision: {}",
+                    updated.app_file
+                );
+            }
+            if icons {
+                if let Some(destination) = desktop::icon_destination(&updated) {
+                    let bytes = fs::read(&updated.app_icon)?;
+                    transaction.write(&destination, &bytes)?;
+                    updated.app_icon = destination.to_string_lossy().into_owned();
+                    updated.app_icon_url = updated.app_icon.clone();
                 }
             }
-            Err(err) => log::warn!("Regenerate desktop entry for {}: {err}", app.app_name),
-        }
-    }
-
-    if !updates.is_empty() {
-        let updates_for_save = updates.clone();
-        if let Err(err) = mutate_webapps(move |collection| {
-            for (old_file, updated) in &updates_for_save {
-                collection.remove_by_file(old_file);
-                collection.add(updated.clone());
+            transaction.write(
+                &config::applications_dir().join(&updated.app_file),
+                desktop::generate_desktop_entry(&updated).as_bytes(),
+            )?;
+            if app.app_file != updated.app_file && !app.app_file.is_empty() {
+                transaction.remove(&config::applications_dir().join(&app.app_file))?;
             }
-            Ok(())
-        }) {
-            log::warn!("App-mode desktop migration: save webapps.json failed: {err}");
+            if mode == Some(AppMode::App) {
+                migrate_viewer_storage(&updated, &snapshot, &mut transaction)?;
+            }
+            transaction.collection.remove_by_file(&app.app_file);
+            transaction.collection.add(updated);
+            count += 1;
+        }
+        transaction.write(&marker, b"")?;
+        transaction.commit()?;
+        desktop::refresh_desktop_database();
+        Ok(count)
+    })();
+    match result {
+        Ok(count) => count,
+        Err(error) => {
+            log::warn!("Migration {marker_name}: {error:#}");
+            0
         }
     }
-
-    if let Err(err) = fs::create_dir_all(config::data_dir()).and_then(|()| fs::write(&marker, "")) {
-        log::warn!(
-            "Write StartupWMClass migration marker {}: {err}",
-            marker.display()
-        );
-    }
-
-    regenerated
 }
 
-fn migrate_viewer_storage(app: &WebApp, collection: &WebAppCollection) {
+fn migrate_viewer_storage(
+    app: &WebApp,
+    apps: &[WebApp],
+    transaction: &mut RegistryTransaction,
+) -> anyhow::Result<()> {
     let old_id = desktop::legacy_host_desktop_file_id(&app.app_url);
     let new_id = desktop::viewer_app_id(app);
-    if old_id == new_id {
-        return;
+    if old_id == new_id
+        || apps
+            .iter()
+            .filter(|other| {
+                other.app_mode == AppMode::App
+                    && desktop::legacy_host_desktop_file_id(&other.app_url) == old_id
+            })
+            .count()
+            > 1
+    {
+        return Ok(());
     }
-
-    let shared_old_id = collection
-        .webapps
-        .iter()
-        .filter(|candidate| {
-            candidate.app_mode == AppMode::App
-                && desktop::legacy_host_desktop_file_id(&candidate.app_url) == old_id
-        })
-        .take(2)
-        .count()
-        > 1;
-    if shared_old_id {
-        log::info!(
-            "Skipping viewer storage migration for {old_id}: legacy ID is shared by multiple webapps"
-        );
-        return;
-    }
-
-    rename_unclaimed_path(
+    transaction.rename_unclaimed(
         &config::config_dir().join(format!("{old_id}.json")),
         &config::config_dir().join(format!("{new_id}.json")),
-    );
-    rename_unclaimed_path(
+    )?;
+    transaction.rename_unclaimed(
         &config::data_dir().join(&old_id),
         &config::data_dir().join(&new_id),
-    );
-    rename_unclaimed_path(
+    )?;
+    transaction.rename_unclaimed(
         &config::cache_dir().join(&old_id),
         &config::cache_dir().join(&new_id),
-    );
-}
-
-fn rename_unclaimed_path(old_path: &Path, new_path: &Path) {
-    if !old_path.exists() {
-        return;
-    }
-    if new_path.exists() {
-        log::info!(
-            "Keeping legacy viewer path {} because {} already exists",
-            old_path.display(),
-            new_path.display()
-        );
-        return;
-    }
-
-    if let Some(parent) = new_path.parent() {
-        if let Err(err) = fs::create_dir_all(parent) {
-            log::warn!("Create parent directory {}: {err}", parent.display());
-            return;
-        }
-    }
-
-    if let Err(err) = fs::rename(old_path, new_path) {
-        log::warn!(
-            "Move viewer path {} to {}: {err}",
-            old_path.display(),
-            new_path.display()
-        );
-    }
+    )
 }
 
 fn collect_legacy_webapps(entries: fs::ReadDir) -> Vec<WebApp> {

@@ -7,7 +7,7 @@ use super::wm_class::derive_wm_class;
 pub fn generate_desktop_entry(webapp: &WebApp) -> String {
     let app_id = viewer_app_id(webapp);
     let exec = build_exec_command(webapp, &app_id);
-    let wm_class = sanitize_desktop_field(&derive_wm_class(webapp));
+    let wm_class = sanitize_desktop_field(&derive_wm_class(webapp)).replace("%%", "%");
 
     let mut lines = vec![
         "[Desktop Entry]".to_string(),
@@ -56,6 +56,8 @@ fn build_exec_command(webapp: &WebApp, app_id: &str) -> String {
     let safe_browser = sanitize_desktop_field(webapp.browser_id().as_str());
     let safe_profile = sanitize_desktop_field(webapp.profile_kind().as_str());
 
+    let viewer = crate::config::desktop_command("big-webapps-viewer");
+    let launcher = crate::config::desktop_command("big-webapps-exec");
     match webapp.app_mode {
         AppMode::App => {
             let auto_hide = if webapp.auto_hide_headerbar {
@@ -64,7 +66,7 @@ fn build_exec_command(webapp: &WebApp, app_id: &str) -> String {
                 ""
             };
             format!(
-                "big-webapps-viewer --url=\"{safe_url}\" --name=\"{safe_name}\" --icon=\"{safe_icon}\" --app-id=\"{app_id}\"{auto_hide}{file_arg}",
+                "{viewer} --url=\"{safe_url}\" --name=\"{safe_name}\" --icon=\"{safe_icon}\" --app-id=\"{app_id}\"{auto_hide}{file_arg}",
             )
         }
         AppMode::Browser => {
@@ -72,7 +74,7 @@ fn build_exec_command(webapp: &WebApp, app_id: &str) -> String {
             // window reports a WM_CLASS that maps back to this `.desktop` entry.
             let class = sanitize_desktop_field(&derive_wm_class(webapp));
             format!(
-                "big-webapps-exec filename=\"{safe_file}\" {safe_browser} --class=\"{class}\" --profile-directory={safe_profile} --app=\"{safe_url}\"{file_arg}",
+                "{launcher} filename=\"{safe_file}\" {safe_browser} --class=\"{class}\" --profile-directory=\"{safe_profile}\" --app=\"{safe_url}\"{file_arg}",
             )
         }
     }

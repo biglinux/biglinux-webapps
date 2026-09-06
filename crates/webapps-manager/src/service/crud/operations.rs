@@ -1,195 +1,146 @@
-use anyhow::{Context, Result};
-
-use webapps_core::desktop;
-use webapps_core::models::{AppMode, WebApp};
-
-use super::super::browser_url::resolve_browser_url;
-use super::super::repository::{load_webapps, mutate_webapps};
-use super::cleanup::cleanup_deleted_app;
-use super::profile_files::profile_dir_for;
-use super::validation::validate_webapp;
+use super::super::{browser_url::resolve_browser_url, transaction::RegistryTransaction};
+use super::{
+    cleanup::{cleanup_deleted_app, cleanup_unused_icon},
+    validation::validate_webapp,
+};
+use anyhow::{bail, Context, Result};
+use webapps_core::{
+    desktop,
+    models::{AppMode, WebApp},
+};
 
 pub fn create_webapp(webapp: &WebApp) -> Result<()> {
-    let mut app = webapp.clone();
-    // Browser-mode entries must use the filename Chromium will synthesize as
-    // its Wayland app_id (e.g. `brave-open.spotify.com__intl-pt_-Default.desktop`).
-    // GNOME Shell looks the running window up by exact app_id match against the
-    // .desktop basename — anything else falls back to the host browser's icon.
-    // Resolve redirects with the system locale first: Chromium derives the
-    // app_id from the *post-redirect* URL (Spotify → /intl-pt/ on pt-BR), so we
-    // must store the same URL Brave will end up showing.
-    if app.app_mode == AppMode::Browser {
-        app.app_url = resolve_browser_url(&app.app_url);
-        app.app_file = desktop::canonical_browser_desktop_filename(&app);
-    } else {
-        app.app_file = desktop::viewer_desktop_filename(&app.app_url);
-    }
-
-    validate_webapp(&app)?;
-    if let Some(stable_icon) = desktop::persist_icon(&app) {
-        app.app_icon = stable_icon;
-    }
-    desktop::install_desktop_entry(&app)?;
-
-    let app_for_rollback = app.clone();
-    if let Err(err) = mutate_webapps(move |collection| {
-        collection.add(app);
-        Ok(())
-    }) {
-        if let Err(cleanup_err) = desktop::remove_desktop_entry(&app_for_rollback) {
-            log::error!("Rollback failed after create_webapp persistence error: {cleanup_err}");
-        }
-        return Err(err).context("Persist webapps after creating desktop entry");
-    }
-
+    let mut app = prepare_webapp(webapp, true)?;
+    let mut transaction = RegistryTransaction::begin()?;
+    ensure_available(&transaction, &app.app_file, None)?;
+    install(&mut transaction, &mut app)?;
+    transaction.collection.add(app);
+    transaction.commit()?;
+    desktop::refresh_desktop_database();
     Ok(())
 }
 
 pub fn update_webapp(webapp: &WebApp) -> Result<()> {
-    validate_webapp(webapp)?;
-    let mut app = webapp.clone();
-    if let Some(stable_icon) = desktop::persist_icon(&app) {
-        app.app_icon = stable_icon;
+    let mut app = prepare_webapp(webapp, false)?;
+    let mut transaction = RegistryTransaction::begin()?;
+    let previous = transaction
+        .collection
+        .webapps
+        .iter()
+        .find(|candidate| candidate.app_file == webapp.app_file)
+        .cloned()
+        .context("Webapp no longer exists; reload the list")?;
+    ensure_available(&transaction, &app.app_file, Some(&previous.app_file))?;
+    install(&mut transaction, &mut app)?;
+    if app.app_file != previous.app_file {
+        transaction.remove(&desktop::desktop_file_path(&previous))?;
     }
-
-    let previous_file = webapp.app_file.clone();
-    if app.app_mode == AppMode::Browser {
-        app.app_url = resolve_browser_url(&app.app_url);
-        let canonical = desktop::canonical_browser_desktop_filename(&app);
-        if canonical != app.app_file {
-            app.app_file = canonical;
-        }
-    } else if app.desktop_file_name().is_none() {
-        let canonical = desktop::viewer_desktop_filename(&app.app_url);
-        app.app_file = canonical;
-    }
-
-    let webapp_clone = app.clone();
-    desktop::install_desktop_entry(&app)?;
-
-    // Capture previous so rollback can restore the desktop entry exactly.
-    let previous_holder: std::sync::Mutex<Option<WebApp>> = std::sync::Mutex::new(None);
-    let previous_holder = std::sync::Arc::new(previous_holder);
-    let holder_for_mutate = previous_holder.clone();
-    let previous_file_for_mutate = previous_file.clone();
-
-    let result = mutate_webapps(move |collection| {
-        let previous = collection
-            .webapps
-            .iter()
-            .find(|app| app.app_file == previous_file_for_mutate)
-            .cloned();
-        if let Ok(mut slot) = holder_for_mutate.lock() {
-            *slot = previous;
-        }
-        collection.remove_by_file(&previous_file_for_mutate);
-        collection.add(webapp_clone);
-        Ok(())
-    });
-
-    if let Err(err) = result {
-        if app.app_file != previous_file {
-            if let Err(cleanup_err) = desktop::remove_desktop_entry(&app) {
-                log::error!(
-                    "Rollback failed to remove renamed desktop entry {}: {cleanup_err}",
-                    app.app_file
-                );
-            }
-        }
-        let previous = previous_holder.lock().ok().and_then(|g| g.clone());
-        match previous {
-            Some(app) => {
-                if let Err(restore_err) = desktop::install_desktop_entry(&app) {
-                    log::error!(
-                        "Rollback failed after update_webapp persistence error: {restore_err}"
-                    );
-                }
-            }
-            None => {
-                if let Err(cleanup_err) = desktop::remove_desktop_entry(webapp) {
-                    log::error!(
-                        "Rollback failed after update_webapp persistence error: {cleanup_err}"
-                    );
-                }
-            }
-        }
-        return Err(err).context("Persist webapps after updating desktop entry");
-    }
-
-    if !previous_file.is_empty() && app.app_file != previous_file {
-        if let Err(err) = desktop::remove_desktop_file(&previous_file) {
-            log::warn!("Remove stale desktop entry {previous_file} during rename: {err}");
-        }
-    }
-
+    transaction.collection.remove_by_file(&previous.app_file);
+    transaction.collection.add(app);
+    transaction.commit()?;
+    cleanup_unused_icon(&previous.app_icon, &transaction.collection);
+    desktop::refresh_desktop_database();
     Ok(())
 }
 
 pub fn delete_webapp(webapp: &WebApp, delete_profile: bool) -> Result<()> {
-    validate_webapp(webapp)?;
-    if delete_profile {
-        profile_dir_for(webapp)?;
-    }
-
-    desktop::remove_desktop_entry(webapp)?;
-    let app_file = webapp.app_file.clone();
-    if let Err(err) = mutate_webapps(move |collection| {
-        collection.remove_by_file(&app_file);
-        Ok(())
-    }) {
-        if let Err(restore_err) = desktop::install_desktop_entry(webapp) {
-            log::error!("Rollback failed after delete_webapp persistence error: {restore_err}");
-        }
-        return Err(err).context("Persist webapps after removing desktop entry");
-    }
-
-    cleanup_deleted_app(webapp, delete_profile)?;
-
+    let mut transaction = RegistryTransaction::begin()?;
+    let app = transaction
+        .collection
+        .webapps
+        .iter()
+        .find(|candidate| candidate.app_file == webapp.app_file)
+        .cloned()
+        .context("Webapp no longer exists; reload the list")?;
+    validate_webapp(&app)?;
+    transaction.remove(&desktop::desktop_file_path(&app))?;
+    transaction.collection.remove_by_file(&app.app_file);
+    transaction.commit()?;
+    cleanup_after_commit(&app, delete_profile, &transaction);
+    desktop::refresh_desktop_database();
     Ok(())
 }
 
 pub fn delete_all_webapps() -> Result<()> {
-    let snapshot = load_webapps();
-    let mut removed_entries = Vec::with_capacity(snapshot.webapps.len());
-
-    for app in &snapshot.webapps {
-        if let Err(err) = desktop::remove_desktop_entry(app) {
-            for removed_app in &removed_entries {
-                if let Err(restore_err) = desktop::install_desktop_entry(removed_app) {
-                    log::error!("Rollback failed after delete_all_webapps error: {restore_err}");
-                }
-            }
-
-            return Err(err).context("Remove desktop entry during delete_all_webapps");
-        }
-
-        removed_entries.push(app.clone());
+    let mut transaction = RegistryTransaction::begin()?;
+    let apps = transaction.collection.webapps.clone();
+    for app in &apps {
+        validate_webapp(app)?;
+        transaction.remove(&desktop::desktop_file_path(app))?;
     }
-
-    let removed_for_rollback = removed_entries.clone();
-    if let Err(err) = mutate_webapps(move |collection| {
-        collection.webapps.clear();
-        Ok(())
-    }) {
-        for app in &removed_for_rollback {
-            if let Err(restore_err) = desktop::install_desktop_entry(app) {
-                log::error!(
-                    "Rollback failed after delete_all_webapps persistence error: {restore_err}"
-                );
-            }
-        }
-
-        return Err(err).context("Persist empty webapps collection after delete_all_webapps");
+    transaction.collection.webapps.clear();
+    transaction.commit()?;
+    for app in &apps {
+        cleanup_after_commit(app, false, &transaction);
     }
-
-    for app in &snapshot.webapps {
-        if let Err(err) = cleanup_deleted_app(app, false) {
-            log::warn!(
-                "Cleanup after delete_all_webapps failed for {}: {err}",
-                app.app_name
-            );
-        }
-    }
-
+    desktop::refresh_desktop_database();
     Ok(())
+}
+
+fn prepare_webapp(webapp: &WebApp, is_new: bool) -> Result<WebApp> {
+    validate_webapp(webapp)?;
+    let mut app = webapp.clone();
+    app.app_url = app.normalized_url()?.into_string();
+    if app.app_mode == AppMode::Browser {
+        let unchanged_launch = !is_new
+            && crate::service::try_load_webapps()?
+                .webapps
+                .iter()
+                .any(|previous| {
+                    previous.app_file == app.app_file
+                        && previous.app_url == app.app_url
+                        && previous.browser == app.browser
+                        && previous.app_profile == app.app_profile
+                });
+        if unchanged_launch {
+            return Ok(app);
+        }
+        app.app_url = resolve_browser_url(&app.app_url);
+        app.app_file = desktop::canonical_browser_desktop_filename(&app);
+    } else if is_new || app.app_file.is_empty() {
+        app.app_file = desktop::viewer_desktop_filename(&app.app_url);
+    }
+    validate_webapp(&app)?;
+    Ok(app)
+}
+
+fn ensure_available(
+    transaction: &RegistryTransaction,
+    filename: &str,
+    previous: Option<&str>,
+) -> Result<()> {
+    if previous == Some(filename) {
+        return Ok(());
+    }
+    if transaction
+        .collection
+        .webapps
+        .iter()
+        .any(|app| app.app_file == filename)
+        || webapps_core::config::applications_dir()
+            .join(filename)
+            .exists()
+    {
+        bail!("A webapp already uses this launcher; choose a different browser or profile");
+    }
+    Ok(())
+}
+
+pub(super) fn install(transaction: &mut RegistryTransaction, app: &mut WebApp) -> Result<()> {
+    if let Some(target) = desktop::icon_destination(app) {
+        let bytes = std::fs::read(&app.app_icon).context("Read selected icon")?;
+        transaction.write(&target, &bytes)?;
+        app.app_icon = target.to_string_lossy().into_owned();
+    }
+    app.app_icon_url = app.app_icon.clone();
+    transaction.write(
+        &desktop::desktop_file_path(app),
+        desktop::generate_desktop_entry(app).as_bytes(),
+    )
+}
+
+fn cleanup_after_commit(app: &WebApp, delete_profile: bool, transaction: &RegistryTransaction) {
+    if let Err(err) = cleanup_deleted_app(app, delete_profile, &transaction.collection) {
+        log::warn!("Webapp removed; profile cleanup failed: {err:#}");
+    }
 }

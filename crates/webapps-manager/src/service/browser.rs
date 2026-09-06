@@ -1,5 +1,3 @@
-use std::path::Path;
-
 use webapps_core::browsers::browser_defs;
 use webapps_core::models::{Browser, BrowserCollection};
 use webapps_core::subprocess::SubprocessSpec;
@@ -15,7 +13,7 @@ pub fn detect_browsers() -> BrowserCollection {
 
     // Native: first existing candidate path wins
     for def in defs {
-        if def.native_paths.iter().any(|p| Path::new(p).exists()) {
+        if webapps_core::browsers::native_browser_path(def).is_some() {
             browsers.push(Browser {
                 browser_id: def.id.clone(),
                 is_default: false,
@@ -26,6 +24,7 @@ pub fn detect_browsers() -> BrowserCollection {
     // Flatpak: entries with flatpak_app_id + flatpak_id
     if let Ok(output) = SubprocessSpec::builder()
         .program("flatpak")
+        .on_host()
         .args(["list", "--app", "--columns=application"])
         .build()
         .run()
@@ -64,6 +63,7 @@ fn query_default_browser() -> Option<String> {
     // distros/desktops where xdg-settings isn't configured.
     let primary = SubprocessSpec::builder()
         .program("xdg-settings")
+        .on_host()
         .args(["get", "default-web-browser"])
         .build()
         .run()
@@ -75,6 +75,7 @@ fn query_default_browser() -> Option<String> {
     }
     SubprocessSpec::builder()
         .program("xdg-mime")
+        .on_host()
         .args(["query", "default", "x-scheme-handler/http"])
         .build()
         .run()

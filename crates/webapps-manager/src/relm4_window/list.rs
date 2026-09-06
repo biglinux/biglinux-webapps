@@ -18,7 +18,9 @@ use relm4::prelude::*;
 use webapps_core::models::WebApp;
 
 use super::empty;
-use super::section::{WebAppSectionFactory, WebAppSectionInit, WebAppSectionOutput};
+use super::section::{
+    WebAppSectionFactory, WebAppSectionInit, WebAppSectionInput, WebAppSectionOutput,
+};
 
 /// One category section: title plus pre-sorted apps.
 #[derive(Debug, Clone)]
@@ -59,6 +61,7 @@ pub enum WebAppListOutput {
 /// List controller model.
 pub struct WebAppListController {
     sections: FactoryVecDeque<WebAppSectionFactory>,
+    previous: Vec<WebAppSection>,
     empty_page: adw::StatusPage,
     status_label: gtk::Label,
 }
@@ -117,6 +120,7 @@ impl SimpleComponent for WebAppListController {
 
         let model = Self {
             sections,
+            previous: Vec::new(),
             empty_page,
             status_label,
         };
@@ -133,13 +137,37 @@ impl SimpleComponent for WebAppListController {
                 result_count,
             } => {
                 let mut guard = self.sections.guard();
-                guard.clear();
-                for section in &sections {
-                    guard.push_back(WebAppSectionInit {
-                        title: section.title.clone(),
-                        apps: section.apps.clone(),
+                let mut index = 0;
+                while index < sections.len() {
+                    let section = &sections[index];
+                    let unchanged = self.previous.get(index).is_some_and(|previous| {
+                        previous.title == section.title && previous.apps == section.apps
                     });
+                    if !unchanged
+                        && self
+                            .previous
+                            .get(index)
+                            .is_some_and(|previous| previous.title == section.title)
+                    {
+                        guard.send(index, WebAppSectionInput::Refresh(section.apps.clone()));
+                    } else if !unchanged {
+                        if index < guard.len() {
+                            guard.remove(index);
+                        }
+                        guard.insert(
+                            index,
+                            WebAppSectionInit {
+                                title: section.title.clone(),
+                                apps: section.apps.clone(),
+                            },
+                        );
+                    }
+                    index += 1;
                 }
+                while guard.len() > sections.len() {
+                    guard.pop_back();
+                }
+                self.previous = sections.clone();
                 drop(guard);
 
                 let is_empty = sections.is_empty();

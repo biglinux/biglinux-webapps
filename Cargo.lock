@@ -2655,6 +2655,7 @@ name = "webapps-exec"
 version = "4.0.6"
 dependencies = [
  "libc",
+ "tempfile",
  "webapps-core",
 ]
 

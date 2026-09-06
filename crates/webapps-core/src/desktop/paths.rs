@@ -44,7 +44,17 @@ pub fn legacy_host_desktop_file_id(url: &str) -> String {
 }
 
 pub fn viewer_desktop_filename(url: &str) -> String {
-    format!("biglinux-webapp-{}.desktop", desktop_file_id(url))
+    format!(
+        "biglinux-webapp-{}-{:016x}.desktop",
+        desktop_file_id(url).chars().take(80).collect::<String>(),
+        identity_hash(url)
+    )
+}
+
+fn identity_hash(value: &str) -> u64 {
+    value.bytes().fold(0xcbf29ce484222325_u64, |hash, byte| {
+        (hash ^ u64::from(byte)).wrapping_mul(0x100000001b3)
+    })
 }
 
 pub fn viewer_app_id(webapp: &WebApp) -> String {
@@ -93,9 +103,8 @@ pub fn install_desktop_entry(webapp: &WebApp) -> Result<()> {
         fs::create_dir_all(parent)?;
     }
     let content = generate_desktop_entry(webapp);
-    fs::write(&path, content)?;
+    crate::storage::write_atomic(&path, content.as_bytes())?;
     log::info!("Installed desktop entry: {}", path.display());
-    refresh_desktop_database();
     Ok(())
 }
 
@@ -104,7 +113,6 @@ pub fn remove_desktop_entry(webapp: &WebApp) -> Result<()> {
     if path.exists() {
         fs::remove_file(&path)?;
         log::info!("Removed desktop entry: {}", path.display());
-        refresh_desktop_database();
     }
     Ok(())
 }
@@ -118,7 +126,7 @@ pub fn remove_desktop_file(filename: &str) -> Result<()> {
     Ok(())
 }
 
-fn refresh_desktop_database() {
+pub fn refresh_desktop_database() {
     let apps_dir = config::applications_dir();
     // run() blocks and reaps the child to prevent zombie processes
     match SubprocessSpec::builder()
@@ -130,32 +138,5 @@ fn refresh_desktop_database() {
         Ok(out) if out.status.success() => {}
         Ok(out) => log::warn!("update-desktop-database exited with {:?}", out.status),
         Err(err) => log::warn!("update-desktop-database not found or failed: {err}"),
-    }
-
-    if std::env::var("XDG_CURRENT_DESKTOP")
-        .unwrap_or_default()
-        .to_lowercase()
-        .contains("gnome")
-    {
-        let commands: &[&[&str]] = &[
-            &["reset", "/org/gnome/shell/app-picker-layout"],
-            &[
-                "write",
-                "/org/gnome/desktop/app-folders/folders/WebApps/categories",
-                "['Webapps']",
-            ],
-        ];
-        for args in commands {
-            match SubprocessSpec::builder()
-                .program("dconf")
-                .args(*args)
-                .build()
-                .run()
-            {
-                Ok(out) if out.status.success() => {}
-                Ok(out) => log::warn!("dconf {} exited with {:?}", args[0], out.status),
-                Err(err) => log::warn!("dconf {} failed: {err}", args[0]),
-            }
-        }
     }
 }

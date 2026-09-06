@@ -24,6 +24,7 @@ pub(super) enum PermissionDecision {
     Deny,
     /// Prompt the user once, then persist their choice under this key.
     Prompt(&'static str),
+    CameraAndMicrophone,
 }
 
 /// Classify a permission request into Allow/Deny/Prompt.
@@ -32,11 +33,10 @@ pub(super) enum PermissionDecision {
 /// permission to this match is a deliberate decision that should be reviewed.
 pub(super) fn classify_request(request: &webkit::PermissionRequest) -> PermissionDecision {
     if let Some(umr) = request.downcast_ref::<webkit::UserMediaPermissionRequest>() {
-        return if webkit6::functions::user_media_permission_is_for_video_device(umr) {
-            PermissionDecision::Prompt("camera")
-        } else {
-            PermissionDecision::Prompt("microphone")
-        };
+        return media_decision(
+            webkit6::functions::user_media_permission_is_for_audio_device(umr),
+            webkit6::functions::user_media_permission_is_for_video_device(umr),
+        );
     }
     if request.is::<webkit::GeolocationPermissionRequest>() {
         return PermissionDecision::Prompt("geolocation");
@@ -69,6 +69,15 @@ pub(super) fn classify_request(request: &webkit::PermissionRequest) -> Permissio
     PermissionDecision::Deny
 }
 
+fn media_decision(audio: bool, video: bool) -> PermissionDecision {
+    match (audio, video) {
+        (true, true) => PermissionDecision::CameraAndMicrophone,
+        (false, true) => PermissionDecision::Prompt("camera"),
+        (true, false) => PermissionDecision::Prompt("microphone"),
+        (false, false) => PermissionDecision::Deny,
+    }
+}
+
 pub(super) fn load_permissions(path: &Path) -> HashMap<String, bool> {
     std::fs::read_to_string(path)
         .ok()
@@ -77,14 +86,10 @@ pub(super) fn load_permissions(path: &Path) -> HashMap<String, bool> {
 }
 
 pub(super) fn save_permissions(path: &Path, perms: &HashMap<String, bool>) {
-    // Atomic write: a crash mid-write must never leave the user re-prompted for
-    // an already-denied permission. Write to a temp file, then rename into place.
-    let Ok(data) = serde_json::to_string_pretty(perms) else {
-        return;
-    };
-    let tmp = path.with_extension("json.tmp");
-    if std::fs::write(&tmp, data.as_bytes()).is_ok() {
-        let _ = std::fs::rename(&tmp, path);
+    if let Ok(bytes) = serde_json::to_vec_pretty(perms) {
+        if let Err(error) = webapps_core::storage::write_atomic(path, &bytes) {
+            log::warn!("Save permissions: {error}");
+        }
     }
 }
 
@@ -163,21 +168,20 @@ mod tests {
     }
 
     #[test]
-    fn permission_decision_keys_match_prompt_titles() {
-        // Every Prompt key emitted by classify_request must have a localized prompt title.
-        // This guards against forgetting to wire up a new permission's UI string.
-        let prompt_keys = ["camera", "microphone", "geolocation", "clipboard"];
-        for key in prompt_keys {
-            // The match arm is exercised; we just need a non-default branch to hit.
-            let dialog_key = match key {
-                "camera" | "microphone" | "geolocation" | "clipboard" => key,
-                _ => "_default_",
-            };
-            assert_eq!(
-                dialog_key, key,
-                "prompt_permission must have a localized message for {key}"
-            );
-        }
+    fn combined_media_request_cannot_be_granted_with_camera_alone() {
+        assert_eq!(
+            media_decision(true, true),
+            PermissionDecision::CameraAndMicrophone
+        );
+        assert_eq!(
+            media_decision(false, true),
+            PermissionDecision::Prompt("camera")
+        );
+        assert_eq!(
+            media_decision(true, false),
+            PermissionDecision::Prompt("microphone")
+        );
+        assert_eq!(media_decision(false, false), PermissionDecision::Deny);
     }
 
     #[test]

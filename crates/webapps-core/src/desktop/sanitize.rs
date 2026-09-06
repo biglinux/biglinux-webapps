@@ -7,7 +7,11 @@
 /// single-quote and other ASCII control characters out of caution. URL-friendly
 /// chars like `?`, `=`, `&`, `#` stay because they are literal inside quotes.
 pub(super) fn sanitize_desktop_field(value: &str) -> String {
-    value.chars().filter(|c| !is_exec_unsafe(*c)).collect()
+    value
+        .chars()
+        .filter(|c| !is_exec_unsafe(*c))
+        .collect::<String>()
+        .replace('%', "%%")
 }
 
 fn is_exec_unsafe(c: char) -> bool {

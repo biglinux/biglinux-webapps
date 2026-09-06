@@ -59,9 +59,12 @@ Requires a Rust toolchain (pinned in `rust-toolchain.toml`) plus the GTK4 /
 libadwaita / WebKitGTK 6.0 dev libraries.
 
 ```bash
-cargo build --release --workspace --locked
-./target/release/big-webapps-gui
+./scripts/build-local.sh
+./target/local/bin/big-webapps-gui
 ```
+
+This builds the binaries and current gettext catalogs under `target/local`.
+Requires `msgfmt` from gettext. System-installed files are unchanged.
 
 Other binaries: `big-webapps-viewer` (WebKit window), `big-webapps-exec`
 (launcher shim).

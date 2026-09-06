@@ -12,7 +12,6 @@
 //! container headers by hand keeps this dependency-free — pulling in `image`
 //! would add megabytes to a binary with a 7 MB budget for a job that needs
 //! roughly twenty bytes from each file.
-use std::path::Path;
 
 /// Raster formats we can measure, plus `Svg` for resolution-independent input.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -363,15 +362,6 @@ pub(super) fn largest_ico_frame(bytes: &[u8]) -> Option<IcoFrame<'_>> {
                 .unwrap_or(frame.side)
                 .max(frame.side)
         })
-}
-
-/// Measured extent of a file already on disk, used to re-rank candidates after
-/// download and to decide whether the winner needs upscaling.
-pub(super) fn measure_file(path: &Path) -> Option<Dimensions> {
-    // Only the header is needed; reading the whole file keeps this simple and
-    // the inputs are capped at a few MB by the downloader anyway.
-    let bytes = std::fs::read(path).ok()?;
-    measure(&bytes, detect_format(&bytes))
 }
 
 #[cfg(test)]

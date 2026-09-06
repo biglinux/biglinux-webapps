@@ -62,6 +62,8 @@ pub(crate) fn setup_save_handler(
             }
         };
 
+        dialog.set_can_close(false);
+        dialog.set_sensitive(false);
         save_button.set_sensitive(false);
         cancel_button.set_sensitive(false);
         spinner_box.set_visible(true);
@@ -81,6 +83,8 @@ pub(crate) fn setup_save_handler(
                 }
             },
             move |result| {
+                dialog.set_can_close(true);
+                dialog.set_sensitive(true);
                 spinner_box.set_visible(false);
                 match result {
                     Ok(()) => {

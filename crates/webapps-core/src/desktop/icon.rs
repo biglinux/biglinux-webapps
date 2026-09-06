@@ -1,99 +1,55 @@
-//! Stable per-webapp icon storage.
-//!
-//! When the user picks an icon in the manager (favicon flow, drag-in, or file
-//! picker), `webapp.app_icon` ends up holding either:
-//!
-//!   1. A volatile path under `~/.cache/biglinux-webapps/favicons/icon_N.<ext>`
-//!      whose filename is reused on the next site fetch — saving another
-//!      webapp would clobber this one's icon on disk.
-//!   2. A user-chosen path somewhere arbitrary on the filesystem that could
-//!      move, be renamed, or disappear.
-//!
-//! Either way, writing that path verbatim into the `.desktop`'s `Icon=` field
-//! leaves the entry tied to mutable state outside our control. We copy the
-//! icon into our own data directory under a name keyed off the webapp URL so
-//! the entry references a path we own and can keep stable.
-//!
-//! Absolute paths in `Icon=` are valid per the freedesktop entry spec and
-//! GNOME Shell renders them directly — no icon-theme indexing required.
-use std::fs;
-use std::path::{Path, PathBuf};
+use crate::{config, models::WebApp, storage::write_atomic};
+use std::{
+    fs,
+    path::{Path, PathBuf},
+};
 
-use crate::config;
-use crate::models::WebApp;
+pub fn icon_destination(webapp: &WebApp) -> Option<PathBuf> {
+    let source = Path::new(webapp.app_icon.trim());
+    if !source.is_absolute() {
+        return None;
+    }
+    let ext = source
+        .extension()
+        .and_then(|ext| ext.to_str())
+        .unwrap_or("png")
+        .to_ascii_lowercase();
+    let ext = if ["png", "svg", "ico", "webp", "jpg", "jpeg", "gif"].contains(&ext.as_str()) {
+        ext.as_str()
+    } else {
+        "png"
+    };
+    let identity = webapp
+        .desktop_file_name()
+        .map(|name| name.as_str().trim_end_matches(".desktop").to_string())
+        .unwrap_or_else(|| {
+            super::paths::viewer_desktop_filename(&webapp.app_url)
+                .trim_end_matches(".desktop")
+                .to_string()
+        });
+    Some(webapp_icons_dir().join(format!("webapp-{identity}.{ext}")))
+}
 
-use super::paths::desktop_file_id;
-
-const ALLOWED_EXTS: &[&str] = &["png", "svg", "ico", "webp", "jpg", "jpeg"];
-
-/// Copy `webapp.app_icon` into the webapp icons directory and return the new
-/// absolute path. Returns `None` when the source is empty, isn't an absolute
-/// path on disk, or the copy fails — callers should keep the original value
-/// in that case.
 pub fn persist_icon(webapp: &WebApp) -> Option<String> {
-    let source = webapp.app_icon.trim();
-    if source.is_empty() {
+    let target = icon_destination(webapp)?;
+    let source = Path::new(webapp.app_icon.trim());
+    if source == target {
+        return source
+            .is_file()
+            .then(|| target.to_string_lossy().into_owned());
+    }
+    let result = fs::read(source)
+        .map_err(anyhow::Error::from)
+        .and_then(|bytes| write_atomic(&target, &bytes));
+    if let Err(err) = result {
+        log::warn!("Persist icon {}: {err:#}", source.display());
         return None;
     }
-
-    let source_path = Path::new(source);
-    if !source_path.is_absolute() || !source_path.is_file() {
-        return None;
-    }
-
-    let target_dir = webapp_icons_dir();
-    if let Err(err) = fs::create_dir_all(&target_dir) {
-        log::warn!("Create webapp icons dir {}: {err}", target_dir.display());
-        return None;
-    }
-
-    let ext = extension_for(source_path);
-    let stem = format!("webapp-{}", desktop_file_id(&webapp.app_url));
-    let target = target_dir.join(format!("{stem}.{ext}"));
-
-    if source_path == target {
-        return Some(target.to_string_lossy().into_owned());
-    }
-
-    remove_sibling_extensions(&target_dir, &stem, &target);
-
-    if let Err(err) = fs::copy(source_path, &target) {
-        log::warn!(
-            "Copy webapp icon {} → {}: {err}",
-            source_path.display(),
-            target.display()
-        );
-        return None;
-    }
-
     Some(target.to_string_lossy().into_owned())
 }
 
-/// `~/.local/share/biglinux-webapps/icons` — under our own data dir so we
-/// don't pollute the user's icon theme tree and can clean up on delete.
 pub fn webapp_icons_dir() -> PathBuf {
     config::data_dir().join("icons")
-}
-
-fn extension_for(path: &Path) -> String {
-    path.extension()
-        .and_then(|s| s.to_str())
-        .map(|s| s.to_lowercase())
-        .filter(|s| ALLOWED_EXTS.contains(&s.as_str()))
-        .unwrap_or_else(|| "png".to_string())
-}
-
-/// When a webapp is re-saved with a different image format (e.g. SVG → PNG),
-/// leave only the new file so theme caches and previews can't pick up the
-/// stale one with the same stem.
-fn remove_sibling_extensions(dir: &Path, stem: &str, keep: &Path) {
-    for ext in ALLOWED_EXTS {
-        let candidate = dir.join(format!("{stem}.{ext}"));
-        if candidate == keep {
-            continue;
-        }
-        let _ = fs::remove_file(&candidate);
-    }
 }
 
 #[cfg(test)]
@@ -139,13 +95,13 @@ mod tests {
         std::env::remove_var("XDG_DATA_HOME");
 
         let new_path = result.expect("expected persisted path");
-        assert!(new_path.ends_with("biglinux-webapps/icons/webapp-openspotifycom.png"));
+        assert!(new_path.contains("biglinux-webapps/icons/webapp-biglinux-webapp-openspotifycom-"));
         assert!(Path::new(&new_path).is_file());
     }
 
     #[test]
     #[serial]
-    fn persist_removes_sibling_extension_when_format_changes() {
+    fn persist_preserves_other_icon_files() {
         let tmp = TempDir::new().unwrap();
         std::env::set_var("XDG_DATA_HOME", tmp.path());
 
@@ -163,8 +119,8 @@ mod tests {
         std::env::remove_var("XDG_DATA_HOME");
 
         assert!(
-            !stale.exists(),
-            "stale sibling icon should have been removed"
+            stale.exists(),
+            "unreferenced files are cleaned only after the registry commits"
         );
     }
 }

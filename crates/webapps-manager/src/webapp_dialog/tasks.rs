@@ -10,14 +10,16 @@ pub(super) fn detect_site_info(url: String, on_result: impl FnOnce(favicon::Site
                 log::error!("Fetch site info: {err}");
                 favicon::SiteInfo {
                     title: String::new(),
-                    icon_paths: Vec::new(),
+                    icons: Vec::new(),
+                    cache: None,
                 }
             }
         },
         move |maybe_info| {
             on_result(maybe_info.unwrap_or(favicon::SiteInfo {
                 title: String::new(),
-                icon_paths: Vec::new(),
+                icons: Vec::new(),
+                cache: None,
             }));
         },
     );
