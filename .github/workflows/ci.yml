@@ -26,6 +26,21 @@ env:
   ENABLE_MIRI: "false"
 
 jobs:
+  configuration:
+    runs-on: ubuntu-24.04
+    outputs:
+      project-kind: ${{ steps.settings.outputs.project-kind }}
+      enable-semver: ${{ steps.settings.outputs.enable-semver }}
+      enable-miri: ${{ steps.settings.outputs.enable-miri }}
+    steps:
+      - id: settings
+        run: |
+          {
+            echo "project-kind=$PROJECT_KIND"
+            echo "enable-semver=$ENABLE_SEMVER"
+            echo "enable-miri=$ENABLE_MIRI"
+          } >> "$GITHUB_OUTPUT"
+
   shellcheck:
     runs-on: ubuntu-24.04
     steps:
@@ -39,7 +54,7 @@ jobs:
           if [ "${#scripts[@]}" -eq 0 ]; then echo "no shell scripts"; exit 0; fi
           shellcheck -e SC1091 -S warning "${scripts[@]}"
   fmt:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - uses: ./.github/actions/setup-rust
@@ -49,7 +64,7 @@ jobs:
       - run: cargo fmt --all -- --check
 
   clippy:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - uses: ./.github/actions/setup-rust
@@ -59,7 +74,7 @@ jobs:
       - run: cargo clippy --workspace --all-targets --all-features -- -D warnings
 
   test:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - uses: ./.github/actions/setup-rust
@@ -71,13 +86,13 @@ jobs:
         run: |
           set -euxo pipefail
           if command -v cargo-nextest >/dev/null 2>&1; then
-            cargo nextest run --all-features --workspace
+            dbus-run-session -- cargo nextest run --all-features --workspace --locked
           else
-            cargo test --all-features --tests --workspace
+            dbus-run-session -- cargo test --all-features --tests --workspace --locked
           fi
 
   deny:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - uses: ./.github/actions/setup-rust
@@ -87,7 +102,7 @@ jobs:
       - run: cargo deny check advisories bans licenses sources
 
   audit:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - uses: ./.github/actions/setup-rust
@@ -97,7 +112,7 @@ jobs:
       - run: cargo audit -D warnings
 
   machete:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - uses: ./.github/actions/setup-rust
@@ -107,7 +122,7 @@ jobs:
       - run: cargo machete --with-metadata
 
   doc:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     env:
       RUSTDOCFLAGS: "-D warnings"
     steps:
@@ -120,8 +135,9 @@ jobs:
 
   semver-checks:
     # libs only
-    if: ${{ env.ENABLE_SEMVER == 'true' }}
-    runs-on: ubuntu-24.04
+    needs: configuration
+    if: ${{ needs.configuration.outputs.enable-semver == 'true' }}
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with: { fetch-depth: 0 }
@@ -134,8 +150,9 @@ jobs:
 
   miri:
     # pure-Rust libs only
-    if: ${{ env.ENABLE_MIRI == 'true' }}
-    runs-on: ubuntu-24.04
+    needs: configuration
+    if: ${{ needs.configuration.outputs.enable-miri == 'true' }}
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - uses: ./.github/actions/setup-rust
@@ -150,7 +167,8 @@ jobs:
 
   complexity:
     # apps only — CCN + duplication
-    if: ${{ env.PROJECT_KIND == 'app' }}
+    needs: configuration
+    if: ${{ needs.configuration.outputs.project-kind == 'app' }}
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
@@ -195,8 +213,9 @@ jobs:
 
   budgets:
     # apps only — binary size + idle RSS
-    if: ${{ env.PROJECT_KIND == 'app' }}
-    runs-on: ubuntu-24.04
+    needs: configuration
+    if: ${{ needs.configuration.outputs.project-kind == 'app' }}
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - uses: ./.github/actions/setup-rust
@@ -239,7 +258,7 @@ jobs:
   atspi-smoke:
     # opt-in via label ci:atspi
     if: ${{ contains(github.event.pull_request.labels.*.name, 'ci:atspi') }}
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - uses: ./.github/actions/setup-rust

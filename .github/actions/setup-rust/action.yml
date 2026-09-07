@@ -32,7 +32,7 @@ runs:
         set -euxo pipefail
         sudo apt-get update -qq
         # base
-        pkgs=(build-essential pkg-config curl git ca-certificates gettext xdg-utils libssl-dev)
+        pkgs=(build-essential pkg-config curl git ca-certificates gettext xdg-utils libssl-dev dbus-daemon imagemagick 7zip desktop-file-utils)
         for bundle in ${{ inputs.system-libs }}; do
           case "$bundle" in
             common) ;;
@@ -60,7 +60,7 @@ runs:
           rustup default "${{ inputs.toolchain }}"
         else
           # picks rust-toolchain.toml automatically
-          rustup show active-toolchain || rustup toolchain install stable
+          rustup show
         fi
         rustc -V
         cargo -V
