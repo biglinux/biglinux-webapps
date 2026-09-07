@@ -43,6 +43,7 @@ pub fn build(app: &adw::Application) {
     let window = adw::ApplicationWindow::builder()
         .application(app)
         .title(&shell.title)
+        .css_classes(["biglinux-webapps"])
         .default_width(shell.default_width)
         .default_height(shell.default_height)
         .build();
