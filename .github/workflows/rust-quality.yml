@@ -51,8 +51,13 @@ jobs:
           command: check
           arguments: --all-features
 
+      - name: Install cargo-machete
+        uses: taiki-e/install-action@84f5ac3124727fb3d284d4d22ee9ab3654fd09a6
+        with:
+          tool: cargo-machete
+
       - name: cargo-machete (unused deps)
-        uses: bnjbvr/cargo-machete@v0.7.0
+        run: cargo machete --with-metadata
 
       - name: i18n POT freshness
         run: |
