@@ -14,9 +14,9 @@ inputs:
     required: false
     default: "common"
   cargo-tools:
-    description: Space-separated cargo bin tools to install.
+    description: Comma-separated cargo bin tools to install.
     required: false
-    default: "cargo-deny cargo-audit cargo-machete cargo-nextest"
+    default: ""
   cache-key:
     description: Extra cache key suffix.
     required: false
@@ -81,6 +81,7 @@ runs:
 
     # cargo helpers — taiki-e/install-action is precompiled & fast
     - name: install cargo tools
+      if: inputs.cargo-tools != ''
       # taiki-e/install-action pinned to commit SHA (v2.44.x range)
       uses: taiki-e/install-action@9ca1734d8940023f074414ee621fd530c4ce10f2
       with:
