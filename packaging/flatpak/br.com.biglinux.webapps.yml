@@ -9,11 +9,7 @@
 # `packaging/flatpak/generate-cargo-sources.sh` (creates cargo-sources.json).
 app-id: br.com.biglinux.webapps
 runtime: org.gnome.Platform
-# GNOME 48 (March 2025) is the current Flathub-recommended branch. Bump in
-# lock-step with GNOME upstream releases — each branch is supported for one
-# year. `rust-stable` must match the underlying Freedesktop base (24.08 for
-# GNOME 48); verify with `flatpak info -m org.gnome.Sdk//<ver>`.
-runtime-version: '48'
+runtime-version: '50'
 sdk: org.gnome.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.rust-stable
@@ -34,6 +30,7 @@ finish-args:
   # Desktop integration: write .desktop / icon files the manager creates
   - --filesystem=xdg-data/applications:create
   - --filesystem=xdg-data/icons:create
+  - --filesystem=~/.bigwebapps:create
   # Flatpak browser detection — list installed browsers via the host spawn bus
   - --talk-name=org.freedesktop.Flatpak
   # Inter-app launch hook (xdg-open equivalents)
@@ -53,6 +50,19 @@ build-options:
     RUST_BACKTRACE: '1'
 
 modules:
+  - name: 7zip
+    buildsystem: simple
+    build-commands:
+      - make -C CPP/7zip/Bundles/Alone2 -f makefile.gcc USE_CLANG=1 CC=clang CXX=clang++ O=b/clang -j${FLATPAK_BUILDER_N_JOBS}
+      - install -Dm755 CPP/7zip/Bundles/Alone2/b/clang/7zz "${FLATPAK_DEST}/bin/7zz"
+      - install -Dm644 DOC/License.txt "${FLATPAK_DEST}/share/licenses/7zip/License.txt"
+      - install -Dm644 DOC/copying.txt "${FLATPAK_DEST}/share/licenses/7zip/copying.txt"
+      - install -Dm644 DOC/unRarLicense.txt "${FLATPAK_DEST}/share/licenses/7zip/unRarLicense.txt"
+    sources:
+      - type: archive
+        url: https://github.com/ip7z/7zip/releases/download/26.03/7z2603-src.tar.xz
+        sha256: 9cbde5099c6deb73691b0579063da5827522ccbbcba3f0020fd04e8c8c16c0d4
+        strip-components: 0
   - name: biglinux-webapps
     buildsystem: simple
     build-commands:
@@ -81,6 +91,9 @@ modules:
       # Browser definitions (runtime-editable)
       - install -Dm644 biglinux-webapps/usr/share/biglinux-webapps/browsers.toml
           "${FLATPAK_DEST}/share/biglinux-webapps/browsers.toml"
+
+      - mkdir -p "${FLATPAK_DEST}/share/biglinux"
+      - cp -r biglinux-webapps/usr/share/biglinux/webapps "${FLATPAK_DEST}/share/biglinux/"
 
       # Compile + install translations
       - |

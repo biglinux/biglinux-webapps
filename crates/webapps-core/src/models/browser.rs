@@ -18,6 +18,15 @@ pub struct Browser {
 }
 
 impl Browser {
+    pub fn matches_id(&self, id: &str) -> bool {
+        self.browser_id == id
+            || (id.starts_with("flatpak-")
+                && crate::browsers::find_def(id).is_some_and(|definition| {
+                    definition.flatpak_id.as_deref() == Some(self.browser_id.as_str())
+                        || definition.legacy_flatpak_ids.contains(&self.browser_id)
+                }))
+    }
+
     pub fn display_name(&self) -> &str {
         display_name_for(&self.browser_id)
     }
@@ -71,7 +80,7 @@ impl BrowserCollection {
     pub fn set_default(&mut self, browser_id: &str) {
         self.default_id = Some(browser_id.to_string());
         for b in &mut self.browsers {
-            b.is_default = b.browser_id == browser_id;
+            b.is_default = b.matches_id(browser_id);
         }
     }
 
@@ -83,7 +92,7 @@ impl BrowserCollection {
     }
 
     pub fn get_by_id(&self, id: &str) -> Option<&Browser> {
-        self.browsers.iter().find(|b| b.browser_id == id)
+        self.browsers.iter().find(|b| b.matches_id(id))
     }
 }
 
@@ -109,4 +118,45 @@ fn icon_name_for(id: &str) -> String {
     }
     // Fallback: strip flatpak- prefix and return remainder
     id.strip_prefix("flatpak-").unwrap_or(id).to_string()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn saved_flatpak_aliases_resolve_without_rewriting_ids() {
+        for (saved, detected) in [
+            ("flatpak-brave", "flatpak-brave-browser"),
+            ("flatpak-chrome", "flatpak-google-chrome-stable"),
+            ("flatpak-edge", "flatpak-microsoft-edge-stable"),
+        ] {
+            let mut browsers = BrowserCollection {
+                browsers: vec![Browser {
+                    browser_id: detected.into(),
+                    is_default: false,
+                }],
+                default_id: None,
+            };
+            assert_eq!(browsers.get_by_id(saved).unwrap().browser_id, detected);
+            browsers.set_default(saved);
+            assert!(browsers.default_browser().unwrap().is_default);
+            assert_eq!(browsers.default_id.as_deref(), Some(saved));
+        }
+    }
+
+    #[test]
+    fn flatpak_alias_never_selects_a_native_browser() {
+        let native = Browser {
+            browser_id: "brave".into(),
+            is_default: false,
+        };
+        let flatpak = Browser {
+            browser_id: "flatpak-brave-browser".into(),
+            is_default: false,
+        };
+        assert!(!native.matches_id("flatpak-brave"));
+        assert!(!flatpak.matches_id("brave"));
+        assert!(!flatpak.matches_id("flatpak-firefox"));
+    }
 }

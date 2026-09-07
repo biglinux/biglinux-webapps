@@ -33,7 +33,7 @@
 
           biglinux-webapps = pkgs.rustPlatform.buildRustPackage {
             pname = "biglinux-webapps";
-            version = "4.0.0";
+            version = (builtins.fromTOML (builtins.readFile ./Cargo.toml)).workspace.package.version;
 
             src = pkgs.lib.cleanSource ./.;
 
@@ -43,6 +43,10 @@
 
             nativeBuildInputs = buildDeps;
             buildInputs = runtimeDeps;
+
+            preFixup = ''
+              gappsWrapperArgs+=(--prefix PATH : ${pkgs.lib.makeBinPath [ pkgs._7zz pkgs.imagemagick pkgs.desktop-file-utils pkgs.xdg-utils ]})
+            '';
 
             # Compile message catalogs before install.
             preBuild = ''
@@ -67,6 +71,9 @@
 
               install -Dm644 biglinux-webapps/usr/share/biglinux-webapps/browsers.toml \
                 $out/share/biglinux-webapps/browsers.toml
+
+              mkdir -p $out/share/biglinux
+              cp -r biglinux-webapps/usr/share/biglinux/webapps $out/share/biglinux/
 
               for mo in po/*.mo; do
                 lang=$(basename "$mo" .mo)

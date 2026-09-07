@@ -4,7 +4,7 @@
 //! session managers and taskbars track the correct PID.
 //! Chromium-family spawns the browser in the background and exits.
 
-use std::{os::unix::process::CommandExt, path::Path, process::Command};
+use std::{os::unix::process::CommandExt, path::Path};
 
 use webapps_core::subprocess::SubprocessSpec;
 use webapps_core::{browsers::BrowserDef, config};
@@ -29,8 +29,15 @@ pub fn firefox(
     is_flatpak: bool,
 ) -> ! {
     let profile_name = args.filename.trim_end_matches(".desktop");
-    let profile_dir = config::profiles_dir().join(browser_id).join(profile_name);
+    let profile_dir = config::profiles_dir()
+        .join(browser_id)
+        .join(profile_key(args));
 
+    let previous = config::profiles_dir().join(browser_id).join(profile_name);
+    if let Err(error) = migrate_named_profile(&previous, &profile_dir) {
+        eprintln!("big-webapps-exec: cannot preserve Firefox profile: {error}");
+        std::process::exit(1);
+    }
     setup_firefox_profile(&profile_dir);
 
     // XApp accepts either a theme name or an absolute path here; pass the
@@ -46,7 +53,7 @@ pub fn firefox(
     };
     // Firefox must replace this process so session managers track the browser
     // PID, not the launcher.
-    let mut cmd = Command::new(&program);
+    let mut cmd = config::host_command(&program);
     cmd.args(&prefix_args)
         .env("XAPP_FORCE_GTKWINDOW_ICON", icon)
         // Wayland taskbar icon + grouping: the compositor (KDE/GNOME) maps a
@@ -86,6 +93,7 @@ pub fn chromium(args: &Args, browser_id: &str, def: Option<&'static BrowserDef>,
     let spawn = move || {
         if let Err(e) = SubprocessSpec::builder()
             .program(program.as_str())
+            .on_host()
             .args(&cmd_args)
             .build()
             .spawn_detached()
@@ -110,6 +118,7 @@ pub fn grant_flatpak_access(browser_id: &str, app_id: &str) {
     let data_dir = config::profiles_dir().join(browser_id);
     let status = SubprocessSpec::builder()
         .program("flatpak")
+        .on_host()
         .args([
             "override",
             "--user",
@@ -141,18 +150,18 @@ fn setup_firefox_profile(profile_dir: &Path) {
         return;
     }
     copy_profile_file(
-        "/usr/share/biglinux/webapps/profile/userChrome.css",
+        &config::share_dir().join("biglinux/webapps/profile/userChrome.css"),
         &chrome_dir.join("userChrome.css"),
     );
     copy_profile_file(
-        "/usr/share/biglinux/webapps/profile/user.js",
+        &config::share_dir().join("biglinux/webapps/profile/user.js"),
         &profile_dir.join("user.js"),
     );
 }
 
-fn copy_profile_file(src: &str, dst: &Path) {
+fn copy_profile_file(src: &Path, dst: &Path) {
     if let Err(e) = std::fs::copy(src, dst) {
-        eprintln!("big-webapps-exec: cannot copy {src}: {e}");
+        eprintln!("big-webapps-exec: cannot copy {}: {e}", src.display());
     }
 }
 
@@ -175,8 +184,8 @@ fn base_spec(def: Option<&BrowserDef>, is_flatpak: bool) -> Option<(String, Vec<
             vec!["run".to_string(), app_id.to_string()],
         ))
     } else {
-        let exec = def.and_then(|d| d.native_paths.iter().find(|p| Path::new(p).exists()))?;
-        Some((exec.clone(), Vec::new()))
+        let exec = def.and_then(webapps_core::browsers::native_browser_path)?;
+        Some((exec, Vec::new()))
     }
 }
 
@@ -198,13 +207,9 @@ fn build_chromium_spec(
 ) -> Option<(String, Vec<String>)> {
     let (program, mut cmd_args) = base_spec(def, is_flatpak)?;
 
-    let profile_key = if args.profile == "Default" || args.profile == "Browser" {
-        // Per-webapp dir so each Default/Browser webapp gets its own process.
-        args.filename.trim_end_matches(".desktop")
-    } else {
-        args.profile.as_str()
-    };
-    let profile_dir = config::profiles_dir().join(browser_id).join(profile_key);
+    let profile_dir = config::profiles_dir()
+        .join(browser_id)
+        .join(profile_key(args));
     let _ = std::fs::create_dir_all(&profile_dir);
 
     cmd_args.extend([
@@ -216,4 +221,66 @@ fn build_chromium_spec(
         format!("--app={}", args.url),
     ]);
     Some((program, cmd_args))
+}
+
+fn profile_key(args: &Args) -> &str {
+    if args.profile == "Default" || args.profile == "Browser" {
+        args.filename.trim_end_matches(".desktop")
+    } else {
+        &args.profile
+    }
+}
+
+fn migrate_named_profile(previous: &Path, destination: &Path) -> std::io::Result<()> {
+    if previous != destination && previous.is_dir() && !destination.exists() {
+        std::fs::rename(previous, destination)?;
+    }
+    Ok(())
+}
+
+#[cfg(test)]
+mod profile_tests {
+    use super::*;
+    #[test]
+    fn custom_profiles_share_a_name_and_default_profiles_remain_isolated() {
+        let mut args = Args {
+            filename: "first.desktop".into(),
+            browser: "firefox".into(),
+            class: "first".into(),
+            profile: "Work Profile".into(),
+            url: "https://example.com".into(),
+        };
+        assert_eq!(profile_key(&args), "Work Profile");
+        args.filename = "second.desktop".into();
+        assert_eq!(profile_key(&args), "Work Profile");
+        args.profile = "Default".into();
+        assert_eq!(profile_key(&args), "second");
+        args.profile = "Browser".into();
+        assert_eq!(profile_key(&args), "second");
+    }
+    #[test]
+    fn named_profile_migration_preserves_existing_sessions_without_overwriting_shared_profiles() {
+        let root = tempfile::tempdir().unwrap();
+        let previous = root.path().join("app-id");
+        let destination = root.path().join("Work Profile");
+        std::fs::create_dir(&previous).unwrap();
+        std::fs::write(previous.join("cookies.sqlite"), b"saved sessions").unwrap();
+        migrate_named_profile(&previous, &destination).unwrap();
+        assert_eq!(
+            std::fs::read(destination.join("cookies.sqlite")).unwrap(),
+            b"saved sessions"
+        );
+        assert!(!previous.exists());
+        std::fs::create_dir(&previous).unwrap();
+        std::fs::write(previous.join("cookies.sqlite"), b"another session").unwrap();
+        migrate_named_profile(&previous, &destination).unwrap();
+        assert_eq!(
+            std::fs::read(destination.join("cookies.sqlite")).unwrap(),
+            b"saved sessions"
+        );
+        assert_eq!(
+            std::fs::read(previous.join("cookies.sqlite")).unwrap(),
+            b"another session"
+        );
+    }
 }

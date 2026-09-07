@@ -100,7 +100,7 @@ impl CategoryList {
 
         let main = AppCategory::parse(category);
         let mut categories = vec![main.clone()];
-        for existing in &self.categories {
+        for existing in self.categories.iter().skip(1) {
             if existing != &main {
                 categories.push(existing.clone());
             }
@@ -130,5 +130,16 @@ impl CategoryList {
             category.validate()?;
         }
         Ok(())
+    }
+}
+
+#[cfg(test)]
+mod regression_tests {
+    use super::*;
+    #[test]
+    fn replacing_main_category_preserves_only_secondary_categories() {
+        let changed = CategoryList::parse("Network;Utility").with_main("Office");
+        assert_eq!(changed.to_serialized(), "Office;Utility");
+        assert_eq!(changed.with_main("Utility").to_serialized(), "Utility");
     }
 }

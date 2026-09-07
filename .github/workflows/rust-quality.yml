@@ -8,7 +8,7 @@ on:
 
 jobs:
   quality:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     timeout-minutes: 30
     env:
       CARGO_TERM_COLOR: always
@@ -22,13 +22,14 @@ jobs:
           sudo apt-get install -y --no-install-recommends \
             build-essential pkg-config \
             libgtk-4-dev libadwaita-1-dev libwebkitgtk-6.0-dev \
-            libgirepository1.0-dev \
-            gettext
+            libssl-dev gettext dbus-daemon \
+            imagemagick 7zip desktop-file-utils xdg-utils
+
+      - name: Verify native library requirements
+        run: pkg-config --print-errors --exists 'gtk4 >= 4.22' 'libadwaita-1 >= 1.9' 'webkitgtk-6.0 >= 2.50'
 
       - name: Install Rust toolchain (pinned via rust-toolchain.toml)
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          components: rustfmt, clippy
+        run: rustup show
 
       - uses: Swatinem/rust-cache@v2
 
@@ -36,13 +37,13 @@ jobs:
         run: cargo fmt --all -- --check
 
       - name: clippy (deny warnings)
-        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+        run: cargo clippy --workspace --all-targets --all-features --locked -- -D warnings
 
       - name: build (release, locked)
         run: cargo build --release --workspace --locked
 
       - name: test (release)
-        run: cargo test --release --workspace --locked
+        run: dbus-run-session -- cargo test --release --workspace --locked
 
       - name: cargo-deny (licences + advisories)
         uses: EmbarkStudios/cargo-deny-action@v2
@@ -50,8 +51,13 @@ jobs:
           command: check
           arguments: --all-features
 
+      - name: Install cargo-machete
+        uses: taiki-e/install-action@84f5ac3124727fb3d284d4d22ee9ab3654fd09a6
+        with:
+          tool: cargo-machete
+
       - name: cargo-machete (unused deps)
-        uses: bnjbvr/cargo-machete@v0.7.0
+        run: cargo machete --with-metadata
 
       - name: i18n POT freshness
         run: |
@@ -59,8 +65,9 @@ jobs:
             cargo install --locked xtr
           fi
           bash scripts/update-translations.sh
-          if ! git diff --quiet -- po/biglinux-webapps.pot; then
+          git show HEAD:po/biglinux-webapps.pot | sed '/^"POT-Creation-Date:/d' > "$RUNNER_TEMP/committed.pot"
+          sed '/^"POT-Creation-Date:/d' po/biglinux-webapps.pot > "$RUNNER_TEMP/generated.pot"
+          if ! diff -u "$RUNNER_TEMP/committed.pot" "$RUNNER_TEMP/generated.pot"; then
             echo "::error::POT is stale; run scripts/update-translations.sh and commit."
-            git --no-pager diff -- po/biglinux-webapps.pot | head -200
             exit 1
           fi

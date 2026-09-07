@@ -46,6 +46,7 @@ pub fn build(app: &adw::Application) {
         .default_width(shell.default_width)
         .default_height(shell.default_height)
         .build();
+    window.add_css_class("biglinux-webapps");
 
     // The window content is the Relm4 ManagerWindow component (chrome + list +
     // actions + search + shortcuts). It owns the WindowContext; we own the

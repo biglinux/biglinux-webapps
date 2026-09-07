@@ -14,9 +14,9 @@ inputs:
     required: false
     default: "common"
   cargo-tools:
-    description: Space-separated cargo bin tools to install.
+    description: Comma-separated cargo bin tools to install.
     required: false
-    default: "cargo-deny cargo-audit cargo-machete cargo-nextest"
+    default: ""
   cache-key:
     description: Extra cache key suffix.
     required: false
@@ -32,7 +32,7 @@ runs:
         set -euxo pipefail
         sudo apt-get update -qq
         # base
-        pkgs=(build-essential pkg-config curl git ca-certificates gettext xdg-utils libssl-dev)
+        pkgs=(build-essential pkg-config curl git ca-certificates gettext xdg-utils libssl-dev dbus-daemon imagemagick 7zip desktop-file-utils)
         for bundle in ${{ inputs.system-libs }}; do
           case "$bundle" in
             common) ;;
@@ -60,7 +60,7 @@ runs:
           rustup default "${{ inputs.toolchain }}"
         else
           # picks rust-toolchain.toml automatically
-          rustup show active-toolchain || rustup toolchain install stable
+          rustup show
         fi
         rustc -V
         cargo -V
@@ -81,7 +81,7 @@ runs:
 
     # cargo helpers — taiki-e/install-action is precompiled & fast
     - name: install cargo tools
-      # taiki-e/install-action pinned to commit SHA (v2.44.x range)
-      uses: taiki-e/install-action@9ca1734d8940023f074414ee621fd530c4ce10f2
+      if: inputs.cargo-tools != ''
+      uses: taiki-e/install-action@84f5ac3124727fb3d284d4d22ee9ab3654fd09a6
       with:
         tool: ${{ inputs.cargo-tools }}

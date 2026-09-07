@@ -5,7 +5,7 @@ use super::types::{
     AppMode, BrowserId, CategoryList, DesktopFileName, ProfileKind, UrlValidationError, WebAppUrl,
 };
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct WebApp {
     #[serde(default)]
     pub browser: String,

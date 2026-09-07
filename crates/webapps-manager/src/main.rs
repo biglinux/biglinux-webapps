@@ -8,8 +8,9 @@ use webapps_core::config;
 use webapps_manager::{style, window};
 
 fn main() {
+    // SAFETY: No threads or signal handlers have been started.
+    unsafe { webapps_core::i18n::init() };
     init_logger();
-    webapps_core::i18n::init();
 
     let app = adw::Application::builder()
         .application_id(config::APP_ID)

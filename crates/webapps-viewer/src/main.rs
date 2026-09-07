@@ -37,8 +37,9 @@ struct Cli {
 }
 
 fn main() -> glib::ExitCode {
+    // SAFETY: No threads or signal handlers have been started.
+    unsafe { webapps_core::i18n::init() };
     init_logger();
-    webapps_core::i18n::init();
     let cli = Cli::parse();
 
     let mut url = cli.url.clone();

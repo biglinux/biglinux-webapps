@@ -217,6 +217,25 @@ mod tests {
     use webapps_core::models::Browser;
 
     #[test]
+    fn confirming_a_saved_alias_preserves_its_profile_identity() {
+        let browsers = BrowserCollection {
+            browsers: vec![Browser {
+                browser_id: "flatpak-brave-browser".into(),
+                is_default: false,
+            }],
+            default_id: None,
+        };
+        let webapp = Rc::new(RefCell::new(WebApp {
+            browser: "flatpak-brave".into(),
+            app_profile: "Work".into(),
+            ..WebApp::default()
+        }));
+        apply_browser_selection(&webapp, &browsers, "flatpak-brave", false);
+        assert_eq!(webapp.borrow().browser, "flatpak-brave");
+        assert_eq!(webapp.borrow().app_profile, "Work");
+    }
+
+    #[test]
     fn preferred_external_browser_skips_viewer_fallback() {
         let browsers = BrowserCollection {
             browsers: vec![

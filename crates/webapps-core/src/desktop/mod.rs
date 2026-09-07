@@ -8,10 +8,11 @@ mod sanitize;
 mod wm_class;
 
 pub use builder::generate_desktop_entry;
-pub use icon::{persist_icon, webapp_icons_dir};
+pub use icon::{icon_destination, persist_icon, webapp_icons_dir};
 pub use paths::{
     desktop_file_id, desktop_file_path, install_desktop_entry, legacy_host_desktop_file_id,
-    remove_desktop_entry, remove_desktop_file, viewer_app_id, viewer_desktop_filename,
+    refresh_desktop_database, remove_desktop_entry, remove_desktop_file, viewer_app_id,
+    viewer_desktop_filename,
 };
 pub use wm_class::{canonical_browser_desktop_filename, chromium_browser_app_id};
 
@@ -68,9 +69,12 @@ mod tests {
 
     #[test]
     fn viewer_desktop_filename_uses_path_aware_id() {
-        assert_eq!(
-            viewer_desktop_filename("https://cloud.talesam.org/apps/notes"),
-            "biglinux-webapp-cloudtalesamorg_apps_notes.desktop"
+        let filename = viewer_desktop_filename("https://cloud.talesam.org/apps/notes");
+        assert!(filename.starts_with("biglinux-webapp-cloudtalesamorg_apps_notes-"));
+        assert!(filename.ends_with(".desktop"));
+        assert_ne!(
+            filename,
+            viewer_desktop_filename("https://cloud.talesam.org/apps/Notes")
         );
     }
 

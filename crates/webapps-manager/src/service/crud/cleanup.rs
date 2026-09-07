@@ -8,8 +8,10 @@ use webapps_core::models::{AppMode, ProfileKind, WebApp};
 
 use super::profile_files::profile_dir_for;
 
-pub(super) fn cleanup_viewer_data(webapp: &WebApp) {
-    let collection = super::super::repository::load_webapps();
+pub(super) fn cleanup_viewer_data(
+    webapp: &WebApp,
+    collection: &webapps_core::models::WebAppCollection,
+) {
     let app_ids = [
         desktop::viewer_app_id(webapp),
         desktop::desktop_file_id(&webapp.app_url),
@@ -17,7 +19,7 @@ pub(super) fn cleanup_viewer_data(webapp: &WebApp) {
     ];
 
     for app_id in app_ids {
-        cleanup_viewer_data_for_id(webapp, &app_id, &collection);
+        cleanup_viewer_data_for_id(webapp, &app_id, collection);
     }
 }
 
@@ -79,12 +81,25 @@ fn remove_profile_dir(profile_dir: &Path) -> Result<()> {
     Ok(())
 }
 
-pub(super) fn cleanup_deleted_app(webapp: &WebApp, delete_profile: bool) -> Result<()> {
+pub(super) fn cleanup_deleted_app(
+    webapp: &WebApp,
+    delete_profile: bool,
+    collection: &webapps_core::models::WebAppCollection,
+) -> Result<()> {
     match webapp.app_mode {
-        AppMode::App => cleanup_viewer_data(webapp),
-        AppMode::Browser => cleanup_browser_profile(webapp, delete_profile)?,
+        AppMode::App => cleanup_viewer_data(webapp, collection),
+        AppMode::Browser => {
+            let shared = collection.webapps.iter().any(|app| {
+                app.browser == webapp.browser
+                    && app.app_profile == webapp.app_profile
+                    && webapp.has_custom_profile()
+            });
+            if !shared {
+                cleanup_browser_profile(webapp, delete_profile)?;
+            }
+        }
     }
-    cleanup_persisted_icon(webapp);
+    cleanup_unused_icon(&webapp.app_icon, collection);
 
     Ok(())
 }
@@ -110,30 +125,17 @@ fn default_browser_profile_key(webapp: &WebApp) -> String {
         .unwrap_or_else(|| desktop::desktop_file_id(&webapp.app_url))
 }
 
-/// Remove the per-webapp icon we copied into our data dir at save time so
-/// stale icons don't accumulate after deletes. Only touches files that match
-/// the stem `webapp-<desktop_file_id>` — leaves anything else alone.
-fn cleanup_persisted_icon(webapp: &WebApp) {
-    let current_stem = format!("webapp-{}", desktop::desktop_file_id(&webapp.app_url));
-    remove_persisted_icon_stem(&current_stem);
-
-    let legacy_stem = format!(
-        "webapp-{}",
-        desktop::legacy_host_desktop_file_id(&webapp.app_url)
-    );
-    if legacy_stem != current_stem {
-        remove_persisted_icon_stem(&legacy_stem);
+pub(super) fn cleanup_unused_icon(icon: &str, collection: &webapps_core::models::WebAppCollection) {
+    if collection.webapps.iter().any(|app| app.app_icon == icon) {
+        return;
     }
-}
-
-fn remove_persisted_icon_stem(stem: &str) {
-    let icons_dir = desktop::webapp_icons_dir();
-    for ext in ["png", "svg", "ico", "webp", "jpg", "jpeg"] {
-        let candidate = icons_dir.join(format!("{stem}.{ext}"));
-        if let Err(err) = fs::remove_file(&candidate) {
-            if err.kind() != std::io::ErrorKind::NotFound {
-                log::warn!("Remove persisted icon {}: {err}", candidate.display());
-            }
+    let path = Path::new(icon);
+    if path.parent() != Some(desktop::webapp_icons_dir().as_path()) {
+        return;
+    }
+    if let Err(err) = fs::remove_file(path) {
+        if err.kind() != std::io::ErrorKind::NotFound {
+            log::warn!("Remove unused icon {}: {err}", path.display());
         }
     }
 }

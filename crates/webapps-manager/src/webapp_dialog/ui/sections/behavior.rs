@@ -74,9 +74,9 @@ fn browser_display_name(webapp: &WebApp, browsers: &BrowserCollection) -> String
 
 fn build_profile_row(webapp: &WebApp) -> adw::ExpanderRow {
     adw::ExpanderRow::builder()
-        .title(gettext("Use separate profile"))
+        .title(gettext("Use named profile"))
         .subtitle(gettext(
-            "Allows independent cookies and sessions for this webapp",
+            "By default, each webapp is isolated. A name shares sessions with webapps using the same browser and profile.",
         ))
         .show_enable_switch(true)
         .enable_expansion(webapp.has_custom_profile())

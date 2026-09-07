@@ -28,12 +28,15 @@ pub struct WebAppSectionFactory {
     title: String,
     // caveman: pending apps installed into `rows` once init_widgets sees the root group.
     pending_apps: Vec<WebApp>,
+    displayed_apps: Vec<WebApp>,
     rows: Option<FactoryVecDeque<WebAppRowFactory>>,
 }
 
 /// Inputs accepted by a section (unused; sections are immutable after build).
 #[derive(Debug)]
-pub enum WebAppSectionInput {}
+pub enum WebAppSectionInput {
+    Refresh(Vec<WebApp>),
+}
 
 /// Outputs bubbled up from any row in this section.
 #[derive(Debug, Clone)]
@@ -65,6 +68,7 @@ impl FactoryComponent for WebAppSectionFactory {
     fn init_model(init: Self::Init, _index: &Self::Index, _sender: FactorySender<Self>) -> Self {
         Self {
             title: init.title,
+            displayed_apps: init.apps.clone(),
             pending_apps: init.apps,
             rows: None,
         }
@@ -95,5 +99,29 @@ impl FactoryComponent for WebAppSectionFactory {
         }
     }
 
-    fn update(&mut self, _msg: Self::Input, _sender: FactorySender<Self>) {}
+    fn update(&mut self, msg: Self::Input, _sender: FactorySender<Self>) {
+        let WebAppSectionInput::Refresh(apps) = msg;
+        let Some(rows) = self.rows.as_mut() else {
+            return;
+        };
+        let mut guard = rows.guard();
+        for (index, app) in apps.iter().enumerate() {
+            if self.displayed_apps.get(index) == Some(app) {
+                continue;
+            }
+            if index < guard.len() {
+                guard.remove(index);
+            }
+            guard.insert(
+                index,
+                WebAppRowInit {
+                    webapp: app.clone(),
+                },
+            );
+        }
+        while guard.len() > apps.len() {
+            guard.pop_back();
+        }
+        self.displayed_apps = apps;
+    }
 }

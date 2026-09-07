@@ -6,12 +6,14 @@ use std::process::{Command, Output, Stdio};
 pub struct SubprocessSpec {
     program: OsString,
     args: Vec<OsString>,
+    host: bool,
 }
 
 #[derive(Debug, Default)]
 pub struct SubprocessSpecBuilder {
     program: Option<OsString>,
     args: Vec<OsString>,
+    host: bool,
 }
 
 impl SubprocessSpec {
@@ -33,13 +35,22 @@ impl SubprocessSpec {
     }
 
     fn command(&self) -> Command {
-        let mut command = Command::new(&self.program);
+        let mut command = if self.host {
+            crate::config::host_command(&self.program)
+        } else {
+            Command::new(&self.program)
+        };
         command.args(&self.args);
         command
     }
 }
 
 impl SubprocessSpecBuilder {
+    pub fn on_host(mut self) -> Self {
+        self.host = true;
+        self
+    }
+
     pub fn program(mut self, program: impl AsRef<OsStr>) -> Self {
         self.program = Some(program.as_ref().to_os_string());
         self
@@ -64,6 +75,7 @@ impl SubprocessSpecBuilder {
         SubprocessSpec {
             program: self.program.unwrap_or_default(),
             args: self.args,
+            host: self.host,
         }
     }
 }

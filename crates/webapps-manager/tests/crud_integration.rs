@@ -93,7 +93,7 @@ fn app_mode_create_uses_path_aware_desktop_name() {
     let saved = &collection.webapps[0];
     assert_eq!(
         saved.app_file,
-        "biglinux-webapp-cloudtalesamorg_apps_notes.desktop"
+        webapps_core::desktop::viewer_desktop_filename("https://cloud.talesam.org/apps/notes")
     );
 }
 
@@ -331,3 +331,6 @@ fn app_mode_migration_keeps_shared_legacy_viewer_storage() {
         .join(webapps_core::desktop::desktop_file_id(&notes.app_url))
         .exists());
 }
+
+#[path = "crud_integration/regressions.rs"]
+mod regressions;

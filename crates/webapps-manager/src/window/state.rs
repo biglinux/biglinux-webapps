@@ -87,7 +87,7 @@ fn rebuild_sections(state: &mut AppState) {
         sections.push(WebAppSection { title, apps });
     }
 
-    state.result_count = sections.iter().map(|section| section.apps.len()).sum();
+    state.result_count = state.webapps.filter_by_text(&state.filter_text).len();
     state.sections = sections;
 }
 
@@ -124,6 +124,7 @@ mod tests {
             "",
         );
 
+        assert_eq!(state.result_count, 2);
         assert_eq!(state.sections[0].title, "Network");
         assert_eq!(state.sections[0].apps[0].app_name, "Alpha");
         assert_eq!(state.sections[0].apps[1].app_name, "Zulu");

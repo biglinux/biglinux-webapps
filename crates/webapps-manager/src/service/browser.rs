@@ -1,8 +1,8 @@
-use std::path::Path;
-
 use webapps_core::browsers::browser_defs;
 use webapps_core::models::{Browser, BrowserCollection};
 use webapps_core::subprocess::SubprocessSpec;
+
+mod flatpak;
 
 /// Detect all installed browsers (native + Flatpak) and identify the system default.
 ///
@@ -15,7 +15,7 @@ pub fn detect_browsers() -> BrowserCollection {
 
     // Native: first existing candidate path wins
     for def in defs {
-        if def.native_paths.iter().any(|p| Path::new(p).exists()) {
+        if webapps_core::browsers::native_browser_path(def).is_some() {
             browsers.push(Browser {
                 browser_id: def.id.clone(),
                 is_default: false,
@@ -23,25 +23,7 @@ pub fn detect_browsers() -> BrowserCollection {
         }
     }
 
-    // Flatpak: entries with flatpak_app_id + flatpak_id
-    if let Ok(output) = SubprocessSpec::builder()
-        .program("flatpak")
-        .args(["list", "--app", "--columns=application"])
-        .build()
-        .run()
-    {
-        let stdout = String::from_utf8_lossy(&output.stdout);
-        for def in defs {
-            if let (Some(app_id), Some(fid)) = (&def.flatpak_app_id, &def.flatpak_id) {
-                if stdout.lines().any(|l| l.trim() == app_id.as_str()) {
-                    browsers.push(Browser {
-                        browser_id: fid.clone(),
-                        is_default: false,
-                    });
-                }
-            }
-        }
-    }
+    browsers.extend(flatpak::detect(defs));
 
     let default_id = detect_default_browser(defs);
     let mut col = BrowserCollection {
@@ -64,10 +46,12 @@ fn query_default_browser() -> Option<String> {
     // distros/desktops where xdg-settings isn't configured.
     let primary = SubprocessSpec::builder()
         .program("xdg-settings")
+        .on_host()
         .args(["get", "default-web-browser"])
         .build()
         .run()
         .ok()
+        .filter(|output| output.status.success())
         .map(|o| String::from_utf8_lossy(&o.stdout).trim().to_lowercase())
         .filter(|s| !s.is_empty());
     if primary.is_some() {
@@ -75,10 +59,12 @@ fn query_default_browser() -> Option<String> {
     }
     SubprocessSpec::builder()
         .program("xdg-mime")
+        .on_host()
         .args(["query", "default", "x-scheme-handler/http"])
         .build()
         .run()
         .ok()
+        .filter(|output| output.status.success())
         .map(|o| String::from_utf8_lossy(&o.stdout).trim().to_lowercase())
         .filter(|s| !s.is_empty())
 }

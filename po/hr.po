@@ -7,26 +7,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
-"POT-Creation-Date: 2026-06-20 19:19+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2026-09-06 19:25+0000\n"
+"PO-Revision-Date: 2026-09-06 16:24-0300\n"
+"Last-Translator: Luna (gpt-5.6-luna)\n"
+"Language-Team: hr\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: attranslate\n"
+"X-Generator: Luna (gpt-5.6-luna)\n"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
-#: crates/webapps-manager/src/browser_dialog.rs:40
+#: crates/webapps-manager/src/browser_dialog.rs:38
 msgid "Select Browser"
 msgstr "Odaberite preglednik"
 
-#: crates/webapps-manager/src/browser_dialog.rs:72
+#: crates/webapps-manager/src/browser_dialog.rs:70
 msgid "Auto-hide headerbar"
 msgstr "Automatski sakrij traku zaglavlja"
 
-#: crates/webapps-manager/src/browser_dialog.rs:74
+#: crates/webapps-manager/src/browser_dialog.rs:72
 msgid "Hide the titlebar; reveal it by moving the cursor to the top edge."
 msgstr ""
 "Sakrij naslovnu traku; ponovno je prikaži pomicanjem pokazivača na gornji "
@@ -38,12 +39,12 @@ msgstr ""
 #
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
-#: crates/webapps-manager/src/browser_dialog.rs:152
+#: crates/webapps-manager/src/browser_dialog.rs:150
 #: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:43
-#: crates/webapps-manager/src/window/actions/remove_all.rs:26
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:142
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:194
-#: crates/webapps-manager/src/window/list.rs:187
+#: crates/webapps-manager/src/window/actions/remove_all.rs:25
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:138
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:190
+#: crates/webapps-manager/src/window/list.rs:183
 msgid "Cancel"
 msgstr "Otkaži"
 
@@ -57,11 +58,11 @@ msgstr "Otkaži"
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 173
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
-#: crates/webapps-manager/src/browser_dialog.rs:153
+#: crates/webapps-manager/src/browser_dialog.rs:151
 msgid "OK"
 msgstr "U redu"
 
-#: crates/webapps-manager/src/browser_dialog.rs:205
+#: crates/webapps-manager/src/browser_dialog.rs:203
 msgid ""
 "Embedded browser with better system integration. May not work on all "
 "websites."
@@ -69,29 +70,28 @@ msgstr ""
 "Ugrađeni preglednik s boljom integracijom sa sustavom. Možda neće raditi "
 "nasvim web-stranicama."
 
-#: crates/webapps-manager/src/browser_dialog.rs:207
-#, fuzzy
-#| msgid "This site requires DRM — the internal browser cannot be used"
+#: crates/webapps-manager/src/browser_dialog.rs:205
 msgid ""
 "Unavailable: this site requires DRM, which the internal browser does not "
 "support."
-msgstr "Ova stranica zahtijeva DRM — interni preglednik se ne može koristiti"
+msgstr ""
+"Nedostupno: ova stranica zahtijeva DRM koji ugrađeni preglednik ne podržava."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
-#: crates/webapps-manager/src/browser_dialog.rs:209
+#: crates/webapps-manager/src/browser_dialog.rs:208
 #: crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:191
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:66
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:67
 msgid "Internal Browser"
 msgstr "Interni preglednik"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
-#: crates/webapps-manager/src/relm4_window/empty.rs:20
+#: crates/webapps-manager/src/relm4_window/empty.rs:16
 msgid "No WebApps yet"
 msgstr "Još nema WebApps"
 
-#: crates/webapps-manager/src/relm4_window/empty.rs:22
+#: crates/webapps-manager/src/relm4_window/empty.rs:18
 msgid "Turn any website into a desktop app. Press Add to get started."
 msgstr ""
 "Pretvorite bilo koju web stranicu u desktop aplikaciju. Pritisnite Dodaj za "
@@ -105,94 +105,103 @@ msgstr ""
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 109
-#: crates/webapps-manager/src/relm4_window/empty.rs:24
-#: crates/webapps-manager/src/window/ui.rs:36
-#: crates/webapps-manager/src/window/ui.rs:37
+#: crates/webapps-manager/src/relm4_window/empty.rs:20
+#: crates/webapps-manager/src/window/ui.rs:41
+#: crates/webapps-manager/src/window/ui.rs:42
 msgid "Add WebApp"
 msgstr "Dodaj WebApp"
 
-#: crates/webapps-manager/src/relm4_window/list.rs:151
+#: crates/webapps-manager/src/relm4_window/list.rs:178
 msgid "{} results"
 msgstr "{} rezultata"
 
-#: crates/webapps-manager/src/relm4_window/row.rs:120
+#: crates/webapps-manager/src/relm4_window/row.rs:118
 msgid "Change browser"
 msgstr "Promijeni preglednik"
 
-#: crates/webapps-manager/src/relm4_window/row.rs:131
+#: crates/webapps-manager/src/relm4_window/row.rs:129
 msgid "Edit"
 msgstr "Uredi"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
-#: crates/webapps-manager/src/relm4_window/row.rs:142
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:196
-#: crates/webapps-manager/src/window/list.rs:189
+#: crates/webapps-manager/src/relm4_window/row.rs:140
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:192
+#: crates/webapps-manager/src/window/list.rs:185
 msgid "Remove"
 msgstr "Ukloni"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
-#: crates/webapps-manager/src/relm4_window/shell_spec.rs:21
+#: crates/webapps-manager/src/relm4_window/shell_spec.rs:12
 #: crates/webapps-manager/src/window/actions/about.rs:15
 msgid "WebApps Manager"
 msgstr "Upravitelj web aplikacija"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 50
-#: crates/webapps-manager/src/template_gallery.rs:34
+#: crates/webapps-manager/src/template_gallery.rs:31
 msgid "Choose a Template"
 msgstr "Odaberite predložak"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 56
-#: crates/webapps-manager/src/template_gallery.rs:41
+#: crates/webapps-manager/src/template_gallery.rs:38
 msgid "Search templates..."
 msgstr "Pretraži predloške..."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 63
-#: crates/webapps-manager/src/template_gallery.rs:44
+#: crates/webapps-manager/src/template_gallery.rs:41
 msgid "Search templates"
 msgstr "Pretraži predloške"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 96
-#: crates/webapps-manager/src/template_gallery.rs:109
+#: crates/webapps-manager/src/template_gallery.rs:106
 msgid "No templates found"
 msgstr "Nema pronađenih predložaka"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 94
-#: crates/webapps-manager/src/template_gallery.rs:117
+#: crates/webapps-manager/src/template_gallery.rs:114
 msgid "Search Results"
 msgstr "Rezultati pretraživanja"
 
-#: crates/webapps-manager/src/template_gallery.rs:189
+#: crates/webapps-manager/src/template_gallery.rs:186
 msgid "Requires external browser (DRM)"
 msgstr "Zahtijeva vanjski preglednik (DRM)"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 446
-#: crates/webapps-manager/src/webapp_dialog/handlers/lifecycle.rs:101
+#: crates/webapps-manager/src/webapp_dialog/handlers/lifecycle.rs:105
 msgid "Failed to save webapp"
 msgstr "Spremanje web-aplikacije nije uspjelo"
 
-#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:49
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:91
 msgid "Icon candidate {n}"
 msgstr "Kandidat za ikonu {n}"
 
-#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:91
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:98
+msgid "Recommended icon"
+msgstr "Preporučena ikona"
+
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:121
+#| msgid "No icon with sufficient quality found (minimum 256 × 256 px)."
+msgid "No icon with sufficient quality found (minimum 64 × 64 px)."
+msgstr "Nije pronađena ikona dovoljne kvalitete (najmanje 64 × 64 px)."
+
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:156
 msgid "Select Icon"
 msgstr "Odaberi ikonu"
 
-#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:93
+#: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:158
 msgid "Images"
 msgstr "Slike"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 290
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:20
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:21
 msgid "Application Icon"
 msgstr "Ikona aplikacije"
 
@@ -204,24 +213,24 @@ msgstr "Ikona aplikacije"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 179
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 240
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:26
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:32
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:27
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:33
 msgid "Select"
 msgstr "Odaberi"
 
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:38
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:39
 msgid "Detected icon candidates"
 msgstr "Otkriveni kandidati za ikonu"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 221
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:43
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:44
 msgid "Category"
 msgstr "Kategorija"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 226
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:24
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:25
 msgid "Browser"
 msgstr "Preglednik"
 
@@ -231,19 +240,22 @@ msgstr "Preglednik"
 #
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:76
-msgid "Use separate profile"
-msgstr "Koristite odvojeni profil"
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:77
+msgid "Use named profile"
+msgstr "Koristi imenovani profil"
 
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 345
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:78
-msgid "Allows independent cookies and sessions for this webapp"
-msgstr "Omogućuje neovisne kolačiće i sesije za ovu webaplikaciju"
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:79
+msgid ""
+"By default, each webapp is isolated. A name shares sessions with webapps "
+"using the same browser and profile."
+msgstr ""
+"Prema zadanim postavkama svaka je web-aplikacija izolirana. Dodjeljivanje "
+"naziva profilu omogućuje web-aplikacijama koje koriste isti preglednik i "
+"profil dijeljenje sesija."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
-#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:87
+#: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:88
 msgid "Profile Name"
 msgstr "Ime profila"
 
@@ -274,7 +286,7 @@ msgid "Name"
 msgstr "Ime"
 
 #: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:23
-#: crates/webapps-manager/src/window/shortcuts_window.rs:18
+#: crates/webapps-manager/src/window/shortcuts_window.rs:19
 msgid "New WebApp"
 msgstr "Nova WebApp"
 
@@ -310,66 +322,62 @@ msgstr "Učitavanje…"
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 22
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
-#: crates/webapps-manager/src/welcome_dialog.rs:28
+#: crates/webapps-manager/src/welcome_dialog.rs:22
 msgid "Welcome to WebApps Manager"
 msgstr "Dobrodošli u WebApps Manager"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
-#: crates/webapps-manager/src/welcome_dialog.rs:29
+#: crates/webapps-manager/src/welcome_dialog.rs:23
 msgid "Let's Start"
 msgstr "Započnimo"
 
-#: crates/webapps-manager/src/welcome_dialog.rs:41
-#, fuzzy
-#| msgid ""
-#| "WebApps are web applications that run in a dedicated browser window, "
-#| "providing a more app-like experience for your favorite websites."
+#: crates/webapps-manager/src/welcome_dialog.rs:35
 msgid ""
 "WebApps run your favorite websites in their own dedicated window, for a "
 "focused, app-like experience."
 msgstr ""
-"WebApps su web aplikacije koje se pokreću u posebnom prozoru preglednika, "
-"pružajući iskustvo slično aplikaciji za vaše omiljene web stranice."
+"WebApps pokreće vaše omiljene web-stranice u vlastitom namjenskom prozoru za "
+"usmjereno iskustvo nalik aplikaciji."
 
-#: crates/webapps-manager/src/welcome_dialog.rs:54
+#: crates/webapps-manager/src/welcome_dialog.rs:48
 msgid "Benefits"
-msgstr ""
+msgstr "Prednosti"
 
-#: crates/webapps-manager/src/welcome_dialog.rs:59
+#: crates/webapps-manager/src/welcome_dialog.rs:53
 msgid "Focus"
 msgstr "Fokus"
 
-#: crates/webapps-manager/src/welcome_dialog.rs:60
+#: crates/webapps-manager/src/welcome_dialog.rs:54
 msgid "Work without the distractions of other browser tabs"
 msgstr "Rad bez ometanja drugih kartica preglednika"
 
-#: crates/webapps-manager/src/welcome_dialog.rs:64
+#: crates/webapps-manager/src/welcome_dialog.rs:58
 msgid "Desktop Integration"
 msgstr "Integracija na radnu površinu"
 
-#: crates/webapps-manager/src/welcome_dialog.rs:65
+#: crates/webapps-manager/src/welcome_dialog.rs:59
 msgid "Quick access from your application menu"
 msgstr "Brzi pristup iz izbornika aplikacija"
 
-#: crates/webapps-manager/src/welcome_dialog.rs:69
+#: crates/webapps-manager/src/welcome_dialog.rs:63
 msgid "Isolated Profiles"
 msgstr "Izolirani profili"
 
-#: crates/webapps-manager/src/welcome_dialog.rs:70
+#: crates/webapps-manager/src/welcome_dialog.rs:64
 msgid "Each webapp can have its own cookies and settings"
 msgstr "Svaki webapp može imati svoje kolačiće i postavke"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
-#: crates/webapps-manager/src/welcome_dialog.rs:76
+#: crates/webapps-manager/src/welcome_dialog.rs:70
 msgid "Don't show this again"
 msgstr "Ne prikazuj ovo ponovno"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 63
 #: crates/webapps-manager/src/window/actions/import_export.rs:15
-#: crates/webapps-manager/src/window/ui.rs:98
+#: crates/webapps-manager/src/window/ui.rs:105
 msgid "Import WebApps"
 msgstr "Uvezi WebAplikacije"
 
@@ -384,7 +392,7 @@ msgstr "Uvoz nije uspio"
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 62
 #: crates/webapps-manager/src/window/actions/import_export.rs:40
-#: crates/webapps-manager/src/window/ui.rs:99
+#: crates/webapps-manager/src/window/ui.rs:106
 msgid "Export WebApps"
 msgstr "Izvezi WebAplikacije"
 
@@ -412,14 +420,14 @@ msgstr "WebAplikacije su uspješno eksportirane."
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 390
-#: crates/webapps-manager/src/window/actions/remove_all.rs:24
-#: crates/webapps-manager/src/window/ui.rs:114
+#: crates/webapps-manager/src/window/actions/remove_all.rs:23
+#: crates/webapps-manager/src/window/ui.rs:121
 msgid "Remove All WebApps"
 msgstr "Ukloni sve web aplikacije"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 346
-#: crates/webapps-manager/src/window/actions/remove_all.rs:25
+#: crates/webapps-manager/src/window/actions/remove_all.rs:24
 msgid ""
 "Are you sure you want to remove all your WebApps? This action cannot be "
 "undone."
@@ -427,15 +435,15 @@ msgstr ""
 "Jeste li sigurni da želite ukloniti sve svoje WebApps? Ova radnja se ne može "
 "poništiti."
 
-#: crates/webapps-manager/src/window/actions/remove_all.rs:28
+#: crates/webapps-manager/src/window/actions/remove_all.rs:27
 msgid "Continue"
 msgstr "Nastavi"
 
-#: crates/webapps-manager/src/window/actions/remove_all.rs:45
+#: crates/webapps-manager/src/window/actions/remove_all.rs:44
 msgid "Final Confirmation"
 msgstr "Završna potvrda"
 
-#: crates/webapps-manager/src/window/actions/remove_all.rs:46
+#: crates/webapps-manager/src/window/actions/remove_all.rs:45
 msgid "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
 msgstr "Jeste li APSOLUTNO sigurni da želite ukloniti SVE svoje WebApps?"
 
@@ -445,31 +453,31 @@ msgstr "Jeste li APSOLUTNO sigurni da želite ukloniti SVE svoje WebApps?"
 #
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
-#: crates/webapps-manager/src/window/actions/remove_all.rs:47
+#: crates/webapps-manager/src/window/actions/remove_all.rs:46
 msgid "No, Cancel"
 msgstr "Ne, odustani"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
-#: crates/webapps-manager/src/window/actions/remove_all.rs:49
+#: crates/webapps-manager/src/window/actions/remove_all.rs:48
 msgid "Yes, Remove All"
 msgstr "Da, ukloni sve"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 444
-#: crates/webapps-manager/src/window/actions/remove_all.rs:69
+#: crates/webapps-manager/src/window/actions/remove_all.rs:68
 msgid "All WebApps have been removed"
 msgstr "Sve WebApp-ovi su uklonjeni."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 446
-#: crates/webapps-manager/src/window/actions/remove_all.rs:74
+#: crates/webapps-manager/src/window/actions/remove_all.rs:73
 msgid "Failed to remove all WebApps"
 msgstr "Nije uspjelo ukloniti sve WebAplikacije"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:33
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:29
 msgid "No WebApps to remove"
 msgstr "Nema WebApps za uklanjanje"
 
@@ -477,11 +485,11 @@ msgstr "Nema WebApps za uklanjanje"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 390
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:38
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:34
 msgid "Remove WebApps"
 msgstr "Ukloni WebApps"
 
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:48
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:44
 msgid "Select the WebApps you want to remove. This cannot be undone."
 msgstr ""
 "Odaberite WebApps koje želite ukloniti. Ova radnja se ne može poništiti."
@@ -494,20 +502,20 @@ msgstr ""
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 179
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 240
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:69
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:70
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:65
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:66
 msgid "Select all"
 msgstr "Odaberi sve"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:143
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:139
 msgid "Remove Selected"
 msgstr "Ukloni odabrano"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:166
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:162
 msgid "Select at least one WebApp"
 msgstr "Odaberite barem jednu WebApp"
 
@@ -515,11 +523,11 @@ msgstr "Odaberite barem jednu WebApp"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 390
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:185
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:181
 msgid "Remove Selected WebApps?"
 msgstr "Ukloniti odabrane WebApps?"
 
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:187
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:183
 msgid ""
 "This will remove {count} WebApps and their desktop entries. This cannot be "
 "undone."
@@ -529,45 +537,44 @@ msgstr ""
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 444
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:226
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:222
 msgid "{count} WebApps removed"
 msgstr "Uklonjeno {count} WebApps"
 
-#: crates/webapps-manager/src/window/actions/remove_multiple.rs:228
+#: crates/webapps-manager/src/window/actions/remove_multiple.rs:224
 msgid "{ok} removed, {fail} failed"
 msgstr "{ok} uklonjeno, {fail} neuspjelo"
 
-#: crates/webapps-manager/src/window/component.rs:91
+#: crates/webapps-manager/src/window/component.rs:88
 msgid "Detecting installed browsers…"
 msgstr "Otkrivanje instaliranih preglednika…"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 214
-#: crates/webapps-manager/src/window/list.rs:87
-#: crates/webapps-manager/src/window/list.rs:117
+#: crates/webapps-manager/src/window/list.rs:83
+#: crates/webapps-manager/src/window/list.rs:113
 msgid "WebApp created successfully"
 msgstr "WebApp je uspješno kreiran"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 257
-#: crates/webapps-manager/src/window/list.rs:135
+#: crates/webapps-manager/src/window/list.rs:131
 msgid "WebApp updated successfully"
 msgstr "WebApp je uspješno ažuriran"
 
-#: crates/webapps-manager/src/window/list.rs:171
+#: crates/webapps-manager/src/window/list.rs:167
 msgid "Browser changed"
 msgstr "Preglednik je promijenjen"
 
-#: crates/webapps-manager/src/window/list.rs:175
-#, fuzzy
+#: crates/webapps-manager/src/window/list.rs:171
 msgid "Browser change failed"
-msgstr "Preglednik je promijenjen"
+msgstr "Promjena preglednika nije uspjela"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 390
-#: crates/webapps-manager/src/window/list.rs:185
+#: crates/webapps-manager/src/window/list.rs:181
 msgid "Remove WebApp?"
 msgstr "Ukloniti WebApp?"
 
@@ -577,86 +584,85 @@ msgstr "Ukloniti WebApp?"
 #
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
-#: crates/webapps-manager/src/window/list.rs:197
+#: crates/webapps-manager/src/window/list.rs:193
 msgid "Also delete configuration folder"
 msgstr "Također izbrišite mapu s konfiguracijom."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 444
-#: crates/webapps-manager/src/window/list.rs:217
+#: crates/webapps-manager/src/window/list.rs:213
 msgid "WebApp removed"
 msgstr "WebApp uklonjena"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
-#: crates/webapps-manager/src/window/list.rs:220
-#, fuzzy
+#: crates/webapps-manager/src/window/list.rs:216
 msgid "Remove failed"
-msgstr "Ukloni odabrano"
+msgstr "Uklanjanje nije uspjelo"
 
-#: crates/webapps-manager/src/window/shortcuts_window.rs:16
+#: crates/webapps-manager/src/window/shortcuts_window.rs:17
 msgid "General"
 msgstr "Općenito"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 94
-#: crates/webapps-manager/src/window/shortcuts_window.rs:19
+#: crates/webapps-manager/src/window/shortcuts_window.rs:20
 msgid "Search"
 msgstr "Pretraži"
 
-#: crates/webapps-manager/src/window/shortcuts_window.rs:20
+#: crates/webapps-manager/src/window/shortcuts_window.rs:21
 msgid "Quit"
 msgstr "Izađi"
 
-#: crates/webapps-manager/src/window/shortcuts_window.rs:21
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:38
+#: crates/webapps-manager/src/window/shortcuts_window.rs:22
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:39
 msgid "Show this dialog"
 msgstr "Prikaži ovaj dijalog"
 
-#: crates/webapps-manager/src/window/shortcuts_window.rs:24
-#: crates/webapps-manager/src/window/shortcuts_window.rs:30
-#: crates/webapps-manager/src/window/ui.rs:118
-#: crates/webapps-viewer/src/window/chrome.rs:100
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:43
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:51
+#: crates/webapps-manager/src/window/shortcuts_window.rs:25
+#: crates/webapps-manager/src/window/shortcuts_window.rs:31
+#: crates/webapps-manager/src/window/ui.rs:125
+#: crates/webapps-viewer/src/window/chrome.rs:101
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:44
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:52
 msgid "Keyboard Shortcuts"
 msgstr "Tipkovnički prečaci"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 51
-#: crates/webapps-manager/src/window/ui.rs:31
-#: crates/webapps-manager/src/window/ui.rs:32
+#: crates/webapps-manager/src/window/ui.rs:36
+#: crates/webapps-manager/src/window/ui.rs:37
 msgid "Search WebApps"
 msgstr "Pretraži WebAplikacije"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 72
-#: crates/webapps-manager/src/window/ui.rs:35
+#: crates/webapps-manager/src/window/ui.rs:40
 msgid "Add"
 msgstr "Dodaj"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 167
-#: crates/webapps-manager/src/window/ui.rs:42
-#: crates/webapps-manager/src/window/ui.rs:44
+#: crates/webapps-manager/src/window/ui.rs:47
+#: crates/webapps-manager/src/window/ui.rs:49
 msgid "Choose from templates"
 msgstr "Odaberite iz predložaka"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 79
-#: crates/webapps-manager/src/window/ui.rs:51
+#: crates/webapps-manager/src/window/ui.rs:58
 msgid "Main Menu"
 msgstr "Glavni izbornik"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 66
-#: crates/webapps-manager/src/window/ui.rs:101
+#: crates/webapps-manager/src/window/ui.rs:108
 msgid "Browse Applications Folder"
 msgstr "Pregledaj mapu aplikacija"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 67
-#: crates/webapps-manager/src/window/ui.rs:105
+#: crates/webapps-manager/src/window/ui.rs:112
 msgid "Browse Profiles Folder"
 msgstr "Pregledaj mapu profila"
 
@@ -664,452 +670,166 @@ msgstr "Pregledaj mapu profila"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 390
-#: crates/webapps-manager/src/window/ui.rs:111
+#: crates/webapps-manager/src/window/ui.rs:118
 msgid "Remove WebApps in Bulk"
 msgstr "Skupno uklanjanje WebApps"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 70
-#: crates/webapps-manager/src/window/ui.rs:119
+#: crates/webapps-manager/src/window/ui.rs:126
 msgid "About"
 msgstr "O aplikaciji"
 
-#: crates/webapps-viewer/src/window/chrome.rs:32
+#: crates/webapps-viewer/src/window/chrome.rs:33
 msgid "Back"
 msgstr "Natrag"
 
-#: crates/webapps-viewer/src/window/chrome.rs:33
+#: crates/webapps-viewer/src/window/chrome.rs:34
 msgid "Forward"
 msgstr "Naprijed"
 
-#: crates/webapps-viewer/src/window/chrome.rs:34
+#: crates/webapps-viewer/src/window/chrome.rs:35
 msgid "Reload"
 msgstr "Ponovno učitaj"
 
-#: crates/webapps-viewer/src/window/chrome.rs:36
+#: crates/webapps-viewer/src/window/chrome.rs:37
 msgid "Fullscreen"
 msgstr "Cijeli zaslon"
 
-#: crates/webapps-viewer/src/window/chrome.rs:50
+#: crates/webapps-viewer/src/window/chrome.rs:51
 msgid "Enter URL…"
 msgstr "Unesite URL…"
 
 #. Placeholder text is not an accessible name; label it explicitly.
-#: crates/webapps-viewer/src/window/chrome.rs:55
+#: crates/webapps-viewer/src/window/chrome.rs:56
 msgid "Address"
-msgstr ""
+msgstr "Adresa"
 
-#: crates/webapps-viewer/src/window/chrome.rs:92
+#: crates/webapps-viewer/src/window/chrome.rs:93
 msgid "Zoom In"
 msgstr "Uvećaj"
 
-#: crates/webapps-viewer/src/window/chrome.rs:93
+#: crates/webapps-viewer/src/window/chrome.rs:94
 msgid "Zoom Out"
 msgstr "Umanji"
 
-#: crates/webapps-viewer/src/window/chrome.rs:94
+#: crates/webapps-viewer/src/window/chrome.rs:95
 msgid "Reset Zoom"
 msgstr "Resetiraj zum"
 
-#: crates/webapps-viewer/src/window/chrome.rs:96
+#: crates/webapps-viewer/src/window/chrome.rs:97
 msgid "Developer Tools"
 msgstr "Alati za razvoj"
 
-#: crates/webapps-viewer/src/window/chrome.rs:107
 #: crates/webapps-viewer/src/window/chrome.rs:108
+#: crates/webapps-viewer/src/window/chrome.rs:109
 msgid "Menu"
 msgstr "Izbornik"
 
-#: crates/webapps-viewer/src/window/context_menu.rs:24
+#: crates/webapps-viewer/src/window/context_menu.rs:25
 msgid "Open Link in Browser"
 msgstr "Otvori vezu u pregledniku"
 
-#: crates/webapps-viewer/src/window/downloads/mod.rs:32
+#: crates/webapps-viewer/src/window/downloads/mod.rs:29
 msgid "Download Complete"
 msgstr "Preuzimanje završeno"
 
-#: crates/webapps-viewer/src/window/downloads/mod.rs:41
+#: crates/webapps-viewer/src/window/downloads/mod.rs:45
 msgid "Save File"
 msgstr "Spremi datoteku"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:97
+#: crates/webapps-viewer/src/window/permissions/mod.rs:103
 msgid "Camera Access"
 msgstr "Pristup kameri"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:98
+#: crates/webapps-viewer/src/window/permissions/mod.rs:104
 msgid "This webapp wants to use your camera. Allow?"
 msgstr "Ova web-aplikacija želi koristiti vašu kameru. Dopustiti?"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:101
+#: crates/webapps-viewer/src/window/permissions/mod.rs:107
 msgid "Microphone Access"
 msgstr "Pristup mikrofonu"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:102
+#: crates/webapps-viewer/src/window/permissions/mod.rs:108
 msgid "This webapp wants to use your microphone. Allow?"
 msgstr "Ova web-aplikacija želi koristiti vaš mikrofon. Dopustiti?"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:105
+#: crates/webapps-viewer/src/window/permissions/mod.rs:111
 msgid "Location Access"
 msgstr "Pristup lokaciji"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:106
+#: crates/webapps-viewer/src/window/permissions/mod.rs:112
 msgid "This webapp wants to access your location. Allow?"
 msgstr "Ova web-aplikacija želi pristupiti vašoj lokaciji. Dopustiti?"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:109
+#: crates/webapps-viewer/src/window/permissions/mod.rs:115
 msgid "Clipboard Access"
 msgstr "Pristup međuspremniku"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:110
+#: crates/webapps-viewer/src/window/permissions/mod.rs:116
 msgid "This webapp wants to read from your clipboard. Allow?"
 msgstr "Ova web-aplikacija želi čitati iz vašeg međuspremnika. Dopustiti?"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:113
+#: crates/webapps-viewer/src/window/permissions/mod.rs:119
 msgid "Permission Request"
 msgstr "Zahtjev za dopuštenje"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:114
+#: crates/webapps-viewer/src/window/permissions/mod.rs:120
 msgid "This webapp is requesting a special permission. Allow?"
 msgstr "Ova web-aplikacija traži posebno dopuštenje. Dopustiti?"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:125
+#: crates/webapps-viewer/src/window/permissions/mod.rs:131
 msgid "Deny"
 msgstr "Odbij"
 
-#: crates/webapps-viewer/src/window/permissions/mod.rs:127
+#: crates/webapps-viewer/src/window/permissions/mod.rs:133
 msgid "Allow"
 msgstr "Dopusti"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:15
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:16
 msgid "Navigation"
 msgstr "Navigacija"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:17
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:18
 msgid "Focus address bar"
 msgstr "Fokusiraj adresnu traku"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:18
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:19
 msgid "Reload page"
 msgstr "Ponovno učitaj stranicu"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:19
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:20
 msgid "Go back"
 msgstr "Idi natrag"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:20
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:21
 msgid "Go forward"
 msgstr "Idi naprijed"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:25
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:26
 msgid "View"
 msgstr "Prikaz"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:27
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:28
 msgid "Toggle fullscreen"
 msgstr "Uključi/isključi cijeli zaslon"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:28
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:29
 msgid "Zoom in"
 msgstr "Povećaj"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:29
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:30
 msgid "Zoom out"
 msgstr "Smanji"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:30
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:31
 msgid "Reset zoom"
 msgstr "Vrati zum"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:35
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:36
 msgid "Window"
 msgstr "Prozor"
 
-#: crates/webapps-viewer/src/window/shortcuts_window.rs:37
+#: crates/webapps-viewer/src/window/shortcuts_window.rs:38
 msgid "Close window"
 msgstr "Zatvori prozor"
-
-#~ msgid "What are WebApps?"
-#~ msgstr "Što su WebApps?"
-
-#~ msgid "Benefits of using WebApps:"
-#~ msgstr "Prednosti korištenja WebApps:"
-
-#~ msgid "Advanced Settings…"
-#~ msgstr "Napredne postavke…"
-
-#~ msgid "Appearance"
-#~ msgstr "Izgled"
-
-#~ msgid "Icon and application category"
-#~ msgstr "Ikona i kategorija aplikacije"
-
-#~ msgid "Icon"
-#~ msgstr "Ikona"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 180
-#~ msgid "Choose an icon for the webapp"
-#~ msgstr "Odaberite ikonu za web-aplikaciju"
-
-#~ msgid "Behavior"
-#~ msgstr "Ponašanje"
-
-#~ msgid "How the webapp opens and runs"
-#~ msgstr "Kako se web-aplikacija otvara i radi"
-
-#~ msgid "Separate Profile"
-#~ msgstr "Odvojen profil"
-
-#~ msgid "Website"
-#~ msgstr "Web-stranica"
-
-# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
-#
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 32
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 163
-#~ msgid "Templates"
-#~ msgstr "Predlošci"
-
-#~ msgid "Internal browser"
-#~ msgstr "Interni preglednik"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 352
-#~ msgid "Delete"
-#~ msgstr "Izbriši"
-
-#~ msgid "Press + to create your first webapp"
-#~ msgstr "Pritisnite + da biste stvorili svoju prvu web-aplikaciju"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 371
-#~ msgid "WebApp deleted successfully"
-#~ msgstr "WebApp je uspješno izbrisan."
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 292
-#~ msgid "Opens as a native window without browser interface"
-#~ msgstr "Otvara se kao izvorni prozor bez sučelja preglednika."
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 106
-#~ msgid "Add a new webapp to get started"
-#~ msgstr "Dodajte novu web aplikaciju za početak"
-
-#~ msgid "App Mode"
-#~ msgstr "Način rada aplikacije"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 91
-#, python-brace-format
-#~ msgid "Browser: {0}"
-#~ msgstr "Preglednik: {0}"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 113
-#, python-brace-format
-#~ msgid "Edit {0}"
-#~ msgstr "Uredi {0}"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 127
-#, python-brace-format
-#~ msgid "Delete {0}"
-#~ msgstr "Izbriši {0}"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 109
-#~ msgid ""
-#~ "<b>What are WebApps?</b>\n"
-#~ "\n"
-#~ "WebApps are web applications that run in a dedicated browser window, "
-#~ "providing a more app-like experience for your favorite websites.\n"
-#~ "\n"
-#~ "<b>Benefits of using WebApps:</b>\n"
-#~ "\n"
-#~ "• <b>Focus</b>: Work without the distractions of other browser tabs\n"
-#~ "• <b>Desktop Integration</b>: Quick access from your application menu\n"
-#~ "• <b>Isolated Profiles</b>: Optionally, each webapp can have its own "
-#~ "cookies and settings\n"
-#~ msgstr ""
-#~ "<b>Što su WebAplikacije?</b>\n"
-#~ "\n"
-#~ "WebAplikacije su web aplikacije koje se pokreću u posebnom prozoru "
-#~ "preglednika, pružajući iskustvo slično aplikaciji za vaše omiljene web "
-#~ "stranice.\n"
-#~ "\n"
-#~ "<b>Prednosti korištenja WebAplikacija:</b>\n"
-#~ "\n"
-#~ "• <b>Fokus</b>: Rad bez ometanja drugih kartica preglednika\n"
-#~ "• <b>Integracija s radnom površinom</b>: Brzi pristup iz izbornika "
-#~ "aplikacija\n"
-#~ "• <b>Izolirani profili</b>: Opcionalno, svaka webaplikacija može imati "
-#~ "svoje kolačiće i postavke\n"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 170
-#~ msgid "System Default"
-#~ msgstr "Zadani sustava"
-
-# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
-#
-# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
-#
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 136
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 258
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 440
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 441
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 590
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 151
-#~ msgid "Default"
-#~ msgstr "Zadano"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 163
-#~ msgid "Please select a browser."
-#~ msgstr "Molimo odaberite preglednik."
-
-# #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
-#
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 172
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 637
-#~ msgid "Error"
-#~ msgstr "Greška"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 172
-#~ msgid "App Icon"
-#~ msgstr "Ikona aplikacije"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 187
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 278
-#~ msgid "Available Icons"
-#~ msgstr "Dostupne ikone"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 339
-#~ msgid "Profile Settings"
-#~ msgstr "Postavke profila"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 341
-#~ msgid "Configure a separate browser profile for this webapp"
-#~ msgstr "Konfigurirajte odvojeni profil preglednika za ovu web aplikaciju"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 414
-#~ msgid "Detecting website information, please wait"
-#~ msgstr "Otkrivanje informacija o web stranici, molimo pričekajte"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 453
-#~ msgid "Please enter a URL first."
-#~ msgstr "Molimo unesite URL prvo."
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 609
-#~ msgid "Please enter a name for the WebApp."
-#~ msgstr "Molimo unesite naziv za WebApp."
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 613
-#~ msgid "Please enter a URL for the WebApp."
-#~ msgstr "Molimo unesite URL za WebApp."
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 617
-#~ msgid "Please select a browser for the WebApp."
-#~ msgstr "Molimo odaberite preglednik za WebApp."
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 61
-#~ msgid "Refresh"
-#~ msgstr "Osvježi"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 87
-#~ msgid "Show Welcome Screen"
-#~ msgstr "Prikaži ekran dobrodošlice"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 313
-#, python-brace-format
-#~ msgid "Browser changed to {0}"
-#~ msgstr "Preglednik je promijenjen u {0}"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 372
-#, python-brace-format
-#~ msgid ""
-#~ "Are you sure you want to delete {0}?\n"
-#~ "\n"
-#~ "URL: {1}\n"
-#~ "Browser: {2}"
-#~ msgstr ""
-#~ "Jeste li sigurni da želite izbrisati {0}?\n"
-#~ "\n"
-#~ "URL: {1}\n"
-#~ "Preglednik: {2}"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 341
-#~ msgid "REMOVE ALL"
-#~ msgstr "UKLONI SVE"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/ui/favicon_picker.py, line: 63
-#, python-brace-format
-#~ msgid "Icon {0} of {1}"
-#~ msgstr "Ikona {0} od {1}"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
-#~ msgid "There are no WebApps to export."
-#~ msgstr "Nema WebAppsa za izvoz."
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 264
-#~ msgid "The selected file does not exist."
-#~ msgstr "Odabrana datoteka ne postoji."
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 272
-#~ msgid "The selected file is not a valid ZIP archive."
-#~ msgstr "Odabrana datoteka nije važeća ZIP arhiva."
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 346
-#~ msgid "Error importing WebApps"
-#~ msgstr "Greška pri uvozu WebAplikacija"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 404
-#~ msgid "Imported {} WebApps successfully ({} duplicates skipped)"
-#~ msgstr "Uvezeni {} WebAppovi uspješno ({} duplicati preskočeni)"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 341
-#~ msgid "Imported {} WebApps successfully"
-#~ msgstr "Uvezeni {} WebAppovi uspješno"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 363
-#~ msgid "No"
-#~ msgstr "Ne"
-
-# File: biglinux-webapps/biglinux-
-# webapps/usr/share/biglinux/webapps/webapps/application.py, line: 364
-#~ msgid "Yes"
-#~ msgstr "Da"

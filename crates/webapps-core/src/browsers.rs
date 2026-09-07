@@ -52,9 +52,6 @@ pub struct BrowserDef {
 const DEFAULT_TOML: &str =
     include_str!("../../../biglinux-webapps/usr/share/biglinux-webapps/browsers.toml");
 
-/// System-installed path. Distro maintainers edit this file to add browsers.
-const SYSTEM_PATH: &str = "/usr/share/biglinux-webapps/browsers.toml";
-
 static BROWSER_DEFS: OnceLock<Vec<BrowserDef>> = OnceLock::new();
 
 /// Return the loaded browser definitions (loaded once per process via [`OnceLock`]).
@@ -88,20 +85,125 @@ fn parse_defs(src: &str) -> Result<Vec<BrowserDef>, toml::de::Error> {
 }
 
 fn load_browser_defs() -> Vec<BrowserDef> {
-    let content = std::fs::read_to_string(SYSTEM_PATH).unwrap_or_default();
+    let path = crate::config::share_dir().join("biglinux-webapps/browsers.toml");
+    let content = std::fs::read_to_string(&path).unwrap_or_default();
     if !content.is_empty() {
         match parse_defs(&content) {
             Ok(defs) => return defs,
-            Err(e) => log::warn!("Failed to parse {SYSTEM_PATH}: {e}; using embedded defaults"),
+            Err(e) => {
+                log::warn!("Failed to parse browser definitions: {e}; using embedded defaults")
+            }
         }
     }
     // Embedded copy is guaranteed valid — panic only if a developer breaks the file
     parse_defs(DEFAULT_TOML).expect("embedded browsers.toml must be valid TOML")
 }
 
+pub fn native_browser_path(definition: &BrowserDef) -> Option<String> {
+    for candidate in &definition.native_paths {
+        if crate::config::is_flatpak() {
+            if crate::config::host_command("test")
+                .args(["-x", candidate])
+                .status()
+                .is_ok_and(|status| status.success())
+            {
+                return Some(candidate.clone());
+            }
+        } else if std::path::Path::new(candidate).is_file() {
+            return Some(candidate.clone());
+        }
+        let name = std::path::Path::new(candidate).file_name()?;
+        if crate::config::is_flatpak() {
+            if let Ok(output) = crate::config::host_command("which").arg(name).output() {
+                if output.status.success() {
+                    return Some(String::from_utf8_lossy(&output.stdout).trim().to_owned());
+                }
+            }
+        } else if let Some(paths) = std::env::var_os("PATH") {
+            for directory in std::env::split_paths(&paths) {
+                let path = directory.join(name);
+                if path.is_file() {
+                    return Some(path.to_string_lossy().into_owned());
+                }
+            }
+        }
+    }
+    None
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn every_legacy_flatpak_id_keeps_its_application_mapping() {
+        let definitions = parse_defs(DEFAULT_TOML).unwrap();
+        for (id, app_id) in [
+            ("flatpak-brave", "com.brave.Browser"),
+            ("flatpak-chrome", "com.google.Chrome"),
+            ("flatpak-chrome-unstable", "com.google.ChromeDev"),
+            ("flatpak-chromium", "org.chromium.Chromium"),
+            ("flatpak-edge", "com.microsoft.Edge"),
+            (
+                "flatpak-ungoogled-chromium",
+                "com.github.Eloston.UngoogledChromium",
+            ),
+            ("flatpak-firefox", "org.mozilla.firefox"),
+            ("flatpak-librewolf", "io.gitlab.librewolf-community"),
+        ] {
+            let definition = definitions
+                .iter()
+                .find(|definition| {
+                    definition.flatpak_id.as_deref() == Some(id)
+                        || definition
+                            .legacy_flatpak_ids
+                            .iter()
+                            .any(|alias| alias == id)
+                })
+                .unwrap_or_else(|| panic!("Missing browser {id}"));
+            assert_eq!(definition.flatpak_app_id.as_deref(), Some(app_id));
+        }
+    }
+
+    #[test]
+    fn legacy_native_locations_remain_registered() {
+        let definitions = parse_defs(DEFAULT_TOML).unwrap();
+        for (id, path) in [
+            ("firefox", "/usr/lib/firefox/firefox"),
+            ("brave", "/usr/lib/brave-browser/brave"),
+            ("brave", "/opt/brave-bin/brave"),
+            ("librewolf", "/usr/lib/librewolf/librewolf"),
+            ("chromium", "/usr/lib/chromium/chromium"),
+            ("google-chrome-stable", "/opt/google/chrome/google-chrome"),
+            (
+                "google-chrome-beta",
+                "/opt/google/chrome-beta/google-chrome",
+            ),
+            (
+                "google-chrome-unstable",
+                "/opt/google/chrome-unstable/google-chrome",
+            ),
+            (
+                "microsoft-edge-stable",
+                "/opt/microsoft/msedge/microsoft-edge",
+            ),
+            ("vivaldi-stable", "/opt/vivaldi/vivaldi"),
+            ("vivaldi-beta", "/opt/vivaldi-beta/vivaldi"),
+            ("vivaldi-snapshot", "/opt/vivaldi-snapshot/vivaldi"),
+        ] {
+            let definition = definitions
+                .iter()
+                .find(|definition| definition.id == id)
+                .unwrap();
+            assert!(
+                definition
+                    .native_paths
+                    .iter()
+                    .any(|candidate| candidate == path),
+                "{path}"
+            );
+        }
+    }
 
     #[test]
     fn embedded_toml_parses_successfully() {

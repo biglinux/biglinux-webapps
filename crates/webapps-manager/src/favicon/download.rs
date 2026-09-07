@@ -1,6 +1,10 @@
-use anyhow::{Context, Result};
+#[cfg(test)]
+use anyhow::Context;
+use anyhow::Result;
+#[cfg(test)]
 use std::io::Write;
 use std::path::{Path, PathBuf};
+#[cfg(test)]
 use std::process::{Command, Stdio};
 use std::time::Duration;
 
@@ -18,20 +22,12 @@ use crate::http_client::{http_get_bytes_capped, RequestHeaders};
 /// realistic icon by a wide margin.
 const MAX_ICON_BYTES: usize = 8 * 1024 * 1024;
 
-/// Side length the winning icon is normalised to when its source is smaller.
-///
-/// Launchers draw app icons at 96–128 px and HiDPI doubles that. Handing the
-/// shell a 32 px file forces *it* to upscale, with a fast bilinear filter and no
-/// sharpening — the mushy result in the bug report. Producing a 512 px PNG
-/// ourselves with Lanczos does not invent detail, but it does put the resampling
-/// under our control and stops every downstream consumer from redoing it badly.
-pub(super) const TARGET_SIDE: u32 = 512;
-
 /// An icon fetched to the cache, with its resolution measured from the bytes
 /// rather than taken from the page's `sizes` hint.
 #[derive(Debug, Clone)]
 pub(super) struct DownloadedIcon {
     pub path: PathBuf,
+    pub url: String,
     /// Measured extent; `None` when the container header was unparseable.
     pub dimensions: Option<image::Dimensions>,
     pub is_vector: bool,
@@ -61,12 +57,13 @@ pub(super) fn download_icon(
     cache_dir: &Path,
     index: usize,
     source: IconSource,
+    timeout: Duration,
 ) -> Result<DownloadedIcon> {
     let response = http_get_bytes_capped(
         url,
         &RequestHeaders::browser(),
         MAX_ICON_BYTES as u64,
-        Duration::from_secs(5),
+        timeout,
     )
     .map_err(|error| anyhow::anyhow!(error))?;
 
@@ -85,14 +82,19 @@ pub(super) fn download_icon(
 
     let format = image::detect_format(&bytes);
     if format == ImageFormat::Ico {
-        return store_ico(&bytes, cache_dir, index, source);
+        let mut icon = store_ico(&bytes, cache_dir, index, source)?;
+        let bytes = std::fs::read(&icon.path)?;
+        icon.dimensions = Some(validate_image(&bytes, image::detect_format(&bytes))?);
+        icon.url = response.final_url;
+        return Ok(icon);
     }
 
-    let dimensions = image::measure(&bytes, format);
+    let dimensions = Some(validate_image(&bytes, format)?);
     let path = cache_dir.join(format!("icon_{index}.{}", format.extension()));
     std::fs::write(&path, &bytes)?;
     Ok(DownloadedIcon {
         path,
+        url: response.final_url,
         dimensions,
         is_vector: format.is_vector(),
         source,
@@ -143,103 +145,47 @@ fn store_ico(
         std::fs::write(&png_path, png)?;
         return Ok(DownloadedIcon {
             path: png_path,
+            url: String::new(),
             dimensions: image::measure(png, ImageFormat::Png),
             is_vector: false,
             source,
         });
     }
 
-    if let Some(frame) = frame.as_ref() {
-        if extract_ico_frame_with_magick(bytes, frame.index, &png_path).is_ok() {
-            let dimensions = image::measure_file(&png_path).or_else(|| Some(square(frame.side)));
-            return Ok(DownloadedIcon {
-                path: png_path,
-                dimensions,
-                is_vector: false,
-                source,
-            });
-        }
-    }
-
-    // No ImageMagick (or it choked): keep the raw `.ico`. gdk-pixbuf can still
-    // render it, just without our control over frame selection.
-    let ico_path = cache_dir.join(format!("icon_{index}.ico"));
-    std::fs::write(&ico_path, bytes)?;
+    let frame = frame.ok_or_else(|| anyhow::anyhow!("Invalid ICO directory"))?;
+    let header = 6 + frame.index * 16;
+    let length = u32::from_le_bytes(bytes[header + 8..header + 12].try_into()?) as usize;
+    let offset = u32::from_le_bytes(bytes[header + 12..header + 16].try_into()?) as usize;
+    let payload = bytes
+        .get(
+            offset
+                ..offset
+                    .checked_add(length)
+                    .ok_or_else(|| anyhow::anyhow!("ICO overflow"))?,
+        )
+        .ok_or_else(|| anyhow::anyhow!("Truncated ICO frame"))?;
+    let mut single = vec![0, 0, 1, 0, 1, 0];
+    single.extend_from_slice(&bytes[header..header + 12]);
+    single.extend_from_slice(&22u32.to_le_bytes());
+    single.extend_from_slice(payload);
+    use gdk_pixbuf::prelude::*;
+    let loader = gdk_pixbuf::PixbufLoader::new();
+    loader.write(&single)?;
+    loader.close()?;
+    let pixbuf = loader
+        .pixbuf()
+        .ok_or_else(|| anyhow::anyhow!("ICO decoding failed"))?;
+    pixbuf.savev(&png_path, "png", &[])?;
     Ok(DownloadedIcon {
-        path: ico_path,
-        dimensions: frame.map(|frame| square(frame.side)),
+        path: png_path,
+        url: String::new(),
+        dimensions: Some(square(frame.side)),
         is_vector: false,
         source,
     })
 }
 
-/// Decode one addressed frame of an ICO to a PNG.
-///
-/// Two details here are load-bearing and were both wrong before:
-///
-///  * The input **must** carry an explicit `ICO:` format prefix. ImageMagick
-///    stages piped stdin in an extension-less temp file and sniffs the format
-///    from the name, so a bare `magick -` fails outright with "no decode
-///    delegate" on every single ICO — the conversion never ran in production.
-///  * A frame index **must** be selected. Given a multi-frame input and a
-///    single-image output format, ImageMagick writes `icon_0-0.png`,
-///    `icon_0-1.png`, … and never the requested `icon_0.png`, so the caller
-///    would report success while pointing at a file that does not exist.
-fn extract_ico_frame_with_magick(bytes: &[u8], frame: usize, png_path: &Path) -> Result<()> {
-    run_magick(
-        bytes,
-        &[
-            format!("ICO:-[{frame}]"),
-            format!("PNG32:{}", png_path.display()),
-        ],
-    )?;
-    // The frame selector should guarantee a single output file, but a stale or
-    // patched ImageMagick that still numbers its output would leave us reporting
-    // success for a missing path.
-    if png_path.is_file() {
-        Ok(())
-    } else {
-        anyhow::bail!("magick produced no file at {}", png_path.display())
-    }
-}
-
-/// Resample `source` up to `TARGET_SIDE` and return the new path, or `None` when
-/// the upscale is unnecessary or ImageMagick is unavailable.
-///
-/// `-background none` plus a centred `-extent` keeps non-square logos square and
-/// transparent instead of stretched, which is what the freedesktop icon spec and
-/// every launcher grid expect.
-pub(super) fn upscale_to_target(source: &Path, cache_dir: &Path) -> Option<PathBuf> {
-    let target = cache_dir.join("icon_hires.png");
-    let args = [
-        // No `FORMAT:` read hint: the extension is now derived from the real
-        // container magic, so ImageMagick's own sniffing is correct, and forcing
-        // `PNG:` would break a legitimately-webp or -jpeg source.
-        source.display().to_string(),
-        "-filter".into(),
-        "Lanczos".into(),
-        // A single fit-in-box resize both enlarges and shrinks; callers only
-        // reach here for sources below the target, so this always enlarges.
-        "-resize".into(),
-        format!("{TARGET_SIDE}x{TARGET_SIDE}"),
-        "-background".into(),
-        "none".into(),
-        "-gravity".into(),
-        "center".into(),
-        "-extent".into(),
-        format!("{TARGET_SIDE}x{TARGET_SIDE}"),
-        format!("PNG32:{}", target.display()),
-    ];
-    match run_magick(&[], &args) {
-        Ok(()) if target.is_file() => Some(target),
-        Ok(()) => None,
-        Err(err) => {
-            log::warn!("Upscale {} to {TARGET_SIDE}px: {err}", source.display());
-            None
-        }
-    }
-}
-
+#[cfg(test)]
 /// Run `magick` with `args`, feeding `stdin_bytes` when non-empty.
 ///
 /// stdin is closed before `wait_with_output` in both paths: ImageMagick reads
@@ -280,6 +226,56 @@ fn run_magick(stdin_bytes: &[u8], args: &[String]) -> Result<()> {
         let stderr = String::from_utf8_lossy(&output.stderr);
         anyhow::bail!("magick failed: {}", stderr.trim())
     }
+}
+
+fn validate_image(bytes: &[u8], format: ImageFormat) -> Result<image::Dimensions> {
+    use gdk_pixbuf::prelude::*;
+    if format == ImageFormat::Unknown {
+        anyhow::bail!("Unknown image format");
+    }
+    let loader = gdk_pixbuf::PixbufLoader::new();
+    let original = std::rc::Rc::new(std::cell::Cell::new((0, 0)));
+    let measured = original.clone();
+    loader.connect_size_prepared(move |loader, width, height| {
+        measured.set((width, height));
+        if width > 4096 || height > 4096 || format.is_vector() {
+            loader.set_size(512, 512);
+        }
+    });
+    loader.write(bytes)?;
+    loader.close()?;
+    let (width, height) = original.get();
+    anyhow::ensure!(
+        loader.pixbuf().is_some() && width > 0 && height > 0,
+        "Invalid image"
+    );
+    let dimensions = image::Dimensions {
+        width: width as u32,
+        height: height as u32,
+    };
+    anyhow::ensure!(dimensions.is_square_ish(), "Image is not icon-shaped");
+    if format.is_vector() {
+        anyhow::ensure!(
+            !String::from_utf8_lossy(bytes)
+                .to_lowercase()
+                .contains("<image"),
+            "Raster embedded in SVG"
+        );
+        return Ok(image::Dimensions {
+            width: image::VECTOR_SIDE,
+            height: image::VECTOR_SIDE,
+        });
+    }
+    anyhow::ensure!(
+        width <= 4096 && height <= 4096,
+        "Image dimensions exceed limit"
+    );
+    anyhow::ensure!(
+        dimensions.side() >= super::MIN_ACCEPTABLE_SIDE,
+        "Icon below {} px",
+        super::MIN_ACCEPTABLE_SIDE
+    );
+    Ok(dimensions)
 }
 
 #[cfg(test)]
@@ -327,6 +323,7 @@ mod tests {
     fn effective_side_ranks_unmeasured_last() {
         let measured = DownloadedIcon {
             path: PathBuf::new(),
+            url: String::new(),
             dimensions: Some(image::Dimensions {
                 width: 64,
                 height: 64,
@@ -336,6 +333,7 @@ mod tests {
         };
         let unmeasured = DownloadedIcon {
             path: PathBuf::new(),
+            url: String::new(),
             dimensions: None,
             is_vector: false,
             source: IconSource::Icon,
@@ -391,52 +389,6 @@ mod tests {
     }
 
     #[test]
-    fn upscale_raises_small_source_to_target() {
-        if !magick_available() {
-            return;
-        }
-        let tmp = TempDir::new().unwrap();
-        let small = tmp.path().join("small.png");
-        let args: Vec<String> = vec![
-            "-size".into(),
-            "32x32".into(),
-            "xc:blue".into(),
-            format!("PNG:{}", small.display()),
-        ];
-        run_magick(&[], &args).unwrap();
-
-        let upscaled = upscale_to_target(&small, tmp.path()).expect("upscaled");
-        assert_eq!(
-            image::measure_file(&upscaled).map(image::Dimensions::side),
-            Some(TARGET_SIDE)
-        );
-    }
-
-    #[test]
-    fn upscale_pads_non_square_source_instead_of_stretching() {
-        if !magick_available() {
-            return;
-        }
-        let tmp = TempDir::new().unwrap();
-        let wide = tmp.path().join("wide.png");
-        let args: Vec<String> = vec![
-            "-size".into(),
-            "200x50".into(),
-            "xc:green".into(),
-            format!("PNG:{}", wide.display()),
-        ];
-        run_magick(&[], &args).unwrap();
-
-        let upscaled = upscale_to_target(&wide, tmp.path()).expect("upscaled");
-        // A square canvas is what launchers expect; stretching a 4:1 banner to
-        // fill it would distort the logo.
-        assert_eq!(
-            image::measure_file(&upscaled).map(image::Dimensions::side),
-            Some(TARGET_SIDE)
-        );
-    }
-
-    #[test]
     fn run_magick_reports_failure_for_garbage_input() {
         if !magick_available() {
             return;
@@ -448,5 +400,42 @@ mod tests {
             &["ICO:-[0]".into(), format!("PNG32:{}", out.display())],
         );
         assert!(result.is_err(), "garbage input must not report success");
+    }
+}
+
+#[cfg(test)]
+mod quality_tests {
+    use super::*;
+    fn png(width: i32, height: i32) -> Vec<u8> {
+        let pixbuf =
+            gdk_pixbuf::Pixbuf::new(gdk_pixbuf::Colorspace::Rgb, true, 8, width, height).unwrap();
+        pixbuf.fill(0x11aa22ff);
+        pixbuf.save_to_bufferv("png", &[]).unwrap()
+    }
+    #[test]
+    fn native_quality_boundary_and_shape_are_enforced() {
+        for side in [16, 32, 48, 63] {
+            assert!(validate_image(&png(side, side), ImageFormat::Png).is_err());
+        }
+        for side in [64, 128, 180, 255, 256, 512, 1024] {
+            assert_eq!(
+                validate_image(&png(side, side), ImageFormat::Png)
+                    .unwrap()
+                    .side(),
+                side as u32
+            );
+        }
+        assert!(validate_image(&png(1200, 630), ImageFormat::Png).is_err());
+    }
+    #[test]
+    fn malformed_images_and_raster_svg_are_rejected() {
+        let mut bytes = png(512, 512);
+        bytes.truncate(40);
+        assert!(validate_image(&bytes, ImageFormat::Png).is_err());
+        assert!(validate_image(b"not image", ImageFormat::Unknown).is_err());
+        let svg = br#"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="green"/></svg>"#;
+        assert!(validate_image(svg, ImageFormat::Svg).is_ok());
+        let raster = br#"<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512"><image href="tiny.png" width="512" height="512"/></svg>"#;
+        assert!(validate_image(raster, ImageFormat::Svg).is_err());
     }
 }
