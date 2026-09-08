@@ -17,6 +17,9 @@ use tempfile::TempDir;
 use webapps_core::config;
 use webapps_core::models::{AppMode, BrowserId, WebApp, WebAppCollection};
 
+#[path = "crud/chrome_migration.rs"]
+mod chrome_migration;
+
 // Single mutex held across the body of any test that mutates env vars — protects
 // against parallel test runners that ignore the `serial` attribute (e.g. cargo
 // nextest with `--test-threads`).
@@ -32,6 +35,10 @@ impl XdgSandbox {
         let guard = ENV_GUARD.lock().unwrap_or_else(|p| p.into_inner());
         let dir = TempDir::new().expect("create tempdir");
         let root = dir.path();
+        std::env::set_var(
+            "BIGLINUX_WEBAPPS_PREFIX",
+            std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../biglinux-webapps/usr"),
+        );
         std::env::set_var("HOME", root);
         std::env::set_var("XDG_DATA_HOME", root.join("data"));
         std::env::set_var("XDG_CONFIG_HOME", root.join("config"));

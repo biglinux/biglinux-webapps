@@ -31,7 +31,7 @@ const WMCLASS_MIGRATION_MARKER: &str = ".desktop-wmclass-aligned-v3";
 /// caused taskbars to group webapp windows under the host browser's own
 /// `.desktop` entry. This marker records that the one-shot regeneration with
 /// the corrected derivation has run.
-const BROWSER_WMCLASS_MIGRATION_MARKER: &str = ".desktop-wmclass-browser-v1";
+const BROWSER_WMCLASS_MIGRATION_MARKER: &str = ".desktop-wmclass-browser-v2";
 
 /// Marker for the icon-persistence migration.
 ///

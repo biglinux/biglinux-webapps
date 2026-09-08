@@ -8,6 +8,8 @@ use std::sync::OnceLock;
 
 use serde::Deserialize;
 
+mod native;
+
 /// Definition of one supported browser, loaded from `browsers.toml`.
 #[derive(Debug, Clone, Deserialize)]
 pub struct BrowserDef {
@@ -16,7 +18,7 @@ pub struct BrowserDef {
     pub id: String,
     /// Human-readable label shown in the manager UI.
     pub display_name: String,
-    /// Candidate binary paths for native detection; first existing path wins.
+    /// Candidate binary paths for native detection; first executable path wins.
     #[serde(default)]
     pub native_paths: Vec<String>,
     /// WM_CLASS prefix set by Chromium-family browsers.
@@ -99,41 +101,40 @@ fn load_browser_defs() -> Vec<BrowserDef> {
     parse_defs(DEFAULT_TOML).expect("embedded browsers.toml must be valid TOML")
 }
 
-pub fn native_browser_path(definition: &BrowserDef) -> Option<String> {
-    for candidate in &definition.native_paths {
-        if crate::config::is_flatpak() {
-            if crate::config::host_command("test")
-                .args(["-x", candidate])
-                .status()
-                .is_ok_and(|status| status.success())
-            {
-                return Some(candidate.clone());
-            }
-        } else if std::path::Path::new(candidate).is_file() {
-            return Some(candidate.clone());
-        }
-        let name = std::path::Path::new(candidate).file_name()?;
-        if crate::config::is_flatpak() {
-            if let Ok(output) = crate::config::host_command("which").arg(name).output() {
-                if output.status.success() {
-                    return Some(String::from_utf8_lossy(&output.stdout).trim().to_owned());
-                }
-            }
-        } else if let Some(paths) = std::env::var_os("PATH") {
-            for directory in std::env::split_paths(&paths) {
-                let path = directory.join(name);
-                if path.is_file() {
-                    return Some(path.to_string_lossy().into_owned());
-                }
-            }
-        }
-    }
-    None
-}
+pub use native::native_browser_path;
 
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn chrome_channels_use_the_browser_process_name_for_wayland() {
+        let definitions = parse_defs(DEFAULT_TOML).unwrap();
+        for id in [
+            "google-chrome-stable",
+            "google-chrome-beta",
+            "google-chrome-unstable",
+            "flatpak-chrome",
+        ] {
+            let browser = definitions
+                .iter()
+                .find(|browser| {
+                    browser.id == id
+                        || browser.flatpak_id.as_deref() == Some(id)
+                        || browser.legacy_flatpak_ids.iter().any(|alias| alias == id)
+                })
+                .unwrap();
+            assert_eq!(browser.wm_class_prefix, "chrome", "{id}");
+            assert_eq!(
+                crate::desktop::chromium_browser_app_id(
+                    &browser.wm_class_prefix,
+                    "https://open.spotify.com/intl-pt/",
+                    "Default"
+                ),
+                "chrome-open.spotify.com__intl-pt_-Default"
+            );
+        }
+    }
 
     #[test]
     fn every_legacy_flatpak_id_keeps_its_application_mapping() {
