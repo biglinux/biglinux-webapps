@@ -54,9 +54,7 @@ pub fn chromium_browser_app_id(short: &str, url: &str, profile: &str) -> String 
     format!("{short}-{host}{path_separator}{path_part}-{profile}")
 }
 
-/// Browser-id prefix used by each Chromium fork. Mirrors `argv[0]` of the
-/// binary the user runs — the value Chromium injects as the leading segment
-/// of its synthesized Wayland `app_id`.
+/// Chromium's compiled browser process name, which prefixes its Wayland app ID.
 pub(super) fn chromium_short_name(browser_id: &str) -> String {
     if let Some(definition) = crate::browsers::find_def(browser_id) {
         if !definition.wm_class_prefix.is_empty() {
@@ -76,7 +74,7 @@ pub(super) fn chromium_short_name(browser_id: &str) -> String {
     } else if lower.contains("chromium") {
         "chromium".to_string()
     } else if lower.contains("chrom") {
-        "google-chrome".to_string()
+        "chrome".to_string()
     } else {
         // Fall back to the raw browser id; unknown forks will still produce a
         // unique-but-app_id-mismatched value, which is no worse than the
