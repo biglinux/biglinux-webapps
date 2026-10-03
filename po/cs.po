@@ -7,15 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
-"POT-Creation-Date: 2026-09-06 19:25+0000\n"
-"PO-Revision-Date: 2026-09-06 16:24-0300\n"
-"Last-Translator: Luna (gpt-5.6-luna)\n"
+"POT-Creation-Date: 2026-10-03 09:17+0000\n"
+"PO-Revision-Date: 2026-10-03 09:25+0000\n"
+"Last-Translator: Codex (AI-assisted translation review)\n"
 "Language-Team: cs\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Luna (gpt-5.6-luna)\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Codex\n"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
@@ -30,7 +31,8 @@ msgstr "Automaticky skrývat záhlaví"
 #: crates/webapps-manager/src/browser_dialog.rs:72
 msgid "Hide the titlebar; reveal it by moving the cursor to the top edge."
 msgstr ""
-"Skryje titulní lištu; znovu ji zobrazíte přesunutím kurzoru k hornímu okraji."
+"Skryje titulní lištu; znovu ji zobrazíte přesunutím kurzoru k hornímu "
+"okraji."
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -66,15 +68,15 @@ msgid ""
 "Embedded browser with better system integration. May not work on all "
 "websites."
 msgstr ""
-"Vestavěný prohlížeč s lepší integrací do systému. Nemusí fungovat na "
-"všechwebech."
+"Vestavěný prohlížeč s lepší integrací do systému. Nemusí fungovat na všech "
+"webech."
 
 #: crates/webapps-manager/src/browser_dialog.rs:205
 msgid ""
 "Unavailable: this site requires DRM, which the internal browser does not "
 "support."
 msgstr ""
-"Nedostupné: tento web vyžaduje DRM, které interní prohlížeč nepodporuje."
+"Nedostupné: tento web vyžaduje DRM, které vestavěný prohlížeč nepodporuje."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
@@ -82,7 +84,7 @@ msgstr ""
 #: crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:191
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:67
 msgid "Internal Browser"
-msgstr "Interní prohlížeč"
+msgstr "Vestavěný prohlížeč"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
@@ -111,7 +113,7 @@ msgstr "Přidat WebApp"
 
 #: crates/webapps-manager/src/relm4_window/list.rs:178
 msgid "{} results"
-msgstr "{} výsledků"
+msgstr "Počet výsledků: {}"
 
 #: crates/webapps-manager/src/relm4_window/row.rs:118
 msgid "Change browser"
@@ -185,7 +187,6 @@ msgid "Recommended icon"
 msgstr "Doporučená ikona"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:121
-#| msgid "No icon with sufficient quality found (minimum 256 × 256 px)."
 msgid "No icon with sufficient quality found (minimum 64 × 64 px)."
 msgstr "Nebyla nalezena ikona s dostatečnou kvalitou (minimum 64 × 64 px)."
 
@@ -218,7 +219,7 @@ msgstr "Vybrat"
 
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:39
 msgid "Detected icon candidates"
-msgstr "Detekované kandidáty ikon"
+msgstr "Nalezené návrhy ikon"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 221
@@ -273,7 +274,7 @@ msgstr "Detekovat"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 157
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:23
 msgid "Detect name and icon from website"
-msgstr "Detekuj název a ikonu z webové stránky"
+msgstr "Zjistit název a ikonu webu"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 166
@@ -281,7 +282,7 @@ msgstr "Detekuj název a ikonu z webové stránky"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 480
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:29
 msgid "Name"
-msgstr "Jméno"
+msgstr "Název"
 
 #: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:23
 #: crates/webapps-manager/src/window/shortcuts_window.rs:19
@@ -322,7 +323,7 @@ msgstr "Načítání…"
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
 #: crates/webapps-manager/src/welcome_dialog.rs:22
 msgid "Welcome to WebApps Manager"
-msgstr "Vítejte v správci webových aplikací"
+msgstr "Vítejte ve správci webových aplikací"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
@@ -335,8 +336,8 @@ msgid ""
 "WebApps run your favorite websites in their own dedicated window, for a "
 "focused, app-like experience."
 msgstr ""
-"WebApps spouštějí vaše oblíbené weby ve vlastním okně a nabízejí soustředěný "
-"zážitek podobný aplikaci."
+"WebApps spouštějí vaše oblíbené weby ve vlastním okně a nabízejí soustředěný"
+" zážitek podobný aplikaci."
 
 #: crates/webapps-manager/src/welcome_dialog.rs:48
 msgid "Benefits"
@@ -352,7 +353,7 @@ msgstr "Pracujte bez rozptýlení ostatními záložkami v prohlížeči"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:58
 msgid "Desktop Integration"
-msgstr "Integrace na ploše"
+msgstr "Integrace s pracovním prostředím"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:59
 msgid "Quick access from your application menu"
@@ -364,7 +365,7 @@ msgstr "Izolované profily"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:64
 msgid "Each webapp can have its own cookies and settings"
-msgstr "Každý webapp může mít své vlastní cookies a nastavení"
+msgstr "Každá webová aplikace může mít vlastní cookies a nastavení"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
@@ -470,7 +471,7 @@ msgstr "Všechny webové aplikace byly odstraněny."
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 445
 #: crates/webapps-manager/src/window/actions/remove_all.rs:73
 msgid "Failed to remove all WebApps"
-msgstr "Nepodařilo se odstranit všechny WebAppy"
+msgstr "Nepodařilo se odstranit všechny webové aplikace"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
@@ -528,8 +529,8 @@ msgid ""
 "This will remove {count} WebApps and their desktop entries. This cannot be "
 "undone."
 msgstr ""
-"Tím se odstraní {count} WebApps a jejich desktopové zástupce. Tuto akci "
-"nelze vrátit zpět."
+"Tím se odstraní {count} WebApps a jejich zástupci v nabídce aplikací. Tuto "
+"akci nelze vrátit zpět."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
@@ -582,7 +583,7 @@ msgstr "Odstranit WebApp?"
 #
 #: crates/webapps-manager/src/window/list.rs:193
 msgid "Also delete configuration folder"
-msgstr "Také odstraňte složku konfigurace."
+msgstr "Odstranit také složku s nastavením"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
@@ -642,7 +643,7 @@ msgstr "Přidat"
 #: crates/webapps-manager/src/window/ui.rs:47
 #: crates/webapps-manager/src/window/ui.rs:49
 msgid "Choose from templates"
-msgstr "Vyberte z šablon"
+msgstr "Vybrat ze šablon"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 79
@@ -654,13 +655,13 @@ msgstr "Hlavní nabídka"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 65
 #: crates/webapps-manager/src/window/ui.rs:108
 msgid "Browse Applications Folder"
-msgstr "Procházet složku Aplikace"
+msgstr "Otevřít složku aplikací"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 66
 #: crates/webapps-manager/src/window/ui.rs:112
 msgid "Browse Profiles Folder"
-msgstr "Procházet složku profilů"
+msgstr "Otevřít složku profilů"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
@@ -720,7 +721,7 @@ msgstr "Nástroje pro vývojáře"
 #: crates/webapps-viewer/src/window/chrome.rs:108
 #: crates/webapps-viewer/src/window/chrome.rs:109
 msgid "Menu"
-msgstr "Menu"
+msgstr "Nabídka"
 
 #: crates/webapps-viewer/src/window/context_menu.rs:25
 msgid "Open Link in Browser"
@@ -788,7 +789,7 @@ msgstr "Navigace"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:18
 msgid "Focus address bar"
-msgstr "Zaměřit adresní řádek"
+msgstr "Přejít do adresního řádku"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:19
 msgid "Reload page"

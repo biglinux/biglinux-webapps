@@ -7,15 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
-"POT-Creation-Date: 2026-09-06 19:25+0000\n"
-"PO-Revision-Date: 2026-09-06 16:24-0300\n"
-"Last-Translator: Luna (gpt-5.6-luna)\n"
+"POT-Creation-Date: 2026-10-03 09:17+0000\n"
+"PO-Revision-Date: 2026-10-03 09:25+0000\n"
+"Last-Translator: Codex (AI-assisted translation review)\n"
 "Language-Team: fi\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Luna (gpt-5.6-luna)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Codex\n"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
@@ -65,8 +66,8 @@ msgid ""
 "Embedded browser with better system integration. May not work on all "
 "websites."
 msgstr ""
-"Upotettu selain integroidaan paremmin järjestelmään. Se ei ehkä toimi "
-"kaikilla verkkosivustoilla."
+"Sisäänrakennettu selain, joka integroituu paremmin järjestelmään. Ei "
+"välttämättä toimi kaikilla verkkosivustoilla."
 
 #: crates/webapps-manager/src/browser_dialog.rs:205
 msgid ""
@@ -159,7 +160,7 @@ msgstr "Etsi malleja"
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 96
 #: crates/webapps-manager/src/template_gallery.rs:106
 msgid "No templates found"
-msgstr "Ei malleja löytynyt"
+msgstr "Malleja ei löytynyt"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 94
@@ -186,7 +187,6 @@ msgid "Recommended icon"
 msgstr "Suositeltu kuvake"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:121
-#| msgid "No icon with sufficient quality found (minimum 256 × 256 px)."
 msgid "No icon with sufficient quality found (minimum 64 × 64 px)."
 msgstr "Riittävän laadukasta kuvaketta ei löytynyt (vähintään 64 × 64 px)."
 
@@ -231,7 +231,7 @@ msgstr "Kategoria"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 226
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:25
 msgid "Browser"
-msgstr "Selaimen"
+msgstr "Selain"
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -323,7 +323,7 @@ msgstr "Ladataan…"
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
 #: crates/webapps-manager/src/welcome_dialog.rs:22
 msgid "Welcome to WebApps Manager"
-msgstr "Tervetuloa WebApps Manageriin"
+msgstr "Tervetuloa verkkosovellusten hallintaan"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
@@ -336,8 +336,8 @@ msgid ""
 "WebApps run your favorite websites in their own dedicated window, for a "
 "focused, app-like experience."
 msgstr ""
-"WebApps avaa suosikkisivustosi omaan ikkunaan, mikä tekee käyttökokemuksesta "
-"keskittyneen ja sovellusmaisen."
+"WebApps avaa suosikkisivustosi omaan ikkunaan, mikä tekee käyttökokemuksesta"
+" keskittyneen ja sovellusmaisen."
 
 #: crates/webapps-manager/src/welcome_dialog.rs:48
 msgid "Benefits"
@@ -353,7 +353,7 @@ msgstr "Työskentele ilman muiden välilehtien häiriöitä"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:58
 msgid "Desktop Integration"
-msgstr "Työpöydän integrointi"
+msgstr "Työpöytäintegraatio"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:59
 msgid "Quick access from your application menu"
@@ -365,7 +365,8 @@ msgstr "Eristetyt profiilit"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:64
 msgid "Each webapp can have its own cookies and settings"
-msgstr "Jokaisella webappilla voi olla omat evästeensä ja asetuksensa"
+msgstr ""
+"Jokaisella verkkosovelluksella voi olla omat evästeensä ja asetuksensa"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
@@ -378,7 +379,7 @@ msgstr "Älä näytä tätä uudelleen"
 #: crates/webapps-manager/src/window/actions/import_export.rs:15
 #: crates/webapps-manager/src/window/ui.rs:105
 msgid "Import WebApps"
-msgstr "Tuonti Web-sovellukset"
+msgstr "Tuo WebApps-sovelluksia"
 
 #: crates/webapps-manager/src/window/actions/import_export.rs:16
 msgid "ZIP files"
@@ -393,7 +394,7 @@ msgstr "Tuonti epäonnistui"
 #: crates/webapps-manager/src/window/actions/import_export.rs:40
 #: crates/webapps-manager/src/window/ui.rs:106
 msgid "Export WebApps"
-msgstr "Vie Web-sovellukset"
+msgstr "Vie WebApps-sovellukset"
 
 #: crates/webapps-manager/src/window/actions/import_export.rs:51
 msgid "Export failed"
@@ -407,13 +408,13 @@ msgstr "Tuotiin {imported}, ohitettiin {dups} kaksoiskappaletta"
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
 #: crates/webapps-manager/src/window/actions/import_export.rs:67
 msgid "No WebApps"
-msgstr "Ei Web-sovelluksia"
+msgstr "Ei WebApps-sovelluksia"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 166
 #: crates/webapps-manager/src/window/actions/import_export.rs:69
 msgid "WebApps exported successfully"
-msgstr "WebApps viety onnistuneesti"
+msgstr "WebApps-sovellukset vietiin onnistuneesti"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
@@ -422,7 +423,7 @@ msgstr "WebApps viety onnistuneesti"
 #: crates/webapps-manager/src/window/actions/remove_all.rs:23
 #: crates/webapps-manager/src/window/ui.rs:121
 msgid "Remove All WebApps"
-msgstr "Poista kaikki WebAppit"
+msgstr "Poista kaikki WebApps-sovellukset"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 346
@@ -431,8 +432,8 @@ msgid ""
 "Are you sure you want to remove all your WebApps? This action cannot be "
 "undone."
 msgstr ""
-"Haluatko varmasti poistaa kaikki WebApps-sovelluksesi? Tätä toimintoa ei voi "
-"kumota."
+"Haluatko varmasti poistaa kaikki WebApps-sovelluksesi? Tätä toimintoa ei voi"
+" kumota."
 
 #: crates/webapps-manager/src/window/actions/remove_all.rs:27
 msgid "Continue"
@@ -467,19 +468,19 @@ msgstr "Kyllä, poista kaikki"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
 #: crates/webapps-manager/src/window/actions/remove_all.rs:68
 msgid "All WebApps have been removed"
-msgstr "Kaikki WebAppit on poistettu."
+msgstr "Kaikki WebApps-sovellukset on poistettu"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 445
 #: crates/webapps-manager/src/window/actions/remove_all.rs:73
 msgid "Failed to remove all WebApps"
-msgstr "Kaikkien WebAppien poistaminen epäonnistui."
+msgstr "Kaikkien WebApps-sovellusten poistaminen epäonnistui"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:29
 msgid "No WebApps to remove"
-msgstr "Ei poistettavia WebAppseja"
+msgstr "Ei poistettavia WebApps-sovelluksia"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
@@ -487,11 +488,11 @@ msgstr "Ei poistettavia WebAppseja"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:34
 msgid "Remove WebApps"
-msgstr "Poista WebAppsit"
+msgstr "Poista WebApps-sovelluksia"
 
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:44
 msgid "Select the WebApps you want to remove. This cannot be undone."
-msgstr "Valitse poistettavat WebAppsit. Tätä ei voi kumota."
+msgstr "Valitse poistettavat WebApps-sovellukset. Tätä ei voi kumota."
 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -524,21 +525,21 @@ msgstr "Valitse vähintään yksi WebApp"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:181
 msgid "Remove Selected WebApps?"
-msgstr "Poistetaanko valitut WebAppsit?"
+msgstr "Poistetaanko valitut WebApps-sovellukset?"
 
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:183
 msgid ""
 "This will remove {count} WebApps and their desktop entries. This cannot be "
 "undone."
 msgstr ""
-"Tämä poistaa {count} WebAppsia ja niiden työpöytämerkinnät. Tätä ei voi "
-"kumota."
+"Tämä poistaa {count} WebApps-sovellusta ja niiden sovellusvalikon "
+"pikakuvakkeet. Tätä ei voi kumota."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:222
 msgid "{count} WebApps removed"
-msgstr "{count} WebAppsia poistettu"
+msgstr "Poistettuja WebApps-sovelluksia: {count}"
 
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:224
 msgid "{ok} removed, {fail} failed"
@@ -585,7 +586,7 @@ msgstr "Poistetaanko WebApp?"
 #
 #: crates/webapps-manager/src/window/list.rs:193
 msgid "Also delete configuration folder"
-msgstr "Myös poista asetuskansio."
+msgstr "Poista myös asetuskansio"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
@@ -632,7 +633,7 @@ msgstr "Pikanäppäimet"
 #: crates/webapps-manager/src/window/ui.rs:36
 #: crates/webapps-manager/src/window/ui.rs:37
 msgid "Search WebApps"
-msgstr "Hae Web-sovelluksia"
+msgstr "Etsi WebApps-sovelluksia"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 72
@@ -671,7 +672,7 @@ msgstr "Selaa profiilikansiota"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
 #: crates/webapps-manager/src/window/ui.rs:118
 msgid "Remove WebApps in Bulk"
-msgstr "Poista WebAppsit joukkona"
+msgstr "Poista useita WebApps-sovelluksia"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
@@ -791,11 +792,11 @@ msgstr "Navigointi"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:18
 msgid "Focus address bar"
-msgstr "Kohdista osoiteriville"
+msgstr "Siirrä kohdistus osoiteriville"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:19
 msgid "Reload page"
-msgstr "Päivitä sivu"
+msgstr "Lataa sivu uudelleen"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:20
 msgid "Go back"
@@ -815,15 +816,15 @@ msgstr "Vaihda koko näytön tila"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:29
 msgid "Zoom in"
-msgstr "Lähennä"
+msgstr "Suurenna"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:30
 msgid "Zoom out"
-msgstr "Loitonna"
+msgstr "Pienennä"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:31
 msgid "Reset zoom"
-msgstr "Palauta zoomaus"
+msgstr "Nollaa zoomaus"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:36
 msgid "Window"

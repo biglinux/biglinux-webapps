@@ -7,21 +7,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
-"POT-Creation-Date: 2026-09-06 19:25+0000\n"
-"PO-Revision-Date: 2026-09-06 16:24-0300\n"
-"Last-Translator: Luna (gpt-5.6-luna)\n"
+"POT-Creation-Date: 2026-10-03 09:17+0000\n"
+"PO-Revision-Date: 2026-10-03 09:25+0000\n"
+"Last-Translator: Codex (AI-assisted translation review)\n"
 "Language-Team: it\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Luna (gpt-5.6-luna)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Codex\n"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
 #: crates/webapps-manager/src/browser_dialog.rs:38
 msgid "Select Browser"
-msgstr "Seleziona Browser"
+msgstr "Seleziona browser"
 
 #: crates/webapps-manager/src/browser_dialog.rs:70
 msgid "Auto-hide headerbar"
@@ -142,7 +143,7 @@ msgstr "Gestore WebApp"
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 50
 #: crates/webapps-manager/src/template_gallery.rs:31
 msgid "Choose a Template"
-msgstr "Scegli un Modello"
+msgstr "Scegli un modello"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 56
@@ -187,7 +188,6 @@ msgid "Recommended icon"
 msgstr "Icona consigliata"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:121
-#| msgid "No icon with sufficient quality found (minimum 256 × 256 px)."
 msgid "No icon with sufficient quality found (minimum 64 × 64 px)."
 msgstr ""
 "Non è stata trovata un’icona di qualità sufficiente (minimo 64 × 64 px)."
@@ -251,14 +251,14 @@ msgid ""
 "using the same browser and profile."
 msgstr ""
 "Per impostazione predefinita, ogni webapp è isolata. Assegnando un nome al "
-"profilo, le webapp che usano lo stesso browser e profilo possono condividere "
-"le sessioni."
+"profilo, le webapp che usano lo stesso browser e profilo possono condividere"
+" le sessioni."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:88
 msgid "Profile Name"
-msgstr "Nome Profilo"
+msgstr "Nome del profilo"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 152
@@ -325,7 +325,7 @@ msgstr "Caricamento…"
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
 #: crates/webapps-manager/src/welcome_dialog.rs:22
 msgid "Welcome to WebApps Manager"
-msgstr "Benvenuto in WebApps Manager"
+msgstr "Benvenuto nel gestore WebApp"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
@@ -338,8 +338,8 @@ msgid ""
 "WebApps run your favorite websites in their own dedicated window, for a "
 "focused, app-like experience."
 msgstr ""
-"WebApps esegue i tuoi siti preferiti in una finestra dedicata, per "
-"un’esperienza concentrata simile a quella di un’app."
+"Le WebApp aprono i tuoi siti preferiti in finestre dedicate, per aiutarti a "
+"concentrarti e usarli come applicazioni."
 
 #: crates/webapps-manager/src/welcome_dialog.rs:48
 msgid "Benefits"
@@ -373,7 +373,7 @@ msgstr "Ogni webapp può avere i propri cookie e impostazioni"
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
 #: crates/webapps-manager/src/welcome_dialog.rs:70
 msgid "Don't show this again"
-msgstr "Non mostrare più questo."
+msgstr "Non mostrare più"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 62
@@ -403,7 +403,7 @@ msgstr "Esportazione fallita"
 
 #: crates/webapps-manager/src/window/actions/import_export.rs:60
 msgid "Imported {imported}, skipped {dups} duplicates"
-msgstr "Importati {imported}, ignorati {dups} duplicati"
+msgstr "{imported} importate, {dups} duplicati ignorati"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
@@ -415,7 +415,7 @@ msgstr "Nessuna WebApp"
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 166
 #: crates/webapps-manager/src/window/actions/import_export.rs:69
 msgid "WebApps exported successfully"
-msgstr "WebApp esportati con successo"
+msgstr "WebApp esportate con successo"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
@@ -556,13 +556,13 @@ msgstr "Rilevamento dei browser installati…"
 #: crates/webapps-manager/src/window/list.rs:83
 #: crates/webapps-manager/src/window/list.rs:113
 msgid "WebApp created successfully"
-msgstr "WebApp creato con successo"
+msgstr "WebApp creata con successo"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 257
 #: crates/webapps-manager/src/window/list.rs:131
 msgid "WebApp updated successfully"
-msgstr "WebApp aggiornato con successo"
+msgstr "WebApp aggiornata con successo"
 
 #: crates/webapps-manager/src/window/list.rs:167
 msgid "Browser changed"
@@ -588,7 +588,7 @@ msgstr "Rimuovere la WebApp?"
 #
 #: crates/webapps-manager/src/window/list.rs:193
 msgid "Also delete configuration folder"
-msgstr "Elimina anche la cartella di configurazione."
+msgstr "Elimina anche la cartella di configurazione"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
@@ -654,7 +654,7 @@ msgstr "Scegli tra i modelli"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 79
 #: crates/webapps-manager/src/window/ui.rs:58
 msgid "Main Menu"
-msgstr "Menu Principale"
+msgstr "Menu principale"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 65
@@ -794,11 +794,11 @@ msgstr "Navigazione"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:18
 msgid "Focus address bar"
-msgstr "Metti a fuoco la barra degli indirizzi"
+msgstr "Porta il focus sulla barra degli indirizzi"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:19
 msgid "Reload page"
-msgstr "Ricarica"
+msgstr "Ricarica pagina"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:20
 msgid "Go back"

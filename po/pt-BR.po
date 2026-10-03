@@ -3,14 +3,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
-"POT-Creation-Date: 2026-09-06 19:25+0000\n"
-"PO-Revision-Date: 2026-09-06 16:24-0300\n"
-"Last-Translator: Translation Automator <auto@translator.ai>\n"
-"Language-Team: Portuguese (Brazil) <pt-BR@li.org>\n"
-"Language: pt-BR\n"
+"POT-Creation-Date: 2026-10-03 09:17+0000\n"
+"PO-Revision-Date: 2026-10-03 09:25+0000\n"
+"Last-Translator: Codex (AI-assisted translation review)\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Codex\n"
 
 #: crates/webapps-manager/src/browser_dialog.rs:38
 msgid "Select Browser"
@@ -18,12 +20,13 @@ msgstr "Selecionar navegador"
 
 #: crates/webapps-manager/src/browser_dialog.rs:70
 msgid "Auto-hide headerbar"
-msgstr "Ocultar cabeçalho automaticamente"
+msgstr "Ocultar a barra de título automaticamente"
 
 #: crates/webapps-manager/src/browser_dialog.rs:72
 msgid "Hide the titlebar; reveal it by moving the cursor to the top edge."
 msgstr ""
-"Oculta a barra de título; reapareça movendo o cursor para a borda superior."
+"Oculta a barra de título. Para exibi-la novamente, mova o cursor até a borda"
+" superior."
 
 #: crates/webapps-manager/src/browser_dialog.rs:150
 #: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:43
@@ -43,15 +46,15 @@ msgid ""
 "Embedded browser with better system integration. May not work on all "
 "websites."
 msgstr ""
-"Navegador embutido com melhor integração ao sistema. Pode não funcionar em "
-"todos os sites."
+"Navegador integrado ao aplicativo, com melhor integração ao sistema. Pode "
+"não funcionar em todos os sites."
 
 #: crates/webapps-manager/src/browser_dialog.rs:205
 msgid ""
 "Unavailable: this site requires DRM, which the internal browser does not "
 "support."
 msgstr ""
-"Indisponível: este site requer DRM, não suportado no navegador interno."
+"Indisponível: este site exige DRM, que o navegador interno não suporta."
 
 #: crates/webapps-manager/src/browser_dialog.rs:208
 #: crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:191
@@ -128,21 +131,20 @@ msgstr "Falha ao salvar o WebApp"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:91
 msgid "Icon candidate {n}"
-msgstr "Candidato de ícone {n}"
+msgstr "Opção de ícone {n}"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:98
 msgid "Recommended icon"
 msgstr "Ícone recomendado"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:121
-#| msgid "No icon with sufficient quality found (minimum 256 × 256 px)."
 msgid "No icon with sufficient quality found (minimum 64 × 64 px)."
 msgstr ""
 "Nenhum ícone com qualidade suficiente foi encontrado (mínimo de 64 × 64 px)."
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:156
 msgid "Select Icon"
-msgstr "Selecionar Ícone"
+msgstr "Selecionar ícone"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:158
 msgid "Images"
@@ -150,7 +152,7 @@ msgstr "Imagens"
 
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:21
 msgid "Application Icon"
-msgstr "Ícone do Aplicativo"
+msgstr "Ícone do aplicativo"
 
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:27
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:33
@@ -159,7 +161,7 @@ msgstr "Selecionar"
 
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:39
 msgid "Detected icon candidates"
-msgstr "Candidatos de ícone detectados"
+msgstr "Opções de ícone detectadas"
 
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:44
 msgid "Category"
@@ -178,12 +180,13 @@ msgid ""
 "By default, each webapp is isolated. A name shares sessions with webapps "
 "using the same browser and profile."
 msgstr ""
-"Por padrão, cada aplicativo tem um perfil isolado. Um nome permite "
-"compartilhar sessões entre aplicativos que usam o mesmo navegador e perfil."
+"Por padrão, cada WebApp tem um perfil isolado. Definir um nome para o perfil"
+" permite compartilhar sessões entre WebApps que usam o mesmo navegador e "
+"perfil."
 
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:88
 msgid "Profile Name"
-msgstr "Nome do Perfil"
+msgstr "Nome do perfil"
 
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:17
 msgid "URL"
@@ -224,15 +227,15 @@ msgstr "Bem-vindo ao Gerenciador de WebApps"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:23
 msgid "Let's Start"
-msgstr "Vamos Começar"
+msgstr "Vamos começar"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:35
 msgid ""
 "WebApps run your favorite websites in their own dedicated window, for a "
 "focused, app-like experience."
 msgstr ""
-"Os WebApps abrem seus sites favoritos em uma janela dedicada, para uma "
-"experiência focada e parecida com a de um aplicativo."
+"Os WebApps abrem seus sites favoritos em janelas dedicadas, para que você "
+"possa se concentrar e usá-los como aplicativos."
 
 #: crates/webapps-manager/src/welcome_dialog.rs:48
 msgid "Benefits"
@@ -248,7 +251,7 @@ msgstr "Trabalhe sem as distrações de outras abas do navegador"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:58
 msgid "Desktop Integration"
-msgstr "Integração com a Área de Trabalho"
+msgstr "Integração com a área de trabalho"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:59
 msgid "Quick access from your application menu"
@@ -256,11 +259,11 @@ msgstr "Acesso rápido pelo menu de aplicativos"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:63
 msgid "Isolated Profiles"
-msgstr "Perfis Isolados"
+msgstr "Perfis isolados"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:64
 msgid "Each webapp can have its own cookies and settings"
-msgstr "Cada webapp pode ter seus próprios cookies e configurações"
+msgstr "Cada WebApp pode ter seus próprios cookies e configurações"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:70
 msgid "Don't show this again"
@@ -290,7 +293,7 @@ msgstr "Falha na exportação"
 
 #: crates/webapps-manager/src/window/actions/import_export.rs:60
 msgid "Imported {imported}, skipped {dups} duplicates"
-msgstr "Importados {imported}, ignorados {dups} duplicados"
+msgstr "{imported} importados, {dups} duplicados ignorados"
 
 #: crates/webapps-manager/src/window/actions/import_export.rs:67
 msgid "No WebApps"
@@ -303,15 +306,15 @@ msgstr "WebApps exportados com sucesso"
 #: crates/webapps-manager/src/window/actions/remove_all.rs:23
 #: crates/webapps-manager/src/window/ui.rs:121
 msgid "Remove All WebApps"
-msgstr "Remover Todos os WebApps"
+msgstr "Remover todos os WebApps"
 
 #: crates/webapps-manager/src/window/actions/remove_all.rs:24
 msgid ""
 "Are you sure you want to remove all your WebApps? This action cannot be "
 "undone."
 msgstr ""
-"Tem certeza que deseja remover todos os seus WebApps? Esta ação não pode ser "
-"desfeita."
+"Tem certeza de que deseja remover todos os seus WebApps? Esta ação não pode "
+"ser desfeita."
 
 #: crates/webapps-manager/src/window/actions/remove_all.rs:27
 msgid "Continue"
@@ -319,19 +322,19 @@ msgstr "Continuar"
 
 #: crates/webapps-manager/src/window/actions/remove_all.rs:44
 msgid "Final Confirmation"
-msgstr "Confirmação Final"
+msgstr "Confirmação final"
 
 #: crates/webapps-manager/src/window/actions/remove_all.rs:45
 msgid "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
-msgstr "Tem CERTEZA ABSOLUTA que deseja remover TODOS os seus WebApps?"
+msgstr "Tem CERTEZA ABSOLUTA de que deseja remover TODOS os seus WebApps?"
 
 #: crates/webapps-manager/src/window/actions/remove_all.rs:46
 msgid "No, Cancel"
-msgstr "Não, Cancelar"
+msgstr "Não, cancelar"
 
 #: crates/webapps-manager/src/window/actions/remove_all.rs:48
 msgid "Yes, Remove All"
-msgstr "Sim, Remover Todos"
+msgstr "Sim, remover todos"
 
 #: crates/webapps-manager/src/window/actions/remove_all.rs:68
 msgid "All WebApps have been removed"
@@ -361,7 +364,7 @@ msgstr "Selecionar todos"
 
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:139
 msgid "Remove Selected"
-msgstr "Remover Selecionados"
+msgstr "Remover selecionados"
 
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:162
 msgid "Select at least one WebApp"
@@ -369,7 +372,7 @@ msgstr "Selecione pelo menos um WebApp"
 
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:181
 msgid "Remove Selected WebApps?"
-msgstr "Remover WebApps Selecionados?"
+msgstr "Remover WebApps selecionados?"
 
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:183
 msgid ""
@@ -470,15 +473,15 @@ msgstr "Menu principal"
 
 #: crates/webapps-manager/src/window/ui.rs:108
 msgid "Browse Applications Folder"
-msgstr "Navegar na Pasta de Aplicativos"
+msgstr "Abrir pasta de aplicativos"
 
 #: crates/webapps-manager/src/window/ui.rs:112
 msgid "Browse Profiles Folder"
-msgstr "Navegar na Pasta de Perfis"
+msgstr "Abrir pasta de perfis"
 
 #: crates/webapps-manager/src/window/ui.rs:118
 msgid "Remove WebApps in Bulk"
-msgstr "Remover WebApps em Lote"
+msgstr "Remover WebApps em lote"
 
 #: crates/webapps-manager/src/window/ui.rs:126
 msgid "About"
@@ -498,7 +501,7 @@ msgstr "Recarregar"
 
 #: crates/webapps-viewer/src/window/chrome.rs:37
 msgid "Fullscreen"
-msgstr "Tela Cheia"
+msgstr "Tela cheia"
 
 #: crates/webapps-viewer/src/window/chrome.rs:51
 msgid "Enter URL…"
@@ -511,19 +514,19 @@ msgstr "Endereço"
 
 #: crates/webapps-viewer/src/window/chrome.rs:93
 msgid "Zoom In"
-msgstr "Aumentar Zoom"
+msgstr "Aumentar zoom"
 
 #: crates/webapps-viewer/src/window/chrome.rs:94
 msgid "Zoom Out"
-msgstr "Diminuir Zoom"
+msgstr "Diminuir zoom"
 
 #: crates/webapps-viewer/src/window/chrome.rs:95
 msgid "Reset Zoom"
-msgstr "Redefinir Zoom"
+msgstr "Redefinir zoom"
 
 #: crates/webapps-viewer/src/window/chrome.rs:97
 msgid "Developer Tools"
-msgstr "Ferramentas de Desenvolvedor"
+msgstr "Ferramentas de desenvolvedor"
 
 #: crates/webapps-viewer/src/window/chrome.rs:108
 #: crates/webapps-viewer/src/window/chrome.rs:109
@@ -532,15 +535,15 @@ msgstr "Menu"
 
 #: crates/webapps-viewer/src/window/context_menu.rs:25
 msgid "Open Link in Browser"
-msgstr "Abrir Link no Navegador"
+msgstr "Abrir link no navegador"
 
 #: crates/webapps-viewer/src/window/downloads/mod.rs:29
 msgid "Download Complete"
-msgstr "Download Concluído"
+msgstr "Download concluído"
 
 #: crates/webapps-viewer/src/window/downloads/mod.rs:45
 msgid "Save File"
-msgstr "Salvar Arquivo"
+msgstr "Salvar arquivo"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:103
 msgid "Camera Access"
@@ -596,7 +599,7 @@ msgstr "Navegação"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:18
 msgid "Focus address bar"
-msgstr "Focar na barra de endereço"
+msgstr "Mover o foco para a barra de endereço"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:19
 msgid "Reload page"

@@ -7,15 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
-"POT-Creation-Date: 2026-09-06 19:25+0000\n"
-"PO-Revision-Date: 2026-09-06 16:24-0300\n"
-"Last-Translator: Luna (gpt-5.6-luna)\n"
+"POT-Creation-Date: 2026-10-03 09:17+0000\n"
+"PO-Revision-Date: 2026-10-03 09:25+0000\n"
+"Last-Translator: Codex (AI-assisted translation review)\n"
 "Language-Team: el\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Luna (gpt-5.6-luna)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Codex\n"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
@@ -67,8 +68,8 @@ msgid ""
 "Embedded browser with better system integration. May not work on all "
 "websites."
 msgstr ""
-"Ενσωματωμένο πρόγραμμα περιήγησης με καλύτερη ενσωμάτωση στο "
-"σύστημα.Ενδέχεται να μη λειτουργεί σε όλους τους ιστότοπους."
+"Ενσωματωμένο πρόγραμμα περιήγησης με καλύτερη ενσωμάτωση στο σύστημα. "
+"Ενδέχεται να μη λειτουργεί σε όλους τους ιστότοπους."
 
 #: crates/webapps-manager/src/browser_dialog.rs:205
 msgid ""
@@ -114,7 +115,7 @@ msgstr "Προσθήκη WebApp"
 
 #: crates/webapps-manager/src/relm4_window/list.rs:178
 msgid "{} results"
-msgstr "{} αποτελέσματα"
+msgstr "Αποτελέσματα: {}"
 
 #: crates/webapps-manager/src/relm4_window/row.rs:118
 msgid "Change browser"
@@ -143,7 +144,7 @@ msgstr "Διαχειριστής WebApps"
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 50
 #: crates/webapps-manager/src/template_gallery.rs:31
 msgid "Choose a Template"
-msgstr "Επιλέξτε ένα Πρότυπο"
+msgstr "Επιλογή προτύπου"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 56
@@ -167,7 +168,7 @@ msgstr "Δεν βρέθηκαν πρότυπα"
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 94
 #: crates/webapps-manager/src/template_gallery.rs:114
 msgid "Search Results"
-msgstr "Αποτελέσματα Αναζήτησης"
+msgstr "Αποτελέσματα αναζήτησης"
 
 #: crates/webapps-manager/src/template_gallery.rs:186
 msgid "Requires external browser (DRM)"
@@ -188,7 +189,6 @@ msgid "Recommended icon"
 msgstr "Προτεινόμενο εικονίδιο"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:121
-#| msgid "No icon with sufficient quality found (minimum 256 × 256 px)."
 msgid "No icon with sufficient quality found (minimum 64 × 64 px)."
 msgstr "Δεν βρέθηκε εικονίδιο επαρκούς ποιότητας (τουλάχιστον 64 × 64 px)."
 
@@ -217,7 +217,7 @@ msgstr "Εικονίδιο εφαρμογής"
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:27
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:33
 msgid "Select"
-msgstr "Επιλέξτε"
+msgstr "Επιλογή"
 
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:39
 msgid "Detected icon candidates"
@@ -233,7 +233,7 @@ msgstr "Κατηγορία"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 226
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:25
 msgid "Browser"
-msgstr "Πλοηγός"
+msgstr "Πρόγραμμα περιήγησης"
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -250,9 +250,9 @@ msgid ""
 "By default, each webapp is isolated. A name shares sessions with webapps "
 "using the same browser and profile."
 msgstr ""
-"Από προεπιλογή, κάθε webapp είναι απομονωμένη. Η ονομασία ενός προφίλ "
-"επιτρέπει στις webapps που χρησιμοποιούν το ίδιο πρόγραμμα περιήγησης και "
-"προφίλ να μοιράζονται συνεδρίες."
+"Από προεπιλογή, κάθε εφαρμογή ιστού είναι απομονωμένη. Η ονομασία ενός "
+"προφίλ επιτρέπει στις εφαρμογές ιστού που χρησιμοποιούν το ίδιο πρόγραμμα "
+"περιήγησης και προφίλ να μοιράζονται συνεδρίες."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
@@ -352,7 +352,8 @@ msgstr "Εστίαση"
 #: crates/webapps-manager/src/welcome_dialog.rs:54
 msgid "Work without the distractions of other browser tabs"
 msgstr ""
-"Εργαστείτε χωρίς τις αποσπάσεις άλλων καρτελών του προγράμματος περιήγησης"
+"Εργαστείτε χωρίς να σας αποσπούν την προσοχή άλλες καρτέλες του προγράμματος"
+" περιήγησης"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:58
 msgid "Desktop Integration"
@@ -368,13 +369,13 @@ msgstr "Απομονωμένα προφίλ"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:64
 msgid "Each webapp can have its own cookies and settings"
-msgstr "Κάθε webapp μπορεί να έχει τα δικά του cookies και ρυθμίσεις"
+msgstr "Κάθε εφαρμογή ιστού μπορεί να έχει τα δικά της cookies και ρυθμίσεις"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
 #: crates/webapps-manager/src/welcome_dialog.rs:70
 msgid "Don't show this again"
-msgstr "Μην το δείξετε ξανά"
+msgstr "Να μην εμφανιστεί ξανά"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 62
@@ -404,13 +405,13 @@ msgstr "Η εξαγωγή απέτυχε"
 
 #: crates/webapps-manager/src/window/actions/import_export.rs:60
 msgid "Imported {imported}, skipped {dups} duplicates"
-msgstr "Εισήχθησαν {imported}, παραλήφθηκαν {dups} διπλότυπα"
+msgstr "Εισήχθησαν {imported}, παραλείφθηκαν {dups} διπλότυπα"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
 #: crates/webapps-manager/src/window/actions/import_export.rs:67
 msgid "No WebApps"
-msgstr "Όχι WebApps"
+msgstr "Δεν υπάρχουν WebApps"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 166
@@ -434,8 +435,8 @@ msgid ""
 "Are you sure you want to remove all your WebApps? This action cannot be "
 "undone."
 msgstr ""
-"Είστε βέβαιοι ότι θέλετε να αφαιρέσετε όλες τις WebApps σας; Αυτή η ενέργεια "
-"δεν μπορεί να αναιρεθεί."
+"Είστε βέβαιοι ότι θέλετε να αφαιρέσετε όλες τις WebApps σας; Αυτή η ενέργεια"
+" δεν μπορεί να αναιρεθεί."
 
 #: crates/webapps-manager/src/window/actions/remove_all.rs:27
 msgid "Continue"
@@ -494,8 +495,8 @@ msgstr "Αφαίρεση WebApps"
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:44
 msgid "Select the WebApps you want to remove. This cannot be undone."
 msgstr ""
-"Επιλέξτε τις WebApps που θέλετε να αφαιρέσετε. Αυτή η ενέργεια δεν μπορεί να "
-"αναιρεθεί."
+"Επιλέξτε τις WebApps που θέλετε να αφαιρέσετε. Αυτή η ενέργεια δεν μπορεί να"
+" αναιρεθεί."
 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -589,7 +590,7 @@ msgstr "Αφαίρεση WebApp;"
 #
 #: crates/webapps-manager/src/window/list.rs:193
 msgid "Also delete configuration folder"
-msgstr "Επίσης, διαγράψτε τον φάκελο διαμόρφωσης."
+msgstr "Διαγραφή και του φακέλου ρυθμίσεων"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
@@ -655,19 +656,19 @@ msgstr "Επιλέξτε από πρότυπα"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 79
 #: crates/webapps-manager/src/window/ui.rs:58
 msgid "Main Menu"
-msgstr "Κύριο Μενού"
+msgstr "Κύριο μενού"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 65
 #: crates/webapps-manager/src/window/ui.rs:108
 msgid "Browse Applications Folder"
-msgstr "Περιήγηση στο Φάκελο Εφαρμογών"
+msgstr "Άνοιγμα φακέλου εφαρμογών"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 66
 #: crates/webapps-manager/src/window/ui.rs:112
 msgid "Browse Profiles Folder"
-msgstr "Προβολή φακέλου προφίλ"
+msgstr "Άνοιγμα φακέλου προφίλ"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
@@ -718,11 +719,11 @@ msgstr "Σμίκρυνση"
 
 #: crates/webapps-viewer/src/window/chrome.rs:95
 msgid "Reset Zoom"
-msgstr "Επαναφορά Ζουμ"
+msgstr "Επαναφορά ζουμ"
 
 #: crates/webapps-viewer/src/window/chrome.rs:97
 msgid "Developer Tools"
-msgstr "Εργαλεία Προγραμματιστή"
+msgstr "Εργαλεία προγραμματιστή"
 
 #: crates/webapps-viewer/src/window/chrome.rs:108
 #: crates/webapps-viewer/src/window/chrome.rs:109
@@ -731,15 +732,15 @@ msgstr "Μενού"
 
 #: crates/webapps-viewer/src/window/context_menu.rs:25
 msgid "Open Link in Browser"
-msgstr "Άνοιγμα Συνδέσμου στον Περιηγητή"
+msgstr "Άνοιγμα συνδέσμου στο πρόγραμμα περιήγησης"
 
 #: crates/webapps-viewer/src/window/downloads/mod.rs:29
 msgid "Download Complete"
-msgstr "Λήψη Ολοκληρώθηκε"
+msgstr "Η λήψη ολοκληρώθηκε"
 
 #: crates/webapps-viewer/src/window/downloads/mod.rs:45
 msgid "Save File"
-msgstr "Αποθήκευση Αρχείου"
+msgstr "Αποθήκευση αρχείου"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:103
 msgid "Camera Access"
@@ -748,7 +749,7 @@ msgstr "Πρόσβαση στην κάμερα"
 #: crates/webapps-viewer/src/window/permissions/mod.rs:104
 msgid "This webapp wants to use your camera. Allow?"
 msgstr ""
-"Αυτή η web εφαρμογή θέλει να χρησιμοποιήσει την κάμερά σας. Να επιτραπεί;"
+"Αυτή η εφαρμογή ιστού θέλει να χρησιμοποιήσει την κάμερά σας. Να επιτραπεί;"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:107
 msgid "Microphone Access"
@@ -757,7 +758,8 @@ msgstr "Πρόσβαση στο μικρόφωνο"
 #: crates/webapps-viewer/src/window/permissions/mod.rs:108
 msgid "This webapp wants to use your microphone. Allow?"
 msgstr ""
-"Αυτή η web εφαρμογή θέλει να χρησιμοποιήσει το μικρόφωνό σας. Να επιτραπεί;"
+"Αυτή η εφαρμογή ιστού θέλει να χρησιμοποιήσει το μικρόφωνό σας. Να "
+"επιτραπεί;"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:111
 msgid "Location Access"
@@ -766,8 +768,8 @@ msgstr "Πρόσβαση τοποθεσίας"
 #: crates/webapps-viewer/src/window/permissions/mod.rs:112
 msgid "This webapp wants to access your location. Allow?"
 msgstr ""
-"Αυτή η web εφαρμογή θέλει να αποκτήσει πρόσβαση στην τοποθεσία σας. "
-"Ναεπιτραπεί;"
+"Αυτή η εφαρμογή ιστού θέλει να αποκτήσει πρόσβαση στην τοποθεσία σας. Να "
+"επιτραπεί;"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:115
 msgid "Clipboard Access"
@@ -776,7 +778,7 @@ msgstr "Πρόσβαση στο πρόχειρο"
 #: crates/webapps-viewer/src/window/permissions/mod.rs:116
 msgid "This webapp wants to read from your clipboard. Allow?"
 msgstr ""
-"Αυτή η web εφαρμογή θέλει να διαβάσει από το πρόχειρό σας. Να επιτραπεί;"
+"Αυτή η εφαρμογή ιστού θέλει να διαβάσει από το πρόχειρό σας. Να επιτραπεί;"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:119
 msgid "Permission Request"
@@ -784,7 +786,7 @@ msgstr "Αίτημα άδειας"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:120
 msgid "This webapp is requesting a special permission. Allow?"
-msgstr "Αυτή η web εφαρμογή ζητά μια ειδική άδεια. Να επιτραπεί;"
+msgstr "Αυτή η εφαρμογή ιστού ζητά μια ειδική άδεια. Να επιτραπεί;"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:131
 msgid "Deny"

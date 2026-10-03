@@ -7,21 +7,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
-"POT-Creation-Date: 2026-09-06 19:25+0000\n"
-"PO-Revision-Date: 2026-09-06 16:24-0300\n"
-"Last-Translator: Luna (gpt-5.6-luna)\n"
+"POT-Creation-Date: 2026-10-03 09:17+0000\n"
+"PO-Revision-Date: 2026-10-03 09:25+0000\n"
+"Last-Translator: Codex (AI-assisted translation review)\n"
 "Language-Team: he\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Luna (gpt-5.6-luna)\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? 2 : 3);\n"
+"X-Generator: Codex\n"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
 #: crates/webapps-manager/src/browser_dialog.rs:38
 msgid "Select Browser"
-msgstr "בחר דפדפן"
+msgstr "בחירת דפדפן"
 
 #: crates/webapps-manager/src/browser_dialog.rs:70
 msgid "Auto-hide headerbar"
@@ -58,7 +59,7 @@ msgstr "ביטול"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
 #: crates/webapps-manager/src/browser_dialog.rs:151
 msgid "OK"
-msgstr "אוקי"
+msgstr "אישור"
 
 #: crates/webapps-manager/src/browser_dialog.rs:203
 msgid ""
@@ -102,7 +103,7 @@ msgstr "הפוך כל אתר לאפליקציית שולחן עבודה. לחץ 
 #: crates/webapps-manager/src/window/ui.rs:41
 #: crates/webapps-manager/src/window/ui.rs:42
 msgid "Add WebApp"
-msgstr "הוסף אפליקציית אינטרנט"
+msgstr "הוספת יישום אינטרנט"
 
 #: crates/webapps-manager/src/relm4_window/list.rs:178
 msgid "{} results"
@@ -114,7 +115,7 @@ msgstr "שנה דפדפן"
 
 #: crates/webapps-manager/src/relm4_window/row.rs:129
 msgid "Edit"
-msgstr "ערוך"
+msgstr "עריכה"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
@@ -122,14 +123,14 @@ msgstr "ערוך"
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:192
 #: crates/webapps-manager/src/window/list.rs:185
 msgid "Remove"
-msgstr "הסר"
+msgstr "הסרה"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 27
 #: crates/webapps-manager/src/relm4_window/shell_spec.rs:12
 #: crates/webapps-manager/src/window/actions/about.rs:15
 msgid "WebApps Manager"
-msgstr "מנהל אפליקציות אינטרנט"
+msgstr "מנהל יישומי אינטרנט"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 50
@@ -169,24 +170,23 @@ msgstr "נדרש דפדפן חיצוני (DRM)"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 446
 #: crates/webapps-manager/src/webapp_dialog/handlers/lifecycle.rs:105
 msgid "Failed to save webapp"
-msgstr "שמירת ה-WebApp נכשלה"
+msgstr "שמירת יישום האינטרנט נכשלה"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:91
 msgid "Icon candidate {n}"
-msgstr "מועמד לסמל {n}"
+msgstr "סמל מוצע {n}"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:98
 msgid "Recommended icon"
 msgstr "סמל מומלץ"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:121
-#| msgid "No icon with sufficient quality found (minimum 256 × 256 px)."
 msgid "No icon with sufficient quality found (minimum 64 × 64 px)."
 msgstr "לא נמצא סמל באיכות מספקת (מינימום 64 × 64 px)."
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:156
 msgid "Select Icon"
-msgstr "בחר סמל"
+msgstr "בחירת סמל"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:158
 msgid "Images"
@@ -209,7 +209,7 @@ msgstr "סמל היישום"
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:27
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:33
 msgid "Select"
-msgstr "בחר"
+msgstr "בחירה"
 
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:39
 msgid "Detected icon candidates"
@@ -242,8 +242,8 @@ msgid ""
 "By default, each webapp is isolated. A name shares sessions with webapps "
 "using the same browser and profile."
 msgstr ""
-"כברירת מחדל, כל אפליקציית Web מבודדת. הקצאת שם לפרופיל מאפשרת לאפליקציות Web "
-"המשתמשות באותו דפדפן ובאותו פרופיל לשתף הפעלות."
+"כברירת מחדל, כל יישום אינטרנט מבודד. מתן שם לפרופיל מאפשר ליישומי אינטרנט "
+"המשתמשים באותו דפדפן ובאותו פרופיל לשתף הפעלות."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
@@ -261,13 +261,13 @@ msgstr "כתובת אתר"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 156
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:20
 msgid "Detect"
-msgstr "גלה"
+msgstr "זיהוי"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 157
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:23
 msgid "Detect name and icon from website"
-msgstr "גלה שם ואייקון מאתר אינטרנט"
+msgstr "זיהוי השם והסמל של האתר"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 166
@@ -280,7 +280,7 @@ msgstr "שם"
 #: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:23
 #: crates/webapps-manager/src/window/shortcuts_window.rs:19
 msgid "New WebApp"
-msgstr "WebApp חדש"
+msgstr "יישום אינטרנט חדש"
 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -292,7 +292,7 @@ msgstr "WebApp חדש"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
 #: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:25
 msgid "Edit WebApp"
-msgstr "ערוך אפליקציית אינטרנט"
+msgstr "עריכת יישום אינטרנט"
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -302,7 +302,7 @@ msgstr "ערוך אפליקציית אינטרנט"
 #
 #: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:44
 msgid "Save"
-msgstr "שמור"
+msgstr "שמירה"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 336
@@ -316,13 +316,13 @@ msgstr "טוען…"
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
 #: crates/webapps-manager/src/welcome_dialog.rs:22
 msgid "Welcome to WebApps Manager"
-msgstr "ברוך הבא למנהל אפליקציות אינטרנט"
+msgstr "ברוכים הבאים למנהל יישומי האינטרנט"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
 #: crates/webapps-manager/src/welcome_dialog.rs:23
 msgid "Let's Start"
-msgstr "בוא נתחיל"
+msgstr "מתחילים"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:35
 msgid ""
@@ -342,11 +342,11 @@ msgstr "ריכוז"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:54
 msgid "Work without the distractions of other browser tabs"
-msgstr "עבודה ללא הסחות דעת מטאבים אחרים בדפדפן"
+msgstr "עבודה ללא הסחות דעת מלשוניות אחרות בדפדפן"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:58
 msgid "Desktop Integration"
-msgstr "אינטגרציה לשולחן העבודה"
+msgstr "שילוב בשולחן העבודה"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:59
 msgid "Quick access from your application menu"
@@ -358,20 +358,20 @@ msgstr "פרופילים מבודדים"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:64
 msgid "Each webapp can have its own cookies and settings"
-msgstr "לכל WebApp יכולות להיות עוגיות והגדרות משלו"
+msgstr "לכל יישום אינטרנט יכולות להיות עוגיות והגדרות משלו"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
 #: crates/webapps-manager/src/welcome_dialog.rs:70
 msgid "Don't show this again"
-msgstr "אל תראה זאת שוב"
+msgstr "לא להציג זאת שוב"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 63
 #: crates/webapps-manager/src/window/actions/import_export.rs:15
 #: crates/webapps-manager/src/window/ui.rs:105
 msgid "Import WebApps"
-msgstr "ייבוא אפליקציות אינטרנט"
+msgstr "ייבוא יישומי אינטרנט"
 
 #: crates/webapps-manager/src/window/actions/import_export.rs:16
 msgid "ZIP files"
@@ -386,7 +386,7 @@ msgstr "הייבוא נכשל"
 #: crates/webapps-manager/src/window/actions/import_export.rs:40
 #: crates/webapps-manager/src/window/ui.rs:106
 msgid "Export WebApps"
-msgstr "ייצוא אפליקציות אינטרנט"
+msgstr "ייצוא יישומי אינטרנט"
 
 #: crates/webapps-manager/src/window/actions/import_export.rs:51
 msgid "Export failed"
@@ -394,19 +394,19 @@ msgstr "הייצוא נכשל"
 
 #: crates/webapps-manager/src/window/actions/import_export.rs:60
 msgid "Imported {imported}, skipped {dups} duplicates"
-msgstr "יובא {imported}, דילגו על {dups} כפילויות"
+msgstr "יובאו {imported}, דולגו {dups} כפילויות"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
 #: crates/webapps-manager/src/window/actions/import_export.rs:67
 msgid "No WebApps"
-msgstr "אין אפליקציות אינטרנט"
+msgstr "אין יישומי אינטרנט"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 166
 #: crates/webapps-manager/src/window/actions/import_export.rs:69
 msgid "WebApps exported successfully"
-msgstr "היישומים המובנים ייצאו בהצלחה"
+msgstr "יישומי האינטרנט יוצאו בהצלחה"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
@@ -415,7 +415,7 @@ msgstr "היישומים המובנים ייצאו בהצלחה"
 #: crates/webapps-manager/src/window/actions/remove_all.rs:23
 #: crates/webapps-manager/src/window/ui.rs:121
 msgid "Remove All WebApps"
-msgstr "הסר את כל היישומים האינטרנטיים"
+msgstr "הסרת כל יישומי האינטרנט"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 346
@@ -423,7 +423,8 @@ msgstr "הסר את כל היישומים האינטרנטיים"
 msgid ""
 "Are you sure you want to remove all your WebApps? This action cannot be "
 "undone."
-msgstr "האם אתה בטוח שברצונך להסיר את כל ה-WebApps שלך? לא ניתן לבטל פעולה זו."
+msgstr ""
+"האם אתה בטוח שברצונך להסיר את כל ה-WebApps שלך? לא ניתן לבטל פעולה זו."
 
 #: crates/webapps-manager/src/window/actions/remove_all.rs:27
 msgid "Continue"
@@ -457,13 +458,13 @@ msgstr "כן, הסר הכול"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 444
 #: crates/webapps-manager/src/window/actions/remove_all.rs:68
 msgid "All WebApps have been removed"
-msgstr "כל האפליקציות האינטרנטיות הוסרו"
+msgstr "כל יישומי האינטרנט הוסרו"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 446
 #: crates/webapps-manager/src/window/actions/remove_all.rs:73
 msgid "Failed to remove all WebApps"
-msgstr "נכשל בהסרת כל היישומים האינטרנטיים"
+msgstr "הסרת כל יישומי האינטרנט נכשלה"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
@@ -506,7 +507,7 @@ msgstr "הסר את הנבחרים"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:162
 msgid "Select at least one WebApp"
-msgstr "בחר לפחות WebApp אחת"
+msgstr "יש לבחור לפחות יישום אינטרנט אחד"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
@@ -543,13 +544,13 @@ msgstr "מזהה דפדפנים מותקנים…"
 #: crates/webapps-manager/src/window/list.rs:83
 #: crates/webapps-manager/src/window/list.rs:113
 msgid "WebApp created successfully"
-msgstr "היישום האינטרנטי נוצר בהצלחה"
+msgstr "יישום האינטרנט נוצר בהצלחה"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 257
 #: crates/webapps-manager/src/window/list.rs:131
 msgid "WebApp updated successfully"
-msgstr "היישום האינטרנטי עודכן בהצלחה"
+msgstr "יישום האינטרנט עודכן בהצלחה"
 
 #: crates/webapps-manager/src/window/list.rs:167
 msgid "Browser changed"
@@ -575,13 +576,13 @@ msgstr "להסיר את ה-WebApp?"
 #
 #: crates/webapps-manager/src/window/list.rs:193
 msgid "Also delete configuration folder"
-msgstr "גם מחק את תיקיית ההגדרות"
+msgstr "מחיקת תיקיית ההגדרות גם כן"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 444
 #: crates/webapps-manager/src/window/list.rs:213
 msgid "WebApp removed"
-msgstr "WebApp הוסרה"
+msgstr "יישום האינטרנט הוסר"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
@@ -622,13 +623,13 @@ msgstr "קיצורי מקלדת"
 #: crates/webapps-manager/src/window/ui.rs:36
 #: crates/webapps-manager/src/window/ui.rs:37
 msgid "Search WebApps"
-msgstr "חפש אפליקציות אינטרנט"
+msgstr "חיפוש יישומי אינטרנט"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 72
 #: crates/webapps-manager/src/window/ui.rs:40
 msgid "Add"
-msgstr "הוסף"
+msgstr "הוספה"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 167
@@ -653,7 +654,7 @@ msgstr "עבור לתיקיית היישומים"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 67
 #: crates/webapps-manager/src/window/ui.rs:112
 msgid "Browse Profiles Folder"
-msgstr "דפדף לתיקיית פרופילים"
+msgstr "פתיחת תיקיית הפרופילים"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
@@ -696,19 +697,19 @@ msgstr "כתובת"
 
 #: crates/webapps-viewer/src/window/chrome.rs:93
 msgid "Zoom In"
-msgstr "הגדל זום"
+msgstr "הגדלת התצוגה"
 
 #: crates/webapps-viewer/src/window/chrome.rs:94
 msgid "Zoom Out"
-msgstr "הקטן זום"
+msgstr "הקטנת התצוגה"
 
 #: crates/webapps-viewer/src/window/chrome.rs:95
 msgid "Reset Zoom"
-msgstr "איפוס זום"
+msgstr "איפוס התקריב"
 
 #: crates/webapps-viewer/src/window/chrome.rs:97
 msgid "Developer Tools"
-msgstr "כלי מפתח"
+msgstr "כלי פיתוח"
 
 #: crates/webapps-viewer/src/window/chrome.rs:108
 #: crates/webapps-viewer/src/window/chrome.rs:109
@@ -733,7 +734,7 @@ msgstr "גישה למצלמה"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:104
 msgid "This webapp wants to use your camera. Allow?"
-msgstr "ה-WebApp הזה רוצה להשתמש במצלמה שלך. לאפשר?"
+msgstr "יישום האינטרנט הזה מבקש להשתמש במצלמה שלך. לאפשר?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:107
 msgid "Microphone Access"
@@ -741,7 +742,7 @@ msgstr "גישה למיקרופון"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:108
 msgid "This webapp wants to use your microphone. Allow?"
-msgstr "ה-WebApp הזה רוצה להשתמש במיקרופון שלך. לאפשר?"
+msgstr "יישום האינטרנט הזה מבקש להשתמש במיקרופון שלך. לאפשר?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:111
 msgid "Location Access"
@@ -749,7 +750,7 @@ msgstr "גישה למיקום"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:112
 msgid "This webapp wants to access your location. Allow?"
-msgstr "ה-WebApp הזה רוצה לגשת למיקום שלך. לאפשר?"
+msgstr "יישום האינטרנט הזה מבקש לגשת למיקום שלך. לאפשר?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:115
 msgid "Clipboard Access"
@@ -757,7 +758,7 @@ msgstr "גישה ללוח הגזירים"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:116
 msgid "This webapp wants to read from your clipboard. Allow?"
-msgstr "ה-WebApp הזה רוצה לקרוא מלוח הגזירים שלך. לאפשר?"
+msgstr "יישום האינטרנט הזה מבקש לקרוא מלוח הגזירים שלך. לאפשר?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:119
 msgid "Permission Request"
@@ -765,7 +766,7 @@ msgstr "בקשת הרשאה"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:120
 msgid "This webapp is requesting a special permission. Allow?"
-msgstr "ה-WebApp הזה מבקש הרשאה מיוחדת. לאפשר?"
+msgstr "יישום האינטרנט הזה מבקש הרשאה מיוחדת. לאפשר?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:131
 msgid "Deny"
@@ -781,7 +782,7 @@ msgstr "ניווט"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:18
 msgid "Focus address bar"
-msgstr "מקד לשורת הכתובת"
+msgstr "העברת המיקוד לשורת הכתובת"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:19
 msgid "Reload page"
@@ -805,15 +806,15 @@ msgstr "החלף מסך מלא"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:29
 msgid "Zoom in"
-msgstr "הגדל תצוגה"
+msgstr "הגדלת התצוגה"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:30
 msgid "Zoom out"
-msgstr "הקטן תצוגה"
+msgstr "הקטנת התצוגה"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:31
 msgid "Reset zoom"
-msgstr "אפס תצוגה"
+msgstr "איפוס התקריב"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:36
 msgid "Window"

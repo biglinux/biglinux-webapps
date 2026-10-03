@@ -7,15 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
-"POT-Creation-Date: 2026-09-06 19:25+0000\n"
-"PO-Revision-Date: 2026-09-06 16:24-0300\n"
-"Last-Translator: Luna (gpt-5.6-luna)\n"
+"POT-Creation-Date: 2026-10-03 09:17+0000\n"
+"PO-Revision-Date: 2026-10-03 09:25+0000\n"
+"Last-Translator: Codex (AI-assisted translation review)\n"
 "Language-Team: hu\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Luna (gpt-5.6-luna)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Codex\n"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
@@ -30,7 +31,8 @@ msgstr "Fejlécsáv automatikus elrejtése"
 #: crates/webapps-manager/src/browser_dialog.rs:72
 msgid "Hide the titlebar; reveal it by moving the cursor to the top edge."
 msgstr ""
-"Elrejti a címsort; hozza vissza úgy, hogy a kurzort a felső szélhez mozgatja."
+"Elrejti a címsort; hozza vissza úgy, hogy a kurzort a felső szélhez "
+"mozgatja."
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -66,8 +68,8 @@ msgid ""
 "Embedded browser with better system integration. May not work on all "
 "websites."
 msgstr ""
-"Beágyazott böngésző jobb rendszerintegrációval. Nem biztos, hogy "
-"mindenwebhelyen működik."
+"Beágyazott böngésző jobb rendszerintegrációval. Nem biztos, hogy minden "
+"webhelyen működik."
 
 #: crates/webapps-manager/src/browser_dialog.rs:205
 msgid ""
@@ -148,19 +150,19 @@ msgstr "Válasszon egy sablont"
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 56
 #: crates/webapps-manager/src/template_gallery.rs:38
 msgid "Search templates..."
-msgstr "Keresés sablonok..."
+msgstr "Sablonok keresése…"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 63
 #: crates/webapps-manager/src/template_gallery.rs:41
 msgid "Search templates"
-msgstr "Keresési sablonok"
+msgstr "Sablonok keresése"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 96
 #: crates/webapps-manager/src/template_gallery.rs:106
 msgid "No templates found"
-msgstr "Nincsenek sablonok."
+msgstr "Nem találhatók sablonok"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 94
@@ -187,7 +189,6 @@ msgid "Recommended icon"
 msgstr "Ajánlott ikon"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:121
-#| msgid "No icon with sufficient quality found (minimum 256 × 256 px)."
 msgid "No icon with sufficient quality found (minimum 64 × 64 px)."
 msgstr "Nem található megfelelő minőségű ikon (minimum 64 × 64 px)."
 
@@ -257,7 +258,7 @@ msgstr ""
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:88
 msgid "Profile Name"
-msgstr "Profil név"
+msgstr "Profilnév"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 152
@@ -275,7 +276,7 @@ msgstr "Észlelés"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 157
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:23
 msgid "Detect name and icon from website"
-msgstr "Nevezze meg és ikont észlel a weboldalról"
+msgstr "Név és ikon felismerése a webhelyről"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 166
@@ -324,7 +325,7 @@ msgstr "Betöltés…"
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
 #: crates/webapps-manager/src/welcome_dialog.rs:22
 msgid "Welcome to WebApps Manager"
-msgstr "Üdvözöljük a WebApps Managerben"
+msgstr "Üdvözöljük a webalkalmazások kezelőjében"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
@@ -350,7 +351,7 @@ msgstr "Fókusz"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:54
 msgid "Work without the distractions of other browser tabs"
-msgstr "Dolgozz anélkül, hogy más böngészőfülek zavarnának"
+msgstr "Dolgozzon anélkül, hogy más böngészőlapok zavarnák"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:58
 msgid "Desktop Integration"
@@ -366,13 +367,13 @@ msgstr "Elkülönített profilok"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:64
 msgid "Each webapp can have its own cookies and settings"
-msgstr "Minden webappnak lehet saját sütije és beállítása"
+msgstr "Minden webalkalmazásnak lehetnek saját sütijei és beállításai"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
 #: crates/webapps-manager/src/welcome_dialog.rs:70
 msgid "Don't show this again"
-msgstr "Ne mutasd ezt újra"
+msgstr "Ne jelenjen meg újra"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 63
@@ -383,7 +384,7 @@ msgstr "Webalkalmazások importálása"
 
 #: crates/webapps-manager/src/window/actions/import_export.rs:16
 msgid "ZIP files"
-msgstr "ZIP fájlok"
+msgstr "ZIP-fájlok"
 
 #: crates/webapps-manager/src/window/actions/import_export.rs:27
 msgid "Import failed"
@@ -408,13 +409,13 @@ msgstr "Importálva {imported}, kihagyva {dups} duplikátum"
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
 #: crates/webapps-manager/src/window/actions/import_export.rs:67
 msgid "No WebApps"
-msgstr "Nincsenek Webalkalmazások"
+msgstr "Nincsenek webalkalmazások"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 166
 #: crates/webapps-manager/src/window/actions/import_export.rs:69
 msgid "WebApps exported successfully"
-msgstr "A WebAppok sikeresen exportálva lettek."
+msgstr "A webalkalmazások exportálása sikeres"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
@@ -468,7 +469,7 @@ msgstr "Igen, mindet eltávolítom"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 444
 #: crates/webapps-manager/src/window/actions/remove_all.rs:68
 msgid "All WebApps have been removed"
-msgstr "Minden WebApp eltávolításra került."
+msgstr "Az összes webalkalmazás eltávolítva"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 446
@@ -480,7 +481,7 @@ msgstr "Nem sikerült eltávolítani az összes WebAppot."
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:29
 msgid "No WebApps to remove"
-msgstr "Nincsenek eltávolítható WebApps-ek"
+msgstr "Nincsenek eltávolítható webalkalmazások"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
@@ -488,13 +489,13 @@ msgstr "Nincsenek eltávolítható WebApps-ek"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 390
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:34
 msgid "Remove WebApps"
-msgstr "WebApps eltávolítása"
+msgstr "Webalkalmazások eltávolítása"
 
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:44
 msgid "Select the WebApps you want to remove. This cannot be undone."
 msgstr ""
-"Válassza ki az eltávolítani kívánt WebApps-eket. Ez a művelet nem vonható "
-"vissza."
+"Válassza ki az eltávolítani kívánt webalkalmazásokat. Ez a művelet nem "
+"vonható vissza."
 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -527,21 +528,21 @@ msgstr "Válasszon legalább egy WebAppot"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 390
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:181
 msgid "Remove Selected WebApps?"
-msgstr "Eltávolítja a kijelölt WebApps-eket?"
+msgstr "Eltávolítja a kijelölt webalkalmazásokat?"
 
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:183
 msgid ""
 "This will remove {count} WebApps and their desktop entries. This cannot be "
 "undone."
 msgstr ""
-"Ezzel {count} WebApps és azok asztali bejegyzései lesznek eltávolítva. Ez a "
-"művelet nem vonható vissza."
+"Ez eltávolít {count} webalkalmazást és az alkalmazásmenüben lévő "
+"bejegyzéseiket. Ez a művelet nem vonható vissza."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 444
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:222
 msgid "{count} WebApps removed"
-msgstr "{count} WebApps eltávolítva"
+msgstr "{count} webalkalmazás eltávolítva"
 
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:224
 msgid "{ok} removed, {fail} failed"
@@ -562,7 +563,7 @@ msgstr "A WebApp sikeresen létrejött"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 257
 #: crates/webapps-manager/src/window/list.rs:131
 msgid "WebApp updated successfully"
-msgstr "A WebApp sikeresen frissítve lett."
+msgstr "A webalkalmazás frissítése sikeres"
 
 #: crates/webapps-manager/src/window/list.rs:167
 msgid "Browser changed"
@@ -588,7 +589,7 @@ msgstr "Eltávolítja a WebAppot?"
 #
 #: crates/webapps-manager/src/window/list.rs:193
 msgid "Also delete configuration folder"
-msgstr "A konfigurációs mappa törlése is."
+msgstr "A beállításokat tartalmazó mappa törlése is"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 444
@@ -660,7 +661,7 @@ msgstr "Főmenü"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 66
 #: crates/webapps-manager/src/window/ui.rs:108
 msgid "Browse Applications Folder"
-msgstr "Böngéssze az Alkalmazások mappát"
+msgstr "Alkalmazásmappa megnyitása"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 67
@@ -700,7 +701,7 @@ msgstr "Teljes képernyő"
 
 #: crates/webapps-viewer/src/window/chrome.rs:51
 msgid "Enter URL…"
-msgstr "Írd be az URL-t…"
+msgstr "Adja meg az URL-t…"
 
 #. Placeholder text is not an accessible name; label it explicitly.
 #: crates/webapps-viewer/src/window/chrome.rs:56
@@ -763,7 +764,8 @@ msgstr "Helyhozzáférés"
 #: crates/webapps-viewer/src/window/permissions/mod.rs:112
 msgid "This webapp wants to access your location. Allow?"
 msgstr ""
-"Ez a webalkalmazás hozzá szeretne férni a tartózkodási helyéhez. Engedélyezi?"
+"Ez a webalkalmazás hozzá szeretne férni a tartózkodási helyéhez. "
+"Engedélyezi?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:115
 msgid "Clipboard Access"
@@ -783,11 +785,11 @@ msgstr "Ez a webalkalmazás speciális engedélyt kér. Engedélyezi?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:131
 msgid "Deny"
-msgstr "Elutasít"
+msgstr "Elutasítás"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:133
 msgid "Allow"
-msgstr "Engedélyez"
+msgstr "Engedélyezés"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:16
 msgid "Navigation"

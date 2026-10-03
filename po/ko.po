@@ -7,15 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
-"POT-Creation-Date: 2026-09-06 19:25+0000\n"
-"PO-Revision-Date: 2026-09-06 16:24-0300\n"
-"Last-Translator: Luna (gpt-5.6-luna)\n"
+"POT-Creation-Date: 2026-10-03 09:17+0000\n"
+"PO-Revision-Date: 2026-10-03 09:25+0000\n"
+"Last-Translator: Codex (AI-assisted translation review)\n"
 "Language-Team: ko\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Luna (gpt-5.6-luna)\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Codex\n"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
@@ -29,8 +30,7 @@ msgstr "헤더바 자동 숨기기"
 
 #: crates/webapps-manager/src/browser_dialog.rs:72
 msgid "Hide the titlebar; reveal it by moving the cursor to the top edge."
-msgstr ""
-"제목 표시줄을 숨깁니다. 커서를 상단 가장자리로 이동하면 다시 표시됩니다."
+msgstr "제목 표시줄을 숨깁니다. 커서를 상단 가장자리로 이동하면 다시 표시됩니다."
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -59,23 +59,19 @@ msgstr "취소"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 638
 #: crates/webapps-manager/src/browser_dialog.rs:151
 msgid "OK"
-msgstr "알겠습니다."
+msgstr "확인"
 
 #: crates/webapps-manager/src/browser_dialog.rs:203
 msgid ""
 "Embedded browser with better system integration. May not work on all "
 "websites."
-msgstr ""
-"시스템 통합이 더 나은 내장 브라우저입니다. 일부 웹사이트에서는 작동하지 않을 "
-"수 있습니다."
+msgstr "시스템 통합이 더 나은 내장 브라우저입니다. 일부 웹사이트에서는 작동하지 않을 수 있습니다."
 
 #: crates/webapps-manager/src/browser_dialog.rs:205
 msgid ""
 "Unavailable: this site requires DRM, which the internal browser does not "
 "support."
-msgstr ""
-"사용할 수 없음: 이 사이트에는 DRM이 필요하지만 내부 브라우저는 이를 지원하지 "
-"않습니다."
+msgstr "사용할 수 없음: 이 사이트에는 DRM이 필요하지만 내장 브라우저는 이를 지원하지 않습니다."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
@@ -89,7 +85,7 @@ msgstr "내장 브라우저"
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
 #: crates/webapps-manager/src/relm4_window/empty.rs:16
 msgid "No WebApps yet"
-msgstr "아직 WebApps가 없습니다"
+msgstr "아직 웹앱이 없습니다"
 
 #: crates/webapps-manager/src/relm4_window/empty.rs:18
 msgid "Turn any website into a desktop app. Press Add to get started."
@@ -174,7 +170,7 @@ msgstr "외부 브라우저 필요 (DRM)"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 446
 #: crates/webapps-manager/src/webapp_dialog/handlers/lifecycle.rs:105
 msgid "Failed to save webapp"
-msgstr "WebApp 저장에 실패했습니다"
+msgstr "웹앱 저장에 실패했습니다"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:91
 msgid "Icon candidate {n}"
@@ -185,7 +181,6 @@ msgid "Recommended icon"
 msgstr "권장 아이콘"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:121
-#| msgid "No icon with sufficient quality found (minimum 256 × 256 px)."
 msgid "No icon with sufficient quality found (minimum 64 × 64 px)."
 msgstr "충분한 품질의 아이콘을 찾을 수 없습니다(최소 64 × 64px)."
 
@@ -214,7 +209,7 @@ msgstr "애플리케이션 아이콘"
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:27
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:33
 msgid "Select"
-msgstr "선택하십시오"
+msgstr "선택"
 
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:39
 msgid "Detected icon candidates"
@@ -247,8 +242,7 @@ msgid ""
 "By default, each webapp is isolated. A name shares sessions with webapps "
 "using the same browser and profile."
 msgstr ""
-"기본적으로 각 웹 앱은 격리됩니다. 프로필 이름을 지정하면 동일한 브라우저와 프"
-"로필을 사용하는 웹 앱 간에 세션을 공유할 수 있습니다."
+"기본적으로 각 웹 앱은 격리됩니다. 프로필 이름을 지정하면 동일한 브라우저와 프로필을 사용하는 웹 앱 간에 세션을 공유할 수 있습니다."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
@@ -266,7 +260,7 @@ msgstr "URL"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 156
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:20
 msgid "Detect"
-msgstr "감지하다"
+msgstr "감지"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 157
@@ -285,7 +279,7 @@ msgstr "이름"
 #: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:23
 #: crates/webapps-manager/src/window/shortcuts_window.rs:19
 msgid "New WebApp"
-msgstr "새 WebApp"
+msgstr "새 웹앱"
 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -327,15 +321,13 @@ msgstr "웹앱 관리자에 오신 것을 환영합니다."
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
 #: crates/webapps-manager/src/welcome_dialog.rs:23
 msgid "Let's Start"
-msgstr "시작하겠습니다."
+msgstr "시작하기"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:35
 msgid ""
 "WebApps run your favorite websites in their own dedicated window, for a "
 "focused, app-like experience."
-msgstr ""
-"WebApps는 즐겨 찾는 웹사이트를 전용 창에서 실행하여 집중할 수 있는 앱과 같은 "
-"환경을 제공합니다."
+msgstr "WebApps는 즐겨 찾는 웹사이트를 전용 창에서 실행하여 집중할 수 있는 앱과 같은 환경을 제공합니다."
 
 #: crates/webapps-manager/src/welcome_dialog.rs:48
 msgid "Benefits"
@@ -351,7 +343,7 @@ msgstr "다른 브라우저 탭의 방해 없이 작업하세요"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:58
 msgid "Desktop Integration"
-msgstr "데스크탑 통합"
+msgstr "데스크톱 통합"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:59
 msgid "Quick access from your application menu"
@@ -363,7 +355,7 @@ msgstr "분리된 프로필"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:64
 msgid "Each webapp can have its own cookies and settings"
-msgstr "각 WebApp은 자체 쿠키와 설정을 가질 수 있습니다"
+msgstr "각 웹앱은 자체 쿠키와 설정을 가질 수 있습니다"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
@@ -411,7 +403,7 @@ msgstr "웹앱 없음"
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 166
 #: crates/webapps-manager/src/window/actions/import_export.rs:69
 msgid "WebApps exported successfully"
-msgstr "웹앱이 성공적으로 내보내졌습니다."
+msgstr "웹앱을 성공적으로 내보냈습니다."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
@@ -428,7 +420,7 @@ msgstr "모든 웹앱 제거"
 msgid ""
 "Are you sure you want to remove all your WebApps? This action cannot be "
 "undone."
-msgstr "모든 WebApps를 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다."
+msgstr "모든 웹앱을 제거하시겠습니까? 이 작업은 되돌릴 수 없습니다."
 
 #: crates/webapps-manager/src/window/actions/remove_all.rs:27
 msgid "Continue"
@@ -440,7 +432,7 @@ msgstr "최종 확인"
 
 #: crates/webapps-manager/src/window/actions/remove_all.rs:45
 msgid "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
-msgstr "정말로 모든 WebApps를 삭제하시겠습니까?"
+msgstr "정말로 모든 웹앱을 제거하시겠습니까?"
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -474,7 +466,7 @@ msgstr "모든 웹앱을 제거하지 못했습니다."
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:29
 msgid "No WebApps to remove"
-msgstr "제거할 WebApps가 없습니다"
+msgstr "제거할 웹앱이 없습니다"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
@@ -482,11 +474,11 @@ msgstr "제거할 WebApps가 없습니다"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 390
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:34
 msgid "Remove WebApps"
-msgstr "WebApps 제거"
+msgstr "웹앱 제거"
 
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:44
 msgid "Select the WebApps you want to remove. This cannot be undone."
-msgstr "제거할 WebApps를 선택하세요. 이 작업은 되돌릴 수 없습니다."
+msgstr "제거할 웹앱을 선택하세요. 이 작업은 되돌릴 수 없습니다."
 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -511,7 +503,7 @@ msgstr "선택 항목 제거"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:162
 msgid "Select at least one WebApp"
-msgstr "WebApp을 하나 이상 선택하세요"
+msgstr "웹앱을 하나 이상 선택하세요"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
@@ -519,21 +511,19 @@ msgstr "WebApp을 하나 이상 선택하세요"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 390
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:181
 msgid "Remove Selected WebApps?"
-msgstr "선택한 WebApps를 제거하시겠습니까?"
+msgstr "선택한 웹앱을 제거하시겠습니까?"
 
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:183
 msgid ""
 "This will remove {count} WebApps and their desktop entries. This cannot be "
 "undone."
-msgstr ""
-"이 작업은 {count}개의 WebApps와 해당 데스크톱 항목을 제거합니다. 이 작업은 되"
-"돌릴 수 없습니다."
+msgstr "이 작업은 웹앱 {count}개와 해당 앱 메뉴 항목을 제거합니다. 이 작업은 되돌릴 수 없습니다."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 444
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:222
 msgid "{count} WebApps removed"
-msgstr "{count}개의 WebApps 제거됨"
+msgstr "웹앱 {count}개 제거됨"
 
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:224
 msgid "{ok} removed, {fail} failed"
@@ -570,7 +560,7 @@ msgstr "브라우저 변경 실패"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 390
 #: crates/webapps-manager/src/window/list.rs:181
 msgid "Remove WebApp?"
-msgstr "WebApp을 제거하시겠습니까?"
+msgstr "웹앱을 제거하시겠습니까?"
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -580,13 +570,13 @@ msgstr "WebApp을 제거하시겠습니까?"
 #
 #: crates/webapps-manager/src/window/list.rs:193
 msgid "Also delete configuration folder"
-msgstr "구성 폴더도 삭제하십시오."
+msgstr "설정 폴더도 삭제"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 444
 #: crates/webapps-manager/src/window/list.rs:213
 msgid "WebApp removed"
-msgstr "WebApp이 제거되었습니다"
+msgstr "웹앱이 제거되었습니다"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
@@ -640,7 +630,7 @@ msgstr "추가"
 #: crates/webapps-manager/src/window/ui.rs:47
 #: crates/webapps-manager/src/window/ui.rs:49
 msgid "Choose from templates"
-msgstr "템플릿에서 선택하세요."
+msgstr "템플릿에서 선택"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 79
@@ -666,7 +656,7 @@ msgstr "프로필 폴더 탐색"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 390
 #: crates/webapps-manager/src/window/ui.rs:118
 msgid "Remove WebApps in Bulk"
-msgstr "WebApps 일괄 제거"
+msgstr "웹앱 일괄 제거"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 70
@@ -738,7 +728,7 @@ msgstr "카메라 접근"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:104
 msgid "This webapp wants to use your camera. Allow?"
-msgstr "이 WebApp이 카메라를 사용하려고 합니다. 허용하시겠습니까?"
+msgstr "이 웹앱이 카메라를 사용하려고 합니다. 허용하시겠습니까?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:107
 msgid "Microphone Access"
@@ -746,7 +736,7 @@ msgstr "마이크 접근"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:108
 msgid "This webapp wants to use your microphone. Allow?"
-msgstr "이 WebApp이 마이크를 사용하려고 합니다. 허용하시겠습니까?"
+msgstr "이 웹앱이 마이크를 사용하려고 합니다. 허용하시겠습니까?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:111
 msgid "Location Access"
@@ -754,7 +744,7 @@ msgstr "위치 접근"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:112
 msgid "This webapp wants to access your location. Allow?"
-msgstr "이 WebApp이 위치 정보에 접근하려고 합니다. 허용하시겠습니까?"
+msgstr "이 웹앱이 위치 정보에 접근하려고 합니다. 허용하시겠습니까?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:115
 msgid "Clipboard Access"
@@ -762,7 +752,7 @@ msgstr "클립보드 접근"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:116
 msgid "This webapp wants to read from your clipboard. Allow?"
-msgstr "이 WebApp이 클립보드를 읽으려고 합니다. 허용하시겠습니까?"
+msgstr "이 웹앱이 클립보드를 읽으려고 합니다. 허용하시겠습니까?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:119
 msgid "Permission Request"
@@ -770,7 +760,7 @@ msgstr "권한 요청"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:120
 msgid "This webapp is requesting a special permission. Allow?"
-msgstr "이 WebApp이 특별한 권한을 요청하고 있습니다. 허용하시겠습니까?"
+msgstr "이 웹앱이 특별한 권한을 요청하고 있습니다. 허용하시겠습니까?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:131
 msgid "Deny"
@@ -790,7 +780,7 @@ msgstr "주소 표시줄에 포커스"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:19
 msgid "Reload page"
-msgstr "페이지 새로고침"
+msgstr "페이지 새로 고침"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:20
 msgid "Go back"
@@ -818,7 +808,7 @@ msgstr "축소"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:31
 msgid "Reset zoom"
-msgstr "확대/축소 재설정"
+msgstr "확대/축소 초기화"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:36
 msgid "Window"

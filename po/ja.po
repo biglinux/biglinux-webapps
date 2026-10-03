@@ -7,21 +7,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
-"POT-Creation-Date: 2026-09-06 19:25+0000\n"
-"PO-Revision-Date: 2026-09-06 16:24-0300\n"
-"Last-Translator: Luna (gpt-5.6-luna)\n"
+"POT-Creation-Date: 2026-10-03 09:17+0000\n"
+"PO-Revision-Date: 2026-10-03 09:25+0000\n"
+"Last-Translator: Codex (AI-assisted translation review)\n"
 "Language-Team: ja\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Luna (gpt-5.6-luna)\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Codex\n"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
 #: crates/webapps-manager/src/browser_dialog.rs:38
 msgid "Select Browser"
-msgstr "ブラウザを選択してください"
+msgstr "ブラウザーを選択"
 
 #: crates/webapps-manager/src/browser_dialog.rs:70
 msgid "Auto-hide headerbar"
@@ -64,17 +65,13 @@ msgstr "OK"
 msgid ""
 "Embedded browser with better system integration. May not work on all "
 "websites."
-msgstr ""
-"システム統合に優れた組み込みブラウザーです。すべての Web サイトで動作するとは"
-"限りません。"
+msgstr "システム統合に優れた組み込みブラウザーです。すべての Web サイトで動作するとは限りません。"
 
 #: crates/webapps-manager/src/browser_dialog.rs:205
 msgid ""
 "Unavailable: this site requires DRM, which the internal browser does not "
 "support."
-msgstr ""
-"利用できません：このサイトにはDRMが必要ですが、内部ブラウザーは対応していませ"
-"ん。"
+msgstr "利用できません：このサイトには DRM が必要ですが、内蔵ブラウザーは対応していません。"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
@@ -92,9 +89,7 @@ msgstr "まだ WebApps がありません"
 
 #: crates/webapps-manager/src/relm4_window/empty.rs:18
 msgid "Turn any website into a desktop app. Press Add to get started."
-msgstr ""
-"あらゆる Web サイトをデスクトップアプリに変換します。開始するには「追加」を押"
-"してください。"
+msgstr "あらゆる Web サイトをデスクトップアプリに変換します。開始するには「追加」を押してください。"
 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -116,7 +111,7 @@ msgstr "{} 件の結果"
 
 #: crates/webapps-manager/src/relm4_window/row.rs:118
 msgid "Change browser"
-msgstr "ブラウザを変更"
+msgstr "ブラウザーを変更"
 
 #: crates/webapps-manager/src/relm4_window/row.rs:129
 msgid "Edit"
@@ -135,19 +130,19 @@ msgstr "削除"
 #: crates/webapps-manager/src/relm4_window/shell_spec.rs:12
 #: crates/webapps-manager/src/window/actions/about.rs:15
 msgid "WebApps Manager"
-msgstr "Webアプリ管理者"
+msgstr "WebApps マネージャー"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 50
 #: crates/webapps-manager/src/template_gallery.rs:31
 msgid "Choose a Template"
-msgstr "テンプレートを選択してください。"
+msgstr "テンプレートを選択"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 56
 #: crates/webapps-manager/src/template_gallery.rs:38
 msgid "Search templates..."
-msgstr "テンプレートを検索中..."
+msgstr "テンプレートを検索…"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 63
@@ -186,7 +181,6 @@ msgid "Recommended icon"
 msgstr "おすすめのアイコン"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:121
-#| msgid "No icon with sufficient quality found (minimum 256 × 256 px)."
 msgid "No icon with sufficient quality found (minimum 64 × 64 px)."
 msgstr "十分な品質のアイコンが見つかりません（最小 64 × 64 px）。"
 
@@ -231,7 +225,7 @@ msgstr "カテゴリ"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 226
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:25
 msgid "Browser"
-msgstr "ブラウザ"
+msgstr "ブラウザー"
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -248,14 +242,13 @@ msgid ""
 "By default, each webapp is isolated. A name shares sessions with webapps "
 "using the same browser and profile."
 msgstr ""
-"デフォルトでは、各Webアプリは分離されています。プロファイル名を割り当てると、"
-"同じブラウザーとプロファイルを使うWebアプリ間でセッションを共有できます。"
+"デフォルトでは、各Webアプリは分離されています。プロファイル名を割り当てると、同じブラウザーとプロファイルを使うWebアプリ間でセッションを共有できます。"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:88
 msgid "Profile Name"
-msgstr "プロフィール名"
+msgstr "プロファイル名"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 152
@@ -273,7 +266,7 @@ msgstr "検出"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 157
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:23
 msgid "Detect name and icon from website"
-msgstr "ウェブサイトから名前とアイコンを検出する"
+msgstr "ウェブサイトの名前とアイコンを検出"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 166
@@ -322,7 +315,7 @@ msgstr "読み込み中…"
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
 #: crates/webapps-manager/src/welcome_dialog.rs:22
 msgid "Welcome to WebApps Manager"
-msgstr "WebAppsマネージャーへようこそ"
+msgstr "WebApps マネージャーへようこそ"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
@@ -334,9 +327,7 @@ msgstr "始めましょう"
 msgid ""
 "WebApps run your favorite websites in their own dedicated window, for a "
 "focused, app-like experience."
-msgstr ""
-"WebAppsはお気に入りのウェブサイトを専用ウィンドウで実行し、集中して使えるアプ"
-"リのような体験を提供します。"
+msgstr "WebAppsはお気に入りのウェブサイトを専用ウィンドウで実行し、集中して使えるアプリのような体験を提供します。"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:48
 msgid "Benefits"
@@ -348,7 +339,7 @@ msgstr "集中"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:54
 msgid "Work without the distractions of other browser tabs"
-msgstr "他のブラウザタブの邪魔を受けずに作業できます"
+msgstr "他のブラウザータブに気を取られずに作業できます"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:58
 msgid "Desktop Integration"
@@ -400,7 +391,7 @@ msgstr "エクスポートに失敗しました"
 
 #: crates/webapps-manager/src/window/actions/import_export.rs:60
 msgid "Imported {imported}, skipped {dups} duplicates"
-msgstr "インポート済み {imported}、重複 {dups} はスキップされました"
+msgstr "{imported} 件をインポート、重複する {dups} 件をスキップしました"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
@@ -429,8 +420,7 @@ msgstr "すべてのWebアプリを削除"
 msgid ""
 "Are you sure you want to remove all your WebApps? This action cannot be "
 "undone."
-msgstr ""
-"すべての WebApps を削除してもよろしいですか？この操作は元に戻せません。"
+msgstr "すべての WebApps を削除してもよろしいですか？この操作は元に戻せません。"
 
 #: crates/webapps-manager/src/window/actions/remove_all.rs:27
 msgid "Continue"
@@ -527,9 +517,7 @@ msgstr "選択した WebApps を削除しますか？"
 msgid ""
 "This will remove {count} WebApps and their desktop entries. This cannot be "
 "undone."
-msgstr ""
-"これにより {count} 件の WebApps とそのデスクトップエントリーが削除されます。"
-"この操作は元に戻せません。"
+msgstr "これにより {count} 件の WebApps とそのデスクトップエントリーが削除されます。この操作は元に戻せません。"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
@@ -560,7 +548,7 @@ msgstr "WebAppが正常に更新されました"
 
 #: crates/webapps-manager/src/window/list.rs:167
 msgid "Browser changed"
-msgstr "ブラウザが変更されました"
+msgstr "ブラウザーを変更しました"
 
 #: crates/webapps-manager/src/window/list.rs:171
 msgid "Browser change failed"
@@ -582,7 +570,7 @@ msgstr "WebApp を削除しますか？"
 #
 #: crates/webapps-manager/src/window/list.rs:193
 msgid "Also delete configuration folder"
-msgstr "構成フォルダーも削除してください。"
+msgstr "設定フォルダーも削除"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
@@ -654,13 +642,13 @@ msgstr "メインメニュー"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 65
 #: crates/webapps-manager/src/window/ui.rs:108
 msgid "Browse Applications Folder"
-msgstr "アプリケーションフォルダーをブラウズ"
+msgstr "アプリケーションフォルダーを開く"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 66
 #: crates/webapps-manager/src/window/ui.rs:112
 msgid "Browse Profiles Folder"
-msgstr "プロファイルフォルダーを参照"
+msgstr "プロファイルフォルダーを開く"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
@@ -674,7 +662,7 @@ msgstr "WebApps を一括削除"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
 #: crates/webapps-manager/src/window/ui.rs:126
 msgid "About"
-msgstr "情報について"
+msgstr "このアプリケーションについて"
 
 #: crates/webapps-viewer/src/window/chrome.rs:33
 msgid "Back"
@@ -724,7 +712,7 @@ msgstr "メニュー"
 
 #: crates/webapps-viewer/src/window/context_menu.rs:25
 msgid "Open Link in Browser"
-msgstr "ブラウザでリンクを開く"
+msgstr "ブラウザーでリンクを開く"
 
 #: crates/webapps-viewer/src/window/downloads/mod.rs:29
 msgid "Download Complete"

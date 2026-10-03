@@ -7,21 +7,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
-"POT-Creation-Date: 2026-09-06 19:25+0000\n"
-"PO-Revision-Date: 2026-09-06 16:24-0300\n"
-"Last-Translator: Luna (gpt-5.6-luna)\n"
+"POT-Creation-Date: 2026-10-03 09:17+0000\n"
+"PO-Revision-Date: 2026-10-03 09:25+0000\n"
+"Last-Translator: Codex (AI-assisted translation review)\n"
 "Language-Team: bg\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Luna (gpt-5.6-luna)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Codex\n"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
 #: crates/webapps-manager/src/browser_dialog.rs:38
 msgid "Select Browser"
-msgstr "Изберете браузър"
+msgstr "Избор на браузър"
 
 #: crates/webapps-manager/src/browser_dialog.rs:70
 msgid "Auto-hide headerbar"
@@ -30,7 +31,7 @@ msgstr "Автоматично скриване на заглавната лен
 #: crates/webapps-manager/src/browser_dialog.rs:72
 msgid "Hide the titlebar; reveal it by moving the cursor to the top edge."
 msgstr ""
-"Скрива заглавната лента; покажете я отново, като преместите курсора до "
+"Скрива заглавната лента; за да я покажете отново, преместете курсора до "
 "горния ръб."
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
@@ -67,8 +68,8 @@ msgid ""
 "Embedded browser with better system integration. May not work on all "
 "websites."
 msgstr ""
-"Вграденият браузър предлага по-добра интеграция със системата. Може да "
-"неработи с всички уебсайтове."
+"Вграден браузър с по-добра интеграция със системата. Може да не работи с "
+"всички уебсайтове."
 
 #: crates/webapps-manager/src/browser_dialog.rs:205
 msgid ""
@@ -83,7 +84,7 @@ msgstr ""
 #: crates/webapps-manager/src/webapp_dialog/handlers/fields.rs:191
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:67
 msgid "Internal Browser"
-msgstr "Вътрешен браузър"
+msgstr "Вграден браузър"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
@@ -109,11 +110,11 @@ msgstr ""
 #: crates/webapps-manager/src/window/ui.rs:41
 #: crates/webapps-manager/src/window/ui.rs:42
 msgid "Add WebApp"
-msgstr "Добави WebApp"
+msgstr "Добави уеб приложение"
 
 #: crates/webapps-manager/src/relm4_window/list.rs:178
 msgid "{} results"
-msgstr "{} резултата"
+msgstr "Брой резултати: {}"
 
 #: crates/webapps-manager/src/relm4_window/row.rs:118
 msgid "Change browser"
@@ -187,7 +188,6 @@ msgid "Recommended icon"
 msgstr "Препоръчителна икона"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:121
-#| msgid "No icon with sufficient quality found (minimum 256 × 256 px)."
 msgid "No icon with sufficient quality found (minimum 64 × 64 px)."
 msgstr "Не е намерена икона с достатъчно качество (минимум 64 × 64 px)."
 
@@ -216,7 +216,7 @@ msgstr "Икона на приложението"
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:27
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:33
 msgid "Select"
-msgstr "Изберете"
+msgstr "Избери"
 
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:39
 msgid "Detected icon candidates"
@@ -269,13 +269,13 @@ msgstr "URL"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 156
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:20
 msgid "Detect"
-msgstr "Открийте"
+msgstr "Открий"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 157
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:23
 msgid "Detect name and icon from website"
-msgstr "Открийте име и икона от уебсайт"
+msgstr "Открий името и иконата на уебсайта"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 166
@@ -288,7 +288,7 @@ msgstr "Име"
 #: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:23
 #: crates/webapps-manager/src/window/shortcuts_window.rs:19
 msgid "New WebApp"
-msgstr "Нов WebApp"
+msgstr "Ново уеб приложение"
 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -324,7 +324,7 @@ msgstr "Зареждане…"
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
 #: crates/webapps-manager/src/welcome_dialog.rs:22
 msgid "Welcome to WebApps Manager"
-msgstr "Добре дошли в WebApps Manager"
+msgstr "Добре дошли в мениджъра на уеб приложения"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
@@ -366,7 +366,7 @@ msgstr "Изолирани профили"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:64
 msgid "Each webapp can have its own cookies and settings"
-msgstr "Всеки webapp може да има свои собствени бисквитки и настройки"
+msgstr "Всяко уеб приложение може да има собствени бисквитки и настройки"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
@@ -414,7 +414,7 @@ msgstr "Няма уеб приложения"
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 166
 #: crates/webapps-manager/src/window/actions/import_export.rs:69
 msgid "WebApps exported successfully"
-msgstr "Web приложенията бяха експортирани успешно."
+msgstr "Уеб приложенията са експортирани успешно"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
@@ -423,7 +423,7 @@ msgstr "Web приложенията бяха експортирани успе�
 #: crates/webapps-manager/src/window/actions/remove_all.rs:23
 #: crates/webapps-manager/src/window/ui.rs:121
 msgid "Remove All WebApps"
-msgstr "Премахнете всички уеб приложения"
+msgstr "Премахни всички уеб приложения"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 346
@@ -445,7 +445,8 @@ msgstr "Окончателно потвърждение"
 
 #: crates/webapps-manager/src/window/actions/remove_all.rs:45
 msgid "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
-msgstr "АБСОЛЮТНО сигурни ли сте, че искате да премахнете ВСИЧКИТЕ си WebApps?"
+msgstr ""
+"АБСОЛЮТНО сигурни ли сте, че искате да премахнете ВСИЧКИТЕ си WebApps?"
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -455,7 +456,7 @@ msgstr "АБСОЛЮТНО сигурни ли сте, че искате да п
 #
 #: crates/webapps-manager/src/window/actions/remove_all.rs:46
 msgid "No, Cancel"
-msgstr "Не, отказ"
+msgstr "Не, отмени"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
@@ -518,7 +519,7 @@ msgstr "Премахни избраните"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:162
 msgid "Select at least one WebApp"
-msgstr "Изберете поне една WebApp"
+msgstr "Изберете поне едно уеб приложение"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
@@ -555,13 +556,13 @@ msgstr "Откриване на инсталираните браузъри…"
 #: crates/webapps-manager/src/window/list.rs:83
 #: crates/webapps-manager/src/window/list.rs:113
 msgid "WebApp created successfully"
-msgstr "WebApp създаден успешно"
+msgstr "Уеб приложението е създадено успешно"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 257
 #: crates/webapps-manager/src/window/list.rs:131
 msgid "WebApp updated successfully"
-msgstr "Web приложението беше актуализирано успешно."
+msgstr "Уеб приложението е обновено успешно"
 
 #: crates/webapps-manager/src/window/list.rs:167
 msgid "Browser changed"
@@ -587,13 +588,13 @@ msgstr "Премахване на WebApp?"
 #
 #: crates/webapps-manager/src/window/list.rs:193
 msgid "Also delete configuration folder"
-msgstr "Също така изтрийте папката с конфигурацията."
+msgstr "Изтрий и папката с настройките"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
 #: crates/webapps-manager/src/window/list.rs:213
 msgid "WebApp removed"
-msgstr "WebApp е премахната"
+msgstr "Уеб приложението е премахнато"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353

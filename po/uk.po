@@ -7,15 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
-"POT-Creation-Date: 2026-09-06 19:25+0000\n"
-"PO-Revision-Date: 2026-09-06 16:24-0300\n"
-"Last-Translator: Luna (gpt-5.6-luna)\n"
+"POT-Creation-Date: 2026-10-03 09:17+0000\n"
+"PO-Revision-Date: 2026-10-03 09:25+0000\n"
+"Last-Translator: Codex (AI-assisted translation review)\n"
 "Language-Team: uk\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Luna (gpt-5.6-luna)\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Codex\n"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
@@ -109,11 +110,11 @@ msgstr ""
 #: crates/webapps-manager/src/window/ui.rs:41
 #: crates/webapps-manager/src/window/ui.rs:42
 msgid "Add WebApp"
-msgstr "Додати веб-додаток"
+msgstr "Додати вебзастосунок"
 
 #: crates/webapps-manager/src/relm4_window/list.rs:178
 msgid "{} results"
-msgstr "{} результатів"
+msgstr "Кількість результатів: {}"
 
 #: crates/webapps-manager/src/relm4_window/row.rs:118
 msgid "Change browser"
@@ -136,7 +137,7 @@ msgstr "Видалити"
 #: crates/webapps-manager/src/relm4_window/shell_spec.rs:12
 #: crates/webapps-manager/src/window/actions/about.rs:15
 msgid "WebApps Manager"
-msgstr "Менеджер веб-додатків"
+msgstr "Менеджер вебзастосунків"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 50
@@ -154,7 +155,7 @@ msgstr "Шукати шаблони..."
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 63
 #: crates/webapps-manager/src/template_gallery.rs:41
 msgid "Search templates"
-msgstr "Шаблони пошуку"
+msgstr "Пошук шаблонів"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 96
@@ -176,24 +177,23 @@ msgstr "Потрібен зовнішній браузер (DRM)"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 445
 #: crates/webapps-manager/src/webapp_dialog/handlers/lifecycle.rs:105
 msgid "Failed to save webapp"
-msgstr "Не вдалося зберегти WebApp"
+msgstr "Не вдалося зберегти вебзастосунок"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:91
 msgid "Icon candidate {n}"
-msgstr "Кандидат піктограми {n}"
+msgstr "Варіант піктограми {n}"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:98
 msgid "Recommended icon"
-msgstr "Рекомендований значок"
+msgstr "Рекомендована піктограма"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:121
-#| msgid "No icon with sufficient quality found (minimum 256 × 256 px)."
 msgid "No icon with sufficient quality found (minimum 64 × 64 px)."
-msgstr "Не знайдено значка достатньої якості (мінімум 64 × 64 px)."
+msgstr "Не знайдено піктограми достатньої якості (щонайменше 64 × 64 px)."
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:156
 msgid "Select Icon"
-msgstr "Вибрати іконку"
+msgstr "Вибрати піктограму"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:158
 msgid "Images"
@@ -220,7 +220,7 @@ msgstr "Вибрати"
 
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/appearance.rs:39
 msgid "Detected icon candidates"
-msgstr "Виявлені кандидати піктограм"
+msgstr "Знайдені варіанти піктограм"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 221
@@ -249,15 +249,15 @@ msgid ""
 "By default, each webapp is isolated. A name shares sessions with webapps "
 "using the same browser and profile."
 msgstr ""
-"Типово кожна вебпрограма ізольована. Призначення назви профілю дає змогу "
-"вебпрограмам із тим самим браузером і профілем спільно використовувати "
+"Типово кожен вебзастосунок ізольований. Назва профілю дає змогу "
+"вебзастосункам із тим самим браузером і профілем спільно використовувати "
 "сеанси."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 264
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/behavior.rs:88
 msgid "Profile Name"
-msgstr "Ім'я профілю"
+msgstr "Назва профілю"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 152
@@ -275,7 +275,7 @@ msgstr "Виявити"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 157
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:23
 msgid "Detect name and icon from website"
-msgstr "Визначити назву та значок з вебсайту"
+msgstr "Визначити назву та піктограму вебсайту"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 166
@@ -283,12 +283,12 @@ msgstr "Визначити назву та значок з вебсайту"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 480
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:29
 msgid "Name"
-msgstr "Ім'я"
+msgstr "Назва"
 
 #: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:23
 #: crates/webapps-manager/src/window/shortcuts_window.rs:19
 msgid "New WebApp"
-msgstr "Новий WebApp"
+msgstr "Новий вебзастосунок"
 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -300,7 +300,7 @@ msgstr "Новий WebApp"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
 #: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:25
 msgid "Edit WebApp"
-msgstr "Редагувати веб-додаток"
+msgstr "Редагувати вебзастосунок"
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -324,7 +324,7 @@ msgstr "Завантаження…"
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
 #: crates/webapps-manager/src/welcome_dialog.rs:22
 msgid "Welcome to WebApps Manager"
-msgstr "Ласкаво просимо до Менеджера веб-додатків"
+msgstr "Ласкаво просимо до менеджера вебзастосунків"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
@@ -358,7 +358,7 @@ msgstr "Інтеграція з робочим столом"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:59
 msgid "Quick access from your application menu"
-msgstr "Швидкий доступ із меню додатків"
+msgstr "Швидкий доступ із меню застосунків"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:63
 msgid "Isolated Profiles"
@@ -366,7 +366,7 @@ msgstr "Ізольовані профілі"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:64
 msgid "Each webapp can have its own cookies and settings"
-msgstr "Кожен webapp може мати власні куки та налаштування"
+msgstr "Кожен вебзастосунок може мати власні файли cookie та налаштування"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
@@ -379,7 +379,7 @@ msgstr "Не показувати це знову"
 #: crates/webapps-manager/src/window/actions/import_export.rs:15
 #: crates/webapps-manager/src/window/ui.rs:105
 msgid "Import WebApps"
-msgstr "Імпорт веб-додатків"
+msgstr "Імпортувати вебзастосунки"
 
 #: crates/webapps-manager/src/window/actions/import_export.rs:16
 msgid "ZIP files"
@@ -394,7 +394,7 @@ msgstr "Не вдалося імпортувати"
 #: crates/webapps-manager/src/window/actions/import_export.rs:40
 #: crates/webapps-manager/src/window/ui.rs:106
 msgid "Export WebApps"
-msgstr "Експортувати веб-додатки"
+msgstr "Експортувати вебзастосунки"
 
 #: crates/webapps-manager/src/window/actions/import_export.rs:51
 msgid "Export failed"
@@ -408,13 +408,13 @@ msgstr "Імпортовано {imported}, пропущено {dups} дублі�
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
 #: crates/webapps-manager/src/window/actions/import_export.rs:67
 msgid "No WebApps"
-msgstr "Немає веб-додатків"
+msgstr "Немає вебзастосунків"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 166
 #: crates/webapps-manager/src/window/actions/import_export.rs:69
 msgid "WebApps exported successfully"
-msgstr "WebApps успішно експортовано"
+msgstr "Вебзастосунки успішно експортовано"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
@@ -423,7 +423,7 @@ msgstr "WebApps успішно експортовано"
 #: crates/webapps-manager/src/window/actions/remove_all.rs:23
 #: crates/webapps-manager/src/window/ui.rs:121
 msgid "Remove All WebApps"
-msgstr "Видалити всі веб-додатки"
+msgstr "Видалити всі вебзастосунки"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 346
@@ -432,7 +432,8 @@ msgid ""
 "Are you sure you want to remove all your WebApps? This action cannot be "
 "undone."
 msgstr ""
-"Ви впевнені, що хочете видалити всі свої WebApps? Цю дію неможливо скасувати."
+"Ви впевнені, що хочете видалити всі свої WebApps? Цю дію неможливо "
+"скасувати."
 
 #: crates/webapps-manager/src/window/actions/remove_all.rs:27
 msgid "Continue"
@@ -466,19 +467,19 @@ msgstr "Так, видалити все"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
 #: crates/webapps-manager/src/window/actions/remove_all.rs:68
 msgid "All WebApps have been removed"
-msgstr "Усі веб-додатки були видалені."
+msgstr "Усі вебзастосунки видалено"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 445
 #: crates/webapps-manager/src/window/actions/remove_all.rs:73
 msgid "Failed to remove all WebApps"
-msgstr "Не вдалося видалити всі веб-додатки."
+msgstr "Не вдалося видалити всі вебзастосунки"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:29
 msgid "No WebApps to remove"
-msgstr "Немає WebApps для видалення"
+msgstr "Немає вебзастосунків для видалення"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
@@ -486,11 +487,12 @@ msgstr "Немає WebApps для видалення"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:34
 msgid "Remove WebApps"
-msgstr "Видалити WebApps"
+msgstr "Видалити вебзастосунки"
 
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:44
 msgid "Select the WebApps you want to remove. This cannot be undone."
-msgstr "Виберіть WebApps, які хочете видалити. Цю дію неможливо скасувати."
+msgstr ""
+"Виберіть вебзастосунки, які хочете видалити. Цю дію неможливо скасувати."
 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -515,7 +517,7 @@ msgstr "Видалити вибране"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:162
 msgid "Select at least one WebApp"
-msgstr "Виберіть принаймні одну WebApp"
+msgstr "Виберіть принаймні один вебзастосунок"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
@@ -523,21 +525,21 @@ msgstr "Виберіть принаймні одну WebApp"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:181
 msgid "Remove Selected WebApps?"
-msgstr "Видалити вибрані WebApps?"
+msgstr "Видалити вибрані вебзастосунки?"
 
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:183
 msgid ""
 "This will remove {count} WebApps and their desktop entries. This cannot be "
 "undone."
 msgstr ""
-"Це видалить {count} WebApps та їхні записи робочого столу. Цю дію неможливо "
-"скасувати."
+"Буде видалено вебзастосунки ({count}) та їхні записи в меню застосунків. Цю "
+"дію неможливо скасувати."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:222
 msgid "{count} WebApps removed"
-msgstr "Видалено {count} WebApps"
+msgstr "Видалено вебзастосунків: {count}"
 
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:224
 msgid "{ok} removed, {fail} failed"
@@ -552,13 +554,13 @@ msgstr "Виявлення встановлених браузерів…"
 #: crates/webapps-manager/src/window/list.rs:83
 #: crates/webapps-manager/src/window/list.rs:113
 msgid "WebApp created successfully"
-msgstr "Веб-додаток успішно створено"
+msgstr "Вебзастосунок успішно створено"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 257
 #: crates/webapps-manager/src/window/list.rs:131
 msgid "WebApp updated successfully"
-msgstr "Веб-додаток успішно оновлено"
+msgstr "Вебзастосунок успішно оновлено"
 
 #: crates/webapps-manager/src/window/list.rs:167
 msgid "Browser changed"
@@ -574,7 +576,7 @@ msgstr "Не вдалося змінити браузер"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
 #: crates/webapps-manager/src/window/list.rs:181
 msgid "Remove WebApp?"
-msgstr "Видалити WebApp?"
+msgstr "Видалити вебзастосунок?"
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -584,19 +586,19 @@ msgstr "Видалити WebApp?"
 #
 #: crates/webapps-manager/src/window/list.rs:193
 msgid "Also delete configuration folder"
-msgstr "Також видаліть папку конфігурації."
+msgstr "Також видалити папку налаштувань"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
 #: crates/webapps-manager/src/window/list.rs:213
 msgid "WebApp removed"
-msgstr "WebApp видалено"
+msgstr "Вебзастосунок видалено"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
 #: crates/webapps-manager/src/window/list.rs:216
 msgid "Remove failed"
-msgstr "Не вдалося вилучити"
+msgstr "Не вдалося видалити"
 
 #: crates/webapps-manager/src/window/shortcuts_window.rs:17
 msgid "General"
@@ -631,7 +633,7 @@ msgstr "Комбінації клавіш"
 #: crates/webapps-manager/src/window/ui.rs:36
 #: crates/webapps-manager/src/window/ui.rs:37
 msgid "Search WebApps"
-msgstr "Пошук веб-додатків"
+msgstr "Пошук вебзастосунків"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 72
@@ -644,7 +646,7 @@ msgstr "Додати"
 #: crates/webapps-manager/src/window/ui.rs:47
 #: crates/webapps-manager/src/window/ui.rs:49
 msgid "Choose from templates"
-msgstr "Виберіть з шаблонів"
+msgstr "Вибрати із шаблонів"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 79
@@ -670,7 +672,7 @@ msgstr "Перегляд папки профілів"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
 #: crates/webapps-manager/src/window/ui.rs:118
 msgid "Remove WebApps in Bulk"
-msgstr "Масове видалення WebApps"
+msgstr "Видалити кілька вебзастосунків"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
@@ -684,7 +686,7 @@ msgstr "Назад"
 
 #: crates/webapps-viewer/src/window/chrome.rs:34
 msgid "Forward"
-msgstr "Вперед"
+msgstr "Уперед"
 
 #: crates/webapps-viewer/src/window/chrome.rs:35
 msgid "Reload"
@@ -742,7 +744,7 @@ msgstr "Доступ до камери"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:104
 msgid "This webapp wants to use your camera. Allow?"
-msgstr "Цей WebApp хоче використовувати вашу камеру. Дозволити?"
+msgstr "Цей вебзастосунок хоче використовувати вашу камеру. Дозволити?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:107
 msgid "Microphone Access"
@@ -750,7 +752,7 @@ msgstr "Доступ до мікрофона"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:108
 msgid "This webapp wants to use your microphone. Allow?"
-msgstr "Цей WebApp хоче використовувати ваш мікрофон. Дозволити?"
+msgstr "Цей вебзастосунок хоче використовувати ваш мікрофон. Дозволити?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:111
 msgid "Location Access"
@@ -758,7 +760,9 @@ msgstr "Доступ до місцезнаходження"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:112
 msgid "This webapp wants to access your location. Allow?"
-msgstr "Цей WebApp хоче отримати доступ до вашого місцезнаходження. Дозволити?"
+msgstr ""
+"Цей вебзастосунок хоче отримати доступ до вашого місцезнаходження. "
+"Дозволити?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:115
 msgid "Clipboard Access"
@@ -766,7 +770,7 @@ msgstr "Доступ до буфера обміну"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:116
 msgid "This webapp wants to read from your clipboard. Allow?"
-msgstr "Цей WebApp хоче читати з вашого буфера обміну. Дозволити?"
+msgstr "Цей вебзастосунок хоче читати вміст вашого буфера обміну. Дозволити?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:119
 msgid "Permission Request"
@@ -774,7 +778,7 @@ msgstr "Запит дозволу"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:120
 msgid "This webapp is requesting a special permission. Allow?"
-msgstr "Цей WebApp запитує спеціальний дозвіл. Дозволити?"
+msgstr "Цей вебзастосунок запитує спеціальний дозвіл. Дозволити?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:131
 msgid "Deny"
@@ -790,7 +794,7 @@ msgstr "Навігація"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:18
 msgid "Focus address bar"
-msgstr "Фокус на адресному рядку"
+msgstr "Перейти до адресного рядка"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:19
 msgid "Reload page"

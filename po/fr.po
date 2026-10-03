@@ -7,15 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
-"POT-Creation-Date: 2026-09-06 19:25+0000\n"
-"PO-Revision-Date: 2026-09-06 16:24-0300\n"
-"Last-Translator: Luna (gpt-5.6-luna)\n"
+"POT-Creation-Date: 2026-10-03 09:17+0000\n"
+"PO-Revision-Date: 2026-10-03 09:25+0000\n"
+"Last-Translator: Codex (AI-assisted translation review)\n"
 "Language-Team: fr\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Luna (gpt-5.6-luna)\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Codex\n"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
@@ -75,8 +76,8 @@ msgid ""
 "Unavailable: this site requires DRM, which the internal browser does not "
 "support."
 msgstr ""
-"Indisponible : ce site nécessite la DRM, que le navigateur interne ne prend "
-"pas en charge."
+"Indisponible : ce site nécessite une protection DRM, que le navigateur "
+"interne ne prend pas en charge."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
@@ -110,7 +111,7 @@ msgstr ""
 #: crates/webapps-manager/src/window/ui.rs:41
 #: crates/webapps-manager/src/window/ui.rs:42
 msgid "Add WebApp"
-msgstr "Ajouter WebApp"
+msgstr "Ajouter une WebApp"
 
 #: crates/webapps-manager/src/relm4_window/list.rs:178
 msgid "{} results"
@@ -188,7 +189,6 @@ msgid "Recommended icon"
 msgstr "Icône recommandée"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:121
-#| msgid "No icon with sufficient quality found (minimum 256 × 256 px)."
 msgid "No icon with sufficient quality found (minimum 64 × 64 px)."
 msgstr "Aucune icône de qualité suffisante trouvée (minimum 64 × 64 px)."
 
@@ -300,7 +300,7 @@ msgstr "Nouvelle WebApp"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
 #: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:25
 msgid "Edit WebApp"
-msgstr "Modifier WebApp"
+msgstr "Modifier la WebApp"
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -337,8 +337,8 @@ msgid ""
 "WebApps run your favorite websites in their own dedicated window, for a "
 "focused, app-like experience."
 msgstr ""
-"WebApps exécutent vos sites préférés dans leur propre fenêtre dédiée, pour "
-"une expérience ciblée semblable à celle d’une application."
+"Les WebApps ouvrent vos sites préférés dans des fenêtres dédiées pour vous "
+"permettre de vous concentrer et de les utiliser comme des applications."
 
 #: crates/webapps-manager/src/welcome_dialog.rs:48
 msgid "Benefits"
@@ -372,7 +372,7 @@ msgstr "Chaque WebApp peut avoir ses propres cookies et paramètres"
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
 #: crates/webapps-manager/src/welcome_dialog.rs:70
 msgid "Don't show this again"
-msgstr "Ne plus afficher ceci."
+msgstr "Ne plus afficher ceci"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 62
@@ -402,7 +402,7 @@ msgstr "Échec de l’exportation"
 
 #: crates/webapps-manager/src/window/actions/import_export.rs:60
 msgid "Imported {imported}, skipped {dups} duplicates"
-msgstr "Importé {imported}, ignoré {dups} doublons"
+msgstr "{imported} importées, {dups} doublons ignorés"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
@@ -414,7 +414,7 @@ msgstr "Pas d'applications Web"
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 166
 #: crates/webapps-manager/src/window/actions/import_export.rs:69
 msgid "WebApps exported successfully"
-msgstr "WebApps exportés avec succès"
+msgstr "WebApps exportées avec succès"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
@@ -533,8 +533,8 @@ msgid ""
 "This will remove {count} WebApps and their desktop entries. This cannot be "
 "undone."
 msgstr ""
-"Cela supprimera {count} WebApps et leurs entrées de bureau. Cette action est "
-"irréversible."
+"Cela supprimera {count} WebApps et leurs raccourcis dans le menu des "
+"applications. Cette action est irréversible."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
@@ -555,13 +555,13 @@ msgstr "Détection des navigateurs installés…"
 #: crates/webapps-manager/src/window/list.rs:83
 #: crates/webapps-manager/src/window/list.rs:113
 msgid "WebApp created successfully"
-msgstr "WebApp créé avec succès"
+msgstr "WebApp créée avec succès"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 257
 #: crates/webapps-manager/src/window/list.rs:131
 msgid "WebApp updated successfully"
-msgstr "WebApp mis à jour avec succès"
+msgstr "WebApp mise à jour avec succès"
 
 #: crates/webapps-manager/src/window/list.rs:167
 msgid "Browser changed"
@@ -587,7 +587,7 @@ msgstr "Supprimer la WebApp ?"
 #
 #: crates/webapps-manager/src/window/list.rs:193
 msgid "Also delete configuration folder"
-msgstr "Supprimez également le dossier de configuration."
+msgstr "Supprimer également le dossier de configuration"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
@@ -653,7 +653,7 @@ msgstr "Choisissez parmi les modèles"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 79
 #: crates/webapps-manager/src/window/ui.rs:58
 msgid "Main Menu"
-msgstr "Menu Principal"
+msgstr "Menu principal"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 65
@@ -687,7 +687,7 @@ msgstr "Retour"
 
 #: crates/webapps-viewer/src/window/chrome.rs:34
 msgid "Forward"
-msgstr "Avant"
+msgstr "Avancer"
 
 #: crates/webapps-viewer/src/window/chrome.rs:35
 msgid "Reload"
@@ -708,11 +708,11 @@ msgstr "Adresse"
 
 #: crates/webapps-viewer/src/window/chrome.rs:93
 msgid "Zoom In"
-msgstr "Zoomer"
+msgstr "Zoom avant"
 
 #: crates/webapps-viewer/src/window/chrome.rs:94
 msgid "Zoom Out"
-msgstr "Dézoomer"
+msgstr "Zoom arrière"
 
 #: crates/webapps-viewer/src/window/chrome.rs:95
 msgid "Reset Zoom"
@@ -797,7 +797,7 @@ msgstr "Placer le focus sur la barre d’adresse"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:19
 msgid "Reload page"
-msgstr "Recharger"
+msgstr "Recharger la page"
 
 #: crates/webapps-viewer/src/window/shortcuts_window.rs:20
 msgid "Go back"

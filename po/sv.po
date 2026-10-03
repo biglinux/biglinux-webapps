@@ -7,15 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
-"POT-Creation-Date: 2026-09-06 19:25+0000\n"
-"PO-Revision-Date: 2026-09-06 16:24-0300\n"
-"Last-Translator: Luna (gpt-5.6-luna)\n"
+"POT-Creation-Date: 2026-10-03 09:17+0000\n"
+"PO-Revision-Date: 2026-10-03 09:25+0000\n"
+"Last-Translator: Codex (AI-assisted translation review)\n"
 "Language-Team: sv\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Luna (gpt-5.6-luna)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Codex\n"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
@@ -74,8 +75,8 @@ msgid ""
 "Unavailable: this site requires DRM, which the internal browser does not "
 "support."
 msgstr ""
-"Otillgänglig: den här webbplatsen kräver DRM, vilket den interna webbläsaren "
-"inte stöder."
+"Otillgänglig: den här webbplatsen kräver DRM, vilket den interna webbläsaren"
+" inte stöder."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
@@ -94,8 +95,8 @@ msgstr "Inga WebApps ännu"
 #: crates/webapps-manager/src/relm4_window/empty.rs:18
 msgid "Turn any website into a desktop app. Press Add to get started."
 msgstr ""
-"Gör vilken webbplats som helst till en skrivbordsapp. Tryck på Lägg till för "
-"att komma igång."
+"Gör vilken webbplats som helst till en skrivbordsapp. Tryck på Lägg till för"
+" att komma igång."
 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -136,7 +137,7 @@ msgstr "Ta bort"
 #: crates/webapps-manager/src/relm4_window/shell_spec.rs:12
 #: crates/webapps-manager/src/window/actions/about.rs:15
 msgid "WebApps Manager"
-msgstr "WebApps Hanterare"
+msgstr "WebApps-hanterare"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 50
@@ -187,7 +188,6 @@ msgid "Recommended icon"
 msgstr "Rekommenderad ikon"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:121
-#| msgid "No icon with sufficient quality found (minimum 256 × 256 px)."
 msgid "No icon with sufficient quality found (minimum 64 × 64 px)."
 msgstr "Ingen ikon med tillräcklig kvalitet hittades (minst 64 × 64 px)."
 
@@ -249,7 +249,7 @@ msgid ""
 "By default, each webapp is isolated. A name shares sessions with webapps "
 "using the same browser and profile."
 msgstr ""
-"Som standard är varje webapp isolerad. Genom att namnge profilen kan "
+"Som standard är varje webbapp isolerad. Genom att namnge profilen kan "
 "webbappar som använder samma webbläsare och profil dela sessioner."
 
 # File: biglinux-webapps/biglinux-
@@ -274,7 +274,7 @@ msgstr "Upptäck"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 157
 #: crates/webapps-manager/src/webapp_dialog/ui/sections/website.rs:23
 msgid "Detect name and icon from website"
-msgstr "Detektera namn och ikon från webbplats."
+msgstr "Hitta namn och ikon från webbplatsen"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 166
@@ -323,7 +323,7 @@ msgstr "Läser in…"
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
 #: crates/webapps-manager/src/welcome_dialog.rs:22
 msgid "Welcome to WebApps Manager"
-msgstr "Välkommen till WebApps Manager"
+msgstr "Välkommen till WebApps-hanteraren"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
@@ -357,7 +357,7 @@ msgstr "Skrivbordsintegration"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:59
 msgid "Quick access from your application menu"
-msgstr "Snabb åtkomst från din applikationsmeny"
+msgstr "Snabb åtkomst från programmenyn"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:63
 msgid "Isolated Profiles"
@@ -365,7 +365,7 @@ msgstr "Isolerade profiler"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:64
 msgid "Each webapp can have its own cookies and settings"
-msgstr "Varje webapp kan ha sina egna cookies och inställningar"
+msgstr "Varje webbapp kan ha egna kakor och inställningar"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
@@ -401,7 +401,7 @@ msgstr "Export misslyckades"
 
 #: crates/webapps-manager/src/window/actions/import_export.rs:60
 msgid "Imported {imported}, skipped {dups} duplicates"
-msgstr "Importerade {imported}, hoppade över {dups} dubbletter"
+msgstr "{imported} importerade, {dups} dubbletter överhoppade"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
@@ -584,7 +584,7 @@ msgstr "Ta bort WebApp?"
 #
 #: crates/webapps-manager/src/window/list.rs:193
 msgid "Also delete configuration folder"
-msgstr "Ta bort konfigurationsmappen också."
+msgstr "Ta också bort konfigurationsmappen"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
@@ -662,7 +662,7 @@ msgstr "Bläddra i mappen Program"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 66
 #: crates/webapps-manager/src/window/ui.rs:112
 msgid "Browse Profiles Folder"
-msgstr "Bläddra i profiler-mappen"
+msgstr "Öppna profilmappen"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
@@ -670,7 +670,7 @@ msgstr "Bläddra i profiler-mappen"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
 #: crates/webapps-manager/src/window/ui.rs:118
 msgid "Remove WebApps in Bulk"
-msgstr "Ta bort WebApps i bulk"
+msgstr "Ta bort flera WebApps"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
@@ -742,7 +742,7 @@ msgstr "Kameraåtkomst"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:104
 msgid "This webapp wants to use your camera. Allow?"
-msgstr "Den här WebApp vill använda din kamera. Tillåta?"
+msgstr "Den här webbappen vill använda din kamera. Tillåta?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:107
 msgid "Microphone Access"
@@ -750,7 +750,7 @@ msgstr "Mikrofonåtkomst"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:108
 msgid "This webapp wants to use your microphone. Allow?"
-msgstr "Den här WebApp vill använda din mikrofon. Tillåta?"
+msgstr "Den här webbappen vill använda din mikrofon. Tillåta?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:111
 msgid "Location Access"
@@ -758,7 +758,7 @@ msgstr "Platsåtkomst"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:112
 msgid "This webapp wants to access your location. Allow?"
-msgstr "Den här WebApp vill komma åt din plats. Tillåta?"
+msgstr "Den här webbappen vill komma åt din plats. Tillåta?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:115
 msgid "Clipboard Access"
@@ -766,7 +766,7 @@ msgstr "Urklippsåtkomst"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:116
 msgid "This webapp wants to read from your clipboard. Allow?"
-msgstr "Den här WebApp vill läsa från ditt urklipp. Tillåta?"
+msgstr "Den här webbappen vill läsa från ditt urklipp. Tillåta?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:119
 msgid "Permission Request"
@@ -774,7 +774,7 @@ msgstr "Behörighetsförfrågan"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:120
 msgid "This webapp is requesting a special permission. Allow?"
-msgstr "Den här WebApp begär en särskild behörighet. Tillåta?"
+msgstr "Den här webbappen begär en särskild behörighet. Tillåta?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:131
 msgid "Deny"

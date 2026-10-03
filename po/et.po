@@ -7,15 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: biglinux-webapps\n"
 "Report-Msgid-Bugs-To: https://github.com/biglinux/biglinux-webapps/issues\n"
-"POT-Creation-Date: 2026-09-06 19:25+0000\n"
-"PO-Revision-Date: 2026-09-06 16:24-0300\n"
-"Last-Translator: Luna (gpt-5.6-luna)\n"
+"POT-Creation-Date: 2026-10-03 09:17+0000\n"
+"PO-Revision-Date: 2026-10-03 09:25+0000\n"
+"Last-Translator: Codex (AI-assisted translation review)\n"
 "Language-Team: et\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Luna (gpt-5.6-luna)\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Generator: Codex\n"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/browser_dialog.py, line: 50
@@ -65,8 +66,8 @@ msgid ""
 "Embedded browser with better system integration. May not work on all "
 "websites."
 msgstr ""
-"Süsteemiga paremini lõimitud sisseehitatud brauser. Ei pruugi töötada "
-"kõigilveebisaitidel."
+"Süsteemiga paremini lõimitud sisseehitatud brauser. Ei pruugi töötada kõigil"
+" veebisaitidel."
 
 #: crates/webapps-manager/src/browser_dialog.rs:205
 msgid ""
@@ -86,7 +87,7 @@ msgstr "Sisemine brauser"
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
 #: crates/webapps-manager/src/relm4_window/empty.rs:16
 msgid "No WebApps yet"
-msgstr "Veel pole WebAppse"
+msgstr "Veebirakendusi veel pole"
 
 #: crates/webapps-manager/src/relm4_window/empty.rs:18
 msgid "Turn any website into a desktop app. Press Add to get started."
@@ -105,7 +106,7 @@ msgstr ""
 #: crates/webapps-manager/src/window/ui.rs:41
 #: crates/webapps-manager/src/window/ui.rs:42
 msgid "Add WebApp"
-msgstr "Lisa WebApp"
+msgstr "Lisa veebirakendus"
 
 #: crates/webapps-manager/src/relm4_window/list.rs:178
 msgid "{} results"
@@ -138,7 +139,7 @@ msgstr "Veebirakenduste haldur"
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 50
 #: crates/webapps-manager/src/template_gallery.rs:31
 msgid "Choose a Template"
-msgstr "Vali mall."
+msgstr "Vali mall"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/template_gallery.py, line: 56
@@ -183,7 +184,6 @@ msgid "Recommended icon"
 msgstr "Soovitatud ikoon"
 
 #: crates/webapps-manager/src/webapp_dialog/handlers/media.rs:121
-#| msgid "No icon with sufficient quality found (minimum 256 × 256 px)."
 msgid "No icon with sufficient quality found (minimum 64 × 64 px)."
 msgstr "Piisava kvaliteediga ikooni ei leitud (vähemalt 64 × 64 px)."
 
@@ -284,7 +284,7 @@ msgstr "Nimi"
 #: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:23
 #: crates/webapps-manager/src/window/shortcuts_window.rs:19
 msgid "New WebApp"
-msgstr "Uus WebApp"
+msgstr "Uus veebirakendus"
 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -296,7 +296,7 @@ msgstr "Uus WebApp"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_dialog.py, line: 101
 #: crates/webapps-manager/src/webapp_dialog/ui/shell.rs:25
 msgid "Edit WebApp"
-msgstr "Muuda Veebirakendust"
+msgstr "Muuda veebirakendust"
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -320,7 +320,7 @@ msgstr "Laadimine…"
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 94
 #: crates/webapps-manager/src/welcome_dialog.rs:22
 msgid "Welcome to WebApps Manager"
-msgstr "Tere tulemast WebApps Managerisse"
+msgstr "Tere tulemast veebirakenduste haldurisse"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 152
@@ -346,23 +346,23 @@ msgstr "Keskendumine"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:54
 msgid "Work without the distractions of other browser tabs"
-msgstr "Töötage ilma teiste brauseri vahelehtede segamiseta"
+msgstr "Tööta ilma teiste brauseri vahelehtede häirivate mõjudeta"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:58
 msgid "Desktop Integration"
-msgstr "Töölaudade integratsioon"
+msgstr "Lõiming töölauaga"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:59
 msgid "Quick access from your application menu"
-msgstr "Kiire ligipääs teie rakenduste menüüst"
+msgstr "Kiire ligipääs rakenduste menüüst"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:63
 msgid "Isolated Profiles"
-msgstr "Isolatsiooniprofiilid"
+msgstr "Eraldatud profiilid"
 
 #: crates/webapps-manager/src/welcome_dialog.rs:64
 msgid "Each webapp can have its own cookies and settings"
-msgstr "Igal webappil võib olla oma küpsised ja seaded"
+msgstr "Igal veebirakendusel võivad olla oma küpsised ja seaded"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/welcome_dialog.py, line: 141
@@ -390,7 +390,7 @@ msgstr "Import ebaõnnestus"
 #: crates/webapps-manager/src/window/actions/import_export.rs:40
 #: crates/webapps-manager/src/window/ui.rs:106
 msgid "Export WebApps"
-msgstr "Ekspordi Veebirakendused"
+msgstr "Ekspordi veebirakendused"
 
 #: crates/webapps-manager/src/window/actions/import_export.rs:51
 msgid "Export failed"
@@ -404,13 +404,13 @@ msgstr "Imporditud {imported}, vahele jäetud {dups} dubleeritud kirjet"
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 145
 #: crates/webapps-manager/src/window/actions/import_export.rs:67
 msgid "No WebApps"
-msgstr "Ei veebirakendusi"
+msgstr "Veebirakendusi pole"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/application.py, line: 166
 #: crates/webapps-manager/src/window/actions/import_export.rs:69
 msgid "WebApps exported successfully"
-msgstr "WebApps eksporditi edukalt"
+msgstr "Veebirakendused eksporditi edukalt"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
@@ -428,8 +428,8 @@ msgid ""
 "Are you sure you want to remove all your WebApps? This action cannot be "
 "undone."
 msgstr ""
-"Kas oled kindel, et soovid eemaldada kõik oma WebAppsid? Seda toimingut ei "
-"saa tagasi võtta."
+"Kas oled kindel, et soovid eemaldada kõik oma veebirakendused? Seda "
+"toimingut ei saa tagasi võtta."
 
 #: crates/webapps-manager/src/window/actions/remove_all.rs:27
 msgid "Continue"
@@ -441,7 +441,8 @@ msgstr "Lõplik kinnitus"
 
 #: crates/webapps-manager/src/window/actions/remove_all.rs:45
 msgid "Are you ABSOLUTELY sure you want to remove ALL your WebApps?"
-msgstr "Kas oled TÄIESTI kindel, et soovid eemaldada KÕIK oma WebAppsid?"
+msgstr ""
+"Kas oled TÄIESTI kindel, et soovid eemaldada KÕIK oma veebirakendused?"
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -469,13 +470,13 @@ msgstr "Kõik veebirakendused on eemaldatud."
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 445
 #: crates/webapps-manager/src/window/actions/remove_all.rs:73
 msgid "Failed to remove all WebApps"
-msgstr "Eba kõik WebAppid eemaldada."
+msgstr "Kõigi veebirakenduste eemaldamine ebaõnnestus"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 105
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:29
 msgid "No WebApps to remove"
-msgstr "Pole ühtegi eemaldatavat WebAppsi"
+msgstr "Eemaldatavaid veebirakendusi pole"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
@@ -483,12 +484,13 @@ msgstr "Pole ühtegi eemaldatavat WebAppsi"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:34
 msgid "Remove WebApps"
-msgstr "Eemalda WebAppsid"
+msgstr "Eemalda veebirakendused"
 
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:44
 msgid "Select the WebApps you want to remove. This cannot be undone."
 msgstr ""
-"Vali WebAppsid, mida soovid eemaldada. Seda toimingut ei saa tagasi võtta."
+"Vali veebirakendused, mida soovid eemaldada. Seda toimingut ei saa tagasi "
+"võtta."
 
 # #-#-#-#-#  biglinux-webapps.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -513,7 +515,7 @@ msgstr "Eemalda valitud"
 # webapps/usr/share/biglinux/webapps/webapps/ui/webapp_row.py, line: 114
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:162
 msgid "Select at least one WebApp"
-msgstr "Vali vähemalt üks WebApp"
+msgstr "Vali vähemalt üks veebirakendus"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 68
@@ -521,21 +523,21 @@ msgstr "Vali vähemalt üks WebApp"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:181
 msgid "Remove Selected WebApps?"
-msgstr "Eemaldada valitud WebAppsid?"
+msgstr "Kas eemaldada valitud veebirakendused?"
 
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:183
 msgid ""
 "This will remove {count} WebApps and their desktop entries. This cannot be "
 "undone."
 msgstr ""
-"See eemaldab {count} WebAppsi ja nende töölauakirjed. Seda toimingut ei saa "
-"tagasi võtta."
+"See eemaldab {count} veebirakendust ja nende kirjed rakenduste menüüs. Seda "
+"toimingut ei saa tagasi võtta."
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:222
 msgid "{count} WebApps removed"
-msgstr "{count} WebAppsi eemaldatud"
+msgstr "Eemaldatud veebirakendusi: {count}"
 
 #: crates/webapps-manager/src/window/actions/remove_multiple.rs:224
 msgid "{ok} removed, {fail} failed"
@@ -572,7 +574,7 @@ msgstr "Brauseri muutmine ebaõnnestus"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
 #: crates/webapps-manager/src/window/list.rs:181
 msgid "Remove WebApp?"
-msgstr "Eemaldada WebApp?"
+msgstr "Kas eemaldada veebirakendus?"
 
 # #-#-#-#-#  biglinux-webapps-bash.pot (biglinux-webapps)  #-#-#-#-#
 #
@@ -582,13 +584,13 @@ msgstr "Eemaldada WebApp?"
 #
 #: crates/webapps-manager/src/window/list.rs:193
 msgid "Also delete configuration folder"
-msgstr "Kustuta ka konfiguratsioonikaust."
+msgstr "Kustuta ka seadistuskaust"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 443
 #: crates/webapps-manager/src/window/list.rs:213
 msgid "WebApp removed"
-msgstr "WebApp eemaldatud"
+msgstr "Veebirakendus eemaldatud"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 353
@@ -629,7 +631,7 @@ msgstr "Kiirklahvid"
 #: crates/webapps-manager/src/window/ui.rs:36
 #: crates/webapps-manager/src/window/ui.rs:37
 msgid "Search WebApps"
-msgstr "Otsi Veebirakendusi"
+msgstr "Otsi veebirakendusi"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 72
@@ -668,7 +670,7 @@ msgstr "Sirvi profiilide kausta"
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 389
 #: crates/webapps-manager/src/window/ui.rs:118
 msgid "Remove WebApps in Bulk"
-msgstr "Eemalda WebAppsid hulgi"
+msgstr "Eemalda veebirakendused hulgi"
 
 # File: biglinux-webapps/biglinux-
 # webapps/usr/share/biglinux/webapps/webapps/ui/main_window.py, line: 69
@@ -740,7 +742,7 @@ msgstr "Juurdepääs kaamerale"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:104
 msgid "This webapp wants to use your camera. Allow?"
-msgstr "See veebirakendus soovib kasutada teie kaamerat. Kas lubada?"
+msgstr "See veebirakendus soovib kasutada sinu kaamerat. Kas lubada?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:107
 msgid "Microphone Access"
@@ -748,7 +750,7 @@ msgstr "Juurdepääs mikrofonile"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:108
 msgid "This webapp wants to use your microphone. Allow?"
-msgstr "See veebirakendus soovib kasutada teie mikrofoni. Kas lubada?"
+msgstr "See veebirakendus soovib kasutada sinu mikrofoni. Kas lubada?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:111
 msgid "Location Access"
@@ -756,7 +758,7 @@ msgstr "Juurdepääs asukohale"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:112
 msgid "This webapp wants to access your location. Allow?"
-msgstr "See veebirakendus soovib pääseda ligi teie asukohale. Kas lubada?"
+msgstr "See veebirakendus soovib pääseda ligi sinu asukohale. Kas lubada?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:115
 msgid "Clipboard Access"
@@ -764,7 +766,7 @@ msgstr "Juurdepääs lõikelauale"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:116
 msgid "This webapp wants to read from your clipboard. Allow?"
-msgstr "See veebirakendus soovib lugeda teie lõikelaualt. Kas lubada?"
+msgstr "See veebirakendus soovib lugeda sinu lõikelaua sisu. Kas lubada?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:119
 msgid "Permission Request"
@@ -772,7 +774,7 @@ msgstr "Loataotlus"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:120
 msgid "This webapp is requesting a special permission. Allow?"
-msgstr "See veebirakendus taotleb eraldi luba. Kas lubada?"
+msgstr "See veebirakendus taotleb eriluba. Kas lubada?"
 
 #: crates/webapps-viewer/src/window/permissions/mod.rs:131
 msgid "Deny"
