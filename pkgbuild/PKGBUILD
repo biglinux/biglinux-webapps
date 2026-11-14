@@ -194,7 +194,7 @@ package() {
 		InternalDir="${srcdir}/${pkgname}"
 	fi
 
-	# Copy package tree (icons, profiles, skel, .desktop, systemd, menus)
+	# Copy package tree (icons, profiles, skel, .desktop, menus)
 	if [ -d "${InternalDir}/usr" ]; then
 		cp -R --no-preserve=ownership "${InternalDir}/usr" "${pkgdir}/"
 	fi
