@@ -15,7 +15,6 @@ require_command() {
 }
 
 readonly shell_targets=(
-	"biglinux-webapps/usr/bin/biglinux-webapps-systemd"
 	"pkgbuild/PKGBUILD"
 	"scripts/build-local.sh"
 )

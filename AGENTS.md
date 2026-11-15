@@ -80,8 +80,6 @@ biglinux-webapps/        Data tree shipped by every packager
     biglinux-webapps/    browsers.toml
     biglinux/webapps/    bundled browser icons + viewer profile seed
     desktop-directories/ big-webapps.directory, google-apps.directory
-  usr/lib/systemd/user/  biglinux-webapps.service
-  usr/bin/               biglinux-webapps-systemd (session init helper)
   etc/xdg/menus/         KDE/GNOME menu integration
 
 packaging/               One subfolder per distribution channel
@@ -150,9 +148,9 @@ That wraps:
 cargo fmt --check
 cargo clippy --workspace --all-targets --all-features -- -D warnings
 cargo test --workspace
-shellcheck biglinux-webapps/usr/bin/biglinux-webapps-systemd pkgbuild/PKGBUILD
-shfmt -d   biglinux-webapps/usr/bin/biglinux-webapps-systemd pkgbuild/PKGBUILD
-bash -n    biglinux-webapps/usr/bin/biglinux-webapps-systemd pkgbuild/PKGBUILD
+shellcheck pkgbuild/PKGBUILD
+shfmt -d   pkgbuild/PKGBUILD
+bash -n    pkgbuild/PKGBUILD
 ```
 
 Warnings are failures. If the script is missing a tool, install it; do not
