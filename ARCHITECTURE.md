@@ -115,9 +115,10 @@ executables are rejected at validation time (INVARIANTS — security).
 
 `pkgbuild/PKGBUILD`: declares `pkgname=biglinux-webapps`, depends on
 `gtk4`, `libadwaita`, `webkitgtk-6.0`, `xdg-utils`, `desktop-file-utils`;
-makedepends on `rust`, `cargo`, `gettext`. Local-source detection prefers
-the workspace checkout (`BIGLINUX_WEBAPPS_LOCAL_SOURCE` env, or `Cargo.toml +
-crates/ + biglinux-webapps/` next to the PKGBUILD) over the git fallback.
+makedepends on `rust`, `cargo`, `gettext`, `rsync`. Local-source detection
+prefers the workspace checkout (`BIGLINUX_WEBAPPS_LOCAL_SOURCE` env, or
+`Cargo.toml + crates/ + biglinux-webapps/` next to the PKGBUILD) over the git
+fallback.
 Installs three binaries (`big-webapps-exec`, `big-webapps-gui`,
 `big-webapps-viewer`), the `biglinux-webapps/` resource tree
 (profile CSS/JS, icons, desktop templates), and compiled `.mo` catalogs.
