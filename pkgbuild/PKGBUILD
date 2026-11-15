@@ -141,13 +141,16 @@ prepare() {
 			--exclude='*.log' \
 			"${_local_root}/" "${srcdir}/${pkgname}/"
 	else
-		# Portable fallback for environments without rsync. Preserve target/
-		# explicitly across re-runs.
+		# Portable fallback for environments without rsync. The mirror starts
+		# empty, so a file deleted from the checkout leaves the package too;
+		# target/ is set aside and put back across re-runs.
 		_preserved_target=""
 		if [ -d "${srcdir}/${pkgname}/target" ]; then
 			_preserved_target="$(mktemp -d)"
 			mv "${srcdir}/${pkgname}/target" "${_preserved_target}/target"
 		fi
+		rm -rf "${srcdir}/${pkgname}"
+		mkdir -p "${srcdir}/${pkgname}"
 		cp -a "${_local_root}/." "${srcdir}/${pkgname}/"
 		rm -rf \
 			"${srcdir}/${pkgname}/target" \
